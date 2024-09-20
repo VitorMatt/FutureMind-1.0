@@ -1,9 +1,15 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import Jsx from './Jsx.jsx';
+import Home from './Pages/Home';
+import './App.css';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Jsx />
-  </StrictMode>,
-);
+function Jsx() {
+
+  return (
+    <>
+      <Home />
+      <h1>Olá</h1>
+      <h2>Bem-vindo</h2>
+    </>
+  );
+}
+
+export default Jsx;

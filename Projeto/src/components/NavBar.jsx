@@ -1,4 +1,5 @@
 import './NavBar.css';
+import logo from '../assets/logo.png'
 
 function NavBar() {
 
@@ -6,14 +7,9 @@ function NavBar() {
     
     <>
     <nav>
-      <h1>Therapy</h1>
-      <div>
-        <a>Home</a>
-        <a>Serviços</a>
-        <a>Sobre Nós</a>
+      <img src={logo} />
+      <div className='linkNavBar'>
       </div>
-
-      <button>Entrar</button>
     </nav>
     </>
   );
