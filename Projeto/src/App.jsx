@@ -1,15 +1,14 @@
-import Home from './Pages/Home';
+import './Pages/CSS/LandingPage.css';
 import './App.css';
+import LandingPage from './Pages/LandingPage';
 
-function Jsx() {
+function App() {
 
   return (
     <>
-      <Home />
-      <h1>Olá</h1>
-      <h2>Bem-vindo</h2>
+      <LandingPage />
     </>
   );
 }
 
-export default Jsx;
+export default App;
