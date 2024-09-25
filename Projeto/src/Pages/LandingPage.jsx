@@ -1,23 +1,23 @@
 import './CSS/LandingPage.css';
 import img from '../assets/img.png';
-import NavBar from '../components/NavBar';
+import { Link } from 'react-router-dom';
 
 function LandingPage() {
 
     return(
         <>
-        <NavBar />
+       <div className="container">
 
-    <div class="container">
-
-        <div class="info">
-           <h1 class="titulo">Um futuro para sua mente</h1>
-           <p class="subtitulo">Moldamos nosso próprio futuro, quando transformamos nossa mente.
+        <div className="info">
+           <h1 className="titulo">Um futuro para sua mente</h1>
+           <p className="subtitulo">Moldamos nosso próprio futuro, quando transformamos nossa mente.
            Vamos cultivar esse futuro promissor juntos!</p>
-           <button class="BOTAO">COMECE JÁ</button>
+           <Link to='/'>
+           <button className="btn">Comece Já</button>
+           </Link>
         </div>
 
-        <div class="imagem">
+        <div className="img">
            <img src={img} />
         </div>
 

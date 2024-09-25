@@ -6,13 +6,13 @@ function NavBar() {
   return(
     
     <>
-    <nav class='navBar'>
+    <nav className='navBar'>
         <img src={logo} />
-        <div class = "Link">
-           <label for ="">Início</label>
-           <label for ="">Sobre nos</label>
-           <label for ="">Agendamento</label>
-           <label class="btn">Entrar</label>
+        <div className = "Link">
+           <label>Início</label>
+           <label>Sobre nós</label>
+           <label>Agendamento</label>
+           <label>Entrar</label>
         </div>
     </nav>
     </>

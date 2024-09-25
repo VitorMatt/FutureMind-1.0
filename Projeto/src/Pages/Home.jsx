@@ -1,11 +1,19 @@
 import React from 'react';
-import NavBar from '../components/NavBar';
+import './CSS//Home.css';
 
 function Home() {
-    
+
+  const [user, setUser] = React.useState('Astrogildo');
+
   return (
     <>
-      <NavBar />
+      <h1 onClick={() => {
+        user=='Astrogildo'
+        ?
+        setUser('Ursula')
+        :
+        setUser('Astrogildo')
+        }}>Olá {user}</h1>
     </>
   );
 };
