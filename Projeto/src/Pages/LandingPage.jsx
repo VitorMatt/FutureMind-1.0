@@ -1,5 +1,5 @@
 import './CSS/LandingPage.css';
-import img from '../assets/img.png';
+import img from '../assets/image.png';
 import { Link } from 'react-router-dom';
 
 function LandingPage() {
@@ -11,7 +11,7 @@ function LandingPage() {
         <div className="info">
            <h1 className="titulo">Um futuro para sua mente</h1>
            <p className="subtitulo">Moldamos nosso próprio futuro, quando transformamos nossa mente.
-           Vamos cultivar esse futuro promissor juntos!</p>
+           Vamos cultivar esse futuro promissor juntos?</p>
            <Link to='/'>
            <button className="btn">Comece Já</button>
            </Link>

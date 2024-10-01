@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
 
-
 .info {
 
     display: block;
-    margin-left: 100px;
+    margin-left: 3%;
+    margin-top: 3%;
+    margin-right: 5%;
 }
 
 .titulo {
@@ -26,7 +27,7 @@
     margin-left: 50px;
     font-family: "Poppins", sans-serif;
     flex-wrap: wrap;
-    width: 450px;
+    width: 500px;
     font-size: 19px;
 }
 
@@ -47,20 +48,24 @@
 
 .btn:hover {
 
-    background-color: #FFFF;
-    color: #013a63;
-    transition: 0.7s;
+    background-color: #4e6583;
+    transition: 0.5s;
+    cursor: pointer;
 }
 
 .img {
 
-    display: flex;
-    justify-content: end;
-    margin-left: 335px;
-    margin-top: -90px;
+    margin-top: -6%;
+}
+
+.img img {
+
+    width: fit-content;
 }
 
 .container {
 
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
