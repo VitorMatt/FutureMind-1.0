@@ -1,8 +1,151 @@
-@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
-
-h1 {
-
-    font-family: "Poller One", serif;
-    color: #013a63;
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .profile {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+  }
+  
+  .profile h2 {
+    font-size: 20px;
+    margin: 0;
+    color: #333;
+  }
+  
+  .profile p {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0;
+  }
+  
+  .profile h3 {
+    font-size: 18px;
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  .rating {
+    color: #ff9900;
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  .agenda {
+    margin: 20px 0;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  th {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  td {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #e7f3ff;
+    color: #007bff;
+    font-size: 14px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
     cursor: pointer;
-}
+    width: 100%;
+    transition: background-color 0.2s;
+  }
+  
+  button:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  button.selected {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  button#agendar {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+  }
+  
+  button#agendar:not(:disabled):hover {
+    background-color: #388e3c;
+  }
+  
+  /* Navegação entre semanas */
+  .week-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .week-navigation button {
+    background-color: #f0f0f0;
+    color: #007bff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .week-navigation button:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .week-navigation span {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .botao{
+    display: block;
+  }
