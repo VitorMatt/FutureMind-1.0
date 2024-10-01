@@ -1,8 +1,15 @@
+button:hover,
+a:hover {
+
+  cursor: pointer;
+}
+
 .navBar{
 
   display: flex;
   height: 20%;
   flex-wrap: nowrap;
+  padding-left: 3%;
   
   }
   
@@ -21,15 +28,26 @@
   flex-wrap: nowrap;
   }
   
-  .Link label{
+  .Link a,
+  .Link button {
   
   font-family: "Poppins", sans-serif;
   margin-left: 80px;
   font-size: 20px;
   color: #5a789f;
   }
-  
-  .Link .btn {
-  
-  margin-left: 120px;
+
+  .Link a:hover,
+  .Link button:hover {
+
+    color: #013a63;
+    transition: 0.5s;
+  }
+
+  .btn2 {
+
+    background: none;
+    border: none;
+    width: 200px;
+    margin-left: 100px;
   }

@@ -9,10 +9,10 @@ function NavBar() {
     <nav className='navBar'>
         <img src={logo} />
         <div className = "Link">
-           <label>Início</label>
-           <label>Sobre nós</label>
-           <label>Agendamento</label>
-           <label>Entrar</label>
+           <a>Início</a>
+           <a>Sobre nós</a>
+           <a>Agendamento</a>
+           <button className='btn2'>Entrar</button>
         </div>
     </nav>
     </>
