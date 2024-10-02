@@ -9,7 +9,7 @@
     align-items: center;
     margin: auto;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .titulo{
@@ -28,7 +28,7 @@
 
 .infoMissao{
     display: block;
-    margin-left: 500px;
+    margin-left: 700px;
     position: absolute;
 }
 
@@ -36,12 +36,23 @@
     margin: auto;
     align-items: center;
     justify-content: center;
-    margin-left: 1262px;
-    margin-top: -700px;
+    margin-left: 1253px;
+    margin-top: -600px;
     width: 650px;
 }
 
 .img{
     margin-right: 900px;
     width: 800px;
+}
+
+.titulo2{
+    color: var(--cor-1);
+    font-size: 50px;
+}
+
+.infoFundacao{
+    display: block;
+    margin-left: 700px;
+    position: absolute;
 }
