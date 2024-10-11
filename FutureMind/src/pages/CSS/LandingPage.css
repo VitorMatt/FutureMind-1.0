@@ -1,8 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
+
+*{
+
+    font-family: 'Poppins' , sans-serif;
+}
+
 .landingPage-container{
     background-color:#ffffff;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    width: 100vw;
     height: 100vh;
     margin: auto;
 }
 
+
+
+.info {
+
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.titulo {
+
+    font-family: "Poller One", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #013a63;
+    margin-left: 50px;
+    flex-wrap: wrap;
+    width: 500px;
+    font-size: 50px;
+    margin-top: -15px;
+}
+
+.subtitulo {
+
+    color: #013a63;
+    margin-left: 50px;
+    font-family: "Poppins", sans-serif;
+    flex-wrap: wrap;
+    width: 500px;
+    font-size: 19px;
+}
+
+.btn {
+
+    padding: 1.5%;
+    background-color: #5A789F;
+    border: 1px solid;
+    border-radius: 13px;
+    color: white;
+    height: 45px;
+    margin-top: 20px;
+    margin-left: 50px;
+    width: 250px;
+    font-family: "Poppins", sans-serif;
+    font-size: 25px;
+}
+
+.btn:hover {
+
+    background-color: #4e6583;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.img {
+
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: auto;
+}
+
+.img img {
+
+    width: fit-content;
+}
+
+.back {
+
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.imgPhone{
+
+    background-color: blue;
+    width: 40vw;
+}
+
+.titulo-back{
+
+    background-color: aqua;
+    height: 10%;
+}
+
+.texto-um {
+
+    background-color: chartreuse;
+    height: 40%;
+}
+
+.texto-dois {
+
+    background-color: darkorange;
+    height: 40%;
+}
+
+.conhecer-gente {
+
+    background-color: fuchsia;
+    height: 10%;
+}
+
+.conteudo {
+
+    width: 60vw;
+}
+
+.grande {
+
+    background-color: red;
+    display: flex;
+    width: 100vw;
+}
+
+.esquerdo {
+
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: forestgreen;
+}
+
+.como-funciona {
+
+    background-color: lightcoral;
+}
+
+.imagem-direito {
+
+    width: 50%;
+    background-color: darkorchid;
+}
