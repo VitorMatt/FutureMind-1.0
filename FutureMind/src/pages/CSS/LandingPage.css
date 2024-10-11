@@ -1,0 +1,8 @@
+.landingPage-container{
+    background-color:#ffffff;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    margin: auto;
+}
+
