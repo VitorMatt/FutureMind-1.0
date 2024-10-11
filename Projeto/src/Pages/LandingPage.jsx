@@ -1,7 +1,7 @@
 import './CSS/LandingPage.css';
 import img from '../assets/image.png';
 import { Link } from 'react-router-dom';
-import NavBar from '../components/NavBar';
+import NavBar from '../components/NavBar.jsx';
 
 function LandingPage() {
 

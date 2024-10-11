@@ -3,10 +3,10 @@
 
 .info {
 
-    display: block;
-    margin-left: 3%;
-    margin-top: 3%;
-    margin-right: 5%;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
 }
 
 .titulo {
@@ -56,12 +56,15 @@
 
 .img {
 
-    margin-top: -6%;
+    justify-content: flex-end;
+    width: 50%;
+    
 }
 
 .img img {
 
     width: fit-content;
+
 }
 
 .container {
@@ -69,4 +72,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: 100vw;
+    height: 100vh
 }
