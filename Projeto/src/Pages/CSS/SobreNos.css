@@ -9,7 +9,11 @@
     align-items: center;
     margin: auto;
     justify-content: center;
+<<<<<<< HEAD
     margin-top: 100px;
+=======
+    margin-top: 50px;
+>>>>>>> 8ca6deaaff2d45baf5aa6e260aa3c772ce544963
 }
 
 .titulo{
@@ -28,7 +32,11 @@
 
 .infoMissao{
     display: block;
+<<<<<<< HEAD
     margin-left: 500px;
+=======
+    margin-left: 700px;
+>>>>>>> 8ca6deaaff2d45baf5aa6e260aa3c772ce544963
     position: absolute;
 }
 
@@ -36,12 +44,31 @@
     margin: auto;
     align-items: center;
     justify-content: center;
+<<<<<<< HEAD
     margin-left: 1262px;
     margin-top: -700px;
+=======
+    margin-left: 1253px;
+    margin-top: -600px;
+>>>>>>> 8ca6deaaff2d45baf5aa6e260aa3c772ce544963
     width: 650px;
 }
 
 .img{
     margin-right: 900px;
     width: 800px;
+<<<<<<< HEAD
+=======
+}
+
+.titulo2{
+    color: var(--cor-1);
+    font-size: 50px;
+}
+
+.infoFundacao{
+    display: block;
+    margin-left: 700px;
+    position: absolute;
+>>>>>>> 8ca6deaaff2d45baf5aa6e260aa3c772ce544963
 }
