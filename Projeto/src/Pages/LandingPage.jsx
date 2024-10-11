@@ -1,11 +1,13 @@
 import './CSS/LandingPage.css';
 import img from '../assets/image.png';
 import { Link } from 'react-router-dom';
+import NavBar from '../components/NavBar';
 
 function LandingPage() {
 
     return(
         <>
+        <NavBar />
        <div className="container">
 
         <div className="info">

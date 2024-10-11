@@ -1,14 +1,4 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
+ 
   .App {
     display: flex;
     justify-content: center;
@@ -74,19 +64,9 @@ body {
     color: #333;
   }
   
-  button {
-    padding: 10px;
-    background-color: #e7f3ff;
-    color: #007bff;
-    font-size: 14px;
-    border: 1px solid #007bff;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.2s;
-  }
+
   
-  button:hover {
+  .agendar:hover {
     background-color: #007bff;
     color: #fff;
   }

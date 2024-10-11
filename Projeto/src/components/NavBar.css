@@ -10,7 +10,7 @@ a:hover {
   height: 20%;
   flex-wrap: nowrap;
   padding-left: 3%;
-  
+  margin-top: -10%;
   }
   
   .navBar img {
@@ -22,10 +22,11 @@ a:hover {
   
   .navBar .Link {
   
-  margin-top: 40px;
+  margin-top: 2%;
   justify-content: space-evenly;
   margin-left: 370px;
   flex-wrap: nowrap;
+  display: flex;
   }
   
   .Link a,
@@ -49,5 +50,6 @@ a:hover {
     background: none;
     border: none;
     width: 200px;
+    height: 20%;
     margin-left: 100px;
   }

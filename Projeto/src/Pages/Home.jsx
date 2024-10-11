@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import NavBar from "../components/NavBar";
 import "./CSS/Home.css";
 
 // Função utilitária para calcular os dias da semana a partir de uma data de início
@@ -55,6 +56,8 @@ function Home() {
   };
 
   return (
+    <>
+    <NavBar />
     <div className="App">
       <div className="profile">
         <h2>Eloiza Camargo Dalmolin</h2>
@@ -96,17 +99,17 @@ function Home() {
                   {diasSemana.map((dia) => (
                     <td key={dia}>
                       {horariosDisponiveis[hora] ? (
-                        <button
-                        className={
+                        <button 
+                        className= {
                           selectedDate === formatDate(dia) && selectedTime === hora
                           ? "selected"
-                          : ""
+                          : "agendar"
                         }
                         onClick={() => {
                           setSelectedDate(formatDate(dia));
-                            setSelectedTime(hora);
-                          }}
-                          >
+                          setSelectedTime(hora);
+                        }}
+                        >
                           {hora}
                         </button>
                       ) : (
@@ -124,7 +127,7 @@ function Home() {
         <div>
 
 
-        <button
+        <button 
           id="agendar"
           onClick={handleAgendamento}
           disabled={!selectedTime}
@@ -137,6 +140,7 @@ function Home() {
             </div>
       </div>
     </div>
+            </>
   );
 }
 

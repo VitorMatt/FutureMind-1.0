@@ -1,0 +1,28 @@
+.pagina-especifica {
+    background-color:#5A789F;
+    width: 90%;
+    height: 100%;
+}
+
+/* O resto do CSS permanece o mesmo */
+.pagina-especifica .Lado-esquerdo{
+    margin: auto;
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: left;
+    margin-left: 4%;
+    margin-top: 20%;
+    display: block;
+}
+
+.pagina-especifica .lado-Direito{
+    margin-right: 10%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: end;
+}
+
+.pagina-especifica .entrar{
+    margin-top: -44%;
+    margin-right: -5%;
+}
