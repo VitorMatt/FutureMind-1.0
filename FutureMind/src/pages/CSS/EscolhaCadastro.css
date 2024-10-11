@@ -78,7 +78,7 @@ body{
 }
 
 .estilização-Check{
-    padding: 2%;
+    padding: 3%;
 }
 
 .check1 {
@@ -92,7 +92,7 @@ body{
   }
   
 .check1:hover:before {
-    box-shadow: 0px 0px 0px 12px rgba(80, 80, 200, 0.2);
+    box-shadow: 0px 0px 0px 12px rgba(112, 148, 247, 0.493);
     border-radius: 50%;
     opacity: 1;
   }
