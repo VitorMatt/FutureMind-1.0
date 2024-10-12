@@ -2,6 +2,47 @@
 
     display: flex;
     width: 100%;
-    height: 100px;
-    background-color: red;
+    height: 20%;
+    background-color: none;
+    margin: auto;
 }
+
+.Links .Link:hover,
+.Links .btn2:hover {
+
+  cursor: pointer;
+  color: #013a63;
+  transition: 0.5s;
+}
+
+.Links .Link,
+.Link, .btn2 {
+    
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    color: #5a789f;
+    text-decoration: none;
+}
+  
+.navbar img {
+  
+  display: flex;
+  width: 20%;
+  margin: auto;
+  margin-top: -3.5%;
+  margin-left: 3%;
+  }
+  
+  .Links {
+
+    display: flex;
+    margin: auto;
+    align-items: center;
+    width: 60%;
+    justify-content: space-evenly;
+  }
+
+  .Links .btn2 {
+
+    padding-left: 10%;
+  }

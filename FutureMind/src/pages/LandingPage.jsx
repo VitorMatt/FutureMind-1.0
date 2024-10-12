@@ -8,6 +8,8 @@ function LandingPage() {
 
     <div className='landingPage-container'>
       <Navbar />
+      <div className='container-maior'>
+
       <div className="info">
            <h1 className="titulo">Um futuro para sua mente</h1>
            <p className="subtitulo">Moldamos nosso próprio futuro, quando transformamos nossa mente.
@@ -20,6 +22,7 @@ function LandingPage() {
         <div className="img">
            <img src={img} />
         </div>
+      </div>
         <div className='back'>
           <div className='imgPhone'>
             <h1>a</h1>
@@ -27,7 +30,7 @@ function LandingPage() {
 
           <div className='conteudo'>
           <div className='titulo-back'>
-          <h1>a</h1>
+          <h1>Por quê seus colaboradores preferem a FutureMind?</h1>
           </div>
 
           <div className='texto-um'>

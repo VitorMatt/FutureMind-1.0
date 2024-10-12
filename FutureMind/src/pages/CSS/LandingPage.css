@@ -24,6 +24,13 @@
     width: 50%;
 }
 
+.container-maior {
+
+    display: flex;
+    margin: auto;
+    width: 100vw;
+}
+
 .titulo {
 
     font-family: "Poller One", serif;
@@ -34,7 +41,7 @@
     flex-wrap: wrap;
     width: 500px;
     font-size: 50px;
-    margin-top: -15px;
+    margin-top: 8%;
 }
 
 .subtitulo {
@@ -87,7 +94,7 @@
 
     background-color: black;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
 }
 
@@ -100,30 +107,48 @@
 .titulo-back{
 
     background-color: aqua;
-    height: 10%;
+    height: 20%;
+    margin: auto;
+    text-align: center;
+}
+
+.titulo-back h1 {
+
+    padding-top: 5%;
 }
 
 .texto-um {
 
     background-color: chartreuse;
-    height: 40%;
+    height: 35%;
+    margin: auto;
 }
 
 .texto-dois {
 
     background-color: darkorange;
-    height: 40%;
+    height: 35%;
+    margin: auto;
 }
 
 .conhecer-gente {
 
     background-color: fuchsia;
     height: 10%;
+    margin: auto;
 }
 
 .conteudo {
 
     width: 60vw;
+    height: 100%;
+    margin: auto;
+}
+
+.conteudo h1 {
+
+    height: fit-content;
+    margin: auto;
 }
 
 .grande {
