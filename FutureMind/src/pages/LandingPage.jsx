@@ -2,6 +2,8 @@ import './CSS/LandingPage.css'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
 import img from '../../public/image.png'
+import imgPhone from '../../public/phoneImage.png'
+import imgCirculo from '../../public/CirculoImagem.png'
 
 function LandingPage() {
   return (
@@ -25,7 +27,7 @@ function LandingPage() {
       </div>
         <div className='back'>
           <div className='imgPhone'>
-            <h1>a</h1>
+            <img src={imgPhone} className='phoneImage' />
           </div>
 
           <div className='conteudo'>
@@ -34,7 +36,8 @@ function LandingPage() {
           </div>
 
           <div className='texto-um'>
-          <h1>a</h1>
+          <p>Um aplicativo de terapia online simplifica a busca por apoio emocional, permitindo agendar sessões, escolher profissionais e acessar recursos de bem-estar com apenas alguns toques. Sua interface intuitiva torna o uso fácil e acessível para todas as idades.</p>
+          <img src={imgCirculo} className='circuloImg' />
           </div>
 
           <div className='texto-dois'>
