@@ -41,19 +41,17 @@ body{
     align-items: flex-end;
 }
 .entrar{
-    width: 10%;
-    height: 10%;
-    margin: auto;
+    width: 30%;
+    padding: 5%;
     display: flex;
     font-size: 130%;
     justify-content: end;
     align-items: flex-end;
 }
+
 .entrar-estilizado{
-    font-size: 135%;
-    padding: 0.9%;
-    width: 120%;
-    height: 2%;
+    font-size: 150%;
+    padding: 1%;
     border-radius: 13px;
     border: 1px solid var(--cor-2);
     color: var(--cor-1);
@@ -111,3 +109,18 @@ body{
 .check1:checked:before {
     background:var(--cor-5);
   }
+
+.Proximo{
+    width: 30%;
+    padding: 10%;
+    display: flex;
+    font-size: 130%;
+}
+
+.proximo-estilizado{
+    font-size: 60%;
+    padding: 1%;
+    border-radius: 13px;
+    border: 1px solid var(--cor-2);
+    color: var(--cor-1);
+}
