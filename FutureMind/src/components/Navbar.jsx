@@ -11,6 +11,7 @@ function Navbar() {
            <Link className='Link' to='/sobrenos'>Sobre nós</Link>
            <Link className='Link' to='/'>Agendamento</Link>
            <Link to='/' className='btn2'>Entrar</Link>
+           
         </div>
     </nav>
   )

@@ -6,6 +6,7 @@ import Inicio from '../pages/Inicio'
 import LandingPage from '../pages/LandingPage'
 import Login from '../pages/Login'
 import SobreNos from '../pages/SobreNos'
+import Termos from '../pages/Termos'
 
 
 const router = createBrowserRouter([{
@@ -27,6 +28,7 @@ const router = createBrowserRouter([{
     element: <LandingPage />
 },
 {
+<<<<<<< HEAD
     path:'/login',
     element: <Login />
 },
@@ -35,5 +37,10 @@ const router = createBrowserRouter([{
     element: <CadastroProfissional />
 },
 ])
+=======
+    path: '/termos',
+    element: <Termos />
+}])
+>>>>>>> e5b90e92b4c2ed3434a5405880e37ced952fbd0a
 
 export default router
