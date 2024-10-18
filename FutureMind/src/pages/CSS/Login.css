@@ -1,5 +1,6 @@
 *{
     font-family: 'Poppins' , sans-serif;
+    outline: none;
 }
 
 :root{
@@ -10,7 +11,7 @@
     --cor-5: #014F86;
 }
 
-.escolhaCadastro-container{
+.login-container{
     background-color:#5A789F;
     display: flex;
     flex-direction: row;
@@ -59,6 +60,7 @@ body{
 
 .titulo-Cadastro{
     font-size: 300%;
+
     color: #ffff;
 }
 
@@ -77,4 +79,37 @@ body{
     border-radius: 13px;
     border: 1px solid var(--cor-2);
     color: var(--cor-1);
+}
+
+.inputsLogin{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputsLogin input{
+    margin-bottom: 20%;
+    background: none;
+    border: none;
+    border-bottom: 2px solid white;
+    width: 200%;
+    color: #CAD7EB;
+}
+
+.inputsLogin label{
+    width: 20%;
+    margin-bottom: 20%;
+}
+
+.input_principais{
+    width: 79%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 220%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #ffff;
+    margin-top: 2%;
 }

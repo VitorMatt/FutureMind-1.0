@@ -1,3 +1,4 @@
+import HorizontalLinearAlternativeLabelStepper from '../components/HorizontalLinearAlternativeLabelStepper'
 import './CSS/EscolhaCadastro.css'
 
 function EscolhaCadastro() {
@@ -5,6 +6,7 @@ function EscolhaCadastro() {
   return (
     <div className='escolhaCadastro-container'>
       <div className='Lado-esquerdo'>
+        <HorizontalLinearAlternativeLabelStepper />
         <h3 className='titulo-Cadastro'>Selecione um tipo de cadastro:</h3>
         <div className='checkboxs'>
             <div className='estilização-Check'>
@@ -16,7 +18,14 @@ function EscolhaCadastro() {
             </div>
             
         <div className='Proximo'>
-            <button className='entrar-estilizado'>Entrar</button><button className='proximo-estilizado'>Próximo</button>
+          <div className='botao1'>
+
+            <button className='proximo-estilizado'>Entrar</button>
+          </div>
+          <div className='botao2'>
+
+            <button className='proximo-estilizado'>Próximo</button>
+          </div>
         </div>
         </div>
       </div>

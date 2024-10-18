@@ -1,30 +1,27 @@
 import React from "react";
-
+import './CSS/Login.css'
 function Login() {
   return (
-    <div className="escolhaCadastro-container">
+    <div className="login-container">
       <div className="Lado-esquerdo">
-        <h3 className="titulo-Cadastro">Selecione um tipo de cadastro:</h3>
-        <div className="checkboxs">
-          <div className="estilização-Check">
+        <h3 className="titulo-Cadastro">Entre em sua conta</h3>
+        <div className="input_principais">
+          <div className="inputsLogin">
            <label htmlFor="">Email</label> <input type="text" />
           </div>
 
-          <div className="estilização-Check">
-            <label htmlFor="">Senha</label><input type="text" />
+          <div className="inputsLogin">
+            <label htmlFor="" >Senha</label><input type="text" />
           </div>
 
           <div className="Proximo">
-            <button className="proximo-estilizado">Próximo</button>
+            <button className="proximo-estilizado">Entrar</button>
           </div>
         </div>
       </div>
       <div className="lado-Direito">
-        <div className="entrar">
-          <button className="entrar-estilizado">Entrar</button>
-        </div>
         <div className="arvore">
-          <img src={arvore} alt="" className="arvore-estilizada" />
+        <img src='logoLogin.png' alt="" className='arvore-estilizada'/>
         </div>
       </div>
     </div>
