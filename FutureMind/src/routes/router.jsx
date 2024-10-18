@@ -4,6 +4,7 @@ import EscolhaCadastro from '../pages/EscolhaCadastro'
 import Inicio from '../pages/Inicio'
 import LandingPage from '../pages/LandingPage'
 import SobreNos from '../pages/SobreNos'
+import Termos from '../pages/Termos'
 
 
 const router = createBrowserRouter([{
@@ -23,6 +24,10 @@ const router = createBrowserRouter([{
 {
     path: '/landingpage',
     element: <LandingPage />
+},
+{
+    path: '/termos',
+    element: <Termos />
 }])
 
 export default router
