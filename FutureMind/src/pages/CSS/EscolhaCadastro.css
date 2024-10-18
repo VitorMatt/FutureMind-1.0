@@ -40,21 +40,25 @@ body{
     justify-content:flex-end;
     align-items: flex-end;
 }
-.entrar{
-    width: 30%;
-    padding: 5%;
-    display: flex;
-    font-size: 130%;
-    justify-content: end;
-    align-items: flex-end;
-}
+
 
 .entrar-estilizado{
-    font-size: 150%;
-    padding: 1%;
+    font-size: 60%;
+    padding: 3%;
+    width: 50%;
     border-radius: 13px;
     border: 1px solid var(--cor-2);
     color: var(--cor-1);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.entrar-estilizado:Hover{
+    transition: 1s;
+    transform: scale(1.0);
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .titulo-Cadastro{
@@ -112,15 +116,26 @@ body{
 
 .Proximo{
     width: 30%;
-    padding: 10%;
+    margin-top: 20%;
     display: flex;
     font-size: 130%;
+
 }
 
 .proximo-estilizado{
     font-size: 60%;
-    padding: 1%;
+    width: 70%;
     border-radius: 13px;
     border: 1px solid var(--cor-2);
     color: var(--cor-1);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.proximo-estilizado:hover{
+    transition: 1s;
+    transform: scale(1.0);
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }

@@ -1,5 +1,4 @@
 import './CSS/EscolhaCadastro.css'
-import arvore from '../../public/logoLogin.png'
 
 function EscolhaCadastro() {
 
@@ -17,16 +16,13 @@ function EscolhaCadastro() {
             </div>
             
         <div className='Proximo'>
-            <button className='proximo-estilizado'>Próximo</button>
+            <button className='entrar-estilizado'>Entrar</button><button className='proximo-estilizado'>Próximo</button>
         </div>
         </div>
       </div>
       <div className='lado-Direito'>
-        <div className='entrar'>
-        <button className='entrar-estilizado'>Entrar</button>
-        </div>
         <div className='arvore'>
-         <img src={arvore} alt="" className='arvore-estilizada'/>
+         <img src='logoLogin.png' alt="" className='arvore-estilizada'/>
         </div>
       </div>
     </div>
