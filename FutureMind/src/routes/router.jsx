@@ -28,7 +28,6 @@ const router = createBrowserRouter([{
     element: <LandingPage />
 },
 {
-<<<<<<< HEAD
     path:'/login',
     element: <Login />
 },
@@ -36,11 +35,10 @@ const router = createBrowserRouter([{
     path:'/cadastro-profissional',
     element: <CadastroProfissional />
 },
-])
-=======
+{
     path: '/termos',
     element: <Termos />
-}])
->>>>>>> e5b90e92b4c2ed3434a5405880e37ced952fbd0a
+}
+])
 
 export default router
