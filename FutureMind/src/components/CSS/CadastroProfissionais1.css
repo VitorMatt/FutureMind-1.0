@@ -1,0 +1,121 @@
+*{
+    font-family: 'Poppins' , sans-serif;
+}
+
+:root{
+    --cor-1: #5A789F;
+    --cor-2: #CAD7EB;
+    --cor-3: #000;
+    --cor-4: #012A4A;
+    --cor-5: #014F86;
+}
+
+.escolhaCadastro-container{
+    background-color:#5A789F;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+}
+
+body{
+    margin: auto;
+}
+
+.Lado-esquerdo{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lado-Direito{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    align-items: flex-end;
+}
+
+
+.entrar-estilizado{
+    font-size: 60%;
+    padding: -3%;
+    width: 50%;
+    border-radius: 13px;
+    border: 1px solid var(--cor-2);
+    color: var(--cor-1);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.entrar-estilizado:Hover{
+    transition: 1s;
+    transform: scale(1.0);
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.titulo-Cadastro2{
+    font-size: 300%;
+    color: #ffff;
+    display: flex;
+    margin: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.checkBoxs{
+
+    width: 37px;
+    height: 20px;
+    background: #D9D9D9;
+}
+
+
+.Proximo{
+    width: 100%;
+    margin-top: 10%;
+    padding: 4%;
+    display: flex;
+    font-size: 130%;
+}
+
+.Proximo .botao2{
+
+    display: flex;
+    width:50%;
+}
+
+.botao2 button {
+
+    width: 50%;
+}
+
+.proximo-estilizado{
+    font-size: 60%;
+    width: 80%;
+
+    border-radius: 13px;
+    border: 1px solid var(--cor-2);
+    color: var(--cor-1);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.proximo-estilizado:hover{
+    transition: 1s;
+    transform: scale(1.1);
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.botao1{
+    display: flex;
+    width: 30%;
+}

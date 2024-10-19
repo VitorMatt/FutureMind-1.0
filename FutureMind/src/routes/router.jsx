@@ -7,6 +7,10 @@ import LandingPage from '../pages/LandingPage'
 import Login from '../pages/Login'
 import SobreNos from '../pages/SobreNos'
 import Termos from '../pages/Termos'
+import CadastroFormado from '../components/CadastroFormado1'
+import CadastroProfissionais1 from '../components/CadastroProfissionais1'
+import CadastroProfissionalSelecao from '../components/cadastroProfissionalSelecao'
+import { patch } from '@mui/material'
 
 
 const router = createBrowserRouter([{
@@ -28,7 +32,6 @@ const router = createBrowserRouter([{
     element: <LandingPage />
 },
 {
-<<<<<<< HEAD
     path:'/login',
     element: <Login />
 },
@@ -36,11 +39,24 @@ const router = createBrowserRouter([{
     path:'/cadastro-profissional',
     element: <CadastroProfissional />
 },
-])
-=======
+{
     path: '/termos',
     element: <Termos />
-}])
->>>>>>> e5b90e92b4c2ed3434a5405880e37ced952fbd0a
+},
+{
+    path:'/cadastroFormado1',
+    element: <CadastroFormado />
+},
+{
+    path:'/cadastroProfissionais1',
+    element: <CadastroProfissionais1 />
+},
+{
+    patch:'/cadastroSelecao',
+    element:<CadastroProfissionalSelecao />
+},
+
+])
+
 
 export default router

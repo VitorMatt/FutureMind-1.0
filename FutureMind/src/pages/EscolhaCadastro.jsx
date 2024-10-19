@@ -6,7 +6,6 @@ function EscolhaCadastro() {
   return (
     <div className='escolhaCadastro-container'>
       <div className='Lado-esquerdo'>
-        <HorizontalLinearAlternativeLabelStepper />
         <h3 className='titulo-Cadastro'>Selecione um tipo de cadastro:</h3>
         <div className='checkboxs'>
             <div className='estilização-Check'>
