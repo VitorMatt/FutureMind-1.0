@@ -46,6 +46,7 @@ const router = createBrowserRouter([{
 {
     path: '/termos',
     element: <Termos />
+<<<<<<< HEAD
 },
 {
     path: '/cadastro1',
@@ -82,5 +83,9 @@ const router = createBrowserRouter([{
 
 ])
 
+=======
+}
+])
+>>>>>>> d65a3cc25a0f5cdf08e7166aacb84b1fc2fbc019
 
 export default router

@@ -1,4 +1,3 @@
-import React from 'react'
 import CustomizedSteppers from '../components/HorizontalLinearAlternativeLabelStepper'
 
 function CadastroProfissional() {
