@@ -8,9 +8,13 @@ import Login from '../pages/Login'
 import SobreNos from '../pages/SobreNos'
 import Termos from '../pages/Termos'
 import CadastroFormado from '../components/CadastroFormado1'
-import CadastroProfissionais1 from '../components/CadastroProfissionais1'
-import CadastroProfissionalSelecao from '../components/cadastroProfissionalSelecao'
-import { patch } from '@mui/material'
+import CadastroProfissionais6 from '../components/CadastroProfissinais6'
+import CadastroProfissionais7 from '../components/CadastroProfissionais7'
+import CadastroProfissionais4 from '../components/CadastroProfissionais4'
+import CadastroProfissionais3 from '../components/CadastroProfissionais3'
+import CadastroEstagiario2 from '../components/CadastroEstagiario2'
+import CadastroProfissionais5 from '../components/CadastroProfissionais5'
+import CadastroSelecao1 from '../components/CadastroSelecao1'
 
 
 const router = createBrowserRouter([{
@@ -44,16 +48,36 @@ const router = createBrowserRouter([{
     element: <Termos />
 },
 {
-    path:'/cadastroFormado1',
+    path: '/cadastro1',
+    element: <CadastroSelecao1 />
+},
+{
+    path:'/cadastroF2',
     element: <CadastroFormado />
 },
 {
-    path:'/cadastroProfissionais1',
-    element: <CadastroProfissionais1 />
+    path:'/cadastroE2',
+    element: <CadastroEstagiario2 />
 },
 {
-    patch:'/cadastroSelecao',
-    element:<CadastroProfissionalSelecao />
+    path:'/cadastroP3',
+    element: <CadastroProfissionais3 />
+},
+{
+    path:'/cadastroP4',
+    element: <CadastroProfissionais4/>
+},
+{
+    path:'/cadastroP5',
+    element: <CadastroProfissionais5 />
+},
+{
+    path:'/cadastroP6',
+    element: <CadastroProfissionais6 />
+},
+{
+    path:'/cadastroP7',
+    element: <CadastroProfissionais7 />
 },
 
 ])

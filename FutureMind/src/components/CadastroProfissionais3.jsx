@@ -2,7 +2,7 @@ import React from 'react'
 import'./CSS/CadastroProfissionais1.css'
 import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
 import CadastroProfissional from '../pages/CadastroProfissional'
-function CadastroProfissionais1() {
+function CadastroProfissionais3() {
   return (
     <div className='escolhaCadastro-container'>
     <div className='Lado-esquerdo'>
@@ -51,4 +51,4 @@ function CadastroProfissionais1() {
 }
 
 
-export default CadastroProfissionais1
+export default CadastroProfissionais3

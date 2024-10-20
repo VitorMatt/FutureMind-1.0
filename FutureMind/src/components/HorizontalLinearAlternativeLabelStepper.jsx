@@ -44,7 +44,7 @@ export default function HorizontalLinearAlternativeLabelStepper() {
       sx={{
         width: '30vw', // Diminuindo a largura para 30% da viewport
         marginLeft:"-20%",
-        top: '50%', // Centraliza verticalmente
+        top: '10%', // Centraliza verticalmente
         transform: 'translateY(-85%)', // Ajusta a posição
       }}
     >
