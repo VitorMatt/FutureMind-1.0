@@ -2,7 +2,6 @@ import React from 'react'
 import './CSS/SobreNos.css'
 import img from '../assets/img.png'
 import Bola from '../assets/Bola.png'
-
 import NavBar from '../components/NavBar.jsx'
 import Arvore from '../assets/Arvore.png'
 
