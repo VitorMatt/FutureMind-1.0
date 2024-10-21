@@ -20,7 +20,7 @@ const steps = [
 // Personalizando o conector para alterar a cor da linha entre os passos
 const CustomConnector = styled(StepConnector)(({ theme }) => ({
   [`& .${StepConnector.line}`]: {
-    borderColor: '#C1DFF4', // Cor da linha conectando os passos
+    borderColor: '#012A4A', // Cor da linha conectando os passos
   },
 }));
 
@@ -42,9 +42,11 @@ export default function HorizontalLinearAlternativeLabelStepper() {
   return (
     <Box
       sx={{
-        width: '30vw', // Diminuindo a largura para 30% da viewport
+        width: '50vw', // Diminuindo a largura para 30% da viewport
         marginLeft:"-20%",
-        top: '10%', // Centraliza verticalmente
+        position: 'absolute',
+        paddingLeft: '35%',
+        height: '20%',
         transform: 'translateY(-85%)', // Ajusta a posição
       }}
     >
@@ -55,10 +57,10 @@ export default function HorizontalLinearAlternativeLabelStepper() {
         sx={{
           gap: '4px', // Diminui o espaço entre cada passo
           '& .MuiStepIcon-root': {
-            color: '#89C2D9', // Define a cor dos ícones não completados
+            color: '#89c2d9', // Define a cor dos ícones não completados
             transform: 'scale(2)', // Aumenta o tamanho dos ícones
             '&.Mui-active': {
-              color: '#89C2D9', // Define a cor dos ícones ativos
+              color: '#89c2d9', // Define a cor dos ícones ativos
               transform: 'scale(2.2)', // Aumenta ainda mais os ícones ativos
             },
             '&.Mui-completed': {

@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
 import ErrorElement from '../components/ErrorElement'
-import CadastroProfissional from '../pages/CadastroProfissional'
 import EscolhaCadastro from '../pages/EscolhaCadastro'
 import Inicio from '../pages/Inicio'
 import LandingPage from '../pages/LandingPage'
@@ -38,10 +37,6 @@ const router = createBrowserRouter([{
 {
     path:'/login',
     element: <Login />
-},
-{
-    path:'/cadastro-profissional',
-    element: <CadastroProfissional />
 },
 {
     path: '/termos',

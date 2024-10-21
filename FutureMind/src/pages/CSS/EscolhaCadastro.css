@@ -40,7 +40,6 @@ body{
     justify-content:flex-end;
     align-items: flex-end;
 }
-<<<<<<< HEAD
 .entrar{
     width: 30%;
     height: 20%;
@@ -50,9 +49,7 @@ body{
     justify-content: end;
     align-items: flex-end;
 }
-=======
 
->>>>>>> 722c7caf00ea58df861cada10584cb8ee2f5d2aa
 
 .entrar-estilizado{
     font-size: 60%;
@@ -153,12 +150,10 @@ body{
     border-radius: 13px;
     border: 1px solid var(--cor-2);
     color: var(--cor-1);
-<<<<<<< HEAD
 }
 
 .arvore {
-    
-    margin: auto;
+
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -171,8 +166,6 @@ body{
     width: 100%;
     height: fit-content;
 
-=======
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .proximo-estilizado:hover{
@@ -186,5 +179,4 @@ body{
 .botao1{
     display: flex;
     width: 30%;
->>>>>>> 722c7caf00ea58df861cada10584cb8ee2f5d2aa
 }
