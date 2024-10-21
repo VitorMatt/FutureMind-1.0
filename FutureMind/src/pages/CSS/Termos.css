@@ -53,11 +53,14 @@
     font-weight: 600;
 }
 
-.bolinha{
-    width: 100px;
-	height: 100px;
-	border-radius: 50%;
-	overflow: hidden;
-	float: left;
-	margin: 15px;
+.introducao{
+    position: absolute;
+}
+
+.bolona_termos img{
+    width: 20%;
+}
+
+.bolona_termos{
+    width: fit-content;
 }

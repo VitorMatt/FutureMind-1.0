@@ -17,6 +17,7 @@ function Termos() {
         </div>
         <div className='textinho'>
             <div><p> Na Future Mind, a sua privacidade é nossa prioridade.</p></div>
+            
 
            <div><p> Comprometemo-nos a proteger suas informações pessoais e a garantir que você tenha uma experiência segura e confiável em nossa plataforma de terapia online.</p></div>
 
@@ -27,9 +28,12 @@ function Termos() {
         </div>
       </div>
 
-      <div className='bolinha'>
-        <img src="" alt="" />
+      <div className='bolona_termos'>
+
+       <img src="bolona.png"/>
+
       </div>
+      
 
     </div>
   )
