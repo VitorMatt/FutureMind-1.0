@@ -12,7 +12,7 @@ function Termos() {
       </div>
       
       <div className='introducao'>
-        <div className='titulo'>
+        <div className='T_titulo'>
             <h1>Termos de uso da FutureMind</h1>
         </div>
         <div className='textinho'>
