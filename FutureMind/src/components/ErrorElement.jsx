@@ -1,5 +1,3 @@
-import React from 'react'
-
 function ErrorElement() {
   return (
     <div>
@@ -7,5 +5,7 @@ function ErrorElement() {
     </div>
   )
 }
+
+
 
 export default ErrorElement

@@ -1,19 +1,20 @@
-import HorizontalLinearAlternativeLabelStepper from '../components/HorizontalLinearAlternativeLabelStepper'
-import './CSS/EscolhaCadastro.css'
+import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
+import '../pages/CSS/EscolhaCadastro.css'
 
-function EscolhaCadastro() {
+function CadastroSelecao1() {
 
   return (
     <div className='escolhaCadastro-container'>
       <div className='Lado-esquerdo'>
+        <HorizontalLinearAlternativeLabelStepper />
         <h3 className='titulo-Cadastro'>Selecione um tipo de cadastro:</h3>
         <div className='checkboxs'>
             <div className='estilização-Check'>
-           <input type="radio" name="a" id="" className='check1' /><label htmlFor="" className='label1'>Sou Profissional</label>
+           <input type="radio" name="a" id="" className='check1' /><label htmlFor="" className='label1'>Sou Estagiário</label>
             </div>
 
             <div className='estilização-Check'>
-            <input type="radio" name="a" id="" className='check1'/><label htmlFor="" className='label1'>Sou Paciente</label>
+            <input type="radio" name="a" id="" className='check1'/><label htmlFor="" className='label1'>Sou Formado</label>
             </div>
             
         <div className='Proximo'>
@@ -37,4 +38,4 @@ function EscolhaCadastro() {
   )
 }
 
-export default EscolhaCadastro
+export default CadastroSelecao1

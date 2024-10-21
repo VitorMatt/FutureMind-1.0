@@ -1,0 +1,115 @@
+*{
+    font-family: 'Poppins' , sans-serif;
+    outline: none;
+}
+
+:root{
+    --cor-1: #5A789F;
+    --cor-2: #CAD7EB;
+    --cor-3: #000;
+    --cor-4: #012A4A;
+    --cor-5: #014F86;
+}
+
+.login-container{
+    background-color:#5A789F;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+}
+
+body{
+    margin: auto;
+}
+
+.Lado-esquerdo{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lado-Direito{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    align-items: flex-end;
+}
+.entrar{
+    width: 30%;
+    padding: 5%;
+    display: flex;
+    font-size: 130%;
+    justify-content: end;
+    align-items: flex-end;
+}
+
+.entrar-estilizado{
+    font-size: 150%;
+    padding: 1%;
+    border-radius: 13px;
+    border: 1px solid var(--cor-2);
+    color: var(--cor-1);
+}
+
+.titulo-Cadastro{
+    font-size: 300%;
+
+    color: #ffff;
+}
+
+
+
+.Proximo{
+    width: 30%;
+    padding: 10%;
+    display: flex;
+    font-size: 130%;
+}
+
+.proximo-estilizado{
+    font-size: 60%;
+    padding: 1%;
+    border-radius: 13px;
+    border: 1px solid var(--cor-2);
+    color: var(--cor-1);
+}
+
+.inputsLogin{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputsLogin input{
+    margin-bottom: 20%;
+    background: none;
+    border: none;
+    border-bottom: 2px solid white;
+    width: 200%;
+    color: #CAD7EB;
+}
+
+.inputsLogin label{
+    width: 20%;
+    margin-bottom: 20%;
+}
+
+.input_principais{
+    width: 79%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 220%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #ffff;
+    margin-top: 2%;
+}
