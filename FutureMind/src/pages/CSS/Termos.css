@@ -58,9 +58,16 @@
 }
 
 .bolona_termos img{
-    width: 20%;
+    width: 100%;
 }
 
 .bolona_termos{
     width: fit-content;
+    position: absolute;
+    padding-left: 1600px;
+}
+
+.boolinha{
+    width: 5%;
+    padding-left: 700px;
 }

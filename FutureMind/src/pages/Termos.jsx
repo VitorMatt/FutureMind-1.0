@@ -19,7 +19,11 @@ function Termos() {
             <div><p> Na Future Mind, a sua privacidade é nossa prioridade.</p></div>
             
 
-           <div><p> Comprometemo-nos a proteger suas informações pessoais e a garantir que você tenha uma experiência segura e confiável em nossa plataforma de terapia online.</p></div>
+           <div><p> Comprometemo-nos a proteger suas informações pessoais e a garantir que você tenha uma experiência segura e confiável em nossa plataforma de terapia online.</p>
+           
+           <img src="bolona.png" className='boolinha'/>
+           </div>
+
 
             <div> <p> Esta Política de Privacidade descreve como coletamos, utilizamos, armazenamos e protegemos suas informações, além de esclarecer seus direitos em relação a esses dados.
             Ao utilizar nossos serviços, você concorda com as práticas aqui descritas, e estamos aqui para garantir que sua jornada rumo ao bem-estar mental seja transparente 
@@ -30,11 +34,9 @@ function Termos() {
 
       <div className='bolona_termos'>
 
-       <img src="bolona.png"/>
+       <img src="bolona2.png"/>
 
       </div>
-      
-
     </div>
   )
 }
