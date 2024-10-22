@@ -11,14 +11,7 @@
     text-decoration: none;
 }
 
-/* .botaodecisao:hover{
-    background-color: #cad7eb;
-    color: #5a789f;
-    transition: 1s;
-} */
-
 .botaodecisaodois{
-    
     width: 150%;
     font-size: 140%;
     border-top-right-radius: 100px;
@@ -30,12 +23,6 @@
     text-align: center;
     text-decoration: none;
 }
-
-/* .botaodecisaodois:hover{
-    background-color: #5a789f;
-    color: #fff;
-    transition: 1s;
-} */
 
 .divBotoes{
     margin: auto;
@@ -82,38 +69,5 @@
 
 .boolinha{
     width: 5%;
-    padding-left: 95%;
-}
-
-.bolinha2{
-    width: 5%;
-    padding-left: 24%;
-    padding-top: 30%;
-}
-
-.bolinha3{
-    width: 10%;
-    padding-left: 90%;
-}
-
-.bolonaes{
-    width: 20%;
-}
-
-.conteudo{
-    border-top: 2px solid #61a5c2;
-    padding: 3%;
-    color: #5a789f;
-    font-size: 140%;
-}
-
-.textinhoAceitação{
-    margin: auto;
-    align-items: center;
-    text-align:justify;
-    color: #5a789f;
-    font-size: 110%;
-    padding-top: 3%;
-    line-height: 150%;
-    font-weight: 600;
+    padding-left: 700px;
 }
