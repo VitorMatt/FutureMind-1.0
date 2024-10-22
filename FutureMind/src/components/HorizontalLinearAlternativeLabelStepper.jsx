@@ -45,7 +45,7 @@ export default function HorizontalLinearAlternativeLabelStepper() {
         width: '50vw', // Diminuindo a largura para 30% da viewport
         marginLeft:"-20%",
         position: 'absolute',
-        paddingLeft: '35%',
+        paddingLeft: '37%',
         height: '20%',
         transform: 'translateY(-85%)', // Ajusta a posição
       }}

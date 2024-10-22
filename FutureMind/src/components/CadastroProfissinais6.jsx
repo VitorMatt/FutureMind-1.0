@@ -7,11 +7,11 @@ function CadastroProfissionais6() {
         <HorizontalLinearAlternativeLabelStepper/>
           <div className="input_principais">
             <div className="inputsLogin">
-             <label htmlFor="">CPF</label> <input type="text" />
+             <label htmlFor="" className='label1'>CPF</label> <input type="text" />
             </div>
   
             <div className="inputsLogin">
-              <label htmlFor="" >Telefone</label><input type="text" />
+              <label htmlFor=""className='label2' >Telefone</label><input type="text" />
             </div>
   
             <div className='Proximo'>
