@@ -81,23 +81,34 @@ body{
     color: var(--cor-1);
 }
 
+
+
 .inputsLogin{
     display: flex;
     flex-direction: column;
+    width: 80%;
 }
 
 .inputsLogin input{
-    margin-bottom: 20%;
-    background: none;
-    border: none;
-    border-bottom: 2px solid white;
-    width: 200%;
-    color: #CAD7EB;
+    margin-bottom: 5%;
+    background: #ffff;
+    border: var(--cor-4);
+    padding: 1.9%;
+    border-radius: 20px;
+    width: 100%;
+    color: var(--cor-3);
+    font-size: 50%;
+    opacity: 40%;
 }
 
-.inputsLogin label{
-    width: 20%;
-    margin-bottom: 20%;
+.inputsLogin .label2{
+    width: 130%;
+    margin-bottom: 7%;
+}
+
+.inputsLogin .label1{
+    width: 130%;
+    margin-bottom: 9%;
 }
 
 .input_principais{

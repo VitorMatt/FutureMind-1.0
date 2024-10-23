@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar'
 import './CSS/Inicio.css'
+import Navbar from '../components/Navbar'
 
 function Inicio() {
   return (

@@ -28,14 +28,8 @@ body{
     margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-<<<<<<< HEAD
-    padding-top: 6%;
-=======
-    padding-top: 5%;
->>>>>>> fbcdb0e8578d7ae7236c4288ab2846cafd2e2b91
-    padding-left: 2%;
+    justify-content: center;
+    align-items: center;
 }
 
 .lado-Direito{
@@ -44,15 +38,6 @@ body{
     display: flex;
     flex-direction: column;
     justify-content:flex-end;
-    align-items: flex-end;
-}
-.entrar{
-    width: 30%;
-    height: 20%;
-    padding: 5%;
-    display: flex;
-    font-size: 130%;
-    justify-content: end;
     align-items: flex-end;
 }
 
@@ -76,59 +61,22 @@ body{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-.titulo-Cadastro{
+.titulo-Cadastro2{
     font-size: 300%;
     color: #ffff;
-}
-
-.checkboxs{
-    width: 79%;
-    height: 100%;
-    margin: auto;
     display: flex;
-    flex-direction: column;
-    font-size: 220%;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    margin: auto;
+    justify-content: flex-start;
     align-items: flex-start;
-    color: #ffff;
-    margin-top: 2%;
 }
 
-.estilização-Check{
-    padding: 3%;
-}
+.checkBoxs{
 
-.check1 {
-    width: 20px;
+    width: 37px;
     height: 20px;
-    border: 2px solid #ffff;
-    border-radius: 50%;
-    outline: none;
-    opacity: 0.6;
-    /*transition: 0.3s;*/
-  }
-  
-.check1:hover:before {
-    box-shadow: 0px 0px 0px 12px rgba(112, 148, 247, 0.493);
-    border-radius: 50%;
-    opacity: 1;
-  }
-  
-.check1:before {
-    content: '';
-    display: block;
-    width: 60%;
-    height: 60%;
-    margin: 10%; /* Keeping margin only 10% */
-    padding: 10%; /* Increase the inner area for pushing the border out of the circle */
-    border-radius: 50%;
-    transition: 0.3s; /* Move your transition to here */
-  }
-      
-.check1:checked:before {
-    background:var(--cor-5);
-  }
+    background: #D9D9D9;
+}
+
 
 .Proximo{
     width: 100%;
@@ -156,26 +104,7 @@ body{
     border-radius: 13px;
     border: 1px solid var(--cor-2);
     color: var(--cor-1);
-}
-
-.arvore {
-
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    height: 100%;
-}
-
-.arvore-estilizada {
-    
-    margin: auto;
-    width: 100%;
-    height: fit-content;
-
-<<<<<<< HEAD
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-=======
->>>>>>> 3ea29758c636fcbf257e2dd8370790d8e7e70cc5
 }
 
 .proximo-estilizado:hover{

@@ -1,0 +1,73 @@
+.botaodecisao{
+    width: 170%;
+    font-size: 140%;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border: none;
+    background-color: #5a789f;
+    color: #ffff;
+    padding: 5%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.botaodecisaodois{
+    width: 150%;
+    font-size: 140%;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border: none;
+    background-color: #cad7eb;
+    color: #5a789f;
+    padding: 5%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.divBotoes{
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.T_titulo{
+    font-size: 160%;
+    color: #5a789f;
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+    padding-top: 5%;
+}
+
+.textinho{
+    margin: auto;
+    align-items: center;
+    text-align:justify;
+    width: 40%;
+    color: #5a789f;
+    font-size: 150%;
+    padding-top: 3%;
+    line-height: 150%;
+    font-weight: 600;
+}
+
+.introducao{
+    position: absolute;
+}
+
+.bolona_termos img{
+    width: 100%;
+}
+
+.bolona_termos{
+    width: fit-content;
+    position: absolute;
+    padding-left: 1600px;
+}
+
+.boolinha{
+    width: 5%;
+    padding-left: 700px;
+}
