@@ -30,7 +30,11 @@ body{
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
+<<<<<<< HEAD
+    padding-top: 6%;
+=======
     padding-top: 5%;
+>>>>>>> fbcdb0e8578d7ae7236c4288ab2846cafd2e2b91
     padding-left: 2%;
 }
 
