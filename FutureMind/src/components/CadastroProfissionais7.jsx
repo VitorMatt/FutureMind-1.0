@@ -19,7 +19,6 @@ function CadastroProfissionais7() {
 
     return (
         <div className="login-container">
-<<<<<<< HEAD
             <div className="Lado-esquerdo">
                 <HorizontalLinearAlternativeLabelStepper activeStep={activeStep} />
                 <div className="input_principais">
@@ -27,21 +26,6 @@ function CadastroProfissionais7() {
                         <label htmlFor="" className='label1'>E-mail</label>
                         <input type="text" />
                     </div>
-=======
-        <div className="Lado-esquerdo">
-        <HorizontalLinearAlternativeLabelStepper/>
-          <div className="input_principais">
-            <div className="inputsLogin">
-             <label htmlFor="" className='label1'>E-mail</label> <input type="text" />
-            </div>
-  
-            <div className="inputsLogin">
-              <label htmlFor="" className='label2'>Crie sua senha</label><input type="text" />
-            </div>
-  
-            <div className='Proximo'>
-        <div className='botao1'>
->>>>>>> fbcdb0e8578d7ae7236c4288ab2846cafd2e2b91
 
                     <div className="inputsLogin">
                         <label htmlFor="" className='label2'>Crie sua senha</label>
