@@ -1,73 +1,48 @@
-.botaodecisao{
-    width: 170%;
-    font-size: 140%;
-    border-top-left-radius: 100px;
-    border-bottom-left-radius: 100px;
-    border: none;
+
+.H1_recursos{
+
+padding: 5%;
+color:#5a789f;
+width: 30%;
+flex-wrap: wrap;
+font-size: 45px;
+
+}
+
+.Container-recursos{
+
+  width: 100vh;
+  justify-content: space-between;
+  height: 20%;
+}
+
+.div_pradão_recursos{
+    
+    display: block;
+    width: 30%;
     background-color: #5a789f;
-    color: #ffff;
-    padding: 5%;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    text-decoration: none;
+    color: white;
+    border-radius: 15px;
+    padding: 2%;
 }
 
-.botaodecisaodois{
-    width: 150%;
-    font-size: 140%;
-    border-top-right-radius: 100px;
-    border-bottom-right-radius: 100px;
-    border: none;
-    background-color: #cad7eb;
-    color: #5a789f;
-    padding: 5%;
-    text-align: center;
-    text-decoration: none;
-}
+.div_imagem_rec{
 
-.divBotoes{
+    background-color: white;
+    width: 80%;
+    border-radius: 15px;
     margin: auto;
-    width: fit-content;
-    display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 1%;
 }
 
-.T_titulo{
-    font-size: 160%;
-    color: #5a789f;
-    width: fit-content;
+.div_imagem_rec img{
+    width: 70%;
     margin: auto;
-    text-align: center;
-    padding-top: 5%;
-}
-
-.textinho{
-    margin: auto;
+    justify-content: center;
     align-items: center;
-    text-align:justify;
-    width: 40%;
-    color: #5a789f;
-    font-size: 150%;
-    padding-top: 3%;
-    line-height: 150%;
-    font-weight: 600;
-}
-
-.introducao{
-    position: absolute;
-}
-
-.bolona_termos img{
-    width: 100%;
-}
-
-.bolona_termos{
-    width: fit-content;
-    position: absolute;
-    padding-left: 1600px;
-}
-
-.boolinha{
-    width: 5%;
-    padding-left: 700px;
 }

@@ -1,3 +1,8 @@
+/* .body-termos{
+    overflow-x: hidden;
+    margin: 0;
+} */
+
 .botaodecisao{
     width: 170%;
     font-size: 140%;
@@ -43,7 +48,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} 
 
 .T_titulo{
     font-size: 160%;
@@ -75,9 +80,9 @@
 }
 
 .bolona_termos{
-    width: fit-content;
+    width: 20%;
     position: absolute;
-    padding-left: 1600px;
+    padding-left: 1215px;
 }
 
 .boolinha{
@@ -98,22 +103,44 @@
 
 .bolonaes{
     width: 20%;
-}
+} 
 
-.conteudo{
-    border-top: 2px solid #61a5c2;
-    padding: 3%;
-    color: #5a789f;
-    font-size: 140%;
+.accordion-container{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    padding-bottom: 2.5%;
 }
 
 .textinhoAceitação{
     margin: auto;
     align-items: center;
+    justify-content: center;
     text-align:justify;
     color: #5a789f;
     font-size: 110%;
+    line-height: 150%;
+    font-weight: 600;
+    width: 60%;
+
+}
+
+.titulo_ac_um{
+
+    color: #5a789f;
+    font-size: 250%;
     padding-top: 3%;
     line-height: 150%;
     font-weight: 600;
+    
+}
+
+.container_ac{
+    width: 70%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #61a5c2;
 }
