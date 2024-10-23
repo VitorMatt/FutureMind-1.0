@@ -30,6 +30,8 @@ body{
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
+    padding-top: 5%;
+    padding-left: 2%;
 }
 
 .lado-Direito{
@@ -153,8 +155,7 @@ body{
 }
 
 .arvore {
-    
-    margin: auto;
+
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -167,7 +168,10 @@ body{
     width: 100%;
     height: fit-content;
 
+<<<<<<< HEAD
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+=======
+>>>>>>> 3ea29758c636fcbf257e2dd8370790d8e7e70cc5
 }
 
 .proximo-estilizado:hover{
