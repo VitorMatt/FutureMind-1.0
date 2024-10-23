@@ -7,6 +7,7 @@ function LandingPage() {
 
     <div className='landingPage-container'>
       <Navbar />
+      
       <div className='container-maior'>
 
       <div className="info">
