@@ -1,7 +1,35 @@
 .inicio-container{
-    background-color:#ffffff;
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-    margin: auto;
+   background-color: rgb(255, 255, 255);
+   overflow-x: hidden; 
+   width: 100%;
+   height: 100vh;
+   margin: 0;   
+}
+
+.busca{
+    background-color:#5a789f;
+    opacity: 61%;
+    width: 86%;
+    height: 45vh;
+    margin-left: 20%;
+    margin-bottom: 6%;
+    margin-top: 3%;
+    border-radius: 30px;  
+
+}
+
+.profissionais{
+    background-color: #5A789F;
+    width: 100%;
+    height: fit-content ;
+    border-radius: 100px;
+}
+
+.profissional{
+    background-color: #F8F8F9;
+    width: 70%;
+    height: 40vh;
+    margin-left: 15%;
+    border-radius: 30px;
+
 }
