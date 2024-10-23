@@ -14,8 +14,12 @@ import CadastroProfissionais3 from '../components/CadastroProfissionais3'
 import CadastroEstagiario2 from '../components/CadastroEstagiario2'
 import CadastroProfissionais5 from '../components/CadastroProfissionais5'
 import CadastroSelecao1 from '../components/CadastroSelecao1'
+<<<<<<< HEAD
 import CadastroProfissinal from '../pages/CadastroProfissinal'
 import CadastroPaciente from '../pages/CadastroPaciente'
+=======
+import Politica from '../pages/Politica'
+>>>>>>> fbcdb0e8578d7ae7236c4288ab2846cafd2e2b91
 
 
 const router = createBrowserRouter([{
@@ -77,6 +81,7 @@ const router = createBrowserRouter([{
     element: <CadastroProfissionais7 />
 },
 {
+<<<<<<< HEAD
     path: '/cadastro-profissional',
     element:<CadastroProfissinal />
 },
@@ -84,6 +89,18 @@ const router = createBrowserRouter([{
     path: '/cadastro-paciente',
     element:<CadastroPaciente />
 },
+=======
+    path: '/termos',
+    element: <Termos />
+
+},
+{
+    path:'/politica',
+    element: <Politica />
+},
+
+
+>>>>>>> fbcdb0e8578d7ae7236c4288ab2846cafd2e2b91
 
 ])
 
