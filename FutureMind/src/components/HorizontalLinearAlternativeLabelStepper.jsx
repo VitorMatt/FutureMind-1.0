@@ -3,7 +3,6 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepConnector from '@mui/material/StepConnector';
-import Button from '@mui/material/Button';     
 import { styled } from '@mui/material/styles';
 import * as React from 'react';
 
@@ -24,30 +23,15 @@ const CustomConnector = styled(StepConnector)(({ theme }) => ({
   },
 }));
 
-export default function HorizontalLinearAlternativeLabelStepper() {
-  const [activeStep, setActiveStep] = React.useState(0);
-
-  const handleNext = () => {
-    if (activeStep < steps.length - 1) {
-      setActiveStep((prevStep) => prevStep + 1);
-    }
-  };
-
-  const handleBack = () => {
-    if (activeStep > 0) {
-      setActiveStep((prevStep) => prevStep - 1);
-    }
-  };
-
+export default function HorizontalLinearAlternativeLabelStepper({ activeStep }) {
   return (
     <Box
       sx={{
-        width: '50vw', // Diminuindo a largura para 30% da viewport
-        marginLeft:"-20%",
+        width: '50vw',
         position: 'absolute',
-        paddingLeft: '35%',
+        paddingLeft: '20%',
         height: '20%',
-        transform: 'translateY(-85%)', // Ajusta a posição
+        transform: 'translateY(-85%)',
       }}
     >
       <Stepper 
@@ -55,25 +39,25 @@ export default function HorizontalLinearAlternativeLabelStepper() {
         alternativeLabel
         connector={<CustomConnector />}
         sx={{
-          gap: '4px', // Diminui o espaço entre cada passo
+          gap: '4px',
           '& .MuiStepIcon-root': {
-            color: '#89c2d9', // Define a cor dos ícones não completados
-            transform: 'scale(2)', // Aumenta o tamanho dos ícones
+            color: '#89c2d9',
+            transform: 'scale(2)',
             '&.Mui-active': {
-              color: '#89c2d9', // Define a cor dos ícones ativos
-              transform: 'scale(2.2)', // Aumenta ainda mais os ícones ativos
+              color: '#89c2d9',
+              transform: 'scale(2.2)',
             },
             '&.Mui-completed': {
-              color: '#C1DFF4', // Define a cor dos ícones completados
-              transform: 'scale(2)', // Define tamanho para ícones completados
+              color: '#C1DFF4',
+              transform: 'scale(2)',
             },
           },
           '& .MuiStepLabel-label': {
-            color: '#C1DFF4', // Cor do texto dos rótulos dos passos
-            fontSize: '1rem', // Ajusta o tamanho do texto para melhor proporção
+            color: '#C1DFF4',
+            fontSize: '1rem',
           },
           '& .MuiStepConnector-line': {
-            borderColor: '#C1DFF4', // Cor da linha conectando os passos
+            borderColor: '#C1DFF4',
           },
         }}
       >
@@ -83,23 +67,6 @@ export default function HorizontalLinearAlternativeLabelStepper() {
           </Step>
         ))}
       </Stepper>
-
-      <Box sx={{ mt: 4, display: 'flex', justifyContent: 'space-between' }}>
-        <Button 
-          disabled={activeStep === 0} 
-          onClick={handleBack}
-          sx={{ color: '#C1DFF4' }}
-        >
-          Voltar
-        </Button>
-        <Button 
-          disabled={activeStep === steps.length - 1} 
-          onClick={handleNext}
-          sx={{ color: '#C1DFF4' }}
-        >
-          Próximo
-        </Button>
-      </Box>
     </Box>
   );
 }
