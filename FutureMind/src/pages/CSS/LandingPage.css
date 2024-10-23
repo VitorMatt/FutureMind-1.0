@@ -22,6 +22,7 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+    padding: 4%;
 }
 
 .container-maior {
@@ -29,6 +30,9 @@
     display: flex;
     margin: auto;
     width: 100vw;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    text-align: center;
 }
 
 .titulo {
@@ -37,11 +41,10 @@
     font-weight: 400;
     font-style: normal;
     color: #013a63;
-    margin-left: 50px;
     flex-wrap: wrap;
     width: 500px;
     font-size: 50px;
-    margin-top: 8%;
+    padding-left: 6%;
 }
 
 .subtitulo {
@@ -78,17 +81,20 @@
 
 .img {
 
+    margin: auto;
     display: flex;
     width: 50%;
     justify-content: flex-end;
     align-items: flex-end;
+}
+
+/* .img img {
+
+    display: flex;
     margin: auto;
-}
-
-.img img {
-
     width: fit-content;
-}
+    height: 100%;
+} */
 
 .back {
 
