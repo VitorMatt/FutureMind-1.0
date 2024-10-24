@@ -20,12 +20,12 @@ function LandingPage() {
         </div>
 
         <div className="img">
-           <img src='image.png' />
+           <img src='note.svg' />
         </div>
       </div>
         <div className='back'>
           <div className='imgPhone'>
-            <img src='phoneImage.png' className='phoneImage' />
+            <img src='celular.svg' className='phoneImage' />
           </div>
 
           <div className='conteudo'>
