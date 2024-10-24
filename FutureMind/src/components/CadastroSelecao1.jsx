@@ -4,6 +4,7 @@ import '../pages/CSS/EscolhaCadastro.css'
 function CadastroSelecao1() {
 
   return (
+    
     <div className='escolhaCadastro-container'>
       <div className='Lado-esquerdo'>
         <HorizontalLinearAlternativeLabelStepper />
