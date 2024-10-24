@@ -31,7 +31,6 @@ function politica() {
            <img src="bolona.png" className='boolinha'/>
            </div>
 
-
             <div> 
               <p> Esta Política de Privacidade descreve como coletamos, utilizamos, armazenamos e protegemos suas informações, além de esclarecer seus direitos em relação a esses dados.
                   Ao utilizar nossos serviços, você concorda com as práticas aqui descritas, e estamos aqui para garantir que sua jornada rumo ao bem-estar mental seja transparente 
@@ -140,16 +139,39 @@ function politica() {
 
       <div className='Container-recursos'>
         
-        <div className='div_pradão_recursos'>
+        <div className='div_um_recursos'>
 
           <div className='div_imagem_rec'>
-            <img src="Imagem_identificacao.svg" alt="" />
+            <img src="Imagem_identificacao.svg" />
           </div>
 
           <h2>Identifição de Usuario</h2>
         </div>
 
+        <div className='div_dois_recursos'>
 
+         <div>
+           <img src="imagem_seguranca.svg"  />
+         </div>
+
+         <h2>Segurança de dados</h2>
+        </div>
+
+        <div className='div_tres_recursos'>
+          <div>
+            <img src="imagem_postgreSql.svg" />
+          </div>
+
+          <h2>Banco <br /> de dados</h2>
+        </div>
+
+        <div className='div_quatro_recursos'>
+          <div>
+            <img src="imagem_chaves.svg" />
+          </div>
+
+          <h2>Chaves/ <br /> Senhas</h2>
+        </div>
       </div>
 
     </div>
