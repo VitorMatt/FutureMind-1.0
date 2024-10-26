@@ -1,40 +1,58 @@
-import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
 import '../pages/CSS/EscolhaCadastro.css'
 
-function CadastroSelecao1() {
+  function CadastroSelecao1() {
+
+    function a() {
+
+      let inpt = document.getElementsByName('a');
+
+      for (let i=0; i<inpt.length; i++) {
+
+        if (inpt[i].checked) {
+
+          page = inpt[i].value
+          break;
+        }
+      }
+    }
+
+    
+    const handleRadio = () => {
+      
+      const radios = document.getElementsByName('a');
+      let page = '';
+      
+      
+      for (let i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+          page = radios[i].value;
+          break;
+        }
+      }
+      
+      if (page === '') {
+        alert('Nenhum conteúdo selecionado');
+      } else if (page === 'est') {
+        return true 
+      } else if (page === 'form') {
+        
+        return false  
+      }
+    }
 
   return (
-    
-    <div className='escolhaCadastro-container'>
-      <div className='Lado-esquerdo'>
-        <HorizontalLinearAlternativeLabelStepper />
-        <h3 className='titulo-Cadastro'>Selecione um tipo de cadastro:</h3>
+
+    <div className='selecao'>
+        <h3 className='titulo-cadastro'>Selecione npum tipo de cadastro</h3>
         <div className='checkboxs'>
-            <div className='estilização-Check'>
-           <input type="radio" name="a" id="" className='check1' /><label htmlFor="" className='label1'>Sou Estagiário</label>
+            <div className='estilizacao-check'>
+           <input value='est' type="radio" name="a" id="" className='check1' /><label htmlFor="" className='label1'>Sou Estagiário</label>
             </div>
 
-            <div className='estilização-Check'>
-            <input type="radio" name="a" id="" className='check1'/><label htmlFor="" className='label1'>Sou Formado</label>
+            <div className='estilizacao-check'>
+            <input value='form' type="radio" name="a" id="" className='check1'/><label htmlFor="" className='label1'>Sou Formado</label>
             </div>
-            
-        <div className='Proximo'>
-          <div className='botao1'>
-
-            <button className='proximo-estilizado'>Entrar</button>
-          </div>
-          <div className='botao2'>
-
-            <button className='proximo-estilizado'>Próximo</button>
-          </div>
         </div>
-        </div>
-      </div>
-      <div className='lado-Direito'>
-        <div className='arvore'>
-         <img src='logoLogin.png' alt="" className='arvore-estilizada'/>
-        </div>
-      </div>
     </div>
   )
 }
