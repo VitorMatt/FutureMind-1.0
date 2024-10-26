@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
 import ErrorElement from '../components/ErrorElement'
-import CadastroProfissional from '../pages/CadastroProfissional'
 import EscolhaCadastro from '../pages/EscolhaCadastro'
 import Inicio from '../pages/Inicio'
 import LandingPage from '../pages/LandingPage'
@@ -15,6 +14,9 @@ import CadastroProfissionais3 from '../components/CadastroProfissionais3'
 import CadastroEstagiario2 from '../components/CadastroEstagiario2'
 import CadastroProfissionais5 from '../components/CadastroProfissionais5'
 import CadastroSelecao1 from '../components/CadastroSelecao1'
+import CadastroProfissinal from '../pages/CadastroProfissinal'
+import CadastroPaciente from '../pages/CadastroPaciente'
+import Politica from '../pages/Politica'
 
 
 const router = createBrowserRouter([{
@@ -38,10 +40,6 @@ const router = createBrowserRouter([{
 {
     path:'/login',
     element: <Login />
-},
-{
-    path:'/cadastro-profissional',
-    element: <CadastroProfissional />
 },
 {
     path: '/termos',
@@ -78,6 +76,20 @@ const router = createBrowserRouter([{
 {
     path:'/cadastroP7',
     element: <CadastroProfissionais7 />
+},
+{
+    path: '/cadastro-profissional',
+    element:<CadastroProfissinal />
+},
+{
+    path: '/cadastro-paciente',
+    element:<CadastroPaciente />
+},
+{
+
+   path: '/politica',
+   element: <Politica />
+
 },
 
 ])

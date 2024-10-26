@@ -1,39 +1,26 @@
-import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
 import '../pages/CSS/EscolhaCadastro.css'
+import { useContext } from 'react';
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 
-function CadastroSelecao1() {
+  function CadastroSelecao1() {
+
+    const {setPageCadastro} = useContext(GlobalContext);
+
+    setPageCadastro(document.getElementsByName('a'));
 
   return (
-    <div className='escolhaCadastro-container'>
-      <div className='Lado-esquerdo'>
-        <HorizontalLinearAlternativeLabelStepper />
-        <h3 className='titulo-Cadastro'>Selecione um tipo de cadastro:</h3>
+
+    <div className='selecao'>
+        <h3 className='titulo-cadastro'>Selecione um tipo de cadastro</h3>
         <div className='checkboxs'>
-            <div className='estilização-Check'>
-           <input type="radio" name="a" id="" className='check1' /><label htmlFor="" className='label1'>Sou Estagiário</label>
+            <div className='estilizacao-check'>
+           <input value='est' type="radio" name="a" className='check1' /><label htmlFor="" className='label1'>Sou Estagiário</label>
             </div>
 
-            <div className='estilização-Check'>
-            <input type="radio" name="a" id="" className='check1'/><label htmlFor="" className='label1'>Sou Formado</label>
+            <div className='estilizacao-check'>
+            <input value='form' type="radio" name="a" className='check1'/><label htmlFor="" className='label1'>Sou Formado</label>
             </div>
-            
-        <div className='Proximo'>
-          <div className='botao1'>
-
-            <button className='proximo-estilizado'>Entrar</button>
-          </div>
-          <div className='botao2'>
-
-            <button className='proximo-estilizado'>Próximo</button>
-          </div>
         </div>
-        </div>
-      </div>
-      <div className='lado-Direito'>
-        <div className='arvore'>
-         <img src='logoLogin.png' alt="" className='arvore-estilizada'/>
-        </div>
-      </div>
     </div>
   )
 }

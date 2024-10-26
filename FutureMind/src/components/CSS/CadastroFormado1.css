@@ -1,6 +1,6 @@
-*{
+/* *{
     font-family: 'Poppins' , sans-serif;
-    outline: none;
+
 }
 
 :root{
@@ -92,7 +92,7 @@ body{
     border-radius: 50%;
     outline: none;
     opacity: 0.6;
-    /*transition: 0.3s;*/
+    /*transition: 0.3s;
   }
   
 .check1:hover:before {
@@ -106,36 +106,19 @@ body{
     display: block;
     width: 60%;
     height: 60%;
-    margin: 10%; /* Keeping margin only 10% */
-    padding: 10%; /* Increase the inner area for pushing the border out of the circle */
+    margin: 10%; /* Keeping margin only 10% 
+    padding: 10%; /* Increase the inner area for pushing the border out of the circle 
     border-radius: 50%;
-    transition: 0.3s; /* Move your transition to here */
+    transition: 0.3s; /* Move your transition to here 
   }
       
 .check1:checked:before {
     background:var(--cor-5);
   }
 
-.Proximo{
-    width: 100%;
-    margin-top: 10%;
-    padding: 4%;
-    display: flex;
-    font-size: 130%;
-}
 
-.Proximo .botao2{
 
-    display: flex;
-    width:50%;
-}
-
-.botao2 button {
-
-    width: 50%;
-}
-
-.proximo-estilizado{
+/* .proximo-estilizado{
     font-size: 60%;
     width: 80%;
 
@@ -152,52 +135,10 @@ body{
     border: none;
     color: var(--cor-4);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
+} 
 .botao1{
     display: flex;
     width: 30%;
 }
 
-.estilização-file{
-    display: flex;
-    flex-direction: column;
-}
-
-.estilização-text{
-    display: flex;
-    flex-direction: column;
-}
-
-input[type="file"] {
-    display: none;
-}
-
-.custom-file-upload {
-    display: inline-block;
-    padding: 10px 25px;
-    font-size: 25px;
-    font-weight: 600;
-    color: #fff;
-    background-color: #4A90E2;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40%;
-  }
-
-.custom-file-upload:hover {
-    background-color: #357ABD; /* Cor ao passar o mouse */
-}
-  
-.custom-file-upload:active {
-    background-color: #285E8E; /* Cor ao clicar */
-}
-  
-.custom-file-upload:focus {
-    outline: none;
-    border-color: #357ABD; /* Borda ao focar no elemento */
-    box-shadow: 0 0 5px rgba(53, 122, 189, 0.5);
-}
-
+ 

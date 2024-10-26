@@ -1,4 +1,4 @@
-import './CSS/Profissionais3.css'
+import './CSS/Estagiario.css'
 import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
 function CadastroEstagiario2() {
     return (
@@ -6,12 +6,12 @@ function CadastroEstagiario2() {
         <div className="Lado-esquerdo">
         <HorizontalLinearAlternativeLabelStepper/>
           <div className="input_principais">
-            <div className="inputsLogin">
-             <label htmlFor="">Selecione sua faculdade</label> <input type="text" />
+            <div className="inputsCadastro">
+             <label htmlFor="" className='label1'>Selecione sua faculdade</label> <input type="text" />
             </div>
   
-            <div className="inputsLogin">
-              <label htmlFor="" >Professor responsável no estagio:</label><input type="text" />
+            <div className="inputsCadastro">
+              <label htmlFor=""className='label2' >Professor responsável no estagio:</label><input type="text" />
             </div>
   
             <div className='Proximo'>

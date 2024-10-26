@@ -1,7 +1,7 @@
 .sobreNos-container{
-    background-color:#5A789F;
+    background-color: white;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 100vh;
     margin: auto;
 }
@@ -14,4 +14,103 @@
     --cor-5: #014F86;
     --cor-6: #DBEEF4;
     --cor-7: #013A63;
+    --cor-8: #77A7FF;
+}
+
+.img{
+    width: 45%;
+    padding-right: 20%;
+}
+
+.conteudoo{
+    display: flex;
+}
+
+.conteudoo2{
+    display: flex;
+    padding-top: 5%;
+}
+
+.conteudoo h1, .conteudoo2 h1{
+    font-size: 300%;
+    color: var(--cor-1);
+}
+
+.descricaoMissao{
+    position: absolute;
+    width: 35%;
+    font-size: 150%;
+    padding-left: 55%;
+    padding-top: 5%;
+}
+
+.arvoreSobre{
+    width: 50%;
+}
+
+.descricaoFundacao{
+    position: absolute;
+    width: 35%;
+    font-size: 150%;
+    padding-left: 15%;
+}
+
+.fotoNossa{
+    background-color: var(--cor-1);
+    width: 30%;
+    height: 50%;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    margin: auto;
+    margin-top: 3%;
+}
+
+.divCards{
+    display: flex;
+    padding-left: 50%;
+    width: fit-content;
+}
+
+.card1{
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border: 1px solid var(--cor-1);
+    background-color: #f2f2f2;
+    color: var(--cor-1);
+    padding: 1%;
+    width: 10%;
+    height: 110%;
+    text-align: center;
+    margin: auto;
+    display: flex;
+}
+
+.card2{
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border: 1px solid var(--cor-8);
+    background-color: #f2f2f2;
+    color: var(--cor-8);
+    padding: 1%;
+    width: 10%;
+    height: 110%;
+    text-align: center;
+}
+
+.card3{
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border: 1px solid var(--cor-1);
+    background-color: #f2f2f2;
+    color: var(--cor-1);
+    padding: 1%;
+    width: 11%;
+    height: 30%;
+    text-align: center;
 }
