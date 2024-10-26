@@ -5,6 +5,8 @@ function Inicio() {
   return (
     <div className='inicio-container'>
       <Navbar />
+
+      
     </div>
   )
 }
