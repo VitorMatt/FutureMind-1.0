@@ -1,4 +1,3 @@
-import React from 'react'
 import'./CSS/CadastroProfissionais1.css'
 import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
 

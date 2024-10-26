@@ -1,25 +1,6 @@
 import './CSS/EscolhaCadastro.css'
 
 function EscolhaCadastro() {
-<<<<<<< HEAD
-  
-  function verifica() {
-    
-    const radio = document.getElementsByName('a')
-    let page;
-
-    for (let i=0; i<radio.length; i++) {
-
-      if (radio[i].checked) {
-
-        page = radio[i].value
-        break;
-      }
-    }
-    return page
-  }
-=======
->>>>>>> 739fce62e69ac0ec7789f39cf1adbae87aba341b
 
   function direcionaCadastro() {
 

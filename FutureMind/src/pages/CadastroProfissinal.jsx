@@ -1,16 +1,19 @@
 import HorizontalLinearAlternativeLabelStepper from '../components/HorizontalLinearAlternativeLabelStepper'
 import '../pages/CSS/CadastroProfissional.css'
 import CadastroSelecao1 from '../components/CadastroSelecao1'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import CadastroFormado from '../components/CadastroFormado1';
-
+import CadastroProfissionais4 from '../components/CadastroProfissionais4';
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function CadastroProfissinal() {
+
+  const {pageCadastro, setPageCadastro} = useContext(GlobalContext);
 
   const [activeStep, setActiveStep] = useState(0);
   
     const handleNext = () => {
-        if (activeStep < 6) { // ajuste o número de passos, 6 neste caso
+        if (activeStep < 6) {
             setActiveStep((prevStep) => prevStep + 1);
         }
     };
@@ -21,6 +24,24 @@ function CadastroProfissinal() {
         }
     };
 
+    const handleRadio = () => {
+
+      let page = '';
+      
+      for (let i = 0; i < pageCadastro.length; i++) {
+        if (pageCadastro[i].checked) {
+          page = pageCadastro[i].value;
+          break;
+        }
+      }
+      
+      if (page == '') {
+        alert('Nenhum conteúdo selecionado');
+        setPageCadastro('');
+      } else {
+        setPageCadastro(page);
+      }
+    }
 
 
   return (
@@ -37,9 +58,15 @@ function CadastroProfissinal() {
           ?
           <CadastroFormado /> 
           :
-          <div>        
+          pageCadastro==''
+          ?
+          <div>
+            <CadastroFormado />
+            <p>Selecione uma opção</p>
           </div>
-          }
+          :
+          <CadastroProfissionais4 />
+        }
         <div className='Proximo'>
               <div className='botao1'>
               <button className='proximo-estilizado' onClick={handleBack} disabled={activeStep === 0}>
@@ -47,17 +74,27 @@ function CadastroProfissinal() {
               </button>
               </div>
               <div className='botao2'>
-               <button className='proximo-estilizado' onClick={handleNext} disabled={activeStep === 6}>
+               <button 
+                      className='proximo-estilizado'
+                      onClick={
+                        activeStep==2 
+                        ?
+                        (
+                          handleRadio,
+                          handleNext
+                        )
+                        :
+                        handleNext
+                      } 
+                      disabled={activeStep === 6}>
                 {
                   activeStep==6
                   ?
                   <div>
-
                   Concluir
                   </div>
                   :
                   <div>
-
                   Próximo
                   </div>
                 }
