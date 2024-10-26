@@ -1,4 +1,3 @@
-import HorizontalLinearAlternativeLabelStepper from '../components/HorizontalLinearAlternativeLabelStepper'
 import './CSS/EscolhaCadastro.css'
 
 function EscolhaCadastro() {
@@ -8,7 +7,7 @@ function EscolhaCadastro() {
     const radio = document.getElementsByName('a')
     let page;
 
-    for (let i=0; i<radio; i++) {
+    for (let i=0; i<radio.length; i++) {
 
       if (radio[i].checked) {
 

@@ -1,9 +1,5 @@
 import Navbar from '../components/Navbar'
 import './CSS/Inicio.css'
-<<<<<<< HEAD
-=======
-
->>>>>>> 4738c68fa8ce6bcae21ec314c56333156c7bebc8
 
 function Inicio() {
   return (
