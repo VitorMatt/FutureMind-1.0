@@ -1,11 +1,9 @@
 import'./CSS/CadastroProfissionais1.css'
-import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
 
 function CadastroProfissionais4() {
   return (
-    <div className='escolhaCadastro-container'>
-    <div className='Lado-esquerdo'>
-      <HorizontalLinearAlternativeLabelStepper />
+  
+    <div className='selecao'>
       <h3 className='titulo-Cadastro2'>Selecione sua especialização..</h3>
       <div className='checkboxs'>
         <div className='checks-organiza'>
@@ -43,23 +41,7 @@ function CadastroProfissionais4() {
         </div>
         </div>
           
-      <div className='Proximo'>
-        <div className='botao1'>
-
-          <button className='proximo-estilizado'>Voltar</button>
-        </div>
-        <div className='botao2'>
-
-          <button className='proximo-estilizado'>Próximo</button>
-        </div>
-      </div>
-      </div>
-    </div>
-    <div className='lado-Direito'>
-      <div className='arvore'>
-       <img src='logoLogin.png' alt="" className='arvore-estilizada'/>
-      </div>
-    </div>
+  </div>
   </div>
   )
 }

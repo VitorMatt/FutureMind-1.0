@@ -2,7 +2,7 @@ import HorizontalLinearAlternativeLabelStepper from '../components/HorizontalLin
 import '../pages/CSS/CadastroProfissional.css'
 import CadastroSelecao1 from '../components/CadastroSelecao1'
 import { useState, useContext } from 'react';
-import CadastroFormado from '../components/CadastroFormado1';
+// import CadastroFormado from '../components/CadastroFormado1';
 import CadastroProfissionais4 from '../components/CadastroProfissionais4';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
@@ -24,9 +24,9 @@ function CadastroProfissinal() {
         }
     };
 
+    let page = '';
     const handleRadio = () => {
 
-      let page = '';
       
       for (let i = 0; i < pageCadastro.length; i++) {
         if (pageCadastro[i].checked) {
@@ -54,14 +54,9 @@ function CadastroProfissinal() {
           ?
           <CadastroSelecao1 />
           :
-          activeStep==1
-          ?
-          <CadastroFormado /> 
-          :
           pageCadastro==''
           ?
-          <div>
-            <CadastroFormado />
+          <div className='selecao'>
             <p>Selecione uma opção</p>
           </div>
           :

@@ -1,29 +1,12 @@
 import '../pages/CSS/EscolhaCadastro.css'
-// import { useContext } from 'react';
-// import { GlobalContext } from '../GlobalContext/GlobalContext';
+import { useContext } from 'react';
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 
   function CadastroSelecao1() {
 
-    // const {pageCadastro, setPageCadastro} = useContext(GlobalContext);
+    const {setPageCadastro} = useContext(GlobalContext);
 
-    // const handleRadio = () => {
-
-    //   let page = '';
-      
-    //   for (let i = 0; i < pageCadastro.length; i++) {
-    //     if (pageCadastro[i].checked) {
-    //       page = pageCadastro[i].value;
-    //       break;
-    //     }
-    //   }
-      
-    //   if (page == '') {
-    //     alert('Nenhum conteúdo selecionado');
-    //     setPageCadastro('');
-    //   } else {
-    //     setPageCadastro(page);
-    //   }
-    // }
+    setPageCadastro(document.getElementsByName('a'));
 
   return (
 
