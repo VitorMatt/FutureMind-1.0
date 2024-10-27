@@ -4,12 +4,69 @@ import './CSS/Inicio.css'
 function Inicio() {
   return (
     <div className='inicio-container'>
-      <Navbar />
-<<<<<<< HEAD
-=======
+      <Navbar />                     
     
       <div className='busca'>
-        <h1>BUUUUSSCAAAA</h1>
+        <div className="esquerda">
+
+          <div className="text-container">
+            <h1>Encontre seu psicólogo</h1>
+          </div>
+
+          <div className="temas-busca">
+
+            <div className="busca-um">
+              <button>
+                Autoaceitação
+              </button>
+              <button>
+                Autoestima
+              </button>
+              <button>
+                Depressão
+              </button>
+            </div>
+
+            <div className="busca-dois">
+
+            <button>
+                Autoaceitação
+              </button>
+              <button>
+                Autoestima
+              </button>
+              <button>
+                Depressão
+              </button>
+            </div>
+
+            <div className="busca-tres">
+
+            <button>
+                Autoaceitação
+              </button>
+              <button>
+                Autoestima
+              </button>
+              <button>
+                Depressão
+              </button>
+            </div>
+          </div>
+          <div className="button-container">
+            <button>
+              Buscar
+            </button>
+          </div>
+        </div>
+
+        <div className="direita">
+
+          <div className="imgInicio">
+            <img src='imgInicio.svg' />
+          </div>
+
+        </div>
       </div >
 
   
@@ -22,8 +79,15 @@ function Inicio() {
           
         </div>
         
+        <div>
+          <div>
+<h1>
+  aq
+</h1>
+          </div>
         <div className='profissional'>
           <h1>PROFISSIONAL 2</h1>
+        </div>
         </div>
 
         <div className='profissional'>
@@ -41,9 +105,6 @@ function Inicio() {
         
         
         </div>  
-
->>>>>>> f242a4327d9d33ca16f08f561527e4dccd561bb0
-
       
     </div>
   )

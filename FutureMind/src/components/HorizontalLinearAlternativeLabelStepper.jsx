@@ -4,12 +4,7 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepConnector from '@mui/material/StepConnector';
 import { styled } from '@mui/material/styles';
-<<<<<<< HEAD
 import React from 'react'
-=======
-import * as React from 'react';
-
->>>>>>> f242a4327d9d33ca16f08f561527e4dccd561bb0
 const steps = [
   '',
   '',

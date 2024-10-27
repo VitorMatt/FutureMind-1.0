@@ -17,6 +17,7 @@ import CadastroSelecao1 from '../components/CadastroSelecao1'
 import CadastroProfissinal from '../pages/CadastroProfissinal'
 import CadastroPaciente from '../pages/CadastroPaciente'
 import Politica from '../pages/Politica'
+import Slide from '../components/Slide'
 
 
 const router = createBrowserRouter([{
@@ -91,6 +92,10 @@ const router = createBrowserRouter([{
    element: <Politica />
 
 },
+{
+    path: '/slide',
+    element: <Slide />
+}
 
 ])
 
