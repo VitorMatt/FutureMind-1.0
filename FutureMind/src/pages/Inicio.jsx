@@ -30,26 +30,26 @@ function Inicio() {
             <div className="busca-dois">
 
             <button>
-                Autoaceitação
+                Angústia
               </button>
               <button>
-                Autoestima
+                Ansiedade
               </button>
               <button>
-                Depressão
+                LGBTQIA+
               </button>
             </div>
 
             <div className="busca-tres">
 
             <button>
-                Autoaceitação
+                Autismo
               </button>
               <button>
-                Autoestima
+                Relacionamento
               </button>
               <button>
-                Depressão
+                Adolescência
               </button>
             </div>
           </div>
