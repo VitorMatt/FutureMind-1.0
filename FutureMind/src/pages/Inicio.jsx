@@ -1,9 +1,5 @@
 import Navbar from '../components/Navbar'
 import './CSS/Inicio.css'
-<<<<<<< HEAD
-
-=======
->>>>>>> 6f7241d3cbfb94729127c18d9ab6cfcfe52cf2b0
 
 function Inicio() {
   return (
@@ -108,12 +104,7 @@ function Inicio() {
         
         
         
-<<<<<<< HEAD
         </div>
-=======
-        </div>  
-      
->>>>>>> 6f7241d3cbfb94729127c18d9ab6cfcfe52cf2b0
     </div>
   )
 }
