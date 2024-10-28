@@ -1,17 +1,5 @@
 import Navbar from '../components/Navbar'
 import './CSS/Inicio.css'
-<<<<<<< HEAD
-=======
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
->>>>>>> 93a28b5e9e4132082962b4fdd80c68170c6729df
 
 function Inicio() {
   return (
@@ -157,12 +145,8 @@ function Inicio() {
         
         
         
-<<<<<<< HEAD
-        </div>
-=======
         </div>  
       
->>>>>>> 93a28b5e9e4132082962b4fdd80c68170c6729df
     </div>
   )
 }
