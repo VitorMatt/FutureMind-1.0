@@ -82,10 +82,12 @@
 .bolona_termos{
     width: 20%;
     position: absolute;
-    padding-left: 1215px;
+    padding-left: 80%;
 }
 
 .boolinha{
+    margin: auto;
+    display: flex;
     width: 5%;
     padding-left: 95%;
 }

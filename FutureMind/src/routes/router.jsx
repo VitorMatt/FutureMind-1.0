@@ -18,6 +18,7 @@ import CadastroProfissinal from '../pages/CadastroProfissinal'
 import CadastroPaciente from '../pages/CadastroPaciente'
 import Politica from '../pages/Politica'
 import Slide from '../components/Slide'
+import Adm from '../pages/Adm'
 
 
 const router = createBrowserRouter([{
@@ -95,6 +96,11 @@ const router = createBrowserRouter([{
 {
     path: '/slide',
     element: <Slide />
+},
+{
+   path: '/Adm',
+   element: <Adm/>
+
 }
 
 ])
