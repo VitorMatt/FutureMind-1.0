@@ -19,10 +19,18 @@
 
 }
 
-.esquerda,
+.esquerda {
+
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 3%;
+}
+
 .direita {
 
-    width: 50%;
+    width: 40%;
 }
 
 .busca-um,
@@ -36,7 +44,7 @@
 
 .temas-busca button {
 
-    width: 30%;
+    width: 25%;
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.29);
     border-radius: 40px;
@@ -79,13 +87,41 @@
     padding-left: 2%;
 }
 
+.titulos {
+
+    width: 100%;
+    margin-top: -7%;
+}
+
+.titulos h1 {
+
+    padding-left: 10%;
+    margin-bottom: -10%;
+    color: white;
+    font-size: 40px;
+}
+
+.titulo-inicio {
+
+    width: 100%;
+    margin-top: 2%;
+}
+
+.titulo-inicio h1 {
+
+    padding-left: 10%;
+    margin-bottom: -18%;
+    color: white;
+    font-size: 45px;
+}
+
 .button-container {
 
     width: 100%;
     height: 18%;
     display: flex;
     justify-content: flex-start;
-    padding-left: 3%;
+    padding-left: 2%;
 }
 
 .text-container {
@@ -93,7 +129,8 @@
     width: 100%;
     height: 20%;
     color: white;
-    padding-left: 5%;
+    padding-left: 3%;
+    padding-bottom: 2%;
 }
 
 .imgInicio img {
@@ -111,9 +148,6 @@
     display: flex;
     flex-direction: column; /* Organiza em coluna */
     gap: 140px; /* Espaçamento igual entre as divs */
-    
-    
-   
 }
 
 .profissional{
@@ -123,6 +157,4 @@
     margin-left: 17.5%;
     border-radius: 25px;
     box-shadow: 5%;
-    
-
 }

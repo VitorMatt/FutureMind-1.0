@@ -141,25 +141,24 @@ function politica() {
         
         <div className='div_um_recursos'>
 
-          <div className='div_imagem_rec'>
-            <img src="Imagem_identificacao.svg" />
-          </div>
+            <img src="identificacao.svg" />
+          
 
-          <h2>Identifição de Usuario</h2>
+          <h2>Identifição <br /> de Usuario</h2>
         </div>
 
         <div className='div_dois_recursos'>
 
          <div>
-           <img src="imagem_seguranca.svg"  />
+           <img src="seguranca.svg"  />
          </div>
 
-         <h2>Segurança de dados</h2>
+         <h2>Segurança <br /> de dados</h2>
         </div>
 
         <div className='div_tres_recursos'>
           <div>
-            <img src="imagem_postgreSql.svg" />
+            <img src="icone_banco.svg" />
           </div>
 
           <h2>Banco <br /> de dados</h2>
@@ -167,13 +166,14 @@ function politica() {
 
         <div className='div_quatro_recursos'>
           <div>
-            <img src="imagem_chaves.svg" />
+            <img src="icone_chaves.svg" />
           </div>
 
           <h2>Chaves/ <br /> Senhas</h2>
         </div>
+        
+      
       </div>
-
     </div>
   )
 }
