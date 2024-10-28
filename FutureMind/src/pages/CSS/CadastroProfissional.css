@@ -1,5 +1,6 @@
- /* *{
+*{
     font-family: 'Poppins' , sans-serif;
+    outline: none;
 }
 
 :root{
@@ -9,7 +10,6 @@
     --cor-4: #012A4A;
     --cor-5: #014F86;
 }
-
 .escolhaCadastro-container{
     background-color:#5A789F;
     display: flex;
@@ -23,18 +23,19 @@ body{
     margin: auto;
 }
 
-.Lado-esquerdo{
+
+/* Pagina 1*/
+.lado-esquerdo{
     width: 50%;
-    margin: auto;
+    color: white;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding-top: 6%;
-    padding-left: 2%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    padding-top: 8%;
 }
-
-.lado-Direito{
+.lado-direito{
     width: 50%;
     margin: auto;
     display: flex;
@@ -42,43 +43,68 @@ body{
     justify-content:flex-end;
     align-items: flex-end;
 }
-.entrar{
-    width: 30%;
-    height: 20%;
-    padding: 5%;
+
+.Proximo{
+    width: 70%;
+    padding: 4%;
     display: flex;
     font-size: 130%;
-    justify-content: end;
-    align-items: flex-end;
+    padding-left: 14%;
+
 }
 
+.Proximo .botao2{
+    display: flex;
+    width:60%;
+}
 
-.entrar-estilizado{
-    font-size: 60%;
-    padding: -3%;
-    width: 50%;
+.botao2 button {
+
+    width: 45%;
+}
+
+.proximo-estilizado{
+    font-size: 130%;
+    width: 90%;
+    padding: 2%;
     border-radius: 13px;
     border: 1px solid var(--cor-2);
     color: var(--cor-1);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
-
-.entrar-estilizado:Hover{
+.proximo-estilizado:hover{
     transition: 1s;
-    transform: scale(1.0);
+    transform: scale(1.1);
     background-color: #C1DFF4;
     border: none;
     color: var(--cor-4);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
+.botao1{
+    display: flex;
+    width: 30%;
+}
 
-.titulo-Cadastro{
+.lado-esquerdo .titulo-cadastro {
+
     font-size: 300%;
+    width: 200%;
     color: #ffff;
+    padding-left: 3%;
+    
+}
+
+.selecao {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 7%;
+    height: 350px;
 }
 
 .checkboxs{
-    width: 79%;
+    width: 100%;
     height: 100%;
     margin: auto;
     display: flex;
@@ -86,12 +112,12 @@ body{
     font-size: 220%;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: flex-start;
     color: #ffff;
-    margin-top: 2%;
+
+
 }
 
-.estilização-Check{
+.estilizacao-check{
     padding: 3%;
 }
 
@@ -116,69 +142,72 @@ body{
     display: block;
     width: 60%;
     height: 60%;
-    margin: 10%;  Keeping margin only 10% 
-    padding: 10%;  Increase the inner area for pushing the border out of the circle 
+    margin: 10%;
+    padding: 10%;  
     border-radius: 50%;
-    transition: 0.3s;  Move your transition to here 
+    transition: 0.3s; 
   }
       
 .check1:checked:before {
     background:var(--cor-5);
   }
 
-.Proximo{
-    width: 50%;
-    margin-top: 10%;
-    padding: 4%;
+
+
+
+
+
+
+/* Pagina 2*/
+
+.selecao1 {
     display: flex;
-    font-size: 130%;
-}
-
-.Proximo .botao2{
-
-    display: flex;
-    width:50%;
-}
-
-.botao2 button {
-
-    width: 50%;
-}
-
-.proximo-estilizado{
-    font-size: 60%;
-    width: 80%;
-
-    border-radius: 13px;
-    border: 1px solid var(--cor-2);
-    color: var(--cor-1);
-}
-
-.arvore {
-
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    height: 100%;
-}
-
-.arvore-estilizada {
-    
+    flex-direction: column;
     margin: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 15%;
     width: 100%;
-    height: fit-content;
-
+    height: 350px;
 }
 
-.proximo-estilizado:hover{
-    transition: 1s;
-    transform: scale(1.1);
-    background-color: #C1DFF4;
-    border: none;
-    color: var(--cor-4);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
-.botao1{
+.input-text{
+
     display: flex;
-    width: 30%;
-}  */
+    flex-direction: column;
+    padding-bottom: 5%;
+}
+.checkboxs2{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 220%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: #ffff;
+    padding-left: 5%;
+
+}
+
+.lado-esquerdo .titulo-cadastro2 {
+
+    font-size: 300%;
+    width: 50%;
+    color: #ffff;
+    padding-left: 5%;
+
+}
+
+.inputCRP{
+    width: 45%;
+    padding: 1.6%;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--cor-2);
+    opacity: 40%;
+    color: var(--cor-3);
+    font-size: medium;
+
+}

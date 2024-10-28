@@ -14,6 +14,8 @@ import CadastroProfissionais3 from '../components/CadastroProfissionais3'
 import CadastroEstagiario2 from '../components/CadastroEstagiario2'
 import CadastroProfissionais5 from '../components/CadastroProfissionais5'
 import CadastroSelecao1 from '../components/CadastroSelecao1'
+import CadastroProfissinal from '../pages/CadastroProfissinal'
+import CadastroPaciente from '../pages/CadastroPaciente'
 
 
 const router = createBrowserRouter([{
@@ -73,6 +75,14 @@ const router = createBrowserRouter([{
 {
     path:'/cadastroP7',
     element: <CadastroProfissionais7 />
+},
+{
+    path: '/cadastro-profissional',
+    element:<CadastroProfissinal />
+},
+{
+    path: '/cadastro-paciente',
+    element:<CadastroPaciente />
 },
 
 ])
