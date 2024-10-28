@@ -87,6 +87,34 @@
     padding-left: 2%;
 }
 
+.titulos {
+
+    width: 100%;
+    margin-top: -7%;
+}
+
+.titulos h1 {
+
+    padding-left: 10%;
+    margin-bottom: -10%;
+    color: white;
+    font-size: 40px;
+}
+
+.titulo-inicio {
+
+    width: 100%;
+    margin-top: 2%;
+}
+
+.titulo-inicio h1 {
+
+    padding-left: 10%;
+    margin-bottom: -18%;
+    color: white;
+    font-size: 45px;
+}
+
 .button-container {
 
     width: 100%;
@@ -129,6 +157,4 @@
     margin-left: 17.5%;
     border-radius: 25px;
     box-shadow: 5%;
-    
-
 }
