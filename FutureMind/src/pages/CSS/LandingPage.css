@@ -60,7 +60,7 @@
 .btn {
 
     padding: 1.5%;
-    background-color: #5A789F;
+    background-color: #5a789fe6;
     border: 1px solid;
     border-radius: 13px;
     color: white;
@@ -79,22 +79,23 @@
     cursor: pointer;
 }
 
-.img {
+.img2 {
 
     margin: auto;
     display: flex;
     width: 50%;
     justify-content: flex-end;
     align-items: flex-end;
+
 }
 
-/* .img img {
+.img img {
 
     display: flex;
     margin: auto;
-    width: fit-content;
+    width: 120%;
     height: 100%;
-} */
+}
 
 .back {
 

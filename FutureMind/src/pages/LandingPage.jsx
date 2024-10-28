@@ -19,7 +19,7 @@ function LandingPage() {
            </Link>
         </div>
 
-        <div className="img">
+        <div className="img2">
            <img src='note.svg' />
         </div>
       </div>

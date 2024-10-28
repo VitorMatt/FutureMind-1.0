@@ -3,11 +3,11 @@ import { createContext, useState } from "react";
 export const GlobalContext = createContext();
 
 export const GlobalContextProvider = ({children}) => {
-let usuarioLogado = 'Gill Bates';
+const [pageCadastro, setPageCadastro] = useState('')
 
 
     return(
-        <GlobalContext.Provider value={{usuarioLogado}}>
+        <GlobalContext.Provider value={{pageCadastro, setPageCadastro}}>
             {children}
         </GlobalContext.Provider>
     );

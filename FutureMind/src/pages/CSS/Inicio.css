@@ -14,8 +14,93 @@
     margin-bottom: 6%;
     margin-top: 3%;
     border-radius: 30px;  
-    
+    display: flex;
+    flex-direction: row;
 
+}
+
+.esquerda,
+.direita {
+
+    width: 50%;
+}
+
+.busca-um,
+.busca-dois,
+.busca-tres {
+
+    display: flex;
+    height: 30%;
+    gap: 10px;
+}
+
+.temas-busca button {
+
+    width: 30%;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.29);
+    border-radius: 40px;
+    height: 65%;
+    font-size: 20px;
+}
+
+.temas-busca button:hover {
+
+    background-color: #e7e7e7;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.button-container button:hover {
+
+    background-color: #40628d;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.button-container button {
+
+    width: 25%;
+    background-color: var(--cor-1);
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 40px;
+    height: 65%;
+    font-size: 26px;
+    color: white;
+}
+
+.temas-busca {
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 60%;
+    gap: 5px;
+    padding-left: 2%;
+}
+
+.button-container {
+
+    width: 100%;
+    height: 18%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 3%;
+}
+
+.text-container {
+
+    width: 100%;
+    height: 20%;
+    color: white;
+    padding-left: 5%;
+}
+
+.imgInicio img {
+
+    width: 80%;
+    height: 100%;
+    margin: auto;
 }
 
 .profissionais{
