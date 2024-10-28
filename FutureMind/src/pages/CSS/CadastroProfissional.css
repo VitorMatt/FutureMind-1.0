@@ -211,3 +211,68 @@ body{
     font-size: medium;
 
 }
+
+
+
+
+
+
+
+/* page 3 */
+.lados{
+    display: flex;
+
+}
+
+.checkbox-ladoEsquerdo{
+    padding: 2%;
+}
+
+.checkbox-ladoDireito{
+    padding: 2%;
+}
+.selecao3{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 18%;
+    width: 100%;
+    height: 350px;
+}
+
+
+/* page 4*/
+.titulo-cadastro3{
+    font-size: 400%;
+    width: 200%;
+    color: #ffff;
+    padding-left: 3%;
+    margin-bottom: -1%;
+}
+
+
+.checks-organiza{
+    display: flex;
+}
+
+
+.div-atender{
+
+    display: block;
+  }
+  
+  .atender {
+    font-size: 90%;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    display: block;
+    width: fit-content;
+  }
+  
+  .atender.selected {
+    background-color: #4A90E2;
+    color: white;
+  }

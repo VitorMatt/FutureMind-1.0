@@ -7,6 +7,7 @@ function LandingPage() {
 
     <div className='landingPage-container'>
       <Navbar />
+      
       <div className='container-maior'>
 
       <div className="info">
@@ -18,13 +19,13 @@ function LandingPage() {
            </Link>
         </div>
 
-        <div className="img">
-           <img src='image.png' />
+        <div className="img2">
+           <img src='note.svg' />
         </div>
       </div>
         <div className='back'>
           <div className='imgPhone'>
-            <img src='phoneImage.png' className='phoneImage' />
+            <img src='celular.svg' className='phoneImage' />
           </div>
 
           <div className='conteudo'>

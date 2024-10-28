@@ -18,9 +18,7 @@ function CadastroProfissionais7() {
     };
 
     return (
-        <div className="login-container">
-            <div className="Lado-esquerdo">
-                <HorizontalLinearAlternativeLabelStepper activeStep={activeStep} />
+        <div className="selecao">
                 <div className="input_principais">
                     <div className="inputsLogin">
                         <label htmlFor="" className='label1'>E-mail</label>
@@ -32,25 +30,10 @@ function CadastroProfissionais7() {
                         <input type="text" />
                     </div>
 
-                    <div className='Proximo'>
-                        <div className='botao1'>
-                            <button className='proximo-estilizado' onClick={handleBack} disabled={activeStep === 0}>
-                                Voltar
-                            </button>
-                        </div>
-                        <div className='botao2'>
-                            <button className='proximo-estilizado' onClick={handleNext} disabled={activeStep === 6}>
-                                Próximo
-                            </button>
-                        </div>
-                    </div>
+    
                 </div>
-            </div>
-            <div className="lado-Direito">
-                <div className="arvore">
-                    <img src='logoLogin.png' alt="" className='arvore-estilizada' />
-                </div>
-            </div>
+
+
         </div>
     );
 }

@@ -4,8 +4,7 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepConnector from '@mui/material/StepConnector';
 import { styled } from '@mui/material/styles';
-import * as React from 'react';
-
+import React from 'react'
 const steps = [
   '',
   '',
@@ -29,8 +28,8 @@ export default function HorizontalLinearAlternativeLabelStepper({ activeStep }) 
       sx={{
         width: '50vw',
         position: 'fixed',
-        paddingLeft:'16%',
-        paddingBottom:'10%',
+        paddingLeft:'30%',
+        position:'relative',
         transform: 'translateY(-85%)',
       }}
     >

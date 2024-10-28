@@ -1,52 +1,35 @@
-import React from 'react'
+import { useState } from 'react'
 import'./CSS/CadastroProfissionais1.css'
-import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
+
 function CadastroProfissionais3() {
+  const atender = ["Adolescentes", "Idosos","Pré-Adolescentes ","Crianças", "Adultos", "PCDs" ]
+  const [atenderSelecionado, setAtenderSelecionado] = useState([])
+
+  const selecione = (atender) =>{
+    setAtenderSelecionado((prevSelected) =>
+    prevSelected.includes(atender)
+    ?prevSelected.filter ((a) => a !==atender)
+    :[...prevSelected, atender]
+    );
+  };
+
   return (
-    <div className='escolhaCadastro-container'>
-    <div className='Lado-esquerdo'>
-      <HorizontalLinearAlternativeLabelStepper />
-      <h3 className='titulo-Cadastro2'>Eu Atendo..</h3>
-      <div className='checkboxs'>
-          <div className='estlizacao-checkbox'>
-         <input type="checkbox" name="a" id="" className='checkBoxs' /><label htmlFor="" className='label1'>Adolecente</label>
-          </div>
+    <div className='selecao3'>
+      <div className='div-atender'>
 
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Idosos</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Pré-adolescente</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Crianças</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Adultos</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>PCDs</label>
-          </div>
-          
-      <div className='Proximo'>
-        <div className='botao1'>
-
-          <button className='proximo-estilizado'>Voltar</button>
-        </div>
-        <div className='botao2'>
-
-          <button className='proximo-estilizado'>Próximo</button>
-        </div>
+      <h3 className='titulo-cadastro3'>Eu atendo..</h3>
+      {atender.map((atender) => (
+        <span
+        key={atender}
+        className={`atender ${atenderSelecionado.includes(atender) ? 'selected' : ''}`}
+        onClick={() => selecione(atender)}
+        >
+          {atender}
+        </span>
+      ))}
       </div>
-      </div>
-    </div>
-    <div className='lado-Direito'>
-      <div className='arvore'>
-       <img src='logoLogin.png' alt="" className='arvore-estilizada'/>
-      </div>
-    </div>
   </div>
-  )
+  );
 }
 
 

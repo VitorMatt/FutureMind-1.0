@@ -1,5 +1,5 @@
 .sobreNos-container{
-    background-color:var(--cor-2);
+    background-color: white;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -14,64 +14,103 @@
     --cor-5: #014F86;
     --cor-6: #DBEEF4;
     --cor-7: #013A63;
-}
-
-.corpo{
-    display: flex;
-    align-items: center;
-    margin: auto;
-    justify-content: center;
-    margin-top: 50%;
-    margin-top: 50px;
-}
-
-.titulo{
-    color: var(--cor-1);
-    margin-left: -1px;
-    font-size: 50px;
-}
-
-.texto{
-    flex-wrap: wrap;
-    color: var(--cor-3);
-    font-size: 25px;
-    width: 600px;
-    font-family: 'Poppins' , sans-serif;
-}
-
-.infoMissao{
-    display: block;
-
-    margin-left: 500px;
-    margin-left: 700px;
-    position: absolute;
-}
-
-.bolinhas{
-    margin: auto;
-    align-items: center;
-    justify-content: center;
-    margin-left: 1262px;
-    margin-top: -700px;
-    margin-left: 1253px;
-    margin-top: -600px;
-    width: 650px;
+    --cor-8: #77A7FF;
 }
 
 .img{
-    margin-right: 900px;
-    width: 800px;
-
+    width: 45%;
+    padding-right: 20%;
 }
 
-.titulo2{
+.conteudoo{
+    display: flex;
+}
+
+.conteudoo2{
+    display: flex;
+    padding-top: 5%;
+}
+
+.conteudoo h1, .conteudoo2 h1{
+    font-size: 300%;
     color: var(--cor-1);
-    font-size: 50px;
 }
 
-.infoFundacao{
-    display: block;
-    margin-left: 700px;
+.descricaoMissao{
     position: absolute;
+    width: 35%;
+    font-size: 150%;
+    padding-left: 55%;
+    padding-top: 5%;
+}
 
+.arvoreSobre{
+    width: 50%;
+}
+
+.descricaoFundacao{
+    position: absolute;
+    width: 35%;
+    font-size: 150%;
+    padding-left: 15%;
+}
+
+.fotoNossa{
+    background-color: var(--cor-1);
+    width: 30%;
+    height: 50%;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    margin: auto;
+    margin-top: 3%;
+}
+
+.divCards{
+    display: flex;
+    padding-left: 50%;
+    width: fit-content;
+}
+
+.card1{
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border: 1px solid var(--cor-1);
+    background-color: #f2f2f2;
+    color: var(--cor-1);
+    padding: 1%;
+    width: 10%;
+    height: 110%;
+    text-align: center;
+    margin: auto;
+    display: flex;
+}
+
+.card2{
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border: 1px solid var(--cor-8);
+    background-color: #f2f2f2;
+    color: var(--cor-8);
+    padding: 1%;
+    width: 10%;
+    height: 110%;
+    text-align: center;
+}
+
+.card3{
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border: 1px solid var(--cor-1);
+    background-color: #f2f2f2;
+    color: var(--cor-1);
+    padding: 1%;
+    width: 11%;
+    height: 30%;
+    text-align: center;
 }

@@ -1,0 +1,112 @@
+
+.H1_recursos{
+
+padding: 5%;
+color:#5a789f;
+width: 30%;
+flex-wrap: wrap;
+font-size: 45px;
+
+}
+
+.Container-recursos{
+    display: flex;
+    width: 100%;
+}
+
+.div_tres_recursos img{
+    width: 55%;
+    margin: auto;
+    display: flex;
+}
+
+.div_quatro_recursos img{
+    width: 60%;
+    margin: auto;
+    display: flex;
+}
+
+.div_dois_recursos img{
+    width: 60%;
+    margin: auto;
+    display: flex;
+}
+
+.div_um_recursos img{
+    width: 70%;
+    margin: auto;
+    display: flex;
+}
+
+.div_imagem_rec{
+    margin: auto;
+    display: flex;
+    border-radius: 10px;
+    background-color: white;
+    width: 60%;
+    height: 55%;
+}
+
+.div_um_recursos{
+    width: 15%;
+    background-color: #5a789f;
+    margin-left: 5%;
+    color: white;
+    font-size: 100%;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 2%;
+    margin-bottom: 1%;
+    border-radius: 10px;
+}
+
+.div_dois_recursos{
+    width: 15%;
+    background-color: #5a789f;
+    margin-left: 5%;
+    color: white;
+    font-size: 100%;
+    text-align: center;
+    padding-top: 2.3%;
+    padding-bottom: 2%;
+    margin-bottom: 1%;
+    border-radius: 10px;
+}
+
+.div_tres_recursos{
+    width: 15%;
+    background-color: #5a789f;
+    margin-left: 5%;
+    color: white;
+    font-size: 100%;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 2%;
+    margin-bottom: 1%;
+    border-radius: 10px;
+}
+
+.div_quatro_recursos{
+    width: 15%;
+    background-color: #5a789f;
+    margin-left: 5%;
+    color: white;
+    font-size: 100%;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 2%;
+    margin-bottom: 1%;
+    border-radius: 10px;
+}
+
+.div_um_recursos h2{
+    padding-top: 3.5%;
+}
+
+.div_tres_recursos h2{
+    padding-top: 3.5%;
+}
+
+.div_quatro_recursos h2{
+    padding-top: 3.5%;
+}

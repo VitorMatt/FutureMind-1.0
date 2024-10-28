@@ -1,4 +1,3 @@
-import HorizontalLinearAlternativeLabelStepper from '../components/HorizontalLinearAlternativeLabelStepper'
 import './CSS/EscolhaCadastro.css'
 
 function EscolhaCadastro() {
