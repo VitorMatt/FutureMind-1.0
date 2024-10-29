@@ -25,7 +25,7 @@ const router = createBrowserRouter([{
 
     path: '/',
     element: <Inicio />,
-    errorElement: <ErrorElement />,
+    errorElement: <ErrorElement />
 },
 {
     path: '/sobrenos',
