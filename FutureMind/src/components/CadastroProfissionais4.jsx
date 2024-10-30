@@ -1,47 +1,33 @@
+import { useState } from "react";
 
 
 function CadastroProfissionais4() {
+  const atender = ["Relacionamento", "Depressão","Angústia ","Ansiedade", "Bullying", "Autoaceitação", "LGBTQIA", "Adolesência" ]
+  const [atenderSelecionado, setAtenderSelecionado] = useState([])
+
+  const selecione = (atender) =>{
+    setAtenderSelecionado((prevSelected) =>
+    prevSelected.includes(atender)
+    ?prevSelected.filter ((a) => a !==atender)
+    :[...prevSelected, atender]
+    );
+  };
+
   return (
   
-    <div className='selecao'>
-      <h3 className='titulo-cadastro3'>Selecione sua especialização</h3>
-      <div className='checkboxs'>
-        <div className='checks-organiza'>
-
-        <div className='check-esquerdo'>
-
-          <div className='estlizacao-checkbox'>
-         <input type="checkbox" name="a" id="" className='checkBoxs' /><label htmlFor="" className='label1'>Relacionamento</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Depressão</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Angústia</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Ansiedade</label>
-          </div>
-        </div>
-
-        <div className='check-direito'>
-
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Bullying</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Autoaceitação</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>LGBTQIA+</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Adolesência</label>
-          </div>
-        </div>
-        </div>
-          
-  </div>
+    <div className='selecao3'>
+      <h3 className='titulo-cadastro3'>Tenho especialização..</h3>
+     <div className='div-atender'>
+     {atender.map((atender) => (
+     <span
+     key={atender}
+     className={`atender ${atenderSelecionado.includes(atender) ? 'selected' : ''}`}
+     onClick={() => selecione(atender)}
+    >
+    {atender}
+  </span>
+))}
+</div>
   </div>
   )
 }

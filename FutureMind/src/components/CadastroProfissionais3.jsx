@@ -15,9 +15,9 @@ function CadastroProfissionais3() {
 
   return (
     <div className='selecao3'>
+      <h3 className='titulo-cadastro3'>Eu atendo..</h3>
       <div className='div-atender'>
 
-      <h3 className='titulo-cadastro3'>Eu atendo..</h3>
       {atender.map((atender) => (
         <span
         key={atender}

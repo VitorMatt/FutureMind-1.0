@@ -27,7 +27,6 @@ export default function HorizontalLinearAlternativeLabelStepper({ activeStep }) 
     <Box
       sx={{
         width: '50vw',
-        position: 'fixed',
         paddingLeft:'30%',
         position:'relative',
         transform: 'translateY(-85%)',
