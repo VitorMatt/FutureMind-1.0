@@ -42,6 +42,11 @@
     gap: 10px;
 }
 
+.button-clicked {
+
+    background-color: var(--cor-1);
+}
+
 .temas-busca button {
 
     width: 25%;
@@ -135,9 +140,11 @@
 
 .imgInicio img {
 
-    width: 80%;
+    width: 90%;
     height: 100%;
     margin: auto;
+    margin-top: 2%;
+    margin-right: 5%;
 }
 
 .profissionais{
@@ -157,4 +164,13 @@
     margin-left: 17.5%;
     border-radius: 25px;
     box-shadow: 5%;
+}
+
+.swiper-button-prev{
+    left: var(--swiper-navigation-sides-offset, 200px);
+
+}
+
+.swiper-button-next{
+    right: var(--swiper-navigation-sides-offset, 200px);
 }

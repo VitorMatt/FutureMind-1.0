@@ -12,6 +12,12 @@ import Navbar from '../components/Navbar'
 import './CSS/Inicio.css'
 
 function Inicio() {
+
+  const buscaUm = [{descricao: 'Autoaceitação', selecionado: false}, {descricao: 'Autoestima', selecionado: false}, {descricao: 'Depressão', selecionado: false}];
+  const buscaDois = [{descricao: 'Angústia', selecionado: false}, {descricao: 'Ansiedade', selecionado: false}, {descricao: 'LGBTQIA+', selecionado: false}];
+  const buscaTres = [{descricao: 'Autismo', selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}];
+
+
   return (
     <div className='inicio-container'>
       <Navbar />                     
@@ -26,41 +32,38 @@ function Inicio() {
           <div className="temas-busca">
 
             <div className="busca-um">
-              <button>
-                Autoaceitação
-              </button>
-              <button>
-                Autoestima
-              </button>
-              <button>
-                Depressão
-              </button>
+              {
+              buscaUm.map((item, index) => (
+
+                <button key={index} onClick={() => {!item.selecionado}} className={item.selecionado ? 'button-clicked' : ''}>
+                  {item.descricao}
+                </button>
+              ))
+              }
             </div>
 
             <div className="busca-dois">
 
-            <button>
-                Angústia
-              </button>
-              <button>
-                Ansiedade
-              </button>
-              <button>
-                LGBTQIA+
-              </button>
+            {
+              buscaDois.map((item, index) => (
+
+                <button key={index}>
+                  {item.descricao}
+                </button>
+              ))
+              }
             </div>
 
             <div className="busca-tres">
 
-            <button>
-                Autismo
-              </button>
-              <button>
-                Relacionamento
-              </button>
-              <button>
-                Adolescência
-              </button>
+            {
+              buscaTres.map((item, index) => (
+
+                <button key={index}>
+                  {item.descricao}
+                </button>
+              ))
+              }
             </div>
           </div>
           <div className="button-container">
@@ -112,6 +115,21 @@ function Inicio() {
           <h1>PROFISSIONAL 2</h1>
           
         </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 3</h1>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 4</h1>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 5</h1>
+          </div>
         </SwiperSlide>
       </Swiper>
         </div>

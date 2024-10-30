@@ -20,7 +20,7 @@ function LandingPage() {
         </div>
 
         <div className="img2">
-           <img src='note.svg' />
+           <img src='note1.svg' />
         </div>
       </div>
         <div className='back'>
