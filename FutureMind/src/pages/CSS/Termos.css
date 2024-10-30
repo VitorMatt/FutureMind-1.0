@@ -4,6 +4,7 @@
 } */
 
 .botaodecisao{
+
     width: 170%;
     font-size: 140%;
     border-top-left-radius: 100px;
@@ -16,11 +17,13 @@
     text-decoration: none;
 }
 
-/* .botaodecisao:hover{
+.botaodecisao:hover{
+    transition: 1s;
     background-color: #cad7eb;
     color: #5a789f;
-    transition: 1s;
-} */
+}
+
+
 
 .botaodecisaodois{
     
@@ -36,11 +39,13 @@
     text-decoration: none;
 }
 
-/* .botaodecisaodois:hover{
-    background-color: #5a789f;
-    color: #fff;
+.botaodecisaodois:hover{
     transition: 1s;
-} */
+    background-color: #5a789f;
+    color: #ffff;
+}
+
+
 
 .divBotoes{
     margin: auto;
@@ -117,6 +122,7 @@
 }
 
 .textinhoAceitação{
+
     margin: auto;
     align-items: center;
     justify-content: center;
@@ -140,9 +146,17 @@
 }
 
 .container_ac{
+
     width: 70%;
     margin: auto;
     align-items: center;
     justify-content: center;
     border: 2px solid #61a5c2;
+}
+
+.css-1umw9bq-MuiSvgIcon-root{
+
+    font-size: 4rem !important;
+    color: #5a789f;
+
 }

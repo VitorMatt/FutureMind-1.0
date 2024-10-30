@@ -79,6 +79,7 @@ function Termos() {
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
             id="panel1-header"
+           
             
           >
             <AccordionDetails  className='titulo_ac_um'>
