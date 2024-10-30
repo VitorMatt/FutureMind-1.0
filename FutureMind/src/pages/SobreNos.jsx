@@ -2,6 +2,22 @@ import './CSS/SobreNos.css'
 import NavBar from '../components/Navbar'
 
 function SobreNos() {
+
+  const textarea = document.getElementById('expandingTextarea');
+
+textarea.addEventListener('input', () => {
+    textarea.style.height = 'auto'; // Reseta a altura para recalcular
+    textarea.style.height = `${textarea.scrollHeight}px`; // Ajusta a altura com base no scrollHeight
+    
+    // Verifica se o textarea ultrapassa a altura máxima
+    if (textarea.scrollHeight > 5) {
+        textarea.style.overflowY = 'auto'; // Mostra a barra de rolagem
+    } else {
+        textarea.style.overflowY = 'hidden'; // Oculta a barra de rolagem
+    }
+});
+
+
   return (
     <div className='sobreNos-container'>
       <NavBar />
@@ -65,9 +81,8 @@ function SobreNos() {
           <div className='dadosSugestoes'>
             <h1>Sugestão:</h1>
             <p>Enter your mensage</p>
-            <input type="text" />
-            {/* <textarea name="" id="" cols="30" rows="3"></textarea> */}
-            <button>Enviar</button>
+            <textarea id="expandingTextarea" placeholder="Digite aqui..."></textarea>
+            <button className='botaoSugestao'>Enviar</button>
           </div>
         </div>
 

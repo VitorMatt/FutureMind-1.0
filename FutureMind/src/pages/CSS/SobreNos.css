@@ -114,7 +114,7 @@
     color: var(--cor-1);
     text-align: center;
     width: 10.2%;
-    padding: 0.7%;
+    padding: 0.9%;
     height: 20%;
     left: 45%;
     top: 190%;
@@ -132,15 +132,17 @@
 
 .imgDivSugestao{
     width: 40%;
-    border: 1px solid red;
+    border-width: 5px;
+    border-right-style: dashed;
+    border-color: var(--cor-2);
 }
 
 .dadosSugestoes{
     display: flex;
     flex-direction: column;
     width: 60%;
-    border: 1px solid aqua;
     color: white;
+    padding-left: 3%;
 }
 
 .dadosSugestoes h1{
@@ -151,17 +153,40 @@
     font-size: 140%;
 }
 
-.dadosSugestoes input{
+.botaoSugestao{
+    padding-top: 5%;
+    margin: auto;
+    font-size: 130%;
+    width: 70%;
+    padding: 2%;
+    border-radius: 13px;
+    border: 1px solid var(--cor-2);
+    color: var(--cor-1);
+}
+
+.botaoSugestao:hover{
+    transition: 1s;
+    transform: scale(1.1);
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+#expandingTextarea {
+    margin: auto;
     background-color: var(--cor-2);
     opacity: 40%;
     border-radius: 10px;
     border: none;
-    font-size: medium;
     color: var(--cor-3);
-    padding: 1.6%;
-    width: 90%;
+    width: 80%;
+    min-height: 150px;   /* Altura inicial */
+    max-height: 5px;  /* Altura máxima permitida */
+    overflow-y: auto;   /* Barra de rolagem apenas quando necessário */
+    resize: none;       /* Desativa o redimensionamento manual */
+    padding: 1%;
+    font-size: 130%;
 }
 
-.dadosSugestoes button{
-    
-}
+
