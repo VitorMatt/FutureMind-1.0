@@ -39,11 +39,13 @@ function LandingPage() {
           </div>
 
           <div className='texto-dois'>
-          <h1>a</h1>
+          <p>A flexibilidade de realizar consultas de qualquer lugar elimina barreiras geográficas, ampliando o acesso à terapia. Lembretes automáticos ajudam a manter a rotina, e ferramentas integradas, como exercícios de mindfulness e diário emocional, potencializam a eficácia do tratamento.</p>
           </div>
 
           <div className='conhecer-gente'>
-          <h1>a</h1>
+          <button className='conhecer-button'>
+            Conhecer a gente
+          </button>
           </div>
           </div>
         </div>

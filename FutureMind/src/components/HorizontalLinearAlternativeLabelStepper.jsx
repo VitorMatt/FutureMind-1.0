@@ -28,7 +28,7 @@ export default function HorizontalLinearAlternativeLabelStepper({ activeStep }) 
       sx={{
         width: '50vw',
         paddingLeft:'30%',
-        position:'relative',
+        position: 'relative',
         transform: 'translateY(-85%)',
       }}
     >

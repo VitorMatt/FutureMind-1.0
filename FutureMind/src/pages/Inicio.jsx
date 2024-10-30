@@ -1,3 +1,13 @@
+import { Navigation, Pagination, A11y } from 'swiper/modules';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 import Navbar from '../components/Navbar'
 import './CSS/Inicio.css'
 
@@ -99,7 +109,7 @@ function Inicio() {
         <SwiperSlide>
 
         <div className='profissional'>
-          <h1>PROFISSIONAL 1</h1>
+          <h1>PROFISSIONAL 2</h1>
           
         </div>
         </SwiperSlide>
@@ -112,8 +122,34 @@ function Inicio() {
               Adultos
             </h1>
           </div>
+         <div style={{width: '100%'}}>
+
+          <Swiper
+                // instalar módulos do Swiper
+                modules={[Navigation, Pagination, A11y]}
+                spaceBetween={50}
+                slidesPerView={1}
+                navigation
+                pagination={{ clickable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+            >
+
+        <SwiperSlide>
+
+        <div className='profissional'>
+          <h1>PROFISSIONAL 1</h1>
+          
+        </div>
+        </SwiperSlide>
+        <SwiperSlide>
+
         <div className='profissional'>
           <h1>PROFISSIONAL 2</h1>
+          
+        </div>
+        </SwiperSlide>
+      </Swiper>
         </div>
 
         <div className='titulos'>
@@ -121,27 +157,105 @@ function Inicio() {
               Adultos
             </h1>
           </div>
-        <div className='profissional'>
-          <h1>PROFISSIONAL 3</h1>
-        </div>
+          <div style={{width: '100%'}}>
+
+<Swiper
+      // instalar módulos do Swiper
+      modules={[Navigation, Pagination, A11y]}
+      spaceBetween={50}
+      slidesPerView={1}
+      navigation
+      pagination={{ clickable: true }}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
+  >
+
+<SwiperSlide>
+
+<div className='profissional'>
+<h1>PROFISSIONAL 1</h1>
+
+</div>
+</SwiperSlide>
+<SwiperSlide>
+
+<div className='profissional'>
+<h1>PROFISSIONAL 2</h1>
+
+</div>
+</SwiperSlide>
+</Swiper>
+</div>
 
         <div className='titulos'>
             <h1>
               Adultos
             </h1>
           </div>
-        <div className='profissional'>
-          <h1>PROFISSIONAL 4</h1>
-        </div>
+          <div style={{width: '100%'}}>
+
+<Swiper
+      // instalar módulos do Swiper
+      modules={[Navigation, Pagination, A11y]}
+      spaceBetween={50}
+      slidesPerView={1}
+      navigation
+      pagination={{ clickable: true }}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
+  >
+
+<SwiperSlide>
+
+<div className='profissional'>
+<h1>PROFISSIONAL 1</h1>
+
+</div>
+</SwiperSlide>
+<SwiperSlide>
+
+<div className='profissional'>
+<h1>PROFISSIONAL 2</h1>
+
+</div>
+</SwiperSlide>
+</Swiper>
+</div>
 
         <div className='titulos'>
             <h1>
               Adultos
             </h1>
           </div>
-        <div className='profissional'>
-          <h1>PROFISSIONAL 5</h1>
-        </div>
+          <div style={{width: '100%'}}>
+
+<Swiper
+      // instalar módulos do Swiper
+      modules={[Navigation, Pagination, A11y]}
+      spaceBetween={50}
+      slidesPerView={1}
+      navigation
+      pagination={{ clickable: true }}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
+  >
+
+<SwiperSlide>
+
+<div className='profissional'>
+<h1>PROFISSIONAL 1</h1>
+
+</div>
+</SwiperSlide>
+<SwiperSlide>
+
+<div className='profissional'>
+<h1>PROFISSIONAL 2</h1>
+
+</div>
+</SwiperSlide>
+</Swiper>
+</div>
         
         
         

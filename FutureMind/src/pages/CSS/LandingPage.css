@@ -147,6 +147,17 @@
     width: 55%;
 }
 
+.texto-dois {
+
+    background-color: none;
+    height: 35%;
+    margin: auto;
+    text-align: start;
+    font-family: "Poppins", sans-serif;
+    font-size: 25px;
+    width: 55%;
+}
+
 .texto-um p {
 
     position: absolute;
@@ -159,18 +170,22 @@
     padding-left: 40%;
 }
 
-.texto-dois {
+.conhecer-gente {
 
-    background-color: darkorange;
-    height: 35%;
+    height: 10%;
     margin: auto;
 }
 
-.conhecer-gente {
+.conhecer-gente .conhecer-button {
 
-    background-color: fuchsia;
-    height: 10%;
-    margin: auto;
+    padding: 1%;
+    background-color: var(--cor-1);
+    color: white;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .conteudo {
