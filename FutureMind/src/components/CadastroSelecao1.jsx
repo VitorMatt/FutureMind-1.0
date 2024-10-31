@@ -17,7 +17,12 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
       ?prevSelected.filter ((a) => a !==atender)
       :[...prevSelected, atender]
       );
-    };
+    }
+    if (atender == "formado") {
+      
+    }
+    ;
+
 
   return (
 

@@ -1,5 +1,5 @@
 import './CSS/Profissionais3.css'
-import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
+import { Link } from 'react-router-dom'
 import { useState } from 'react';
 
 function CadastroProfissionais7() {

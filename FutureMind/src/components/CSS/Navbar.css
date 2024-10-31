@@ -3,17 +3,16 @@
     display: flex;
     width: 100%;
     height: 20%;
-    /* background-color: #5a789f07; */
     margin: auto;
 }
 
-.Links .Link:hover,
+/* .Links .Link:hover,
 .Links .btn2:hover {
 
   cursor: pointer;
-  color: #013a63;
   transition: 0.5s;
-}
+  transform: scale(1.1);
+} */
 
 .Links .Link,
 .Link, .btn2 {
