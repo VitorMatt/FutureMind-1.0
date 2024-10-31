@@ -2,7 +2,8 @@ import { useState } from 'react'
 import'./CSS/CadastroProfissionais1.css'
 
 function CadastroProfissionais3() {
-  const atender = ["Adolescentes", "Idosos","Pré-Adolescentes ","Crianças", "Adultos", "PCDs" ]
+  const atender = ["Adolescentes", "Idosos","PCDs " ]
+  const atender2 =["Crianças", "Adultos", "Pré-Adolescentes"]
   const [atenderSelecionado, setAtenderSelecionado] = useState([])
 
   const selecione = (atender) =>{
@@ -15,9 +16,11 @@ function CadastroProfissionais3() {
 
   return (
     <div className='selecao3'>
+      <h3 className='titulo-cadastro3'>Eu atendo..</h3>
       <div className='div-atender'>
 
-      <h3 className='titulo-cadastro3'>Eu atendo..</h3>
+<div className="atender">
+
       {atender.map((atender) => (
         <span
         key={atender}
@@ -27,6 +30,19 @@ function CadastroProfissionais3() {
           {atender}
         </span>
       ))}
+      </div>
+<div className="atender2">
+
+{atender2.map((atender2) => (
+  <span
+  key={atender2}
+  className={`atender2 ${atenderSelecionado.includes(atender2) ? 'selected' : ''}`}
+  onClick={() => selecione(atender2)}
+  >
+          {atender2}
+        </span>
+      ))}
+      </div>
       </div>
   </div>
   );

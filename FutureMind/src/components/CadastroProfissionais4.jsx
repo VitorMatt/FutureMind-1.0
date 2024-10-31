@@ -1,50 +1,52 @@
+import { useState } from 'react'
+import'./CSS/CadastroProfissionais1.css'
 
+function CadastroProfissionais3() {
+  const atender = ["Adolescência", "Depressão","Angústia","Ansiedade" ]
+  const atender2 =["Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"]
+  const [atenderSelecionado, setAtenderSelecionado] = useState([])
 
-function CadastroProfissionais4() {
+  const selecione = (atender) =>{
+    setAtenderSelecionado((prevSelected) =>
+    prevSelected.includes(atender)
+    ?prevSelected.filter ((a) => a !==atender)
+    :[...prevSelected, atender]
+    );
+  };
+
   return (
-  
-    <div className='selecao'>
-      <h3 className='titulo-cadastro3'>Selecione sua especialização</h3>
-      <div className='checkboxs'>
-        <div className='checks-organiza'>
+    <div className='selecao3'>
+      <h3 className='titulo-cadastro3'>Sou especializado..</h3>
+      <div className='div-atender2'>
 
-        <div className='check-esquerdo'>
+<div className="atender">
 
-          <div className='estlizacao-checkbox'>
-         <input type="checkbox" name="a" id="" className='checkBoxs' /><label htmlFor="" className='label1'>Relacionamento</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Depressão</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Angústia</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Ansiedade</label>
-          </div>
-        </div>
+      {atender.map((atender) => (
+        <span
+        key={atender}
+        className={`atender ${atenderSelecionado.includes(atender) ? 'selected' : ''}`}
+        onClick={() => selecione(atender)}
+        >
+          {atender}
+        </span>
+      ))}
+      </div>
+<div className="atender2">
 
-        <div className='check-direito'>
-
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Bullying</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Autoaceitação</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>LGBTQIA+</label>
-          </div>
-          <div className='estlizacao-checkbox'>
-          <input type="checkbox" name="a" id="" className='checkBoxs'/><label htmlFor="" className='label1'>Adolesência</label>
-          </div>
-        </div>
-        </div>
-          
+{atender2.map((atender2) => (
+  <span
+  key={atender2}
+  className={`atender2 ${atenderSelecionado.includes(atender2) ? 'selected' : ''}`}
+  onClick={() => selecione(atender2)}
+  >
+          {atender2}
+        </span>
+      ))}
+      </div>
+      </div>
   </div>
-  </div>
-  )
+  );
 }
 
 
-export default CadastroProfissionais4
+export default CadastroProfissionais3
