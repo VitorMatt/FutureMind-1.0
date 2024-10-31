@@ -11,16 +11,17 @@ function LandingPage() {
       <div className='container-maior'>
 
       <div className="info">
-           <h1 className="titulo">Um futuro para sua mente</h1>
+           {/* <h1 className="titulo">Um futuro para sua mente</h1>
            <p className="subtitulo">Moldamos nosso próprio futuro, quando transformamos nossa mente.
            Vamos cultivar esse futuro promissor juntos?</p>
            <Link to='/'>
            <button className="btn">Comece Já</button>
-           </Link>
+           </Link> */}
         </div>
 
         <div className="img2">
-           <img src='note1.svg' />
+           <img className='computer-inicio' src='computer.png' />
+           <img className='bola-inicio' src='bola-inicio.svg' />
         </div>
       </div>
         <div className='back'>
