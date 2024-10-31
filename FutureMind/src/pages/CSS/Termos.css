@@ -10,20 +10,13 @@
     border-top-left-radius: 100px;
     border-bottom-left-radius: 100px;
     border: none;
-    background-color: #5a789f;
-    color: #ffff;
+    transition: 1s;
+    background-color: #cad7eb;
+    color: #5a789f;
     padding: 5%;
     text-align: center;
     text-decoration: none;
 }
-
-.botaodecisao:hover{
-    transition: 1s;
-    background-color: #cad7eb;
-    color: #5a789f;
-}
-
-
 
 .botaodecisaodois{
     
@@ -32,19 +25,13 @@
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
     border: none;
-    background-color: #cad7eb;
-    color: #5a789f;
+    transition: 1s;
+    background-color: #5a789f;
+    color: #fff;
     padding: 5%;
     text-align: center;
     text-decoration: none;
 }
-
-.botaodecisaodois:hover{
-    transition: 1s;
-    background-color: #5a789f;
-    color: #ffff;
-}
-
 
 
 .divBotoes{

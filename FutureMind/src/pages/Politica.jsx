@@ -13,8 +13,8 @@ function politica() {
     
     <div className='divBotoes'>
 
-        <Link to = '/politica' className ='botaodecisao'>Política de Privacidade</Link>
-        <Link to = '/termos' className ='botaodecisaodois'>Termos de uso</Link>
+        <Link to = '/politica' className ='botaodecisaoo'>Política de Privacidade</Link>
+        <Link to = '/termos' className ='botaodecisaodoiss'>Termos de uso</Link>
         
       </div>
       

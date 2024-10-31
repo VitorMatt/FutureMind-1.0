@@ -124,3 +124,32 @@ font-size: 45px;
 .div_quatro_recursos h2{
     padding-top: 3.5%;
 }
+
+.botaodecisaoo{
+
+    width: 170%;
+    font-size: 140%;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border: none;
+    transition: 1s;
+    background-color: #5a789f;
+    color: #ffff;
+    padding: 5%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.botaodecisaodoiss{
+    
+    width: 150%;
+    font-size: 140%;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border: none;
+    background-color: #cad7eb;
+    color: #5a789f;
+    padding: 5%;
+    text-align: center;
+    text-decoration: none;
+}
