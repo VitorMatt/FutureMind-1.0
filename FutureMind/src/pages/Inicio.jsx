@@ -1,5 +1,8 @@
-import { Navigation, Pagination, A11y } from 'swiper/modules';
+import { useState } from 'react';
+import Navbar from '../components/Navbar';
+import './CSS/Inicio.css';
 
+import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -8,15 +11,32 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-import Navbar from '../components/Navbar'
-import './CSS/Inicio.css'
-
 function Inicio() {
 
-  const buscaUm = [{descricao: 'Autoaceitação', selecionado: false}, {descricao: 'Autoestima', selecionado: false}, {descricao: 'Depressão', selecionado: false}];
-  const buscaDois = [{descricao: 'Angústia', selecionado: false}, {descricao: 'Ansiedade', selecionado: false}, {descricao: 'LGBTQIA+', selecionado: false}];
-  const buscaTres = [{descricao: 'Autismo', selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}];
+  const [buscaUm, setBuscaUm] = useState([{descricao: 'Autoaceitação', selecionado: false}, {descricao: 'Autoestima', selecionado: false}, {descricao: 'Depressão', selecionado: false}]);
+  const [buscaDois, setBuscaDois] = useState([{descricao: 'Angústia', selecionado: false}, {descricao: 'Ansiedade', selecionado: false}, {descricao: 'LGBTQIA+', selecionado: false}]);
+  const [buscaTres, setBuscaTres] = useState([{descricao: 'Autismo', selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
 
+  const clickUm = (index) => {
+
+    const buscaUmAux = [...buscaUm];
+    buscaUmAux[index].selecionado = !buscaUmAux[index].selecionado;
+    setBuscaUm(buscaUmAux);
+  }
+
+  const clickDois = (index) => {
+
+    const buscaDoisAux = [...buscaDois];
+    buscaDoisAux[index].selecionado = !buscaDoisAux[index].selecionado;
+    setBuscaDois(buscaDoisAux);
+  }
+
+  const clickTres = (index) => {
+
+    const buscaTresAux = [...buscaTres];
+    buscaTresAux[index].selecionado = !buscaTresAux[index].selecionado;
+    setBuscaTres(buscaTresAux);
+  }
 
   return (
     <div className='inicio-container'>
@@ -35,9 +55,11 @@ function Inicio() {
               {
               buscaUm.map((item, index) => (
 
-                <button key={index} onClick={() => {!item.selecionado}} className={item.selecionado ? 'button-clicked' : ''}>
+                
+                <button key={index} onClick={() => clickUm(index)} className={item.selecionado ? 'button-clicked' : 'button'}>
                   {item.descricao}
                 </button>
+              
               ))
               }
             </div>
@@ -47,7 +69,7 @@ function Inicio() {
             {
               buscaDois.map((item, index) => (
 
-                <button key={index}>
+                <button key={index} onClick={() => clickDois(index)} className={item.selecionado ? 'button-clicked' : 'button'}>
                   {item.descricao}
                 </button>
               ))
@@ -59,7 +81,7 @@ function Inicio() {
             {
               buscaTres.map((item, index) => (
 
-                <button key={index}>
+                <button key={index} onClick={() => clickTres(index)} className={item.selecionado ? 'button-clicked' : 'button'}>
                   {item.descricao}
                 </button>
               ))

@@ -42,9 +42,12 @@
     gap: 10px;
 }
 
-.button-clicked {
+.busca-um .button-clicked,
+.busca-dois .button-clicked, 
+.busca-tres .button-clicked {
 
     background-color: var(--cor-1);
+    color: white;
 }
 
 .temas-busca button {
@@ -59,7 +62,6 @@
 
 .temas-busca button:hover {
 
-    background-color: #e7e7e7;
     transform: scale(1.05);
     transition: 0.5s;
 }
