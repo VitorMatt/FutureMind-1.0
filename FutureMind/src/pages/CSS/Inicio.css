@@ -169,10 +169,13 @@
 }
 
 .swiper-button-prev{
-    left: var(--swiper-navigation-sides-offset, 200px);
-
+    left: 200px;
+    right: auto;
+    color: white;
 }
 
 .swiper-button-next{
-    right: var(--swiper-navigation-sides-offset, 200px);
+    right: 200px;
+    left: auto;
+    color: white;
 }
