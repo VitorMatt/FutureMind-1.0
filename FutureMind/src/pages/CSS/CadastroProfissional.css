@@ -291,3 +291,27 @@ body{
     color: var(--cor-3);
     font-size: medium;
   }
+
+
+.olho{
+    cursor: pointer;
+    border: none;
+    background: none;
+    position: absolute;
+    right: 510px; /* Ajuste para alinhar o ícone à direita */
+    width: 4%;
+    height: 7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.olho-div{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.olho-div .inputCRP{
+    padding-right: 1.6%;
+}

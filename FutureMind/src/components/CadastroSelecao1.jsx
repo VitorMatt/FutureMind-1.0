@@ -10,18 +10,25 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
 
     const atender = ["Formado", "Estagiário" ]
     const [atenderSelecionado, setAtenderSelecionado] = useState([])
+    const [selected, setSelected] = useState(false);
   
     const selecione = (atender) =>{
-      setAtenderSelecionado((prevSelected) =>
-      prevSelected.includes(atender)
-      ?prevSelected.filter ((a) => a !==atender)
-      :[...prevSelected, atender]
-      );
-    }
-    if (atender == "formado") {
+      let i = [...atenderSelecionado]
+
+      if (atenderSelecionado.length==0 && selected==false) {
+
+        i.push(atender);
+      } else {
+
+        alert('selecione somente uma opção');
+      }
+
+      setSelected(!selected)
+      setAtenderSelecionado(i)
       
     }
-    ;
+
+
 
 
   return (

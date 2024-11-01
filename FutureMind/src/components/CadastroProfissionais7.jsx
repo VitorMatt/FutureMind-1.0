@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 function CadastroProfissionais7() {
     const [activeStep, setActiveStep] = useState(0);
+    const [olhosSenha, setOlhosSenha] = useState(false);
 
     const handleNext = () => {
         if (activeStep < 6) { // ajuste o número de passos, 6 neste caso
@@ -27,7 +28,10 @@ function CadastroProfissionais7() {
         <label htmlFor="">E-mail</label><input type="text" name="file"className="inputCRP" />
       </div>
       <div className="input-text">
-        <label htmlFor="">Crie sua Senha</label><input type="text" className="inputCRP"/>
+        <label htmlFor="">Crie sua Senha</label>
+        <div className='olho-div'>
+         <input type={olhosSenha ? 'text' : 'password'} className="inputCRP"/> <button onClick={() => {setOlhosSenha(!olhosSenha)}} className='olho'><img src={olhosSenha ? 'olhoAberto.svg'  : 'olhoFechado.svg'} alt="" /></button>
+        </div>
       </div>
         </div>
       </div>
