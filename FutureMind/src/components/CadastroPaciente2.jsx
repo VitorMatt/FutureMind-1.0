@@ -2,36 +2,19 @@ import './CSS/Profissionais3.css'
 import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
 function CadastroPaciente2() {
     return (
-        <div className="login-container">
-        <div className="Lado-esquerdo">
-        <HorizontalLinearAlternativeLabelStepper/>
-          <div className="input_principais">
-            <div className="inputsLogin">
-             <label htmlFor="">CPF</label> <input type="text" />
-            </div>
-  
-            <div className="inputsLogin">
-              <label htmlFor="" >Telefone</label><input type="text" />
-            </div>
-  
-            <div className='Proximo'>
-        <div className='botao1'>
+      <div className="selecao1">
+      
+      <h3 className='titulo-cadastro2'>Seus Dados..</h3>
+      <div className="checkboxs2">
 
-          <button className='proximo-estilizado'>Voltar</button>
-        </div>
-        <div className='botao2'>
-
-          <button className='proximo-estilizado'>Próximo</button>
-        </div>
+    <div className="input-text">
+      <label htmlFor="">CPF</label><input type="text" name="file"className="inputCRP" />
+    </div>
+    <div className="input-text">
+      <label htmlFor="">Telefone</label><input type="text" className="inputCRP"/>
+    </div>
       </div>
-          </div>
-        </div>
-        <div className="lado-Direito">
-          <div className="arvore">
-          <img src='logoLogin.png' alt="" className='arvore-estilizada'/>
-          </div>
-        </div>
-      </div>
+    </div>
     )
   }
   

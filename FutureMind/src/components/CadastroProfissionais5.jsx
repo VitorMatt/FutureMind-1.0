@@ -1,19 +1,19 @@
 
 function CadastroProfissionais5() {
     return (
-        <div className="selecao">
-          <div className="input_principais">
-            <div className="inputsLogin">
-             <label htmlFor="" className='label1'>Nome Completo</label> <input type="text" />
-            </div>
-  
-            <div className="inputsLogin">
-              <label htmlFor="" className='label2'>Idade</label><input type="text" />
-            </div>
-  
-          </div>
+      <div className="selecao1">
+      
+      <h3 className='titulo-cadastro2'>Seus Dados..</h3>
+      <div className="checkboxs2">
 
-        </div>
+    <div className="input-text">
+      <label htmlFor="">Nome Completo</label><input type="text" name="file"className="inputCRP" />
+    </div>
+    <div className="input-text">
+      <label htmlFor="">Idade</label><input type="text" className="inputCRP"/>
+    </div>
+      </div>
+    </div>
     )
   }
   

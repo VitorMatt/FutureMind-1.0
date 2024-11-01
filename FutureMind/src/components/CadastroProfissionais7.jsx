@@ -1,5 +1,5 @@
 import './CSS/Profissionais3.css'
-import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
+import { Link } from 'react-router-dom'
 import { useState } from 'react';
 
 function CadastroProfissionais7() {
@@ -18,23 +18,19 @@ function CadastroProfissionais7() {
     };
 
     return (
-        <div className="selecao">
-                <div className="input_principais">
-                    <div className="inputsLogin">
-                        <label htmlFor="" className='label1'>E-mail</label>
-                        <input type="text" />
-                    </div>
-
-                    <div className="inputsLogin">
-                        <label htmlFor="" className='label2'>Crie sua senha</label>
-                        <input type="text" />
-                    </div>
-
-    
-                </div>
-
-
+        <div className="selecao1">
+      
+        <h3 className='titulo-cadastro2'>Seus Dados..</h3>
+        <div className="checkboxs2">
+  
+      <div className="input-text">
+        <label htmlFor="">E-mail</label><input type="text" name="file"className="inputCRP" />
+      </div>
+      <div className="input-text">
+        <label htmlFor="">Crie sua Senha</label><input type="text" className="inputCRP"/>
+      </div>
         </div>
+      </div>
     );
 }
 

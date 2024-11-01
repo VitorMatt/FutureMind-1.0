@@ -14,8 +14,8 @@ function Login() {
             <label htmlFor="" >Senha</label><input type="text" />
           </div>
 
-          <div className="Proximo">
-            <button className="proximo-estilizado">Entrar</button>
+          <div className="botao-login">
+            <button className="botao-estilizado">Entrar</button>
           </div>
         </div>
       </div>

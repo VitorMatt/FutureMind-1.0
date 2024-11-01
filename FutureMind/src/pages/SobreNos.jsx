@@ -6,7 +6,7 @@ function SobreNos() {
   const textarea = document.getElementById('expandingTextarea');
 
 textarea.addEventListener('input', () => {
-    textarea.style.height = 'auto'; // Reseta a altura para recalcular
+    textarea.style.height = 'auto'; 
     textarea.style.height = `${textarea.scrollHeight}px`; // Ajusta a altura com base no scrollHeight
     
     // Verifica se o textarea ultrapassa a altura máxima
@@ -81,7 +81,7 @@ textarea.addEventListener('input', () => {
           <div className='dadosSugestoes'>
             <h1>Sugestão:</h1>
             <p>Enter your mensage</p>
-            <textarea id="expandingTextarea" placeholder="Digite aqui..."></textarea>
+            <textarea id="expandingTextarea" placeholder="Digite aqui..."></textarea> 
             <button className='botaoSugestao'>Enviar</button>
           </div>
         </div>
