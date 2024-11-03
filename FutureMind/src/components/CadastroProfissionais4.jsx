@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import'./CSS/CadastroProfissionais1.css'
 
 function CadastroProfissionais3() {
   const atender = ["Adolescência", "Depressão","Angústia","Ansiedade" ]

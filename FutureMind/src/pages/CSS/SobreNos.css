@@ -185,7 +185,7 @@
     max-height: 5px;  /* Altura máxima permitida */
     overflow-y: auto;   /* Barra de rolagem apenas quando necessário */
     resize: none;       /* Desativa o redimensionamento manual */
-    padding: 1%;
+    padding: 1.5%;
     font-size: 130%;
 }
 
