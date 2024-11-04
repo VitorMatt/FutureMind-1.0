@@ -24,11 +24,18 @@ function Footer() {
       <div className='empresa-footer'>
         <p className='titulo3-footer'><strong>Empresa</strong></p>
         <div className='subtitulo-footer'>
-          <p>Segurança</p>
-          <p>Sobre Nós</p>
-          <p>Privacidade</p>
-          <p>Termos</p>
-          <p>Status</p>
+          <div className='div-sub'>
+            <Link to="/politica" className='sub-link'>Segurança</Link>
+          </div>
+          <div className='div-sub'>
+            <Link to="/sobrenos" className='sub-link'>Sobre Nós</Link>
+          </div>
+          <div className='div-sub'>
+            <Link to="/politica" className='sub-link'>Privacidade</Link>
+          </div>
+          <div>
+            <Link to="/termos" className='sub-link'>Termos</Link>
+          </div>
         </div>
       </div>
 
