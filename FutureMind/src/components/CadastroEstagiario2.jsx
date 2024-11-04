@@ -1,4 +1,3 @@
-import './CSS/Estagiario.css'
 import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
 function CadastroEstagiario2() {
     return (

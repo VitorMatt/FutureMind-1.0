@@ -1,0 +1,83 @@
+:root{
+    --cor-1: #5A789F;
+    --cor-2: #CAD7EB;
+    --cor-3: #000;
+    --cor-4: #012A4A;
+    --cor-5: #014F86;
+    --cor-6: #DBEEF4;
+    --cor-7: #013A63;
+    --cor-8: #77A7FF;
+}
+
+.footer{
+    display: flex;
+    margin-top: 10%;
+    border-top: 3px solid #013a633b;
+    gap: 5%;
+}
+
+.links-footer{
+    padding-left: 10%;
+    margin-top: -3%;
+}
+
+.foto-footer{
+    /* position: absolute; */
+    width: fit-content;
+}
+
+.sub-links-footer{
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 5%;
+    padding-left: 14%;
+    margin-top: -40%;
+}
+
+.sub-links-footer img:hover{
+    cursor: pointer;
+}
+
+.sub-links-footer img{
+    width: 90%;
+}
+
+.direitos-footer{
+    width: 60%;
+    text-align: justify;
+    color: var(--cor-1);
+    font-size: 150%;
+    padding-left: 15%;
+}
+
+.baixar-footer{
+    color: var(--cor-1);
+}
+
+.subtitulo-footer{
+    font-size: 140%;
+}
+
+.titulo-footer{
+    padding-top: 56%;
+    font-size: 180%;
+}
+
+.para-footer{
+    color: var(--cor-1);
+}
+
+.titulo2-footer{
+    padding-top: 39%;
+    font-size: 180%;
+}
+
+.empresa-footer{
+    color: var(--cor-1);
+}
+
+.titulo3-footer{
+    padding-top: 72%;
+    font-size: 180%;
+}

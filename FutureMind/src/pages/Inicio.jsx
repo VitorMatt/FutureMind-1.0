@@ -37,6 +37,7 @@ function Inicio() {
     buscaTresAux[index].selecionado = !buscaTresAux[index].selecionado;
     setBuscaTres(buscaTresAux);
   }
+  
 
   return (
     <div className='inicio-container'>
@@ -162,7 +163,57 @@ function Inicio() {
               Adultos
             </h1>
           </div>
-         <div style={{width: '100%'}}>
+          <div style={{width: '100%'}}>
+
+<Swiper
+      // instalar módulos do Swiper
+      modules={[Navigation, Pagination, A11y]}
+      spaceBetween={50}
+      slidesPerView={1}
+      navigation
+      pagination={{ clickable: true }}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
+  >
+
+<SwiperSlide>
+
+<div className='profissional'>
+<h1>PROFISSIONAL 1</h1>
+
+</div>
+</SwiperSlide>
+<SwiperSlide>
+
+<div className='profissional'>
+<h1>PROFISSIONAL 2</h1>
+
+</div>
+</SwiperSlide>
+<SwiperSlide>
+<div className="profissional">
+  <h1>PROFISSIONAL 3</h1>
+</div>
+</SwiperSlide>
+<SwiperSlide>
+<div className="profissional">
+  <h1>PROFISSIONAL 4</h1>
+</div>
+</SwiperSlide>
+<SwiperSlide>
+<div className="profissional">
+  <h1>PROFISSIONAL 5</h1>
+</div>
+</SwiperSlide>
+</Swiper>
+</div>
+
+        <div className='titulos'>
+            <h1>
+              Adultos
+            </h1>
+          </div>
+          <div style={{width: '100%'}}>
 
           <Swiper
                 // instalar módulos do Swiper
@@ -189,6 +240,21 @@ function Inicio() {
           
         </div>
         </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 3</h1>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 4</h1>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 5</h1>
+          </div>
+        </SwiperSlide>
       </Swiper>
         </div>
 
@@ -199,33 +265,48 @@ function Inicio() {
           </div>
           <div style={{width: '100%'}}>
 
-<Swiper
-      // instalar módulos do Swiper
-      modules={[Navigation, Pagination, A11y]}
-      spaceBetween={50}
-      slidesPerView={1}
-      navigation
-      pagination={{ clickable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
-  >
+          <Swiper
+                // instalar módulos do Swiper
+                modules={[Navigation, Pagination, A11y]}
+                spaceBetween={50}
+                slidesPerView={1}
+                navigation
+                pagination={{ clickable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+            >
 
-<SwiperSlide>
+        <SwiperSlide>
 
-<div className='profissional'>
-<h1>PROFISSIONAL 1</h1>
+        <div className='profissional'>
+          <h1>PROFISSIONAL 1</h1>
+          
+        </div>
+        </SwiperSlide>
+        <SwiperSlide>
 
-</div>
-</SwiperSlide>
-<SwiperSlide>
-
-<div className='profissional'>
-<h1>PROFISSIONAL 2</h1>
-
-</div>
-</SwiperSlide>
-</Swiper>
-</div>
+        <div className='profissional'>
+          <h1>PROFISSIONAL 2</h1>
+          
+        </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 3</h1>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 4</h1>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 5</h1>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+        </div>
 
         <div className='titulos'>
             <h1>
@@ -234,69 +315,48 @@ function Inicio() {
           </div>
           <div style={{width: '100%'}}>
 
-<Swiper
-      // instalar módulos do Swiper
-      modules={[Navigation, Pagination, A11y]}
-      spaceBetween={50}
-      slidesPerView={1}
-      navigation
-      pagination={{ clickable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
-  >
+          <Swiper
+                // instalar módulos do Swiper
+                modules={[Navigation, Pagination, A11y]}
+                spaceBetween={50}
+                slidesPerView={1}
+                navigation
+                pagination={{ clickable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+            >
 
-<SwiperSlide>
+        <SwiperSlide>
 
-<div className='profissional'>
-<h1>PROFISSIONAL 1</h1>
+        <div className='profissional'>
+          <h1>PROFISSIONAL 1</h1>
+          
+        </div>
+        </SwiperSlide>
+        <SwiperSlide>
 
-</div>
-</SwiperSlide>
-<SwiperSlide>
-
-<div className='profissional'>
-<h1>PROFISSIONAL 2</h1>
-
-</div>
-</SwiperSlide>
-</Swiper>
-</div>
-
-        <div className='titulos'>
-            <h1>
-              Adultos
-            </h1>
+        <div className='profissional'>
+          <h1>PROFISSIONAL 2</h1>
+          
+        </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 3</h1>
           </div>
-          <div style={{width: '100%'}}>
-
-<Swiper
-      // instalar módulos do Swiper
-      modules={[Navigation, Pagination, A11y]}
-      spaceBetween={50}
-      slidesPerView={1}
-      navigation
-      pagination={{ clickable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
-  >
-
-<SwiperSlide>
-
-<div className='profissional'>
-<h1>PROFISSIONAL 1</h1>
-
-</div>
-</SwiperSlide>
-<SwiperSlide>
-
-<div className='profissional'>
-<h1>PROFISSIONAL 2</h1>
-
-</div>
-</SwiperSlide>
-</Swiper>
-</div>
-        
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 4</h1>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 5</h1>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+        </div>
         
         
         </div>  

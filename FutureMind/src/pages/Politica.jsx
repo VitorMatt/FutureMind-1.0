@@ -8,7 +8,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function politica() {
   return (
-    <div>
+    <div className='body-politica'>
     <Navbar />
     
     <div className='divBotoes'>
