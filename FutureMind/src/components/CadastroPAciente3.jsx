@@ -1,40 +1,41 @@
 import './CSS/Profissionais3.css'
-import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
-function CadastroPAciente3() {
+import { Link } from 'react-router-dom'
+import { useState } from 'react';
+
+function CadastroPaciente3() {
+    const [activeStep, setActiveStep] = useState(0);
+    const [olhosSenha, setOlhosSenha] = useState(false);
+    
+    const handleNext = () => {
+        if (activeStep < 6) { // ajuste o número de passos, 6 neste caso
+            setActiveStep((prevStep) => prevStep + 1);
+        }
+    };
+
+    const handleBack = () => {
+        if (activeStep > 0) {
+            setActiveStep((prevStep) => prevStep - 1);
+        }
+    };
+
     return (
-        <div className="login-container">
-        <div className="Lado-esquerdo">
-        <HorizontalLinearAlternativeLabelStepper/>
-          <div className="input_principais">
-            <div className="inputsLogin">
-             <label htmlFor="">E-mail</label> <input type="text" />
-            </div>
+        <div className="selecao1">
+      
+        <h3 className='titulo-cadastro2'>Seus Dados..</h3>
+        <div className="checkboxs2">
   
-            <div className="inputsLogin">
-              <label htmlFor="" >Crie sua senha</label><input type="text" />
-            </div>
-  
-            <div className='Proximo'>
-        <div className='botao1'>
-
-          <button className='proximo-estilizado'>Voltar</button>
-        </div>
-        <div className='botao2'>
-
-          <button className='proximo-estilizado'>Próximo</button>
+      <div className="input-text">
+        <label htmlFor="">E-mail</label><input type="text" name="file"className="inputCRP" />
+      </div>
+      <div className="input-text">
+        <label htmlFor="">Crie sua Senha</label>
+        <div className='olho-div'>
+         <input type={olhosSenha ? 'text' : 'password'} className="inputCRP"/> <button onClick={() => {setOlhosSenha(!olhosSenha)}} className='olho'><img src={olhosSenha ? 'olhoAberto.svg'  : 'olhoFechado.svg'} alt="" /></button>
         </div>
       </div>
-          </div>
-        </div>
-        <div className="lado-Direito">
-          <div className="arvore">
-          <img src='logoLogin.png' alt="" className='arvore-estilizada'/>
-          </div>
         </div>
       </div>
-    )
-  }
-  
-  
-  
-  export default CadastroPAciente3
+    );
+}
+
+export default CadastroPaciente3;

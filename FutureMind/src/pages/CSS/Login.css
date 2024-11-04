@@ -1,6 +1,5 @@
-/* *{
+*{
     font-family: 'Poppins' , sans-serif;
-
 }
 
 :root{
@@ -41,63 +40,58 @@ body{
     justify-content:flex-end;
     align-items: flex-end;
 }
-.entrar{
-    width: 30%;
-    padding: 5%;
-    display: flex;
-    font-size: 130%;
-    justify-content: end;
-    align-items: flex-end;
-}
 
-.entrar-estilizado{
-    font-size: 150%;
-    padding: 1%;
-    border-radius: 13px;
-    border: 1px solid var(--cor-2);
-    color: var(--cor-1);
-}
 
-.titulo-Cadastro{
+.titulo-login{
     font-size: 300%;
-
+    padding-right: 15%;
     color: #ffff;
 }
 
 
 
-.Proximo{
-    width: 30%;
-    padding: 10%;
+.botao-login{
+    width: 20%;
     display: flex;
-    font-size: 130%;
+    font-size: 150%;
 }
 
-.proximo-estilizado{
-    font-size: 60%;
-    padding: 1%;
+.botao-estilizado{
+    width: 500%;
+    font-size: 80%;
+    padding:5%;
     border-radius: 13px;
     border: 1px solid var(--cor-2);
     color: var(--cor-1);
 }
 
+.botao-estilizado:hover{
+    transition: 1s;
+    transform: scale(1.1);
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
 .inputsLogin{
     display: flex;
     flex-direction: column;
 }
 
 .inputsLogin input{
-    margin-bottom: 20%;
-    background: none;
+    width: 250%;
+    padding: 8%;
+    border-radius: 10px;
     border: none;
-    border-bottom: 2px solid white;
-    width: 200%;
-    color: #CAD7EB;
+    background-color: var(--cor-2);
+    opacity: 40%;
+    color: var(--cor-3);
+    font-size: medium;
 }
 
 .inputsLogin label{
     width: 20%;
-    margin-bottom: 20%;
+    margin-bottom: 10%;
 }
 
 .input_principais{
@@ -112,4 +106,56 @@ body{
     align-items: flex-start;
     color: #ffff;
     margin-top: 2%;
-} */
+}
+
+.link-para-cadastro{
+    color: #ffff;
+    font-size: 60%;
+}
+
+.label-Login{
+    font-size: 60%;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    width: 1.500rem;
+    height: 1.500rem;
+    background-color: #fff;
+    border: 0.125rem solid #ccc;
+    border-radius: 0.25rem;
+  }
+
+input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: center;
+    transition: 0.125s transform ease-in-out;
+    box-shadow: inset 1rem 1rem #fff;
+}
+
+  input[type="checkbox"]:checked {
+    background-color: var(--cor-5);
+    border-color: var(--cor-5);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+input[type="checkbox"]:focus {
+    border-color: var(--cor-5);
+}
+
+.caminho-cadastro{
+    margin-top: 4%;
+    margin-bottom: 6%;
+}

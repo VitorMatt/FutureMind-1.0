@@ -1,22 +1,8 @@
 import './CSS/SobreNos.css'
 import NavBar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 function SobreNos() {
-
-  const textarea = document.getElementById('expandingTextarea');
-
-textarea.addEventListener('input', () => {
-    textarea.style.height = 'auto'; // Reseta a altura para recalcular
-    textarea.style.height = `${textarea.scrollHeight}px`; // Ajusta a altura com base no scrollHeight
-    
-    // Verifica se o textarea ultrapassa a altura máxima
-    if (textarea.scrollHeight > 5) {
-        textarea.style.overflowY = 'auto'; // Mostra a barra de rolagem
-    } else {
-        textarea.style.overflowY = 'hidden'; // Oculta a barra de rolagem
-    }
-});
-
 
   return (
     <div className='sobreNos-container'>
@@ -80,11 +66,13 @@ textarea.addEventListener('input', () => {
 
           <div className='dadosSugestoes'>
             <h1>Sugestão:</h1>
-            <p>Enter your mensage</p>
-            <textarea id="expandingTextarea" placeholder="Digite aqui..."></textarea>
+            <p>Ajude-nos a tornar sua experiência ainda melhor. Deixe sua sugestão!</p>
+            <textarea id="expandingTextarea" placeholder="Digite aqui sua sugestão..."></textarea> 
             <button className='botaoSugestao'>Enviar</button>
           </div>
         </div>
+
+        <Footer />
 
     </div>
   )

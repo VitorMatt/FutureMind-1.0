@@ -10,10 +10,12 @@ import CadastroProfissionais3 from '../components/CadastroProfissionais3';
 import CadastroProfissionais5 from '../components/CadastroProfissionais5';
 import CadastroProfissionais6 from '../components/CadastroProfissinais6';
 import CadastroProfissionais7 from '../components/CadastroProfissionais7';
+import { useNavigate } from 'react-router-dom';
 
 function CadastroProfissinal() {
 
   const {pageCadastro, setPageCadastro} = useContext(GlobalContext);
+  const navigate = useNavigate()
 
   const [activeStep, setActiveStep] = useState(0);
   
@@ -48,6 +50,9 @@ function CadastroProfissinal() {
       }
     }
 
+    const handleFinish = () => {
+      navigate('/login'); 
+    };
 
   return (
     <div className='escolhaCadastro-container'>
@@ -96,6 +101,10 @@ function CadastroProfissinal() {
                <button 
                       className='proximo-estilizado'
                       onClick={
+                        activeStep==6
+                        ?
+                        handleFinish
+                        :
                         activeStep==2 
                         ?
                         (
@@ -105,7 +114,7 @@ function CadastroProfissinal() {
                         :
                         handleNext
                       } 
-                      disabled={activeStep === 6}>
+                      >
                 {
                   activeStep==6
                   ?

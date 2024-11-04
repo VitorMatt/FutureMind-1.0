@@ -8,13 +8,13 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function politica() {
   return (
-    <div>
+    <div className='body-politica'>
     <Navbar />
     
     <div className='divBotoes'>
 
-        <Link to = '/politica' className ='botaodecisao'>Política de Privacidade</Link>
-        <Link to = '/termos' className ='botaodecisaodois'>Termos de uso</Link>
+        <Link to = '/politica' className ='botaodecisaoo'>Política de Privacidade</Link>
+        <Link to = '/termos' className ='botaodecisaodoiss'>Termos de uso</Link>
         
       </div>
       
