@@ -255,6 +255,7 @@ body{
 .atender.selected {
     background-color:#89c2d9 ;
     color: white;
+
 }
 .atender2 {
     font-size: 150%;
@@ -270,6 +271,7 @@ body{
 .atender2.selected {
     background-color: #89c2d9;
     color: white;
+    cursor: pointer;
 }
 
 .div-atender2{
@@ -278,10 +280,13 @@ body{
     padding-top: 2%;
 }
 
+.palavras{
+    cursor: pointer;
+}
 
 
 
-  .inputTexts{
+.inputTexts{
     width:70%;
     padding: 1.6%;
     border-radius: 10px;
@@ -290,7 +295,7 @@ body{
     opacity: 40%;
     color: var(--cor-3);
     font-size: medium;
-  }
+}
 
 
 .olho{
@@ -299,7 +304,7 @@ body{
     background: none;
     position: absolute;
     right: 510px; /* Ajuste para alinhar o ícone à direita */
-    width: 4%;
+    width: 3%;
     height: 7%;
     display: flex;
     align-items: center;
@@ -314,4 +319,70 @@ body{
 
 .olho-div .inputCRP{
     padding-right: 1.6%;
+}
+
+.olho-div .inputSenha{
+    width: 100%;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    position:absolute;
+    width: 1.400rem;
+    height: 1.400rem;
+    background-color: #fff;
+    border: 0.125rem solid #ccc;
+    border-radius: 0.25rem;
+  }
+
+input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: center;
+    transition: 0.125s transform ease-in-out;
+    box-shadow: inset 1rem 1rem #fff;
+}
+
+  input[type="checkbox"]:checked {
+    background-color: #89c2d9;
+    border-color: #89c2d9;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+input[type="checkbox"]:focus {
+    border-color: #89c2d9;
+}
+
+
+
+.label-cadastro{
+    font-size: 130%;
+    padding-left: 4%;
+}
+
+.caminho-login{
+    padding-left: 5%;
+    width: 100%;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    margin-top: 1%;
+}
+
+
+.link-para-termos{
+    color:#89c2d9 ;
+    font-size: 130%;
+    text-decoration: none;
+    padding-left: 0.5%;
 }

@@ -78,16 +78,7 @@ body{
     flex-direction: column;
 }
 
-.inputsLogin input{
-    width: 250%;
-    padding: 8%;
-    border-radius: 10px;
-    border: none;
-    background-color: var(--cor-2);
-    opacity: 40%;
-    color: var(--cor-3);
-    font-size: medium;
-}
+
 
 .inputsLogin label{
     width: 20%;
@@ -108,54 +99,47 @@ body{
     margin-top: 2%;
 }
 
+.label-login{
+    color: #ffff;
+    font-size: 90%;
+}
 .link-para-cadastro{
     color: #ffff;
-    font-size: 60%;
-}
-
-.label-Login{
-    font-size: 60%;
-}
-
-input[type="checkbox"] {
-    appearance: none;
-    position: relative;
-    width: 1.500rem;
-    height: 1.500rem;
-    background-color: #fff;
-    border: 0.125rem solid #ccc;
-    border-radius: 0.25rem;
-  }
-
-input[type="checkbox"]::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0.75rem;
-    height: 0.75rem;
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-    transform: translate(-50%, -50%) scale(0);
-    transform-origin: center;
-    transition: 0.125s transform ease-in-out;
-    box-shadow: inset 1rem 1rem #fff;
-}
-
-  input[type="checkbox"]:checked {
-    background-color: var(--cor-5);
-    border-color: var(--cor-5);
-}
-
-input[type="checkbox"]:checked::before {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-
-input[type="checkbox"]:focus {
-    border-color: var(--cor-5);
+    font-size: 90%;
 }
 
 .caminho-cadastro{
     margin-top: 4%;
     margin-bottom: 6%;
+}
+
+.inputsLogin input {
+    width: 100%; /* Ambos os inputs ocuparão a largura total do contêiner */
+    padding: 8%;
+    padding-right: 40px; /* Espaço para o botão do olho */
+    border-radius: 10px;
+    border: none;
+    background-color: var(--cor-2);
+    opacity: 0.4;
+    color: var(--cor-3);
+    font-size: medium;
+    box-sizing: border-box; /* Inclui o padding na largura */
+}
+
+.olho-div {
+    position: relative;
+    width: 100%;
+}
+
+.olho {
+    position: absolute;
+    right: 10px; /* Alinhado à direita dentro do campo */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
 }

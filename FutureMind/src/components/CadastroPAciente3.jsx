@@ -5,7 +5,8 @@ import { useState } from 'react';
 function CadastroPaciente3() {
     const [activeStep, setActiveStep] = useState(0);
     const [olhosSenha, setOlhosSenha] = useState(false);
-    
+    const [senha,setSenha] = useState('')
+
     const handleNext = () => {
         if (activeStep < 6) { // ajuste o número de passos, 6 neste caso
             setActiveStep((prevStep) => prevStep + 1);
@@ -30,9 +31,20 @@ function CadastroPaciente3() {
       <div className="input-text">
         <label htmlFor="">Crie sua Senha</label>
         <div className='olho-div'>
-         <input type={olhosSenha ? 'text' : 'password'} className="inputCRP"/> <button onClick={() => {setOlhosSenha(!olhosSenha)}} className='olho'><img src={olhosSenha ? 'olhoAberto.svg'  : 'olhoFechado.svg'} alt="" /></button>
+        <input value={senha} onChange={(e) => { setSenha(e.target.value) }} type={olhosSenha ? 'text' : 'password'} className="inputCRP"/> <button onClick={() => {setOlhosSenha(!olhosSenha)}} className='olho'>
+          {
+            (senha.split('').length>0) &&
+            <img src={olhosSenha ? 'olhoAberto.svg'  : 'olhoFechado.svg'} alt="" />
+          }
+          </button>
         </div>
       </div>
+        </div>
+        <div className='caminho-login'>
+          <input type="checkbox" name="" id="" />
+          
+         <label htmlFor="" className='label-cadastro'>Aceitar </label><Link to='/termos' className='link-para-termos'>Termos</Link>
+            
         </div>
       </div>
     );

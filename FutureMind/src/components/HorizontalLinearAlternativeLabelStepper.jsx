@@ -12,7 +12,6 @@ const steps = [
   '',
   '',
   '',
-  '',
 ];
 
 // Personalizando o conector para alterar a cor da linha entre os passos

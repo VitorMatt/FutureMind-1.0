@@ -23,7 +23,7 @@ function CadastroProfissionais3() {
       {atender.map((atender) => (
         <span
         key={atender}
-        className={`atender ${atenderSelecionado.includes(atender) ? 'selected' : ''}`}
+        className={`atender ${atenderSelecionado.includes(atender) ? 'selected' : 'palavras'}`}
         onClick={() => selecione(atender)}
         >
           {atender}
@@ -35,7 +35,7 @@ function CadastroProfissionais3() {
 {atender2.map((atender2) => (
   <span
   key={atender2}
-  className={`atender2 ${atenderSelecionado.includes(atender2) ? 'selected' : ''}`}
+  className={`atender2 ${atenderSelecionado.includes(atender2) ? 'selected' : 'palavras'}`}
   onClick={() => selecione(atender2)}
   >
           {atender2}

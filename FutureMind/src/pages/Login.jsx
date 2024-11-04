@@ -1,7 +1,12 @@
 import './CSS/Login.css'
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 function Login() {
+
+  const [senha, setSenha] = useState('');
+  const [olhosSenha, setOlhosSenha] = useState(false);
+
   return (
     <div className="login-container">
       <div className="Lado-esquerdo">
@@ -12,11 +17,21 @@ function Login() {
           </div>
 
           <div className="inputsLogin">
-            <label htmlFor="" >Senha</label><input type="text" />
+            <label htmlFor="" >Senha</label>
+            <div className="olho-div">
+              <input type={olhosSenha ? 'text' : 'password'} />
+            <button onClick={() => {setOlhosSenha(!olhosSenha)}} className='olho'>
+          {
+            (senha.split('').length>0) &&
+            <img src={olhosSenha ? 'olhoAberto.svg'  : 'olhoFechado.svg'} alt="" />
+          }
+          </button>
+            
+          </div>
           </div>
 
         <div className='caminho-cadastro'>
-          <input type="checkbox" name="" id="" /><label htmlFor="" className='label-Login'>Possui Cadastro?</label><Link to="/Cadastro-profissional" className='link-para-cadastro'>Aperte aqui</Link>
+         <label htmlFor="" className='label-Login'>Possui Cadastro?</label><Link to="/cadastro" className='link-para-cadastro'>Aperte aqui</Link>
         </div>
           <div className="botao-login">
             <button className="botao-estilizado">Entrar</button>

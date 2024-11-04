@@ -20,7 +20,7 @@ function CadastroProfissinal() {
   const [activeStep, setActiveStep] = useState(0);
   
     const handleNext = () => {
-        if (activeStep < 6) {
+        if (activeStep < 5) {
             setActiveStep((prevStep) => prevStep + 1);
         }
     };
@@ -62,29 +62,25 @@ function CadastroProfissinal() {
         {
           activeStep==0
           ?
-          <CadastroSelecao1 />
+          <CadastroFormado />
           :
           activeStep==1
           ?
-          <CadastroFormado />
+          <CadastroProfissionais3 />
           :
           activeStep==2
           ?
-          <CadastroProfissionais3 />
+          <CadastroProfissionais4 />
           :
           activeStep==3
           ?
-          <CadastroProfissionais4 />
+          <CadastroProfissionais5 />
           :
           activeStep==4
           ?
-          <CadastroProfissionais5 />
-          :
-          activeStep==5
-          ?
           <CadastroProfissionais6 />
           :
-          activeStep==6
+          activeStep==5
           ?
           <CadastroProfissionais7 />
           :
@@ -101,7 +97,7 @@ function CadastroProfissinal() {
                <button 
                       className='proximo-estilizado'
                       onClick={
-                        activeStep==6
+                        activeStep==5
                         ?
                         handleFinish
                         :
@@ -116,7 +112,7 @@ function CadastroProfissinal() {
                       } 
                       >
                 {
-                  activeStep==6
+                  activeStep==5
                   ?
                   <div>
                   Concluir
