@@ -18,7 +18,7 @@
 
 .links-footer{
     padding-left: 10%;
-    margin-top: -3%;
+    margin-top: -4.4%;
 }
 
 .foto-footer{
@@ -59,8 +59,19 @@
     font-size: 140%;
 }
 
+.sub-link{
+    text-decoration: none;
+    color: var(--cor-1);
+    font-size: 110%;
+}
+
+.div-sub{
+    padding-bottom: 18%;
+    margin-top: -3%;
+}
+
 .titulo-footer{
-    padding-top: 56%;
+    padding-top: 39%;
     font-size: 180%;
 }
 
@@ -69,7 +80,7 @@
 }
 
 .titulo2-footer{
-    padding-top: 39%;
+    padding-top: 27%;
     font-size: 180%;
 }
 
@@ -78,6 +89,6 @@
 }
 
 .titulo3-footer{
-    padding-top: 72%;
+    padding-top: 49%;
     font-size: 180%;
 }

@@ -5,11 +5,26 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Footer from '../components/Footer';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function Termos() {
   return (
       <div className='body-termos'>
         <Navbar />
+        <ScrollToTop />
+
         <div className='divBotoes'>
           <Link to = '/politica'className='botaodecisao'>Política de Privacidade</Link>
           <Link to = '/termos'className='botaodecisaodois'>Termos de uso</Link>
@@ -163,6 +178,8 @@ function Termos() {
           </AccordionDetails>
         </Accordion>
       </div>
+
+      <Footer />
  
     </div>
   )

@@ -1,12 +1,25 @@
 import './CSS/SobreNos.css'
 import NavBar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function SobreNos() {
 
   return (
     <div className='sobreNos-container'>
       <NavBar />
+      <ScrollToTop />
 
       <div className='conteudoo'>
         <img src="img.png" className='img'/>
@@ -28,9 +41,9 @@ function SobreNos() {
       <div className='conteudoo2'>
         <div className='descricaoFundacao'>
           <h1>Fundação:</h1>
-          <p>A FutureMind é uma plataforma que oferece acesso acessível e de qualidade a sessões de psicanálise. Ela conecta indivíduos que buscam apoio psicológico a recém-formados 
-             em psicologia, permitindo que esses profissionais em início de carreira ganham experiência prática enquanto cumprem os requisitos de estágio, sob supervisão de psicólogos 
-             experientes.
+          <p>A FutureMind foi fundada com o propósito de oferecer uma abordagem inovadora e centrada no bem-estar mental. Inspirada pela visão de um futuro onde a saúde emocional é 
+             acessível a todos, a empresa reúne terapeutas qualificados e metodologias modernas para ajudar pessoas a enfrentarem desafios pessoais e emocionais. A FutureMind acredita 
+             que a transformação começa pelo autoconhecimento, promovendo um espaço seguro e acolhedor para o desenvolvimento de cada cliente.
           </p>
         </div>
         <img src="ArvoreS.svg" className='arvoreSobre'/>
