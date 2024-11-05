@@ -9,6 +9,7 @@ import CadastroPaciente2 from '../components/CadastroPaciente2';
 import CadastroPaciente3 from '../components/CadastroPaciente3';
 import Stepper from '../components/StepperComponent';
 import { useNavigate } from 'react-router-dom';
+import { SwiperSlide } from 'swiper/react';
 
 function CadastroPaciente() {
   const navigate = useNavigate(); // Mover o useNavigate para dentro do componente
