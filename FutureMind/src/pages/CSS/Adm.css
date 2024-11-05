@@ -1,5 +1,10 @@
-.h1_Profissionais_adm{
+.bory-container{
+  height: 100vh;
+  width: 100%;
+}
 
+.h1_Profissionais_adm{
+  padding-top: 5%;
   padding-left: 2.3%;
   font-size: 3em;
   color: #5A789F; 
@@ -17,7 +22,7 @@
 
   display: flex;
   width: 100vw;
-  height: 25vh;
+  height: 27vh;
   padding-top: 3%;
   align-items: center;
   justify-content: space-evenly;
@@ -44,6 +49,45 @@
   width: 40%;
 }
 
+.div_um_interna_profissional img{
+
+   width: 80%;
+
+}
+
 .div_dois_interna_profissional{
   width: 60%;
+}
+
+
+.p_padrao{
+
+  font-weight: bold;
+}
+
+.botoes_adm{
+
+  font-size: 130%;
+  width: 70%;
+  padding: 2%;
+  border-radius: 13px;
+  border: 1px solid var(--cor-2);
+  color: var(--cor-1);
+  
+}
+
+.botoes_adm:hover{
+  transition: 1s;
+  transform: scale(1.1);
+  background-color: #C1DFF4;
+  border: none;
+  color: var(--cor-4);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.div_botao_dois_adm{
+
+  padding-top: 10%;
+
+
 }
