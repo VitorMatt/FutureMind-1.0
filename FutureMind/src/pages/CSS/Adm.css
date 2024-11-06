@@ -21,19 +21,24 @@
 .container_padrao_adm{
 
   display: flex;
-  width: 100vw;
-  height: 27vh;
+  margin: auto;
+  width: 100%;
+  height: fit-content;
   padding-top: 3%;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  
 }
 
 .Div_profissionais_adm{
 
   display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1em;
-  padding: 1%;
-  width: 20%;
+  padding: 2%;
+  padding-left: 10% ;
+  width: 25%;
   height: 100%;
   background-color: #5A789F;
   border-radius: 15px;
@@ -42,35 +47,46 @@
 }
 
 .Div_profissionais_adm h1{
-  font-size: 1.5em;
+  font-size: 2.5em;
+
+  
 }
 
 .div_um_interna_profissional{
-  width: 40%;
+
+  width: 50%;
+  height: 100%;
+  
+
 }
 
 .div_um_interna_profissional img{
 
-   width: 80%;
+   width: 65%;
+   height: 20%;
+   
 
 }
 
 .div_dois_interna_profissional{
-  width: 60%;
+
+  width: 50%;
+
 }
 
 
 .p_padrao{
 
   font-weight: bold;
+  font-size: 1.5em;
 }
 
 .botoes_adm{
 
   font-size: 130%;
-  width: 70%;
+  width: 60%;
   padding: 2%;
-  border-radius: 13px;
+  border-radius: 15px;
   border: 1px solid var(--cor-2);
   color: var(--cor-1);
   
@@ -87,7 +103,33 @@
 
 .div_botao_dois_adm{
 
-  padding-top: 10%;
+  padding-top: 8%;
 
+
+}
+.div_s{
+
+   padding-left: 8%;
+   padding-bottom: 3%;
+   
+}
+
+.div_s .swiper-button-prev{
+
+  left: var(--swiper-navigation-sides-offset, 50px) !important;
+  color: #5A789F !important;
+  
+}
+
+.div_s .swiper-button-next{
+
+  right: var(--swiper-navigation-sides-offset, 50px) !important;
+  color: #5A789F !important;
+
+}
+
+.informacao_geral{
+
+   font-size: 1.2em;
 
 }
