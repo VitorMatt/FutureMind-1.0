@@ -168,11 +168,6 @@
     box-shadow: 5%;
 }
 
-<<<<<<< HEAD
-.swiper-button-prev, .swiper-rtl .swiper-button-next {
-    left: var(--swiper-navigation-sides-offset, 10px);
-    right: auto;
-=======
 .swiper-button-prev{
     left: var(--swiper-navigation-sides-offset, 200px);
     color: white;
@@ -182,5 +177,4 @@
 .swiper-button-next{
     right: var(--swiper-navigation-sides-offset, 200px);
     color: white;
->>>>>>> 2b6021a84861ce11b0f21ee6e665083980c93188
 }
