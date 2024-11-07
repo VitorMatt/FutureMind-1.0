@@ -48,64 +48,62 @@ body{
     color: #ffff;
 }
 
-
-
-.botao-login{
-    width: 20%;
+.botao-login {
     display: flex;
-    font-size: 150%;
+    justify-content: flex-start;
 }
 
-.botao-estilizado{
-    width: 500%;
-    font-size: 80%;
-    padding:5%;
+.botao-estilizado {
+    width: 100%; 
+    max-width: 7em;
+    font-size: 2.5em;
+    padding: 10px 15px;
     border-radius: 13px;
     border: 1px solid var(--cor-2);
     color: var(--cor-1);
+    background-color: #ffffff;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;
 }
 
-.botao-estilizado:hover{
-    transition: 1s;
-    transform: scale(1.1);
+.botao-estilizado:hover {
     background-color: #C1DFF4;
     border: none;
     color: var(--cor-4);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
-.inputsLogin{
-    display: flex;
-    flex-direction: column;
+
+.botao-estilizado:active {
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
-
+.inputsLogin {
+    width: 100%;
+}
 
 .inputsLogin label{
+    color: #ffff;
+    font-size: 2em;
+    display: flex;
     width: 20%;
-    margin-bottom: 10%;
+    margin-bottom: 3%;
 }
 
-.input_principais{
-    width: 79%;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    font-size: 220%;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    color: #ffff;
-    margin-top: 2%;
+.input_principais {
+    width: 55%; 
+    padding-right: 25%;
 }
 
 .label-login{
     color: #ffff;
-    font-size: 90%;
+    font-size: 1.5em;
 }
 .link-para-cadastro{
-    color: #ffff;
-    font-size: 90%;
+    color: #89c2d9;
+    font-size: 1.5em;
+    text-decoration: none;
 }
 
 .caminho-cadastro{
@@ -114,32 +112,51 @@ body{
 }
 
 .inputsLogin input {
-    width: 100%; /* Ambos os inputs ocuparão a largura total do contêiner */
+    opacity: 40%;
+    margin-bottom: 4%;
+    width: 100%;
+    padding: 3% ; 
+    border-radius: 10px;
+    border: none;
+    background-color: var(--cor-2);
+    color: var(--cor-3);
+    font-size: large;
+    box-sizing: border-box;
+}
+
+
+.olho-div-login {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-login {
+    width: 100%;
+    padding-right: 2.5em; 
     padding: 8%;
-    padding-right: 40px; /* Espaço para o botão do olho */
     border-radius: 10px;
     border: none;
     background-color: var(--cor-2);
     opacity: 0.4;
     color: var(--cor-3);
     font-size: medium;
-    box-sizing: border-box; /* Inclui o padding na largura */
+    box-sizing: border-box;
 }
 
-.olho-div {
-    position: relative;
-    width: 100%;
-}
-
-.olho {
+.olhos-login {
     position: absolute;
-    right: 10px; /* Alinhado à direita dentro do campo */
-    top: 50%;
-    transform: translateY(-50%);
+    right: 1em;
     background: none;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
-    padding: 0;
+}
+
+.olhos-login img {
+    width: 2.3em;
+    height: auto;
+    padding-bottom: 1.2em;
 }

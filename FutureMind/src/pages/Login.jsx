@@ -4,8 +4,9 @@ import { useState } from 'react';
 
 function Login() {
 
-  const [senha, setSenha] = useState('');
   const [olhosSenha, setOlhosSenha] = useState(false);
+  const [senha,setSenha] = useState('')
+
 
   return (
     <div className="login-container">
@@ -18,9 +19,8 @@ function Login() {
 
           <div className="inputsLogin">
             <label htmlFor="" >Senha</label>
-            <div className="olho-div">
-              <input type={olhosSenha ? 'text' : 'password'} />
-            <button onClick={() => {setOlhosSenha(!olhosSenha)}} className='olho'>
+            <div className="olho-div-login">
+            <input value={senha} onChange={(e) => { setSenha(e.target.value) }} type={olhosSenha ? 'text' : 'password'} className="input-login"/> <button onClick={() => {setOlhosSenha(!olhosSenha)}} className='olhos-login'>
           {
             (senha.split('').length>0) &&
             <img src={olhosSenha ? 'olhoAberto.svg'  : 'olhoFechado.svg'} alt="" />
@@ -31,7 +31,7 @@ function Login() {
           </div>
 
         <div className='caminho-cadastro'>
-         <label htmlFor="" className='label-Login'>Possui Cadastro?</label><Link to="/cadastro" className='link-para-cadastro'>Aperte aqui</Link>
+         <label htmlFor="" className='label-login'>Não Possui Cadastro?</label><Link to="/cadastro" className='link-para-cadastro'>Aperte aqui</Link>
         </div>
           <div className="botao-login">
             <button className="botao-estilizado">Entrar</button>
