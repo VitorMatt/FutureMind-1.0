@@ -17,6 +17,8 @@ function Inicio() {
   const [buscaDois, setBuscaDois] = useState([{descricao: 'Angústia', selecionado: false}, {descricao: 'Ansiedade', selecionado: false}, {descricao: 'LGBTQIA+', selecionado: false}]);
   const [buscaTres, setBuscaTres] = useState([{descricao: 'Autismo', selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
 
+  const especialidades = ['Angústia', 'Depressão', 'LGBTQIA+'];
+
   const clickUm = (index) => {
 
     const buscaUmAux = [...buscaUm];
@@ -129,8 +131,49 @@ function Inicio() {
         <SwiperSlide>
 
         <div className='profissional'>
-          <h1>PROFISSIONAL 1</h1>
-          
+          <div className="lado-esquerdo">
+            <div className="coluna-um">
+              <div className="foto-perfil"></div>
+              <div className="coluna-informacoes">
+                <div className="valor">
+                  <h1 style={{color: 'black'}}>
+                  R$
+                  </h1>
+                  </div>
+                <div className="especialidades">
+                  {
+
+                    especialidades.map((item, index) => (
+                      <button key={index} className='especialidade-button'>
+                      {item}
+                    </button>
+                  ))
+                }
+                </div>
+                <div className="crp-div">
+                  <h1 style={{color: 'black'}}>
+                  crp
+                  </h1>
+                  </div>
+              </div>
+            </div>
+            <div className="coluna-dois">
+              <div className="nome-profissional"></div>
+              <div className="sobre-mim-profissional">
+                <h1 className="sobremim-text">
+                  Sobre mim:
+                </h1>
+              </div>
+              <div className="abordagem">
+                <h1 className="abordagem-text">
+                  Abordagem
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div className="lado-direito">
+
+          </div>
         </div>
         </SwiperSlide>
         <SwiperSlide>
