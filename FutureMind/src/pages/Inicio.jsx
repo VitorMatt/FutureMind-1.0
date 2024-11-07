@@ -133,26 +133,28 @@ function Inicio() {
         <div className='profissional'>
           <div className="lado-esquerdo">
             <div className="coluna-um">
-              <div className="foto-perfil"></div>
+              <div className="foto-perfil">
+                <img src="phoneImage.png"className="foto-perfil-img" />
+              </div>
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$
+                  R$ 30 - 40min
                   </h1>
                   </div>
                 <div className="especialidades">
                   {
 
                     especialidades.map((item, index) => (
-                      <button key={index} className='especialidade-button'>
+                      <div key={index} className='especialidade-button'>
                       {item}
-                    </button>
+                    </div>
                   ))
                 }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
-                  crp
+                  CRP: 98/94743
                   </h1>
                   </div>
               </div>
