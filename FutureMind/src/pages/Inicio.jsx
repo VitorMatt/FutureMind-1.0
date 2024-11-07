@@ -123,6 +123,7 @@ function Inicio() {
                 pagination={{ clickable: true }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
+                className='swiper-profissional'
             >
 
         <SwiperSlide>

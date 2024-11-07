@@ -152,7 +152,7 @@
 .profissionais{
     background-color: #5A789F;
     width: 100%;
-    height: fit-content ;
+    height: fit-content;
     border-radius: 100px 100px 0 0;
     display: flex;
     flex-direction: column; /* Organiza em coluna */
@@ -169,12 +169,17 @@
 }
 
 .swiper-button-prev{
-    left: var(--swiper-navigation-sides-offset, 200px);
-    color: white;
+    left: var(--swiper-navigation-sides-offset, 200px) !important;
+    color: white !important;
 
 }
 
 .swiper-button-next{
+<<<<<<< HEAD
     right: var(--swiper-navigation-sides-offset, 200px);
     color: white;
+=======
+    right: var(--swiper-navigation-sides-offset, 200px) !important;
+    color: white !important;
+>>>>>>> 2c37f127680d856ab48e2e6fe6bf9771ac7d055d
 }
