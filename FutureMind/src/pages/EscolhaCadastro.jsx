@@ -30,22 +30,22 @@ function EscolhaCadastro() {
       <div className='Lado-esquerdo'>
         <h3 className='titulo-Cadastro'>Selecione um tipo de cadastro:</h3>
         <div className='checkboxs'>
-            <div className='estilização-Check'>
-              <input value='pr' type="radio" name="a" id="check1" className='check1' />
+            <div className='estilização-escolha'>
+              <input value='pr' type="radio" name="a" id="check1" className='escolha' />
               <label htmlFor="check1" className='label1'>Sou Profissional</label>
             </div>
 
-            <div className='estilização-Check'>
-              <input value='pa' type="radio" name="a" id="check2" className='check1' />
+            <div className='estilização-escolha'>
+              <input value='pa' type="radio" name="a" id="check2" className='escolha' />
               <label htmlFor="check2" className='label1'>Sou Paciente</label>
             </div>
             
             <div className='Proximo'>
               <div className='botao1'>
-                <button className='proximo-estilizado'>Entrar</button>
+                <button className='escolha-estilizado'>Entrar</button>
               </div>
               <div className='botao2'>
-                <button onClick={direcionaCadastro} className='proximo-estilizado'>Próximo</button>
+                <button onClick={direcionaCadastro} className='escolha-estilizado'>Próximo</button>
               </div>
             </div>
         </div>

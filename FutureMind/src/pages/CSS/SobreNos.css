@@ -38,6 +38,7 @@
 
 .descricaoMissao{
     position: absolute;
+    color: var(--cor-5);
     text-align: justify;
     width: 36%;
     font-size: 150%;
@@ -59,6 +60,7 @@
 
 .descricaoFundacao{
     position: absolute;
+    color: var(--cor-5);
     width: 35%;
     font-size: 150%;
     padding-left: 15%;
