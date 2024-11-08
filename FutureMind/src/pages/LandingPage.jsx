@@ -29,7 +29,7 @@ function LandingPage() {
       </div>
         <div className='back'>
           <div className='imgPhone'>
-            <img src='celular.svg' className='phoneImage' />
+            <img src='telefone.svg' className='phoneImage' />
           </div>
 
           <div className='conteudo'>
