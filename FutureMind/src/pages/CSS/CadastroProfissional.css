@@ -24,7 +24,6 @@ body{
 }
 
 
-/* Pagina 1*/
 .lado-esquerdo{
     width: 50%;
     color: white;
@@ -46,11 +45,11 @@ body{
 
 .Proximo{
     width: 70%;
-    padding: 4%;
     display: flex;
     font-size: 130%;
     padding-left: 14%;
-
+    margin-top: 2em ;
+    padding-right: 2em;
 }
 
 .Proximo .botao2{
@@ -59,7 +58,7 @@ body{
 }
 
 .botao2 button {
-
+    
     width: 45%;
 }
 
@@ -71,13 +70,16 @@ body{
     border: 1px solid var(--cor-2);
     color: var(--cor-1);
 }
-.proximo-estilizado:hover{
-    transition: 1s;
-    transform: scale(1.1);
+.proximo-estilizado:hover {
     background-color: #C1DFF4;
     border: none;
     color: var(--cor-4);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.proximo-estilizado:active {
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
 }
 .botao1{
     display: flex;
@@ -85,7 +87,7 @@ body{
 }
 
 .lado-esquerdo .titulo-cadastro {
-
+    
     font-size: 300%;
     width: 200%;
     color: #ffff;
@@ -116,8 +118,8 @@ body{
     flex-wrap: wrap;
     justify-content: space-between;
     color: #ffff;
-
-
+    
+    
 }
 
 .atender3{
@@ -129,12 +131,34 @@ body{
     flex-direction: column;
     width: fit-content;  
     gap: 50px;
+}
+
+input[type="file"] {
+    display: none;
+}
+.label-file {
+    padding: 0.2em ;
+    width: 200px;
+    background-color: var(--cor-1);
+    color: #FFF;
+    border: 0.2em solid #89c2d9;
+    border-radius: 13px;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+}
+
+.input-file {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o botão e o nome do arquivo */
   }
+  
+.file-name {
+    font-size: 0.6em; /* Diminui a fonte */
+    color: #fff;
 
-
-
-
-/* Pagina 2*/
+}
 
 .selecao1 {
     display: flex;

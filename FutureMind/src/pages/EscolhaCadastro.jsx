@@ -1,27 +1,22 @@
-import './CSS/EscolhaCadastro.css'
+import { useState } from 'react';
+import './CSS/EscolhaCadastro.css';
 
 function EscolhaCadastro() {
+  const escolhas = ['Sou Paciente','Sou Profissional'];
+  const [escolhaCadastro, setEscolhaCadastro] = useState('');
+
+
+  const aperta = (escolha) => {
+    setEscolhaCadastro(escolha);
+  };
 
   function direcionaCadastro() {
-
-    const radios = document.getElementsByName('a');
-    let page = '';
-
-  
-    for (let i = 0; i < radios.length; i++) {
-      if (radios[i].checked) {
-        page = radios[i].value;
-        break;
-      }
-    }
-    
-    if (page === '') {
+    if (!escolhaCadastro) {
       alert('Nenhum conteúdo selecionado');
-    } else if (page === 'pr') {
-      window.location.href = '/cadastro-profissional'; 
-    } else if (page === 'pa') {
-
-      window.location.href = '/cadastro-paciente';  
+    } else if (escolhaCadastro === 'Sou Profissional') {
+      window.location.href = '/cadastro-profissional';
+    } else if (escolhaCadastro === 'Sou Paciente') {
+      window.location.href = '/cadastro-paciente';
     }
   }
 
@@ -29,30 +24,33 @@ function EscolhaCadastro() {
     <div className='escolhaCadastro-container'>
       <div className='Lado-esquerdo'>
         <h3 className='titulo-Cadastro'>Selecione um tipo de cadastro:</h3>
-        <div className='checkboxs'>
-            <div className='estilização-escolha'>
-              <input value='pr' type="radio" name="a" id="check1" className='escolha' />
-              <label htmlFor="check1" className='label1'>Sou Profissional</label>
+        <div className='login'>
+          <div className='div-login'>
+            <div className="logins">
+              {escolhas.map((escolha) => (
+                <span
+                  key={escolha}
+                  className={`escolhas ${escolhaCadastro === escolha ? 'selected' : 'plogin'}`}
+                  onClick={() => aperta(escolha)}
+                >
+                  {escolha}
+                </span>
+              ))}
             </div>
-
-            <div className='estilização-escolha'>
-              <input value='pa' type="radio" name="a" id="check2" className='escolha' />
-              <label htmlFor="check2" className='label1'>Sou Paciente</label>
-            </div>
-            
-            <div className='Proximo'>
-              <div className='botao1'>
+            <div className='botoes-login'>
+              <div className='botao-l1'>
                 <button className='escolha-estilizado'>Entrar</button>
               </div>
-              <div className='botao2'>
+              <div className='botao-l2'>
                 <button onClick={direcionaCadastro} className='escolha-estilizado'>Próximo</button>
               </div>
             </div>
+          </div>
         </div>
       </div>
       <div className='lado-Direito'>
         <div className='arvore'>
-         <img src='logoLogin.png' alt="" className='arvore-estilizada'/>
+          <img src='logoLogin.png' alt="" className='arvore-estilizada' />
         </div>
       </div>
     </div>
