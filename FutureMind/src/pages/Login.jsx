@@ -39,7 +39,7 @@ function Login() {
         </div>
       </div>
       <div className="lado-Direito">
-        <div className="arvore">
+        <div className="arvore2">
         <img src='logoLogin.png' alt="" className='arvore-estilizada'/>
         </div>
       </div>
