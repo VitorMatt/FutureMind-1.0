@@ -1,8 +1,8 @@
-*{
-    font-family: 'Poppins' , sans-serif;
+* {
+    font-family: 'Poppins', sans-serif;
 }
 
-:root{
+:root {
     --cor-1: #5A789F;
     --cor-2: #CAD7EB;
     --cor-3: #000;
@@ -10,20 +10,20 @@
     --cor-5: #014F86;
 }
 
-.login-container{
-    background-color:#5A789F;
+.login-container {
+    background-color: #5A789F;
     display: flex;
     flex-direction: row;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     margin: auto;
 }
 
-body{
+body {
     margin: auto;
 }
 
-.Lado-esquerdo{
+.Lado-esquerdo {
     width: 50%;
     margin: auto;
     display: flex;
@@ -32,20 +32,26 @@ body{
     align-items: center;
 }
 
-.lado-Direito{
+.lado-Direito {
     width: 50%;
+    height: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content:flex-end;
+    justify-content: flex-end;
     align-items: flex-end;
 }
 
+.lado-Direito .arvore {
 
-.titulo-login{
+    width: fit-content;
+    height: 100%;
+}
+
+.titulo-login {
     font-size: 300%;
     padding-right: 15%;
-    color: #ffff;
+    color: #ffffff;
 }
 
 .botao-login {
@@ -54,7 +60,7 @@ body{
 }
 
 .botao-estilizado {
-    width: 100%; 
+    width: 100%;
     max-width: 7em;
     font-size: 2.5em;
     padding: 10px 15px;
@@ -63,7 +69,7 @@ body{
     color: var(--cor-1);
     background-color: #ffffff;
     transition: transform 0.1s ease, box-shadow 0.1s ease;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
@@ -75,16 +81,16 @@ body{
 }
 
 .botao-estilizado:active {
-    transform: translateY(2px); 
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
+    transform: translateY(2px);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .inputsLogin {
     width: 100%;
 }
 
-.inputsLogin label{
-    color: #ffff;
+.inputsLogin label {
+    color: #ffffff;
     font-size: 2em;
     display: flex;
     width: 20%;
@@ -92,21 +98,22 @@ body{
 }
 
 .input_principais {
-    width: 55%; 
+    width: 55%;
     padding-right: 25%;
 }
 
-.label-login{
-    color: #ffff;
+.label-login {
+    color: #ffffff;
     font-size: 1.5em;
 }
-.link-para-cadastro{
+
+.link-para-cadastro {
     color: #89c2d9;
     font-size: 1.5em;
     text-decoration: none;
 }
 
-.caminho-cadastro{
+.caminho-cadastro {
     margin-top: 4%;
     margin-bottom: 6%;
 }
@@ -115,7 +122,7 @@ body{
     opacity: 40%;
     margin-bottom: 4%;
     width: 100%;
-    padding: 3% ; 
+    padding: 3%;
     border-radius: 10px;
     border: none;
     background-color: var(--cor-2);
@@ -123,7 +130,6 @@ body{
     font-size: large;
     box-sizing: border-box;
 }
-
 
 .olho-div-login {
     position: relative;
@@ -134,7 +140,7 @@ body{
 
 .input-login {
     width: 100%;
-    padding-right: 2.5em; 
+    padding-right: 2.5em;
     padding: 8%;
     border-radius: 10px;
     border: none;
@@ -159,4 +165,54 @@ body{
     width: 2.3em;
     height: auto;
     padding-bottom: 1.2em;
+}
+
+/* Media Queries para tornar o layout responsivo */
+
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .Lado-esquerdo, .lado-Direito {
+        width: 100%;
+        margin: 0;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .titulo-login {
+        font-size: 2em;
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .botao-estilizado {
+        font-size: 1.5em;
+        max-width: 100%;
+    }
+
+    .inputsLogin label {
+        width: 100%;
+        text-align: center;
+    }
+
+    .input_principais {
+        width: 80%;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo-login {
+        font-size: 1.5em;
+    }
+
+    .inputsLogin label, .label-login, .link-para-cadastro {
+        font-size: 1em;
+    }
+
+    .botao-estilizado {
+        font-size: 1.2em;
+    }
 }
