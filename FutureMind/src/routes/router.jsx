@@ -19,6 +19,7 @@ import CadastroPaciente from '../pages/CadastroPaciente'
 import Politica from '../pages/Politica'
 import Slide from '../components/Slide'
 import Adm from '../pages/Adm'
+import PerfilProfissional from '../pages/PerfilProfissional'
 
 
 const router = createBrowserRouter([{
@@ -101,6 +102,10 @@ const router = createBrowserRouter([{
    path: '/Adm',
    element: <Adm/>
 
+},
+{
+    path: '/perfilprofissional',
+    element: <PerfilProfissional />
 },
 
 ])
