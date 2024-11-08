@@ -17,7 +17,7 @@ function Inicio() {
   const [buscaDois, setBuscaDois] = useState([{descricao: 'Angústia', selecionado: false}, {descricao: 'Ansiedade', selecionado: false}, {descricao: 'LGBTQIA+', selecionado: false}]);
   const [buscaTres, setBuscaTres] = useState([{descricao: 'Autismo', selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
 
-  const especialidades = ['Angústia', 'Depressão', 'LGBTQIA+'];
+  const especialidades = ['Autismo', 'Autoestima', 'Angústia', 'Depressão', 'LGBTQIA+'];
 
   const clickUm = (index) => {
 
@@ -134,7 +134,7 @@ function Inicio() {
           <div className="lado-esquerdo">
             <div className="coluna-um">
               <div className="foto-perfil">
-                <img src="phoneImage.png"className="foto-perfil-img" />
+                <img src="joao_peedro.png"className="foto-perfil-img" />
               </div>
               <div className="coluna-informacoes">
                 <div className="valor">
@@ -160,16 +160,27 @@ function Inicio() {
               </div>
             </div>
             <div className="coluna-dois">
-              <div className="nome-profissional"></div>
-              <div className="sobre-mim-profissional">
-                <h1 className="sobremim-text">
-                  Sobre mim:
+              <div className="nome-profissional">
+                <h1 className="nome-text">
+                  João Miguel da Cruz
                 </h1>
               </div>
-              <div className="abordagem">
-                <h1 className="abordagem-text">
-                  Abordagem
+              <div className="sobre-mim-profissional">
+                <h1 className="sobremim-title">
+                  Sobre mim:
                 </h1>
+                <p className="sobremim-text">
+                Psicológo recém formado em Psicanálise atendimento a adolscente, adultos e casais. Atendo oito meses como psicólogo clinico em diferentes situações psicoafetivas, dependencia química, estados depressivos, luto, alternãncia de humor, baixa alto estima, estados de angústia e desorganização pessoal.
+                </p>
+              </div>
+              <div className="abordagem">
+                <h1 className="abordagem-title">
+                  Abordagem:
+                </h1>
+                <p className="abordagem-text">
+                Psicanalista, Terapia Cognitiva
+                Comportamental
+                </p>
               </div>
             </div>
           </div>
