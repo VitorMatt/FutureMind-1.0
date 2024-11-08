@@ -1,0 +1,107 @@
+.perfilPro-container{
+    background-color: #DBEEF4;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+
+}
+
+.todas-divs{
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+
+.perfil-profissional{
+    display: block;
+    margin: auto;
+    background-color: rgba(255, 0, 0, 0.493);
+    border-radius: 10px;
+    width: 70%;
+    height: fit-content;
+}
+
+.titulo-perfil{
+    display: flex;
+    background-color: rgba(255, 255, 0, 0.685);
+    border-radius: 10px;
+    width: 100%;
+    height: fit-content;
+}
+
+.div-foto-nome{
+    display: flex;
+    margin: auto;
+    background-color: rgba(0, 0, 255, 0.616);
+    width: 80%;
+    height: fit-content;
+}
+
+.div-info{
+    display: flex;
+    margin: auto;
+    background-color: rgba(0, 128, 0, 0.699);
+    width: 80%;
+    height: fit-content;
+}
+
+.titulo-agenda{
+    display: flex;
+    margin: auto;
+    background-color: rgba(255, 192, 203, 0.856);
+    width: 80%;
+    height: fit-content;
+}
+
+.div-agenda{
+    display: flex;
+    margin: auto;
+    background-color: rgba(0, 128, 0, 0.699);
+    width: 80%;
+    height: fit-content;
+}
+
+.anotações-profissional{
+    display: block;
+    margin: auto;
+    background-color: rgba(255, 0, 0, 0.493);
+    border-radius: 10px;
+    width: 70%;
+    height: fit-content;
+}
+
+.input-button{
+    display: flex;
+    margin: auto;
+    background-color: rgba(137, 43, 226, 0.87);
+    width: 80%;
+    height: fit-content;
+}
+
+.input-anotações{
+    width: 70%;
+    border: 5px solid yellowgreen;
+}
+
+.button-anotações{
+    width: 30%;
+    border: 5px solid red;
+}
+
+.div-anotações{
+    display: flex;
+    margin: auto;
+    background-color: rgba(0, 255, 255, 0.822);
+    width: 80%;
+    height: fit-content;
+}
+
+.editar-perfil-profissional{
+    display: block;
+    margin: auto;
+    background-color:rgba(0, 255, 42, 0.788);
+    border-radius: 10px;
+    width: 70%;
+    height: fit-content;
+}
