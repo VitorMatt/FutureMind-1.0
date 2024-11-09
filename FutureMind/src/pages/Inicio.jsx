@@ -18,6 +18,7 @@ function Inicio() {
   const [buscaTres, setBuscaTres] = useState([{descricao: 'Autismo', selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
 
   const especialidades = ['Autismo', 'Autoestima', 'Angústia', 'Depressão', 'LGBTQIA+'];
+  const seta = ['<', '>'];
 
   const clickUm = (index) => {
 
@@ -243,12 +244,8 @@ function Inicio() {
 
           {/* Botões para navegar entre as semanas */}
           <div className="week-navigation">
-            <button onClick={handlePreviousWeek}>Semana Anterior</button>
-            <span>Semana de {formatDate(diasSemana[0])}</span>
-            <button onClick={handleNextWeek}>Próxima Semana</button>
-          </div>
-
-          <table>
+            <button onClick={handlePreviousWeek}>{seta[0]}</button>
+            
             <thead>
               <tr>
                 {diasSemana.map((dia) => (
@@ -256,6 +253,10 @@ function Inicio() {
                   ))}
               </tr>
             </thead>
+            <button onClick={handleNextWeek}>{seta[1]}</button>
+          </div>
+          <table>
+
             <tbody>
               {/* Exibir horários para cada dia da semana */}
               {Object.keys(horariosDisponiveis).map((hora, index) => (
@@ -288,7 +289,7 @@ function Inicio() {
         </div>
 
         </div>
-        <div>
+        <div className='btn-consulta'>
 
 
         <button 
@@ -296,9 +297,12 @@ function Inicio() {
           onClick={handleAgendamento}
           disabled={!selectedTime}
           >
+            <b>
+
           {selectedTime
-            ? `Agendar para ${selectedTime}`
-            : "Selecione um horário"}
+            ? `Marcar para ${selectedTime}`
+            : "Marcar Consulta"}
+            </b>
         </button>
             </div>
             </div>

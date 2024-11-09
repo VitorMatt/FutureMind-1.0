@@ -121,6 +121,7 @@
     margin-bottom: -18%;
     color: white;
     font-size: 45px;
+    font-weight: 100;
 }
 
 .button-container {
@@ -404,10 +405,12 @@
   }
   
   button#agendar {
-    width: 100%;
+    width: 60%;
     padding: 10px;
     font-size: 16px;
-    background-color: #4caf50;
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    background-color: var(--cor-1);
     color: white;
     border: none;
     border-radius: 5px;
@@ -417,7 +420,8 @@
   }
   
   button#agendar:not(:disabled):hover {
-    background-color: #388e3c;
+    background-color: var(--cor-5);
+    transition: 0.5s;
   }
   
   /* Navegação entre semanas */
@@ -449,4 +453,12 @@
 
   .botao{
     display: block;
+  }
+
+  .btn-consulta {
+
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-self: center;
   }
