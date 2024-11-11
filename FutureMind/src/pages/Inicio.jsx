@@ -18,7 +18,7 @@ function Inicio() {
   const [buscaTres, setBuscaTres] = useState([{descricao: 'Autismo', selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
 
   const especialidades = ['Autismo', 'Autoestima', 'Angústia', 'Depressão', 'LGBTQIA+'];
-  const seta = ['<', '>'];
+  const [click, setClick] = useState(false);
 
   const clickUm = (index) => {
 
@@ -86,8 +86,11 @@ function Inicio() {
   };
 
   const handleAgendamento = () => {
+
+    let clickAux = click;
+    setClick(!clickAux);
     if (selectedDate && selectedTime) {
-      alert(`Agendado para ${selectedDate} às ${selectedTime}`);
+      console.log(`Agendado para ${selectedDate} às ${selectedTime}`);
     }
   };
 
@@ -244,16 +247,16 @@ function Inicio() {
 
           {/* Botões para navegar entre as semanas */}
           <div className="week-navigation">
-            <button onClick={handlePreviousWeek}>{seta[0]}</button>
+            <button onClick={handlePreviousWeek}><img src='seta1.svg' /></button>
             
             <thead>
               <tr>
                 {diasSemana.map((dia) => (
-                  <th key={dia}>{dia.toLocaleDateString("pt-BR", { weekday: "short", day: "numeric", month: "short" })}</th>
+                  <th key={dia}>{dia.toLocaleDateString("pt-BR", { weekday: "short", day: "numeric"})}</th>
                   ))}
               </tr>
             </thead>
-            <button onClick={handleNextWeek}>{seta[1]}</button>
+            <button onClick={handleNextWeek}><img src='seta2.svg' /></button>
           </div>
           <table>
 
@@ -273,6 +276,7 @@ function Inicio() {
                         onClick={() => {
                           setSelectedDate(formatDate(dia));
                           setSelectedTime(hora);
+                          setClick(false);
                         }}
                         >
                           {hora}
@@ -298,10 +302,16 @@ function Inicio() {
           disabled={!selectedTime}
           >
             <b>
-
-          {selectedTime
+              {
+                click ?
+                (
+                  <span id='circle'></span>
+                )
+                :
+                selectedTime
             ? `Marcar para ${selectedTime}`
-            : "Marcar Consulta"}
+            : "Marcar Consulta"
+              }
             </b>
         </button>
             </div>
