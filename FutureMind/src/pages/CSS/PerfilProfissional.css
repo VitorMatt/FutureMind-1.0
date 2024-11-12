@@ -1,3 +1,12 @@
+:root{
+    --cor-1: #5A789F;
+    --cor-2: #CAD7EB;
+    --cor-3: #000;
+    --cor-4: #012A4A;
+    --cor-5: #014F86;
+}
+
+
 .perfilPro-container{
     background-color: #DBEEF4;
     display: flex;
@@ -22,8 +31,12 @@
 
 .titulo-perfil{
     display: flex;
+<<<<<<< HEAD
     background-color: #5a789f;
     color: white;
+=======
+    background-color:#5A789F ;
+>>>>>>> 5ad8a649a527870fe397d92dedfb5f7341743384
     border-radius: 10px;
     width: 100%;
     height: fit-content;

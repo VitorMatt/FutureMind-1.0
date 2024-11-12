@@ -66,11 +66,11 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  
    
 }
 
 .div_dois_interna_profissional{
-  
   
   width: 60%;
   height: 100%;
@@ -149,7 +149,7 @@ width: fit-content;
 .informacao_geral{
 
    font-size: 1.2em;
-
+   
 }
 
 
@@ -163,4 +163,32 @@ width: fit-content;
 
 }
 
+.text_adm{
 
+   resize: none;
+   min-height: 150px;
+   width: 90%;
+   padding: 1.5%;
+   font-size: 1.5em;
+   border: none;
+   background-color: #CAD7EB;
+   border-radius: 10px;
+   opacity: 40%;
+   color: black;
+}
+
+.div_arb{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+}
+
+.divs_informações_pa{
+
+ padding-top: 5%;
+
+}

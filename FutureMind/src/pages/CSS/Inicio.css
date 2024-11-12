@@ -159,6 +159,7 @@
     display: flex;
     flex-direction: column; /* Organiza em coluna */
     gap: 140px; /* Espaçamento igual entre as divs */
+    padding-bottom: 5%;
 }
 
 .profissional{
@@ -199,6 +200,11 @@
     width: 40%;
     height: 100%;
     border-radius: 0 25px 25px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    
 }
 
 .profissional .coluna-um{
@@ -363,8 +369,12 @@
 
 .agenda {
     
-    padding-right: 7%;
-    padding-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 4%;
+    padding-right: 4%;
+    width: 100%;
+    height: fit-content;
   }
   
   table {
@@ -376,6 +386,7 @@
     text-align: center;
     padding: 10px;
   }
+  
   
   th {
     font-size: 14px;
@@ -394,7 +405,7 @@
     color: var(--cor-1);
     border: 1px solid rgba(0, 0, 0, 0.171);
     border-radius: 3px;
-    font-weight: 750;
+    font-weight: 950;
   }
   
   button.selected {
@@ -402,8 +413,8 @@
     color: var(--cor-1);
     border: 1px solid rgba(0, 0, 0, 0.171);
     border-radius: 3px;
-    font-weight: 750;
-    padding: 5%;
+    font-weight: 950;
+    padding: 15%;
   }
 
   .agendar {
@@ -412,8 +423,8 @@
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 3px;
     color: grey;
-    font-weight: 750;
-    padding: 5%;
+    font-weight: 950;
+    padding: 15%;
   }
   
   button:disabled {
@@ -422,26 +433,52 @@
   }
   
   button#agendar {
-    width: 60%;
+    width:250px;
     padding: 10px;
-    font-size: 16px;
+    font-size: 17px;
     font-family: "Poppins", sans-serif;
     font-weight: 100;
     background-color: var(--cor-1);
     color: white;
-    border: none;
-    border-radius: 5px;
+    border: 1px solid var(--cor-1);
+    border-radius: 10px;
     cursor: pointer;
     margin-top: 20px;
     display: flex;
     gap: 5px;
     justify-content: center;
+    height: 43px;
+    align-items: center;
   }
+/*
+{
+
+
+position: absolute;
+width: 57px;
+height: 30px;
+left: 1412px;
+top: 1467px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 30px;
+
+display: flex;
+align-items: flex-end;
+
+color: #898989;
+
+
+  } */
   
-  button#agendar:not(:disabled):hover {
-    background-color: var(--cor-5);
+  /* button#agendar:not(:disabled):hover {
+    background-color: var(--cor-2);
+    color: var(--cor-1);
     transition: 0.5s;
-  }
+  } */
   
   /* Navegação entre semanas */
   .week-navigation {
@@ -460,7 +497,14 @@
   .week-navigation tr {
 
     display: flex;
-    gap: 30px;
+    gap: 35px;
+    padding-left: 2%;
+
+}
+
+#seta2 {
+
+    padding-left: 75%;
 }
 
 .agenda table tr {
@@ -471,15 +515,14 @@
   }
 
   .week-navigation th {
-
     background-color: var(--cor-1);
-    height: 20px;
-    width: 20px;
+    height: 22px;
+    width: 22px;
     border: none;
     border-radius: 5px;
     text-align: center;
     align-items: center;
-    font-size: 12px;
+    font-size: 13px;
     color: white;
   }
 
@@ -490,12 +533,13 @@
     border: none;
     cursor: pointer;
     border-radius: 5px;
-  }
+}
 
-  .week-navigation button img {
-
+.week-navigation button img {
+    
     width: fit-content;
     height: 25px;
+   
   }
   
   /* .week-navigation button:hover {
@@ -546,4 +590,10 @@
 .swiper-pagination-bullet-active {
 
     background: #4b4b4b !important;
+}
+
+#icon-concluido {
+    width: 10%;
+    height: fit-content;
+    padding-top: 2%;
 }

@@ -10,14 +10,15 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import Footer from '../components/Footer';
 
 function Inicio() {
 
   const [buscaUm, setBuscaUm] = useState([{descricao: 'Autoaceitação', selecionado: false}, {descricao: 'Autoestima', selecionado: false}, {descricao: 'Depressão', selecionado: false}]);
   const [buscaDois, setBuscaDois] = useState([{descricao: 'Angústia', selecionado: false}, {descricao: 'Ansiedade', selecionado: false}, {descricao: 'LGBTQIA+', selecionado: false}]);
-  const [buscaTres, setBuscaTres] = useState([{descricao: 'Autismo', selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
+  const [buscaTres, setBuscaTres] = useState([{descricao: "PCD's", selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
 
-  const especialidades = ['Autismo', 'Autoestima', 'Angústia', 'Depressão', 'LGBTQIA+'];
+  const especialidades = ["PCD's", 'Autoestima', 'Angústia', 'Depressão', 'LGBTQIA+'];
   const [click, setClick] = useState(false);
 
   const clickUm = (index) => {
@@ -44,10 +45,18 @@ function Inicio() {
   const getWeekDays = (startDate) => {
     const days = [];
     const current = new Date(startDate);
+  
+    // Ajuste para começar na última segunda-feira
+    const dayOfWeek = current.getDay();
+    const offset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek; // Se for domingo, ajusta para -6
+    current.setDate(current.getDate() + offset);
+  
+    // Adiciona os dias da semana a partir da segunda-feira
     for (let i = 0; i < 5; i++) {
       days.push(new Date(current));
       current.setDate(current.getDate() + 1);
     }
+  
     return days;
   };
   
@@ -85,13 +94,26 @@ function Inicio() {
     setCurrentWeekStart(newStartDate);
   };
 
-  const handleAgendamento = () => {
 
-    let clickAux = click;
-    setClick(!clickAux);
+
+  const [estadoBotao, setEstadoBotao] = useState('inicial'); 
+
+  const exibirAnimacaoConcluido = () => {
+    setEstadoBotao('carregando');
+    setTimeout(() => {
+      setEstadoBotao('concluido');
+    }, 1500);
+    setTimeout(() => {
+      setEstadoBotao('inicial');
+    }, 3500);
+  };
+
+  const handleAgendamento = () => {
+    setClick(!click);
     if (selectedDate && selectedTime) {
       console.log(`Agendado para ${selectedDate} às ${selectedTime}`);
     }
+    exibirAnimacaoConcluido();
   };
 
   return (
@@ -252,11 +274,11 @@ function Inicio() {
             <thead>
               <tr>
                 {diasSemana.map((dia) => (
-                  <th key={dia}>{dia.toLocaleDateString("pt-BR", { weekday: "short", day: "numeric"})}</th>
+                  <th key={dia}>{dia.toLocaleDateString("pt-BR", { weekday: "short", day: "numeric"}).replace('.', '').replace(',', '')}</th>
                   ))}
               </tr>
             </thead>
-            <button onClick={handleNextWeek}><img src='seta2.svg' /></button>
+            <button onClick={handleNextWeek}><img id='seta2' src='seta2.svg' /></button>
           </div>
           <table>
 
@@ -302,16 +324,14 @@ function Inicio() {
           disabled={!selectedTime}
           >
             <b>
-              {
-                click ?
-                (
-                  <span id='circle'></span>
-                )
-                :
+      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotao === 'inicial' && <span className="btn-text"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
-              }
+              }</span>}
+               
             </b>
         </button>
             </div>
@@ -397,7 +417,7 @@ function Inicio() {
 
         <div className='titulos'>
             <h1>
-              Adultos
+              Idosos
             </h1>
           </div>
           <div style={{width: '100%'}}>
@@ -447,7 +467,7 @@ function Inicio() {
 
         <div className='titulos'>
             <h1>
-              Adultos
+              Pré-adolescentes
             </h1>
           </div>
           <div style={{width: '100%'}}>
@@ -497,7 +517,107 @@ function Inicio() {
 
         <div className='titulos'>
             <h1>
-              Adultos
+              Adolescentes
+            </h1>
+          </div>
+          <div style={{width: '100%'}}>
+
+          <Swiper
+                // instalar módulos do Swiper
+                modules={[Navigation, Pagination, A11y]}
+                spaceBetween={50}
+                slidesPerView={1}
+                navigation
+                pagination={{ clickable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+            >
+
+        <SwiperSlide>
+
+        <div className='profissional'>
+          <h1>PROFISSIONAL 1</h1>
+          
+        </div>
+        </SwiperSlide>
+        <SwiperSlide>
+
+        <div className='profissional'>
+          <h1>PROFISSIONAL 2</h1>
+          
+        </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 3</h1>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 4</h1>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 5</h1>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+        </div>
+
+        <div className='titulos'>
+            <h1>
+              Crianças
+            </h1>
+          </div>
+          <div style={{width: '100%'}}>
+
+          <Swiper
+                // instalar módulos do Swiper
+                modules={[Navigation, Pagination, A11y]}
+                spaceBetween={50}
+                slidesPerView={1}
+                navigation
+                pagination={{ clickable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+            >
+
+        <SwiperSlide>
+
+        <div className='profissional'>
+          <h1>PROFISSIONAL 1</h1>
+          
+        </div>
+        </SwiperSlide>
+        <SwiperSlide>
+
+        <div className='profissional'>
+          <h1>PROFISSIONAL 2</h1>
+          
+        </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 3</h1>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 4</h1>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="profissional">
+            <h1>PROFISSIONAL 5</h1>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+        </div>
+
+        <div className='titulos'>
+            <h1>
+              PCD's
             </h1>
           </div>
           <div style={{width: '100%'}}>
@@ -547,8 +667,9 @@ function Inicio() {
         
         
         </div>  
-      
+    <Footer /> 
     </div>
+    
   )
 }
 
