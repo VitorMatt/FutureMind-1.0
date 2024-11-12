@@ -2,8 +2,6 @@
     background-color: #DBEEF4;
     display: flex;
     flex-direction: column;
-    height: fit-content;
-
 }
 
 .todas-divs{
@@ -16,7 +14,7 @@
 .perfil-profissional{
     display: block;
     margin: auto;
-    background-color: rgba(255, 0, 0, 0.493);
+    background-color: white;
     border-radius: 10px;
     width: 70%;
     height: fit-content;
@@ -24,26 +22,80 @@
 
 .titulo-perfil{
     display: flex;
-    background-color: rgba(255, 255, 0, 0.685);
+    background-color: #5a789f;
+    color: white;
     border-radius: 10px;
     width: 100%;
     height: fit-content;
 }
 
+.titulo-perfil h1{
+    padding-left: 5%;
+}
+
 .div-foto-nome{
     display: flex;
     margin: auto;
-    background-color: rgba(0, 0, 255, 0.616);
     width: 80%;
     height: fit-content;
+    border-bottom: 3px solid #5a789f;
+}
+
+.foto-usuario{
+    display: flex;
+    justify-content: flex-start;
+    width: fit-content;
+    padding: 1%;
+    padding-left: 2%;
+}
+
+.a-foto{
+    height: 200px;
+    border-radius: 100px;
+}
+
+.nick-usuario{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1%;
+    font-size: 1.5em;
+    line-height: 1px;
+}
+
+.nick-usuario p{
+    opacity: 50%;
 }
 
 .div-info{
     display: flex;
     margin: auto;
-    background-color: rgba(0, 128, 0, 0.699);
     width: 80%;
     height: fit-content;
+    align-items: center;
+    border-bottom: 3px solid #5a789f;
+    color: #5a789f;
+    font-weight: bold;
+}
+
+.div-menor-info{
+    display: block;
+    font-size: 1.5em;
+    width: 30%;
+    height: 216px;
+    padding: 1%;
+}
+
+.div-menor-info h1{
+    font-size: 1.5em;
+}
+
+.descricao{
+    display: block;
+    font-size: 1.5em;
+    width: 50%;
+    height: 216px;
+    padding: 1.5%;
 }
 
 .titulo-agenda{

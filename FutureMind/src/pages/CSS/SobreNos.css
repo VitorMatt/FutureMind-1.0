@@ -185,15 +185,12 @@
     background-color: var(--cor-2);
     opacity: 40%;
     border-radius: 10px;
-    border: none;
     color: var(--cor-3);
     width: 80%;
     min-height: 150px;   /* Altura inicial */
-    max-height: 5px;  /* Altura máxima permitida */
-    overflow-y: auto;   /* Barra de rolagem apenas quando necessário */
     resize: none;       /* Desativa o redimensionamento manual */
     padding: 1.5%;
-    font-size: 130%;
+    font-size: 1.5em;
 }
 
 
