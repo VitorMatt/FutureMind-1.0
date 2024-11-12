@@ -29,7 +29,7 @@ function Adm() {
          
           {img: 'renato.png' ,nome: 'Mateus da silva', instagram:'@MateusSilva', email: 'Silvamateus@gmail.com', descrição: 'ola eu sou o mateus da silva', telefone: '(48) 99653-3981'  },
           {img: 'joao_peedro.png' ,nome: 'joao oliveira', instagram:'@JoaoOliveira', email: 'Joao@gmail.com', descrição: 'ola eu sou o joao de oliveira', telefone: '(48) 94473-8712'  },
-          {img: 'joao_peedro.png' ,nome: 'joao oliveira', instagram:'@JoaoOliveira', email: 'Joao@gmail.com', descrição: 'ola eu sou o joao de oliveiran ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', telefone: '(48) 94473-8712'  }
+          {img: 'joao_peedro.png' ,nome: 'joao oliveira', instagram:'@JoaoOliveira', email: 'Joao@gmail.com', descrição: 'ola eu sou o joao de oliveiran ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffiasdhiuagaguagsigdiudgsfusdsfhsdfiohfsoidfshdfsdiofshdfsdoifhsfosidfhsdfoisdhfdiohofsdfsdfsdfsdfsdsdf', telefone: '(48) 94473-8712'  }
           
         ]
 
@@ -114,8 +114,8 @@ function Adm() {
           className="Div_profissionais_adm"
           style={{width: "70%", }}
           >
-          <div className="div_um_interna_profissional">
-
+        <div className="div_um_interna_profissional">
+          <div className="div_arb">
             <img src={A.img} />
             <p className="arroba_profissionais">{A.instagram}</p>
             <div className="div_botao_um_adm">
@@ -125,13 +125,21 @@ function Adm() {
               <button className="botoes_adm">Editar</button>
             </div>
           </div>
+        </div>
           <div className="div_dois_interna_profissional">
              <h1>{A.nome}</h1> 
-             <p className="p_padrao">Email:</p>
-             <p className="informacao_geral">{A.email}</p>
-             <p className="p_padrao">Telefone:</p>
-             <p className="informacao_geral">{A.telefone}</p>
-             <p className="p_padrao">Descrição:</p>
+             <label className="p_padrao">Email:</label>
+             <label className="informacao_geral">{A.email}</label>
+             <div className="divs_informações_pa">
+              <label className="p_padrao">Telefone:</label>
+              <label className="informacao_geral">{A.telefone}</label>
+             </div>
+             <div className="divs_informações_pa">
+              <label className="p_padrao">Descrição:</label>
+             </div>
+             <div className="divs_informações_pa">
+               <textarea className="text_adm" readOnly>{A.descrição}</textarea>
+             </div>
           </div>
          </div>
          </SwiperSlide>
