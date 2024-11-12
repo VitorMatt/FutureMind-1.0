@@ -49,7 +49,7 @@ function EscolhaCadastro() {
         </div>
       </div>
       <div className='lado-Direito'>
-        <div className='arvore'>
+        <div className='arvore-escolha'>
           <img src='logoLogin.png' alt="" className='arvore-estilizada' />
         </div>
       </div>

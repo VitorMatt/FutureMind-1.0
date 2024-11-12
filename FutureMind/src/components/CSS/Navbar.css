@@ -23,7 +23,7 @@
     text-decoration: none;
 }
   
-.navbar img {
+.logo-nav {
   
   display: flex;
   width: 20%;
@@ -43,5 +43,33 @@
 
   .Links .btn2 {
 
-    padding-left: 10%;
+    padding-left: 6%;
+  }
+
+  .input-container {
+    position: relative;
+    width: 25%;
+  }
+  
+  .input-nav {
+    border-radius: 13px;
+    padding: 0.5em;
+    padding-right: 2em; /* Espaço suficiente para o ícone no canto */
+    width: 90%;
+    border: 2px solid #5a789f;
+  
+  }
+  .input-nav::placeholder {
+    color: #5a789f; 
+  }
+  
+  .img-navBar {
+    position: absolute;
+    right: 10px; /* Ajuste a posição horizontal do ícone */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 17px; /* Tamanho do ícone menor */
+    height: auto;
+    cursor: pointer;
+    color: #5a789f;
   }

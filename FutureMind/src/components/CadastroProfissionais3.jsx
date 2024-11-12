@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
 function CadastroProfissionais3() {
-  const atender = ["Adolescentes", "Idosos","PCDs " ]
-  const atender2 =["Crianças", "Adultos", "Pré-Adolescentes"]
+  const atender = [ "Idosos","PCDs ", "Adultos" ]
+  const atender2 =["Crianças", "Adolescentes", "Pré-Adolescentes"]
   const [atenderSelecionado, setAtenderSelecionado] = useState([])
 
   const selecione = (atender) =>{
