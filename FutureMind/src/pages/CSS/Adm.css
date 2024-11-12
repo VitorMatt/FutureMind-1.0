@@ -1,4 +1,4 @@
-.bory-container{
+.body-container{
   height: 100vh;
   width: 100%;
 }
@@ -151,3 +151,16 @@ width: fit-content;
    font-size: 1.2em;
 
 }
+
+
+.div_descrição{
+
+   background-color: white;
+   color: #5A789F;
+   padding: 5%;
+   flex-wrap: wrap;
+   border-radius: 15px;
+
+}
+
+
