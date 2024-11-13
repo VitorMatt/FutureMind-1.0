@@ -31,12 +31,8 @@
 
 .titulo-perfil{
     display: flex;
-<<<<<<< HEAD
     background-color: #5a789f;
     color: white;
-=======
-    background-color:#5A789F ;
->>>>>>> 5ad8a649a527870fe397d92dedfb5f7341743384
     border-radius: 10px;
     width: 100%;
     height: fit-content;
@@ -111,20 +107,38 @@
     padding: 1.5%;
 }
 
+.descricao textarea{
+    width: 100%;
+    border: none;
+    font-size: 1em;
+    resize: none;
+    min-height: 120px;
+    color: #5A789F;
+    font-weight: bold;
+    overflow: hidden;
+}
+
 .titulo-agenda{
     display: flex;
     margin: auto;
-    background-color: rgba(255, 192, 203, 0.856);
+    background-color: none;
     width: 80%;
     height: fit-content;
+    color: #5A789F;
 }
 
 .div-agenda{
     display: flex;
     margin: auto;
-    background-color: rgba(0, 128, 0, 0.699);
+    background-color: #5a789f;
+    border-radius: 15px;
     width: 80%;
     height: fit-content;
+}
+
+.agendinha{
+    width: 100%;
+    padding-bottom: 5%;
 }
 
 .anotações-profissional{
