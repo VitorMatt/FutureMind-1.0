@@ -43,7 +43,7 @@ function CadastroPaciente3() {
         <div className='caminho-login'>
           <input type="checkbox" name="" id="" />
           
-         <label htmlFor="" className='label-cadastro'>Aceitar </label><Link to='/termos' className='link-para-termos'>Termos</Link>
+         <label htmlFor="" className='label-cadastro'>Aceitar </label><Link to='/termos' className='link-para-termos'>termos</Link>
             
         </div>
       </div>
