@@ -327,8 +327,8 @@ input[type="file"] {
     border: none;
     background: none;
     position: absolute;
-    right: 510px; /* Ajuste para alinhar o ícone à direita */
-    width: 3%;
+    right: 500px; 
+    width: 5%;
     height: 7%;
     display: flex;
     align-items: center;

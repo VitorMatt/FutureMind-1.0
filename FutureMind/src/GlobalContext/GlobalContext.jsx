@@ -6,6 +6,8 @@ export const GlobalContextProvider = ({children}) => {
 const [pageCadastro, setPageCadastro] = useState('')
 
 
+
+
     return(
         <GlobalContext.Provider value={{pageCadastro, setPageCadastro}}>
             {children}
