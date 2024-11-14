@@ -31,12 +31,8 @@
 
 .titulo-perfil{
     display: flex;
-<<<<<<< HEAD
     background-color: #5a789f;
     color: white;
-=======
-    background-color:#5A789F ;
->>>>>>> 5ad8a649a527870fe397d92dedfb5f7341743384
     border-radius: 10px;
     width: 100%;
     height: fit-content;

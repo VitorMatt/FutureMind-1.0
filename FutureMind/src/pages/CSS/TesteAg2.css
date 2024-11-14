@@ -1,0 +1,76 @@
+.agenda-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .agenda-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  
+  .agenda-navigation button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #5A7BA5;
+  }
+  
+  .week-days {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: #5A7BA5;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .day-card {
+    width: 18%;
+    background-color: #d4e2f0;
+    border-radius: 5px;
+    padding: 10px;
+    color: #333;
+    text-align: left;
+  }
+  
+  .day-header {
+    font-weight: bold;
+    font-size: 16px;
+    color: #5A7BA5;
+    margin-bottom: 10px;
+  }
+  
+  .appointment-details {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    color: #333;
+  }
+  
+  .appointment-details p {
+    margin: 5px 0;
+  }
+  
+  .appointment-details button {
+    margin-top: 10px;
+    background-color: #5A7BA5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .no-appointment {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    color: #999;
+  }
+  
