@@ -1,28 +1,23 @@
 import './CSS/Login.css'
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function Login() {
 
   const [olhosSenha, setOlhosSenha] = useState(false);
 
-  const [login, setLogin] = useState([]);
   const [form, setForm] = useState({ email: '', senha: '' });
 
-  // Função para buscar todos os clientes
-  const fetchLogin = async () => {
-    const response = await fetch('<http://localhost:3000/login>');
-    const data = await response.json();
-    setLogin(data);
-  };
 
-  useEffect(() => {
-    fetchLogin();
-  }, []);
+  const handleSubmit = async (e) => {
 
-  const handleSubmit = async () => {
-    // const response = await fetch('<http://localhost:3000/login>', {
-    const response = await fetch('/login', {
+    e.preventDefault();
+    if (!form.email || !form.senha) {
+        alert('Por favor, preencha ambos os campos');
+        return;
+    }
+
+    const response = await fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -31,8 +26,12 @@ function Login() {
     });
 
     if (response.ok) {
-        fetchLogin(); // Atualiza a lista de clientes após a adição
-        setLogin({ email: '', senha: '' }); // Limpa o formulário
+        
+        setForm({ email: '', senha: '' });
+      
+    } else {
+        const errorData = await response.json();
+        alert('Erro no login: ' + errorData.message);
     }
 };
 
