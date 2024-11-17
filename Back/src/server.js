@@ -10,18 +10,51 @@ app.use(cors({
 }));
 app.use(express.json());
 
-const users = [{
+const users = [
+    {
+        email: 'lucas@gmail.com',
+        senha: '123'
+    },
+    {
+        email: 'vitor@gmail.com',
+        senha: '123'
+    }
+];
 
-    email: 'lucas@gmail.com',
-    senha: '123'
-}];
+// var result;
+
+// app.post('/', async (req, res) => {
+
+//     const { busca }  = req.body;
+
+//     result = users.find(user => user.email === busca);
+
+//     if (result) return res.status(200).json(result)
+//     else return res.status(401).json('no results');
+// });
+
+// app.get('/', async (req, res) => {
+
+//     res.send(result);
+// });
 
 var user = {email: '', senha: ''};
+
+app.get('/cadastro', async (req, res) => {
+
+    try {
+
+        res.send('Back end na rota cadastro')
+    } catch(err) {
+
+        console.error(err.message);
+        res.status(500).json({ error: 'Erro' });
+    }
+});
 
 app.get('/login', async (req, res) => {
     try {
         
-       
         res.send(user);
     } catch (err) {
         console.error(err.message);
