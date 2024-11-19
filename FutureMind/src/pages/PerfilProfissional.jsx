@@ -13,12 +13,58 @@ function PerfilProfissional() {
 
    ]
 
-   const agenda =
+    const obterDiasUteis = (dataInicio) => {
 
-   [
+       const dias = []
+       const atual = new Date(dataInicio)
 
-    {}
-   ]
+       const diaDaSemana = atual.getDay()
+       const deslocamento = diaDaSemana === 0 ? -6 : 1 - diaDaSemana 
+          
+       atual.setDate(atual.getDate() + deslocamento)
+
+       for(let i = 0; i < 5; i++){
+
+         dias.push(new Date(atual))
+         atual.setDate(atual.getDate() + 1)
+
+       }
+
+       return dias;
+    };
+
+    const agenda = () => {
+
+        const [dataAtual, setDataAtual] = useState(new Date())
+        const [diasUteis, setDiasUteis] = useState(obterDiasUteis(new Date()))
+
+        const agendamentos = [
+           
+            {data: "2024-11-12", paciente: "thalles Lima",horario: "15:00"},
+            {data: "2024-11-13", paciente: "Luciana Nuss", horario: "13:00" },
+            {data: "2024-11-15", paciente: "Julia Silva Dias", horario: "14:30" },
+
+        ]
+
+        let handleProximaSemana = () => {
+
+          const proximaSemana = new Date(dataAtual)
+          proximaSemana = new Date(dataAtual)
+          setDataAtual(proximaSemana)
+          setDiasUteis(obterDiasUteis(proximaSemana))
+
+        }
+      
+        let  handleSemanaAnterior = () => {
+
+          const semanaAnterior = new Date(dataAtual)
+          semanaAnterior.setDate(semanaAnterior.getDate() - 7)
+          setDataAtual(semanaAnterior)
+          setDiasUteis(obterDiasUteis(semanaAnterior))
+
+        };
+
+    }  
 
   return (
     <div className='perfilPro-container'>
@@ -35,7 +81,7 @@ function PerfilProfissional() {
 
                 profissional.map((p,index) => (
 
-                <div>
+                <div key={index}>
 
                  <div className='div-foto-nome'>
                     <div className='foto-usuario'>
@@ -75,13 +121,15 @@ function PerfilProfissional() {
 
                  <div className='agendinha'>
                  <div className='div-agenda'>
-                    <img src="Arvore.png"/>
+                  {/* <button onClick={"handleSemanaAnterior"}>{"<"}</button>
+                    <span>{dataAtual.toLocaleDateString("pt-BR", {month: "long"})}</span>
+                   <button onClick={"handleProximaSemana"}>{">"}</button>  */}
                  </div>
                  </div>
-                
                 </div>
-                ))
+                )) 
             }
+            
           
         </div>
 
