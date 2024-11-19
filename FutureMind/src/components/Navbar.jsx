@@ -1,30 +1,7 @@
 import './CSS/Navbar.css'
 import { Link } from 'react-router-dom'
-// import { useState } from 'react';
 
 function Navbar() {
-
-  // const [busca, setBusca] = useState('');
-
-  // const handleBusca = async () => {
-    
-  //     const response = await fetch('http://localhost:3000', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(busca),
-  //     });
-
-  //     if (response.ok) {
-            
-  //     setBusca('');
-      
-  //   } else {
-  //     const errorData = await response.json();
-  //     alert('Erro no login: ' + errorData.message);
-  //   }
-  // };
 
   return (
     <nav className='navbar'>
