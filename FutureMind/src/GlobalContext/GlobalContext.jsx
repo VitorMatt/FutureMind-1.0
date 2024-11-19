@@ -3,7 +3,6 @@ import { createContext, useState } from "react";
 export const GlobalContext = createContext();
 
 export const GlobalContextProvider = ({children}) => {
-const [pageCadastro, setPageCadastro] = useState('')
 
 
 const profissionais = [
@@ -39,8 +38,21 @@ const profissionais = [
 }
 ]
 
+const user = {
+
+    nome_completo: '',
+    cpf:'',
+    telefone:'',
+    preferencias: [],
+    data_nascimento: '',
+    especializacao: [],
+    senha: '',
+    foto: '',
+    email: ''
+}
+
     return(
-        <GlobalContext.Provider value={{pageCadastro, setPageCadastro, profissionais}}>
+        <GlobalContext.Provider value={{profissionais, user}}>
             {children}
         </GlobalContext.Provider>
     );

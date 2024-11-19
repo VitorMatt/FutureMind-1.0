@@ -1,7 +1,7 @@
 import './CSS/SobreNos.css'
 import NavBar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 function ScrollToTop() {
@@ -10,11 +10,41 @@ function ScrollToTop() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
+  
   return null;
 }
-
 function SobreNos() {
+
+const [profissionais, setProfissionais] = useState([]);
+
+const fetchProfissionais = async () => {
+  const response = await fetch('http://localhost:3000/cadastro');
+  const data = await response.json();
+  setProfissionais(data);
+};
+
+useEffect(() => {
+
+  fetchProfissionais();
+}, []);
+
+// const abc = async () => {
+
+//   const response = await fetch('/cadastro', {
+
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.parse(result.rows)
+//   })
+
+//   if (!response.ok) {
+//     const errorData = await response.json();
+//     alert('Erro no login: ' + errorData.message);
+// }
+// };
+
 
   return (
     <div className='sobreNos-container'>
