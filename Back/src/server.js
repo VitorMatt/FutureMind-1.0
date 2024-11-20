@@ -45,6 +45,23 @@ app.get('/cadastro', async (req, res) => {
 
 });
 
+app.post('/cadastro', async (req, res) => {
+
+    const { user } = req.body;
+
+    try {
+        
+        const result = await pool.query(
+            'INSERT INTO clientes (nome_completo, endereco, email, telefone) VALUES ($1, $2, $3, $4) RETURNING *',
+            [user.nome_completo, endereco, email, telefone]
+        );
+        res.status(201).json(result.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Erro ao adicionar cliente' });
+    }
+});
+
 app.get('/login', async (req, res) => {
     try {
         

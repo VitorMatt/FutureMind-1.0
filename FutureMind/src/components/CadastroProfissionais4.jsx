@@ -1,9 +1,17 @@
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { GlobalContext } from '../GlobalContext/GlobalContext'
 
 function CadastroProfissionais3() {
   const atender = ["Adolescência", "Depressão","Angústia","Ansiedade" ]
   const atender2 =["Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"]
   const [atenderSelecionado, setAtenderSelecionado] = useState([])
+
+  const { user } = useContext(GlobalContext);
+
+  useEffect(() => {
+
+    user.especializacao = atenderSelecionado;
+  }, [atenderSelecionado]);
 
   const selecione = (atender) =>{
     setAtenderSelecionado((prevSelected) =>

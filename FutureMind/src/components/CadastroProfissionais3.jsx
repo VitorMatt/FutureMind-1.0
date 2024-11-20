@@ -1,9 +1,16 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 function CadastroProfissionais3() {
   const atender = [ "Idosos","PCDs ", "Adultos" ]
   const atender2 =["Crianças", "Adolescentes", "Pré-Adolescentes"]
   const [atenderSelecionado, setAtenderSelecionado] = useState([])
+
+
+
+  // useEffect(() => {
+
+  //   user.preferencias = atenderSelecionado;
+  // }, [atenderSelecionado]);
 
   const selecione = (atender) =>{
     setAtenderSelecionado((prevSelected) =>

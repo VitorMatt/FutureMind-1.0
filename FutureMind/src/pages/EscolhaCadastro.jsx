@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './CSS/EscolhaCadastro.css';
 import { useNavigate } from 'react-router-dom';
 
+
 function EscolhaCadastro() {
 
   const escolhas = ['Sou Paciente','Sou Profissional'];

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import Navbar from '../components/Navbar';
 import './CSS/Inicio.css';
 
@@ -133,7 +133,7 @@ function Inicio() {
 
   return (
     <div className='inicio-container'>
-      <Navbar />                     
+      <Navbar />            
     
       <div className='busca'>
         <div className="esquerda">
@@ -1174,7 +1174,7 @@ function Inicio() {
 
         <div className='titulos'>
             <h1>
-              PCD's
+              {"PCD's"}
             </h1>
           </div>
           <div style={{width: '100%'}}>

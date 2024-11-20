@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import './CSS/PerfilProfissional.css'
@@ -33,10 +33,11 @@ function PerfilProfissional() {
        return dias;
     };
 
+    const [dataAtual, setDataAtual] = useState(new Date())
+    const [diasUteis, setDiasUteis] = useState(obterDiasUteis(new Date()))
+
     const agenda = () => {
 
-        const [dataAtual, setDataAtual] = useState(new Date())
-        const [diasUteis, setDiasUteis] = useState(obterDiasUteis(new Date()))
 
         const agendamentos = [
            
@@ -49,7 +50,6 @@ function PerfilProfissional() {
         let handleProximaSemana = () => {
 
           const proximaSemana = new Date(dataAtual)
-          proximaSemana = new Date(dataAtual)
           setDataAtual(proximaSemana)
           setDiasUteis(obterDiasUteis(proximaSemana))
 

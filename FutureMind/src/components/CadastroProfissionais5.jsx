@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
 import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
+import { GlobalContext } from "../GlobalContext/GlobalContext";
 
 function CadastroProfissionais5() {
 
   const [date, setDate] = useState(null); // Estado para armazenar a data selecionada
+
+  const { user } = useContext(GlobalContext);
+
+  useEffect(() => {
+
+    user.data_nascimento = date;
+  }, [date]);
 
     return (
       <div className="selecao1">
