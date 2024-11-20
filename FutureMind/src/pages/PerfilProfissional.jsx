@@ -33,38 +33,36 @@ function PerfilProfissional() {
        return dias;
     };
 
-    const [dataAtual, setDataAtual] = useState(new Date())
-    const [diasUteis, setDiasUteis] = useState(obterDiasUteis(new Date()))
-
-    const agenda = () => {
-
-
+        const [dataAtual, setDataAtual] = useState(new Date())
+        const [diasUteis, setDiasUteis] = useState(obterDiasUteis(new Date()))
+        
         const agendamentos = [
            
             {data: "2024-11-12", paciente: "thalles Lima",horario: "15:00"},
             {data: "2024-11-13", paciente: "Luciana Nuss", horario: "13:00" },
-            {data: "2024-11-15", paciente: "Julia Silva Dias", horario: "14:30" },
+            {data: "2024-11-13", paciente: "Julia Silva Dias", horario: "14:30" },
 
         ]
 
-        let handleProximaSemana = () => {
+        function handleProximaSemana()  {
 
           const proximaSemana = new Date(dataAtual)
+          proximaSemana.setDate(proximaSemana.getDate() + 7)
           setDataAtual(proximaSemana)
           setDiasUteis(obterDiasUteis(proximaSemana))
 
         }
       
-        let  handleSemanaAnterior = () => {
+        function handleSemanaAnterior(){
 
           const semanaAnterior = new Date(dataAtual)
           semanaAnterior.setDate(semanaAnterior.getDate() - 7)
           setDataAtual(semanaAnterior)
           setDiasUteis(obterDiasUteis(semanaAnterior))
 
-        };
+        }
 
-    }  
+    
 
   return (
     <div className='perfilPro-container'>
@@ -118,20 +116,74 @@ function PerfilProfissional() {
                  <div className='titulo-agenda'>
                     <h1>Agenda</h1>
                  </div>
-
-                 <div className='agendinha'>
-                 <div className='div-agenda'>
-                  {/* <button onClick={"handleSemanaAnterior"}>{"<"}</button>
-                    <span>{dataAtual.toLocaleDateString("pt-BR", {month: "long"})}</span>
-                   <button onClick={"handleProximaSemana"}>{">"}</button>  */}
-                 </div>
-                 </div>
                 </div>
                 )) 
             }
-            
-          
+          <div>
+           <div className='mes_ano'>
+              <button onClick={handleSemanaAnterior}>{"<"}</button> 
+              <span>{dataAtual.toLocaleDateString("pt-BR", {month: "long",  year: "numeric"})}</span>
+              <button onClick={handleProximaSemana}>{">"}</button> 
+           </div>
+           <div className='dias_semana'>
+             {
+                diasUteis.map((d,index) => {
+
+                  const dia_string = d.toISOString().split('T')[0];
+                  const agendamento = agendamentos.find((ag) => ag.Date === dia_string)
+                  
+                  return (
+
+                    <div key={dia_string}>
+
+                     <div className='dias_semana'>
+                      <div className='cabeçalho'>
+                        {d.toLocaleDateString("pt-BR", { weekday: "long" })} - {d.getDate()}
+                      </div>
+                     </div>
+                      {agendamento ? (
+                      <div className='itens_ag'>
+                        <p>{agendamentos.paciente}</p>
+                        <p>{agendamentos.data}</p>
+                        <p>{agendamentos.horario}</p>
+                      </div>
+                      ) : (
+                        <div className='mensagem_s'>Sem agendamentos</div>
+                      )}
+                    </div>
+                  )
+                }) 
+             }
+           </div>
+          </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         {/* <div className='anotações-profissional'>
 
