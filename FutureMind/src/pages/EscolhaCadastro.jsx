@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './CSS/EscolhaCadastro.css';
 import { useNavigate } from 'react-router-dom';
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function EscolhaCadastro() {
 
   const escolhas = ['Sou Paciente','Sou Profissional'];
   const [escolhaCadastro, setEscolhaCadastro] = useState('');
   const navigate = useNavigate();
+
+  const { setUserProfessional } = useContext(GlobalContext);
 
 
   const aperta = (escolha) => {
@@ -17,8 +20,10 @@ function EscolhaCadastro() {
     if (!escolhaCadastro) {
       alert('Nenhum conteúdo selecionado');
     } else if (escolhaCadastro === 'Sou Profissional') {
+      setUserProfessional(true);
       navigate('/cadastro-profissional');
     } else if (escolhaCadastro === 'Sou Paciente') {
+      setUserProfessional(false);
       navigate('/cadastro-paciente');
     }
   }

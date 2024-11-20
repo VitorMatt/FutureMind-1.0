@@ -3,8 +3,8 @@ import { createContext, useState } from "react";
 export const GlobalContext = createContext();
 
 export const GlobalContextProvider = ({children}) => {
-const [pageCadastro, setPageCadastro] = useState('')
 
+const [userProfessional, setUserProfessional] = useState(false);
 
 const profissionais = [
     {
@@ -40,7 +40,7 @@ const profissionais = [
 ]
 
     return(
-        <GlobalContext.Provider value={{pageCadastro, setPageCadastro, profissionais}}>
+        <GlobalContext.Provider value={{profissionais, userProfessional, setUserProfessional}}>
             {children}
         </GlobalContext.Provider>
     );
