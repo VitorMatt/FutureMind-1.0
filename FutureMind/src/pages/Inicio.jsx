@@ -20,8 +20,21 @@ function Inicio() {
   const [buscaTres, setBuscaTres] = useState([{descricao: "PCD's", selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
 
   const [click, setClick] = useState(false);
-
   const { profissionais } = useContext(GlobalContext);
+
+  // const [profissionais, setProfissionais] = useState([]);
+
+  
+  // const fetchProfissionais = async () => {
+  //   const response = await fetch('http://localhost:3000/cadastro');
+  //   const data = await response.json();
+  //   setProfissionais(data);
+  // };
+  
+  // useEffect(() => {
+  
+  //   fetchProfissionais();
+  // }, []);
 
   const clickUm = (index) => {
 
@@ -322,7 +335,7 @@ function Inicio() {
         <div className='btn-consulta'>
 
 
-        <button 
+        <button
           id="agendar"
           onClick={handleAgendamento}
           disabled={!selectedTime}
@@ -1161,7 +1174,7 @@ function Inicio() {
 
         <div className='titulos'>
             <h1>
-              PCD's
+              {"PCD's"}
             </h1>
           </div>
           <div style={{width: '100%'}}>

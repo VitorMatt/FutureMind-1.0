@@ -1,8 +1,16 @@
 const express = require('express');
 const cors = require('cors');
+const { Pool } = require('pg');
 
 const app = express();
 
+const pool = new Pool({
+    user: 'postgres', // Substitua pelo seu usuário do PostgreSQL
+    host: 'localhost',
+    database: 'FutureMind', // Nome da sua database
+    password: '12345', // Substitua pela sua senha
+    port: 5432, // Porta padrão do PostgreSQL
+});
 
 // Habilitar CORS para todas as rotas
 app.use(cors({
@@ -21,34 +29,36 @@ const users = [
     }
 ];
 
-// var result;
-
-// app.post('/', async (req, res) => {
-
-//     const { busca }  = req.body;
-
-//     result = users.find(user => user.email === busca);
-
-//     if (result) return res.status(200).json(result)
-//     else return res.status(401).json('no results');
-// });
-
-// app.get('/', async (req, res) => {
-
-//     res.send(result);
-// });
-
 var user = {email: '', senha: ''};
 
 app.get('/cadastro', async (req, res) => {
 
     try {
+        const result = await pool.query('SELECT * FROM profissionais');
+        res.json(result.rows);
 
-        res.send('Back end na rota cadastro')
     } catch(err) {
 
         console.error(err.message);
         res.status(500).json({ error: 'Erro' });
+    }
+
+});
+
+app.post('/cadastro', async (req, res) => {
+
+    const { user } = req.body;
+
+    try {
+        
+        const result = await pool.query(
+            'INSERT INTO clientes (nome_completo, endereco, email, telefone) VALUES ($1, $2, $3, $4) RETURNING *',
+            [user.nome_completo, endereco, email, telefone]
+        );
+        res.status(201).json(result.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Erro ao adicionar cliente' });
     }
 });
 

@@ -1,6 +1,23 @@
+import { useContext, useEffect, useState } from 'react';
+import { GlobalContext } from '../GlobalContext/GlobalContext'
 import './CSS/Profissionais3.css'
-import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
+
 function CadastroProfissionais6() {
+
+    const [cpf, setCpf] = useState('');
+    const [number, setNumber] = useState('');
+    const { user } = useContext(GlobalContext);
+
+    useEffect(() => {
+
+      user.cpf = cpf;
+    }, [cpf]);
+
+    useEffect(() => {
+
+      user.telefone = number;
+    }, [number]);
+
     return (
       <div className="selecao1">
       
@@ -8,10 +25,10 @@ function CadastroProfissionais6() {
       <div className="checkboxs2">
 
     <div className="input-text">
-      <label htmlFor="">CPF</label><input type="text" name="file"className="inputCRP" />
+      <label htmlFor="">CPF</label><input value={cpf} onChange={(e) => { setCpf(e.target.value) }} type="text" name="file"className="inputCRP" />
     </div>
     <div className="input-text">
-      <label htmlFor="">Telefone</label><input type="text" className="inputCRP"/>
+      <label htmlFor="">Telefone</label><input value={number} onChange={(e) => { setNumber(e.target.value) }} type="text" className="inputCRP"/>
     </div>
       </div>
     </div>

@@ -1,10 +1,8 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 
 export const GlobalContext = createContext();
 
 export const GlobalContextProvider = ({children}) => {
-
-const [userProfessional, setUserProfessional] = useState(false);
 
 const profissionais = [
     {
@@ -39,8 +37,22 @@ const profissionais = [
 }
 ]
 
+const user = {
+
+    nome_completo: '',
+    cpf:'',
+    telefone:'',
+    preferencias: [],
+    data_nascimento: '',
+    especializacao: [],
+    senha: '',
+    foto: '',
+    abordagem: '',
+    email: ''
+}
+
     return(
-        <GlobalContext.Provider value={{profissionais, userProfessional, setUserProfessional}}>
+        <GlobalContext.Provider value={{profissionais, user}}>
             {children}
         </GlobalContext.Provider>
     );

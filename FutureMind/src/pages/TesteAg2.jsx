@@ -2,27 +2,27 @@ import React, { useState } from "react";
 import "./CSS/TesteAg2.css"; // Arquivo CSS para estilização
 
 // Função para obter os dias úteis da semana
-const getWeekDays = (startDate) => {
+const obterDiasUteis = (dataInicio) => {
   const days = [];
-  const current = new Date(startDate);
+  const atual = new Date(dataInicio);
 
   // Ajuste para a última segunda-feira
-  const dayOfWeek = current.getDay();
+  const dayOfWeek = atual.getDay();
   const offset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
-  current.setDate(current.getDate() + offset);
+  atual.setDate(atual.getDate() + offset);
 
   // Adiciona os cinco dias úteis (segunda a sexta)
   for (let i = 0; i < 5; i++) {
-    days.push(new Date(current));
-    current.setDate(current.getDate() + 1);
+    days.push(new Date(atual));
+    atual.setDate(atual.getDate() + 1);
   }
 
   return days;
 };
 
 const Agenda = () => {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [weekDays, setWeekDays] = useState(getWeekDays(new Date()));
+  const [atualDate, setatualDate] = useState(new Date());
+  const [weekDays, setWeekDays] = useState(obterDiasUteis(new Date()));
   const [appointments, setAppointments] = useState([
     { date: "2024-11-12", patient: "Thalles Lima", time: "15:00", duration: "120min" },
     { date: "2024-11-12", patient: "Luciana Nuss", time: "13:00", duration: "120min" },
@@ -30,17 +30,17 @@ const Agenda = () => {
   ]);
 
   const handlePreviousWeek = () => {
-    const prevWeek = new Date(currentDate);
+    const prevWeek = new Date(atualDate);
     prevWeek.setDate(prevWeek.getDate() - 7);
-    setCurrentDate(prevWeek);
-    setWeekDays(getWeekDays(prevWeek));
+    setatualDate(prevWeek);
+    setWeekDays(obterDiasUteis(prevWeek));
   };
 
   const handleNextWeek = () => {
-    const nextWeek = new Date(currentDate);
+    const nextWeek = new Date(atualDate);
     nextWeek.setDate(nextWeek.getDate() + 7);
-    setCurrentDate(nextWeek);
-    setWeekDays(getWeekDays(nextWeek));
+    setatualDate(nextWeek);
+    setWeekDays(obterDiasUteis(nextWeek));
   };
 
   return (
@@ -48,7 +48,7 @@ const Agenda = () => {
       <h2>Agenda</h2>
       <div className="agenda-navigation">
         <button onClick={handlePreviousWeek}>{"<"}</button>
-        <span>{currentDate.toLocaleDateString("pt-BR", { month: "long", year: "numeric" })}</span>
+        <span>{atualDate.toLocaleDateString("pt-BR", { month: "long", year: "numeric" })}</span>
         <button onClick={handleNextWeek}>{">"}</button>
       </div>
 
