@@ -1,6 +1,7 @@
 import './CSS/LandingPage.css'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
+import { MyCarousel } from '../components/MyCarousel'
 
 function LandingPage() { 
   return (
@@ -23,8 +24,9 @@ function LandingPage() {
         </div>
 
         <div className="img2">
-           <img className='computer-inicio' src='computer.png' />
-           <img className='bola-inicio' src='bola-inicio.svg' />
+          <MyCarousel className='carousel-2' />
+           <img className='computer-inicio' src='computer2.svg' />
+
         </div>
       </div>
         <div className='back'>

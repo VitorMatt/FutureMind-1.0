@@ -1,0 +1,41 @@
+.carrossel_ajuste{
+    
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+}
+
+.carrossel{
+	position: absolute;
+	box-shadow: 2px 2px 4px black;
+	overflow: hidden;
+	height: 340px;
+	width: 525px;
+	top: 18%;
+	left: 23%;
+}
+
+.containerA{
+	box-sizing: border-box;
+	display: flex;
+	transition: transform 0.5s ease-in-out;
+	transform: translateX(0);
+}
+
+.containerA h2 {
+
+    font-family: "Poppins", sans-serif;
+    color: #495F9E;
+    font-weight: bold;
+    margin-left: 40px;
+    font-size: 30px;
+}
+
+.containerA img {
+
+    align-items: center;
+	object-fit: cover;
+	height: 340px;
+	width: 525px;
+}

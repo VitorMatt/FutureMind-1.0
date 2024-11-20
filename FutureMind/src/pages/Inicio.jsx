@@ -133,7 +133,7 @@ function Inicio() {
 
   return (
     <div className='inicio-container'>
-      <Navbar />                     
+      <Navbar />            
     
       <div className='busca'>
         <div className="esquerda">
