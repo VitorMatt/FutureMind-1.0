@@ -2,7 +2,7 @@ import './CSS/LandingPage.css'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
 
-function LandingPage() {
+function LandingPage() { 
   return (
 
     <div className='landingPage-container'>
@@ -58,19 +58,21 @@ function LandingPage() {
           <div className='esquerdo'>
 
             <div className='como-funciona'>
-                 <h1>gytrytyytty</h1>
+                 <h1>Como funciona a terapia online</h1>
             </div>
 
             <div className='0.1'>
-                  <h1>rtttrttt</h1>
+                  <h1>A flexibilidade de realizar consultas de qualquer lugar elimina barreiras geográficas, ampliando o acesso à terapia. Lembretes automáticos ajudam a manter a rotina, e ferramentas integradas, como exercícios de atenção plena, potencializam a eficácia do tratamento.</h1>
             </div>
 
           </div>
-          <div className='imagem-direito'>
-                <h1>rgytytytyu</h1>
+          <div className='imagem-direito'> 
+                <img className='imagemterapia' src='imagemterapia.png' />
           </div>
-        </div>
+        </div>  
     </div>
+
+    
   )
 }
 

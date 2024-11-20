@@ -38,12 +38,13 @@
 .titulo {
 
     font-family: "Poller One", serif;
-    font-weight: 400;
+    font-weight: 100;
     font-style: normal;
     color: #013a63;
     flex-wrap: wrap;
-    width: 100%;
+    width: 90%;
     font-size: 50px;
+    margin-top: 13%;
 }
 
 .subtitulo {
@@ -54,27 +55,29 @@
     width: 80%;
     font-size: 19px;
     display: block;
+    margin-left: -10%;
+    margin-top: -27px;
       
 }
 
 .subtitulo p {
 
-    height: 30px;
-    width: 80%;
+    height: 22px;
+    width: 90%;
 }
 
 .btn {
 
-    padding: 4%;
+    padding:9%;
     background-color: #5a789fe6;
     border: 1px solid;
     border-radius: 13px;
     color: white;
     margin-top: 10%;
-    margin-left: -30%;
-    width: 140%;
+    width: 200%;
     font-family: "Poppins", sans-serif;
-    font-size: 25px;
+    font-size: 28px;
+    margin-left: -120%;
 }
 
 .btn:hover {
@@ -231,16 +234,37 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-    background-color: forestgreen;
+    background-color: #C1DFF4;
+
 }
+
 
 .como-funciona {
 
-    background-color: lightcoral;
+    background-color: #C1DFF4;
+    width: 100;
+   
+
+    
 }
 
 .imagem-direito {
 
     width: 50%;
-    background-color: darkorchid;
+    background-color: #C1DFF4;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;  
+}
+
+.imagemterapia{
+    width: 70%;
+    
+   
+    
+    
+}
+
+.relatos{
+    width: 100%;
 }
