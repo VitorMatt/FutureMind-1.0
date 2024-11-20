@@ -1,6 +1,7 @@
 import './CSS/LandingPage.css'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
+import Footer from '../components/Footer'
 
 function LandingPage() { 
   return (
@@ -29,7 +30,7 @@ function LandingPage() {
       </div>
         <div className='back'>
           <div className='imgPhone'>
-            <img src='telefone.svg' className='phoneImage' />
+            <img src='imgtelefone.png' className='phoneImage' />
           </div>
 
           <div className='conteudo'>
@@ -39,7 +40,7 @@ function LandingPage() {
 
           <div className='texto-um'>
           <p>Um aplicativo de terapia online simplifica a busca por apoio emocional, permitindo agendar sessões, escolher profissionais e acessar recursos de bem-estar com apenas alguns toques. Sua interface intuitiva torna o uso fácil e acessível para todas as idades.</p>
-          <img src='CirculoImagem.png' className='circuloImg' />
+          <img src='circuloimg.png' className='circuloimg' />
           </div>
 
           <div className='texto-dois'>
@@ -53,6 +54,7 @@ function LandingPage() {
           </div>
           </div>
         </div>
+        
         <div className='grande'>
 
           <div className='esquerdo'>
@@ -69,8 +71,12 @@ function LandingPage() {
           <div className='imagem-direito'> 
                 <img className='imagemterapia' src='imagemterapia.png' />
           </div>
-        </div>  
-    </div>
+        
+        </div> 
+        <Footer />
+         </div>
+
+    
 
     
   )
