@@ -119,42 +119,43 @@ function PerfilProfissional() {
                 </div>
                 )) 
             }
-          <div>
-           <div className='mes_ano'>
-              <button onClick={handleSemanaAnterior}>{"<"}</button> 
-              <span>{dataAtual.toLocaleDateString("pt-BR", {month: "long",  year: "numeric"})}</span>
-              <button onClick={handleProximaSemana}>{">"}</button> 
-           </div>
+          <div className='container-agendamento'>
+              <button onClick={handleSemanaAnterior} className="button_voltar">{"<"}</button> 
            <div className='dias_semana'>
              {
                 diasUteis.map((d,index) => {
 
                   const dia_string = d.toISOString().split('T')[0];
-                  const agendamento = agendamentos.find((ag) => ag.Date === dia_string)
+                  const agendamento = agendamentos.find((ag) => ag.data === dia_string)
                   
                   return (
 
-                    <div key={dia_string}>
+                    <div key={dia_string} className="div_informações_ag">
 
-                     <div className='dias_semana'>
+                     <div className='semana'>
                       <div className='cabeçalho'>
                         {d.toLocaleDateString("pt-BR", { weekday: "long" })} - {d.getDate()}
                       </div>
                      </div>
                       {agendamento ? (
+
                       <div className='itens_ag'>
-                        <p>{agendamentos.paciente}</p>
-                        <p>{agendamentos.data}</p>
-                        <p>{agendamentos.horario}</p>
+                        <p>{agendamento.paciente}</p>
+                        <p>{agendamento.data}</p>
+                        <p>{agendamento.horario}</p>
                       </div>
+
                       ) : (
-                        <div className='mensagem_s'>Sem agendamentos</div>
+
+                        <div className='mensagem_s'>Sem agendamento  (s)</div>
+                        
                       )}
                     </div>
                   )
                 }) 
              }
            </div>
+           <button onClick={handleProximaSemana}  className="button_passar">{">"}</button>
           </div>
         </div>
 
