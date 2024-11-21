@@ -184,3 +184,86 @@
     width: 70%;
     height: fit-content;
 }
+
+.container-agendamento{
+
+    display: flex;
+    /* flex-direction: column; */
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.button_passar{
+    background-color: white;
+    border: none;
+    font-size: 4em;
+    color: #5A789F; 
+    padding-left: 40px;
+}
+
+.button_voltar{
+
+    background-color: white;
+    border: none;
+    font-size: 4em;
+    color: #5A789F; 
+    padding-right: 40px;
+}
+
+.mes_ano span{
+
+    font-size:25px;
+
+}
+
+.semana{
+
+    background-color: #5A789F;
+    justify-content: space-around;
+    width: 100%;
+}
+.div_informações_ag{
+    
+    width: 20%;
+    background-color: #ffffff;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 250px;
+}
+
+.dias_semana{
+
+    padding-top: 5%;
+    padding-left: 5%;
+
+    display: flex;
+    width: 75%;
+    height: 650px;
+    flex-wrap: wrap;
+    gap: 5%;
+    background-color: #5a789f;
+    /* justify-content: center; */
+    color: #000000;
+    border-radius: 10px;
+}
+
+.cabeçalho{
+
+    display: flex;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: rgb(164, 190, 212);
+    height: 45px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-top-right-radius: 10px ;
+    border-top-left-radius: 10px;
+}
+
+
