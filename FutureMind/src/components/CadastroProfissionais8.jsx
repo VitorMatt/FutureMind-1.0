@@ -7,8 +7,8 @@ function CadastroProfissionais8() {
     const { user } = useContext(GlobalContext);
 
     const [preco, setPreco] = useState(user.preco);
+    const [abordagem, setAbordagem] = useState(user.abordagem);
     const [message, setMessage] = useState('');
-    const [abordagem, setAbordagem] = useState('');
 
     useEffect(() => {
 

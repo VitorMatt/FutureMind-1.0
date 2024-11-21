@@ -1,11 +1,8 @@
 import './CSS/LandingPage.css'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
-<<<<<<< HEAD
 import Footer from '../components/Footer'
-=======
 import { MyCarousel } from '../components/MyCarousel'
->>>>>>> e5be12178e34990fffd818618ef092e850a526f4
 
 function LandingPage() { 
   return (

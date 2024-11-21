@@ -5,12 +5,12 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function CadastroProfissionais7() {
 
+    const { user } = useContext(GlobalContext);
     const [olhosSenha, setOlhosSenha] = useState(false);
-    const [senha, setSenha] = useState('');
-    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState(user.senha);
+    const [email, setEmail] = useState(user.email);
     const [message, setMessage] = useState('');
 
-    const { user } = useContext(GlobalContext);
 
     useEffect(() => {
 
@@ -22,8 +22,9 @@ function CadastroProfissionais7() {
       if (senha.length!=8) {
 
         setMessage('A senha deve conter 8 caracteres!');
-      } else {
-
+      } else  {
+        
+        setMessage(null);
         user.senha = senha;
       }
     }, [senha]);

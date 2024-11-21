@@ -31,6 +31,7 @@ function CadastroProfissinal() {
         }
     };    
 
+    
     const handleFinish = async () => {
 
       const response = await fetch('http://localhost:3000/cadastro', {
@@ -45,10 +46,6 @@ function CadastroProfissinal() {
       if (response.ok) {
 
         navigate('/login'); 
-      } else {
-
-        const errorData = await response.json();
-        alert('Erro no cadastro: ' + errorData.message);
       }
     };
 

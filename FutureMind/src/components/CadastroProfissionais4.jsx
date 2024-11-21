@@ -2,11 +2,12 @@ import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../GlobalContext/GlobalContext'
 
 function CadastroProfissionais3() {
+  
+  const { user } = useContext(GlobalContext);
   const atender = ["Adolescência", "Depressão","Angústia","Ansiedade" ]
   const atender2 =["Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"]
-  const [atenderSelecionado, setAtenderSelecionado] = useState([])
+  const [atenderSelecionado, setAtenderSelecionado] = useState(user.especializacao);
 
-  const { user } = useContext(GlobalContext);
 
   useEffect(() => {
 

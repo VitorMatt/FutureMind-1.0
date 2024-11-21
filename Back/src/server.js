@@ -4,13 +4,13 @@ const { Pool } = require('pg');
 
 const app = express();
 
-const pool = new Pool({
-    user: 'postgres', // Substitua pelo seu usuário do PostgreSQL
-    host: 'localhost',
-    database: 'FutureMind', // Nome da sua database
-    password: '12345', // Substitua pela sua senha
-    port: 5432, // Porta padrão do PostgreSQL
-});
+// const pool = new Pool({
+//     user: 'postgres', 
+//     host: 'localhost',
+//     database: 'FutureMind', 
+//     password: '12345',
+//     port: 5432, 
+// });
 
 // Habilitar CORS para todas as rotas
 app.use(cors({
@@ -31,36 +31,62 @@ const users = [
 
 var user = {email: '', senha: ''};
 
-app.get('/cadastro', async (req, res) => {
+// app.get('/cadastro', async (req, res) => {
 
-    try {
-        const result = await pool.query('SELECT * FROM profissionais');
-        res.json(result.rows);
+//     try {
+//         const result = await pool.query('SELECT * FROM profissionais');
+//         res.json(result.rows);
 
-    } catch(err) {
+//     } catch(err) {
 
-        console.error(err.message);
-        res.status(500).json({ error: 'Erro' });
-    }
+//         console.error(err.message);
+//         res.status(500).json({ error: 'Erro' });
+//     }
 
-});
+// });
 
-app.post('/cadastro', async (req, res) => {
+// var user3 = {a: 'a'};
 
-    const { user } = req.body;
+// app.get('/cadastro', async (req, res) => {
 
-    try {
+//     try {
+       
+//         res.send(user3);
+
+//     } catch(err) {
+
+//         console.error(err.message);
+//         res.status(500).json({ error: 'Erro' });
+//     }
+
+// });
+
+// app.post('/cadastro', async (req, res) => {
+
+//     const { 
+//         nome_completo,
+//         cpf,
+//         telefone,
+//         preferencias,
+//         data_nascimento,
+//         especializacao,
+//         senha,
+//         foto,
+//         abordagem,
+//         email } = req.body;
+
+//     try {
         
-        const result = await pool.query(
-            'INSERT INTO clientes (nome_completo, endereco, email, telefone) VALUES ($1, $2, $3, $4) RETURNING *',
-            [user.nome_completo, endereco, email, telefone]
-        );
-        res.status(201).json(result.rows[0]);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).json({ error: 'Erro ao adicionar cliente' });
-    }
-});
+//         // const result = await pool.query(
+//         //     'INSERT INTO clientes (nome_completo, endereco, email, telefone) VALUES ($1, $2, $3, $4) RETURNING *',
+//         //     [user.nome_completo, endereco, email, telefone]
+//         // );
+//         res.status(201).json(nome_completo);
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).json({ error: 'Erro ao adicionar cliente' });
+//     }
+// });
 
 app.get('/login', async (req, res) => {
     try {

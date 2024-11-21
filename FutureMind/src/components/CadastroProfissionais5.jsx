@@ -6,14 +6,20 @@ import { GlobalContext } from "../GlobalContext/GlobalContext";
 
 function CadastroProfissionais5() {
 
-  const [date, setDate] = useState(null); // Estado para armazenar a data selecionada
-
   const { user } = useContext(GlobalContext);
+  const [name, setName] = useState(user.nome);
+  const [date, setDate] = useState(user.data_nascimento); // Estado para armazenar a data selecionada
+
 
   useEffect(() => {
 
     user.data_nascimento = date;
   }, [date]);
+
+  useEffect(() => {
+
+    user.nome = name;
+  }, [name]);
 
     return (
       <div className="selecao1">
@@ -22,7 +28,7 @@ function CadastroProfissionais5() {
       <div className="checkboxs2">
 
     <div className="input-text">
-      <label htmlFor="">Nome Completo</label><input type="text" name="file"className="inputCRP" />
+      <label htmlFor="">Nome Completo</label><input value={name} onChange={(e) => { setName(e.target.value) }} type="text" name="file"className="inputCRP" />
     </div>
     <div className="input-text">
       <label htmlFor="">Data de Nascimento</label>

@@ -4,9 +4,9 @@ import './CSS/Profissionais3.css'
 
 function CadastroProfissionais6() {
 
-    const [cpf, setCpf] = useState('');
-    const [number, setNumber] = useState('');
-    const { user } = useContext(GlobalContext);
+  const { user } = useContext(GlobalContext);
+    const [cpf, setCpf] = useState(user.cpf);
+    const [number, setNumber] = useState(user.telefone);
 
     useEffect(() => {
 
