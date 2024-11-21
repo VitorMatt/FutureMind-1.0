@@ -1,17 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react';
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function CadastroProfissionais3() {
+
+  const { user } = useContext(GlobalContext);
   const atender = [ "Idosos","PCDs ", "Adultos" ]
   const atender2 =["Crianças", "Adolescentes", "Pré-Adolescentes"]
-  const [atenderSelecionado, setAtenderSelecionado] = useState([])
+  const [atenderSelecionado, setAtenderSelecionado] = useState(user.preferencias)
 
+
+  useEffect(() => {
+  
+    user.preferencias = atenderSelecionado;
+  }, [atenderSelecionado]);
+  
   const selecione = (atender) =>{
     setAtenderSelecionado((prevSelected) =>
-    prevSelected.includes(atender)
+      prevSelected.includes(atender)
     ?prevSelected.filter ((a) => a !==atender)
     :[...prevSelected, atender]
-    );
-  };
+  );
+};
 
   return (
     <div className='selecao3'>

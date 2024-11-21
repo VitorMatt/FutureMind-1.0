@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 // Rota para buscar todos os clientes
-app.get('/clientes', async (req, res) => {
+app.get('/profissional', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM clientes');
         res.json(result.rows);

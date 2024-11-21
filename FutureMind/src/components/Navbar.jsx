@@ -2,6 +2,7 @@ import './CSS/Navbar.css'
 import { Link } from 'react-router-dom'
 
 function Navbar() {
+
   return (
     <nav className='navbar'>
       <img src='logo (2).png' className='logo-nav'/>

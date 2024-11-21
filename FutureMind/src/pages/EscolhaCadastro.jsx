@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import './CSS/EscolhaCadastro.css';
+import { useNavigate } from 'react-router-dom';
+
 
 function EscolhaCadastro() {
+
   const escolhas = ['Sou Paciente','Sou Profissional'];
   const [escolhaCadastro, setEscolhaCadastro] = useState('');
+  const navigate = useNavigate();
 
 
   const aperta = (escolha) => {
@@ -14,9 +18,9 @@ function EscolhaCadastro() {
     if (!escolhaCadastro) {
       alert('Nenhum conteúdo selecionado');
     } else if (escolhaCadastro === 'Sou Profissional') {
-      window.location.href = '/cadastro-profissional';
+      navigate('/cadastro-profissional');
     } else if (escolhaCadastro === 'Sou Paciente') {
-      window.location.href = '/cadastro-paciente';
+      navigate('/cadastro-paciente');
     }
   }
 

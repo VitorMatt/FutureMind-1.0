@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import './CSS/PerfilProfissional.css'
@@ -13,12 +13,56 @@ function PerfilProfissional() {
 
    ]
 
-   const agenda =
+    const obterDiasUteis = (dataInicio) => {
 
-   [
+       const dias = []
+       const atual = new Date(dataInicio)
 
-    {}
-   ]
+       const diaDaSemana = atual.getDay()
+       const deslocamento = diaDaSemana === 0 ? -6 : 1 - diaDaSemana 
+          
+       atual.setDate(atual.getDate() + deslocamento)
+
+       for(let i = 0; i < 5; i++){
+
+         dias.push(new Date(atual))
+         atual.setDate(atual.getDate() + 1)
+
+       }
+
+       return dias;
+    };
+
+        const [dataAtual, setDataAtual] = useState(new Date())
+        const [diasUteis, setDiasUteis] = useState(obterDiasUteis(new Date()))
+        
+        const agendamentos = [
+           
+            {data: "2024-11-12", paciente: "thalles Lima",horario: "15:00"},
+            {data: "2024-11-13", paciente: "Luciana Nuss", horario: "13:00" },
+            {data: "2024-11-13", paciente: "Julia Silva Dias", horario: "14:30" },
+
+        ]
+
+        function handleProximaSemana()  {
+
+          const proximaSemana = new Date(dataAtual)
+          proximaSemana.setDate(proximaSemana.getDate() + 7)
+          setDataAtual(proximaSemana)
+          setDiasUteis(obterDiasUteis(proximaSemana))
+
+        }
+      
+        function handleSemanaAnterior(){
+
+          const semanaAnterior = new Date(dataAtual)
+          semanaAnterior.setDate(semanaAnterior.getDate() - 7)
+          setDataAtual(semanaAnterior)
+          setDiasUteis(obterDiasUteis(semanaAnterior))
+
+        }
+
+    
 
   return (
     <div className='perfilPro-container'>
@@ -35,7 +79,7 @@ function PerfilProfissional() {
 
                 profissional.map((p,index) => (
 
-                <div>
+                <div key={index}>
 
                  <div className='div-foto-nome'>
                     <div className='foto-usuario'>
@@ -72,18 +116,74 @@ function PerfilProfissional() {
                  <div className='titulo-agenda'>
                     <h1>Agenda</h1>
                  </div>
-
-                 <div className='agendinha'>
-                 <div className='div-agenda'>
-                    <img src="Arvore.png"/>
-                 </div>
-                 </div>
-                
                 </div>
-                ))
+                )) 
             }
-          
+          <div>
+           <div className='mes_ano'>
+              <button onClick={handleSemanaAnterior}>{"<"}</button> 
+              <span>{dataAtual.toLocaleDateString("pt-BR", {month: "long",  year: "numeric"})}</span>
+              <button onClick={handleProximaSemana}>{">"}</button> 
+           </div>
+           <div className='dias_semana'>
+             {
+                diasUteis.map((d,index) => {
+
+                  const dia_string = d.toISOString().split('T')[0];
+                  const agendamento = agendamentos.find((ag) => ag.Date === dia_string)
+                  
+                  return (
+
+                    <div key={dia_string}>
+
+                     <div className='dias_semana'>
+                      <div className='cabeçalho'>
+                        {d.toLocaleDateString("pt-BR", { weekday: "long" })} - {d.getDate()}
+                      </div>
+                     </div>
+                      {agendamento ? (
+                      <div className='itens_ag'>
+                        <p>{agendamentos.paciente}</p>
+                        <p>{agendamentos.data}</p>
+                        <p>{agendamentos.horario}</p>
+                      </div>
+                      ) : (
+                        <div className='mensagem_s'>Sem agendamentos</div>
+                      )}
+                    </div>
+                  )
+                }) 
+             }
+           </div>
+          </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         {/* <div className='anotações-profissional'>
 

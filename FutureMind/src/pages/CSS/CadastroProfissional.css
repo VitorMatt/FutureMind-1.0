@@ -213,9 +213,23 @@ input[type="file"] {
 
 }
 
-
-
-
+  
+/* Especifique o elemento e sua classe */
+.input-text .flatpickr-day {
+    color: #007bff !important; /* Texto azul com prioridade */
+  }
+  
+  /* Estilo para o dia atual */
+  .input-text .flatpickr-day.today {
+    background-color: #f0f8ff !important;
+    color: #007bff !important;
+  }
+  
+  /* Dia selecionado */
+  .input-text .flatpickr-day.selected {
+    background-color: #28a745 !important; /* Fundo verde */
+    color: white !important;
+  }
 
 /* page 3 */
 .lados{

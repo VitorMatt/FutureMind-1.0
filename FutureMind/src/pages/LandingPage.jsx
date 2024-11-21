@@ -1,8 +1,10 @@
 import './CSS/LandingPage.css'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
+import Footer from '../components/Footer'
+import { MyCarousel } from '../components/MyCarousel'
 
-function LandingPage() {
+function LandingPage() { 
   return (
 
     <div className='landingPage-container'>
@@ -23,13 +25,14 @@ function LandingPage() {
         </div>
 
         <div className="img2">
-           <img className='computer-inicio' src='computer.png' />
-           <img className='bola-inicio' src='bola-inicio.svg' />
+          <MyCarousel className='carousel-2' />
+           <img className='computer-inicio' src='computer2.svg' />
+
         </div>
       </div>
         <div className='back'>
           <div className='imgPhone'>
-            <img src='telefone.svg' className='phoneImage' />
+            <img src='imgtelefone.png' className='phoneImage' />
           </div>
 
           <div className='conteudo'>
@@ -39,7 +42,7 @@ function LandingPage() {
 
           <div className='texto-um'>
           <p>Um aplicativo de terapia online simplifica a busca por apoio emocional, permitindo agendar sessões, escolher profissionais e acessar recursos de bem-estar com apenas alguns toques. Sua interface intuitiva torna o uso fácil e acessível para todas as idades.</p>
-          <img src='CirculoImagem.png' className='circuloImg' />
+          <img src='circuloimg.png' className='circuloimg' />
           </div>
 
           <div className='texto-dois'>
@@ -53,29 +56,39 @@ function LandingPage() {
           </div>
           </div>
         </div>
+        
         <div className='grande'>
 
           <div className='esquerdo'>
 
             <div className='como-funciona'>
                  <h1>Como funciona a terapia online</h1>
+<<<<<<< HEAD
                  <p>
                  A flexibilidade de realizar consultas de qualquer lugar elimina barreiras geográficas, ampliando o acesso à terapia. Lembretes automáticos ajudam a manter a rotina, e ferramentas integradas, como exercícios de atenção plena, potencializam a eficácia do tratamento. 
                  </p>
 
 
+=======
+>>>>>>> ec9336fc626574347503a5593a528218c857faab
             </div>
 
             <div className='0.1'>
-                  <h1>rtttrttt</h1>
+                  <h1>A flexibilidade de realizar consultas de qualquer lugar elimina barreiras geográficas, ampliando o acesso à terapia. Lembretes automáticos ajudam a manter a rotina, e ferramentas integradas, como exercícios de atenção plena, potencializam a eficácia do tratamento.</h1>
             </div>
 
           </div>
-          <div className='imagem-direito'>
-                <h1>rgytytytyu</h1>
+          <div className='imagem-direito'> 
+                <img className='imagemterapia' src='imagemterapia.png' />
           </div>
-        </div>
-    </div>
+        
+        </div> 
+        <Footer />
+         </div>
+
+    
+
+    
   )
 }
 

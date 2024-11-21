@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Navbar from '../components/Navbar';
 import './CSS/Inicio.css';
 
@@ -11,6 +11,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Footer from '../components/Footer';
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function Inicio() {
 
@@ -18,8 +19,22 @@ function Inicio() {
   const [buscaDois, setBuscaDois] = useState([{descricao: 'Angústia', selecionado: false}, {descricao: 'Ansiedade', selecionado: false}, {descricao: 'LGBTQIA+', selecionado: false}]);
   const [buscaTres, setBuscaTres] = useState([{descricao: "PCD's", selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
 
-  const especialidades = ["PCD's", 'Autoestima', 'Angústia', 'Depressão', 'LGBTQIA+'];
   const [click, setClick] = useState(false);
+  const { profissionais } = useContext(GlobalContext);
+
+  // const [profissionais, setProfissionais] = useState([]);
+
+  
+  // const fetchProfissionais = async () => {
+  //   const response = await fetch('http://localhost:3000/cadastro');
+  //   const data = await response.json();
+  //   setProfissionais(data);
+  // };
+  
+  // useEffect(() => {
+  
+  //   fetchProfissionais();
+  // }, []);
 
   const clickUm = (index) => {
 
@@ -118,7 +133,7 @@ function Inicio() {
 
   return (
     <div className='inicio-container'>
-      <Navbar />                     
+      <Navbar />            
     
       <div className='busca'>
         <div className="esquerda">
@@ -202,25 +217,28 @@ function Inicio() {
                 onSlideChange={() => console.log('slide change')}
                 className='swiper-profissional'
             >
+              {
 
-        <SwiperSlide>
+                profissionais.map((item, index) => (
+                  
+        <SwiperSlide key={index}>
 
         <div className='profissional'>
           <div className="lado-esquerdo">
             <div className="coluna-um">
               <div className="foto-perfil">
-                <img src="joao_peedro.png"className="foto-perfil-img" />
+                <img src={item.foto} className="foto-perfil-img" />
               </div>
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ 30 - 40min
+                  R$ {item.preco} - {item.tempo}min
                   </h1>
                   </div>
                 <div className="especialidades">
                   {
 
-                    especialidades.map((item, index) => (
+                    item.especialidades.map((item, index) => (
                       <div key={index} className='especialidade-button'>
                       {item}
                     </div>
@@ -229,7 +247,7 @@ function Inicio() {
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
-                  CRP: 98/94743
+                  CRP: {item.crp}
                   </h1>
                   </div>
               </div>
@@ -237,7 +255,7 @@ function Inicio() {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  João Miguel da Cruz
+                  {item.nome}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -245,7 +263,7 @@ function Inicio() {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                Psicológo recém formado em Psicanálise atendimento a adolscente, adultos e casais. Atendo oito meses como psicólogo clinico em diferentes situações psicoafetivas, dependencia química, estados depressivos, luto, alternãncia de humor, baixa alto estima, estados de angústia e desorganização pessoal.
+                  {item.sobre}
                 </p>
               </div>
               <div className="abordagem">
@@ -253,8 +271,170 @@ function Inicio() {
                   Abordagem:
                 </h1>
                 <p className="abordagem-text">
-                Psicanalista, Terapia Cognitiva
-                Comportamental
+                {item.abordagem}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="lado-direito">
+
+          <div className="agenda">
+
+<div className="botao">
+
+          <div>
+
+          {/* Botões para navegar entre as semanas */}
+          <div className="week-navigation">
+            <button onClick={handlePreviousWeek}><img src='seta1.svg' /></button>
+            
+            <thead>
+              <tr>
+                {diasSemana.map((dia) => (
+                  <th key={dia}>{dia.toLocaleDateString("pt-BR", { weekday: "short", day: "numeric"}).replace('.', '').replace(',', '')}</th>
+                  ))}
+              </tr>
+            </thead>
+            <button onClick={handleNextWeek}><img id='seta2' src='seta2.svg' /></button>
+          </div>
+          <table>
+
+            <tbody>
+              {/* Exibir horários para cada dia da semana */}
+              {Object.keys(horariosDisponiveis).map((hora, index) => (
+                <tr key={index}>
+                  {diasSemana.map((dia) => (
+                    <td key={dia}>
+                      {horariosDisponiveis[hora] ? (
+                        <button 
+                        className= {
+                          selectedDate === formatDate(dia) && selectedTime === hora
+                          ? "selected"
+                          : "agendar"
+                        }
+                        onClick={() => {
+                          setSelectedDate(formatDate(dia));
+                          setSelectedTime(hora);
+                          setClick(false);
+                        }}
+                        >
+                          {hora}
+                        </button>
+                      ) : (
+                        "-"
+                        )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        </div>
+        <div className='btn-consulta'>
+
+
+        <button
+          id="agendar"
+          onClick={handleAgendamento}
+          disabled={!selectedTime}
+          >
+            <b>
+      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotao === 'inicial' && <span className="btn-text"> {
+                selectedTime
+            ? `Marcar para ${selectedTime}`
+            : "Marcar Consulta"
+              }</span>}
+               
+            </b>
+        </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        </SwiperSlide>
+                ))
+              }
+      </Swiper>
+        </div>
+        
+  
+          <div className='titulos'>
+            <h1>
+              Adultos
+            </h1>
+          </div>
+          <div style={{width: '100%'}}>
+
+          <Swiper
+                // instalar módulos do Swiper
+                modules={[Navigation, Pagination, A11y]}
+                spaceBetween={50}
+                slidesPerView={1}
+                navigation
+                pagination={{ clickable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+                className='swiper-profissional'
+            >
+              {
+
+                profissionais.map((item, index) => (
+                  
+        <SwiperSlide key={index}>
+
+        <div className='profissional'>
+          <div className="lado-esquerdo">
+            <div className="coluna-um">
+              <div className="foto-perfil">
+                <img src={item.foto} className="foto-perfil-img" />
+              </div>
+              <div className="coluna-informacoes">
+                <div className="valor">
+                  <h1 style={{color: 'black'}}>
+                  R$ {item.preco} - {item.tempo}min
+                  </h1>
+                  </div>
+                <div className="especialidades">
+                  {
+
+                    item.especialidades.map((item, index) => (
+                      <div key={index} className='especialidade-button'>
+                      {item}
+                    </div>
+                  ))
+                }
+                </div>
+                <div className="crp-div">
+                  <h1 style={{color: 'black'}}>
+                  CRP: {item.crp}
+                  </h1>
+                  </div>
+              </div>
+            </div>
+            <div className="coluna-dois">
+              <div className="nome-profissional">
+                <h1 className="nome-text">
+                  {item.nome}
+                </h1>
+              </div>
+              <div className="sobre-mim-profissional">
+                <h1 className="sobremim-title">
+                  Sobre mim:
+                </h1>
+                <p className="sobremim-text">
+                  {item.sobre}
+                </p>
+              </div>
+              <div className="abordagem">
+                <h1 className="abordagem-title">
+                  Abordagem:
+                </h1>
+                <p className="abordagem-text">
+                {item.abordagem}
                 </p>
               </div>
             </div>
@@ -339,81 +519,10 @@ function Inicio() {
           </div>
         </div>
         </SwiperSlide>
-        <SwiperSlide>
-
-        <div className='profissional'>
-          <h1>PROFISSIONAL 2</h1>
-          
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 3</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 4</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 5</h1>
-          </div>
-        </SwiperSlide>
+                ))
+              }
       </Swiper>
         </div>
-        
-  
-          <div className='titulos'>
-            <h1>
-              Adultos
-            </h1>
-          </div>
-          <div style={{width: '100%'}}>
-
-<Swiper
-      // instalar módulos do Swiper
-      modules={[Navigation, Pagination, A11y]}
-      spaceBetween={50}
-      slidesPerView={1}
-      navigation
-      pagination={{ clickable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
-  >
-
-<SwiperSlide>
-
-<div className='profissional'>
-<h1>PROFISSIONAL 1</h1>
-
-</div>
-</SwiperSlide>
-<SwiperSlide>
-
-<div className='profissional'>
-<h1>PROFISSIONAL 2</h1>
-
-</div>
-</SwiperSlide>
-<SwiperSlide>
-<div className="profissional">
-  <h1>PROFISSIONAL 3</h1>
-</div>
-</SwiperSlide>
-<SwiperSlide>
-<div className="profissional">
-  <h1>PROFISSIONAL 4</h1>
-</div>
-</SwiperSlide>
-<SwiperSlide>
-<div className="profissional">
-  <h1>PROFISSIONAL 5</h1>
-</div>
-</SwiperSlide>
-</Swiper>
-</div>
 
         <div className='titulos'>
             <h1>
@@ -431,37 +540,149 @@ function Inicio() {
                 pagination={{ clickable: true }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
+                className='swiper-profissional'
             >
+              {
 
-        <SwiperSlide>
-
-        <div className='profissional'>
-          <h1>PROFISSIONAL 1</h1>
-          
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
+                profissionais.map((item, index) => (
+                  
+        <SwiperSlide key={index}>
 
         <div className='profissional'>
-          <h1>PROFISSIONAL 2</h1>
-          
+          <div className="lado-esquerdo">
+            <div className="coluna-um">
+              <div className="foto-perfil">
+                <img src={item.foto} className="foto-perfil-img" />
+              </div>
+              <div className="coluna-informacoes">
+                <div className="valor">
+                  <h1 style={{color: 'black'}}>
+                  R$ {item.preco} - {item.tempo}min
+                  </h1>
+                  </div>
+                <div className="especialidades">
+                  {
+
+                    item.especialidades.map((item, index) => (
+                      <div key={index} className='especialidade-button'>
+                      {item}
+                    </div>
+                  ))
+                }
+                </div>
+                <div className="crp-div">
+                  <h1 style={{color: 'black'}}>
+                  CRP: {item.crp}
+                  </h1>
+                  </div>
+              </div>
+            </div>
+            <div className="coluna-dois">
+              <div className="nome-profissional">
+                <h1 className="nome-text">
+                  {item.nome}
+                </h1>
+              </div>
+              <div className="sobre-mim-profissional">
+                <h1 className="sobremim-title">
+                  Sobre mim:
+                </h1>
+                <p className="sobremim-text">
+                  {item.sobre}
+                </p>
+              </div>
+              <div className="abordagem">
+                <h1 className="abordagem-title">
+                  Abordagem:
+                </h1>
+                <p className="abordagem-text">
+                {item.abordagem}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="lado-direito">
+
+          <div className="agenda">
+
+<div className="botao">
+
+          <div>
+
+          {/* Botões para navegar entre as semanas */}
+          <div className="week-navigation">
+            <button onClick={handlePreviousWeek}><img src='seta1.svg' /></button>
+            
+            <thead>
+              <tr>
+                {diasSemana.map((dia) => (
+                  <th key={dia}>{dia.toLocaleDateString("pt-BR", { weekday: "short", day: "numeric"}).replace('.', '').replace(',', '')}</th>
+                  ))}
+              </tr>
+            </thead>
+            <button onClick={handleNextWeek}><img id='seta2' src='seta2.svg' /></button>
+          </div>
+          <table>
+
+            <tbody>
+              {/* Exibir horários para cada dia da semana */}
+              {Object.keys(horariosDisponiveis).map((hora, index) => (
+                <tr key={index}>
+                  {diasSemana.map((dia) => (
+                    <td key={dia}>
+                      {horariosDisponiveis[hora] ? (
+                        <button 
+                        className= {
+                          selectedDate === formatDate(dia) && selectedTime === hora
+                          ? "selected"
+                          : "agendar"
+                        }
+                        onClick={() => {
+                          setSelectedDate(formatDate(dia));
+                          setSelectedTime(hora);
+                          setClick(false);
+                        }}
+                        >
+                          {hora}
+                        </button>
+                      ) : (
+                        "-"
+                        )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        </div>
+        <div className='btn-consulta'>
+
+
+        <button 
+          id="agendar"
+          onClick={handleAgendamento}
+          disabled={!selectedTime}
+          >
+            <b>
+      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotao === 'inicial' && <span className="btn-text"> {
+                selectedTime
+            ? `Marcar para ${selectedTime}`
+            : "Marcar Consulta"
+              }</span>}
+               
+            </b>
+        </button>
+            </div>
+            </div>
+          </div>
         </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 3</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 4</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 5</h1>
-          </div>
-        </SwiperSlide>
+                ))
+              }
       </Swiper>
         </div>
 
@@ -481,37 +702,149 @@ function Inicio() {
                 pagination={{ clickable: true }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
+                className='swiper-profissional'
             >
+              {
 
-        <SwiperSlide>
-
-        <div className='profissional'>
-          <h1>PROFISSIONAL 1</h1>
-          
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
+                profissionais.map((item, index) => (
+                  
+        <SwiperSlide key={index}>
 
         <div className='profissional'>
-          <h1>PROFISSIONAL 2</h1>
-          
+          <div className="lado-esquerdo">
+            <div className="coluna-um">
+              <div className="foto-perfil">
+                <img src={item.foto} className="foto-perfil-img" />
+              </div>
+              <div className="coluna-informacoes">
+                <div className="valor">
+                  <h1 style={{color: 'black'}}>
+                  R$ {item.preco} - {item.tempo}min
+                  </h1>
+                  </div>
+                <div className="especialidades">
+                  {
+
+                    item.especialidades.map((item, index) => (
+                      <div key={index} className='especialidade-button'>
+                      {item}
+                    </div>
+                  ))
+                }
+                </div>
+                <div className="crp-div">
+                  <h1 style={{color: 'black'}}>
+                  CRP: {item.crp}
+                  </h1>
+                  </div>
+              </div>
+            </div>
+            <div className="coluna-dois">
+              <div className="nome-profissional">
+                <h1 className="nome-text">
+                  {item.nome}
+                </h1>
+              </div>
+              <div className="sobre-mim-profissional">
+                <h1 className="sobremim-title">
+                  Sobre mim:
+                </h1>
+                <p className="sobremim-text">
+                  {item.sobre}
+                </p>
+              </div>
+              <div className="abordagem">
+                <h1 className="abordagem-title">
+                  Abordagem:
+                </h1>
+                <p className="abordagem-text">
+                {item.abordagem}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="lado-direito">
+
+          <div className="agenda">
+
+<div className="botao">
+
+          <div>
+
+          {/* Botões para navegar entre as semanas */}
+          <div className="week-navigation">
+            <button onClick={handlePreviousWeek}><img src='seta1.svg' /></button>
+            
+            <thead>
+              <tr>
+                {diasSemana.map((dia) => (
+                  <th key={dia}>{dia.toLocaleDateString("pt-BR", { weekday: "short", day: "numeric"}).replace('.', '').replace(',', '')}</th>
+                  ))}
+              </tr>
+            </thead>
+            <button onClick={handleNextWeek}><img id='seta2' src='seta2.svg' /></button>
+          </div>
+          <table>
+
+            <tbody>
+              {/* Exibir horários para cada dia da semana */}
+              {Object.keys(horariosDisponiveis).map((hora, index) => (
+                <tr key={index}>
+                  {diasSemana.map((dia) => (
+                    <td key={dia}>
+                      {horariosDisponiveis[hora] ? (
+                        <button 
+                        className= {
+                          selectedDate === formatDate(dia) && selectedTime === hora
+                          ? "selected"
+                          : "agendar"
+                        }
+                        onClick={() => {
+                          setSelectedDate(formatDate(dia));
+                          setSelectedTime(hora);
+                          setClick(false);
+                        }}
+                        >
+                          {hora}
+                        </button>
+                      ) : (
+                        "-"
+                        )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        </div>
+        <div className='btn-consulta'>
+
+
+        <button 
+          id="agendar"
+          onClick={handleAgendamento}
+          disabled={!selectedTime}
+          >
+            <b>
+      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotao === 'inicial' && <span className="btn-text"> {
+                selectedTime
+            ? `Marcar para ${selectedTime}`
+            : "Marcar Consulta"
+              }</span>}
+               
+            </b>
+        </button>
+            </div>
+            </div>
+          </div>
         </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 3</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 4</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 5</h1>
-          </div>
-        </SwiperSlide>
+                ))
+              }
       </Swiper>
         </div>
 
@@ -531,37 +864,149 @@ function Inicio() {
                 pagination={{ clickable: true }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
+                className='swiper-profissional'
             >
+              {
 
-        <SwiperSlide>
-
-        <div className='profissional'>
-          <h1>PROFISSIONAL 1</h1>
-          
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
+                profissionais.map((item, index) => (
+                  
+        <SwiperSlide key={index}>
 
         <div className='profissional'>
-          <h1>PROFISSIONAL 2</h1>
-          
+          <div className="lado-esquerdo">
+            <div className="coluna-um">
+              <div className="foto-perfil">
+                <img src={item.foto} className="foto-perfil-img" />
+              </div>
+              <div className="coluna-informacoes">
+                <div className="valor">
+                  <h1 style={{color: 'black'}}>
+                  R$ {item.preco} - {item.tempo}min
+                  </h1>
+                  </div>
+                <div className="especialidades">
+                  {
+
+                    item.especialidades.map((item, index) => (
+                      <div key={index} className='especialidade-button'>
+                      {item}
+                    </div>
+                  ))
+                }
+                </div>
+                <div className="crp-div">
+                  <h1 style={{color: 'black'}}>
+                  CRP: {item.crp}
+                  </h1>
+                  </div>
+              </div>
+            </div>
+            <div className="coluna-dois">
+              <div className="nome-profissional">
+                <h1 className="nome-text">
+                  {item.nome}
+                </h1>
+              </div>
+              <div className="sobre-mim-profissional">
+                <h1 className="sobremim-title">
+                  Sobre mim:
+                </h1>
+                <p className="sobremim-text">
+                  {item.sobre}
+                </p>
+              </div>
+              <div className="abordagem">
+                <h1 className="abordagem-title">
+                  Abordagem:
+                </h1>
+                <p className="abordagem-text">
+                {item.abordagem}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="lado-direito">
+
+          <div className="agenda">
+
+<div className="botao">
+
+          <div>
+
+          {/* Botões para navegar entre as semanas */}
+          <div className="week-navigation">
+            <button onClick={handlePreviousWeek}><img src='seta1.svg' /></button>
+            
+            <thead>
+              <tr>
+                {diasSemana.map((dia) => (
+                  <th key={dia}>{dia.toLocaleDateString("pt-BR", { weekday: "short", day: "numeric"}).replace('.', '').replace(',', '')}</th>
+                  ))}
+              </tr>
+            </thead>
+            <button onClick={handleNextWeek}><img id='seta2' src='seta2.svg' /></button>
+          </div>
+          <table>
+
+            <tbody>
+              {/* Exibir horários para cada dia da semana */}
+              {Object.keys(horariosDisponiveis).map((hora, index) => (
+                <tr key={index}>
+                  {diasSemana.map((dia) => (
+                    <td key={dia}>
+                      {horariosDisponiveis[hora] ? (
+                        <button 
+                        className= {
+                          selectedDate === formatDate(dia) && selectedTime === hora
+                          ? "selected"
+                          : "agendar"
+                        }
+                        onClick={() => {
+                          setSelectedDate(formatDate(dia));
+                          setSelectedTime(hora);
+                          setClick(false);
+                        }}
+                        >
+                          {hora}
+                        </button>
+                      ) : (
+                        "-"
+                        )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        </div>
+        <div className='btn-consulta'>
+
+
+        <button 
+          id="agendar"
+          onClick={handleAgendamento}
+          disabled={!selectedTime}
+          >
+            <b>
+      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotao === 'inicial' && <span className="btn-text"> {
+                selectedTime
+            ? `Marcar para ${selectedTime}`
+            : "Marcar Consulta"
+              }</span>}
+               
+            </b>
+        </button>
+            </div>
+            </div>
+          </div>
         </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 3</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 4</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 5</h1>
-          </div>
-        </SwiperSlide>
+                ))
+              }
       </Swiper>
         </div>
 
@@ -581,43 +1026,155 @@ function Inicio() {
                 pagination={{ clickable: true }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
+                className='swiper-profissional'
             >
+              {
 
-        <SwiperSlide>
-
-        <div className='profissional'>
-          <h1>PROFISSIONAL 1</h1>
-          
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
+                profissionais.map((item, index) => (
+                  
+        <SwiperSlide key={index}>
 
         <div className='profissional'>
-          <h1>PROFISSIONAL 2</h1>
-          
+          <div className="lado-esquerdo">
+            <div className="coluna-um">
+              <div className="foto-perfil">
+                <img src={item.foto} className="foto-perfil-img" />
+              </div>
+              <div className="coluna-informacoes">
+                <div className="valor">
+                  <h1 style={{color: 'black'}}>
+                  R$ {item.preco} - {item.tempo}min
+                  </h1>
+                  </div>
+                <div className="especialidades">
+                  {
+
+                    item.especialidades.map((item, index) => (
+                      <div key={index} className='especialidade-button'>
+                      {item}
+                    </div>
+                  ))
+                }
+                </div>
+                <div className="crp-div">
+                  <h1 style={{color: 'black'}}>
+                  CRP: {item.crp}
+                  </h1>
+                  </div>
+              </div>
+            </div>
+            <div className="coluna-dois">
+              <div className="nome-profissional">
+                <h1 className="nome-text">
+                  {item.nome}
+                </h1>
+              </div>
+              <div className="sobre-mim-profissional">
+                <h1 className="sobremim-title">
+                  Sobre mim:
+                </h1>
+                <p className="sobremim-text">
+                  {item.sobre}
+                </p>
+              </div>
+              <div className="abordagem">
+                <h1 className="abordagem-title">
+                  Abordagem:
+                </h1>
+                <p className="abordagem-text">
+                {item.abordagem}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="lado-direito">
+
+          <div className="agenda">
+
+<div className="botao">
+
+          <div>
+
+          {/* Botões para navegar entre as semanas */}
+          <div className="week-navigation">
+            <button onClick={handlePreviousWeek}><img src='seta1.svg' /></button>
+            
+            <thead>
+              <tr>
+                {diasSemana.map((dia) => (
+                  <th key={dia}>{dia.toLocaleDateString("pt-BR", { weekday: "short", day: "numeric"}).replace('.', '').replace(',', '')}</th>
+                  ))}
+              </tr>
+            </thead>
+            <button onClick={handleNextWeek}><img id='seta2' src='seta2.svg' /></button>
+          </div>
+          <table>
+
+            <tbody>
+              {/* Exibir horários para cada dia da semana */}
+              {Object.keys(horariosDisponiveis).map((hora, index) => (
+                <tr key={index}>
+                  {diasSemana.map((dia) => (
+                    <td key={dia}>
+                      {horariosDisponiveis[hora] ? (
+                        <button 
+                        className= {
+                          selectedDate === formatDate(dia) && selectedTime === hora
+                          ? "selected"
+                          : "agendar"
+                        }
+                        onClick={() => {
+                          setSelectedDate(formatDate(dia));
+                          setSelectedTime(hora);
+                          setClick(false);
+                        }}
+                        >
+                          {hora}
+                        </button>
+                      ) : (
+                        "-"
+                        )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        </div>
+        <div className='btn-consulta'>
+
+
+        <button 
+          id="agendar"
+          onClick={handleAgendamento}
+          disabled={!selectedTime}
+          >
+            <b>
+      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotao === 'inicial' && <span className="btn-text"> {
+                selectedTime
+            ? `Marcar para ${selectedTime}`
+            : "Marcar Consulta"
+              }</span>}
+               
+            </b>
+        </button>
+            </div>
+            </div>
+          </div>
         </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 3</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 4</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 5</h1>
-          </div>
-        </SwiperSlide>
+                ))
+              }
       </Swiper>
         </div>
 
         <div className='titulos'>
             <h1>
-              PCD's
+              {"PCD's"}
             </h1>
           </div>
           <div style={{width: '100%'}}>
@@ -631,37 +1188,149 @@ function Inicio() {
                 pagination={{ clickable: true }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
+                className='swiper-profissional'
             >
+              {
 
-        <SwiperSlide>
-
-        <div className='profissional'>
-          <h1>PROFISSIONAL 1</h1>
-          
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
+                profissionais.map((item, index) => (
+                  
+        <SwiperSlide key={index}>
 
         <div className='profissional'>
-          <h1>PROFISSIONAL 2</h1>
-          
+          <div className="lado-esquerdo">
+            <div className="coluna-um">
+              <div className="foto-perfil">
+                <img src={item.foto} className="foto-perfil-img" />
+              </div>
+              <div className="coluna-informacoes">
+                <div className="valor">
+                  <h1 style={{color: 'black'}}>
+                  R$ {item.preco} - {item.tempo}min
+                  </h1>
+                  </div>
+                <div className="especialidades">
+                  {
+
+                    item.especialidades.map((item, index) => (
+                      <div key={index} className='especialidade-button'>
+                      {item}
+                    </div>
+                  ))
+                }
+                </div>
+                <div className="crp-div">
+                  <h1 style={{color: 'black'}}>
+                  CRP: {item.crp}
+                  </h1>
+                  </div>
+              </div>
+            </div>
+            <div className="coluna-dois">
+              <div className="nome-profissional">
+                <h1 className="nome-text">
+                  {item.nome}
+                </h1>
+              </div>
+              <div className="sobre-mim-profissional">
+                <h1 className="sobremim-title">
+                  Sobre mim:
+                </h1>
+                <p className="sobremim-text">
+                  {item.sobre}
+                </p>
+              </div>
+              <div className="abordagem">
+                <h1 className="abordagem-title">
+                  Abordagem:
+                </h1>
+                <p className="abordagem-text">
+                {item.abordagem}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="lado-direito">
+
+          <div className="agenda">
+
+<div className="botao">
+
+          <div>
+
+          {/* Botões para navegar entre as semanas */}
+          <div className="week-navigation">
+            <button onClick={handlePreviousWeek}><img src='seta1.svg' /></button>
+            
+            <thead>
+              <tr>
+                {diasSemana.map((dia) => (
+                  <th key={dia}>{dia.toLocaleDateString("pt-BR", { weekday: "short", day: "numeric"}).replace('.', '').replace(',', '')}</th>
+                  ))}
+              </tr>
+            </thead>
+            <button onClick={handleNextWeek}><img id='seta2' src='seta2.svg' /></button>
+          </div>
+          <table>
+
+            <tbody>
+              {/* Exibir horários para cada dia da semana */}
+              {Object.keys(horariosDisponiveis).map((hora, index) => (
+                <tr key={index}>
+                  {diasSemana.map((dia) => (
+                    <td key={dia}>
+                      {horariosDisponiveis[hora] ? (
+                        <button 
+                        className= {
+                          selectedDate === formatDate(dia) && selectedTime === hora
+                          ? "selected"
+                          : "agendar"
+                        }
+                        onClick={() => {
+                          setSelectedDate(formatDate(dia));
+                          setSelectedTime(hora);
+                          setClick(false);
+                        }}
+                        >
+                          {hora}
+                        </button>
+                      ) : (
+                        "-"
+                        )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        </div>
+        <div className='btn-consulta'>
+
+
+        <button 
+          id="agendar"
+          onClick={handleAgendamento}
+          disabled={!selectedTime}
+          >
+            <b>
+      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotao === 'inicial' && <span className="btn-text"> {
+                selectedTime
+            ? `Marcar para ${selectedTime}`
+            : "Marcar Consulta"
+              }</span>}
+               
+            </b>
+        </button>
+            </div>
+            </div>
+          </div>
         </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 3</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 4</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="profissional">
-            <h1>PROFISSIONAL 5</h1>
-          </div>
-        </SwiperSlide>
+                ))
+              }
       </Swiper>
         </div>
         
