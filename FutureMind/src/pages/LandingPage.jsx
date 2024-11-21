@@ -63,14 +63,7 @@ function LandingPage() {
 
             <div className='como-funciona'>
                  <h1>Como funciona a terapia online</h1>
-<<<<<<< HEAD
-                 <p>
-                 A flexibilidade de realizar consultas de qualquer lugar elimina barreiras geográficas, ampliando o acesso à terapia. Lembretes automáticos ajudam a manter a rotina, e ferramentas integradas, como exercícios de atenção plena, potencializam a eficácia do tratamento. 
-                 </p>
-
-
-=======
->>>>>>> ec9336fc626574347503a5593a528218c857faab
+                
             </div>
 
             <div className='0.1'>
@@ -81,8 +74,49 @@ function LandingPage() {
           <div className='imagem-direito'> 
                 <img className='imagemterapia' src='imagemterapia.png' />
           </div>
-        
+
         </div> 
+
+        <div className="div-total">
+          
+          <div className="btn-text">
+              
+          {/* <img src="ArvoreS.svg" className='arvoreLandig'/> */}
+
+            <div className="text">
+            <p>Quando cuidamos do nosso interior, nutrimos nossa mente, nos preparando para florescer. O autoconhecimento é o solo fértil que permite construir um futuro mais saudável e equilibrado.</p>
+            </div>
+            
+            <div className="ultimobtn">
+              <button>
+              </button>
+            </div>
+          
+          
+          </div>
+         
+          <div className="relatostotal">
+            
+            <div className='relatos'>
+              <h1>1</h1>
+            </div>
+
+            <div className='relatos'>
+              <h1>2</h1>
+            </div>
+
+             <div className='relatos'>
+              <h1>3</h1>
+             </div>
+          
+             <div className='relatos'>
+              <h1>4</h1>
+             </div>
+          
+          
+          </div>
+        </div>
+        
         <Footer />
          </div>
 
