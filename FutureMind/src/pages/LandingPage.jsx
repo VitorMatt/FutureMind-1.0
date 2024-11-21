@@ -58,7 +58,12 @@ function LandingPage() {
           <div className='esquerdo'>
 
             <div className='como-funciona'>
-                 <h1>gytrytyytty</h1>
+                 <h1>Como funciona a terapia online</h1>
+                 <p>
+                 A flexibilidade de realizar consultas de qualquer lugar elimina barreiras geográficas, ampliando o acesso à terapia. Lembretes automáticos ajudam a manter a rotina, e ferramentas integradas, como exercícios de atenção plena, potencializam a eficácia do tratamento. 
+                 </p>
+
+
             </div>
 
             <div className='0.1'>
