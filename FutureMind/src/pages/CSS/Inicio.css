@@ -155,7 +155,7 @@
     background-color: #5A789F;
     width: 100%;
     height: fit-content;
-    border-radius: 100px 100px 0 0;
+    border-radius: 100px 100px 100px 100px;
     display: flex;
     flex-direction: column; /* Organiza em coluna */
     gap: 140px; /* Espaçamento igual entre as divs */
