@@ -83,7 +83,7 @@ function LandingPage() {
               
           {/* <img src="ArvoreS.svg" className='arvoreLandig'/> */}
 
-            <div className="text">
+            <div className="textFinal">
             <p>Quando cuidamos do nosso interior, nutrimos nossa mente, nos preparando para florescer. O autoconhecimento é o solo fértil que permite construir um futuro mais saudável e equilibrado.</p>
             </div>
             

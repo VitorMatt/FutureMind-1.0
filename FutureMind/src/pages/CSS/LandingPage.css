@@ -284,6 +284,8 @@
     margin-bottom: 20%;
     border: #4e6583;
     border-radius: 20px;
+    margin-top: -15%;
+    
     
   
   
@@ -312,4 +314,13 @@
 .arvoreLandig{
     margin-left: 40%;
    
+}
+
+.textFinal{
+   width: 30%;
+   height: 50%;
+   font-family: "Poppins", sans-serif;
+   font-size: 23px;
+   margin-top: 10%;
+   margin-left: 20%;
 }
