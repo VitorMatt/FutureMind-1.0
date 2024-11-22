@@ -14,13 +14,13 @@ import CadastroProfissionais3 from '../components/CadastroProfissionais3'
 import CadastroEstagiario2 from '../components/CadastroEstagiario2'
 import CadastroProfissionais5 from '../components/CadastroProfissionais5'
 import CadastroSelecao1 from '../components/CadastroSelecao1'
-import CadastroProfissinal from '../pages/CadastroProfissinal'
 import CadastroPaciente from '../pages/CadastroPaciente'
 import Politica from '../pages/Politica'
 import Slide from '../components/Slide'
 import Adm from '../pages/Adm'
 import PerfilProfissional from '../pages/PerfilProfissional'
 import TesteAg2 from '../pages/TesteAg2'
+import CadastroProfissional from '../pages/CadastroProfissional'
 
 
 const router = createBrowserRouter([{
@@ -83,7 +83,7 @@ const router = createBrowserRouter([{
 },
 {
     path: '/cadastro-profissional',
-    element:<CadastroProfissinal />
+    element:<CadastroProfissional />
 },
 {
     path: '/cadastro-paciente',

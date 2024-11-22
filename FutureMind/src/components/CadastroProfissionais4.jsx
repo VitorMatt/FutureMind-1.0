@@ -3,15 +3,15 @@ import { GlobalContext } from '../GlobalContext/GlobalContext'
 
 function CadastroProfissionais3() {
   
-  const { user } = useContext(GlobalContext);
+  const { profissional } = useContext(GlobalContext);
   const atender = ["Adolescência", "Depressão","Angústia","Ansiedade" ]
   const atender2 =["Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"]
-  const [atenderSelecionado, setAtenderSelecionado] = useState(user.especializacao);
+  const [atenderSelecionado, setAtenderSelecionado] = useState(profissional.especializacao);
 
 
   useEffect(() => {
 
-    user.especializacao = atenderSelecionado;
+    profissional.especializacao = atenderSelecionado;
   }, [atenderSelecionado]);
 
   const selecione = (atender) =>{

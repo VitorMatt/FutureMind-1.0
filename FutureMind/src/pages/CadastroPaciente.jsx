@@ -1,24 +1,42 @@
-import HorizontalLinearAlternativeLabelStepper from '../components/HorizontalLinearAlternativeLabelStepper';
 import '../pages/CSS/CadastroProfissional.css';
-import CadastroSelecao1 from '../components/CadastroSelecao1';
 import { useState, useContext } from 'react';
-import CadastroProfissionais4 from '../components/CadastroProfissionais4';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 import CadastroPaciente1 from '../components/CadastroPaciente1';
 import CadastroPaciente2 from '../components/CadastroPaciente2';
 import CadastroPaciente3 from '../components/CadastroPaciente3';
 import Stepper from '../components/StepperComponent';
 import { useNavigate } from 'react-router-dom';
-import { SwiperSlide } from 'swiper/react';
 
 function CadastroPaciente() {
   const navigate = useNavigate(); // Mover o useNavigate para dentro do componente
 
-  const { pageCadastro, setPageCadastro } = useContext(GlobalContext);
+  const { paciente } = useContext(GlobalContext);
   const [activeStep, setActiveStep] = useState(0);
 
-  const handleFinish = () => {
-    navigate('/login'); 
+  const handleFinish = async () => {
+
+    paciente.id_paciente = paciente.id_paciente + 1;
+
+    const response = await fetch('http://localhost:3000/cadastro-paciente', {
+
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(paciente),
+    })
+
+    if (response.ok) {
+
+      paciente.nome_completo = ''
+      paciente.cpf = ''
+      paciente.telefone = ''
+      paciente.data_nascimento = ''
+      paciente.senha = ''
+      paciente.foto = ''
+      paciente.email = ''
+      navigate('/login'); 
+    }
   };
 
   const handleNext = () => {
@@ -30,23 +48,6 @@ function CadastroPaciente() {
   const handleBack = () => {
     if (activeStep > 0) {
       setActiveStep((prevStep) => prevStep - 1);
-    }
-  };
-
-  let page = '';
-  const handleRadio = () => {
-    for (let i = 0; i < pageCadastro.length; i++) {
-      if (pageCadastro[i].checked) {
-        page = pageCadastro[i].value;
-        break;
-      }
-    }
-
-    if (page === '') {
-      alert('Nenhum conteúdo selecionado');
-      setPageCadastro('');
-    } else {
-      setPageCadastro(page);
     }
   };
 

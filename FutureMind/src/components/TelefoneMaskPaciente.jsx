@@ -2,28 +2,28 @@ import React, { useContext, useEffect, useState } from 'react';
 import InputMask from 'react-input-mask';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
-const CrpMask = ({ onCrpChange }) => {
-    const {profissional} = useContext (GlobalContext)
-   const [crp, setCrp] = useState(profissional.crp);
+const TelefoneMask = ({ onTelefoneChange }) => {
+    const {paciente} = useContext (GlobalContext)
+  const [telefone, setTelefone] = useState(paciente.telefone);
 
   useEffect(() => {
-    profissional.crp = crp
-  }, [crp]);
+    paciente.telefone = telefone
+  }, [telefone]);
 
   const handleChange = (e) => {
     const maskedValue = e.target.value;
-    setCrp(maskedValue);
+    setTelefone(maskedValue);
 
   };
 
   return (
     <div>
       <InputMask
-        mask="99/999999"
-        value={crp}
+        mask="(99) 99999-9999"
+        value={telefone}
         onChange={handleChange}
-        placeholder="00/000000"
-        id="crp"
+        placeholder="(00) 00000-0000"
+        id="telefone"
         className='inputCRP'
       >
         {(inputProps) => <input {...inputProps} />}
@@ -32,4 +32,4 @@ const CrpMask = ({ onCrpChange }) => {
   );
 };
 
-export default CrpMask;
+export default TelefoneMask;

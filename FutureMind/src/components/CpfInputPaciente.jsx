@@ -3,12 +3,12 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 const CpfInput = ({ onCpfChange }) => {
 
-    const { profissional } = useContext(GlobalContext);
-    const [cpf, setCpf] = useState(profissional.cpf);
+    const { paciente } = useContext(GlobalContext);
+    const [cpf, setCpf] = useState(paciente.cpf);
 
     useEffect(() => {
 
-        profissional.cpf = cpf;
+        paciente.cpf = cpf;
     }, [cpf]);
 
   const handleInputChange = (e) => {
