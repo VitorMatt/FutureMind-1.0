@@ -38,21 +38,13 @@
 .titulo {
 
     font-family: "Poller One", serif;
-<<<<<<< HEAD
     font-weight: 300;
-=======
-    font-weight: 100;
->>>>>>> ec9336fc626574347503a5593a528218c857faab
     font-style: normal;
     color: #013a63;
     flex-wrap: wrap;
     width: 90%;
     font-size: 50px;
-<<<<<<< HEAD
     margin-left: 10%;
-=======
-    margin-top: 13%;
->>>>>>> ec9336fc626574347503a5593a528218c857faab
 }
 
 .subtitulo {
@@ -63,27 +55,17 @@
     width: 80%;
     font-size: 19px;
     display: block;
-<<<<<<< HEAD
     margin-left: -20%;
     margin-top: -30px;
-=======
-    margin-left: -10%;
-    margin-top: -27px;
->>>>>>> ec9336fc626574347503a5593a528218c857faab
       
 }
 
 .subtitulo p {
 
-<<<<<<< HEAD
     height: 30px;
     width: 100%;
     margin-left: 7%;
 
-=======
-    height: 22px;
-    width: 90%;
->>>>>>> ec9336fc626574347503a5593a528218c857faab
 }
 
 .btn {
@@ -94,12 +76,8 @@
     border-radius: 13px;
     color: white;
     margin-top: 10%;
-<<<<<<< HEAD
     margin-left: -50%;
     width: 140%;
-=======
-    width: 200%;
->>>>>>> ec9336fc626574347503a5593a528218c857faab
     font-family: "Poppins", sans-serif;
     font-size: 28px;
     margin-left: -120%;
@@ -267,18 +245,9 @@
 
 
 .como-funciona {
-
-<<<<<<< HEAD
     width: 100%;
     height: 100%;
     background-color: #C1DFF4;
-=======
-    background-color: #C1DFF4;
-    width: 100;
-   
-
-    
->>>>>>> ec9336fc626574347503a5593a528218c857faab
 }
 
 .imagem-direito {
