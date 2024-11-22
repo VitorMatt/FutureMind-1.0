@@ -20,7 +20,7 @@ import Politica from '../pages/Politica'
 import Slide from '../components/Slide'
 import Adm from '../pages/Adm'
 import PerfilProfissional from '../pages/PerfilProfissional'
-import TesteAg2 from '../pages/TesteAg2'
+
 
 
 const router = createBrowserRouter([{
@@ -108,10 +108,7 @@ const router = createBrowserRouter([{
     path: '/perfilprofissional',
     element: <PerfilProfissional />
 },
-{
-    path: '/testeag2',
-    element: <TesteAg2 />
-},
+
 
 ])
 

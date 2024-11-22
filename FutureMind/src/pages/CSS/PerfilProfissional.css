@@ -160,12 +160,27 @@
 
 .input-anotações{
     width: 70%;
-    border: 5px solid yellowgreen;
+    padding: 2%;
+}
+
+.input-anotações input{
+    width: 90%;
 }
 
 .button-anotações{
     width: 30%;
-    border: 5px solid red;
+    padding: 2%;
+}
+
+.button-anotações button{
+    width: 90%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    margin-left: 10%;
+    background-color: #5A789F;
+    color: white;
+    border: none;
 }
 
 .div-anotações{
@@ -193,11 +208,24 @@
     justify-content: center;
     text-align: center;
     align-items: center;
+    padding-bottom: 5%;
+    border-radius: 10px;
     
+}
+.container-menor-ag{
+
+    background-color: #5A789F;
+    width: 80%;
+    border-radius: 10px;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .button_passar{
     background-color: white;
+    width: 8%;
     border: none;
     font-size: 4em;
     color: #5A789F; 
@@ -207,16 +235,11 @@
 .button_voltar{
 
     background-color: white;
+    width: 8%;
     border: none;
     font-size: 4em;
     color: #5A789F; 
     padding-right: 40px;
-}
-
-.mes_ano span{
-
-    font-size:25px;
-
 }
 
 .semana{
@@ -227,7 +250,7 @@
 }
 .div_informações_ag{
     
-    width: 20%;
+    width: 19%;
     background-color: #ffffff;
     font-weight: 500;
     border-radius: 10px;
@@ -237,15 +260,15 @@
 .dias_semana{
 
     padding-top: 5%;
-    padding-left: 5%;
-
+    padding-left: 4.5%;
     display: flex;
-    width: 75%;
+    justify-content: flex-start;
+    text-align: center;
+    margin: 0;
+    width: 100%;
     height: 650px;
     flex-wrap: wrap;
     gap: 5%;
-    background-color: #5a789f;
-    /* justify-content: center; */
     color: #000000;
     border-radius: 10px;
 }
@@ -266,4 +289,54 @@
     border-top-left-radius: 10px;
 }
 
+.mes-ano{
+    color: white;
+    font-size: 2em;
+    text-transform: capitalize;
+  
+}
+
+.mensagem_s{
+    display: flex;
+    justify-content: center;
+    padding-top: 8%;
+    text-transform: capitalize;
+    font-size: 1.2em;
+}
+
+.itens_ag{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: start;
+}
+
+.os-itens{
+    text-transform: capitalize;
+    display: block;
+    font-size: 1.2em;
+}
+
+.buttons-itens{
+    display: flex;
+    width: 110%;
+    gap: 5%;
+    /* background-color: #5A789F; */
+}
+
+.cancelar{
+    width: 90%;
+    background-color: #5A789F;
+    border: none;
+    color: white;
+    border-radius: 100px;
+}
+
+.check{
+    width: 30%;
+    background-color: #5a789f00;
+    border: none;
+    border-radius: 100px;
+}
 
