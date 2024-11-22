@@ -1,9 +1,10 @@
 import './CSS/Login.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 function Login() {
 
+  const navigate = useNavigate();
   const [olhosSenha, setOlhosSenha] = useState(false);
 
   const [form, setForm] = useState({ email: '', senha: '' });
@@ -28,6 +29,7 @@ function Login() {
     if (response.ok) {
         
         setForm({ email: '', senha: '' });
+        navigate('/');
       
     } else {
         const errorData = await response.json();

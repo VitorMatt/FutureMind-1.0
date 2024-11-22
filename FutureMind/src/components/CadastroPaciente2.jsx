@@ -1,6 +1,14 @@
+import { useContext } from 'react'
 import './CSS/Profissionais3.css'
 import HorizontalLinearAlternativeLabelStepper from './HorizontalLinearAlternativeLabelStepper'
+import { GlobalContext } from '../GlobalContext/GlobalContext'
+import CpfInputPaciente from '../components/CpfInputPaciente'
+import TelefoneMaskPaciente from '../components/TelefoneMaskPaciente'
+
 function CadastroPaciente2() {
+
+  const {paciente} = useContext(GlobalContext)
+  
     return (
       <div className="selecao1">
       
@@ -8,10 +16,10 @@ function CadastroPaciente2() {
       <div className="checkboxs2">
 
     <div className="input-text">
-      <label htmlFor="">CPF</label><input type="text" name="file"className="inputCRP" />
+      <label htmlFor="">CPF</label><CpfInputPaciente />
     </div>
     <div className="input-text">
-      <label htmlFor="">Telefone</label><input type="text" className="inputCRP"/>
+      <label htmlFor="">Telefone</label><TelefoneMaskPaciente />
     </div>
       </div>
     </div>

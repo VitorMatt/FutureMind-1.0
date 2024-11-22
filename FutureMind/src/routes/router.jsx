@@ -14,13 +14,21 @@ import CadastroProfissionais3 from '../components/CadastroProfissionais3'
 import CadastroEstagiario2 from '../components/CadastroEstagiario2'
 import CadastroProfissionais5 from '../components/CadastroProfissionais5'
 import CadastroSelecao1 from '../components/CadastroSelecao1'
-import CadastroProfissinal from '../pages/CadastroProfissinal'
 import CadastroPaciente from '../pages/CadastroPaciente'
 import Politica from '../pages/Politica'
 import Slide from '../components/Slide'
 import Adm from '../pages/Adm'
 import PerfilProfissional from '../pages/PerfilProfissional'
+<<<<<<< HEAD
 
+=======
+import TesteAg2 from '../pages/TesteAg2'
+<<<<<<< HEAD
+import CadastroProfissional from '../pages/CadastroProfissional'
+=======
+import PerfilVisualizar from '../pages/PerfilVisualizar'
+>>>>>>> afd1afb1a5f6fdcc37acd26f28b754334552f99b
+>>>>>>> 6cc77096ec383b1a89ac866bcb698dc1cf1754f6
 
 
 const router = createBrowserRouter([{
@@ -83,7 +91,7 @@ const router = createBrowserRouter([{
 },
 {
     path: '/cadastro-profissional',
-    element:<CadastroProfissinal />
+    element:<CadastroProfissional />
 },
 {
     path: '/cadastro-paciente',
@@ -108,7 +116,18 @@ const router = createBrowserRouter([{
     path: '/perfilprofissional',
     element: <PerfilProfissional />
 },
+<<<<<<< HEAD
 
+=======
+{
+    path: '/testeag2',
+    element: <TesteAg2 />
+},
+{
+    path: '/perfilvisualizar',
+    element: <PerfilVisualizar />
+},
+>>>>>>> 6cc77096ec383b1a89ac866bcb698dc1cf1754f6
 
 ])
 

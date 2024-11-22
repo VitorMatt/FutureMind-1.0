@@ -11,11 +11,11 @@ import { useNavigate } from 'react-router-dom';
 import CadastroProfissionais8 from '../components/CadastroProfissionais8';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
-function CadastroProfissinal() {
+function CadastroProfissional() {
 
   const navigate = useNavigate();
 
-  const { user } = useContext(GlobalContext);
+  const { profissional } = useContext(GlobalContext);
 
   const [activeStep, setActiveStep] = useState(0);
   
@@ -31,20 +31,54 @@ function CadastroProfissinal() {
         }
     };    
 
+    const handleKeyDown = (e) => {
+      if (e.key === 'Enter') {
+        
+        handleClick();
+    };
+  }
+
+    const handleClick = () => {
+
+      if (activeStep===6) {
+
+        handleFinish();
+      } else {
+
+        handleNext();
+      }
+    }
+
+
     
     const handleFinish = async () => {
 
-      const response = await fetch('http://localhost:3000/cadastro', {
+      
+      profissional.id_profissional = profissional.id_profissional + 1;
+
+      const response = await fetch('http://localhost:3000/cadastro-profissional', {
 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify(profissional),
       })
 
       if (response.ok) {
 
+        profissional.nome_completo = ''
+        profissional.cpf = ''
+        profissional.telefone = ''
+        profissional.data_nascimento = ''
+        profissional.senha = ''
+        profissional.foto = ''
+        profissional.email = ''
+        profissional.crp = ''
+        profissional.abordagem = ''
+        profissional.preferencias = ''
+        profissional.especializacao = ''
+        profissional.preco = 
         navigate('/login'); 
       }
     };
@@ -92,22 +126,10 @@ function CadastroProfissinal() {
               Voltar
               </button>
               </div>
-              <div className='botao2'>
+              <div onKeyDown={handleKeyDown} className='botao2'>
                <button 
                       className='proximo-estilizado'
-                      onClick={
-                        activeStep==6
-                        ?
-                        handleFinish
-                        :
-                        activeStep==2 
-                        ?
-                        (
-                          handleNext
-                        )
-                        :
-                        handleNext
-                      } 
+                      onClick={handleClick} 
                       >
                 {
                   activeStep==6
@@ -134,4 +156,4 @@ function CadastroProfissinal() {
   )
 }
 
-export default CadastroProfissinal
+export default CadastroProfissional;

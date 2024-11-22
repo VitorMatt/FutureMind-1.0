@@ -37,8 +37,9 @@ const profissionais = [
 }
 ]
 
-const user = {
+const profissional = {
 
+    id_profissional: 1,
     nome_completo: '',
     cpf:'',
     telefone:'',
@@ -48,11 +49,25 @@ const user = {
     senha: '',
     foto: '',
     abordagem: '',
+    email: '',
+    crp:'',
+    preco: 0.00
+}
+
+const paciente = {
+
+    id_paciente: 1,
+    nome_completo: '',
+    cpf:'',
+    telefone:'',
+    data_nascimento: '',
+    senha: '',
+    foto: '',
     email: ''
 }
 
     return(
-        <GlobalContext.Provider value={{profissionais, user}}>
+        <GlobalContext.Provider value={{profissionais, profissional, paciente}}>
             {children}
         </GlobalContext.Provider>
     );

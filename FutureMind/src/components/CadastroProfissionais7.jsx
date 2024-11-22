@@ -5,16 +5,16 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function CadastroProfissionais7() {
 
-    const { user } = useContext(GlobalContext);
+    const { profissional } = useContext(GlobalContext);
     const [olhosSenha, setOlhosSenha] = useState(false);
-    const [senha, setSenha] = useState(user.senha);
-    const [email, setEmail] = useState(user.email);
+    const [senha, setSenha] = useState(profissional.senha);
+    const [email, setEmail] = useState(profissional.email);
     const [message, setMessage] = useState('');
 
 
     useEffect(() => {
 
-      user.email = email;
+      profissional.email = email;
     }, [email]);
 
     useEffect(() => {
@@ -25,7 +25,7 @@ function CadastroProfissionais7() {
       } else  {
         
         setMessage(null);
-        user.senha = senha;
+        profissional.senha = senha;
       }
     }, [senha]);
 
