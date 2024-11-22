@@ -28,6 +28,17 @@ export function MyCarousel() {
           <img src="Frame 3.svg" alt="Imagem 3" />
           <img src="Frame 4.svg" alt="Imagem 4" />
 
+<<<<<<< HEAD
+    <div className="carrossel">
+        <div className="containerA" id="img">
+            <script onLoad={carrossel}>
+                
+            </script>
+            <img src="Frame 12.svg" />
+            <img src="Frame 13.svg" />
+            <img src="Frame 16.svg" />
+=======
+>>>>>>> f0eb00f0dbfb0795e6d7bc5b56fc1034d994c21d
         </div>
       </div>
     </div>

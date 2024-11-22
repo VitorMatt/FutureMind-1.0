@@ -1,17 +1,9 @@
 import { useState, useContext, useEffect } from "react";
 import { GlobalContext } from "../GlobalContext/GlobalContext";
+import CrpMask from "./CrpMask";
 
 function CadastroFormado() {
   const [fileName, setFileName] = useState ('nenhum arquivo selecionado')
-
-  const { user } = useContext(GlobalContext);
-
-  const [crp, setCrp] = useState(user.crp);
-
-  useEffect(() => {
-
-    user.crp = crp;
-  }, [crp]);
 
   const fileChange = (event) => {
     const file =  event.target.files[0]
@@ -31,8 +23,7 @@ function CadastroFormado() {
         </div>
         {fileName && <p className="file-name">Arquivo selecionado: {fileName}</p>}
         <div className="input-text">
-          <label htmlFor="crp">CRP:</label>
-          <input value={crp} type="text" id="crp" className="inputCRP" onChange={(e) => { setCrp(e.target.value) }} />
+          <label htmlFor="crp">CRP:</label> <CrpMask />
         </div>
       </div>
     </div>
