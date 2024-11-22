@@ -21,6 +21,7 @@ import Slide from '../components/Slide'
 import Adm from '../pages/Adm'
 import PerfilProfissional from '../pages/PerfilProfissional'
 import TesteAg2 from '../pages/TesteAg2'
+import PerfilVisualizar from '../pages/PerfilVisualizar'
 
 
 const router = createBrowserRouter([{
@@ -111,6 +112,10 @@ const router = createBrowserRouter([{
 {
     path: '/testeag2',
     element: <TesteAg2 />
+},
+{
+    path: '/perfilvisualizar',
+    element: <PerfilVisualizar />
 },
 
 ])
