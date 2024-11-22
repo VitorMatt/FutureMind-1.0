@@ -7,7 +7,7 @@ export function MyCarousel() {
 
   useEffect(() => {
     const intervalo = setInterval(() => {
-      setContador((prev) => (prev + 1) % 3); // Assume que existem 3 imagens
+      setContador((prev) => (prev + 1) % 4); // Assume que existem 3 imagens
     }, 3800);
 
     return () => clearInterval(intervalo); // Limpar intervalo ao desmontar
@@ -23,9 +23,10 @@ export function MyCarousel() {
     <div className="carrossel_ajuste">
       <div className="carrossel">
         <div className="containerA" ref={imgsRef}>
-          <img src="Frame 12.svg" alt="Imagem 1" />
-          <img src="Frame 13.svg" alt="Imagem 2" />
-          <img src="Frame 16.svg" alt="Imagem 3" />
+          <img src="Frame 1.svg" alt="Imagem 1" />
+          <img src="Frame 2.svg" alt="Imagem 2" />
+          <img src="Frame 3.svg" alt="Imagem 3" />
+          <img src="Frame 4.svg" alt="Imagem 4" />
 
         </div>
       </div>

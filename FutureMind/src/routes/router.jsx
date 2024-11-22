@@ -20,7 +20,11 @@ import Slide from '../components/Slide'
 import Adm from '../pages/Adm'
 import PerfilProfissional from '../pages/PerfilProfissional'
 import TesteAg2 from '../pages/TesteAg2'
+<<<<<<< HEAD
 import CadastroProfissional from '../pages/CadastroProfissional'
+=======
+import PerfilVisualizar from '../pages/PerfilVisualizar'
+>>>>>>> afd1afb1a5f6fdcc37acd26f28b754334552f99b
 
 
 const router = createBrowserRouter([{
@@ -111,6 +115,10 @@ const router = createBrowserRouter([{
 {
     path: '/testeag2',
     element: <TesteAg2 />
+},
+{
+    path: '/perfilvisualizar',
+    element: <PerfilVisualizar />
 },
 
 ])

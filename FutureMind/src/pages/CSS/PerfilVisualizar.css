@@ -1,0 +1,15 @@
+:root{
+    --cor-1: #5A789F;
+    --cor-2: #CAD7EB;
+    --cor-3: #000;
+    --cor-4: #012A4A;
+    --cor-5: #014F86;
+}
+
+.perfilVisu-container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Altura mínima é 100% da viewport */
+    background-color: #DBEEF4; /* Fundo azul claro */
+    flex: 1;
+}
