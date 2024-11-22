@@ -24,6 +24,7 @@ export function MyCarousel() {
     <div className="carrossel">
         <div className="containerA" id="img">
             <script onLoad={carrossel}>
+                
             </script>
             <img src="Frame 12.svg" />
             <img src="Frame 13.svg" />

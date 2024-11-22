@@ -7,7 +7,7 @@ import { GlobalContext } from "../GlobalContext/GlobalContext";
 function CadastroProfissionais5() {
 
   const { user } = useContext(GlobalContext);
-  const [name, setName] = useState(user.nome);
+  const [name, setName] = useState(user.nome_completo);
   const [date, setDate] = useState(user.data_nascimento); // Estado para armazenar a data selecionada
 
 
@@ -18,7 +18,7 @@ function CadastroProfissionais5() {
 
   useEffect(() => {
 
-    user.nome = name;
+    user.nome_completo = name;
   }, [name]);
 
     return (
