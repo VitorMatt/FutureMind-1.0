@@ -305,7 +305,7 @@
 }
 
 .relatostotal{
-    width: 100%;
+    width: 80%;
     display: flex;   
     gap: 6%;
     position: absolute;
@@ -317,7 +317,7 @@
 
 .relatos{
     background-color: #4e6583a4;
-    width: 15%;
+    width: 35%;
     height: 80%;
     margin-bottom: 20%;
     border: #4e6583;
