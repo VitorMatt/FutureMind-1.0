@@ -162,9 +162,21 @@
     height: 35%;
     margin-left: 8%;
     text-align: start;
-    font-family: "Poppins", sans-serif;
+    /* font-family: "Poppins", sans-serif; */
+    
     font-size: 23px;
     width: 55%;
+}
+
+.texto-um{
+    color:#414141
+    
+    
+}
+
+.texto-dois{
+    color:#414141
+   
 }
 
 .texto-dois {
@@ -245,10 +257,12 @@
 
 .como-funciona {
 
-    width: 80%;
+    width: 70%;
     height: 100%;
     background-color: #C1DFF4;
-    font-size: 40px;
+    font-size: 38px;
+   
+   
     margin: 0 0 0 60px;
 }
 
@@ -256,27 +270,30 @@
 
     font-style: italic;
     color: #013a63;
+    
+
 }
 
 .esquerdo .text-flex {
 
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 100;
-    width: 65%;
-    background-color: #5a789f4d;
+    width: 80%;
+    color: #414141;
     border: none;
     border-radius: 20px;
     margin: 0 0 40px 0;
+    margin-left: 3%;
     padding: 2.5%;
 }
 
 .imagem-direito {
 
-    width: 50%;
+    width: 40%;
     background-color: #C1DFF4;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center;  
+    justify-content: right; /* Centraliza horizontalmente */
+    align-items: right;  
 }
 
 .imagemterapia{
@@ -290,16 +307,17 @@
 .relatostotal{
     width: 100%;
     display: flex;   
-    gap: 4%;
+    gap: 6%;
     position: absolute;
     top: 370%;
     left: 10%;
+    padding-top: 10%;
 }
 
 
 .relatos{
-    background-color: #4e65838f;
-    width: 17%;
+    background-color: #4e6583a4;
+    width: 15%;
     height: 80%;
     margin-bottom: 20%;
     border: #4e6583;
@@ -314,6 +332,7 @@
     justify-content: center;
     align-items: center;
     margin: 10px 0 25px 0;
+    padding-top: 4.5%;
 }
 
 .relatos .img-perfil img {
@@ -324,16 +343,18 @@
 
 .relatos .text-perfil h1 {
 
-    font-size: 20px;
+    font-size: 23px;
     color: white;
     margin: 10px 0 10px 10px;
 }
 
 .relatos .text-perfil .relato p {
 
-    font-size: 13px;
+    font-size: 15px;
     color: white;
     margin: 0 20px 20px 10px;
+    padding-top: 2%;
+    
 }
 
 .div-total {
@@ -354,6 +375,7 @@
     flex-direction: column; 
     justify-content: flex-start;
     gap: 25px;
+    
 }
 
 .ultimobtn button{
@@ -384,6 +406,7 @@
 
     width: 100%;
     height: 100%;
+    padding-left: 7%;
     position: relative;
 }
 
