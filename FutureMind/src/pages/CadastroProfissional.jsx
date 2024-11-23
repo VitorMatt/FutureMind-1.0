@@ -32,6 +32,7 @@ function CadastroProfissional() {
     };    
 
     const handleKeyDown = (e) => {
+      e.preventDefault();
       if (e.key === 'Enter') {
         
         handleClick();
@@ -78,13 +79,13 @@ function CadastroProfissional() {
         profissional.abordagem = ''
         profissional.preferencias = ''
         profissional.especializacao = ''
-        profissional.preco = 
+        profissional.preco = 0.00
         navigate('/login'); 
       }
     };
 
   return (
-    <div className='escolhaCadastro-container'>
+    <div className='escolhaCadastro-container' onKeyDown={handleKeyDown}>
         <div className='lado-esquerdo'>
             
         <HorizontalLinearAlternativeLabelStepper activeStep={activeStep} />
@@ -126,7 +127,7 @@ function CadastroProfissional() {
               Voltar
               </button>
               </div>
-              <div onKeyDown={handleKeyDown} className='botao2'>
+              <div className='botao2'>
                <button 
                       className='proximo-estilizado'
                       onClick={handleClick} 
