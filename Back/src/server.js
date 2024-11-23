@@ -66,7 +66,7 @@ app.post('/cadastro-profissional', async (req, res) => {
     try {
         
         const result = await pool.query(
-            'INSERT INTO profissionais (id_profissionais, nome_completo, cpf, telefone, preferencias, email, crp, data_nascimento, especializacao, preco, foto, senha, abordagem) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *',
+            'INSERT INTO profissionais (id_profissional, nome_completo, cpf, telefone, preferencias, email, crp, data_nascimento, especializacao, preco, foto, senha, abordagem) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *',
             [
                 id_profissional,
                 nome_completo,
@@ -135,6 +135,142 @@ app.post('/cadastro-paciente', async (req,res) =>{
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ error: 'Erro ao adicionar paciente' });
+    }
+});
+
+app.put('/perfil-profissional', async(req, res) => {
+
+    const { id_profissional } = req.params;
+    const {
+        nome_completo,
+        cpf,
+        telefone,
+        preferencias,
+        email, 
+        crp,
+        data_nascimento,
+        especializacao,
+        preco,
+        foto,
+        senha,
+        abordagem 
+    } = req.body;
+
+    try {
+
+        const result = await pool.query('UPDATE profissionais SET nome_completo = $1, cpf = $2, telefone = $3, preferencias = $4, email = $5, crp = $6, data_nascimento = $7, especializacao = $8, preco = $9, foto = $10, senha = $11, abordagem = $12 WHERE id_profissional = $13 RETURNING *', [
+            nome_completo,
+            cpf,
+            telefone,
+            preferencias,
+            email, 
+            crp,
+            data_nascimento,
+            especializacao,
+            preco,
+            foto,
+            senha,
+            abordagem,
+            id_profissional
+        ]);
+
+        if (result.rows.length === 0) {
+
+            return res.status(404).json({ Erro: 'Profissional não encontrado' });
+        }
+
+        res.json(result.rows[0]);
+
+    } catch (err) {
+
+        console.error(err.message);
+        return res.status(500).json({ Erro: 'Erro ao atualizar profissional' });
+    }
+});
+
+app.delete('/perfil-profissional', async (req, res) => {
+
+    const { id_profissional } = req.params;
+
+    try {
+
+        const result = await pool.query('DELETE FROM profissionais WHERE id_profissional = $1 RETURNING *', [
+            id_profissional
+        ]);
+
+        if (result.rows.length === 0) {
+
+            res.status(404).json({ Erro: 'Profissional não encontrado' })
+        }
+
+        res.json(result.rows[0]);
+    } catch (err) {
+
+        console.error(err.message);
+        res.status(500).json({Erro: 'Erro ao excluir profissional'})
+    }
+});
+
+app.put('/perfil-paciente', async(req, res) => {
+
+    const { id_paciente } = req.params;
+    const {
+        nome_completo,
+        cpf,
+        telefone,
+        email, 
+        data_nascimento,
+        foto,
+        senha,
+    } = req.body;
+
+    try {
+
+        const result = await pool.query('UPDATE profissionais SET nome_completo = $1, cpf = $2, telefone = $3, email = $4, data_nascimento = $5, foto = $6, senha = $7 WHERE id_paciente = $8 RETURNING *', [
+            nome_completo,
+            cpf,
+            telefone,
+            email, 
+            data_nascimento,
+            foto,
+            senha,
+            id_paciente
+        ]);
+
+        if (result.rows.length === 0) {
+
+            return res.status(404).json({ Erro: 'Paciente não encontrado' });
+        }
+
+        res.json(result.rows[0]);
+
+    } catch (err) {
+
+        console.error(err.message);
+        return res.status(500).json({ Erro: 'Erro ao atualizar paciente' });
+    }
+});
+
+app.delete('/perfil-paciente', async (req, res) => {
+
+    const { id_paciente } = req.params;
+
+    try {
+
+        const result = await pool.query('DELETE FROM pacientes WHERE id_paciente = $1 RETURNING *', [
+            id_paciente
+        ]);
+
+        if (result.rows.length === 0) {
+
+            res.status(404).json({ Erro: 'Paciente não encontrado' })
+        }
+
+        res.json(result.rows[0]);
+    } catch (err) {
+
+        console.error(err.message);
+        res.status(500).json({Erro: 'Erro ao excluir paciente'})
     }
 });
 

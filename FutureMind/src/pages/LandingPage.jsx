@@ -62,12 +62,12 @@ function LandingPage() {
           <div className='esquerdo'>
 
             <div className='como-funciona'>
-                 <h1>Como funciona a terapia online</h1>
+                 <p>COMO FUNCIONA A TERAPIA ONLINE</p>
                 
             </div>
 
-            <div className='0.1'>
-                  <h1>A flexibilidade de realizar consultas de qualquer lugar elimina barreiras geográficas, ampliando o acesso à terapia. Lembretes automáticos ajudam a manter a rotina, e ferramentas integradas, como exercícios de atenção plena, potencializam a eficácia do tratamento.</h1>
+            <div className='text-flex'>
+                  <p>A flexibilidade de realizar consultas de qualquer lugar elimina barreiras geográficas, ampliando o acesso à terapia. Lembretes automáticos ajudam a manter a rotina, e ferramentas integradas, como exercícios de atenção plena, potencializam a eficácia do tratamento.</p>
             </div>
 
           </div>
@@ -89,30 +89,74 @@ function LandingPage() {
             
             <div className="ultimobtn">
               <button>
+                Colabore com a gente
               </button>
             </div>
           
           
           </div>
+
          
+          <div className="arvoreLanding">
+            <img src="ArvoreLanding.png" alt="" />
+          </div>
           <div className="relatostotal">
             
-            <div className='relatos'>
-              <h1>1</h1>
+            <div className="relatos">
+              <div className="img-perfil">
+                <img src="image.svg" alt="" />
+              </div>
+              <div className="text-perfil">
+                <div className="nome-idade-perfil">
+                  <h1>Clarice, 54 anos:</h1>
+                </div>
+                <div className="relato">
+                  <p>Comecei a terapia online há seis meses e não poderia estar mais feliz com os resultados. A flexibilidade de fazer as sessões de casa me ajudou a abrir o coração e explorar questões que me incomodavam há anos. Sinto que estou finalmente no caminho certo para o autoconhecimento!"</p>
+                </div>
+              </div>
             </div>
 
-            <div className='relatos'>
-              <h1>2</h1>
+            <div className="relatos">
+              <div className="img-perfil">
+                <img src="image.svg" alt="" />
+              </div>
+              <div className="text-perfil">
+                <div className="nome-idade-perfil">
+                  <h1>Clarice, 54 anos:</h1>
+                </div>
+                <div className="relato">
+                  <p>Comecei a terapia online há seis meses e não poderia estar mais feliz com os resultados. A flexibilidade de fazer as sessões de casa me ajudou a abrir o coração e explorar questões que me incomodavam há anos. Sinto que estou finalmente no caminho certo para o autoconhecimento!"</p>
+                </div>
+              </div>
             </div>
 
-             <div className='relatos'>
-              <h1>3</h1>
-             </div>
-          
-             <div className='relatos'>
-              <h1>4</h1>
-             </div>
-          
+            <div className="relatos">
+              <div className="img-perfil">
+                <img src="image.svg" alt="" />
+              </div>
+              <div className="text-perfil">
+                <div className="nome-idade-perfil">
+                  <h1>Clarice, 54 anos:</h1>
+                </div>
+                <div className="relato">
+                  <p>Comecei a terapia online há seis meses e não poderia estar mais feliz com os resultados. A flexibilidade de fazer as sessões de casa me ajudou a abrir o coração e explorar questões que me incomodavam há anos. Sinto que estou finalmente no caminho certo para o autoconhecimento!"</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="relatos">
+              <div className="img-perfil">
+                <img src="image.svg" alt="" />
+              </div>
+              <div className="text-perfil">
+                <div className="nome-idade-perfil">
+                  <h1>Clarice, 54 anos:</h1>
+                </div>
+                <div className="relato">
+                  <p>Comecei a terapia online há seis meses e não poderia estar mais feliz com os resultados. A flexibilidade de fazer as sessões de casa me ajudou a abrir o coração e explorar questões que me incomodavam há anos. Sinto que estou finalmente no caminho certo para o autoconhecimento!"</p>
+                </div>
+              </div>
+            </div>
           
           </div>
         </div>

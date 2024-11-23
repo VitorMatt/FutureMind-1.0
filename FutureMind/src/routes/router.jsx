@@ -19,16 +19,8 @@ import Politica from '../pages/Politica'
 import Slide from '../components/Slide'
 import Adm from '../pages/Adm'
 import PerfilProfissional from '../pages/PerfilProfissional'
-<<<<<<< HEAD
-
-=======
-import TesteAg2 from '../pages/TesteAg2'
-<<<<<<< HEAD
 import CadastroProfissional from '../pages/CadastroProfissional'
-=======
 import PerfilVisualizar from '../pages/PerfilVisualizar'
->>>>>>> afd1afb1a5f6fdcc37acd26f28b754334552f99b
->>>>>>> 6cc77096ec383b1a89ac866bcb698dc1cf1754f6
 
 
 const router = createBrowserRouter([{
@@ -116,18 +108,10 @@ const router = createBrowserRouter([{
     path: '/perfilprofissional',
     element: <PerfilProfissional />
 },
-<<<<<<< HEAD
-
-=======
-{
-    path: '/testeag2',
-    element: <TesteAg2 />
-},
 {
     path: '/perfilvisualizar',
     element: <PerfilVisualizar />
 },
->>>>>>> 6cc77096ec383b1a89ac866bcb698dc1cf1754f6
 
 ])
 
