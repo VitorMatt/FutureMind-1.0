@@ -66,8 +66,10 @@ const paciente = {
     email: ''
 }
 
+const userLogado = true;
+
     return(
-        <GlobalContext.Provider value={{profissionais, profissional, paciente}}>
+        <GlobalContext.Provider value={{profissionais, profissional, paciente, userLogado}}>
             {children}
         </GlobalContext.Provider>
     );
