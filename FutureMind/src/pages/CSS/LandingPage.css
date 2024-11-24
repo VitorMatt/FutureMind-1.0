@@ -309,7 +309,7 @@
     display: flex;   
     gap: 6%;
     position: absolute;
-    top: 370%;
+    top: 350%;
     left: 10%;
     padding-top: 10%;
 }
@@ -348,6 +348,11 @@
     margin: 10px 0 10px 10px;
 }
 
+.relatos .text-perfil {
+
+    margin: 0 0 0 18px;
+}
+
 .relatos .text-perfil .relato p {
 
     font-size: 15px;
@@ -361,7 +366,7 @@
     width: 100%;
     height: 100vh;
     display: flex;   
-    margin: 0 0 0 150px;
+    margin: 0 0 100px 150px;
     margin-top: 10%;
     flex-wrap: wrap;
 }

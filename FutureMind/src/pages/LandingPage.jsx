@@ -118,7 +118,7 @@ function LandingPage() {
 
             <div className="relatos">
               <div className="img-perfil">
-                <img src="image.svg" alt="" />
+                <img src="image2.svg" alt="" />
               </div>
               <div className="text-perfil">
                 <div className="nome-idade-perfil">
@@ -132,7 +132,7 @@ function LandingPage() {
 
             <div className="relatos">
               <div className="img-perfil">
-                <img src="image.svg" alt="" />
+                <img src="image3.svg" alt="" />
               </div>
               <div className="text-perfil">
                 <div className="nome-idade-perfil">
@@ -146,7 +146,7 @@ function LandingPage() {
 
             <div className="relatos">
               <div className="img-perfil">
-                <img src="image.svg" alt="" />
+                <img src="image4.svg" alt="" />
               </div>
               <div className="text-perfil">
                 <div className="nome-idade-perfil">
