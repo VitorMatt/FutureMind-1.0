@@ -173,28 +173,22 @@ function PerfilProfissional() {
            <button onClick={handleProximaSemana}  className="button_passar"><img src="angle-right-solid.svg" alt=""/></button>
           </div>
         </div>
-
         <div className='anotações-profissional'>
-
-            <div className='titulo-perfil'>
-                <h1>Anotações</h1>
-            </div>
-
-            <div className='input-button'>
-                <div className='input-anotações'>
-                    <textarea className='text-anota' placeholder='Digite aqui...'/>
-                </div>
-                <div className='button-anotações'>
-                    <button>Enviar</button>
-                </div>
-            </div>
-
-            <div className='div-anotações'>
-                o
-            </div>
-
+         <div className='titulo-perfil'>
+          <h1>Anotações</h1>
+         </div>
+         <div className='input-button'>
+          <div className='input-anotações'>
+           <textarea className='text-anota' placeholder='Digite aqui...'/>
+          </div>
+          <div className='button-anotações'>
+           <button>Enviar</button>
+          </div>
+         </div>
+         <div className='div-anotações'>
+          
+         </div>
         </div>
-
         <div className='editar-perfil-profissional'>
             <div className='titulo-perfil'>
                 <h1>Editar Perfil</h1>
