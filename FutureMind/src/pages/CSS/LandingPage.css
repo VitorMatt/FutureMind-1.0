@@ -311,7 +311,7 @@
     position: absolute;
     top: 350%;
     left: 10%;
-    padding-top: 10%;
+    padding-top: 7%;
 }
 
 
@@ -389,10 +389,11 @@
     border: 1px solid;
     border-radius: 13px;
     color: white;
-    width: 60%;
+    width: 70%;
     padding: 1.5%;
     font-family: "Poppins", sans-serif;
     font-size: 22px;
+    margin-top: -13%;
 }
 
 .ultimobtn {
@@ -413,6 +414,7 @@
     height: 100%;
     padding-left: 7%;
     position: relative;
+    margin-top: -7%;
 }
 
 .textFinal{
@@ -420,6 +422,7 @@
    height: 80%;
    font-family: "Poppins", sans-serif;
    font-size: 23px;
+   margin-top: -4%;
 }
 
 .textFinal p {
@@ -427,3 +430,16 @@
     color: var(--cor-1);
     font-weight: 200;
 }
+
+
+/* AAAAAAAAAAAAAAAAAAAAAAAA */
+
+
+
+
+
+
+
+
+
+
