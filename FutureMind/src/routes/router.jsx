@@ -21,6 +21,7 @@ import Adm from '../pages/Adm'
 import PerfilProfissional from '../pages/PerfilProfissional'
 import CadastroProfissional from '../pages/CadastroProfissional'
 import PerfilVisualizar from '../pages/PerfilVisualizar'
+import Test_dois from '../pages/Test_dois'
 
 
 const router = createBrowserRouter([{
@@ -111,6 +112,11 @@ const router = createBrowserRouter([{
 {
     path: '/perfilvisualizar',
     element: <PerfilVisualizar />
+},
+
+{
+    path: '/test_dois',
+    element: <Test_dois/>
 },
 
 ])
