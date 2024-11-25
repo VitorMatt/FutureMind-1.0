@@ -1,7 +1,6 @@
 import './CSS/Profissionais3.css';
 import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function CadastroPaciente3() {
@@ -19,10 +18,6 @@ function CadastroPaciente3() {
     paciente.senha = senha;
   }, [senha]);
 
-  // Validação da senha
-  const requisitos = [
-    { label: '8 caracteres ou mais', valid: senha.length >= 8 },
-  ];
 
 
     return (
@@ -61,26 +56,6 @@ function CadastroPaciente3() {
                 />
               )}
             </button>
-            <div className="password-requirements">
-  {senha.length > 0 && (
-    <ul>
-      {requisitos.map((req, index) => (
-        <motion.li
-          key={index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: req.valid ? 1 : 0.7 }}
-          transition={{ duration: 0.3 }}
-          style={{
-            color: req.valid ? 'white' : 'red',
-            listStyle: 'none',
-          }}
-        >
-          {req.label}
-        </motion.li>
-      ))}
-    </ul>
-  )}
-</div>
           </div>
         </div>
 
