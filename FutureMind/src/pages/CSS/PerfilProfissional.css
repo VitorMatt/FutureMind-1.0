@@ -144,7 +144,7 @@
 .anotações-profissional{
     display: block;
     margin: auto;
-    background-color: rgba(255, 0, 0, 0.493);
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
     width: 70%;
     height: fit-content;
@@ -153,7 +153,7 @@
 .input-button{
     display: flex;
     margin: auto;
-    background-color: rgba(137, 43, 226, 0.87);
+    /* background-color: rgba(137, 43, 226, 0.87); */
     width: 80%;
     height: fit-content;
 }
@@ -165,6 +165,13 @@
 
 .input-anotações input{
     width: 90%;
+    display: flex;
+    justify-content: center;
+    color: #5A789F;
+    border: 2px solid #5A789F;
+    padding: 1.6%;
+    font-size: 1.2em;
+    border-radius: 15px;
 }
 
 .button-anotações{
@@ -174,13 +181,26 @@
 
 .button-anotações button{
     width: 90%;
-    height: 50px;
     display: flex;
     justify-content: center;
-    margin-left: 10%;
     background-color: #5A789F;
     color: white;
     border: none;
+    padding: 4.1%;
+    font-size: 1.2em;
+    border-radius: 15px;
+}
+
+.button-anotações button:hover{
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.button-anotações button:active{
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .div-anotações{
