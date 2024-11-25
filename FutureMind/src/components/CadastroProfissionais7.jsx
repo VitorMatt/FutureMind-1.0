@@ -48,7 +48,6 @@ function CadastroProfissionais7() {
           }
           </button>
         </div>
-        {message}
       </div>
       
         </div>
