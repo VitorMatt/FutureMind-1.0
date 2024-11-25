@@ -34,6 +34,8 @@ function CadastroProfissinal() {
     
     const handleFinish = async () => {
 
+      user.id_profissional = user.id_profissional + 1;
+
       const response = await fetch('http://localhost:3000/cadastro', {
 
         method: 'POST',

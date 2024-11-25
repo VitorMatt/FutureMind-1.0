@@ -1,34 +1,34 @@
+import React, { useEffect, useRef, useState } from 'react';
 import './CSS/MyCarousel.css';
 
 export function MyCarousel() {
+  const imgsRef = useRef(null);
+  const [contador, setContador] = useState(0);
 
-    const imgs = document.getElementById('img');
-    const img = document.querySelectorAll('#img img');
-    
-    let contador = 0;
-    function carrossel(){
-    
-        contador++
-    
-        if(contador > img.length - 1){
-            contador = 0;
-        }
-    
-        imgs.style.transform = `translateX(${-contador * 525}px)`;
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      setContador((prev) => (prev + 1) % 3); // Assume que existem 3 imagens
+    }, 3800);
+
+    return () => clearInterval(intervalo); // Limpar intervalo ao desmontar
+  }, []);
+
+  useEffect(() => {
+    if (imgsRef.current) {
+      imgsRef.current.style.transform = `translateX(${-contador * 559}px)`;
     }
-    setInterval(carrossel, 3800);
+  }, [contador]);
 
-   return (
+  return (
     <div className="carrossel_ajuste">
+      <div className="carrossel">
+        <div className="containerA" ref={imgsRef}>
+          <img src="Frame 12.svg" alt="Imagem 1" />
+          <img src="Frame 13.svg" alt="Imagem 2" />
+          <img src="Frame 16.svg" alt="Imagem 3" />
 
-    <div className="carrossel">
-        <div className="containerA" id="img">
-            <script onLoad={carrossel}>
-            </script>
-            <img src="Frame 12.svg" />
-            <img src="Frame 13.svg" />
-            <img src="Frame 16.svg" />
         </div>
+      </div>
     </div>
-    </div>
-)};
+  );
+}
