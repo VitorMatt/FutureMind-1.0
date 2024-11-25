@@ -1,25 +1,13 @@
 import { useEffect } from 'react';
 import { useState, useContext } from 'react'
 import { GlobalContext } from '../GlobalContext/GlobalContext';
+import PrecoMask from './PrecoMask';
 
 function CadastroProfissionais8() {
 
     const { profissional } = useContext(GlobalContext);
 
-    const [preco, setPreco] = useState(profissional.preco);
     const [abordagem, setAbordagem] = useState(profissional.abordagem);
-    const [message, setMessage] = useState('');
-
-    useEffect(() => {
-
-        if (preco>=10 && preco<=50) {
-
-          profissional.preco = preco;
-        } else {
-
-          setMessage('Valor inválido! (Entre 10 e 50)');
-        }
-    }, [preco]);
 
 
     useEffect(() => {
@@ -38,11 +26,8 @@ function CadastroProfissionais8() {
     </div>
     <div className="input-text">
       <label htmlFor="">Preço</label>
-      <input value={preco} type="number" max='50' min='15' className="inputCRP" onChange={(e) => { setPreco(e.target.value) }}/>
+      <PrecoMask />
     </div>
-    <p>
-    {message}
-    </p>
       </div>
     </div>
   )
