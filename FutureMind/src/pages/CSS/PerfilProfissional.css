@@ -153,7 +153,6 @@
 .input-button{
     display: flex;
     margin: auto;
-    /* background-color: rgba(137, 43, 226, 0.87); */
     width: 80%;
     height: fit-content;
 }
@@ -163,15 +162,14 @@
     padding: 2%;
 }
 
-.input-anotações input{
+.input-anotações textarea{
     width: 90%;
     display: flex;
-    justify-content: center;
     color: #5A789F;
     border: 2px solid #5A789F;
-    padding: 1.6%;
     font-size: 1.2em;
     border-radius: 15px;
+    resize: none;
 }
 
 .button-anotações{
@@ -186,7 +184,7 @@
     background-color: #5A789F;
     color: white;
     border: none;
-    padding: 4.1%;
+    padding: 4.9%;
     font-size: 1.2em;
     border-radius: 15px;
 }
@@ -214,16 +212,62 @@
 .editar-perfil-profissional{
     display: block;
     margin: auto;
-    background-color:rgba(0, 255, 42, 0.788);
+    background-color:rgb(255, 255, 255);
     border-radius: 10px;
     width: 70%;
     height: fit-content;
 }
 
+.container-inputs-editar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+}
+.container-inputs-editar p{
+
+    width: fit-content;
+    
+}
+
+.div1-editar{
+    display: block;
+    font-size: 1.5em;
+    width: 50%;
+    text-align: center;
+}
+
+.div1-editar input{
+    background-color: #839AB7;
+    color: white;
+    border: none;
+    width: 65%;
+    padding: 3%;
+    border-radius: 13px;
+    
+}
+
+.div2-editar{
+
+    display: block;
+    font-size: 1.5em;
+    width: 50%;
+    text-align: center;
+    
+}
+
+.div2-editar input{
+    background-color: #839AB7;
+    color: white;
+    border: none;
+    width: 65%;
+    padding: 3%;
+    border-radius: 13px;
+}
+
 .container-agendamento{
 
     display: flex;
-    /* flex-direction: column; */
     background-color: rgb(255, 255, 255);
     justify-content: center;
     text-align: center;
