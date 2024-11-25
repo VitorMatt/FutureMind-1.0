@@ -424,3 +424,18 @@ input[type="checkbox"]:focus {
     text-decoration: none;
     padding-left: 0.5%;
 }
+<<<<<<< HEAD
+
+.password-requirements ul {
+    padding: 0;
+    margin-top: 16px;
+  }
+  
+  .password-requirements li {
+    font-size: 20px;
+    transition: color 0.3s ease;
+  }
+
+ 
+=======
+>>>>>>> 16487c5315ce0e276a8c8abb0165d702d9e36760
