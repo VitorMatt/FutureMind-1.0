@@ -26,9 +26,14 @@ function Login() {
         body: JSON.stringify(form),
     });
 
+    const res = await fetch('http://localhost:3000/login');
+
+    const data = res.json()
+
     if (response.ok) {
         
         setForm({ email: '', senha: '' });
+        localStorage.setItem('user', JSON.stringify(data));
         navigate('/');
       
     } else {
