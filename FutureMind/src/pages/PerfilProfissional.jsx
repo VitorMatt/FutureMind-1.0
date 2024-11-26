@@ -8,36 +8,28 @@ import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
 
 
-function PerfilProfissional({ id_profissional }) {
+function PerfilProfissional() {
 
-  const [userData, setUserData] = useState(null);
-  // const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(null);
+  var userData = JSON.parse(localStorage.getItem('User'));
 
-  useEffect(() => {
-    // Função para buscar dados do usuário
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/perfil-profissional/${id_profissional}`);
+  userData.especializacao = userData.especializacao.replace('{', '')
+  userData.especializacao = userData.especializacao.replace('}', '')
+  userData.preferencias = userData.preferencias.replace('}', '')
+  userData.preferencias = userData.preferencias.replace('{', '')
+ 
+ for (let i=0; i<(userData.especializacao.length * 2); i++) {
 
-        if (!response.ok) {
-          throw new Error("Erro ao carregar dados do usuário");
-        }
+  userData.especializacao = userData.especializacao.replace('"', '')
+ }
 
-        const data = await response.json();
-        setUserData(data); // Armazena os dados recebidos no estado
-        // setLoading(false);
-      } catch (err) {
-        // setError(err.message);
-        // setUserData(false);
-      }
-    };
+ for (let i=0; i<(userData.preferencias.length * 2); i++) {
 
-    fetchUserData();
-  }, [id_profissional]);
+  userData.preferencias = userData.preferencias.replace('"', '')
+ }
 
-  // if (loading) return <p>Loading</p>
-  // if (error) return <p>error</p>
+ userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+ userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+ 
   
    const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.'}
 
@@ -115,7 +107,7 @@ function PerfilProfissional({ id_profissional }) {
 
                  <div className='div-foto-nome'>
                     <div className='foto-usuario'>
-                        <img src={userData.foto} className='a-foto'/>
+                        <img src='iconuser.svg' className='a-foto'/>
                     </div>
                     <div className='nick-usuario'>
                         <h1>{userData.nome_completo}</h1>
@@ -126,11 +118,23 @@ function PerfilProfissional({ id_profissional }) {
                  <div className='div-info'>
                     <div className='div-menor-info'>
                         <p>Eu atendo...</p>
-                        <p>{userData.preferencias}</p>
+                        {
+                          userData.preferencias.map((item, index) => (
+                            <div key={index}>
+                            <p>{item}</p>
+                            </div>
+                          ))
+                        }
                     </div>
                     <div className='div-menor-info'>
                         <p>Especialidade(s):</p>
-                        <p>{userData.especializacao}</p>
+                        {
+                          userData.especializacao.map((item, index) => (
+                            <div key={index}>
+                            <p>{item}</p>
+                            </div>
+                          ))
+                        }
                     </div>
                     <div className='descricao'>
                         <p>Descrição:</p>
