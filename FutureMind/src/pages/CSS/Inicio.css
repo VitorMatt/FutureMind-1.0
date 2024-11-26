@@ -404,6 +404,20 @@
     color: #333;
   }
   
+  .month-year h2 {
+    text-align: center;
+    padding-left: 15%;
+    font-size: 1.2rem;
+    color: var(--cor-1);
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+  .week-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 11px;
+  }
 
   
   .agendar:hover {
@@ -449,12 +463,13 @@
     border: 1px solid var(--cor-1);
     border-radius: 10px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 5px;
     display: flex;
     gap: 5px;
     justify-content: center;
     height: 43px;
     align-items: center;
+    margin-bottom: 5%;
   }
 /*
 {
