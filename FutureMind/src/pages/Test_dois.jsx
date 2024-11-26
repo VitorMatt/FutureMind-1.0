@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './CSS/PerfilProfissional.css';
-import './CSS/Test_dois.css'
+
 
 function Test_dois() {
   const [dataAtual, setDataAtual] = useState(new Date());
@@ -42,6 +42,7 @@ function Test_dois() {
 
   const handleTrocarAgendamento = (data, direcao) => {
     setIndicesAgendamentos((prev) => {
+
       const indiceAtual = prev[data] || 0;
       const agendamentosDoDia = agendamentos.filter((ag) => ag.data === data);
 
@@ -119,9 +120,6 @@ function Test_dois() {
                         <p>Horário: {agendamentosDoDia[indiceAtual].horario}</p>
                         <button onClick={() => handleTrocarAgendamento(diaString, -1)}>Anterior</button>
                         <button onClick={() => handleTrocarAgendamento(diaString, 1)}>Próximo</button>
-                        <button onClick={() => handleExcluirAgendamento(agendamentosDoDia[indiceAtual].data, agendamentosDoDia[indiceAtual].horario)}>
-                          Excluir
-                        </button>
                       </div>
                     ) : (
                       <p>Sem agendamentos</p>

@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import CrpMask from '../components/CrpMask'
+import CpfInput from '../components/CpfInput'
+import Flatpickr from "react-flatpickr";
+import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
+import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
+import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
 
 
@@ -69,8 +75,6 @@ function PerfilProfissional() {
              )
           );
        };
-
-    
 
   return (
     <div className='perfilPro-container'>
@@ -179,14 +183,14 @@ function PerfilProfissional() {
          </div>
          <div className='input-button'>
           <div className='input-anotações'>
-           <textarea className='text-anota' placeholder='Digite aqui...'/>
+           <textarea id='textA' className='text-anota' placeholder='Digite aqui...' rows="1"/>
           </div>
           <div className='button-anotações'>
            <button>Enviar</button>
           </div>
          </div>
          <div className='div-anotações'>
-          
+            
          </div>
         </div>
         <div className='editar-perfil-profissional'>
@@ -195,28 +199,78 @@ function PerfilProfissional() {
             </div>
             <div className='container-inputs-editar'>
               <div className='div1-editar'>
-
-                <p>Nome Completo</p>
-                <input type="text" placeholder='Digite seu nome completo...'/>
-
-                <p>Data de Nascimento</p>
-                <input type="date" />
-
-                <p>CPF</p>
-                <input type="text" />
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>Nome Completo</p>
+                  <input type="text" placeholder='Digite seu nome completo...'/>
+                 </div>
+                </div>
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                 <p>Data de Nascimento</p>
+                 {/* <Flatpickr
+                   options={{
+                   locale: Portuguese, // Configuração para Português
+                   dateFormat: "d/m/Y", // Formato da data
+                   defaultDate: "today", // Data padrão
+                   }}
+                   value={date} // Data atual no estado
+                   onChange={(selectedDates) => setDate(selectedDates[0])} // Atualiza a data selecionada
+                 /> */}
+                 </div>
+                </div>
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>CPF</p>
+                  <CpfInput />
+                 </div>
+                </div>
               </div>
+
               <div className='div2-editar'>
 
-                <p>Telefone</p>
-                <input type="text" />
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>Telefone</p>
+                  <TelefoneMask />
+                 </div>
+                </div>
 
-                <p>E-mail</p>
-                <input type="email" />
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>E-mail</p>
+                  <input type="email" />
+                 </div>
+                </div>
 
-                <p>Senha</p>
-                <input type="text" />
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>Senha</p>
+                  <input type="text" />
+                 </div>
+                </div>
+
               </div>
+
             </div>
+              <div className='container-areas'>
+                <h1>Áreas</h1>
+
+                <div className='div-areas'>
+                  <div>
+                    <p>Idosos</p>
+                    <p>PCDs</p>
+                    <p>Adultos</p>
+                  </div>
+
+                <div>
+                  <p>Crianças</p>
+                  <p>Adolescentes</p>
+                  <p>Pré-Adolescentes</p>
+                </div>
+                </div>
+
+              </div>
         </div>
 
       </div>
