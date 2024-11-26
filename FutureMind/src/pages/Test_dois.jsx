@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './CSS/PerfilProfissional.css';
-import './CSS/Test_dois.css'
 
 function Test_dois() {
   const [dataAtual, setDataAtual] = useState(new Date());

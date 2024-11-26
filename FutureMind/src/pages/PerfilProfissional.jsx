@@ -4,13 +4,11 @@ import Footer from '../components/Footer'
 import './CSS/PerfilProfissional.css'
 
 
-function PerfilProfissional() {
+function PerfilProfissional({ id_profissional }) {
 
-
-  const id_profissional = 2
   const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
 
   useEffect(() => {
     // Função para buscar dados do usuário
@@ -24,15 +22,15 @@ function PerfilProfissional() {
 
         const data = await response.json();
         setUserData(data); // Armazena os dados recebidos no estado
-        setLoading(false);
+        // setLoading(false);
       } catch (err) {
-        setError(err.message);
-        setLoading(false);
+        // setError(err.message);
+        // setUserData(false);
       }
     };
 
     fetchUserData();
-  }, []);
+  }, [id_profissional]);
 
   // if (loading) return <p>Loading</p>
   // if (error) return <p>error</p>
