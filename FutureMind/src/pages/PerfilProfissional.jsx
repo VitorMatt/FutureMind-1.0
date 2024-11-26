@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import './CSS/PerfilProfissional.css'
@@ -6,13 +6,38 @@ import './CSS/PerfilProfissional.css'
 
 function PerfilProfissional() {
 
-   const profissional = 
-   
-   [
 
-      { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.',}
+  const id_profissional = 2
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-   ]
+  useEffect(() => {
+    // Função para buscar dados do usuário
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/perfil-profissional/${id_profissional}`);
+
+        if (!response.ok) {
+          throw new Error("Erro ao carregar dados do usuário");
+        }
+
+        const data = await response.json();
+        setUserData(data); // Armazena os dados recebidos no estado
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  // if (loading) return <p>Loading</p>
+  // if (error) return <p>error</p>
+  
+   const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.'}
 
     const obterDiasUteis = (dataInicio) => {
 
@@ -83,37 +108,31 @@ function PerfilProfissional() {
             <div className='titulo-perfil'>
                 <h1>Perfil Profissional</h1>
             </div>
-            {
 
-                profissional.map((p,index) => (
-
-                <div key={index}>
+                <div>
 
                  <div className='div-foto-nome'>
                     <div className='foto-usuario'>
-                        <img src={p.img} className='a-foto'/>
+                        <img src={userData.foto} className='a-foto'/>
                     </div>
                     <div className='nick-usuario'>
-                        <h1>{p.nome}</h1>
-                        <p>{p.email}</p>
+                        <h1>{userData.nome_completo}</h1>
+                        <p>{userData.email}</p>
                     </div>
                  </div>
     
                  <div className='div-info'>
                     <div className='div-menor-info'>
                         <p>Eu atendo...</p>
-                        <p>{p.Atendo_um}</p>
-                        <p>{p.Atendo_dois}</p>
-                        <p>{p.Atendo_tres}</p>
+                        <p>{userData.preferencias}</p>
                     </div>
                     <div className='div-menor-info'>
                         <p>Especialidade(s):</p>
-                        <p>{p.Especializacao_um}</p>
-                        <p>{p.Especializacao_dois}</p>
+                        <p>{userData.especializacao}</p>
                     </div>
                     <div className='descricao'>
                         <p>Descrição:</p>
-                        <textarea readOnly maxLength="132">{p.descrição}</textarea>
+                        <textarea readOnly maxLength="132">{userData.descricao}</textarea>
                     </div>
                  </div>
     
@@ -121,8 +140,7 @@ function PerfilProfissional() {
                     <h1>Agenda</h1>
                  </div>
                 </div>
-                )) 
-            }
+            
           <div className='container-agendamento'>
               <button onClick={handleSemanaAnterior} className="button_voltar"><img src="angle-left-solid.svg" alt="" /></button> 
            <div className='container-menor-ag'>
