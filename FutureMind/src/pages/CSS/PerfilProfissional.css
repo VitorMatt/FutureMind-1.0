@@ -134,6 +134,7 @@
     border-radius: 15px;
     width: 80%;
     height: fit-content;
+    
 }
 
 .agendinha{
@@ -165,6 +166,7 @@
 .input-anotações textarea{
     width: 90%;
     display: flex;
+    padding: 12px;
     color: #5A789F;
     border: 2px solid #5A789F;
     font-size: 1.2em;
@@ -235,16 +237,40 @@
     font-size: 1.5em;
     width: 50%;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
 }
 
 .div1-editar input{
-    background-color: #839AB7;
-    color: white;
+    background-color: #CAD7EB;
+    opacity: 40%;
+    color: #5A789F;
     border: none;
-    width: 65%;
-    padding: 3%;
+    width: 100%;
+    padding: 5%;
     border-radius: 13px;
     
+}
+
+.div1-editar input::placeholder{
+    color: #012A4A;
+    font-size: medium;
+}
+
+.div_container_pinput{
+   
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    justify-content: center;
+
+}
+
+.div_pinput{
+    width: 54%;
+    text-align: start;
 }
 
 .div2-editar{
@@ -256,14 +282,53 @@
     
 }
 
+
+
 .div2-editar input{
-    background-color: #839AB7;
-    color: white;
+    
+    background-color: #CAD7EB;
+    opacity: 40%;
+    color: #012A4A;
     border: none;
-    width: 65%;
-    padding: 3%;
+    width: 100%;
+    padding: 5%;
     border-radius: 13px;
 }
+
+.div2-editar input::placeholder{
+    color: #012A4A;
+    font-size: medium;
+}
+
+.container-areas{
+    display: block;
+    padding: 3%;
+}
+
+.div-areas{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    background-color: #5A789F;
+    border-radius: 15px;
+    color: white;
+    padding: 2%;
+}
+
+.as-areas{
+    /* background-color: #5A789F; */
+    display: flex;
+    flex-direction: column;
+    /* margin: auto;
+    justify-content: center;
+    align-items: center; */
+    width: 50%;
+    font-size: 1.7em;
+}
+
+
 
 .container-agendamento{
 
@@ -404,3 +469,4 @@
     border: none;
     border-radius: 100px;
 }
+

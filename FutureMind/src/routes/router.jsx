@@ -23,7 +23,6 @@ import CadastroProfissional from '../pages/CadastroProfissional'
 import PerfilVisualizar from '../pages/PerfilVisualizar'
 import Test_dois from '../pages/Test_dois'
 
-
 const router = createBrowserRouter([{
 
     path: '/',
@@ -102,7 +101,7 @@ const router = createBrowserRouter([{
 },
 {
    path: '/Adm',
-   element: <Adm/>
+   element: <Adm />
 
 },
 {
@@ -116,8 +115,10 @@ const router = createBrowserRouter([{
 
 {
     path: '/test_dois',
-    element: <Test_dois/>
+    element: <Test_dois />
 },
+
+
 
 ])
 
