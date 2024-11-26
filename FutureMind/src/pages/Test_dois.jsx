@@ -2,7 +2,10 @@ import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './CSS/PerfilProfissional.css';
+<<<<<<< HEAD
 
+=======
+>>>>>>> c4f66fb8961011485eef8eef0a01acbd61c4a768
 
 function Test_dois() {
   const [dataAtual, setDataAtual] = useState(new Date());

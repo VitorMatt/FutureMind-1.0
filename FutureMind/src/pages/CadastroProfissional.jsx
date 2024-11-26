@@ -40,7 +40,7 @@ function CadastroProfissional() {
       } else {
 
         handleNext();
-      }
+      } 
     }
 
 
