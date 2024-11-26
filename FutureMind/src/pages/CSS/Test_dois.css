@@ -1,0 +1,77 @@
+/* Estilo geral do componente */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+  
+  div {
+    background-color: #5A789F;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    position: relative; /* Garante que não haverá sobreposição */
+  }
+
+  .label{
+    padding-left: 15%;
+  }
+  
+  /* Estilo dos cabeçalhos */
+  h2, h3 {
+    color: white;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  /* Estilo da lista de opções */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Estilo dos itens da lista */
+  ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #014F86;
+    transition: background-color 0.2s ease;
+  }
+  
+  ul li:hover {
+    background-color: #e6f7ff;
+  }
+  
+  /* Estilo do checkbox */
+  ul li input[type="checkbox"] {
+    margin-right: 10px; /* Adiciona espaçamento entre checkbox e label */
+    transform: scale(1.2); /* Aumenta o tamanho do checkbox */
+  }
+  
+  /* Estilo da label */
+  ul li label {
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Texto quando nenhuma opção é selecionada */
+  p {
+    color: white;
+    font-size: 14px;
+    margin: 0;
+    text-align: center;
+  }
+  
