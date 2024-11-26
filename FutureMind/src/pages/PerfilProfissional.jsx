@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import CrpMask from '../components/CrpMask'
 import CpfInput from '../components/CpfInput'
-import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
 import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
 import TelefoneMask from '../components/TelefoneMask'
@@ -43,61 +41,63 @@ function PerfilProfissional({ id_profissional }) {
   
    const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.'}
 
-    const obterDiasUteis = (dataInicio) => {
+   const [dataAtual, setDataAtual] = useState(new Date());
+  const [agendamentos, setAgendamentos] = useState([
+    { data: "2024-11-12", paciente: "Thalles Lima", horario: "15:00" },
+    { data: "2024-11-12", paciente: "Luciana Nuss", horario: "17:30" },
+    { data: "2024-11-13", paciente: "Julia Silva Dias", horario: "14:30" },
+    { data: "2024-11-25", paciente: "Mateus da Silva", horario: "16:00" },
+  ]);
 
-       const dias = []
-       const atual = new Date(dataInicio)
+  const [indicesAgendamentos, setIndicesAgendamentos] = useState({}); // Rastrear índice atual de cada dia
 
-       const diaDaSemana = atual.getDay()
-       const deslocamento = diaDaSemana === 0 ? -6 : 1 - diaDaSemana 
-          
-       atual.setDate(atual.getDate() + deslocamento)
+  const obterDiasUteis = (dataInicio) => {
+    const dias = [];
+    const atual = new Date(dataInicio);
 
-       for(let i = 0; i < 5; i++){
+    const diaDaSemana = atual.getDay();
+    const deslocamento = diaDaSemana === 0 ? -6 : 1 - diaDaSemana;
 
-         dias.push(new Date(atual))
-         atual.setDate(atual.getDate() + 1)
+    atual.setDate(atual.getDate() + deslocamento);
 
-       }
+    for (let i = 0; i < 5; i++) {
+      dias.push(new Date(atual));
+      atual.setDate(atual.getDate() + 1);
+    }
 
-       return dias;
-    };
+    return dias;
+  };
 
-        const [dataAtual, setDataAtual] = useState(new Date())
-        const [diasUteis, setDiasUteis] = useState(obterDiasUteis(new Date()))
-        
-        const [agendamentos, setAgendamentos] = useState([
-          { data: "2024-11-12", paciente: "Thalles Lima", horario: "15:00" },
-          { data: "2024-11-12", paciente: "Luciana Nuss", horario: "17:30" },
-          { data: "2024-11-13", paciente: "Julia Silva Dias", horario: "14:30" },
-          { data: "2024-11-25", paciente: "Mateus da Silva", horario: "16:00" },
-       ]);
+  const diasUteis = obterDiasUteis(dataAtual);
 
-        function handleProximaSemana()  {
+  const handleTrocarSemana = (proximo) => {
+    const novaData = new Date(dataAtual);
+    novaData.setDate(novaData.getDate() + (proximo ? 7 : -7));
+    setDataAtual(novaData);
+  };
 
-          const proximaSemana = new Date(dataAtual)
-          proximaSemana.setDate(proximaSemana.getDate() + 7)
-          setDataAtual(proximaSemana)
-          setDiasUteis(obterDiasUteis(proximaSemana))
+  const handleTrocarAgendamento = (data, direcao) => {
+    setIndicesAgendamentos((prev) => {
 
-        }
-      
-        function handleSemanaAnterior(){
+      const indiceAtual = prev[data] || 0;
+      const agendamentosDoDia = agendamentos.filter((ag) => ag.data === data);
 
-          const semanaAnterior = new Date(dataAtual)
-          semanaAnterior.setDate(semanaAnterior.getDate() - 7)
-          setDataAtual(semanaAnterior)
-          setDiasUteis(obterDiasUteis(semanaAnterior))
+      let novoIndice = indiceAtual + direcao;
+      if (novoIndice >= agendamentosDoDia.length) novoIndice = 0; // Volta ao primeiro
+      if (novoIndice < 0) novoIndice = agendamentosDoDia.length - 1; // Vai para o último
 
-        }
+      return {
+        ...prev,
+        [data]: novoIndice,
+      };
+    });
+  };
 
-        const handleExcluirAgendamento = (data, horario) => {
-          setAgendamentos((prevAgendamentos) => 
-             prevAgendamentos.filter(
-                (agendamento) => !(agendamento.data === data && agendamento.horario === horario)
-             )
-          );
-       };
+  const handleExcluirAgendamento = (data, horario) => {
+    setAgendamentos((prev) =>
+      prev.filter((agendamento) => !(agendamento.data === data && agendamento.horario === horario))
+    );
+  };
 
   return (
     <div className='perfilPro-container'>
@@ -144,32 +144,36 @@ function PerfilProfissional({ id_profissional }) {
                 </div>
             
           <div className='container-agendamento'>
-              <button onClick={handleSemanaAnterior} className="button_voltar"><img src="angle-left-solid.svg" alt="" /></button> 
+              <button onClick={handleTrocarSemana(false)} className="button_voltar"><img src="angle-left-solid.svg" alt="" /></button> 
            <div className='container-menor-ag'>
             <span className='mes-ano'>{dataAtual.toLocaleDateString ("pt-BR", {month: "long", year: "numeric"})}</span>
            <div className='dias_semana'>
              {
-                diasUteis.map((d,index) => {
+                diasUteis.map((dia,index) => {
 
-                  const dia_string = d.toISOString().split('T')[0];
-                  const agendamento = agendamentos.find((ag) => ag.data === dia_string)
-                  
+                  const diaString = dia.toISOString().split("T")[0];
+                  const agendamentosDoDia = agendamentos.filter((ag) => ag.data === diaString);
+                  const indiceAtual = indicesAgendamentos[diaString] || 0;
+
                   return (
 
-                    <div key={dia_string} className="div_informações_ag">
+                    <div key={index} className="div_informações_ag">
 
                      <div className='semana'>
                       <div className='cabeçalho'>
-                        {d.toLocaleDateString("pt-BR", { weekday: "long" })} - {d.getDate()}
+                        {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {d.getDate()}
+                        <p>{dia.toLocaleDateString("pt-BR")}</p>
+                        <button onClick={() => handleTrocarAgendamento(diaString, -1)}>Anterior</button>
+                        <button onClick={() => handleTrocarAgendamento(diaString, 1)}>Próximo</button>
                       </div>
                      </div>
-                      {agendamento ? (
+                      {agendamentosDoDia.length > 0 ? (
 
                       <div className='itens_ag'>
                         <div className='os-itens'>
-                          <p>{agendamento.paciente}</p>
-                          <p>Data: {agendamento.data}</p>
-                          <p>Horário: {agendamento.horario}</p>
+                          <p>{agendamentosDoDia[indiceAtual].paciente}</p>
+                          <p>Data: {agendamentosDoDia[indiceAtual].data}</p>
+                          <p>Horário: {agendamentosDoDia[indiceAtual].horario}</p>
                           <div className='buttons-itens'>
                             <button className='cancelar'>Cancelar</button>
                             <button className='check' onClick={() => handleExcluirAgendamento(agendamento.data, agendamento.horario, agendamento.paciente)}>
@@ -190,7 +194,7 @@ function PerfilProfissional({ id_profissional }) {
              }
            </div>
            </div>
-           <button onClick={handleProximaSemana}  className="button_passar"><img src="angle-right-solid.svg" alt=""/></button>
+           <button onClick={handleTrocarSemana(true)}  className="button_passar"><img src="angle-right-solid.svg" alt=""/></button>
           </div>
         </div>
         <div className='anotações-profissional'>
