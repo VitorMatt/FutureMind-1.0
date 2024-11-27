@@ -303,6 +303,23 @@ app.get('/login', async (req, res) => {
     }
 });
 
+// Rota de busca de profissionais
+app.get('/api/profissionais', async (req, res) => {
+    const { query } = req.query; // Captura o termo de busca da query string
+  
+    try {
+      // Realiza a consulta na tabela profissionais
+      const result = await pool.query(
+        `SELECT * FROM profissionais WHERE nome ILIKE $1`, // Busca case-insensitive
+        [`%${query}%`] // Adiciona o termo de busca com curingas
+      );
+  
+      res.status(200).json(result.rows); // Retorna os resultados
+    } catch (error) {
+      console.error('Erro ao buscar profissionais:', error);
+      res.status(500).json({ message: 'Erro ao buscar profissionais' });
+    }
+  });
 
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');
