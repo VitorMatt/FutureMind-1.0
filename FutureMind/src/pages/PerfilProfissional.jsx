@@ -177,8 +177,9 @@ function PerfilProfissional() {
                         <div className='os-itens'>
                         {agendamentosDoDia.length > 1 && (
                          <>
-                          <button onClick={() => handleTrocarAgendamento(diaString, -1)}>Anterior</button>
-                          <button onClick={() => handleTrocarAgendamento(diaString, 1)}>Próximo</button>
+                         Agendamento diario
+                          <button className='buttons_trocar_agendamento' onClick={() => handleTrocarAgendamento(diaString, -1)}>Anterior</button>
+                          <button className='buttons_trocar_agendamento' onClick={() => handleTrocarAgendamento(diaString, 1)}>Próximo</button>
                          </>
                          )}
                           <p>{agendamentosDoDia[indiceAtual].paciente}</p>

@@ -419,6 +419,11 @@
     border-top-left-radius: 10px;
 }
 
+.buttons_trocar_agendamento{
+
+   
+}
+
 .mes-ano{
     color: white;
     font-size: 2em;
@@ -445,18 +450,21 @@
 .os-itens{
     text-transform: capitalize;
     display: block;
+    width: 100%;
     font-size: 1.2em;
+    
 }
 
 .buttons-itens{
     display: flex;
-    width: 110%;
+    width: 100%;
     gap: 5%;
     /* background-color: #5A789F; */
 }
 
 .cancelar{
-    width: 90%;
+    width: 60%;
+    height: 60px;
     background-color: #5A789F;
     border: none;
     color: white;
