@@ -42,10 +42,9 @@
     font-style: normal;
     color: #013a63;
     flex-wrap: wrap;
-    width: 100%;
+    width: 90%;
     font-size: 50px;
     margin-left: 10%;
-    margin-top: 10%;
 }
 
 .subtitulo {
@@ -77,11 +76,11 @@
     border-radius: 13px;
     color: white;
     margin-top: 10%;
-    margin-left: -70%;
-    width: 200%;
+    margin-left: -50%;
+    width: 140%;
     font-family: "Poppins", sans-serif;
     font-size: 28px;
-    margin-left: -100%;
+    margin-left: -120%;
 }
 
 .btn:hover {
@@ -110,8 +109,8 @@
     margin: auto;
     width: 80%;
     height: 85%;
-    margin-left: 60%;
-    padding-bottom: -6%;
+    
+    padding-bottom: 6%;
 }
 
 .back {
@@ -148,10 +147,10 @@
 
 .titulo-back h1 {
 
-    padding-top: 11%;
+    padding-top: 7%;
     font-style: italic;
     color: var(--cor-7);
-    font-weight: 400;
+    font-weight: 500;
     font-size: 40px;
    
 }
@@ -182,11 +181,11 @@
 .texto-dois {
 
     background-color: none;
-    height: 30%;
+    height: 35%;
     margin: auto;
     text-align: start;
     font-family: "Poppins", sans-serif;
-    font-size: 23px;
+    font-size: 25px;
     width: 55%;
 }
 
@@ -199,7 +198,7 @@
 
 .circuloimg {
 
-    margin-left: 60%;
+    margin-left: 10%;
 }
 
 .conhecer-gente {
