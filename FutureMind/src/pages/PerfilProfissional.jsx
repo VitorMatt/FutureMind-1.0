@@ -10,25 +10,25 @@ import './CSS/PerfilProfissional.css'
 
 function PerfilProfissional() {
 
-  var userData = JSON.parse(localStorage.getItem('User'));
+//   var userData = JSON.parse(localStorage.getItem('User'));
 
-  userData.especializacao = userData.especializacao.replace('{', '')
-  userData.especializacao = userData.especializacao.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('{', '')
  
- for (let i=0; i<(userData.especializacao.length * 2); i++) {
+//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
 
-  userData.especializacao = userData.especializacao.replace('"', '')
- }
+//   userData.especializacao = userData.especializacao.replace('"', '')
+//  }
 
- for (let i=0; i<(userData.preferencias.length * 2); i++) {
+//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
 
-  userData.preferencias = userData.preferencias.replace('"', '')
- }
+//   userData.preferencias = userData.preferencias.replace('"', '')
+//  }
 
- userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
- userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
  
   
    const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.'}
@@ -38,7 +38,8 @@ function PerfilProfissional() {
     { data: "2024-11-12", paciente: "Thalles Lima", horario: "15:00" },
     { data: "2024-11-12", paciente: "Luciana Nuss", horario: "17:30" },
     { data: "2024-11-13", paciente: "Julia Silva Dias", horario: "14:30" },
-    { data: "2024-11-25", paciente: "Mateus da Silva", horario: "16:00" },
+    { data: "2024-11-14", paciente: "Mateus da Silva", horario: "16:00" },
+    
   ]);
 
   const [indicesAgendamentos, setIndicesAgendamentos] = useState({}); // Rastrear índice atual de cada dia
@@ -63,9 +64,11 @@ function PerfilProfissional() {
   const diasUteis = obterDiasUteis(dataAtual);
 
   const handleTrocarSemana = (proximo) => {
-    const novaData = new Date(dataAtual);
-    novaData.setDate(novaData.getDate() + (proximo ? 7 : -7));
-    setDataAtual(novaData);
+    setDataAtual(prevData => {
+      const novaData = new Date(prevData);
+      novaData.setDate(novaData.getDate() + (proximo ? 7 : -7));
+      return novaData;
+    });
   };
 
   const handleTrocarAgendamento = (data, direcao) => {
@@ -86,11 +89,11 @@ function PerfilProfissional() {
   };
 
   const handleExcluirAgendamento = (data, horario) => {
-    setAgendamentos((prev) =>
-      prev.filter((agendamento) => !(agendamento.data === data && agendamento.horario === horario))
-    );
+    setAgendamentos(prev => {
+      // Filtra os agendamentos de maneira imutável
+      return prev.filter(agendamento => !(agendamento.data === data && agendamento.horario === horario));
+    });
   };
-
   return (
     <div className='perfilPro-container'>
       <Navbar />
@@ -105,18 +108,18 @@ function PerfilProfissional() {
 
                 <div>
 
-                 <div className='div-foto-nome'>
+                 {/* <div className='div-foto-nome'>
                     <div className='foto-usuario'>
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
-                    <div className='nick-usuario'>
-                        <h1>{userData.nome_completo}</h1>
-                        <p>{userData.email}</p>
+                     <div className='nick-usuario'>
+                       <h1>{userData.nome_completo}</h1>
+                      <p>{userData.email}</p>
                     </div>
-                 </div>
+                 </div>  */}
     
                  <div className='div-info'>
-                    <div className='div-menor-info'>
+                    {/* <div className='div-menor-info'>
                         <p>Eu atendo...</p>
                         {
                           userData.preferencias.map((item, index) => (
@@ -135,11 +138,11 @@ function PerfilProfissional() {
                             </div>
                           ))
                         }
-                    </div>
-                    <div className='descricao'>
+                    </div> */}
+                    {/* <div className='descricao'>
                         <p>Descrição:</p>
                         <textarea readOnly maxLength="132">{userData.descricao}</textarea>
-                    </div>
+                    </div> */}
                  </div>
     
                  <div className='titulo-agenda'>
@@ -148,7 +151,7 @@ function PerfilProfissional() {
                 </div>
             
           <div className='container-agendamento'>
-              <button onClick={handleTrocarSemana(false)} className="button_voltar"><img src="angle-left-solid.svg" alt="" /></button> 
+              <button onClick={() => handleTrocarSemana(false)} className="button_voltar"><img src="angle-left-solid.svg" alt="" /></button> 
            <div className='container-menor-ag'>
             <span className='mes-ano'>{dataAtual.toLocaleDateString ("pt-BR", {month: "long", year: "numeric"})}</span>
            <div className='dias_semana'>
@@ -165,23 +168,27 @@ function PerfilProfissional() {
 
                      <div className='semana'>
                       <div className='cabeçalho'>
-                        {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {d.getDate()}
-                        <p>{dia.toLocaleDateString("pt-BR")}</p>
-                        <button onClick={() => handleTrocarAgendamento(diaString, -1)}>Anterior</button>
-                        <button onClick={() => handleTrocarAgendamento(diaString, 1)}>Próximo</button>
+                        {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {dia.getDate()}
                       </div>
                      </div>
                       {agendamentosDoDia.length > 0 ? (
-
+                      
                       <div className='itens_ag'>
                         <div className='os-itens'>
+                        {agendamentosDoDia.length > 1 && (
+                         <>
+                          <button onClick={() => handleTrocarAgendamento(diaString, -1)}>Anterior</button>
+                          <button onClick={() => handleTrocarAgendamento(diaString, 1)}>Próximo</button>
+                         </>
+                         )}
                           <p>{agendamentosDoDia[indiceAtual].paciente}</p>
                           <p>Data: {agendamentosDoDia[indiceAtual].data}</p>
                           <p>Horário: {agendamentosDoDia[indiceAtual].horario}</p>
                           <div className='buttons-itens'>
                             <button className='cancelar'>Cancelar</button>
-                            <button className='check' onClick={() => handleExcluirAgendamento(agendamento.data, agendamento.horario, agendamento.paciente)}>
+                            <button className='check' onClick={() => handleExcluirAgendamento}>
                              <img src="check-solid (1).svg" alt="" />
+                             
                             </button>
                           </div>
                         </div>
@@ -198,7 +205,7 @@ function PerfilProfissional() {
              }
            </div>
            </div>
-           <button onClick={handleTrocarSemana(true)}  className="button_passar"><img src="angle-right-solid.svg" alt=""/></button>
+           <button onClick={() => handleTrocarSemana(true)}  className="button_passar"><img src="angle-right-solid.svg" alt=""/></button>
           </div>
         </div>
         <div className='anotações-profissional'>

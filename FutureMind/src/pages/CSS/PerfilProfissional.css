@@ -380,22 +380,22 @@
 }
 .div_informações_ag{
     
-    width: 19%;
+    width: 25%;
     background-color: #ffffff;
     font-weight: 500;
     border-radius: 10px;
-    height: 250px;
+    height: 270px;
 }
 
 .dias_semana{
 
     padding-top: 5%;
-    padding-left: 4.5%;
+    padding-left: 4%;
     display: flex;
     justify-content: flex-start;
     text-align: center;
     margin: 0;
-    width: 100%;
+    width: 98%;
     height: 650px;
     flex-wrap: wrap;
     gap: 5%;
