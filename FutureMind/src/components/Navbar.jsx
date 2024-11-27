@@ -5,7 +5,7 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function Navbar() {
 
-  const { userLogado } = useContext(GlobalContext)
+  const { user } = useContext(GlobalContext)
 
   return (
     <nav className='navbar'>
@@ -19,7 +19,7 @@ function Navbar() {
         </div>
 
         {
-          !userLogado
+          !user.logado
           ?
           (
 
@@ -27,7 +27,7 @@ function Navbar() {
           )
           :
           (
-            <Link to='/perfilprofissional' className='btn2'>
+            <Link to={ user.profissional ? '/perfilprofissional' : '/perfilpaciente'} className='btn2'>
             <img src="iconuser.svg" alt="" className="user" />
             </Link>
           )

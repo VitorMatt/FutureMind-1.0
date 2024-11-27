@@ -1,77 +1,99 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import CpfInput from '../components/CpfInput'
+import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
+import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
+import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
 
 
 function PerfilProfissional() {
 
-   const profissional = 
-   
-   [
+//   var userData = JSON.parse(localStorage.getItem('User'));
 
-      { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.',}
+//   userData.especializacao = userData.especializacao.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('{', '')
+ 
+//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
 
-   ]
+//   userData.especializacao = userData.especializacao.replace('"', '')
+//  }
 
-    const obterDiasUteis = (dataInicio) => {
+//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
 
-       const dias = []
-       const atual = new Date(dataInicio)
+//   userData.preferencias = userData.preferencias.replace('"', '')
+//  }
 
-       const diaDaSemana = atual.getDay()
-       const deslocamento = diaDaSemana === 0 ? -6 : 1 - diaDaSemana 
-          
-       atual.setDate(atual.getDate() + deslocamento)
+//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+ 
+  
+   const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.'}
 
-       for(let i = 0; i < 5; i++){
-
-         dias.push(new Date(atual))
-         atual.setDate(atual.getDate() + 1)
-
-       }
-
-       return dias;
-    };
-
-        const [dataAtual, setDataAtual] = useState(new Date())
-        const [diasUteis, setDiasUteis] = useState(obterDiasUteis(new Date()))
-        
-        const [agendamentos, setAgendamentos] = useState([
-          { data: "2024-11-12", paciente: "Thalles Lima", horario: "15:00" },
-          { data: "2024-11-12", paciente: "Luciana Nuss", horario: "17:30" },
-          { data: "2024-11-13", paciente: "Julia Silva Dias", horario: "14:30" },
-          { data: "2024-11-25", paciente: "Mateus da Silva", horario: "16:00" },
-       ]);
-
-        function handleProximaSemana()  {
-
-          const proximaSemana = new Date(dataAtual)
-          proximaSemana.setDate(proximaSemana.getDate() + 7)
-          setDataAtual(proximaSemana)
-          setDiasUteis(obterDiasUteis(proximaSemana))
-
-        }
-      
-        function handleSemanaAnterior(){
-
-          const semanaAnterior = new Date(dataAtual)
-          semanaAnterior.setDate(semanaAnterior.getDate() - 7)
-          setDataAtual(semanaAnterior)
-          setDiasUteis(obterDiasUteis(semanaAnterior))
-
-        }
-
-        const handleExcluirAgendamento = (data, horario) => {
-          setAgendamentos((prevAgendamentos) => 
-             prevAgendamentos.filter(
-                (agendamento) => !(agendamento.data === data && agendamento.horario === horario)
-             )
-          );
-       };
-
+   const [dataAtual, setDataAtual] = useState(new Date());
+  const [agendamentos, setAgendamentos] = useState([
+    { data: "2024-11-12", paciente: "Thalles Lima", horario: "15:00" },
+    { data: "2024-11-12", paciente: "Luciana Nuss", horario: "17:30" },
+    { data: "2024-11-13", paciente: "Julia Silva Dias", horario: "14:30" },
+    { data: "2024-11-14", paciente: "Mateus da Silva", horario: "16:00" },
     
+  ]);
 
+  const [indicesAgendamentos, setIndicesAgendamentos] = useState({}); // Rastrear índice atual de cada dia
+
+  const obterDiasUteis = (dataInicio) => {
+    const dias = [];
+    const atual = new Date(dataInicio);
+
+    const diaDaSemana = atual.getDay();
+    const deslocamento = diaDaSemana === 0 ? -6 : 1 - diaDaSemana;
+
+    atual.setDate(atual.getDate() + deslocamento);
+
+    for (let i = 0; i < 5; i++) {
+      dias.push(new Date(atual));
+      atual.setDate(atual.getDate() + 1);
+    }
+
+    return dias;
+  };
+
+  const diasUteis = obterDiasUteis(dataAtual);
+
+  const handleTrocarSemana = (proximo) => {
+    setDataAtual(prevData => {
+      const novaData = new Date(prevData);
+      novaData.setDate(novaData.getDate() + (proximo ? 7 : -7));
+      return novaData;
+    });
+  };
+
+  const handleTrocarAgendamento = (data, direcao) => {
+    setIndicesAgendamentos((prev) => {
+
+      const indiceAtual = prev[data] || 0;
+      const agendamentosDoDia = agendamentos.filter((ag) => ag.data === data);
+
+      let novoIndice = indiceAtual + direcao;
+      if (novoIndice >= agendamentosDoDia.length) novoIndice = 0; // Volta ao primeiro
+      if (novoIndice < 0) novoIndice = agendamentosDoDia.length - 1; // Vai para o último
+
+      return {
+        ...prev,
+        [data]: novoIndice,
+      };
+    });
+  };
+
+  const handleExcluirAgendamento = (data, horario) => {
+    setAgendamentos(prev => {
+      // Filtra os agendamentos de maneira imutável
+      return prev.filter(agendamento => !(agendamento.data === data && agendamento.horario === horario));
+    });
+  };
   return (
     <div className='perfilPro-container'>
       <Navbar />
@@ -83,77 +105,91 @@ function PerfilProfissional() {
             <div className='titulo-perfil'>
                 <h1>Perfil Profissional</h1>
             </div>
-            {
 
-                profissional.map((p,index) => (
+                <div>
 
-                <div key={index}>
-
-                 <div className='div-foto-nome'>
+                 {/* <div className='div-foto-nome'>
                     <div className='foto-usuario'>
-                        <img src={p.img} className='a-foto'/>
+                        <img src='iconuser.svg' className='a-foto'/>
                     </div>
-                    <div className='nick-usuario'>
-                        <h1>{p.nome}</h1>
-                        <p>{p.email}</p>
+                     <div className='nick-usuario'>
+                       <h1>{userData.nome_completo}</h1>
+                      <p>{userData.email}</p>
                     </div>
-                 </div>
+                 </div>  */}
     
                  <div className='div-info'>
-                    <div className='div-menor-info'>
+                    {/* <div className='div-menor-info'>
                         <p>Eu atendo...</p>
-                        <p>{p.Atendo_um}</p>
-                        <p>{p.Atendo_dois}</p>
-                        <p>{p.Atendo_tres}</p>
+                        {
+                          userData.preferencias.map((item, index) => (
+                            <div key={index}>
+                            <p>{item}</p>
+                            </div>
+                          ))
+                        }
                     </div>
                     <div className='div-menor-info'>
                         <p>Especialidade(s):</p>
-                        <p>{p.Especializacao_um}</p>
-                        <p>{p.Especializacao_dois}</p>
-                    </div>
-                    <div className='descricao'>
+                        {
+                          userData.especializacao.map((item, index) => (
+                            <div key={index}>
+                            <p>{item}</p>
+                            </div>
+                          ))
+                        }
+                    </div> */}
+                    {/* <div className='descricao'>
                         <p>Descrição:</p>
-                        <textarea readOnly maxLength="132">{p.descrição}</textarea>
-                    </div>
+                        <textarea readOnly maxLength="132">{userData.descricao}</textarea>
+                    </div> */}
                  </div>
     
                  <div className='titulo-agenda'>
                     <h1>Agenda</h1>
                  </div>
                 </div>
-                )) 
-            }
+            
           <div className='container-agendamento'>
-              <button onClick={handleSemanaAnterior} className="button_voltar"><img src="angle-left-solid.svg" alt="" /></button> 
+              <button onClick={() => handleTrocarSemana(false)} className="button_voltar"><img src="angle-left-solid.svg" alt="" /></button> 
            <div className='container-menor-ag'>
             <span className='mes-ano'>{dataAtual.toLocaleDateString ("pt-BR", {month: "long", year: "numeric"})}</span>
            <div className='dias_semana'>
              {
-                diasUteis.map((d,index) => {
+                diasUteis.map((dia,index) => {
 
-                  const dia_string = d.toISOString().split('T')[0];
-                  const agendamento = agendamentos.find((ag) => ag.data === dia_string)
-                  
+                  const diaString = dia.toISOString().split("T")[0];
+                  const agendamentosDoDia = agendamentos.filter((ag) => ag.data === diaString);
+                  const indiceAtual = indicesAgendamentos[diaString] || 0;
+
                   return (
 
-                    <div key={dia_string} className="div_informações_ag">
+                    <div key={index} className="div_informações_ag">
 
                      <div className='semana'>
                       <div className='cabeçalho'>
-                        {d.toLocaleDateString("pt-BR", { weekday: "long" })} - {d.getDate()}
+                        {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {dia.getDate()}
                       </div>
                      </div>
-                      {agendamento ? (
-
+                      {agendamentosDoDia.length > 0 ? (
+                      
                       <div className='itens_ag'>
                         <div className='os-itens'>
-                          <p>{agendamento.paciente}</p>
-                          <p>Data: {agendamento.data}</p>
-                          <p>Horário: {agendamento.horario}</p>
+                        {agendamentosDoDia.length > 1 && (
+                         <>
+                         Agendamento diario
+                          <button className='buttons_trocar_agendamento' onClick={() => handleTrocarAgendamento(diaString, -1)}>Anterior</button>
+                          <button className='buttons_trocar_agendamento' onClick={() => handleTrocarAgendamento(diaString, 1)}>Próximo</button>
+                         </>
+                         )}
+                          <p>{agendamentosDoDia[indiceAtual].paciente}</p>
+                          <p>Data: {agendamentosDoDia[indiceAtual].data}</p>
+                          <p>Horário: {agendamentosDoDia[indiceAtual].horario}</p>
                           <div className='buttons-itens'>
                             <button className='cancelar'>Cancelar</button>
-                            <button className='check' onClick={() => handleExcluirAgendamento(agendamento.data, agendamento.horario, agendamento.paciente)}>
+                            <button className='check' onClick={() => handleExcluirAgendamento}>
                              <img src="check-solid (1).svg" alt="" />
+                             
                             </button>
                           </div>
                         </div>
@@ -170,37 +206,104 @@ function PerfilProfissional() {
              }
            </div>
            </div>
-           <button onClick={handleProximaSemana}  className="button_passar"><img src="angle-right-solid.svg" alt=""/></button>
+           <button onClick={() => handleTrocarSemana(true)}  className="button_passar"><img src="angle-right-solid.svg" alt=""/></button>
           </div>
         </div>
-
         <div className='anotações-profissional'>
-
-            <div className='titulo-perfil'>
-                <h1>Anotações</h1>
-            </div>
-
-            <div className='input-button'>
-                <div className='input-anotações'>
-                    <input type="text" placeholder='Digite aqui...'/>
-                </div>
-                <div className='button-anotações'>
-                    <button>Enviar</button>
-                </div>
-            </div>
-
-            <div className='div-anotações'>
-                o
-            </div>
-
+         <div className='titulo-perfil'>
+          <h1>Anotações</h1>
+         </div>
+         <div className='input-button'>
+          <div className='input-anotações'>
+           <textarea id='textA' className='text-anota' placeholder='Digite aqui...' rows="1"/>
+          </div>
+          <div className='button-anotações'>
+           <button>Enviar</button>
+          </div>
+         </div>
+         <div className='div-anotações'>
+            
+         </div>
         </div>
-
-        {/* <div className='editar-perfil-profissional'>
+        <div className='editar-perfil-profissional'>
             <div className='titulo-perfil'>
-                <h1>Perfil Profissional</h1>
+                <h1>Editar Perfil</h1>
             </div>
-            o
-        </div> */}
+            <div className='container-inputs-editar'>
+              <div className='div1-editar'>
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>Nome Completo</p>
+                  <input type="text" placeholder='Digite seu nome completo...'/>
+                 </div>
+                </div>
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                 <p>Data de Nascimento</p>
+                 {/* <Flatpickr
+                   options={{
+                   locale: Portuguese, // Configuração para Português
+                   dateFormat: "d/m/Y", // Formato da data
+                   defaultDate: "today", // Data padrão
+                   }}
+                   value={date} // Data atual no estado
+                   onChange={(selectedDates) => setDate(selectedDates[0])} // Atualiza a data selecionada
+                 /> */}
+                 </div>
+                </div>
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>CPF</p>
+                  <CpfInput />
+                 </div>
+                </div>
+              </div>
+
+              <div className='div2-editar'>
+
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>Telefone</p>
+                  <TelefoneMask />
+                 </div>
+                </div>
+
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>E-mail</p>
+                  <input type="email" />
+                 </div>
+                </div>
+
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>Senha</p>
+                  <input type="text" />
+                 </div>
+                </div>
+
+              </div>
+
+            </div>
+              <div className='container-areas'>
+                <h1>Áreas</h1>
+
+                <div className='div-areas'>
+                  <div>
+                    <p>Idosos</p>
+                    <p>PCDs</p>
+                    <p>Adultos</p>
+                  </div>
+
+                <div>
+                  <p>Crianças</p>
+                  <p>Adolescentes</p>
+                  <p>Pré-Adolescentes</p>
+                </div>
+                </div>
+
+              </div>
+        </div>
 
       </div>
       

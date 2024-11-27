@@ -6,36 +6,45 @@ function Login() {
 
   const navigate = useNavigate();
   const [olhosSenha, setOlhosSenha] = useState(false);
-
+  
   const [form, setForm] = useState({ email: '', senha: '' });
-
-
+  
+  
   const handleSubmit = async (e) => {
-
+    
     e.preventDefault();
     if (!form.email || !form.senha) {
-        alert('Por favor, preencha ambos os campos');
-        return;
+      alert('Por favor, preencha ambos os campos');
+      return;
     }
-
+    
     const response = await fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form),
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(form),
     });
-
+    
     if (response.ok) {
-        
-        setForm({ email: '', senha: '' });
-        navigate('/');
       
-    } else {
+      setForm({ email: '', senha: '' });
+      handleGet();
+      navigate('/');  
+      } else {
         const errorData = await response.json();
         alert('Erro no login: ' + errorData.message);
+      }
+    };
+    
+    const handleGet = async () => {
+      
+      const res = await fetch('http://localhost:3000/login');
+
+      const data = await res.json();
+
+      localStorage.setItem('User', JSON.stringify(data));
     }
-};
 
   return (
     <div className="login-container">

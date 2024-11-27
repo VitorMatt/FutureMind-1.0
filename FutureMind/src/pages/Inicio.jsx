@@ -284,6 +284,20 @@ function Inicio() {
 
           <div>
 
+          <div>
+      {/* Mês e Ano Dinâmico */}
+      <div className="month-year">
+        <h2>
+          {diasSemana.length > 0 &&
+            diasSemana[0].toLocaleDateString("pt-BR", {
+              month: "long",
+              year: "numeric",
+            })
+            .replace(".", "") 
+            .replace(" de ", " ")}
+        </h2>
+      </div>
+
           {/* Botões para navegar entre as semanas */}
           <div className="week-navigation">
             <button onClick={handlePreviousWeek}><img src='seta1.svg' /></button>
@@ -343,7 +357,7 @@ function Inicio() {
             <b>
       {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
       {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotao === 'inicial' && <span className="btn-text"> {
+      {estadoBotao === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -354,6 +368,7 @@ function Inicio() {
             </div>
             </div>
           </div>
+        </div>
         </div>
         </SwiperSlide>
                 ))
@@ -446,6 +461,18 @@ function Inicio() {
 <div className="botao">
 
           <div>
+          <div>
+      {/* Mês e Ano Dinâmico */}
+      <div className="month-year">
+        <h2>
+          {diasSemana.length > 0 &&
+            diasSemana[0].toLocaleDateString("pt-BR", {
+              month: "long",
+              year: "numeric",
+            }).replace(".", "") 
+            .replace(" de ", " ")}
+        </h2>
+      </div>
 
           {/* Botões para navegar entre as semanas */}
           <div className="week-navigation">
@@ -506,7 +533,7 @@ function Inicio() {
             <b>
       {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
       {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotao === 'inicial' && <span className="btn-text"> {
+      {estadoBotao === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -517,6 +544,7 @@ function Inicio() {
             </div>
             </div>
           </div>
+        </div>
         </div>
         </SwiperSlide>
                 ))
@@ -607,76 +635,103 @@ function Inicio() {
 
 <div className="botao">
 
-          <div>
 
-          {/* Botões para navegar entre as semanas */}
-          <div className="week-navigation">
-            <button onClick={handlePreviousWeek}><img src='seta1.svg' /></button>
-            
-            <thead>
-              <tr>
-                {diasSemana.map((dia) => (
-                  <th key={dia}>{dia.toLocaleDateString("pt-BR", { weekday: "short", day: "numeric"}).replace('.', '').replace(',', '')}</th>
-                  ))}
-              </tr>
-            </thead>
-            <button onClick={handleNextWeek}><img id='seta2' src='seta2.svg' /></button>
-          </div>
-          <table>
+    <div>
+      {/* Mês e Ano Dinâmico */}
+      <div className="month-year">
+        <h2>
+          {diasSemana.length > 0 &&
+            diasSemana[0].toLocaleDateString("pt-BR", {
+              month: "long",
+              year: "numeric",
+            }).replace(".", "") 
+            .replace(" de ", " ")}
+        </h2>
+      </div>
 
-            <tbody>
-              {/* Exibir horários para cada dia da semana */}
-              {Object.keys(horariosDisponiveis).map((hora, index) => (
-                <tr key={index}>
-                  {diasSemana.map((dia) => (
-                    <td key={dia}>
-                      {horariosDisponiveis[hora] ? (
-                        <button 
-                        className= {
-                          selectedDate === formatDate(dia) && selectedTime === hora
+      {/* Botões para navegar entre as semanas */}
+      <div className="week-navigation">
+        <button onClick={handlePreviousWeek}>
+          <img src="seta1.svg" alt="Semana Anterior" />
+        </button>
+
+        <thead>
+          <tr>
+            {diasSemana.map((dia) => (
+              <th key={dia}>
+                {dia
+                  .toLocaleDateString("pt-BR", {
+                    weekday: "short",
+                    day: "numeric",
+                  })
+                  .replace(".", "")
+                  .replace(",", "")}
+              </th>
+            ))}
+          </tr>
+        </thead>
+
+        <button onClick={handleNextWeek}>
+          <img id="seta2" src="seta2.svg" alt="Próxima Semana" />
+        </button>
+      </div>
+
+      <table>
+        <tbody>
+          {/* Exibir horários para cada dia da semana */}
+          {Object.keys(horariosDisponiveis).map((hora, index) => (
+            <tr key={index}>
+              {diasSemana.map((dia) => (
+                <td key={dia}>
+                  {horariosDisponiveis[hora] ? (
+                    <button
+                      className={
+                        selectedDate === formatDate(dia) && selectedTime === hora
                           ? "selected"
                           : "agendar"
-                        }
-                        onClick={() => {
-                          setSelectedDate(formatDate(dia));
-                          setSelectedTime(hora);
-                          setClick(false);
-                        }}
-                        >
-                          {hora}
-                        </button>
-                      ) : (
-                        "-"
-                        )}
-                    </td>
-                  ))}
-                </tr>
+                      }
+                      onClick={() => {
+                        setSelectedDate(formatDate(dia));
+                        setSelectedTime(hora);
+                      }}
+                    >
+                      {hora}
+                    </button>
+                  ) : (
+                    "-"
+                  )}
+                </td>
               ))}
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-        </div>
-        <div className='btn-consulta'>
-
-
-        <button 
+      <div className="btn-consulta">
+        <button
           id="agendar"
           onClick={handleAgendamento}
           disabled={!selectedTime}
-          >
-            <b>
-      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotao === 'inicial' && <span className="btn-text"> {
-                selectedTime
-            ? `Marcar para ${selectedTime}`
-            : "Marcar Consulta"
-              }</span>}
-               
-            </b>
+        >
+          <b>
+            {estadoBotao === "carregando" && (
+              <div id="circle" className="circle"></div>
+            )}
+            {estadoBotao === "concluido" && (
+              <img id="icon-concluido" src="check.svg" alt="" />
+            )}
+            {estadoBotao === "inicial" && (
+              <span className="btn-text2">
+                {selectedTime
+                  ? `Marcar para ${selectedTime}`
+                  : "Marcar Consulta"}
+              </span>
+            )}
+          </b>
         </button>
-            </div>
+      </div>
+    </div>
+    </div>
             </div>
           </div>
         </div>
@@ -771,6 +826,18 @@ function Inicio() {
 
           <div>
 
+          <div className="month-year">
+  <h2>
+    {diasSemana.length > 0 &&
+      diasSemana[0].toLocaleDateString("pt-BR", {
+        month: "long",
+        year: 'numeric',
+      })
+        .replace(".", "") 
+        .replace(" de ", " ")} 
+  </h2>
+</div>
+
           {/* Botões para navegar entre as semanas */}
           <div className="week-navigation">
             <button onClick={handlePreviousWeek}><img src='seta1.svg' /></button>
@@ -830,7 +897,7 @@ function Inicio() {
             <b>
       {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
       {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotao === 'inicial' && <span className="btn-text"> {
+      {estadoBotao === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -933,6 +1000,19 @@ function Inicio() {
 
           <div>
 
+            {/* Mês e Ano Dinâmico */}
+      <div className="month-year">
+        <h2>
+          {diasSemana.length > 0 &&
+            diasSemana[0].toLocaleDateString("pt-BR", {
+              month: "long",
+              year: "numeric",
+            })
+            .replace(".", "") 
+            .replace(" de ", " ")}
+        </h2>
+      </div>
+
           {/* Botões para navegar entre as semanas */}
           <div className="week-navigation">
             <button onClick={handlePreviousWeek}><img src='seta1.svg' /></button>
@@ -992,7 +1072,7 @@ function Inicio() {
             <b>
       {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
       {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotao === 'inicial' && <span className="btn-text"> {
+      {estadoBotao === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -1095,6 +1175,19 @@ function Inicio() {
 
           <div>
 
+            {/* Mês e Ano Dinâmico */}
+      <div className="month-year">
+        <h2>
+          {diasSemana.length > 0 &&
+            diasSemana[0].toLocaleDateString("pt-BR", {
+              month: "long",
+              year: "numeric",
+            })
+            .replace(".", "") 
+            .replace(" de ", " ")}
+        </h2>
+      </div>
+
           {/* Botões para navegar entre as semanas */}
           <div className="week-navigation">
             <button onClick={handlePreviousWeek}><img src='seta1.svg' /></button>
@@ -1154,7 +1247,7 @@ function Inicio() {
             <b>
       {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
       {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotao === 'inicial' && <span className="btn-text"> {
+      {estadoBotao === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -1257,6 +1350,20 @@ function Inicio() {
 
           <div>
 
+          <div>
+      {/* Mês e Ano Dinâmico */}
+      <div className="month-year">
+        <h2>
+          {diasSemana.length > 0 &&
+            diasSemana[0].toLocaleDateString("pt-BR", {
+              month: "long",
+              year: "numeric",
+            })
+            .replace(".", "") 
+            .replace(" de ", " ")}
+        </h2>
+      </div>
+
           {/* Botões para navegar entre as semanas */}
           <div className="week-navigation">
             <button onClick={handlePreviousWeek}><img src='seta1.svg' /></button>
@@ -1316,7 +1423,7 @@ function Inicio() {
             <b>
       {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
       {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotao === 'inicial' && <span className="btn-text"> {
+      {estadoBotao === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -1327,6 +1434,7 @@ function Inicio() {
             </div>
             </div>
           </div>
+        </div>
         </div>
         </SwiperSlide>
                 ))
