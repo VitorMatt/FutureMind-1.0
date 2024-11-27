@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const GlobalContext = createContext();
 
@@ -66,10 +66,10 @@ const paciente = {
     email: ''
 }
 
-const user = {logado: false, profissional: false}
+const [user, setUser] = useState({logado: false, profissional: false})
 
     return(
-        <GlobalContext.Provider value={{profissionais, profissional, paciente, user}}>
+        <GlobalContext.Provider value={{profissionais, profissional, paciente, user, setUser}}>
             {children}
         </GlobalContext.Provider>
     );

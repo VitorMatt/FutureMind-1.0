@@ -125,19 +125,6 @@ app.post('/cadastro-paciente', async (req,res) =>{
     }
 });
 
-app.get('/perfil-profissional/:id', async (req, res) => {
-
-    try {
-
-        const { id_profissional } = req.params.id_profissional;
-        const data = await pool.query('SELECT * FROM profissionais WHERE id_profissional = $1', [id_profissional])
-        res.send(data.rows)
-    } catch (err) {
-
-        res.json({err: 'erro'})
-    }
-})
-
 // app.put('/perfil-profissional/:id', async(req, res) => {
 
 //     const { id_profissional } = req.params.id_profissional;
