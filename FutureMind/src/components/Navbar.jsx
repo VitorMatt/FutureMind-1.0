@@ -4,14 +4,14 @@ import { Link, useNavigate } from 'react-router-dom'; // Usando useNavigate
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function Navbar() {
-  const { user } = useContext(GlobalContext);
+  const { user, setUser } = useContext(GlobalContext);
   const navigate = useNavigate(); // Usando o hook de navegação
   const [userAux, setUserAux] = useState({});
 
   // Observando mudanças no estado 'user'
   useEffect(() => {
-    setUserAux({ ...user });
-  }, [user]);
+    setUser(userAux);
+  }, [userAux]);
 
   const handleUserClick = () => {
     if (userAux.logado) {
@@ -45,6 +45,7 @@ function Navbar() {
             </button>
           )
         }
+        
       </div>
     </nav>
   );

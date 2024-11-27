@@ -1,16 +1,22 @@
 import './CSS/Login.css'
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function Login() {
-
+  
   const navigate = useNavigate();
   const [olhosSenha, setOlhosSenha] = useState(false);
   
   const { user, setUser } = useContext(GlobalContext);
   const [form, setForm] = useState({ email: '', senha: '' });
+  var userAux = {...user};
   
+  useEffect(() => {
+
+    setUser(userAux);
+  }, [userAux.logado, userAux.profissional])
+
   const handleGet = async () => {
     
     const res = await fetch('http://localhost:3000/login');
@@ -40,7 +46,6 @@ function Login() {
       setForm({ email: '', senha: '' });
       handleGet();
 
-      var userAux = {...user};
 
       if (JSON.parse(localStorage.getItem('User')).hasOwnProperty('id_profissional')) {
 
@@ -51,7 +56,6 @@ function Login() {
       }
 
       userAux.logado = true;
-      setUser(userAux);
       navigate('/');  
       } else {
         const errorData = await response.json();

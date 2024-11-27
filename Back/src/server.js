@@ -310,7 +310,7 @@ app.get('/api/profissionais', async (req, res) => {
     try {
       // Realiza a consulta na tabela profissionais
       const result = await pool.query(
-        `SELECT * FROM profissionais WHERE nome ILIKE $1`, // Busca case-insensitive
+        `SELECT * FROM profissionais WHERE nome_completo ILIKE $1`, // Busca case-insensitive
         [`%${query}%`] // Adiciona o termo de busca com curingas
       );
   
