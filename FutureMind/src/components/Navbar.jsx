@@ -1,16 +1,16 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './CSS/Navbar.css';
-import { Link, useNavigate } from 'react-router-dom'; // Adicionando useNavigate
+import { Link, useNavigate } from 'react-router-dom'; // Usando useNavigate
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function Navbar() {
   const { user } = useContext(GlobalContext);
   const navigate = useNavigate(); // Usando o hook de navegação
-  const userAux = { ...user };
+  const [userAux, setUserAux] = useState({});
 
+  // Observando mudanças no estado 'user'
   useEffect(() => {
-    userAux.profissional = user.profissional;
-    userAux.logado = user.logado;
+    setUserAux({ ...user });
   }, [user]);
 
   const handleUserClick = () => {
@@ -21,7 +21,7 @@ function Navbar() {
         navigate('/perfil-paciente'); // Redireciona para o perfil do paciente
       }
     } else {
-      navigate('/login'); // Caso o usuário não esteja logado, redireciona para a página de login
+      navigate('/login'); // Caso o usuário não esteja logado, redireciona para login
     }
   };
 
