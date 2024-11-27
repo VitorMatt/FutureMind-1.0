@@ -1,15 +1,24 @@
 import './CSS/Login.css'
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function Login() {
 
   const navigate = useNavigate();
   const [olhosSenha, setOlhosSenha] = useState(false);
   
+  const { user, setUser } = useContext(GlobalContext);
   const [form, setForm] = useState({ email: '', senha: '' });
   
-  
+  const handleGet = async () => {
+    
+    const res = await fetch('http://localhost:3000/login');
+
+    const data = await res.json();
+
+    localStorage.setItem('User', JSON.stringify(data));
+  }
   const handleSubmit = async (e) => {
     
     e.preventDefault();
@@ -30,6 +39,19 @@ function Login() {
       
       setForm({ email: '', senha: '' });
       handleGet();
+
+      var userAux = {...user};
+
+      if (JSON.parse(localStorage.getItem('User')).hasOwnProperty('id_profissional')) {
+
+        userAux.profissional = true;
+      } else {
+
+        userAux.profissional = false;
+      }
+
+      userAux.logado = true;
+      setUser(userAux);
       navigate('/');  
       } else {
         const errorData = await response.json();
@@ -37,14 +59,6 @@ function Login() {
       }
     };
     
-    const handleGet = async () => {
-      
-      const res = await fetch('http://localhost:3000/login');
-
-      const data = await res.json();
-
-      localStorage.setItem('User', JSON.stringify(data));
-    }
 
   return (
     <div className="login-container">

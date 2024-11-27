@@ -6,12 +6,15 @@
   --cor-5: #014F86;
 }
 
-.container-geral{
-  display: block;
+.container-areas{
+  display: flex;
+  flex-direction: column;
+  /* background-color: #000; */
+  width: 80%;
 }
 
 .container h2 {
-  color: white;
+  color: var(--cor-1);
 }
 
 .container {
@@ -19,7 +22,7 @@
   margin: 20px auto;
   padding: 2%;
   border-radius: 13px;
-  background-color: var(--cor-1);
+  /* background-color: var(--cor-1); */
 }
 
 .options-container {
@@ -36,7 +39,7 @@
 .label {
   padding-left: 5%;
   font-size: 1.3em;
-  color: white;
+  color: var(--cor-1);
 }
 
 @media (max-width: 480px) {
@@ -82,10 +85,10 @@
   color: var(--cor-4);
 }
 
-.descricao{
+.descricao-editar{
   display: flex;
   margin: auto;
-  width: 40%;
+  width: 50%;
   padding: 2%;
   border-radius: 13px;
   flex-direction: column;
@@ -97,7 +100,7 @@
 
 .o-text{
   resize: none;
-  width: 80%;
+  width: 70%;
   background-color: var(--cor-2);
   border-radius: 10px;
   color: var(--cor-3);

@@ -212,7 +212,10 @@
 }
 
 .editar-perfil-profissional{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: auto;
     background-color:rgb(255, 255, 255);
     border-radius: 10px;
@@ -225,7 +228,10 @@
     justify-content: center;
     align-items: center;
     padding: 2%;
+    width: 76%;
+    /* background-color: #000; */
 }
+
 .container-inputs-editar p{
 
     width: fit-content;
@@ -244,7 +250,6 @@
 
 .div1-editar input{
     background-color: #CAD7EB;
-    opacity: 40%;
     color: #5A789F;
     border: none;
     width: 100%;
@@ -282,12 +287,9 @@
     
 }
 
-
-
 .div2-editar input{
     
     background-color: #CAD7EB;
-    opacity: 40%;
     color: #012A4A;
     border: none;
     width: 100%;
@@ -300,35 +302,18 @@
     font-size: medium;
 }
 
-.container-areas{
-    display: block;
-    padding: 3%;
-}
-
-.div-areas{
+.divs-editar{
     display: flex;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    background-color: #5A789F;
-    border-radius: 15px;
-    color: white;
-    padding: 2%;
 }
 
-.as-areas{
-    /* background-color: #5A789F; */
+.contador{
     display: flex;
-    flex-direction: column;
-    /* margin: auto;
-    justify-content: center;
-    align-items: center; */
-    width: 50%;
-    font-size: 1.7em;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 73%;
+    /* background-color: #000; */
+
 }
-
-
 
 .container-agendamento{
 
