@@ -125,7 +125,7 @@ function LandingPage() {
                   <h1>Carlos, 28 anos:</h1>
                 </div>
                 <div className="relato">
-                  <p>No início, tinha dúvidas sobre a eficácia da terapia online, mas minha experiência foi surpreendente. Meu terapeuta criou um ambiente seguro e acolhedor, onde pude falar abertamente sobre minhas ansiedades. Hoje, me sinto mais confiante </p>
+                  <p>No início, tinha dúvidas sobre a eficácia da terapia online, mas minha experiência foi surpreendente. Meu terapeuta criou um ambiente seguro e acolhedor, onde pude falar abertamente sobre minhas ansiedades. Hoje, me sinto mais confiante seguro e com um espaço aolhedor de conhecimento. </p>
                 </div>
               </div>
             </div>
@@ -139,7 +139,7 @@ function LandingPage() {
                   <h1>Ana, 45 anos:</h1>
                 </div>
                 <div className="relato">
-                  <p>Ana, 45 anos: "A terapia online mudou minha vida! A abordagem prática e as ferramentas que aprendi nas sessões me ajudaram a lidar melhor com o estresse e cansaço do dia a dia. Sou grata por ter encontrado esse espaço de apoio e compreensão." </p>
+                  <p>Ana, 45 anos: "A terapia online mudou minha vida! A abordagem prática e as ferramentas que aprendi nas sessões me ajudaram a lidar melhor com o estresse e cansaço do dia a dia, Alem do tempo otimizado para cuidar de mim. Sou grata por ter encontrado esse espaço de apoio e compreensão." </p>
                 </div>
               </div>
             </div>
@@ -153,7 +153,7 @@ function LandingPage() {
                   <h1>Fernando, 37 anos:</h1>
                 </div>
                 <div className="relato">
-                  <p> Fazer terapia online foi uma das melhores decisões da minha vida. O conforto de estar em casa e a conexão que estabeleci com minha terapeuta foram fundamentais para o meu processo de cura. Hoje, me sinto mais leve e em paz comigo mesma.</p>
+                  <p> Fazer terapia online foi uma das melhores decisões da minha vida. O conforto de estar em casa e a conexão que estabeleci com minha terapeuta foram fundamentais para o meu processo de cura. Hoje, me sinto mais leve e em paz comigo mesmo. Indico e saliento a grande doferença que faz a terapia!</p>
                 </div>
               </div>
             </div>

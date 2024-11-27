@@ -2,29 +2,32 @@ import React, { useContext, useEffect, useState } from 'react';
 import InputMask from 'react-input-mask';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
-const CrpMask = ({ onCrpChange }) => {
+const PrecoMask = ({ onPrecoChange }) => {
 
   const {profissional} = useContext (GlobalContext)
-  const [crp, setCrp] = useState(profissional.crp);
+  const [preco, setPreco] = useState(profissional.preco);
 
   useEffect(() => {
-    profissional.crp = crp
-  }, [crp]);
+
+    if (preco>10 && preco<=50) {
+
+        profissional.preco = preco
+    }
+  }, [preco]);
 
   const handleChange = (e) => {
     const maskedValue = e.target.value;
-    setCrp(maskedValue);
-
+    setPreco(maskedValue);
   };
 
   return (
     <div>
       <InputMask
-        mask="99/999999"
-        value={crp}
+        mask="00.00"
+        value={preco}
         onChange={handleChange}
-        placeholder="00/000000"
-        id="crp"
+        placeholder="00.00"
+        id="preco"
         className='inputCRP'
       >
         {(inputProps) => <input {...inputProps} />}
@@ -33,4 +36,4 @@ const CrpMask = ({ onCrpChange }) => {
   );
 };
 
-export default CrpMask;
+export default PrecoMask;

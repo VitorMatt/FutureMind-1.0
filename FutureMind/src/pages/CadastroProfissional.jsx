@@ -31,13 +31,6 @@ function CadastroProfissional() {
         }
     };    
 
-    const handleKeyDown = (e) => {
-      e.preventDefault();
-      if (e.key === 'Enter') {
-        
-        handleClick();
-    };
-  }
 
     const handleClick = () => {
 
@@ -47,7 +40,7 @@ function CadastroProfissional() {
       } else {
 
         handleNext();
-      }
+      } 
     }
 
 
@@ -85,7 +78,7 @@ function CadastroProfissional() {
     };
 
   return (
-    <div className='escolhaCadastro-container' onKeyDown={handleKeyDown}>
+    <div className='escolhaCadastro-container'>
         <div className='lado-esquerdo'>
             
         <HorizontalLinearAlternativeLabelStepper activeStep={activeStep} />

@@ -134,6 +134,7 @@
     border-radius: 15px;
     width: 80%;
     height: fit-content;
+    
 }
 
 .agendinha{
@@ -144,7 +145,7 @@
 .anotações-profissional{
     display: block;
     margin: auto;
-    background-color: rgba(255, 0, 0, 0.493);
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
     width: 70%;
     height: fit-content;
@@ -153,7 +154,6 @@
 .input-button{
     display: flex;
     margin: auto;
-    background-color: rgba(137, 43, 226, 0.87);
     width: 80%;
     height: fit-content;
 }
@@ -163,8 +163,15 @@
     padding: 2%;
 }
 
-.input-anotações input{
+.input-anotações textarea{
     width: 90%;
+    display: flex;
+    padding: 12px;
+    color: #5A789F;
+    border: 2px solid #5A789F;
+    font-size: 1.2em;
+    border-radius: 15px;
+    resize: none;
 }
 
 .button-anotações{
@@ -174,13 +181,26 @@
 
 .button-anotações button{
     width: 90%;
-    height: 50px;
     display: flex;
     justify-content: center;
-    margin-left: 10%;
     background-color: #5A789F;
     color: white;
     border: none;
+    padding: 4.9%;
+    font-size: 1.2em;
+    border-radius: 15px;
+}
+
+.button-anotações button:hover{
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.button-anotações button:active{
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .div-anotações{
@@ -194,16 +214,125 @@
 .editar-perfil-profissional{
     display: block;
     margin: auto;
-    background-color:rgba(0, 255, 42, 0.788);
+    background-color:rgb(255, 255, 255);
     border-radius: 10px;
     width: 70%;
     height: fit-content;
 }
 
+.container-inputs-editar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+}
+.container-inputs-editar p{
+
+    width: fit-content;
+    
+}
+
+.div1-editar{
+    display: block;
+    font-size: 1.5em;
+    width: 50%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.div1-editar input{
+    background-color: #CAD7EB;
+    opacity: 40%;
+    color: #5A789F;
+    border: none;
+    width: 100%;
+    padding: 5%;
+    border-radius: 13px;
+    
+}
+
+.div1-editar input::placeholder{
+    color: #012A4A;
+    font-size: medium;
+}
+
+.div_container_pinput{
+   
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    justify-content: center;
+
+}
+
+.div_pinput{
+    width: 54%;
+    text-align: start;
+}
+
+.div2-editar{
+
+    display: block;
+    font-size: 1.5em;
+    width: 50%;
+    text-align: center;
+    
+}
+
+
+
+.div2-editar input{
+    
+    background-color: #CAD7EB;
+    opacity: 40%;
+    color: #012A4A;
+    border: none;
+    width: 100%;
+    padding: 5%;
+    border-radius: 13px;
+}
+
+.div2-editar input::placeholder{
+    color: #012A4A;
+    font-size: medium;
+}
+
+.container-areas{
+    display: block;
+    padding: 3%;
+}
+
+.div-areas{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    background-color: #5A789F;
+    border-radius: 15px;
+    color: white;
+    padding: 2%;
+}
+
+.as-areas{
+    /* background-color: #5A789F; */
+    display: flex;
+    flex-direction: column;
+    /* margin: auto;
+    justify-content: center;
+    align-items: center; */
+    width: 50%;
+    font-size: 1.7em;
+}
+
+
+
 .container-agendamento{
 
     display: flex;
-    /* flex-direction: column; */
     background-color: rgb(255, 255, 255);
     justify-content: center;
     text-align: center;
@@ -212,6 +341,7 @@
     border-radius: 10px;
     
 }
+
 .container-menor-ag{
 
     background-color: #5A789F;
@@ -250,22 +380,22 @@
 }
 .div_informações_ag{
     
-    width: 19%;
+    width: 28%;
     background-color: #ffffff;
     font-weight: 500;
     border-radius: 10px;
-    height: 250px;
+    height: 270px;
 }
 
 .dias_semana{
 
     padding-top: 5%;
-    padding-left: 4.5%;
+    padding-left: 4%;
     display: flex;
     justify-content: flex-start;
     text-align: center;
     margin: 0;
-    width: 100%;
+    width: 98%;
     height: 650px;
     flex-wrap: wrap;
     gap: 5%;
@@ -287,6 +417,11 @@
     text-align: center;
     border-top-right-radius: 10px ;
     border-top-left-radius: 10px;
+}
+
+.buttons_trocar_agendamento{
+
+   
 }
 
 .mes-ano{
@@ -315,18 +450,21 @@
 .os-itens{
     text-transform: capitalize;
     display: block;
+    width: 100%;
     font-size: 1.2em;
+    
 }
 
 .buttons-itens{
     display: flex;
-    width: 110%;
+    width: 100%;
     gap: 5%;
     /* background-color: #5A789F; */
 }
 
 .cancelar{
-    width: 90%;
+    width: 60%;
+    height: 60px;
     background-color: #5A789F;
     border: none;
     color: white;
