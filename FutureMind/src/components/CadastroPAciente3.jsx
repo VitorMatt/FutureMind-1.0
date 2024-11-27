@@ -1,23 +1,23 @@
 import './CSS/Profissionais3.css'
 import { Link } from 'react-router-dom'
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function CadastroPaciente3() {
-    const [activeStep, setActiveStep] = useState(0);
+
+    const {paciente} = useContext (GlobalContext)
+    const [email,setEmail] = useState(paciente.email)
     const [olhosSenha, setOlhosSenha] = useState(false);
-    const [senha,setSenha] = useState('')
+    const [senha,setSenha] = useState(paciente.senha)
 
-    const handleNext = () => {
-        if (activeStep < 6) { // ajuste o número de passos, 6 neste caso
-            setActiveStep((prevStep) => prevStep + 1);
-        }
-    };
+    useEffect(() => {
+      paciente.email = email
+    }, [email])
 
-    const handleBack = () => {
-        if (activeStep > 0) {
-            setActiveStep((prevStep) => prevStep - 1);
-        }
-    };
+    useEffect(() => {
+      paciente.senha = senha
+    }, [senha])
+
 
     return (
         <div className="selecao1">
@@ -26,12 +26,12 @@ function CadastroPaciente3() {
         <div className="checkboxs2">
   
       <div className="input-text">
-        <label htmlFor="">E-mail</label><input type="text" name="file"className="inputCRP" />
+        <label htmlFor="">E-mail</label><input type="text" name="file"className="inputCRP" value={email} onChange={(e) => {setEmail (e.target.value)}}/>
       </div>
       <div className="input-text">
         <label htmlFor="">Crie sua Senha</label>
         <div className='olho-div'>
-        <input value={senha} onChange={(e) => { setSenha(e.target.value) }} type={olhosSenha ? 'text' : 'password'} className="inputCRP"/> <button onClick={() => {setOlhosSenha(!olhosSenha)}} className='olho'>
+        <input value={senha} onChange={(e) => { setSenha(e.target.value) }} type={olhosSenha ? 'text' : 'password'} className="inputCRP" /> <button onClick={() => {setOlhosSenha(!olhosSenha)}} className='olho'>
           {
             (senha.split('').length>0) &&
             <img src={olhosSenha ? 'olhoAberto.svg'  : 'olhoFechado.svg'} alt="" />

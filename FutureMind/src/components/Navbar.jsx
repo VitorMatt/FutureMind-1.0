@@ -1,7 +1,11 @@
+import { useContext } from 'react';
 import './CSS/Navbar.css'
 import { Link } from 'react-router-dom'
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function Navbar() {
+
+  const { userLogado } = useContext(GlobalContext)
 
   return (
     <nav className='navbar'>
@@ -14,7 +18,20 @@ function Navbar() {
           <img src="lupa.svg" alt="ícone de busca" className='img-navBar' />
         </div>
 
-        <Link to='/login' className='btn2'>Entrar</Link>
+        {
+          !userLogado
+          ?
+          (
+
+            <Link to='/login' className='btn2'>Entrar</Link>
+          )
+          :
+          (
+            <Link to='/perfilprofissional' className='btn2'>
+            <img src="iconuser.svg" alt="" className="user" />
+            </Link>
+          )
+        }
       </div>
     </nav>
   );

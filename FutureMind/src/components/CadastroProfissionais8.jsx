@@ -4,17 +4,17 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function CadastroProfissionais8() {
 
-    const { user } = useContext(GlobalContext);
+    const { profissional } = useContext(GlobalContext);
 
-    const [preco, setPreco] = useState(user.preco);
-    const [abordagem, setAbordagem] = useState(user.abordagem);
+    const [preco, setPreco] = useState(profissional.preco);
+    const [abordagem, setAbordagem] = useState(profissional.abordagem);
     const [message, setMessage] = useState('');
 
     useEffect(() => {
 
         if (preco>=10 && preco<=50) {
 
-          user.preco = preco;
+          profissional.preco = preco;
         } else {
 
           setMessage('Valor inválido! (Entre 10 e 50)');
@@ -24,7 +24,7 @@ function CadastroProfissionais8() {
 
     useEffect(() => {
 
-      user.abordagem = abordagem;
+      profissional.abordagem = abordagem;
   }, [abordagem]);
 
   return (

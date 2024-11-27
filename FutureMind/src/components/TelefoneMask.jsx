@@ -3,11 +3,11 @@ import InputMask from 'react-input-mask';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 const TelefoneMask = ({ onTelefoneChange }) => {
-    const {user} = useContext (GlobalContext)
-  const [telefone, setTelefone] = useState(user.telefone);
+    const {profissional} = useContext (GlobalContext)
+  const [telefone, setTelefone] = useState(profissional.telefone);
 
   useEffect(() => {
-    user.telefone = telefone
+    profissional.telefone = telefone
   }, [telefone]);
 
   const handleChange = (e) => {

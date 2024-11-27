@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import './CSS/PerfilProfissional.css'
 
+
 function PerfilProfissional() {
 
    const profissional = 
@@ -36,13 +37,12 @@ function PerfilProfissional() {
         const [dataAtual, setDataAtual] = useState(new Date())
         const [diasUteis, setDiasUteis] = useState(obterDiasUteis(new Date()))
         
-        const agendamentos = [
-           
-            {data: "2024-11-12", paciente: "thalles Lima",horario: "15:00"},
-            {data: "2024-11-13", paciente: "Luciana Nuss", horario: "13:00" },
-            {data: "2024-11-13", paciente: "Julia Silva Dias", horario: "14:30" },
-
-        ]
+        const [agendamentos, setAgendamentos] = useState([
+          { data: "2024-11-12", paciente: "Thalles Lima", horario: "15:00" },
+          { data: "2024-11-12", paciente: "Luciana Nuss", horario: "17:30" },
+          { data: "2024-11-13", paciente: "Julia Silva Dias", horario: "14:30" },
+          { data: "2024-11-25", paciente: "Mateus da Silva", horario: "16:00" },
+       ]);
 
         function handleProximaSemana()  {
 
@@ -61,6 +61,14 @@ function PerfilProfissional() {
           setDiasUteis(obterDiasUteis(semanaAnterior))
 
         }
+
+        const handleExcluirAgendamento = (data, horario) => {
+          setAgendamentos((prevAgendamentos) => 
+             prevAgendamentos.filter(
+                (agendamento) => !(agendamento.data === data && agendamento.horario === horario)
+             )
+          );
+       };
 
     
 
@@ -103,10 +111,6 @@ function PerfilProfissional() {
                         <p>{p.Especializacao_um}</p>
                         <p>{p.Especializacao_dois}</p>
                     </div>
-                    {/* <div className='descricao'>
-                        <p>Descrição:</p>
-                        <p>João Miguel é um psicólogo carismático que utiliza terapia cognitivo-comportamental para ajudar seus clientes a crescerem emocionalmente.</p>
-                    </div> */}
                     <div className='descricao'>
                         <p>Descrição:</p>
                         <textarea readOnly maxLength="132">{p.descrição}</textarea>
@@ -120,7 +124,9 @@ function PerfilProfissional() {
                 )) 
             }
           <div className='container-agendamento'>
-              <button onClick={handleSemanaAnterior} className="button_voltar">{"<"}</button> 
+              <button onClick={handleSemanaAnterior} className="button_voltar"><img src="angle-left-solid.svg" alt="" /></button> 
+           <div className='container-menor-ag'>
+            <span className='mes-ano'>{dataAtual.toLocaleDateString ("pt-BR", {month: "long", year: "numeric"})}</span>
            <div className='dias_semana'>
              {
                 diasUteis.map((d,index) => {
@@ -140,9 +146,17 @@ function PerfilProfissional() {
                       {agendamento ? (
 
                       <div className='itens_ag'>
-                        <p>{agendamento.paciente}</p>
-                        <p>{agendamento.data}</p>
-                        <p>{agendamento.horario}</p>
+                        <div className='os-itens'>
+                          <p>{agendamento.paciente}</p>
+                          <p>Data: {agendamento.data}</p>
+                          <p>Horário: {agendamento.horario}</p>
+                          <div className='buttons-itens'>
+                            <button className='cancelar'>Cancelar</button>
+                            <button className='check' onClick={() => handleExcluirAgendamento(agendamento.data, agendamento.horario, agendamento.paciente)}>
+                             <img src="check-solid (1).svg" alt="" />
+                            </button>
+                          </div>
+                        </div>
                       </div>
 
                       ) : (
@@ -155,49 +169,23 @@ function PerfilProfissional() {
                 }) 
              }
            </div>
-           <button onClick={handleProximaSemana}  className="button_passar">{">"}</button>
+           </div>
+           <button onClick={handleProximaSemana}  className="button_passar"><img src="angle-right-solid.svg" alt=""/></button>
           </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {/* <div className='anotações-profissional'>
+        <div className='anotações-profissional'>
 
             <div className='titulo-perfil'>
-                <h1>Perfil Profissional</h1>
+                <h1>Anotações</h1>
             </div>
 
             <div className='input-button'>
                 <div className='input-anotações'>
-                    o
+                    <input type="text" placeholder='Digite aqui...'/>
                 </div>
                 <div className='button-anotações'>
-                    o
+                    <button>Enviar</button>
                 </div>
             </div>
 
@@ -205,7 +193,7 @@ function PerfilProfissional() {
                 o
             </div>
 
-        </div> */}
+        </div>
 
         {/* <div className='editar-perfil-profissional'>
             <div className='titulo-perfil'>

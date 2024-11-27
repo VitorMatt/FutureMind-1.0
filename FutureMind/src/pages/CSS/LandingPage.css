@@ -103,12 +103,10 @@
 
 }
 
-
 .img2 .computer-inicio {
 
     display: flex;
     margin: auto;
-    
     width: 80%;
     height: 85%;
     
@@ -163,9 +161,21 @@
     height: 35%;
     margin-left: 8%;
     text-align: start;
-    font-family: "Poppins", sans-serif;
-    font-size: 25px;
+    /* font-family: "Poppins", sans-serif; */
+    
+    font-size: 23px;
     width: 55%;
+}
+
+.texto-um{
+    color:#414141
+    
+    
+}
+
+.texto-dois{
+    color:#414141
+   
 }
 
 .texto-dois {
@@ -177,8 +187,6 @@
     font-family: "Poppins", sans-serif;
     font-size: 25px;
     width: 55%;
-   
-    
 }
 
 .texto-um p {
@@ -229,7 +237,7 @@
 
 .grande {
 
-    background-color: red;
+    background-color: #C1DFF4;
     display: flex;
     width: 100vw;
 }
@@ -237,36 +245,184 @@
 .esquerdo {
 
     width: 50%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     background-color: #C1DFF4;
-
+    margin: 25px 0 0 35px;
+    align-items: center;
 }
 
 
 .como-funciona {
-    width: 100%;
+
+    width: 70%;
     height: 100%;
     background-color: #C1DFF4;
+    font-size: 38px;
+   
+   
+    margin: 0 0 0 60px;
+}
+
+.como-funciona p {
+
+    font-style: italic;
+    color: #013a63;
+    
+
+}
+
+.esquerdo .text-flex {
+
+    font-size: 23px;
+    font-weight: 100;
+    width: 80%;
+    color: #414141;
+    border: none;
+    border-radius: 20px;
+    margin: 0 0 40px 0;
+    margin-left: 3%;
+    padding: 2.5%;
 }
 
 .imagem-direito {
 
-    width: 50%;
+    width: 40%;
     background-color: #C1DFF4;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center;  
+    justify-content: right; /* Centraliza horizontalmente */
+    align-items: right;  
 }
 
 .imagemterapia{
-    width: 70%;
+    width: 90%;
     
    
     
     
 }
 
+.relatostotal{
+    width: 80%;
+    display: flex;   
+    gap: 6%;
+    position: absolute;
+    top: 350%;
+    left: 10%;
+    padding-top: 10%;
+}
+
+
 .relatos{
+    background-color: #4e6583a4;
+    width: 35%;
+    height: 80%;
+    margin-bottom: 20%;
+    border: #4e6583;
+    border-radius: 20px;
+}
+
+.relatos .img-perfil {
+
     width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 25px 0;
+    padding-top: 4.5%;
+}
+
+.relatos .img-perfil img {
+
+    width: 80%;
+    height: 10%;
+}
+
+.relatos .text-perfil h1 {
+
+    font-size: 23px;
+    color: white;
+    margin: 10px 0 10px 10px;
+}
+
+.relatos .text-perfil {
+
+    margin: 0 0 0 18px;
+}
+
+.relatos .text-perfil .relato p {
+
+    font-size: 15px;
+    color: white;
+    margin: 0 20px 20px 10px;
+    padding-top: 2%;
+    
+}
+
+.div-total {
+    width: 100%;
+    height: 100vh;
+    display: flex;   
+    margin: 0 0 100px 150px;
+    margin-top: 10%;
+    flex-wrap: wrap;
+}
+
+.btn-text {
+
+    width: 40%;
+    height: 30%;
+    margin: 100px 0 auto 0;
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start;
+    gap: 25px;
+    
+}
+
+.ultimobtn button{
+  
+    background-color: #5a789fe6;
+    border: 1px solid;
+    border-radius: 13px;
+    color: white;
+    width: 60%;
+    padding: 1.5%;
+    font-family: "Poppins", sans-serif;
+    font-size: 22px;
+}
+
+.ultimobtn {
+
+    width: 100%;
+    height: 20%;
+}
+
+.arvoreLanding{
+
+    width: 50%;
+    height: 100%;
+}
+
+.arvoreLanding img {
+
+    width: 100%;
+    height: 100%;
+    padding-left: 7%;
+    position: relative;
+}
+
+.textFinal{
+   width: 100%;
+   height: 80%;
+   font-family: "Poppins", sans-serif;
+   font-size: 23px;
+}
+
+.textFinal p {
+
+    color: var(--cor-1);
+    font-weight: 200;
 }

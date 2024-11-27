@@ -3,11 +3,11 @@ import InputMask from 'react-input-mask';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 const CrpMask = ({ onCrpChange }) => {
-    const {user} = useContext (GlobalContext)
-   const [crp, setCrp] = useState(user.crp);
+    const {profissional} = useContext (GlobalContext)
+   const [crp, setCrp] = useState(profissional.crp);
 
   useEffect(() => {
-    user.crp = crp
+    profissional.crp = crp
   }, [crp]);
 
   const handleChange = (e) => {

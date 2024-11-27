@@ -14,18 +14,6 @@
     margin: auto;
     width: 50%;
     height: 100%;
-    gap: 25px;
-    align-items: center;
-    justify-content: center;
-}
-
-.lado-esquerdo-error {
-
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 50%;
-    height: 100%;
     gap: 15px;
     align-items: center;
     justify-content: center;
@@ -90,7 +78,6 @@
 .button-voltar {
     
     display: flex;
-    /* margin: auto; */
     width: 50%;
     justify-self: center;
     align-items: center;

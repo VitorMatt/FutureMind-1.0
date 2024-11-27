@@ -3,6 +3,7 @@ import { GlobalContext } from "../GlobalContext/GlobalContext";
 import CrpMask from "./CrpMask";
 
 function CadastroFormado() {
+
   const [fileName, setFileName] = useState ('nenhum arquivo selecionado')
 
   const fileChange = (event) => {
