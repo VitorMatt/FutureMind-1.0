@@ -34,7 +34,7 @@ function CadastroProfissionais8() {
     <div className="checkboxs2">
 
     <div className="input-text">
-      <label htmlFor="">Abordagem</label><input value={abordagem} onChange={(e) => { setAbordagem(e.target.value) }} type="text" name="file"className="inputCRP" />
+      <label htmlFor="">Abordagem</label><input value={abordagem} onChange={(e) => { setAbordagem(e.target.value) }} type="text" name="file" className="inputCRP" />
     </div>
     <div className="input-text">
       <label htmlFor="">Preço</label>
