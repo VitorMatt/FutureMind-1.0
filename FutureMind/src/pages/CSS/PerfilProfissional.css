@@ -310,6 +310,27 @@
     align-items: center;
 }
 
+.input-abordagem-perfil{
+    display: flex;
+    flex-direction: column;
+    width: 58.5%;
+    border-radius: 10px;
+    border: none;
+    color: var(--cor-4);
+    font-size: medium;
+    padding-right: 2%;
+    padding-top: 2%;
+}
+
+.input-abordagem-perfil select{
+    width: 100%;
+}
+
+.input-abordagem-perfil p{
+    color: #000;
+    font-size: 1.5em;
+}
+
 .contador{
     display: flex;
     justify-content: flex-end;
