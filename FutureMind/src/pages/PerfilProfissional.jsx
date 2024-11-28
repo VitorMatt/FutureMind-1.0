@@ -166,6 +166,14 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     }
   };
 
+  const [abordagem, setAbordagem] = useState(profissional.abordagem);
+
+
+    useEffect(() => {
+
+      profissional.abordagem = abordagem;
+  }, [abordagem]);
+
   const maxLength = 500; // Limite máximo de caracteres
   const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
 
@@ -394,6 +402,20 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
               </div>
 
             </div>
+
+            <div className='input-abordagem-perfil'>
+              <p>Abordagem</p>
+              <select value={abordagem} onChange={(e) => { setAbordagem(e.target.value)}} name="file" id="" className="inputAbordagem">
+                <option name="file" value="Terapia">Terapia</option>
+                <option name="file" value="Psicanalista">Psicanalista</option>
+                <option name="file" value="Terapia Cognitiva">Terapia Cognitiva</option>
+                <option name="file" value="Psicologia Analítica">Psicologia Analítica</option>
+                <option name="file" value="Analítico Comportamental">Analítico Comportamental</option>
+                <option name="file" value="Psicoterapia Corporal">Psicoterapia Corporal</option>
+                <option name="file" value="Cognitivo-Comportamental">Cognitivo-Comportamental</option>
+              </select>
+            </div>
+
               <div className='container-escolhas'>
 
                 {/* <div className="descricao-editar">
