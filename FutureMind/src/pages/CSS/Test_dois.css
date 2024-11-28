@@ -6,23 +6,33 @@
   --cor-5: #014F86;
 }
 
-.container-areas{
-  display: flex;
-  flex-direction: column;
-  /* background-color: #000; */
-  width: 80%;
+.container-escolhas{
+  width: 76%;
 }
 
-.container h2 {
+.container-areas, .container-especi h2 {
   color: var(--cor-1);
 }
 
-.container {
-  width: 40%;
+.container-areas{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   margin: 20px auto;
   padding: 2%;
   border-radius: 13px;
-  /* background-color: var(--cor-1); */
+  height: 191px;
+  padding-left: 8%;
+}
+
+.container-especi{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px auto;
+  padding: 2%;
+  border-radius: 13px;
+  padding-left: 8%;
 }
 
 .options-container {
@@ -31,13 +41,14 @@
   gap: 10px; /* Espaçamento entre itens */
 }
 
-.option {
-  display: flex;
-  align-items: center;
+.labelareas{
+  padding-left: 15%;
+  font-size: 1.3em;
+  /* color: var(--cor-1); */
 }
 
-.label {
-  padding-left: 5%;
+.labelespeci{
+  padding-left: 15%;
   font-size: 1.3em;
   color: var(--cor-1);
 }
@@ -46,10 +57,6 @@
   .options-container {
     grid-template-columns: 1fr; /* Ajusta para uma coluna em telas menores */
   }
-}
-
-.label{
-  padding-left: 15%;
 }
 
 
@@ -85,7 +92,7 @@
   color: var(--cor-4);
 }
 
-.descricao-editar{
+/* .descricao-editar{
   display: flex;
   margin: auto;
   width: 50%;
@@ -105,10 +112,10 @@
   border-radius: 10px;
   color: var(--cor-3);
   min-height: 120px;   /* Altura inicial */
-  padding: 1.5%;
+  /* padding: 1.5%;
   font-size: 1.5em;
   outline: none;
-}
+} */
 
 .div-botão-salvar{
   display: flex;
@@ -137,9 +144,9 @@
 .salvar:active {
   transform: translateY(2px); 
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
-}
+} */
 
-.div-mensagemsalva{
+/* .div-mensagemsalva{
   display: flex;
   flex-direction: column;
   width: 79.5%;
@@ -150,4 +157,4 @@
   display: flex;
   flex-direction: column;
   width: 50%;
-}
+} */
