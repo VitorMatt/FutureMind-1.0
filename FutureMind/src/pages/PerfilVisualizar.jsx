@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import './CSS/PerfilVisualizar.css'
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
+
 function PerfilVisualizar() {
 
   const [profissional, setProfissional] = useState({
@@ -73,18 +74,19 @@ function PerfilVisualizar() {
 
   return (
     <div className='perfilVisu-container'>
-      <Navbar />
+      {/* <Navbar /> */}
            <div className='perfil-profissional'>
             <div className='titulo-perfil'>
-                <h1>Perfil Profissional</h1>
+                <h1>Perfil </h1>
             </div>
             
                 <div>
 
                  <div className='div-foto-nome'>
                     <div className='foto-usuario'>
-                        <img src={profissional.foto} className='a-foto'/>
+                        <img src='/imgVisu.png' className='a-foto'/>
                     </div>
+                    
                     <div className='nick-usuario'>
                         <h1>{profissional.nome_completo}</h1>
                         <p>{profissional.email}</p>
@@ -92,27 +94,8 @@ function PerfilVisualizar() {
                  </div>
     
                  <div className='div-info'>
-                    <div className='div-menor-info'>
-                        <p>Eu atendo...</p>
-                        {
-                          profissional.preferencias?.map((item, index) => (
-                            <div key={index}>
-                            <p>{item}</p>
-                            </div>
-                          ))
-                        }
-                    </div>
-                    <div className='div-menor-info'>
-                        <p>Especialidade(s):</p>
-                        {
-                          profissional.especializacao?.map((item, index) => (
-                            <div key={index}>
-                            <p>{item}</p>
-                            </div>
-                          ))
-                        }
-                    </div>
                     <div className='descricao'>
+                        
                         <p>Descrição:</p>
                         <textarea readOnly maxLength="132">{profissional.descricao}</textarea>
                     </div>
@@ -122,7 +105,7 @@ function PerfilVisualizar() {
                 </div>
             
             </div>
-            <div className='anotações-profissional'>
+            {/* <div className='anotações-profissional'>
               <div className='titulo-perfil'>
                <h1>Anotações</h1>
               </div>
@@ -137,7 +120,7 @@ function PerfilVisualizar() {
               <div className='div-anotações'>
 
              </div>
-            </div>
+            </div> */}
            
        <div className='editar-perfil-profissional'>
         <div className='titulo-perfil'>
@@ -165,7 +148,7 @@ function PerfilVisualizar() {
         </div>
         </div>
 
-        <Footer />
+        {/* <Footer /> */}
     </div>
   )
 }
