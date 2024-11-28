@@ -316,10 +316,26 @@ app.get('/api/profissionais', async (req, res) => {
   
       res.status(200).json(result.rows); // Retorna os resultados
     } catch (error) {
-      console.error('Erro ao buscar profissionais:', error);
-      res.status(500).json({ message: 'Erro ao buscar profissionais' });
+        console.error(error.message);
+        res.status(500).json({ message: 'Erro ao buscar profissionais' });
     }
   });
+
+  app.get('/profissional/:id', async(req, res) => {
+
+    const { id_profissional } = req.params;
+
+    try {
+
+        const result = await pool.query('SELECT * FROM profissionais WHERE id_profissional = $1', [id_profissional]);
+
+        res.status(200).json(result.rows);
+    } catch(err) {
+
+        console.err(err.message);
+        res.status(500).json({ message: 'Erro ao buscar profissionais' });
+    }
+  })
 
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');

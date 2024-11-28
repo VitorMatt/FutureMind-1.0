@@ -1,17 +1,33 @@
-import React from 'react'
+import React, {useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import './CSS/PerfilVisualizar.css'
 
 function PerfilVisualizar() {
 
-    const profissional = 
+  const [profissional, setProfissional] = useState(null);
+  useEffect(() => {
+
+    handleGet();
+  }, []);
+
+    const handleGet = async() => {
+
+      const response = await fetch(`http://localhost:3000/profissional/:id`);
+
+      if (response.ok) {
+
+        const data = await response.json();
+        setProfissional(data);
+      }
+    }
+    // const profissional = 
    
-   [
+  //  [
+// 
+  //     { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.',}
 
-      { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.',}
-
-   ]
+  //  ]
 
   return (
     <div className='perfilVisu-container'>
@@ -20,11 +36,8 @@ function PerfilVisualizar() {
             <div className='titulo-perfil'>
                 <h1>Perfil Profissional</h1>
             </div>
-            {
-
-                profissional.map((p,index) => (
-
-                <div key={index}>
+            
+                <div>
 
                  <div className='div-foto-nome'>
                     <div className='foto-usuario'>
@@ -107,4 +120,4 @@ function PerfilVisualizar() {
   )
 }
 
-export default PerfilVisualizar
+export default PerfilVisualizar;

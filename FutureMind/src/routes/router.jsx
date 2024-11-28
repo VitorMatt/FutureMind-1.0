@@ -110,7 +110,7 @@ const router = createBrowserRouter([{
     element: <PerfilProfissional />
 },
 {
-    path: '/perfilvisualizar',
+    path: '/profissional/:id',
     element: <PerfilVisualizar />
 },
 {
