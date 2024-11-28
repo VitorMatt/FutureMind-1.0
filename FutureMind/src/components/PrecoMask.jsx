@@ -15,23 +15,29 @@ const PrecoMask = ({ onPrecoChange }) => {
     }
   }, [preco]);
 
-  const handleChange = (e) => {
-    const maskedValue = e.target.value;
-    setPreco(maskedValue);
+  const escolhaPreco = (e) => {
+    let value = e.target.value.replace(/\D/g, ''); 
+    value = value.replace(/(\d{2})(\d)/, '$1.$2'); 
+    value = value.replace(/(\d{2})(\d)/, '$1.$2'); 
+    value = value.replace('R', ''); 
+    value = value.replace('$', '');
+    value = Number(value) 
+
+    setPreco(value);
+    onPrecoChange(value.replace(/\D/g, '')); 
   };
 
   return (
     <div>
-      <InputMask
-        mask="00.00"
-        value={preco}
-        onChange={handleChange}
-        placeholder="00.00"
+      <input
+        type="text"
         id="preco"
+        maxLength="8"
+        placeholder="R$ 00.00"
+        value={'R$ ' + preco}
+        onChange={escolhaPreco}
         className='inputCRP'
-      >
-        {(inputProps) => <input {...inputProps} />}
-      </InputMask>
+      />
     </div>
   );
 };
