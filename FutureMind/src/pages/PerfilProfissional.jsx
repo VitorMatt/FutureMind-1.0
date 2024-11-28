@@ -36,14 +36,18 @@ function PerfilProfissional() {
 //  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
  
 const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.'}
-   const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
+const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
 
-   const [dataAtual, setDataAtual] = useState(new Date());
+  const [dataAtual, setDataAtual] = useState(new Date());
   const [agendamentos, setAgendamentos] = useState([
+
     { data: "2024-11-12", paciente: "Thalles Lima", horario: "15:00" },
     { data: "2024-11-12", paciente: "Luciana Nuss", horario: "17:30" },
+    { data: "2024-11-12", paciente: "aaaaaaaaa", horario: "20:00" },
     { data: "2024-11-13", paciente: "Julia Silva Dias", horario: "14:30" },
     { data: "2024-11-14", paciente: "Mateus da Silva", horario: "16:00" },
+    { data: "2024-11-14", paciente: "renatinho", horario: "18:00" },
+    { data: "2024-11-14", paciente: "aaaaaaaaa", horario: "20:00" },
     
   ]);
 
@@ -70,9 +74,11 @@ const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMig
 
   const handleTrocarSemana = (proximo) => {
     setDataAtual(prevData => {
+
       const novaData = new Date(prevData);
       novaData.setDate(novaData.getDate() + (proximo ? 7 : -7));
       return novaData;
+
     });
   };
 
@@ -85,7 +91,7 @@ const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMig
       let novoIndice = indiceAtual + direcao;
       if (novoIndice >= agendamentosDoDia.length) novoIndice = 0; // Volta ao primeiro
       if (novoIndice < 0) novoIndice = agendamentosDoDia.length - 1; // Vai para o último
-
+   
       return {
         ...prev,
         [data]: novoIndice,
@@ -93,12 +99,40 @@ const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMig
     });
   };
 
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [agendamentoParaExcluir, setAgendamentoParaExcluir] = useState(null); // Armazenar o agendamento selecionado para exclusão
+  
+  const handleCancelarAgendamento = (data, horario) => {
+    setAgendamentoParaExcluir({ data, horario });
+    setShowConfirmation(true);  // Exibe a confirmação
+  };
+
+  const handleConfirmarExclusao = () => {
+    setAgendamentos(prevAgendamentos => 
+      prevAgendamentos.filter(agendamento => 
+        !(agendamento.data === agendamentoParaExcluir.data && agendamento.horario === agendamentoParaExcluir.horario)
+      )
+    );
+    setShowConfirmation(false);  // Fecha a confirmação
+    setAgendamentoParaExcluir(null);  // Limpa o agendamento para exclusão
+  };
+  
+  const handleCancelarExclusao = () => {
+
+    setShowConfirmation(false); // Fecha a confirmação sem excluir
+    setAgendamentoParaExcluir(null); // Limpa o agendamento para exclusão
+
+  };
+  
   const handleExcluirAgendamento = (data, horario) => {
     setAgendamentos(prev => {
       // Filtra os agendamentos de maneira imutável
       return prev.filter(agendamento => !(agendamento.data === data && agendamento.horario === horario));
     });
   };
+
+
+
 
   const [selecionarOpcoesAreas, setSelecionarOpcoesAreas] = useState([]);
   const opcoesAreas = ["Idosos", "PCDs", "Adultos", "Crianças", "Adolescentes", "Pré-Adolescentes"];
@@ -209,29 +243,50 @@ const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMig
 
                      <div className='semana'>
                       <div className='cabeçalho'>
-                        {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {dia.getDate()}
+                       <div className='Nome_dia_da_semana'>  {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {dia.getDate()}</div>
                       </div>
                      </div>
                       {agendamentosDoDia.length > 0 ? (
                       
                       <div className='itens_ag'>
                         <div className='os-itens'>
-                        {agendamentosDoDia.length > 1 && (
-                         <>
-                         Agendamento diario
-                          <button className='buttons_trocar_agendamento' onClick={() => handleTrocarAgendamento(diaString, -1)}>Anterior</button>
-                          <button className='buttons_trocar_agendamento' onClick={() => handleTrocarAgendamento(diaString, 1)}>Próximo</button>
-                         </>
-                         )}
-                          <p>{agendamentosDoDia[indiceAtual].paciente}</p>
-                          <p>Data: {agendamentosDoDia[indiceAtual].data}</p>
-                          <p>Horário: {agendamentosDoDia[indiceAtual].horario}</p>
+                        
+                          <div className='div_buttons_trocar_agendamentos'>
+                          {agendamentosDoDia.length >= 2  && (
+                           <button className='buttons_trocar_agendamento' onClick={() => handleTrocarAgendamento(diaString, -1)}>
+                            <img src="angles-left-solid.svg" alt="" />
+                           </button>
+                          )}
+                           Agendamento diario
+                          {agendamentosDoDia.length >= 2 &&(
+                            <>
+                             <button className='buttons_trocar_agendamento' onClick={() => handleTrocarAgendamento(diaString, 1)}><img src="angles-right-solid.svg" alt="" /></button>
+                            </>
+                          )} 
+                          </div>
+                         
+                          <div className='div_para_itens'>
+                           <p>{agendamentosDoDia[indiceAtual].paciente}</p>
+                          </div>
+                          <div className='div_para_itens'>
+                           <p>Data: {agendamentosDoDia[indiceAtual].data}</p>
+                          </div>
+                          <div className='div_para_itens'>
+                           <p>Horário: {agendamentosDoDia[indiceAtual].horario}</p>
+                          </div>
+                         
                           <div className='buttons-itens'>
-                            <button className='cancelar'>Cancelar</button>
-                            <button className='check' onClick={() => handleExcluirAgendamento}>
+                            <button className='cancelar' onClick={() => handleCancelarAgendamento(agendamentosDoDia[indiceAtual].data, agendamentosDoDia[indiceAtual].horario)}>Cancelar</button>
+                            <button className='check' onClick={() => handleExcluirAgendamento(agendamentosDoDia[indiceAtual].data, agendamentosDoDia[indiceAtual].horario)}>
                              <img src="check-solid (1).svg" alt="" />
-                             
                             </button>
+                            {showConfirmation && (
+                             <div className="confirmacao-exclusao">
+                              <p>Você tem certeza que deseja cancelar este agendamento?</p>
+                               <button onClick={handleConfirmarExclusao}>Sim, cancelar</button>
+                              <button onClick={handleCancelarExclusao}>Não, voltar</button>
+                             </div>
+                            )}
                           </div>
                         </div>
                       </div>
