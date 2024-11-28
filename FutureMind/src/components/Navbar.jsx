@@ -1,13 +1,20 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import './CSS/Navbar.css';
 import { Link, useNavigate } from 'react-router-dom'; 
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function Navbar() {
-  const { user, setId } = useContext(GlobalContext);
+  const { user, id, setId } = useContext(GlobalContext);
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+
+  const idAux = id;
+
+  useEffect(() => {
+
+    setId(idAux);
+  }, [idAux]);
 
   const handleUserClick = () => {
     if (user.logado) {
@@ -20,6 +27,8 @@ function Navbar() {
       navigate('/login');
     }
   };
+
+  const handleCLick = (id) => idAux = id;
 
   const handleSearch = async () => {
     
@@ -73,7 +82,7 @@ function Navbar() {
           <ul>
             {searchResults.map((profissional) => (
               <li key={profissional.id_profissional}>
-                <Link onClick={() => { setId(profissional.id_profissional) }} to={`/profissional/${profissional.id_profissional}`}>
+                <Link onClick={() => handleCLick(profissional.id_profissional)} to={`/profissional/${profissional.id_profissional}`}>
                   {profissional.nome_completo}
                 </Link>
               </li>

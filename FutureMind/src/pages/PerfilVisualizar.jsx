@@ -6,63 +6,45 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function PerfilVisualizar() {
 
-  const [profissional, setProfissional] = useState({
-    foto: '',
-    preferencias: [],
-    especializacao: [],
-  });
-  const { id } = useContext(GlobalContext);
+  const [profissional, setProfissional] = useState({});
+  const { id, setId } = useContext(GlobalContext);
+  const idAux = id;
 
-  const ids = {id: id}
+  useEffect(() => {
+
+    setId(idAux);
+  }, [idAux]);
   
-  useEffect(() => { handlePost(); }, []);
+  useEffect(() => { idAux ? handleGet() : alert('erro'); }, []);
 
-  const handleReplace = () => {
+  // const handleReplace = () => {
+
+  //   for (var i)
  
-    if (profissional.especializacao) {
-      profissional.especializacao = profissional.especializacao
-        .replace(/[{}"]/g, '') // Remove chaves e aspas
-        .split(',')
-        .map(item => item.trim());
-    }
-  
-    if (profissional.preferencias) {
-      profissional.preferencias = profissional.preferencias
-        .replace(/[{}"]/g, '')
-        .split(',')
-        .map(item => item.trim());
-    }
-  }
-
-  const handlePost = async() => {
-    
-    const response = await fetch(`http://localhost:3000/profissional/:id`, {
-
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(ids)
-    });
-    
-    if (response.ok) {
+  //     profissional.especializacao = profissional.especializacao.replace('{', '');
       
-      handleGet();
-    }
-    }
+  //     .split(',').map(item => item.trim());
+  
+  //   if (profissional.preferencias) {
+  //     profissional.preferencias = profissional.preferencias.replace(/[{}"]/g, '').split(',').map(item => item.trim());
+  //   }
+  // }
 
-    const handleGet = async () => {
 
-      const response = await fetch('http://localhost:3000/profissional/:id');
+    const handleGet = async() => {
+
+      const response = await fetch(`http://localhost:3000/profissional/${idAux}`);
 
       if (response.ok) {
 
         const data = await response.json();
         setProfissional(data);
-        handleReplace();
+        alert(data)
+      } else {
+
+        alert('p')
       }
     }
-  
     // const profissional = 
    
   //  [
@@ -73,7 +55,6 @@ function PerfilVisualizar() {
 
   return (
     <div className='perfilVisu-container'>
-      <Navbar />
            <div className='perfil-profissional'>
             <div className='titulo-perfil'>
                 <h1>Perfil Profissional</h1>

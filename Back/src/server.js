@@ -8,7 +8,7 @@ const pool = new Pool({
     user: 'postgres', 
     host: 'localhost',
     database: 'FutureMind', 
-    password: 'Vitor281207.',
+    password: '12345',
     port: 5432, 
 });
 
@@ -323,17 +323,23 @@ app.get('/api/profissionais', async (req, res) => {
 
   app.get('/profissional/:id', async(req, res) => {
 
-    const { ids } = req.body;
+    const { idAux } = req.params;
 
     try {
 
-        const result = await pool.query('SELECT * FROM profissionais WHERE id_profissional = $1', [ids]);
+        const result = await pool.query('SELECT * FROM profissionais WHERE idAux_profissional = $1', [idAux]);
 
-        res.status(200).json(result.rows[0]);
-    } catch(err) {
+        if (result.rows.length) {
 
-        console.err(err.message);
-        res.status(500).json({ message: 'Erro ao buscar profissionais' });
+            res.status(200).json(result.rows[0]);
+        } else {
+
+            res.status(404).json({ message: 'Profissional não encontrado'})
+        }
+        res.send();
+    } catch (err) {
+
+        res.status(500).json('Erro');
     }
   })
 

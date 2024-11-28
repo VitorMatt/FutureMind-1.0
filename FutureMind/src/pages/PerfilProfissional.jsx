@@ -136,7 +136,6 @@ const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMig
 
   return (
     <div className='perfilPro-container'>
-      <Navbar />
       
       <div className='todas-divs'>
 
