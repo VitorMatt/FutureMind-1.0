@@ -357,6 +357,7 @@
     padding-right: 40px;
 }
 
+
 .semana{
 
     background-color: #5A789F;
@@ -369,7 +370,7 @@
     background-color: #ffffff;
     font-weight: 500;
     border-radius: 10px;
-    height: 270px;
+    height: 335px;
 }
 
 .dias_semana{
@@ -381,7 +382,7 @@
     text-align: center;
     margin: 0;
     width: 98%;
-    height: 650px;
+    height: 900px;
     flex-wrap: wrap;
     gap: 5%;
     color: #000000;
@@ -404,9 +405,9 @@
     border-top-left-radius: 10px;
 }
 
-.buttons_trocar_agendamento{
-
-   
+.Nome_dia_da_semana{
+    text-transform: capitalize;
+  
 }
 
 .mes-ano{
@@ -432,24 +433,66 @@
     text-align: start;
 }
 
+
 .os-itens{
+    display: flex;
+    flex-direction: column;
     text-transform: capitalize;
-    display: block;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
     width: 100%;
+    height: 308px;
     font-size: 1.2em;
     
 }
 
+.div_para_itens{
+
+    width: 60%;
+    justify-content: start;
+}
+
+.div_para_itens p{
+
+    width: fit-content;
+}
+
+
+.div_buttons_trocar_agendamentos{
+
+    display: flex;
+    width: 100%;
+
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.buttons_trocar_agendamento{
+
+    width: 12%;
+    background-color: white;
+    border: none;
+}
+
+
+
 .buttons-itens{
     display: flex;
     width: 100%;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 5%;
     /* background-color: #5A789F; */
 }
 
 .cancelar{
-    width: 60%;
-    height: 60px;
+    width: 50%;
+    height: 40px;
     background-color: #5A789F;
     border: none;
     color: white;
@@ -457,9 +500,40 @@
 }
 
 .check{
-    width: 30%;
+    width: 20%;
     background-color: #5a789f00;
     border: none;
     border-radius: 100px;
 }
 
+.confirmacao-exclusao {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .confirmacao-exclusao p {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .confirmacao-exclusao button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .confirmacao-exclusao button:hover {
+    background-color: #f0f0f0;
+  }
