@@ -8,7 +8,7 @@ const pool = new Pool({
     user: 'postgres', 
     host: 'localhost',
     database: 'FutureMind', 
-    password: '12345',
+    password: 'Vitor281207.',
     port: 5432, 
 });
 
@@ -323,13 +323,13 @@ app.get('/api/profissionais', async (req, res) => {
 
   app.get('/profissional/:id', async(req, res) => {
 
-    const { id_profissional } = req.params;
+    const { ids } = req.body;
 
     try {
 
-        const result = await pool.query('SELECT * FROM profissionais WHERE id_profissional = $1', [id_profissional]);
+        const result = await pool.query('SELECT * FROM profissionais WHERE id_profissional = $1', [ids]);
 
-        res.status(200).json(result.rows);
+        res.status(200).json(result.rows[0]);
     } catch(err) {
 
         console.err(err.message);

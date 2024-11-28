@@ -1,26 +1,68 @@
-import React, {useState, useEffect } from 'react'
+import {useState, useEffect, useContext } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import './CSS/PerfilVisualizar.css'
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function PerfilVisualizar() {
 
-  const [profissional, setProfissional] = useState(null);
-  useEffect(() => {
+  const [profissional, setProfissional] = useState({
+    foto: '',
+    preferencias: [],
+    especializacao: [],
+  });
+  const { id } = useContext(GlobalContext);
 
-    handleGet();
-  }, []);
+  const ids = {id: id}
+  
+  useEffect(() => { handlePost(); }, []);
 
-    const handleGet = async() => {
+  const handleReplace = () => {
+ 
+    if (profissional.especializacao) {
+      profissional.especializacao = profissional.especializacao
+        .replace(/[{}"]/g, '') // Remove chaves e aspas
+        .split(',')
+        .map(item => item.trim());
+    }
+  
+    if (profissional.preferencias) {
+      profissional.preferencias = profissional.preferencias
+        .replace(/[{}"]/g, '')
+        .split(',')
+        .map(item => item.trim());
+    }
+  }
 
-      const response = await fetch(`http://localhost:3000/profissional/:id`);
+  const handlePost = async() => {
+    
+    const response = await fetch(`http://localhost:3000/profissional/:id`, {
+
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(ids)
+    });
+    
+    if (response.ok) {
+      
+      handleGet();
+    }
+    }
+
+    const handleGet = async () => {
+
+      const response = await fetch('http://localhost:3000/profissional/:id');
 
       if (response.ok) {
 
         const data = await response.json();
         setProfissional(data);
+        handleReplace();
       }
     }
+  
     // const profissional = 
    
   //  [
@@ -41,36 +83,44 @@ function PerfilVisualizar() {
 
                  <div className='div-foto-nome'>
                     <div className='foto-usuario'>
-                        <img src={p.img} className='a-foto'/>
+                        <img src={profissional.foto} className='a-foto'/>
                     </div>
                     <div className='nick-usuario'>
-                        <h1>{p.nome}</h1>
-                        <p>{p.email}</p>
+                        <h1>{profissional.nome_completo}</h1>
+                        <p>{profissional.email}</p>
                     </div>
                  </div>
     
                  <div className='div-info'>
                     <div className='div-menor-info'>
                         <p>Eu atendo...</p>
-                        <p>{p.Atendo_um}</p>
-                        <p>{p.Atendo_dois}</p>
-                        <p>{p.Atendo_tres}</p>
+                        {
+                          profissional.preferencias?.map((item, index) => (
+                            <div key={index}>
+                            <p>{item}</p>
+                            </div>
+                          ))
+                        }
                     </div>
                     <div className='div-menor-info'>
                         <p>Especialidade(s):</p>
-                        <p>{p.Especializacao_um}</p>
-                        <p>{p.Especializacao_dois}</p>
+                        {
+                          profissional.especializacao?.map((item, index) => (
+                            <div key={index}>
+                            <p>{item}</p>
+                            </div>
+                          ))
+                        }
                     </div>
                     <div className='descricao'>
                         <p>Descrição:</p>
-                        <textarea readOnly maxLength="132">{p.descrição}</textarea>
+                        <textarea readOnly maxLength="132">{profissional.descricao}</textarea>
                     </div>
                  </div>
 
     
                 </div>
-                )) 
-            }
+            
             </div>
             <div className='anotações-profissional'>
               <div className='titulo-perfil'>

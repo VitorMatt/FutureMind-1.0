@@ -1,6 +1,10 @@
+import { useEffect } from "react";
+
 function PerfilPaciente() {
 
     const user = JSON.parse(localStorage.getItem('User'));
+
+    useEffect(() => { alert(user.profissional); }, [])
 
     return (
 

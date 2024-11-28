@@ -67,9 +67,10 @@ const paciente = {
 }
 
 const [user, setUser] = useState({logado: false, profissional: false})
+const [id, setId] = useState();
 
     return(
-        <GlobalContext.Provider value={{profissionais, profissional, paciente, user, setUser}}>
+        <GlobalContext.Provider value={{profissionais, profissional, paciente, user, setUser, id, setId}}>
             {children}
         </GlobalContext.Provider>
     );

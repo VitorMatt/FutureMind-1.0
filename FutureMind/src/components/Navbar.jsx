@@ -1,22 +1,17 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import './CSS/Navbar.css';
 import { Link, useNavigate } from 'react-router-dom'; 
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function Navbar() {
-  const { user, setUser } = useContext(GlobalContext);
+  const { user, setId } = useContext(GlobalContext);
   const navigate = useNavigate();
-  const [userAux, setUserAux] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  useEffect(() => {
-    setUser(userAux);
-  }, [userAux]);
-
   const handleUserClick = () => {
-    if (userAux.logado) {
-      if (userAux.profissional) {
+    if (user.logado) {
+      if (user.profissional) {
         navigate('/perfilprofissional');
       } else {
         navigate('/perfil-paciente');
@@ -61,7 +56,7 @@ function Navbar() {
         </div>
 
         {
-          !userAux.logado ? (
+          !user.logado ? (
             <Link to='/login' className='btn2'>Entrar</Link>
           ) : (
             <button onClick={handleUserClick} className='btn2'>
@@ -78,7 +73,7 @@ function Navbar() {
           <ul>
             {searchResults.map((profissional) => (
               <li key={profissional.id_profissional}>
-                <Link to={`/profissional/${profissional.id_profissional}`}>
+                <Link onClick={() => { setId(profissional.id_profissional) }} to={`/profissional/${profissional.id_profissional}`}>
                   {profissional.nome_completo}
                 </Link>
               </li>
