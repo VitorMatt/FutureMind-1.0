@@ -2,36 +2,40 @@ import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import CpfInput from '../components/CpfInput'
+import CrpMask from '../components/CrpMask'
+import PrecoMask from '../components/PrecoMask'
+import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
 import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
 import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
+import './CSS/Test_dois.css'
 
 
 function PerfilProfissional() {
 
-  var userData = JSON.parse(localStorage.getItem('User'));
+//   var userData = JSON.parse(localStorage.getItem('User'));
 
-  userData.especializacao = userData.especializacao.replace('{', '')
-  userData.especializacao = userData.especializacao.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('{', '')
  
- for (let i=0; i<(userData.especializacao.length * 2); i++) {
+//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
 
-  userData.especializacao = userData.especializacao.replace('"', '')
- }
+//   userData.especializacao = userData.especializacao.replace('"', '')
+//  }
 
- for (let i=0; i<(userData.preferencias.length * 2); i++) {
+//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
 
-  userData.preferencias = userData.preferencias.replace('"', '')
- }
+//   userData.preferencias = userData.preferencias.replace('"', '')
+//  }
 
- userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
- userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
  
-  
-   const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.'}
+const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.'}
+   const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
 
    const [dataAtual, setDataAtual] = useState(new Date());
   const [agendamentos, setAgendamentos] = useState([
@@ -94,6 +98,42 @@ function PerfilProfissional() {
       return prev.filter(agendamento => !(agendamento.data === data && agendamento.horario === horario));
     });
   };
+
+  const [selecionarOpcoesAreas, setSelecionarOpcoesAreas] = useState([]);
+  const opcoesAreas = ["Idosos", "PCDs", "Adultos", "Crianças", "Adolescentes", "Pré-Adolescentes"];
+  const [selecionarOpcoesEspecializacoes, setSelecionarOpcoesEspecializacoes] = useState([]);
+  const opcoesEspecializacoes = ["Adolescência", "Depressão", "Angústia", "Ansiedade", "Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"];
+
+  const [temporaryText, setTemporaryText] = useState(""); // Texto enquanto o usuário digita
+  const [savedText, setSavedText] = useState(""); // Texto salvo
+
+  const handleTextChange = (event) => {
+    setTemporaryText(event.target.value); // Atualiza o texto temporário
+  };
+
+  const handleSave = () => {
+    setSavedText(temporaryText); // Salva o texto ao clicar no botão
+  };
+
+  const handleChange = (event) => {
+    const { value, checked } = event.target;
+
+    if (checked) {
+      setSelecionarOpcoesAreas((prev) => [...prev, value]); // Adiciona a opção selecionada
+    } else {
+      setSelecionarOpcoesAreas((prev) => prev.filter((opcoesAreas) => opcoesAreas !== value)); // Remove a opção desmarcada
+    }
+
+    if (checked) {
+      setSelecionarOpcoesEspecializacoes((prev) => [...prev, value]); // Adiciona a opção selecionada
+    } else {
+      setSelecionarOpcoesEspecializacoes((prev) => prev.filter((opcoesEspecializacoes) => opcoesEspecializacoes !== value)); // Remove a opção desmarcada
+    }
+  };
+
+  const maxLength = 500; // Limite máximo de caracteres
+  const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
+
   return (
     <div className='perfilPro-container'>
       <Navbar />
@@ -109,17 +149,17 @@ function PerfilProfissional() {
                 <div>
 
                  <div className='div-foto-nome'>
-                    <div className='foto-usuario'>
+                    {/* <div className='foto-usuario'>
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
                      <div className='nick-usuario'>
                        <h1>{userData.nome_completo}</h1>
                       <p>{userData.email}</p>
-                    </div>
+                    </div> */}
                  </div> 
     
                  <div className='div-info'>
-                    <div className='div-menor-info'>
+                    {/* <div className='div-menor-info'>
                         <p>Eu atendo...</p>
                         {
                           userData.preferencias.map((item, index) => (
@@ -128,8 +168,8 @@ function PerfilProfissional() {
                             </div>
                           ))
                         }
-                    </div>
-                    <div className='div-menor-info'>
+                    </div> */}
+                    {/* <div className='div-menor-info'>
                         <p>Especialidade(s):</p>
                         {
                           userData.especializacao.map((item, index) => (
@@ -138,11 +178,11 @@ function PerfilProfissional() {
                             </div>
                           ))
                         }
-                    </div>
-                    <div className='descricao'>
+                    </div> */}
+                    {/* <div className='descricao'>
                         <p>Descrição:</p>
                         <textarea readOnly maxLength="132">{userData.descricao}</textarea>
-                    </div>
+                    </div> */}
                  </div>
     
                  <div className='titulo-agenda'>
@@ -240,7 +280,7 @@ function PerfilProfissional() {
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                  <p>Data de Nascimento</p>
-                 {/* <Flatpickr
+                 <Flatpickr
                    options={{
                    locale: Portuguese, // Configuração para Português
                    dateFormat: "d/m/Y", // Formato da data
@@ -248,13 +288,19 @@ function PerfilProfissional() {
                    }}
                    value={date} // Data atual no estado
                    onChange={(selectedDates) => setDate(selectedDates[0])} // Atualiza a data selecionada
-                 /> */}
+                 />
                  </div>
                 </div>
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>CPF</p>
                   <CpfInput />
+                 </div>
+                </div>
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>CRP</p>
+                  <CrpMask />
                  </div>
                 </div>
               </div>
@@ -282,25 +328,109 @@ function PerfilProfissional() {
                  </div>
                 </div>
 
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>Preço</p>
+                  <PrecoMask />
+                 </div>
+                </div>
+
               </div>
 
             </div>
               <div className='container-areas'>
-                <h1>Áreas</h1>
 
-                <div className='div-areas'>
-                  <div>
-                    <p>Idosos</p>
-                    <p>PCDs</p>
-                    <p>Adultos</p>
+                {/* <div className="descricao-editar">
+                  <h2>Digite uma breve descrição sobre você:</h2>
+                  <textarea
+                  className="o-text"
+                  value={temporaryText}
+                  onChange={handleTextChange}
+                  rows="5"
+                  maxLength={maxLength}
+                  />
+                  <div className='contador'>
+                    <span>
+                      {temporaryText.length} / {maxLength}
+                    </span>
                   </div>
+                  <div className="div-mensagemsalva">
+                    <div className="a-mensagem">
+                      <strong>Texto salvo:</strong>
+                      <p>{savedText || "Nenhum texto salvo ainda."}</p>
+                    </div>
+                    <div className="div-botão-salvar">
+                      <button onClick={handleSave} className="salvar">Salvar</button>
+                    </div>
+                  </div>
+                </div> */}
 
-                <div>
-                  <p>Crianças</p>
-                  <p>Adolescentes</p>
-                  <p>Pré-Adolescentes</p>
+                <div className='divs-editar'>
+
+                <div className="container">
+                  <h2>Selecione suas áreas:</h2>
+                  <div className="options-container">
+                    {opcoesAreas.map((opcoesAreas, index) => (
+                    <div key={index} className="option">
+                    <input
+                    type="checkbox"
+                    id={`opcoesAreas-${index}`}
+                    value={opcoesAreas}
+                    onChange={handleChange}
+                    />
+                    <label htmlFor={`opcoesAreas-${index}`} className="label">
+                      {opcoesAreas}
+                    </label>
+                    </div>
+                    ))}
+                  </div>
+                  {/* <div className="opções-aparecer">
+                    <h3>Opções selecionadas:</h3>
+                    {selecionarOpcoesAreas.length > 0 ? (
+                    <ul>
+                    {selecionarOpcoesAreas.map((opcoesAreas, index) => (
+                    <li key={index}>{opcoesAreas}</li>
+                    ))}
+                    </ul>
+                    ) : (
+                    <p>Nenhuma opção selecionada.</p>
+                    )}
+                  </div> */}
                 </div>
+
+                <div className="container">
+                  <h2>Selecione suas especializações:</h2>
+                  <div className="options-container">
+                    {opcoesEspecializacoes.map((opcoesEspecializacoes, index) => (
+                    <div key={index} className="option">
+                    <input
+                    type="checkbox"
+                    id={`opcoesEspecializacoes-${index}`}
+                    value={opcoesEspecializacoes}
+                    onChange={handleChange}
+                    />
+                    <label htmlFor={`opcoesEspecializacoes-${index}`} className="label">
+                      {opcoesEspecializacoes}
+                    </label>
+                    </div>
+                    ))}
+                  </div>
+                  {/* <div className="opções-aparecer">
+                    <h3>Opções selecionadas:</h3>
+                    {selecionarOpcoesEspecializacoes.length > 0 ? (
+                    <ul>
+                    {selecionarOpcoesEspecializacoes.map((opcoesEspecializacoes, index) => (
+                    <li key={index}>{opcoesEspecializacoes}</li>
+                    ))}
+                    </ul>
+                    ) : (
+                    <p>Nenhuma opção selecionada.</p>
+                    )}
+                  </div> */}
                 </div>
+                  
+                </div>
+
 
               </div>
         </div>
