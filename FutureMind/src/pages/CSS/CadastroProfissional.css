@@ -212,6 +212,15 @@ input[type="file"] {
 
 }
 
+.inputAbordagem{
+    width: 48.2%;
+    padding: 1.6%;
+    border-radius: 10px;
+    border: none;
+    background-color: #cad7eb;
+    color: var(--cor-4);
+    font-size: medium;
+}
   
 /* Especifique o elemento e sua classe */
 .input-text .flatpickr-day {
@@ -424,6 +433,11 @@ input[type="checkbox"]:focus {
     padding-left: 0.5%;
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> edd67810d08522b84d49a2082fd0812084f08b6b
 
 
  

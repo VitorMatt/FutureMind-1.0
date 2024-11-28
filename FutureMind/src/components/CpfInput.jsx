@@ -11,14 +11,14 @@ const CpfInput = ({ onCpfChange }) => {
         profissional.cpf = cpf;
     }, [cpf]);
 
-  const handleInputChange = (e) => {
-    let value = e.target.value.replace(/\D/g, ''); // Remove não numéricos
-    value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Primeiro ponto
-    value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Segundo ponto
-    value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Traço
+  const InputCPFmascara = (e) => {
+    let value = e.target.value.replace(/\D/g, ''); 
+    value = value.replace(/(\d{3})(\d)/, '$1.$2'); 
+    value = value.replace(/(\d{3})(\d)/, '$1.$2'); 
+    value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
 
     setCpf(value);
-    onCpfChange(value.replace(/\D/g, '')); // Passa o CPF limpo para o backend
+    onCpfChange(value.replace(/\D/g, '')); 
   };
 
   return (
@@ -29,7 +29,7 @@ const CpfInput = ({ onCpfChange }) => {
         maxLength="14"
         placeholder="000.000.000-00"
         value={cpf}
-        onChange={handleInputChange}
+        onChange={InputCPFmascara}
         className='inputCRP'
       />
     </div>
