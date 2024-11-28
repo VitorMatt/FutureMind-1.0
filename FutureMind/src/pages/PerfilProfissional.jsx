@@ -10,6 +10,7 @@ import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
 import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
 import './CSS/Test_dois.css'
+import { Label } from '@mui/icons-material'
 
 
 function PerfilProfissional() {
@@ -338,7 +339,7 @@ const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMig
               </div>
 
             </div>
-              <div className='container-areas'>
+              <div className='container-escolhas'>
 
                 {/* <div className="descricao-editar">
                   <h2>Digite uma breve descrição sobre você:</h2>
@@ -367,18 +368,18 @@ const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMig
 
                 <div className='divs-editar'>
 
-                <div className="container">
+                <div className="container-areas">
                   <h2>Selecione suas áreas:</h2>
                   <div className="options-container">
                     {opcoesAreas.map((opcoesAreas, index) => (
-                    <div key={index} className="option">
+                    <div key={index}>
                     <input
                     type="checkbox"
                     id={`opcoesAreas-${index}`}
                     value={opcoesAreas}
                     onChange={handleChange}
                     />
-                    <label htmlFor={`opcoesAreas-${index}`} className="label">
+                    <label htmlFor={`opcoesAreas-${index}`} className="labelareas">
                       {opcoesAreas}
                     </label>
                     </div>
@@ -398,18 +399,18 @@ const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMig
                   </div> */}
                 </div>
 
-                <div className="container">
+                <div className="container-especi">
                   <h2>Selecione suas especializações:</h2>
                   <div className="options-container">
                     {opcoesEspecializacoes.map((opcoesEspecializacoes, index) => (
-                    <div key={index} className="option">
+                    <div key={index}>
                     <input
                     type="checkbox"
                     id={`opcoesEspecializacoes-${index}`}
                     value={opcoesEspecializacoes}
                     onChange={handleChange}
                     />
-                    <label htmlFor={`opcoesEspecializacoes-${index}`} className="label">
+                    <label htmlFor={`opcoesEspecializacoes-${index}`} className="labelespeci">
                       {opcoesEspecializacoes}
                     </label>
                     </div>
