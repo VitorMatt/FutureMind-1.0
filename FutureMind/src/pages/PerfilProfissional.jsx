@@ -174,6 +174,14 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
       profissional.abordagem = abordagem;
   }, [abordagem]);
 
+  const [horarios, setHorarios] = useState(profissional.horarios);
+
+
+    useEffect(() => {
+
+      profissional.horarios = horarios;
+  }, [horarios]);
+
   const maxLength = 500; // Limite máximo de caracteres
   const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
 
@@ -285,7 +293,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                           <div className='buttons-itens'>
                             <button className='cancelar' onClick={() => handleCancelarAgendamento(agendamentosDoDia[indiceAtual].data, agendamentosDoDia[indiceAtual].horario)}>Cancelar</button>
                             <button className='check' onClick={() => handleExcluirAgendamento(agendamentosDoDia[indiceAtual].data, agendamentosDoDia[indiceAtual].horario)}>
-                             <img src="check-solid (1).svg" alt="" />
+                             <img src="check-solid (1).svg" className='checkimg'/>
                             </button>
                             {showConfirmation && (
                              <div className="confirmacao-exclusao">
@@ -415,6 +423,15 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
               </select>
             </div>
 
+                <div className='input-horario-perfil'>
+                  <p>Horário de Agendamento</p>
+                  <select value={horarios} onChange={(e) => { setAbordagem(e.target.value)}} name="file" id="" className="inputAbordagem">
+                    <option name="file" value="Matutino">Matutino (07:00hs até 12:00hs)</option>
+                    <option name="file" value="Vespertino">Vespertino (13:00hs até 18:00hs)</option>
+                    <option name="file" value="Noturno">Noturno (18:30hs até 23:30hs)</option>
+                  </select>
+                </div>
+
               <div className='container-escolhas'>
 
                 {/* <div className="descricao-editar">
@@ -507,9 +524,15 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                 </div>
                   
                 </div>
-
-
+                
               </div>
+
+
+                <div className='div-buttons-salvar-cancelar'>
+                  <button>Salvar</button>
+                  <button>Cancelar edição</button>
+                </div>
+
         </div>
 
       </div>
