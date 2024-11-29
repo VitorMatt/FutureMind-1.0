@@ -529,8 +529,10 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
 
                 <div className='div-buttons-salvar-cancelar'>
-                  <button>Salvar</button>
-                  <button>Cancelar edição</button>
+                <button className='a'>Excluir conta</button>
+                  <button className='a'> Sair da Conta</button>
+                  <button className='a'>Cancelar edição</button>
+                  <button className='salva'>Salvar</button>
                 </div>
 
         </div>

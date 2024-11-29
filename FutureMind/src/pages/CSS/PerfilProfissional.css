@@ -363,19 +363,15 @@
     justify-content: flex-end;
     align-items: flex-end;
     padding-top: 5%;
-    padding-right: 41%;
+    padding-right: 20%;
     padding-bottom: 3%;
     width: 97%;
     gap: 3%;
 }
 
 .div-buttons-salvar-cancelar button{
-    width: 15%;
     display: flex;
     justify-content: center;
-    background-color: #5A789F;
-    color: white;
-    border: none;
     padding: 1%;
     font-size: 1.2em;
     border-radius: 15px;
@@ -653,3 +649,21 @@
   .confirmacao-exclusao button:hover {
     background-color: #f0f0f0;
   }
+
+  .container-especi{
+    color: #5A789F;
+  }
+
+.salva{
+    width: 25%;
+    background-color: #5A789F;
+    color: white;
+    border: none;
+}
+
+.a{
+    width: 15%;
+    background-color: #ffffff;
+    border: 1px solid #5A789F;
+    color: #014F86;
+}
