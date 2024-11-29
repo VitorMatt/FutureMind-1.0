@@ -56,10 +56,7 @@ function PerfilVisualizar() {
 
   return (
     <div className='perfilVisu-container'>
-<<<<<<< HEAD
-=======
       {/* <Navbar /> */}
->>>>>>> edd67810d08522b84d49a2082fd0812084f08b6b
            <div className='perfil-profissional'>
             <div className='titulo-perfil'>
                 <h1>Perfil </h1>
