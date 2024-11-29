@@ -172,6 +172,7 @@
     font-size: 1.2em;
     border-radius: 15px;
     resize: none;
+    cursor: pointer;
 }
 
 .button-anotações{
@@ -189,6 +190,7 @@
     padding: 4.9%;
     font-size: 1.2em;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .button-anotações button:hover{
@@ -248,16 +250,16 @@
 
 .div1-editar input{
     background-color: #CAD7EB;
-    color: #5A789F;
+    color: var(--cor-4);
     border: none;
     width: 100%;
     padding: 5%;
     border-radius: 13px;
-    
+    cursor: pointer;
 }
 
 .div1-editar input::placeholder{
-    color: #012A4A;
+    color: var(--cor-4);
     font-size: medium;
 }
 
@@ -291,15 +293,16 @@
 .div2-editar input{
     
     background-color: #CAD7EB;
-    color: #012A4A;
+    color: var(--cor-4);
     border: none;
     width: 100%;
     padding: 5%;
     border-radius: 13px;
+    cursor: pointer;
 }
 
 .div2-editar input::placeholder{
-    color: #012A4A;
+    color: var(--cor-4);
     font-size: medium;
 }
 
@@ -308,6 +311,8 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    border-bottom: solid #5A789F;
+    border-top: solid #5A789F;
 }
 
 .input-abordagem-perfil{
@@ -324,11 +329,65 @@
 
 .input-abordagem-perfil select{
     width: 100%;
+    cursor: pointer;
 }
 
 .input-abordagem-perfil p{
     color: #000;
     font-size: 1.5em;
+}
+
+.input-horario-perfil{
+    display: flex;
+    flex-direction: column;
+    width: 58.5%;
+    border-radius: 10px;
+    border: none;
+    color: var(--cor-4);
+    font-size: medium;
+    padding-right: 2%;
+}
+
+.input-horario-perfil select{
+    width: 100%;
+    cursor: pointer;
+}
+
+.input-horario-perfil p{
+    color: #000;
+    font-size: 1.5em;
+}
+
+.div-buttons-salvar-cancelar{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-top: 5%;
+    padding-right: 20%;
+    padding-bottom: 3%;
+    width: 97%;
+    gap: 3%;
+}
+
+.div-buttons-salvar-cancelar button{
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+    font-size: 1.2em;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.div-buttons-salvar-cancelar button:hover{
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.div-buttons-salvar-cancelar button:active{
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .contador{
@@ -370,6 +429,7 @@
     font-size: 4em;
     color: #5A789F; 
     padding-left: 40px;
+    cursor: pointer;
 }
 
 .button_voltar{
@@ -380,6 +440,7 @@
     font-size: 4em;
     color: #5A789F; 
     padding-right: 40px;
+    cursor: pointer;
 }
 
 
@@ -500,6 +561,7 @@
     width: 12%;
     background-color: white;
     border: none;
+    cursor: pointer;
 }
 
 
@@ -522,6 +584,19 @@
     border: none;
     color: white;
     border-radius: 100px;
+    cursor: pointer;
+}
+
+.cancelar:hover{
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.cancelar:active{
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .check{
@@ -529,6 +604,18 @@
     background-color: #5a789f00;
     border: none;
     border-radius: 100px;
+    cursor: pointer;
+}
+
+.check img:hover{
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.check img:active{
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .confirmacao-exclusao {
@@ -563,6 +650,7 @@
     background-color: #f0f0f0;
   }
 
+<<<<<<< HEAD
   .div-esp {
 
     max-width: 200px;
@@ -623,3 +711,22 @@
 
 
 /*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
+=======
+  .container-especi{
+    color: #5A789F;
+  }
+
+.salva{
+    width: 25%;
+    background-color: #5A789F;
+    color: white;
+    border: none;
+}
+
+.a{
+    width: 15%;
+    background-color: #ffffff;
+    border: 1px solid #5A789F;
+    color: #014F86;
+}
+>>>>>>> e83657b1ca1faaf2f7b2652f50d34ca29d28bca7

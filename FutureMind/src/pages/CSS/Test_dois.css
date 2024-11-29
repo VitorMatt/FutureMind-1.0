@@ -8,6 +8,7 @@
 
 .container-escolhas{
   width: 76%;
+  padding-top: 5%;
 }
 
 .container-areas, .container-especi h2 {
@@ -44,13 +45,13 @@
 .labelareas{
   padding-left: 15%;
   font-size: 1.3em;
-  /* color: var(--cor-1); */
+  cursor: pointer;
 }
 
 .labelespeci{
   padding-left: 15%;
   font-size: 1.3em;
-  color: var(--cor-1);
+  cursor: pointer;
 }
 
 @media (max-width: 480px) {
