@@ -15,27 +15,27 @@ import { Label } from '@mui/icons-material'
 
 function PerfilProfissional() {
 
-//   var userData = JSON.parse(localStorage.getItem('User'));
+  var userData = JSON.parse(localStorage.getItem('User'));
 
-//   userData.especializacao = userData.especializacao.replace('{', '')
-//   userData.especializacao = userData.especializacao.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('{', '')
+  userData.especializacao = userData.especializacao.replace('{', '')
+  userData.especializacao = userData.especializacao.replace('}', '')
+  userData.preferencias = userData.preferencias.replace('}', '')
+  userData.preferencias = userData.preferencias.replace('{', '')
  
-//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
+ for (let i=0; i<(userData.especializacao.length * 2); i++) {
 
-//   userData.especializacao = userData.especializacao.replace('"', '')
-//  }
+  userData.especializacao = userData.especializacao.replace('"', '')
+ }
 
-//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
+ for (let i=0; i<(userData.preferencias.length * 2); i++) {
 
-//   userData.preferencias = userData.preferencias.replace('"', '')
-//  }
+  userData.preferencias = userData.preferencias.replace('"', '')
+ }
 
-//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
-//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+ userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+ userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
  
-const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.'}
+const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o João Mjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjiguel e sou um ótimo profissional na minha área.'}
 const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
 
   const [dataAtual, setDataAtual] = useState(new Date());
@@ -199,28 +199,35 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                 <div>
 
                  <div className='div-foto-nome'>
-                    {/* <div className='foto-usuario'>
+                    <div className='foto-usuario'>
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
                      <div className='nick-usuario'>
                        <h1>{userData.nome_completo}</h1>
                       <p>{userData.email}</p>
-                    </div> */}
+                    </div>
                  </div> 
     
                  <div className='div-info'>
-                    {/* <div className='div-menor-info'>
+                    <div className='div-menor-info'>
                         <p>Eu atendo...</p>
+
+                        <div className="div-esp">
+
                         {
                           userData.preferencias.map((item, index) => (
                             <div key={index}>
-                            <p>{item}</p>
+                              <p>{item}</p>
                             </div>
                           ))
                         }
-                    </div> */}
-                    {/* <div className='div-menor-info'>
+                        </div>
+                    </div>
+                    <div className='div-menor-info'>
                         <p>Especialidade(s):</p>
+                        
+                        <div className="div-esp">
+
                         {
                           userData.especializacao.map((item, index) => (
                             <div key={index}>
@@ -228,11 +235,12 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                             </div>
                           ))
                         }
-                    </div> */}
-                    {/* <div className='descricao'>
+                        </div>
+                    </div>
+                    <div className='descricao'>
                         <p>Descrição:</p>
-                        <textarea readOnly maxLength="132">{userData.descricao}</textarea>
-                    </div> */}
+                        <div className='div-desc' maxLength="500">{profissional.descricao}</div>
+                    </div>
                  </div>
     
                  <div className='titulo-agenda'>

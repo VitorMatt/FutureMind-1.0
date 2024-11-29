@@ -650,6 +650,68 @@
     background-color: #f0f0f0;
   }
 
+<<<<<<< HEAD
+  .div-esp {
+
+    max-width: 200px;
+    height: 150px;
+    overflow-x: auto; 
+    /* border: 1px solid #ccc;  */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.div-esp::-webkit-scrollbar-track{
+
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.div-esp::-webkit-scrollbar-thumb{
+
+
+    background-color: var(--cor-1);
+    border-radius: 3px;
+}
+
+.div-esp::-webkit-scrollbar{
+
+
+    width: 10px;
+}
+
+.div-desc{
+
+    width: 500px;
+    height: 150px;
+    overflow-x: auto; 
+    border: 1px solid #ccc; 
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.div-desc::-webkit-scrollbar-track{
+
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.div-desc::-webkit-scrollbar-thumb{
+
+
+    background-color: var(--cor-1);
+    border-radius: 3px;
+}
+
+.div-desc::-webkit-scrollbar{
+
+
+    width: 10px;
+}
+
+
+/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
+=======
   .container-especi{
     color: #5A789F;
   }
@@ -667,3 +729,4 @@
     border: 1px solid #5A789F;
     color: #014F86;
 }
+>>>>>>> e83657b1ca1faaf2f7b2652f50d34ca29d28bca7

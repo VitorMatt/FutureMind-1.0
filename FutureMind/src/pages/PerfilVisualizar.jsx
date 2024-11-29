@@ -7,16 +7,21 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function PerfilVisualizar() {
 
-  const [profissional, setProfissional] = useState({});
-  const { id, setId } = useContext(GlobalContext);
-  const idAux = id;
+  const [profissional, setProfissional] = useState({
 
-  useEffect(() => {
-
-    setId(idAux);
-  }, [idAux]);
+    preferencias: [],
+    especializacao: []
+  });
+  const { id } = useContext(GlobalContext);
   
-  useEffect(() => { idAux ? handleGet() : alert('erro'); }, []);
+  useEffect(() => {
+    if (id != null) {
+      handleGet();
+    } else {
+      alert('Erro: ID não está definido.');
+    }
+  }, []); // O useEffect será disparado sempre que `id` mudar.
+  
 
   // const handleReplace = () => {
 
@@ -34,7 +39,7 @@ function PerfilVisualizar() {
 
     const handleGet = async() => {
 
-      const response = await fetch(`http://localhost:3000/profissional/${idAux}`);
+      const response = await fetch(`http://localhost:3000/profissional/${id}`);
 
       if (response.ok) {
 
@@ -56,7 +61,10 @@ function PerfilVisualizar() {
 
   return (
     <div className='perfilVisu-container'>
+<<<<<<< HEAD
+=======
       {/* <Navbar /> */}
+>>>>>>> e83657b1ca1faaf2f7b2652f50d34ca29d28bca7
            <div className='perfil-profissional'>
             <div className='titulo-perfil'>
                 <h1>Perfil </h1>

@@ -106,7 +106,7 @@ const router = createBrowserRouter([{
 
 },
 {
-    path: '/perfilprofissional',
+    path: '/perfil-profissional',
     element: <PerfilProfissional />
 },
 {

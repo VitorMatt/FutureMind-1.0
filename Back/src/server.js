@@ -323,11 +323,11 @@ app.get('/api/profissionais', async (req, res) => {
 
   app.get('/profissional/:id', async(req, res) => {
 
-    const { idAux } = req.params;
+    const { id } = req.params;
 
     try {
 
-        const result = await pool.query('SELECT * FROM profissionais WHERE idAux_profissional = $1', [idAux]);
+        const result = await pool.query('SELECT * FROM profissionais WHERE id_profissional = $1', [id]);
 
         if (result.rows.length) {
 
@@ -336,7 +336,6 @@ app.get('/api/profissionais', async (req, res) => {
 
             res.status(404).json({ message: 'Profissional não encontrado'})
         }
-        res.send();
     } catch (err) {
 
         res.status(500).json('Erro');
