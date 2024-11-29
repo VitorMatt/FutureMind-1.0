@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import './CSS/Navbar.css';
 import { Link, useNavigate } from 'react-router-dom'; 
 import { GlobalContext } from '../GlobalContext/GlobalContext';
@@ -9,37 +9,45 @@ function Navbar() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  const idAux = id;
-
-  useEffect(() => {
-
-    setId(idAux);
-  }, [idAux]);
-
   const handleUserClick = () => {
-    if (user.logado) {
-      if (user.profissional) {
-        navigate('/perfilprofissional');
+    try {
+      if (user.logado) {
+        if (user.profissional) {
+          navigate('/perfil-profissional');
+        } else {
+          navigate('/perfil-paciente');
+        }
       } else {
-        navigate('/perfil-paciente');
+        navigate('/login');
       }
-    } else {
-      navigate('/login');
+    } catch (error) {
+      console.error("Erro ao navegar:", error);
     }
   };
 
-  const handleCLick = (id) => idAux = id;
+  const handleCLick = (id) => {
+    try {
+      console.log("Clicou no profissional com ID:", id);
+      setId(id); // Atualiza o estado global
+      console.log("Novo ID no contexto:", id);
+    } catch (error) {
+      console.error("Erro ao definir ID:", error);
+    }
+  };
 
   const handleSearch = async () => {
-    
+    try {
       const response = await fetch(`http://localhost:3000/api/profissionais?query=${encodeURIComponent(searchTerm)}`);
-
       if (response.ok) {
-
         const data = await response.json();
+        console.log("Resultados da busca:", data);
         setSearchResults(data); // Atualiza os resultados com a resposta da API
+      } else {
+        console.error("Erro ao buscar dados:", response.statusText);
       }
-    
+    } catch (error) {
+      console.error("Erro ao realizar busca:", error);
+    }
   };
 
   return (
@@ -73,7 +81,6 @@ function Navbar() {
             </button>
           )
         }
-        
       </div>
 
       {/* Resultados da busca */}

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const GlobalContext = createContext();
 
@@ -66,8 +66,35 @@ const paciente = {
     email: ''
 }
 
-const [user, setUser] = useState({logado: false, profissional: false})
-const [id, setId] = useState(0);
+    const [user, setUser] = useState(() => {
+    
+        return JSON.parse(localStorage.getItem('User-Profile')) || null;
+    });
+    
+    useEffect(() => {
+
+        if (user) {
+
+            localStorage.setItem('User-Profile', JSON.stringify(user));
+        } else {
+
+            localStorage.removeItem('User-Profile');
+        }
+    }, [user]);
+
+    const [id, setId] = useState(() => {
+    // Recupera o valor de ID do localStorage, se existir
+        return localStorage.getItem('id') || null;
+    });
+
+    useEffect(() => {
+    // Sempre que o ID mudar, atualize o localStorage
+    if (id) {
+      localStorage.setItem('id', id);
+    } else {
+      localStorage.removeItem('id');
+    }
+    }, [id]);
 
     return(
         <GlobalContext.Provider value={{profissionais, profissional, paciente, user, setUser, id, setId}}>

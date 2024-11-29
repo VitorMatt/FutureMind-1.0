@@ -8,7 +8,7 @@ function Login() {
   const navigate = useNavigate();
   const [olhosSenha, setOlhosSenha] = useState(false);
   
-  const { user, setUser } = useContext(GlobalContext);
+  const { setUser } = useContext(GlobalContext);
   const [form, setForm] = useState({ email: '', senha: '' });
 
   const handleGet = async () => {
@@ -19,46 +19,49 @@ function Login() {
 
     localStorage.setItem('User', JSON.stringify(data));
   }
-  const handleSubmit = async (e) => {
+  
     
+  const handleSubmit = async (e) => {
     e.preventDefault();
+  
     if (!form.email || !form.senha) {
       alert('Por favor, preencha ambos os campos');
       return;
     }
-    
-    const response = await fetch('http://localhost:3000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(form),
-    });
-    
-    if (response.ok) {
-      
-      setForm({ email: '', senha: '' });
-      handleGet();
+  
+    try {
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+  
+      if (response.ok) {
 
-      const userAux = {...user}
-
-      if (JSON.parse(localStorage.getItem('User')).id_profissional) {
-
-        userAux.profissional = true;
-      } else {
-
-        userAux.profissional = false;
-      }
-
-      userAux.logado = true;
-      setUser(userAux);
-      console.log(user)
-      navigate('/');  
+        const data = await response.json();
+        localStorage.setItem('User', JSON.stringify(data));
+        setForm({ email: '', senha: '' });
+  
+        const isProfissional = data.id_profissional ? true : false;
+  
+        // Atualizando o estado do usuário de uma vez só
+        setUser({ logado: true, profissional: isProfissional });
+  
+        console.log("Usuário atualizado:", { logado: true, profissional: isProfissional });
+  
+        navigate('/');
       } else {
         const errorData = await response.json();
         alert('Erro no login: ' + errorData.message);
       }
-    };
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      alert('Erro ao fazer login, tente novamente mais tarde.');
+    }
+  };
+  
     
 
   return (
