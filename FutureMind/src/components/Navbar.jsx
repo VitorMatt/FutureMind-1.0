@@ -73,7 +73,7 @@ function Navbar() {
         </div>
 
         {
-          !user.logado ? (
+          !user?.logado ? (
             <Link to='/login' className='btn2'>Entrar</Link>
           ) : (
             <button onClick={handleUserClick} className='btn2'>

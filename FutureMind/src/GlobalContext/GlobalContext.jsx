@@ -6,6 +6,7 @@ export const GlobalContextProvider = ({children}) => {
 
 const profissionais = [
     {
+        id: 1,
         nome: 'João Miguel da Cruz', 
         sobre: 'Psicológo recém formado em Psicanálise atendimento a adolscente, adultos e casais. Atendo oito meses como psicólogo clinico em diferentes situações psicoafetivas, dependencia química, estados depressivos, luto, alternãncia de humor, baixa alto estima, estados de angústia e desorganização pessoal.',
         abordagem: ['Psicanalista', 'Terapia Cognitiva Comportamental'],
@@ -16,6 +17,7 @@ const profissionais = [
         especialidades: ["PCD's", 'Autoestima', 'Angústia', 'Depressão', 'LGBTQIA+'],
 },
 {
+    id: 2,
     nome: 'Paula Lusitano', 
     sobre: 'Psicológa recém formada em Psicanálise atendimento a adolscente, adultos e casais. Atendo oito meses como psicóloga clinica em diferentes situações psicoafetivas, dependencia química, estados depressivos, luto, alternãncia de humor, baixa alto estima, estados de angústia e desorganização pessoal.',
     abordagem: ['Psicanalista', 'Terapia Cognitiva Comportamental'],
@@ -26,6 +28,7 @@ const profissionais = [
     especialidades: ['Autoestima', 'Depressão', 'LGBTQIA+'],
 },
 {
+    id: 3,
     nome: 'Thiago Rodrigues', 
     sobre: 'Psicológo recém formado em Psicanálise atendimento a adolscente, adultos e casais. Atendo oito meses como psicólogo clinico em diferentes situações psicoafetivas, dependencia química, estados depressivos, luto, alternãncia de humor, baixa alto estima, estados de angústia e desorganização pessoal.',
     abordagem: ['Terapia Cognitiva Comportamental'],

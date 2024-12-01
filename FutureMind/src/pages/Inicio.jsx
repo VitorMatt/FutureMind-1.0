@@ -22,6 +22,13 @@ function Inicio() {
   const [click, setClick] = useState(false);
   const { profissionais } = useContext(GlobalContext);
 
+  const [estadoBotoes, setEstadoBotoes] = useState(
+    profissionais.reduce((acc, profissional) => {
+      acc[profissional.id] = 'inicial';
+      return acc;
+    }, {})
+  );
+
   // const [profissionais, setProfissionais] = useState([]);
 
   
@@ -109,26 +116,22 @@ function Inicio() {
     setCurrentWeekStart(newStartDate);
   };
 
-
-
-  const [estadoBotao, setEstadoBotao] = useState('inicial'); 
-
-  const exibirAnimacaoConcluido = () => {
-    setEstadoBotao('carregando');
+  const exibirAnimacaoConcluido = (id) => {
+    setEstadoBotoes((prev) => ({ ...prev, [id]: 'carregando' }));
     setTimeout(() => {
-      setEstadoBotao('concluido');
+      setEstadoBotoes((prev) => ({ ...prev, [id]: 'concluido' }));
     }, 1500);
     setTimeout(() => {
-      setEstadoBotao('inicial');
+      setEstadoBotoes((prev) => ({ ...prev, [id]: 'inicial' }));
     }, 3500);
   };
 
-  const handleAgendamento = () => {
-    setClick(!click);
+  const handleAgendamento = (id) => {
+
     if (selectedDate && selectedTime) {
-      console.log(`Agendado para ${selectedDate} às ${selectedTime}`);
+      console.log(`Agendado para ${selectedDate} às ${selectedTime} com profissional ${id}`);
     }
-    exibirAnimacaoConcluido();
+    exibirAnimacaoConcluido(id);
   };
 
   return (
@@ -351,13 +354,13 @@ function Inicio() {
 
         <button
           id="agendar"
-          onClick={handleAgendamento}
+          onClick={() => handleAgendamento(item.id)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotao === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -527,13 +530,13 @@ function Inicio() {
 
         <button 
           id="agendar"
-          onClick={handleAgendamento}
+          onClick={() => handleAgendamento(item.id)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotao === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -710,17 +713,17 @@ function Inicio() {
       <div className="btn-consulta">
         <button
           id="agendar"
-          onClick={handleAgendamento}
+          onClick={() => handleAgendamento(item.id)}
           disabled={!selectedTime}
         >
           <b>
-            {estadoBotao === "carregando" && (
+            {estadoBotoes[item.id] === "carregando" && (
               <div id="circle" className="circle"></div>
             )}
-            {estadoBotao === "concluido" && (
+            {estadoBotoes[item.id] === "concluido" && (
               <img id="icon-concluido" src="check.svg" alt="" />
             )}
-            {estadoBotao === "inicial" && (
+            {estadoBotoes[item.id] === "inicial" && (
               <span className="btn-text2">
                 {selectedTime
                   ? `Marcar para ${selectedTime}`
@@ -891,13 +894,13 @@ function Inicio() {
 
         <button 
           id="agendar"
-          onClick={handleAgendamento}
+          onClick={() => handleAgendamento(item.id)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotao === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -1066,13 +1069,13 @@ function Inicio() {
 
         <button 
           id="agendar"
-          onClick={handleAgendamento}
+          onClick={() => handleAgendamento(item.id)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotao === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -1241,13 +1244,13 @@ function Inicio() {
 
         <button 
           id="agendar"
-          onClick={handleAgendamento}
+          onClick={() => handleAgendamento(item.id)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotao === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -1417,13 +1420,13 @@ function Inicio() {
 
         <button 
           id="agendar"
-          onClick={handleAgendamento}
+          onClick={() => handleAgendamento(item.id)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotao === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotao === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotao === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
