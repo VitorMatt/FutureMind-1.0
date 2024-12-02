@@ -378,6 +378,28 @@
     cursor: pointer;
 }
 
+.salva{
+    width: 25%;
+    padding: 1%;
+    font-size: 1.2em;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #5A789F;
+    color: white;
+    border: none;
+}
+
+.a{
+    width: 15%;
+    padding: 1%;
+    font-size: 1.2em;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: white;
+    color: #5A789F;
+    border: 2px solid #5A789F;
+}
+
 .div-buttons-salvar-cancelar button:hover{
     background-color: #C1DFF4;
     border: none;
@@ -610,7 +632,7 @@
 .check img:hover{
     border: none;
     color: var(--cor-4);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
 }
 
 .check img:active{
@@ -650,7 +672,6 @@
     background-color: #f0f0f0;
   }
 
-<<<<<<< HEAD
   .div-esp {
 
     max-width: 200px;
@@ -709,24 +730,64 @@
     width: 10px;
 }
 
+.perfilPro-container {
 
-/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
-=======
-  .container-especi{
-    color: #5A789F;
-  }
+   padding: 20px;
 
-.salva{
-    width: 25%;
-    background-color: #5A789F;
+}
+
+.detalhes-conteudo{
+        
+    position: absolute;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    z-index: 1000;
+    transform: translateY(-50%);
+
+}
+          
+/* Adicionando a seta */
+.detalhes-conteudo::before {
+
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #5A789F transparent transparent;
+    left: -10px; /* Posiciona a seta na lateral esquerda */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%);
+
+}
+          
+.detalhes-conteudo h2 {
+    margin-top: 0;
+    color: #0078d4;
+}
+          
+.detalhes-conteudo p {
+    margin: 0.5rem 0;
+ }
+
+.fechar-detalhes {
+    
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: red;
     color: white;
     border: none;
-}
+    border-radius: 5px;
+    cursor: pointer;
 
-.a{
-    width: 15%;
-    background-color: #ffffff;
-    border: 1px solid #5A789F;
-    color: #014F86;
 }
->>>>>>> e83657b1ca1faaf2f7b2652f50d34ca29d28bca7
+.fechar-detalhes:hover {
+    background-color: darkred;}
+                    
+
+/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
+

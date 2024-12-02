@@ -20,7 +20,6 @@ function Inicio() {
 
   const [click, setClick] = useState(false);
 
-<<<<<<< HEAD
   const [profissionais, setProfissionais] = useState([]);
   const [adultos, setAdultos] = useState([]);
   const [adolescentes, setAdolescentes] = useState([]);
@@ -95,16 +94,6 @@ function Inicio() {
 
         setPcds([...pcds, profissionais[i]]);
       }
-=======
-  const [estadoBotoes, setEstadoBotoes] = useState(
-    profissionais.reduce((acc, profissional) => {
-      acc[profissional.id] = 'inicial';
-      return acc;
-    }, {})
-  );
-
-  // const [profissionais, setProfissionais] = useState([]);
->>>>>>> b6dae4e7ac3a1c8d03f6f7b06fafe43e1059d2e6
 
   
       if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
