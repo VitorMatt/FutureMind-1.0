@@ -20,7 +20,6 @@ function Inicio() {
 
   const [click, setClick] = useState(false);
 
-<<<<<<< HEAD
   const [profissionais, setProfissionais] = useState([]);
   const [adultos, setAdultos] = useState([]);
   const [adolescentes, setAdolescentes] = useState([]);
@@ -28,35 +27,36 @@ function Inicio() {
   const [pre_adolescentes, setPre_adolescentes] = useState([]);
   const [pcds, setPcds] = useState([]);
   const [idosos, setIdosos] = useState([]);
-  
-   const handleReplace = () => {
 
+  useEffect(() => {
+
+    
     for (var i; i<profissionais.length; i++) {
       
       if (profissionais[i].preferencias && profissionais[i].especializacao) {
-
+        
         profissionais[i].preferencias = profissionais[i].preferencias.replace('{', '');
         profissionais[i].preferencias = profissionais[i].preferencias.replace('}', '');
         profissionais[i].especializacao = profissionais[i].especializacao.replace('{', '');
         profissionais[i].especializacao = profissionais[i].especializacao.replace('}', '');
-
+        
         for (var j; j<(profissionais[i].preferencias.length * 2); j++) {
-
+          
           profissionais[i].preferencias = profissionais[i].preferencias.replace('"', '');
         }
 
         for (var k; k<(profissionais[i].especializacao.length * 2); k++) {
-
+          
           profissionais[i].especializacao = profissionais[i].especializacao.replace('"', '');
         }
-
+        
         profissionais[i].preferencias = profissionais[i].preferencias.split(',').map(item => item.trim());
         profissionais[i].especializacao = profissionais[i].especializacao.split(',').map(item => item.trim());
       } else {
         alert('a')
       }
     }
-  }
+  }, [profissionais]);
   
   const fetchProfissionais = async () => {
 
@@ -95,16 +95,15 @@ function Inicio() {
 
         setPcds([...pcds, profissionais[i]]);
       }
-=======
-  const [estadoBotoes, setEstadoBotoes] = useState(
-    profissionais.reduce((acc, profissional) => {
-      acc[profissional.id] = 'inicial';
-      return acc;
-    }, {})
-  );
+      const [estadoBotoes, setEstadoBotoes] = useState(
+        profissionais.reduce((acc, profissional) => {
+          acc[profissional.id_profissional] = 'inicial';
+          return acc;
+        }, {})
+      );
+
 
   // const [profissionais, setProfissionais] = useState([]);
->>>>>>> b6dae4e7ac3a1c8d03f6f7b06fafe43e1059d2e6
 
   
       if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
@@ -122,7 +121,6 @@ function Inicio() {
   useEffect(() => {
   
     fetchProfissionais();
-    handleReplace();
     filtraProfissionais();
   }, []);
 
