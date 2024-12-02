@@ -23,6 +23,7 @@ import CadastroProfissional from '../pages/CadastroProfissional'
 import PerfilVisualizar from '../pages/PerfilVisualizar'
 import Test_dois from '../pages/Test_dois'
 import PerfilPaciente from '../pages/PerfilPaciente'
+import Test_tres from '../pages/Test_tres'
 
 const router = createBrowserRouter([{
 
@@ -121,8 +122,11 @@ const router = createBrowserRouter([{
     path: '/test_dois',
     element: <Test_dois />
 },
-
-
+{
+    path: '/test_3',
+    element: <Test_tres />
+},
+  
 
 ])
 

@@ -16,7 +16,11 @@ import { useNavigate } from 'react-router-dom'
 
 function PerfilProfissional() {
 
+<<<<<<< HEAD
 //   const { user, setUser } = useContext(GlobalContext);
+=======
+  // const { user, setUser } = useContext(GlobalContext);
+>>>>>>> cdcd0206886c09f3da9d719c7cd5ee03f7c8b9ec
 
 //   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -49,8 +53,11 @@ const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMig
 const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
 
   const [dataAtual, setDataAtual] = useState(new Date());
-  const [agendamentos, setAgendamentos] = useState([
+  const [selectedAgendamento, setSelectedAgendamento] = useState(null);
+  const [divPosition, setDivPosition] = useState({ top: 0, left: 0}); // Posição da div de detalhes
 
+  const [agendamentos, setAgendamentos] = useState([
+  
     { data: "2024-11-12", paciente: "Thalles Lima", horario: "15:00" },
     { data: "2024-11-12", paciente: "Luciana Nuss", horario: "17:30" },
     { data: "2024-11-12", paciente: "aaaaaaaaa", horario: "20:00" },
@@ -194,6 +201,20 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
   const maxLength = 500; // Limite máximo de caracteres
   const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
+  
+  const handleEventClick = (agendamento, event) => {
+    // Captura a posição do elemento clicado
+    const rect = event.target.getBoundingClientRect();
+    setDivPosition({
+      top: rect.top + window.scrollY,
+      left: rect.left + rect.width + 10, // Posição à direita do elemento
+    });
+    setSelectedAgendamento(agendamento);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedAgendamento(null); // Fecha a div de detalhes
+  };
 
   return (
     <div className='perfilPro-container'>
@@ -213,7 +234,11 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
                      <div className='nick-usuario'>
+<<<<<<< HEAD
                       {/* <h1>{userData.nome_completo}</h1>
+=======
+                       {/* <h1>{userData.nome_completo}</h1>
+>>>>>>> cdcd0206886c09f3da9d719c7cd5ee03f7c8b9ec
                       <p>{userData.email}</p> */}
                     </div>
                  </div> 
@@ -279,60 +304,47 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                        <div className='Nome_dia_da_semana'>  {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {dia.getDate()}</div>
                       </div>
                      </div>
-                      {agendamentosDoDia.length > 0 ? (
-                      
-                      <div className='itens_ag'>
-                        <div className='os-itens'>
-                        
-                          <div className='div_buttons_trocar_agendamentos'>
-                          {agendamentosDoDia.length >= 2  && (
-                           <button className='buttons_trocar_agendamento' onClick={() => handleTrocarAgendamento(diaString, -1)}>
-                            <img src="angles-left-solid.svg" alt="" />
-                           </button>
-                          )}
-                           Agendamento diario
-                          {agendamentosDoDia.length >= 2 &&(
-                            <>
-                             <button className='buttons_trocar_agendamento' onClick={() => handleTrocarAgendamento(diaString, 1)}><img src="angles-right-solid.svg" alt="" /></button>
-                            </>
-                          )} 
-                          </div>
-                         
-                          <div className='div_para_itens'>
-                           <p>{agendamentosDoDia[indiceAtual].paciente}</p>
-                          </div>
-                          <div className='div_para_itens'>
-                           <p>Data: {agendamentosDoDia[indiceAtual].data}</p>
-                          </div>
-                          <div className='div_para_itens'>
-                           <p>Horário: {agendamentosDoDia[indiceAtual].horario}</p>
-                          </div>
-                         
-                          <div className='buttons-itens'>
-                            <button className='cancelar' onClick={() => handleCancelarAgendamento(agendamentosDoDia[indiceAtual].data, agendamentosDoDia[indiceAtual].horario)}>Cancelar</button>
-                            <button className='check' onClick={() => handleExcluirAgendamento(agendamentosDoDia[indiceAtual].data, agendamentosDoDia[indiceAtual].horario)}>
-                             <img src="check-solid (1).svg" className='checkimg'/>
-                            </button>
-                            {showConfirmation && (
-                             <div className="confirmacao-exclusao">
-                              <p>Você tem certeza que deseja cancelar este agendamento?</p>
-                               <button onClick={handleConfirmarExclusao}>Sim, cancelar</button>
-                              <button onClick={handleCancelarExclusao}>Não, voltar</button>
-                             </div>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-
-                      ) : (
-
-                        <div className='mensagem_s'>Sem agendamento  (s)</div>
-                        
-                      )}
+                     {agendamentosDoDia.map((event) => (
+                    <div
+                    key={`${diaString}-${event.horario}`}
+                    className="event-card"
+                    onClick={(e) => handleEventClick(event, e)}
+                   >
+                    <p onClick={() => handleEventClick(agendamentosDoDia)} className="agendamento-nome">
+                     {event.paciente}
+                    </p>
+                    
+                  </div>
+                ))}
                     </div>
                   )
                 }) 
              }
+                   {selectedAgendamento && (
+                    <div
+                      className="detalhes-agendamento"
+                      style={{
+                        position: "absolute",
+                        top: `${divPosition.top}px`,
+                        left: `${divPosition.left}px`,
+                        padding: "12px",
+                        borderRadius: "10px",
+                        zIndex: 1000,
+                      }}
+                    >
+                      <div className="detalhes-conteudo">
+                        <h2>Detalhes do Agendamento</h2>
+                        <p><strong>Paciente:</strong> {selectedAgendamento.paciente}</p>
+                        <p><strong>Data:</strong> {selectedAgendamento.data}</p>
+                        <p><strong>Horário:</strong> {selectedAgendamento.horario}</p>
+                        <p><strong>Detalhes:</strong> {selectedAgendamento.detalhes}</p>
+                        <button onClick={handleCloseDetails} className="fechar-detalhes">
+                          Fechar
+                        </button>
+                      </div>
+                      </div>
+      )}
+
            </div>
            </div>
            <button onClick={() => handleTrocarSemana(true)}  className="button_passar"><img src="angle-right-solid.svg" alt=""/></button>
