@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function Navbar() {
-  const { user, id, setId } = useContext(GlobalContext);
+  const { user, setId } = useContext(GlobalContext);
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -73,7 +73,7 @@ function Navbar() {
         </div>
 
         {
-          !user.logado ? (
+          !user?.logado ? (
             <Link to='/login' className='btn2'>Entrar</Link>
           ) : (
             <button onClick={handleUserClick} className='btn2'>

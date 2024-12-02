@@ -1,6 +1,4 @@
 import {useState, useEffect, useContext } from 'react'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import './CSS/PerfilVisualizar.css'
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
