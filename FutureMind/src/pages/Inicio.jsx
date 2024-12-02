@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import './CSS/Inicio.css';
 
@@ -11,7 +11,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Footer from '../components/Footer';
-import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function Inicio() {
 
@@ -20,21 +19,101 @@ function Inicio() {
   const [buscaTres, setBuscaTres] = useState([{descricao: "PCD's", selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
 
   const [click, setClick] = useState(false);
-  const { profissionais } = useContext(GlobalContext);
 
-  // const [profissionais, setProfissionais] = useState([]);
+  const [profissionais, setProfissionais] = useState([]);
+  const [adultos, setAdultos] = useState([]);
+  const [adolescentes, setAdolescentes] = useState([]);
+  const [criancas, setCriancas] = useState([]);
+  const [pre_adolescentes, setPre_adolescentes] = useState([]);
+  const [pcds, setPcds] = useState([]);
+  const [idosos, setIdosos] = useState([]);
+  
+   const handleReplace = () => {
+
+    for (var i; i<profissionais.length; i++) {
+      
+      if (profissionais[i].preferencias && profissionais[i].especializacao) {
+
+        profissionais[i].preferencias = profissionais[i].preferencias.replace('{', '');
+        profissionais[i].preferencias = profissionais[i].preferencias.replace('}', '');
+        profissionais[i].especializacao = profissionais[i].especializacao.replace('{', '');
+        profissionais[i].especializacao = profissionais[i].especializacao.replace('}', '');
+
+        for (var j; j<(profissionais[i].preferencias.length * 2); j++) {
+
+          profissionais[i].preferencias = profissionais[i].preferencias.replace('"', '');
+        }
+
+        for (var k; k<(profissionais[i].especializacao.length * 2); k++) {
+
+          profissionais[i].especializacao = profissionais[i].especializacao.replace('"', '');
+        }
+
+        profissionais[i].preferencias = profissionais[i].preferencias.split(',').map(item => item.trim());
+        profissionais[i].especializacao = profissionais[i].especializacao.split(',').map(item => item.trim());
+      } else {
+        alert('a')
+      }
+    }
+  }
+  
+  const fetchProfissionais = async () => {
+
+    try {
+
+      const response = await fetch('http://localhost:3000');
+      const data = await response.json();
+      setProfissionais(data);
+    } catch (err) {
+
+      console.log(err.message);
+
+    }
+  };
+
+  const filtraProfissionais = () => {
+
+    for (var i=0; i<profissionais.length; i++) {
+
+      if (profissionais[i].preferencias.includes('Adultos')) {
+        
+        setAdultos([...adultos, profissionais[i]]);
+      }
+
+      if (profissionais[i].preferencias.includes('Idosos')) {
+
+        setIdosos([...idosos, profissionais[i]]);
+      }
+
+      if (profissionais[i].preferencias.includes('Crianças')) {
+
+        setCriancas([...criancas, profissionais[i]]);
+      }
+
+      if (profissionais[i].preferencias.includes("PCD's")) {
+
+        setPcds([...pcds, profissionais[i]]);
+      }
 
   
-  // const fetchProfissionais = async () => {
-  //   const response = await fetch('http://localhost:3000/cadastro');
-  //   const data = await response.json();
-  //   setProfissionais(data);
-  // };
+      if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
+
+        setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
+      }
+    
+      if (profissionais[i].preferencias.includes('Adolescentes')) {
+
+        setAdolescentes([...adolescentes, profissionais[i]]);
+      }
+    }
+    }
   
-  // useEffect(() => {
+  useEffect(() => {
   
-  //   fetchProfissionais();
-  // }, []);
+    fetchProfissionais();
+    handleReplace();
+    filtraProfissionais();
+  }, []);
 
   const clickUm = (index) => {
 
@@ -219,7 +298,7 @@ function Inicio() {
             >
               {
 
-                profissionais.map((item, index) => (
+                profissionais?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -232,18 +311,18 @@ function Inicio() {
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ {item.preco} - {item.tempo}min
+                  R$ {item.preco}
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {
+                  {/* {
 
-                    item.especialidades.map((item, index) => (
-                      <div key={index} className='especialidade-button'>
-                      {item}
+                    item.especializacao.map((especialidade, indice) => (
+                      <div key={indice} className='especialidade-button'>
+                      {especialidade}
                     </div>
                   ))
-                }
+                } */}
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -255,7 +334,7 @@ function Inicio() {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  {item.nome}
+                  {item.nome_completo}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -263,7 +342,7 @@ function Inicio() {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                  {item.sobre}
+                  {item.descricao}
                 </p>
               </div>
               <div className="abordagem">
@@ -397,7 +476,7 @@ function Inicio() {
             >
               {
 
-                profissionais.map((item, index) => (
+                profissionais?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -416,7 +495,7 @@ function Inicio() {
                 <div className="especialidades">
                   {
 
-                    item.especialidades.map((item, index) => (
+                    item.especialidades?.map((item, index) => (
                       <div key={index} className='especialidade-button'>
                       {item}
                     </div>
@@ -572,7 +651,7 @@ function Inicio() {
             >
               {
 
-                profissionais.map((item, index) => (
+                profissionais?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -591,7 +670,7 @@ function Inicio() {
                 <div className="especialidades">
                   {
 
-                    item.especialidades.map((item, index) => (
+                    item.especialidades?.map((item, index) => (
                       <div key={index} className='especialidade-button'>
                       {item}
                     </div>
@@ -761,7 +840,7 @@ function Inicio() {
             >
               {
 
-                profissionais.map((item, index) => (
+                profissionais?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -780,7 +859,7 @@ function Inicio() {
                 <div className="especialidades">
                   {
 
-                    item.especialidades.map((item, index) => (
+                    item.especialidades?.map((item, index) => (
                       <div key={index} className='especialidade-button'>
                       {item}
                     </div>
@@ -935,7 +1014,7 @@ function Inicio() {
             >
               {
 
-                profissionais.map((item, index) => (
+                profissionais?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -954,7 +1033,7 @@ function Inicio() {
                 <div className="especialidades">
                   {
 
-                    item.especialidades.map((item, index) => (
+                    item.especialidades?.map((item, index) => (
                       <div key={index} className='especialidade-button'>
                       {item}
                     </div>
@@ -1110,7 +1189,7 @@ function Inicio() {
             >
               {
 
-                profissionais.map((item, index) => (
+                profissionais?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -1129,7 +1208,7 @@ function Inicio() {
                 <div className="especialidades">
                   {
 
-                    item.especialidades.map((item, index) => (
+                    item.especialidades?.map((item, index) => (
                       <div key={index} className='especialidade-button'>
                       {item}
                     </div>
@@ -1285,7 +1364,7 @@ function Inicio() {
             >
               {
 
-                profissionais.map((item, index) => (
+                profissionais?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -1304,7 +1383,7 @@ function Inicio() {
                 <div className="especialidades">
                   {
 
-                    item.especialidades.map((item, index) => (
+                    item.especialidades?.map((item, index) => (
                       <div key={index} className='especialidade-button'>
                       {item}
                     </div>

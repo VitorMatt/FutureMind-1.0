@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import Navbar from '../components/Navbar'
+import { useState, useEffect, useContext } from 'react'
 import Footer from '../components/Footer'
 import CpfInput from '../components/CpfInput'
 import CrpMask from '../components/CrpMask'
@@ -11,9 +10,13 @@ import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
 import './CSS/Test_dois.css'
 import { Label } from '@mui/icons-material'
+import { GlobalContext } from '../GlobalContext/GlobalContext'
+import { useNavigate } from 'react-router-dom'
 
 
 function PerfilProfissional() {
+
+  const { user, setUser } = useContext(GlobalContext);
 
   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -34,6 +37,13 @@ function PerfilProfissional() {
 
  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+
+ const navigate = useNavigate();
+ const sair = () => {
+
+  setUser({...user, logado: false});
+  navigate('/');
+ }
  
 const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o João Mjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjiguel e sou um ótimo profissional na minha área.'}
 const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
@@ -538,7 +548,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                 <div className='div-buttons-salvar-cancelar'>
                 <button className='a'>Excluir conta</button>
-                  <button className='a'> Sair da Conta</button>
+                  <button className='a' onClick={sair}> Sair da Conta</button>
                   <button className='a'>Cancelar edição</button>
                   <button className='salva'>Salvar</button>
                 </div>

@@ -8,7 +8,7 @@ const pool = new Pool({
     user: 'postgres', 
     host: 'localhost',
     database: 'FutureMind', 
-    password: '12345',
+    password: 'Vitor281207.',
     port: 5432, 
 });
 
@@ -17,6 +17,26 @@ app.use(cors({
     origin: 'http://localhost:5173', // URL do seu frontend
 }));
 app.use(express.json());
+
+app.get('/', async(req, res) => {
+
+    try {
+
+        const result = await pool.query('SELECT * FROM profissionais');
+
+        if (result.rows.length > 0) {
+
+            res.status(200).json(result.rows);
+        } else {
+
+            res.status(404).json('Erro ao buscar profissionais')
+        }
+    } catch (err) {
+    
+        console.err('Erro no servidor');
+        res.status(500).json({err: 'erro'});
+    }
+});
 
 app.get('/cadastro-profissional', async (req, res) => {
 
@@ -340,7 +360,149 @@ app.get('/api/profissionais', async (req, res) => {
 
         res.status(500).json('Erro');
     }
-  })
+  });
+
+  app.put('/admin-profissional', async(req, res) => {
+
+    const { id_profissional } = req.params;
+
+    const {
+        nome_completo,
+        cpf,
+        telefone,
+        preferencias,
+        email, 
+        crp,
+        data_nascimento,
+        especializacao,
+        preco,
+        foto,
+        senha,
+        abordagem,
+        descricao 
+    } = req.body;
+
+    try {
+
+        const result = await pool.query('UPDATE profissionais SET nome_completo = $1, cpf = $2, telefone = $3, preferencias = $4, email = $5, crp = $6, data_nascimento = $7, especializacao = $8, preco = $9, foto = $10, senha = $11, abordagem = $12, descricao = $13 WHERE id_profissional = $14 RETURNING *', [
+            nome_completo,
+            cpf,
+            telefone,
+            preferencias,
+            email, 
+            crp,
+            data_nascimento,
+            especializacao,
+            preco,
+            foto,
+            senha,
+            abordagem,
+            descricao,
+            id_profissional
+        ]);
+
+        if (result.rows.length === 0) {
+
+            return res.status(404).json({ Erro: 'Profissional não encontrado' });
+        }
+
+        res.json(result.rows[0]);
+
+    } catch (err) {
+
+        console.error(err.message);
+        return res.status(500).json({ Erro: 'Erro ao atualizar profissional' });
+    }
+});
+
+app.delete('/admin-profissional', async (req, res) => {
+
+    const { id_profissional } = req.params;
+
+    try {
+
+        const result = await pool.query('DELETE FROM profissionais WHERE id_profissional = $1 RETURNING *', [
+            id_profissional
+        ]);
+
+        if (result.rows.length === 0) {
+
+            res.status(404).json({ Erro: 'Profissional não encontrado' })
+        }
+
+        res.json(result.rows[0]);
+    } catch (err) {
+
+        console.error(err.message);
+        res.status(500).json({Erro: 'Erro ao excluir profissional'})
+    }
+});
+
+app.put('/admin-paciente', async(req, res) => {
+
+    const { id_paciente } = req.params;
+
+    const {
+        nome_completo,
+        cpf,
+        telefone,
+        email, 
+        data_nascimento,
+        foto,
+        senha,
+        descricao 
+    } = req.body;
+
+    try {
+
+        const result = await pool.query('UPDATE pacientes SET nome_completo = $1, cpf = $2, telefone = $3, email = $4, data_nascimento = $5, foto = $6, senha = $7, descricao = $8 WHERE id_paciente = $9 RETURNING *', [
+            nome_completo,
+            cpf,
+            telefone,
+            email, 
+            data_nascimento,
+            foto,
+            senha,
+            descricao,
+            id_paciente
+        ]);
+
+        if (result.rows.length === 0) {
+
+            return res.status(404).json({ Erro: 'Paciente não encontrado' });
+        }
+
+        res.json(result.rows[0]);
+
+    } catch (err) {
+
+        console.error(err.message);
+        return res.status(500).json({ Erro: 'Erro ao atualizar paciente' });
+    }
+});
+
+app.delete('/admin-paciente', async (req, res) => {
+
+    const { id_paciente } = req.params;
+
+    try {
+
+        const result = await pool.query('DELETE FROM pacientes WHERE id_paciente = $1 RETURNING *', [
+            id_paciente
+        ]);
+
+        if (result.rows.length === 0) {
+
+            res.status(404).json({ Erro: 'Paciente não encontrado' })
+        }
+
+        res.json(result.rows[0]);
+    } catch (err) {
+
+        console.error(err.message);
+        res.status(500).json({Erro: 'Erro ao excluir paciente'})
+    }
+});
 
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');
