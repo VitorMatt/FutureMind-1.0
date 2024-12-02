@@ -650,7 +650,6 @@
     background-color: #f0f0f0;
   }
 
-<<<<<<< HEAD
   .div-esp {
 
     max-width: 200px;
@@ -711,22 +710,3 @@
 
 
 /*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
-=======
-  .container-especi{
-    color: #5A789F;
-  }
-
-.salva{
-    width: 25%;
-    background-color: #5A789F;
-    color: white;
-    border: none;
-}
-
-.a{
-    width: 15%;
-    background-color: #ffffff;
-    border: 1px solid #5A789F;
-    color: #014F86;
-}
->>>>>>> e83657b1ca1faaf2f7b2652f50d34ca29d28bca7

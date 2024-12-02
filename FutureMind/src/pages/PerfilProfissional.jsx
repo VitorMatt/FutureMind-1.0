@@ -16,34 +16,34 @@ import { useNavigate } from 'react-router-dom'
 
 function PerfilProfissional() {
 
-  const { user, setUser } = useContext(GlobalContext);
+//   const { user, setUser } = useContext(GlobalContext);
 
-  var userData = JSON.parse(localStorage.getItem('User'));
+//   var userData = JSON.parse(localStorage.getItem('User'));
 
-  userData.especializacao = userData.especializacao.replace('{', '')
-  userData.especializacao = userData.especializacao.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('{', '')
  
- for (let i=0; i<(userData.especializacao.length * 2); i++) {
+//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
 
-  userData.especializacao = userData.especializacao.replace('"', '')
- }
+//   userData.especializacao = userData.especializacao.replace('"', '')
+//  }
 
- for (let i=0; i<(userData.preferencias.length * 2); i++) {
+//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
 
-  userData.preferencias = userData.preferencias.replace('"', '')
- }
+//   userData.preferencias = userData.preferencias.replace('"', '')
+//  }
 
- userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
- userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
 
- const navigate = useNavigate();
- const sair = () => {
+//  const navigate = useNavigate();
+//  const sair = () => {
 
-  setUser({...user, logado: false});
-  navigate('/');
- }
+//   setUser({...user, logado: false});
+//   navigate('/');
+//  }
  
 const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o João Mjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjiguel e sou um ótimo profissional na minha área.'}
 const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
@@ -213,8 +213,8 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
                      <div className='nick-usuario'>
-                       <h1>{userData.nome_completo}</h1>
-                      <p>{userData.email}</p>
+                      {/* <h1>{userData.nome_completo}</h1>
+                      <p>{userData.email}</p> */}
                     </div>
                  </div> 
     
@@ -224,13 +224,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                         <div className="div-esp">
 
-                        {
+                        {/* {
                           userData.preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
                           ))
-                        }
+                        } */}
                         </div>
                     </div>
                     <div className='div-menor-info'>
@@ -238,13 +238,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         
                         <div className="div-esp">
 
-                        {
+                        {/* {
                           userData.especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
                           ))
-                        }
+                        } */}
                         </div>
                     </div>
                     <div className='descricao'>
@@ -548,7 +548,8 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                 <div className='div-buttons-salvar-cancelar'>
                 <button className='a'>Excluir conta</button>
-                  <button className='a' onClick={sair}> Sair da Conta</button>
+                  <button className='a'> Sair da Conta</button>
+                  {/* onClick={sair} */}
                   <button className='a'>Cancelar edição</button>
                   <button className='salva'>Salvar</button>
                 </div>
