@@ -27,102 +27,84 @@ function Inicio() {
   const [pre_adolescentes, setPre_adolescentes] = useState([]);
   const [pcds, setPcds] = useState([]);
   const [idosos, setIdosos] = useState([]);
-
-  useEffect(() => {
-
-    
-    for (var i; i<profissionais.length; i++) {
-      
-      if (profissionais[i].preferencias && profissionais[i].especializacao) {
-        
-        profissionais[i].preferencias = profissionais[i].preferencias.replace('{', '');
-        profissionais[i].preferencias = profissionais[i].preferencias.replace('}', '');
-        profissionais[i].especializacao = profissionais[i].especializacao.replace('{', '');
-        profissionais[i].especializacao = profissionais[i].especializacao.replace('}', '');
-        
-        for (var j; j<(profissionais[i].preferencias.length * 2); j++) {
-          
-          profissionais[i].preferencias = profissionais[i].preferencias.replace('"', '');
-        }
-
-        for (var k; k<(profissionais[i].especializacao.length * 2); k++) {
-          
-          profissionais[i].especializacao = profissionais[i].especializacao.replace('"', '');
-        }
-        
-        profissionais[i].preferencias = profissionais[i].preferencias.split(',').map(item => item.trim());
-        profissionais[i].especializacao = profissionais[i].especializacao.split(',').map(item => item.trim());
-      } else {
-        alert('a')
-      }
-    }
-  }, [profissionais]);
+  
   
   const fetchProfissionais = async () => {
-
     try {
-
       const response = await fetch('http://localhost:3000');
       const data = await response.json();
       setProfissionais(data);
     } catch (err) {
-
-      console.log(err.message);
-
+      console.error('Erro ao buscar profissionais:', err.message);
     }
   };
 
   const filtraProfissionais = () => {
-
-    for (var i=0; i<profissionais.length; i++) {
-
-      if (profissionais[i].preferencias.includes('Adultos')) {
-        
-        setAdultos([...adultos, profissionais[i]]);
-      }
-
-      if (profissionais[i].preferencias.includes('Idosos')) {
-
-        setIdosos([...idosos, profissionais[i]]);
-      }
-
-      if (profissionais[i].preferencias.includes('Crianças')) {
-
-        setCriancas([...criancas, profissionais[i]]);
-      }
-
-      if (profissionais[i].preferencias.includes("PCD's")) {
-
-        setPcds([...pcds, profissionais[i]]);
-      }
-      const [estadoBotoes, setEstadoBotoes] = useState(
-        profissionais.reduce((acc, profissional) => {
-          acc[profissional.id_profissional] = 'inicial';
-          return acc;
-        }, {})
-      );
-
-
-  // const [profissionais, setProfissionais] = useState([]);
-
-  
-      if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
-
-        setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-      }
+    if (!profissionais || profissionais.length === 0) return;
     
-      if (profissionais[i].preferencias.includes('Adolescentes')) {
-
-        setAdolescentes([...adolescentes, profissionais[i]]);
+    profissionais.forEach((profissional) => {
+      if (profissional.preferencias.includes('Adultos')) {
+        setAdultos((prev) => [...prev, profissional]);
       }
+      if (profissional.preferencias.includes('Idosos')) {
+        setIdosos((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Crianças')) {
+        setCriancas((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('PCDs')) {
+        setPcds((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Pré-Adolescentes')) {
+        setPre_adolescentes((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Adolescentes')) {
+        setAdolescentes((prev) => [...prev, profissional]);
+      }
+    });
+  };
+  const handleReplace = () => {
+    if (!profissionais || profissionais.length === 0) return;
+
+    for (let i=0; i<profissionais.length; i++) {
+
+      profissionais[i].especializacao = profissionais[i].especializacao.replace('{', '');
+      profissionais[i].especializacao = profissionais[i].especializacao.replace('}', '');
+      profissionais[i].preferencias = profissionais[i].preferencias.replace('}', '');
+      profissionais[i].preferencias = profissionais[i].preferencias.replace('{', '');
+     
+     for (let j=0; j<(profissionais[i].especializacao.length * 2); j++) {
+    
+      profissionais[i].especializacao = profissionais[i].especializacao.replace('"', '');
+     }
+    
+     for (let k=0; k<(profissionais[i].preferencias.length * 2); k++) {
+    
+      profissionais[i].preferencias = profissionais[i].preferencias.replace('"', '');
+     }
+    
+     profissionais[i].preferencias = profissionais[i].preferencias.split(',').map(item => item.trim()); 
+     profissionais[i].especializacao = profissionais[i].especializacao.split(',').map(item => item.trim()); 
     }
-    }
-  
+  };
+
   useEffect(() => {
-  
     fetchProfissionais();
-    filtraProfissionais();
   }, []);
+
+  useEffect(() => {
+    if (profissionais.length > 0) {
+      handleReplace();
+      filtraProfissionais();
+    }
+  }, [profissionais]);
+    
+    const [estadoBotoes, setEstadoBotoes] = useState(
+      profissionais.reduce((acc, profissional) => {
+        acc[profissional.id] = 'inicial';
+        return acc;
+      }, {})
+    );
 
   const clickUm = (index) => {
 
@@ -320,14 +302,14 @@ function Inicio() {
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {/* {
-
-                    item.especializacao.map((especialidade, indice) => (
-                      <div key={indice} className='especialidade-button'>
-                      {especialidade}
-                    </div>
-                  ))
-                } */}
+                  {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -481,7 +463,7 @@ function Inicio() {
             >
               {
 
-                profissionais?.map((item, index) => (
+                adultos?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -656,7 +638,7 @@ function Inicio() {
             >
               {
 
-                profissionais?.map((item, index) => (
+                idosos?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -794,17 +776,17 @@ function Inicio() {
       <div className="btn-consulta">
         <button
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
         >
           <b>
-            {estadoBotoes[item.id] === "carregando" && (
+            {estadoBotoes[item.id_profissional] === "carregando" && (
               <div id="circle" className="circle"></div>
             )}
-            {estadoBotoes[item.id] === "concluido" && (
+            {estadoBotoes[item.id_profissional] === "concluido" && (
               <img id="icon-concluido" src="check.svg" alt="" />
             )}
-            {estadoBotoes[item.id] === "inicial" && (
+            {estadoBotoes[item.id_profissional] === "inicial" && (
               <span className="btn-text2">
                 {selectedTime
                   ? `Marcar para ${selectedTime}`
@@ -845,7 +827,7 @@ function Inicio() {
             >
               {
 
-                profissionais?.map((item, index) => (
+                pre_adolescentes?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -975,13 +957,13 @@ function Inicio() {
 
         <button 
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -1019,7 +1001,7 @@ function Inicio() {
             >
               {
 
-                profissionais?.map((item, index) => (
+                adolescentes?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -1032,7 +1014,7 @@ function Inicio() {
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ {item.preco} - {item.tempo}min
+                  R$ {item.preco}
                   </h1>
                   </div>
                 <div className="especialidades">
@@ -1055,7 +1037,7 @@ function Inicio() {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  {item.nome}
+                  {item.nome_completo}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -1063,7 +1045,7 @@ function Inicio() {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                  {item.sobre}
+                  {item.descricao}
                 </p>
               </div>
               <div className="abordagem">
@@ -1150,13 +1132,13 @@ function Inicio() {
 
         <button 
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -1194,7 +1176,7 @@ function Inicio() {
             >
               {
 
-                profissionais?.map((item, index) => (
+                criancas?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -1207,7 +1189,7 @@ function Inicio() {
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ {item.preco} - {item.tempo}min
+                  R$ {item.preco}
                   </h1>
                   </div>
                 <div className="especialidades">
@@ -1230,7 +1212,7 @@ function Inicio() {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  {item.nome}
+                  {item.nome_completo}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -1238,7 +1220,7 @@ function Inicio() {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                  {item.sobre}
+                  {item.descricao}
                 </p>
               </div>
               <div className="abordagem">
@@ -1325,13 +1307,13 @@ function Inicio() {
 
         <button 
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -1369,7 +1351,7 @@ function Inicio() {
             >
               {
 
-                profissionais?.map((item, index) => (
+                pcds?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -1382,7 +1364,7 @@ function Inicio() {
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ {item.preco} - {item.tempo}min
+                  R$ {item.preco}
                   </h1>
                   </div>
                 <div className="especialidades">
@@ -1405,7 +1387,7 @@ function Inicio() {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  {item.nome}
+                  {item.nome_completo}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -1413,7 +1395,7 @@ function Inicio() {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                  {item.sobre}
+                  {item.descricao}
                 </p>
               </div>
               <div className="abordagem">
@@ -1501,13 +1483,13 @@ function Inicio() {
 
         <button 
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
