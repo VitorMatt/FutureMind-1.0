@@ -1,5 +1,4 @@
-import { useState, useContext, useEffect } from "react";
-import { GlobalContext } from "../GlobalContext/GlobalContext";
+import { useState }  from "react";
 import CrpMask from "./CrpMask";
 
 function CadastroFormado() {

@@ -8,7 +8,7 @@ const pool = new Pool({
     user: 'postgres', 
     host: 'localhost',
     database: 'FutureMind', 
-    password: '12345',
+    password: 'Vitor281207.',
     port: 5432, 
 });
 
@@ -18,18 +18,25 @@ app.use(cors({
 }));
 app.use(express.json());
 
-const users = [
-    {
-        email: 'lucas@gmail.com',
-        senha: '123'
-    },
-    {
-        email: 'vitor@gmail.com',
-        senha: '123'
-    }
-];
+app.get('/', async(req, res) => {
 
-var user = {email: '', senha: ''};
+    try {
+
+        const result = await pool.query('SELECT * FROM profissionais');
+
+        if (result.rows.length > 0) {
+
+            res.status(200).json(result.rows);
+        } else {
+
+            res.status(404).json('Erro ao buscar profissionais')
+        }
+    } catch (err) {
+    
+        console.err('Erro no servidor');
+        res.status(500).json({err: 'erro'});
+    }
+});
 
 app.get('/cadastro-profissional', async (req, res) => {
 
@@ -137,19 +144,6 @@ app.post('/cadastro-paciente', async (req,res) =>{
         res.status(500).json({ error: 'Erro ao adicionar paciente' });
     }
 });
-
-app.get('/perfil-profissional/:id', async (req, res) => {
-
-    try {
-
-        const { id_profissional } = req.params.id_profissional;
-        const data = await pool.query('SELECT * FROM profissionais WHERE id_profissional = $1', [id_profissional])
-        res.send(data.rows)
-    } catch (err) {
-
-        res.json({err: 'erro'})
-    }
-})
 
 // app.put('/perfil-profissional/:id', async(req, res) => {
 
@@ -290,6 +284,35 @@ app.delete('/perfil-paciente', async (req, res) => {
     }
 });
 
+
+var user;
+
+app.post('/login', async (req, res) => {
+    const { email, senha } = req.body;
+    console.log('Recebendo dados de login:', req.body); // Log dos dados recebidos
+
+
+    var profissionais = await pool.query('SELECT * FROM profissionais WHERE email = $1 AND senha = $2', [email, senha]);
+    var pacientes = await pool.query('SELECT * FROM pacientes WHERE email = $1 AND senha = $2', [email, senha]);
+    
+    if (profissionais.rows.length > 0) {
+        
+        user = profissionais.rows[0];
+        console.log('Login bem-sucedido:', profissionais.rows[0]);
+        return res.status(200).json(profissionais.rows[0]);
+    } 
+    
+    if (pacientes.rows.length > 0) {
+        
+        user = pacientes.rows[0];
+        console.log('Login bem-sucedido:', user);
+        return res.status(200).json(pacientes.rows[0]);
+    }
+    
+    console.log('Credenciais inválidas');
+    return res.status(401).json({ message: 'Credenciais inválidas' });
+});
+
 app.get('/login', async (req, res) => {
     try {
         
@@ -300,43 +323,186 @@ app.get('/login', async (req, res) => {
     }
 });
 
-app.post('/login', async (req, res) => {
-    const { email, senha } = req.body;
-    console.log('Recebendo dados de login:', req.body); // Log dos dados recebidos
-
-    var user = false;
-
-    const profissionais = await pool.query('SELECT * FROM profissionais;')
-    const pacientes = await pool.query('SELECT * FROM pacientes;')
-
-    for (i=0; i<profissionais.rows.length; i++) {
-
-        if (email==profissionais.rows[i].email && senha==profissionais.rows[i].senha) {
-
-            user = true;
-            break;
-        };
+// Rota de busca de profissionais
+app.get('/api/profissionais', async (req, res) => {
+    const { query } = req.query; // Captura o termo de busca da query string
+  
+    try {
+      // Realiza a consulta na tabela profissionais
+      const result = await pool.query(
+        `SELECT * FROM profissionais WHERE nome_completo ILIKE $1`, // Busca case-insensitive
+        [`%${query}%`] // Adiciona o termo de busca com curingas
+      );
+  
+      res.status(200).json(result.rows); // Retorna os resultados
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ message: 'Erro ao buscar profissionais' });
     }
+  });
 
-    for (i=0; i<pacientes.rows.length; i++) {
+  app.get('/profissional/:id', async(req, res) => {
 
-        if (email==pacientes.rows[i].email && senha==pacientes.rows[i].senha) {
+    const { id } = req.params;
 
-            user = true;
-            break;
-        };
+    try {
+
+        const result = await pool.query('SELECT * FROM profissionais WHERE id_profissional = $1', [id]);
+
+        if (result.rows.length) {
+
+            res.status(200).json(result.rows[0]);
+        } else {
+
+            res.status(404).json({ message: 'Profissional não encontrado'})
+        }
+    } catch (err) {
+
+        res.status(500).json('Erro');
     }
+  });
 
-    if (user) {
-        console.log('Login bem-sucedido:', user);
-        return res.status(200).json(user);
+  app.put('/admin-profissional', async(req, res) => {
+
+    const { id_profissional } = req.params;
+
+    const {
+        nome_completo,
+        cpf,
+        telefone,
+        preferencias,
+        email, 
+        crp,
+        data_nascimento,
+        especializacao,
+        preco,
+        foto,
+        senha,
+        abordagem,
+        descricao 
+    } = req.body;
+
+    try {
+
+        const result = await pool.query('UPDATE profissionais SET nome_completo = $1, cpf = $2, telefone = $3, preferencias = $4, email = $5, crp = $6, data_nascimento = $7, especializacao = $8, preco = $9, foto = $10, senha = $11, abordagem = $12, descricao = $13 WHERE id_profissional = $14 RETURNING *', [
+            nome_completo,
+            cpf,
+            telefone,
+            preferencias,
+            email, 
+            crp,
+            data_nascimento,
+            especializacao,
+            preco,
+            foto,
+            senha,
+            abordagem,
+            descricao,
+            id_profissional
+        ]);
+
+        if (result.rows.length === 0) {
+
+            return res.status(404).json({ Erro: 'Profissional não encontrado' });
+        }
+
+        res.json(result.rows[0]);
+
+    } catch (err) {
+
+        console.error(err.message);
+        return res.status(500).json({ Erro: 'Erro ao atualizar profissional' });
     }
-
-    console.log('Credenciais inválidas');
-    return res.status(401).json({ message: 'Credenciais inválidas' });
 });
 
+app.delete('/admin-profissional', async (req, res) => {
 
+    const { id_profissional } = req.params;
+
+    try {
+
+        const result = await pool.query('DELETE FROM profissionais WHERE id_profissional = $1 RETURNING *', [
+            id_profissional
+        ]);
+
+        if (result.rows.length === 0) {
+
+            res.status(404).json({ Erro: 'Profissional não encontrado' })
+        }
+
+        res.json(result.rows[0]);
+    } catch (err) {
+
+        console.error(err.message);
+        res.status(500).json({Erro: 'Erro ao excluir profissional'})
+    }
+});
+
+app.put('/admin-paciente', async(req, res) => {
+
+    const { id_paciente } = req.params;
+
+    const {
+        nome_completo,
+        cpf,
+        telefone,
+        email, 
+        data_nascimento,
+        foto,
+        senha,
+        descricao 
+    } = req.body;
+
+    try {
+
+        const result = await pool.query('UPDATE pacientes SET nome_completo = $1, cpf = $2, telefone = $3, email = $4, data_nascimento = $5, foto = $6, senha = $7, descricao = $8 WHERE id_paciente = $9 RETURNING *', [
+            nome_completo,
+            cpf,
+            telefone,
+            email, 
+            data_nascimento,
+            foto,
+            senha,
+            descricao,
+            id_paciente
+        ]);
+
+        if (result.rows.length === 0) {
+
+            return res.status(404).json({ Erro: 'Paciente não encontrado' });
+        }
+
+        res.json(result.rows[0]);
+
+    } catch (err) {
+
+        console.error(err.message);
+        return res.status(500).json({ Erro: 'Erro ao atualizar paciente' });
+    }
+});
+
+app.delete('/admin-paciente', async (req, res) => {
+
+    const { id_paciente } = req.params;
+
+    try {
+
+        const result = await pool.query('DELETE FROM pacientes WHERE id_paciente = $1 RETURNING *', [
+            id_paciente
+        ]);
+
+        if (result.rows.length === 0) {
+
+            res.status(404).json({ Erro: 'Paciente não encontrado' })
+        }
+
+        res.json(result.rows[0]);
+    } catch (err) {
+
+        console.error(err.message);
+        res.status(500).json({Erro: 'Erro ao excluir paciente'})
+    }
+});
 
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');

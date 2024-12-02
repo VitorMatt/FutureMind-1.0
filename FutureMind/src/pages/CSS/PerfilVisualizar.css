@@ -6,10 +6,29 @@
     --cor-5: #014F86;
 }
 
-.perfilVisu-container{
+.perfilVisu-container{ 
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Altura mínima é 100% da viewport */
     background-color: #DBEEF4; /* Fundo azul claro */
     flex: 1;
+    
+}
+
+
+.descricao{
+    
+}
+
+.editar-perfil-profissional{
+    margin-top: 6%;
+    
+}
+
+.perfil-profissional{
+    margin-top: 6%;
+}
+
+.a-foto{
+   padding-top: 20%; 
 }

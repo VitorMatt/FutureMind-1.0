@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const GlobalContext = createContext();
 
@@ -6,6 +6,7 @@ export const GlobalContextProvider = ({children}) => {
 
 const profissionais = [
     {
+        id: 1,
         nome: 'João Miguel da Cruz', 
         sobre: 'Psicológo recém formado em Psicanálise atendimento a adolscente, adultos e casais. Atendo oito meses como psicólogo clinico em diferentes situações psicoafetivas, dependencia química, estados depressivos, luto, alternãncia de humor, baixa alto estima, estados de angústia e desorganização pessoal.',
         abordagem: ['Psicanalista', 'Terapia Cognitiva Comportamental'],
@@ -16,6 +17,7 @@ const profissionais = [
         especialidades: ["PCD's", 'Autoestima', 'Angústia', 'Depressão', 'LGBTQIA+'],
 },
 {
+    id: 2,
     nome: 'Paula Lusitano', 
     sobre: 'Psicológa recém formada em Psicanálise atendimento a adolscente, adultos e casais. Atendo oito meses como psicóloga clinica em diferentes situações psicoafetivas, dependencia química, estados depressivos, luto, alternãncia de humor, baixa alto estima, estados de angústia e desorganização pessoal.',
     abordagem: ['Psicanalista', 'Terapia Cognitiva Comportamental'],
@@ -26,6 +28,7 @@ const profissionais = [
     especialidades: ['Autoestima', 'Depressão', 'LGBTQIA+'],
 },
 {
+    id: 3,
     nome: 'Thiago Rodrigues', 
     sobre: 'Psicológo recém formado em Psicanálise atendimento a adolscente, adultos e casais. Atendo oito meses como psicólogo clinico em diferentes situações psicoafetivas, dependencia química, estados depressivos, luto, alternãncia de humor, baixa alto estima, estados de angústia e desorganização pessoal.',
     abordagem: ['Terapia Cognitiva Comportamental'],
@@ -66,10 +69,38 @@ const paciente = {
     email: ''
 }
 
-const userLogado = true;
+    const [user, setUser] = useState(() => {
+    
+        return JSON.parse(localStorage.getItem('User-Profile')) || null;
+    });
+    
+    useEffect(() => {
+
+        if (user) {
+
+            localStorage.setItem('User-Profile', JSON.stringify(user));
+        } else {
+
+            localStorage.removeItem('User-Profile');
+        }
+    }, [user]);
+
+    const [id, setId] = useState(() => {
+    // Recupera o valor de ID do localStorage, se existir
+        return localStorage.getItem('id') || null;
+    });
+
+    useEffect(() => {
+    // Sempre que o ID mudar, atualize o localStorage
+    if (id) {
+      localStorage.setItem('id', id);
+    } else {
+      localStorage.removeItem('id');
+    }
+    }, [id]);
 
     return(
-        <GlobalContext.Provider value={{profissionais, profissional, paciente, userLogado}}>
+        <GlobalContext.Provider value={{profissionais, profissional, paciente, user, setUser, id, setId}}>
             {children}
         </GlobalContext.Provider>
     );

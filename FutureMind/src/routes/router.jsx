@@ -22,6 +22,7 @@ import PerfilProfissional from '../pages/PerfilProfissional'
 import CadastroProfissional from '../pages/CadastroProfissional'
 import PerfilVisualizar from '../pages/PerfilVisualizar'
 import Test_dois from '../pages/Test_dois'
+import PerfilPaciente from '../pages/PerfilPaciente'
 
 const router = createBrowserRouter([{
 
@@ -105,14 +106,17 @@ const router = createBrowserRouter([{
 
 },
 {
-    path: '/perfilprofissional',
+    path: '/perfil-profissional',
     element: <PerfilProfissional />
 },
 {
-    path: '/perfilvisualizar',
+    path: '/profissional/:id',
     element: <PerfilVisualizar />
 },
-
+{
+    path: '/perfil-paciente',
+    element: <PerfilPaciente />
+},
 {
     path: '/test_dois',
     element: <Test_dois />

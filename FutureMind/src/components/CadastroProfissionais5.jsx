@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import Flatpickr from "react-flatpickr";
-import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
-import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
+import "flatpickr/dist/flatpickr.min.css"; 
+import { Portuguese } from "flatpickr/dist/l10n/pt"; 
 import { GlobalContext } from "../GlobalContext/GlobalContext";
 
 function CadastroProfissionais5() {
 
   const { profissional } = useContext(GlobalContext);
   const [name, setName] = useState(profissional.nome_completo);
-  const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
+  const [date, setDate] = useState(profissional.data_nascimento); 
 
 
   useEffect(() => {

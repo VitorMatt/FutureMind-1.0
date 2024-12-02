@@ -119,14 +119,13 @@ body {
 }
 
 .inputsLogin input {
-    opacity: 40%;
     margin-bottom: 4%;
     width: 100%;
     padding: 3%;
     border-radius: 10px;
     border: none;
-    background-color: var(--cor-2);
-    color: var(--cor-3);
+    background-color: #cad7eb;
+    color: var(--cor-4);
     font-size: large;
     box-sizing: border-box;
 }
@@ -144,8 +143,7 @@ body {
     padding: 8%;
     border-radius: 10px;
     border: none;
-    background-color: var(--cor-2);
-    opacity: 0.4;
+    background-color: #cad7eb;
     color: var(--cor-3);
     font-size: medium;
     box-sizing: border-box;

@@ -1,46 +1,68 @@
 import './CSS/Login.css'
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function Login() {
-
+  
   const navigate = useNavigate();
   const [olhosSenha, setOlhosSenha] = useState(false);
-
+  
+  const { setUser } = useContext(GlobalContext);
   const [form, setForm] = useState({ email: '', senha: '' });
 
-
-  const handleSubmit = async (e) => {
-
-    e.preventDefault();
-    if (!form.email || !form.senha) {
-        alert('Por favor, preencha ambos os campos');
-        return;
-    }
-
-    const response = await fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form),
-    });
-
+  const handleGet = async () => {
+    
     const res = await fetch('http://localhost:3000/login');
 
-    const data = res.json()
+    const data = await res.json();
 
-    if (response.ok) {
-        
+    localStorage.setItem('User', JSON.stringify(data));
+  }
+  
+    
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    if (!form.email || !form.senha) {
+      alert('Por favor, preencha ambos os campos');
+      return;
+    }
+  
+    try {
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+  
+      if (response.ok) {
+
+        const data = await response.json();
+        localStorage.setItem('User', JSON.stringify(data));
         setForm({ email: '', senha: '' });
-        localStorage.setItem('user', JSON.stringify(data));
+  
+        const isProfissional = data.id_profissional ? true : false;
+  
+        // Atualizando o estado do usuário de uma vez só
+        setUser({ logado: true, profissional: isProfissional });
+  
+        console.log("Usuário atualizado:", { logado: true, profissional: isProfissional });
+  
         navigate('/');
-      
-    } else {
+      } else {
         const errorData = await response.json();
         alert('Erro no login: ' + errorData.message);
+      }
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      alert('Erro ao fazer login, tente novamente mais tarde.');
     }
-};
+  };
+  
+    
 
   return (
     <div className="login-container">

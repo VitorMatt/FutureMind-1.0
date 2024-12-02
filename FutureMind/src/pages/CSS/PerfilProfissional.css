@@ -172,6 +172,7 @@
     font-size: 1.2em;
     border-radius: 15px;
     resize: none;
+    cursor: pointer;
 }
 
 .button-anotações{
@@ -189,6 +190,7 @@
     padding: 4.9%;
     font-size: 1.2em;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .button-anotações button:hover{
@@ -212,8 +214,11 @@
 }
 
 .editar-perfil-profissional{
-    display: block;
+    display: flex;
     margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color:rgb(255, 255, 255);
     border-radius: 10px;
     width: 70%;
@@ -222,49 +227,48 @@
 
 .container-inputs-editar{
     display: flex;
+    width: 76%;
+    margin: auto;
     justify-content: center;
     align-items: center;
-    padding: 2%;
 }
-.container-inputs-editar p{
 
-    width: fit-content;
-    
+.container-inputs-editar p{
+    width: fit-content;   
 }
 
 .div1-editar{
-    display: block;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     font-size: 1.5em;
     width: 50%;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+    padding-right: 5%;
 }
 
 .div1-editar input{
     background-color: #CAD7EB;
-    opacity: 40%;
-    color: #5A789F;
+    color: var(--cor-4);
     border: none;
     width: 100%;
     padding: 5%;
     border-radius: 13px;
-    
+    cursor: pointer;
 }
 
 .div1-editar input::placeholder{
-    color: #012A4A;
+    color: var(--cor-4);
     font-size: medium;
 }
 
 .div_container_pinput{
    
     display: flex;
-    align-items: center;
-    text-align: center;
     margin: auto;
     justify-content: center;
+    width: 100%;
 
 }
 
@@ -275,60 +279,125 @@
 
 .div2-editar{
 
-    display: block;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-size: 1.5em;
     width: 50%;
     text-align: center;
-    
+    padding-right: 5%;
 }
-
-
 
 .div2-editar input{
     
     background-color: #CAD7EB;
-    opacity: 40%;
-    color: #012A4A;
+    color: var(--cor-4);
     border: none;
     width: 100%;
     padding: 5%;
     border-radius: 13px;
+    cursor: pointer;
 }
 
 .div2-editar input::placeholder{
-    color: #012A4A;
+    color: var(--cor-4);
     font-size: medium;
 }
 
-.container-areas{
-    display: block;
-    padding: 3%;
-}
-
-.div-areas{
+.divs-editar{
     display: flex;
-    margin: auto;
+    width: 100%;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    background-color: #5A789F;
-    border-radius: 15px;
-    color: white;
-    padding: 2%;
+    border-bottom: solid #5A789F;
+    border-top: solid #5A789F;
 }
 
-.as-areas{
-    /* background-color: #5A789F; */
+.input-abordagem-perfil{
     display: flex;
     flex-direction: column;
-    /* margin: auto;
-    justify-content: center;
-    align-items: center; */
-    width: 50%;
-    font-size: 1.7em;
+    width: 58.5%;
+    border-radius: 10px;
+    border: none;
+    color: var(--cor-4);
+    font-size: medium;
+    padding-right: 2%;
+    padding-top: 2%;
 }
 
+.input-abordagem-perfil select{
+    width: 100%;
+    cursor: pointer;
+}
 
+.input-abordagem-perfil p{
+    color: #000;
+    font-size: 1.5em;
+}
+
+.input-horario-perfil{
+    display: flex;
+    flex-direction: column;
+    width: 58.5%;
+    border-radius: 10px;
+    border: none;
+    color: var(--cor-4);
+    font-size: medium;
+    padding-right: 2%;
+}
+
+.input-horario-perfil select{
+    width: 100%;
+    cursor: pointer;
+}
+
+.input-horario-perfil p{
+    color: #000;
+    font-size: 1.5em;
+}
+
+.div-buttons-salvar-cancelar{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-top: 5%;
+    padding-right: 20%;
+    padding-bottom: 3%;
+    width: 97%;
+    gap: 3%;
+}
+
+.div-buttons-salvar-cancelar button{
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+    font-size: 1.2em;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.div-buttons-salvar-cancelar button:hover{
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.div-buttons-salvar-cancelar button:active{
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.contador{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 73%;
+    /* background-color: #000; */
+
+}
 
 .container-agendamento{
 
@@ -360,6 +429,7 @@
     font-size: 4em;
     color: #5A789F; 
     padding-left: 40px;
+    cursor: pointer;
 }
 
 .button_voltar{
@@ -370,7 +440,9 @@
     font-size: 4em;
     color: #5A789F; 
     padding-right: 40px;
+    cursor: pointer;
 }
+
 
 .semana{
 
@@ -380,23 +452,23 @@
 }
 .div_informações_ag{
     
-    width: 19%;
+    width: 28%;
     background-color: #ffffff;
     font-weight: 500;
     border-radius: 10px;
-    height: 250px;
+    height: 335px;
 }
 
 .dias_semana{
 
     padding-top: 5%;
-    padding-left: 4.5%;
+    padding-left: 4%;
     display: flex;
     justify-content: flex-start;
     text-align: center;
     margin: 0;
-    width: 100%;
-    height: 650px;
+    width: 98%;
+    height: 900px;
     flex-wrap: wrap;
     gap: 5%;
     color: #000000;
@@ -417,6 +489,11 @@
     text-align: center;
     border-top-right-radius: 10px ;
     border-top-left-radius: 10px;
+}
+
+.Nome_dia_da_semana{
+    text-transform: capitalize;
+  
 }
 
 .mes-ano{
@@ -442,31 +519,214 @@
     text-align: start;
 }
 
+
 .os-itens{
+    display: flex;
+    flex-direction: column;
     text-transform: capitalize;
-    display: block;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+    height: 308px;
     font-size: 1.2em;
+    
 }
+
+.div_para_itens{
+
+    width: 60%;
+    justify-content: start;
+}
+
+.div_para_itens p{
+
+    width: fit-content;
+}
+
+
+.div_buttons_trocar_agendamentos{
+
+    display: flex;
+    width: 100%;
+
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.buttons_trocar_agendamento{
+
+    width: 12%;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
 
 .buttons-itens{
     display: flex;
-    width: 110%;
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 5%;
     /* background-color: #5A789F; */
 }
 
 .cancelar{
-    width: 90%;
+    width: 50%;
+    height: 40px;
     background-color: #5A789F;
     border: none;
     color: white;
     border-radius: 100px;
+    cursor: pointer;
+}
+
+.cancelar:hover{
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.cancelar:active{
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .check{
-    width: 30%;
+    width: 20%;
     background-color: #5a789f00;
     border: none;
     border-radius: 100px;
+    cursor: pointer;
 }
 
+.check img:hover{
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.check img:active{
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.confirmacao-exclusao {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .confirmacao-exclusao p {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .confirmacao-exclusao button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .confirmacao-exclusao button:hover {
+    background-color: #f0f0f0;
+  }
+
+<<<<<<< HEAD
+  .div-esp {
+
+    max-width: 200px;
+    height: 150px;
+    overflow-x: auto; 
+    /* border: 1px solid #ccc;  */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.div-esp::-webkit-scrollbar-track{
+
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.div-esp::-webkit-scrollbar-thumb{
+
+
+    background-color: var(--cor-1);
+    border-radius: 3px;
+}
+
+.div-esp::-webkit-scrollbar{
+
+
+    width: 10px;
+}
+
+.div-desc{
+
+    width: 500px;
+    height: 150px;
+    overflow-x: auto; 
+    border: 1px solid #ccc; 
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.div-desc::-webkit-scrollbar-track{
+
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.div-desc::-webkit-scrollbar-thumb{
+
+
+    background-color: var(--cor-1);
+    border-radius: 3px;
+}
+
+.div-desc::-webkit-scrollbar{
+
+
+    width: 10px;
+}
+
+
+/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
+=======
+  .container-especi{
+    color: #5A789F;
+  }
+
+.salva{
+    width: 25%;
+    background-color: #5A789F;
+    color: white;
+    border: none;
+}
+
+.a{
+    width: 15%;
+    background-color: #ffffff;
+    border: 1px solid #5A789F;
+    color: #014F86;
+}
+>>>>>>> e83657b1ca1faaf2f7b2652f50d34ca29d28bca7
