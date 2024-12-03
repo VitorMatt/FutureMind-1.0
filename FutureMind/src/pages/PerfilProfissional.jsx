@@ -17,36 +17,39 @@ import { useNavigate } from 'react-router-dom'
 
 function PerfilProfissional() {
 
+<<<<<<< HEAD
 //   const { user, setUser } = useContext(GlobalContext);
+=======
+<<<<<<< HEAD
+  // const { user, setUser } = useContext(GlobalContext);
+=======
+  const { user, setUser } = useContext(GlobalContext);
+>>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
 
-//   var userData = JSON.parse(localStorage.getItem('User'));
+  var userData = JSON.parse(localStorage.getItem('User'));
 
-//   userData.especializacao = userData.especializacao.replace('{', '')
-//   userData.especializacao = userData.especializacao.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('{', '')
+  userData.especializacao = userData.especializacao.replace('{', '')
+  userData.especializacao = userData.especializacao.replace('}', '')
+  userData.preferencias = userData.preferencias.replace('}', '')
+  userData.preferencias = userData.preferencias.replace('{', '')
  
-//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
+ for (let i=0; i<(userData.especializacao.length * 2); i++) {
 
-//   userData.especializacao = userData.especializacao.replace('"', '')
-//  }
+  userData.especializacao = userData.especializacao.replace('"', '')
+ }
 
-//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
+ for (let i=0; i<(userData.preferencias.length * 2); i++) {
 
-//   userData.preferencias = userData.preferencias.replace('"', '')
-//  }
+  userData.preferencias = userData.preferencias.replace('"', '')
+ }
 
-//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
-//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+ userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+ userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
 
-//  const navigate = useNavigate();
-//  const sair = () => {
-
-//   setUser({...user, logado: false});
-//   navigate('/');
-//  }
+ const navigate = useNavigate();
  
-const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o João Mjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjiguel e sou um ótimo profissional na minha área.'}
+const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o joão miguel e sou um ótimo profissional na minha área. Vamos consultar nosso próprio espírito que consola por dentro e grita para poder escapar da dor. Sou um ótimo profissional, eu juro!'}
 const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
 
   const [dataAtual, setDataAtual] = useState(new Date());
@@ -171,6 +174,8 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     const { value, checked } = event.target;
   };
 
+  const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+
   return (
     <div className='perfilPro-container'>
       
@@ -189,8 +194,17 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
                      <div className='nick-usuario'>
+<<<<<<< HEAD
                       {/* <h1>{userData.nome_completo}</h1>
+=======
+<<<<<<< HEAD
+                       {/* <h1>{userData.nome_completo}</h1>
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
                       <p>{userData.email}</p> */}
+=======
+                      <h1>{userData.nome_completo}</h1>
+                      <p>{userData.email}</p>
+>>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
                     </div>
                  </div> 
     
@@ -200,13 +214,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                         <div className="div-esp">
 
-                        {/* {
+                        {
                           userData.preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
                           ))
-                        } */}
+                        }
                         </div>
                     </div>
                     <div className='div-menor-info'>
@@ -214,13 +228,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         
                         <div className="div-esp">
 
-                        {/* {
+                        {
                           userData.especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
                           ))
-                        } */}
+                        }
                         </div>
                     </div>
                     <div className='descricao'>
@@ -464,18 +478,6 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                     </div>
                     ))}
                   </div>
-                  {/* <div className="opções-aparecer">
-                    <h3>Opções selecionadas:</h3>
-                    {selecionarOpcoesAreas.length > 0 ? (
-                    <ul>
-                    {selecionarOpcoesAreas.map((opcoesAreas, index) => (
-                    <li key={index}>{opcoesAreas}</li>
-                    ))}
-                    </ul>
-                    ) : (
-                    <p>Nenhuma opção selecionada.</p>
-                    )}
-                  </div> */}
                 </div>
 
                 <div className="container-especi">
@@ -495,18 +497,6 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                     </div>
                     ))}
                   </div>
-                  {/* <div className="opções-aparecer">
-                    <h3>Opções selecionadas:</h3>
-                    {selecionarOpcoesEspecializacoes.length > 0 ? (
-                    <ul>
-                    {selecionarOpcoesEspecializacoes.map((opcoesEspecializacoes, index) => (
-                    <li key={index}>{opcoesEspecializacoes}</li>
-                    ))}
-                    </ul>
-                    ) : (
-                    <p>Nenhuma opção selecionada.</p>
-                    )}
-                  </div> */}
                 </div>
                   
                 </div>
@@ -516,7 +506,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                 <div className='div-buttons-salvar-cancelar'>
                 <button className='a'>Excluir conta</button>
-                  <button className='a'> Sair da Conta</button>
+                  <button className='a' onClick={handleSair}> Sair da Conta</button>
                   {/* onClick={sair} */}
                   <button className='a'>Cancelar edição</button>
                   <button className='salva'>Salvar</button>

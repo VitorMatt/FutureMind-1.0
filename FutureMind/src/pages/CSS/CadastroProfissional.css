@@ -171,12 +171,12 @@ input[type="file"] {
     height: 350px;
 }
 
-.input-text{
+/* .input-text{
 
     display: flex;
     flex-direction: column;
     padding-bottom: 5%;
-}
+} */
 .checkboxs2{
     width: 100%;
     height: 100%;
@@ -433,8 +433,3 @@ input[type="checkbox"]:focus {
     padding-left: 0.5%;
 }
 
-
-
-
-
- 

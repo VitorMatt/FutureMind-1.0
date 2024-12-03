@@ -673,7 +673,12 @@
   }
 
   .div-esp {
+<<<<<<< HEAD
     max-width: 200px;
+=======
+
+    max-width: 250px;
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
     height: 150px;
     overflow-x: auto; 
     /* border: 1px solid #ccc;  */
@@ -695,10 +700,38 @@
     width: 10px;
 }
 
+.container-areas{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 20px auto;
+    padding: 2%;
+    border-radius: 13px;
+    height: 191px;
+    padding-left: 5%;
+    color: #5A789F;
+  }
+  
+  .container-especi{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 20px auto;
+    padding: 2%;
+    border-radius: 13px;
+    color: #5A789F;
+  }
+  
 .div-desc{
+<<<<<<< HEAD
     width: 500px;
+=======
+
+    width: 420px;
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
     height: 150px;
-    overflow-x: auto; 
+    overflow-x: 0;
+    overflow-y: auto; 
     border: 1px solid #ccc; 
     padding: 10px;
     box-sizing: border-box;
@@ -718,4 +751,126 @@
     width: 10px;
 }
 
+<<<<<<< HEAD
 /*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
+=======
+div::-webkit-scrollbar-track{
+
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+div::-webkit-scrollbar-thumb{
+
+
+    background-color: var(--cor-1);
+    border-radius: 3px;
+}
+
+div::-webkit-scrollbar{
+
+
+    width: 12px;
+}
+
+
+
+/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
+   padding: 20px;
+
+}
+
+.detalhes-conteudo{
+        
+    position: absolute;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    z-index: 1000;
+    transform: translateY(-50%);
+
+}
+          
+/* Adicionando a seta */
+.detalhes-conteudo::before {
+
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #5A789F transparent transparent;
+    left: -10px; /* Posiciona a seta na lateral esquerda */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%);
+
+}
+          
+.detalhes-conteudo h2 {
+    margin-top: 0;
+    color: #0078d4;
+}
+          
+.detalhes-conteudo p {
+    margin: 0.5rem 0;
+ }
+
+.fechar-detalhes {
+    
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.fechar-detalhes:hover {
+    background-color: darkred
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Configura duas colunas */
+    gap: 10px; /* Espaçamento entre itens */
+  }
+
+  
+.container-areas, .container-especi h2 {
+    color: var(--cor-1);
+  }
+  
+  
+  .options-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+  }
+  
+  
+.labelareas{
+    padding-left: 15%;
+    font-size: 1.3em;
+    cursor: pointer;
+  }
+  
+.labelespeci{
+    padding-left: 15%;
+    font-size: 1.3em;
+    cursor: pointer;
+  }
+                    
+@media (max-width: 480px) {
+    .options-container {
+    grid-template-columns: 1fr; /* Ajusta para uma coluna em telas menores */
+}}
+
+
+.container-escolhas{
+    width: 76%;
+    padding-top: 5%;
+}
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644

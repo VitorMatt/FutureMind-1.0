@@ -42,6 +42,7 @@ function Inicio() {
 //   const filtraProfissionais = () => {
 //     if (!profissionais || profissionais.length === 0) return;
     
+<<<<<<< HEAD
 //     profissionais.forEach((profissional) => {
 //       if (profissional.preferencias.includes('Adultos')) {
 //         setAdultos((prev) => [...prev, profissional]);
@@ -59,10 +60,27 @@ function Inicio() {
 // =======
 // <<<<<<< HEAD
 // >>>>>>> cdcd0206886c09f3da9d719c7cd5ee03f7c8b9ec
+=======
+    profissionais.forEach((profissional) => {
+      if (profissional.preferencias.includes('Adultos')) {
+        setAdultos((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Idosos')) {
+        setIdosos((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Crianças')) {
+        setCriancas((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('PCDs')) {
+        setPcds((prev) => [...prev, profissional]);
+      }
+<<<<<<< HEAD
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
 
   
 //       if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
 
+<<<<<<< HEAD
 //         setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
 // =======
 //       if (profissional.preferencias.includes('Pré-Adolescentes')) {
@@ -78,6 +96,29 @@ function Inicio() {
 //       }
 //     });
 //   };
+=======
+        setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
+
+      if (profissional.preferencias.includes('Pré-Adolescentes')) {
+        setPreAdolescentes((prev) => [...prev, profissional]);
+
+      }
+      if (profissional.preferencias.includes('Adolescentes')) {
+        setAdolescentes((prev) => [...prev, profissional]);
+      }
+    }});
+=======
+      if (profissional.preferencias.includes('Pré-Adolescentes')) {
+        setPre_adolescentes((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Adolescentes')) {
+        setAdolescentes((prev) => [...prev, profissional]);
+      };
+    });
+>>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
+  };
+
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
 
@@ -121,26 +162,6 @@ function Inicio() {
       }, {})
     );
 
-  const clickUm = (index) => {
-
-    const buscaUmAux = [...buscaUm];
-    buscaUmAux[index].selecionado = !buscaUmAux[index].selecionado;
-    setBuscaUm(buscaUmAux);
-  }
-
-  const clickDois = (index) => {
-
-    const buscaDoisAux = [...buscaDois];
-    buscaDoisAux[index].selecionado = !buscaDoisAux[index].selecionado;
-    setBuscaDois(buscaDoisAux);
-  }
-
-  const clickTres = (index) => {
-
-    const buscaTresAux = [...buscaTres];
-    buscaTresAux[index].selecionado = !buscaTresAux[index].selecionado;
-    setBuscaTres(buscaTresAux);
-  }
 
   const getWeekDays = (startDate) => {
     const days = [];
@@ -204,13 +225,68 @@ function Inicio() {
     }, 3500);
   };
 
-  const handleAgendamento = (id) => {
+  const [agendamento, setAgendamento] = useState({});
+  const userLog = JSON.parse(localStorage.getItem('User'));
+
+  const handleAgendamento = async(id) => {
 
     if (selectedDate && selectedTime) {
       console.log(`Agendado para ${selectedDate} às ${selectedTime} com profissional ${id}`);
     }
+
+    setAgendamento({horario: selectedTime, data: selectedDate, profissional: id, paciente: userLog.id_paciente});
+    try {
+
+      const response = await fetch('http://localhost:3000/agendamento', {
+        
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(agendamento)
+      });
+    } catch (err) {
+
+      console.log('Erro');
+    }
     exibirAnimacaoConcluido(id);
   };
+
+  const buscarProfissionais = async () => {
+    try {
+        const queryString = preferenciasSelecionadas.join(','); 
+        const response = await fetch(`http://localhost:3000/api/profissionais?preferencias=${encodeURIComponent(queryString)}`);
+        const data = await response.json();
+        console.log(data); 
+    } catch (error) {
+        console.error('Erro ao buscar profissionais:', error.message);
+    }
+};
+
+const [preferenciasSelecionadas, setPreferenciasSelecionadas] = useState([]);
+
+const togglePreferencia = (descricao) => {
+    setPreferenciasSelecionadas((prev) =>
+        prev.includes(descricao)
+            ? prev.filter((item) => item !== descricao) // Remove se já está selecionada
+            : [...prev, descricao] // Adiciona se não está selecionada
+    );
+};
+
+const clickUm = (index) => {
+    buscaUm[index].selecionado = !buscaUm[index].selecionado;
+    togglePreferencia(buscaUm[index].descricao);
+};
+
+const clickDois = (index) => {
+    buscaDois[index].selecionado = !buscaDois[index].selecionado;
+    togglePreferencia(buscaDois[index].descricao);
+};
+
+const clickTres = (index) => {
+    buscaTres[index].selecionado = !buscaTres[index].selecionado;
+    togglePreferencia(buscaTres[index].descricao);
+};
 
   return (
     <div className='inicio-container'>
@@ -263,9 +339,9 @@ function Inicio() {
             </div>
           </div>
           <div className="button-container">
-            <button>
-              Buscar
-            </button>
+          <button onClick={buscarProfissionais}>
+               Buscar
+          </button>
           </div>
         </div>
 
@@ -432,13 +508,13 @@ function Inicio() {
 
         <button
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -491,18 +567,18 @@ function Inicio() {
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ {item.preco} - {item.tempo}min
+                  R$ {item.preco}
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {
-
-                    item.especialidades?.map((item, index) => (
-                      <div key={index} className='especialidade-button'>
-                      {item}
-                    </div>
-                  ))
-                }
+                {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -514,7 +590,7 @@ function Inicio() {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  {item.nome}
+                  {item.nome_completo}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -522,7 +598,7 @@ function Inicio() {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                  {item.sobre}
+                  {item.descricao}
                 </p>
               </div>
               <div className="abordagem">
@@ -608,13 +684,13 @@ function Inicio() {
 
         <button 
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -666,18 +742,18 @@ function Inicio() {
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ {item.preco} - {item.tempo}min
+                  R$ {item.preco}
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {
-
-                    item.especialidades?.map((item, index) => (
-                      <div key={index} className='especialidade-button'>
-                      {item}
-                    </div>
-                  ))
-                }
+                   {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -689,7 +765,7 @@ function Inicio() {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  {item.nome}
+                  {item.nome_completo}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -697,7 +773,7 @@ function Inicio() {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                  {item.sobre}
+                  {item.descricao}
                 </p>
               </div>
               <div className="abordagem">
@@ -855,18 +931,18 @@ function Inicio() {
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ {item.preco} - {item.tempo}min
+                  R$ {item.preco}
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {
-
-                    item.especialidades?.map((item, index) => (
-                      <div key={index} className='especialidade-button'>
-                      {item}
-                    </div>
-                  ))
-                }
+                   {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -878,7 +954,7 @@ function Inicio() {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  {item.nome}
+                  {item.nome_completo}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -886,7 +962,7 @@ function Inicio() {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                  {item.sobre}
+                  {item.descricao}
                 </p>
               </div>
               <div className="abordagem">
@@ -1033,14 +1109,14 @@ function Inicio() {
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {
-
-                    item.especialidades?.map((item, index) => (
-                      <div key={index} className='especialidade-button'>
-                      {item}
-                    </div>
-                  ))
-                }
+                   {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -1208,14 +1284,14 @@ function Inicio() {
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {
-
-                    item.especialidades?.map((item, index) => (
-                      <div key={index} className='especialidade-button'>
-                      {item}
-                    </div>
-                  ))
-                }
+                   {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -1383,14 +1459,14 @@ function Inicio() {
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {
-
-                    item.especialidades?.map((item, index) => (
-                      <div key={index} className='especialidade-button'>
-                      {item}
-                    </div>
-                  ))
-                }
+                   {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -1528,7 +1604,6 @@ function Inicio() {
     <Footer /> 
     </div>
     
-  )
-}
+  )}
 
 export default Inicio
