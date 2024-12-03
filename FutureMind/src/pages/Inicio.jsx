@@ -55,6 +55,7 @@ function Inicio() {
       if (profissional.preferencias.includes('PCDs')) {
         setPcds((prev) => [...prev, profissional]);
       }
+<<<<<<< HEAD
 
   
       if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
@@ -69,7 +70,17 @@ function Inicio() {
         setAdolescentes((prev) => [...prev, profissional]);
       }
     }});
+=======
+      if (profissional.preferencias.includes('Pré-Adolescentes')) {
+        setPre_adolescentes((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Adolescentes')) {
+        setAdolescentes((prev) => [...prev, profissional]);
+      };
+    });
+>>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
   };
+
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
 
@@ -176,10 +187,29 @@ function Inicio() {
     }, 3500);
   };
 
-  const handleAgendamento = (id) => {
+  const [agendamento, setAgendamento] = useState({});
+  const userLog = JSON.parse(localStorage.getItem('User'));
+
+  const handleAgendamento = async(id) => {
 
     if (selectedDate && selectedTime) {
       console.log(`Agendado para ${selectedDate} às ${selectedTime} com profissional ${id}`);
+    }
+
+    setAgendamento({horario: selectedTime, data: selectedDate, profissional: id, paciente: userLog.id_paciente});
+    try {
+
+      const response = await fetch('http://localhost:3000/agendamento', {
+        
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(agendamento)
+      });
+    } catch (err) {
+
+      console.log('Erro');
     }
     exibirAnimacaoConcluido(id);
   };
@@ -440,13 +470,13 @@ const clickTres = (index) => {
 
         <button
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -499,18 +529,18 @@ const clickTres = (index) => {
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ {item.preco} - {item.tempo}min
+                  R$ {item.preco}
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {
-
-                    item.especialidades?.map((item, index) => (
-                      <div key={index} className='especialidade-button'>
-                      {item}
-                    </div>
-                  ))
-                }
+                {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -522,7 +552,7 @@ const clickTres = (index) => {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  {item.nome}
+                  {item.nome_completo}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -530,7 +560,7 @@ const clickTres = (index) => {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                  {item.sobre}
+                  {item.descricao}
                 </p>
               </div>
               <div className="abordagem">
@@ -616,13 +646,13 @@ const clickTres = (index) => {
 
         <button 
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -674,18 +704,18 @@ const clickTres = (index) => {
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ {item.preco} - {item.tempo}min
+                  R$ {item.preco}
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {
-
-                    item.especialidades?.map((item, index) => (
-                      <div key={index} className='especialidade-button'>
-                      {item}
-                    </div>
-                  ))
-                }
+                   {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -697,7 +727,7 @@ const clickTres = (index) => {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  {item.nome}
+                  {item.nome_completo}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -705,7 +735,7 @@ const clickTres = (index) => {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                  {item.sobre}
+                  {item.descricao}
                 </p>
               </div>
               <div className="abordagem">
@@ -863,18 +893,18 @@ const clickTres = (index) => {
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ {item.preco} - {item.tempo}min
+                  R$ {item.preco}
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {
-
-                    item.especialidades?.map((item, index) => (
-                      <div key={index} className='especialidade-button'>
-                      {item}
-                    </div>
-                  ))
-                }
+                   {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -886,7 +916,7 @@ const clickTres = (index) => {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  {item.nome}
+                  {item.nome_completo}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -894,7 +924,7 @@ const clickTres = (index) => {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                  {item.sobre}
+                  {item.descricao}
                 </p>
               </div>
               <div className="abordagem">
@@ -1041,14 +1071,14 @@ const clickTres = (index) => {
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {
-
-                    item.especialidades?.map((item, index) => (
-                      <div key={index} className='especialidade-button'>
-                      {item}
-                    </div>
-                  ))
-                }
+                   {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -1216,14 +1246,14 @@ const clickTres = (index) => {
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {
-
-                    item.especialidades?.map((item, index) => (
-                      <div key={index} className='especialidade-button'>
-                      {item}
-                    </div>
-                  ))
-                }
+                   {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -1391,14 +1421,14 @@ const clickTres = (index) => {
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {
-
-                    item.especialidades?.map((item, index) => (
-                      <div key={index} className='especialidade-button'>
-                      {item}
-                    </div>
-                  ))
-                }
+                   {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -1536,7 +1566,6 @@ const clickTres = (index) => {
     <Footer /> 
     </div>
     
-  )
-}
+  )}
 
 export default Inicio

@@ -1,7 +1,17 @@
+<<<<<<< HEAD
 /* Estilo geral */
 
+=======
+/* Estilo geral
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+>>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
   
-  /* Container principal */
+
   .agenda-container {
     position: relative;
     max-width: 1200px;
@@ -11,9 +21,8 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
-  /* Calendário */
-  .calendar {
+   */
+  /* .calendar {
     background: white;
     border-radius: 10px;
     overflow: hidden;
@@ -88,8 +97,7 @@
   .event-card:active{
     transform: translateY(2px); 
   }
-  
-  /* Detalhes do evento */
+
   .event-details {
     position: absolute;
     background: white;
@@ -101,7 +109,6 @@
     transform: translateY(-50%);
   }
   
-  /* Adicionando a seta */
   .event-details::before {
     content: "";
     position: absolute;
@@ -114,8 +121,8 @@
     top: 50%; /* Centraliza verticalmente */
     transform: translateY(-50%);
   }
-  
-  .event-details h2 {
+   */
+  /* .event-details h2 {
     margin-top: 0;
     color: #0078d4;
   }
@@ -124,3 +131,21 @@
     margin: 0.5rem 0;
   }
   
+<<<<<<< HEAD
+=======
+  button {
+    background: #0078d4;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s ease;
+  }
+  
+  button:hover {
+    background: #005bb5;
+  }  */
+  
+>>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089

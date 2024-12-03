@@ -504,6 +504,39 @@ app.delete('/admin-paciente', async (req, res) => {
     }
 });
 
+app.post('/agendamento', async(req, res) => {
+
+    const { horario, data, profissional, paciente} = req.body;
+
+    try {
+
+        const result = await pool.query('INSERT INTO agendamento (horario, data, fk_id_profissionais, fkpaciente_id_paciente) VALUES ($1, $2, $3, $4) RETURNING *', [
+            horario,
+            data,
+            profissional,
+            paciente
+        ]);
+
+        res.status(200).json(result.rows);
+    } catch (err) {
+
+        console.log('erro')
+    }
+});
+
+app.get('/agendamento', async (req, res) => {
+
+    try {
+
+        const result = await pool.query('SELECT * FROM agendamento');
+
+        res.status(200).json(result.rows);
+    } catch (err) {
+
+        console.log({Erro: err.message});
+    }
+});
+
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');
 });
