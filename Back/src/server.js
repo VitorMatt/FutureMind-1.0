@@ -507,3 +507,26 @@ app.delete('/admin-paciente', async (req, res) => {
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');
 });
+
+
+app.get('/api/profissionais', async (req, res) => {
+    const { preferencias } = req.query; // Recebe preferências como um array de strings
+
+    try {
+        if (!preferencias) {
+            const result = await pool.query('SELECT * FROM profissionais');
+            return res.status(200).json(result.rows);
+        }
+
+        // Converte as preferências em condições SQL
+        const preferenciasArray = preferencias.split(','); // Exemplo: "Adultos,Crianças"
+        const placeholders = preferenciasArray.map((_, index) => `$${index + 1}`).join(' OR preferencias LIKE ');
+        const query = `SELECT * FROM profissionais WHERE preferencias LIKE ${placeholders}`;
+
+        const result = await pool.query(query, preferenciasArray.map((pref) => `%${pref}%`));
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ message: 'Erro ao buscar profissionais' });
+    }
+});

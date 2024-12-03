@@ -110,26 +110,6 @@ function Inicio() {
       }, {})
     );
 
-  const clickUm = (index) => {
-
-    const buscaUmAux = [...buscaUm];
-    buscaUmAux[index].selecionado = !buscaUmAux[index].selecionado;
-    setBuscaUm(buscaUmAux);
-  }
-
-  const clickDois = (index) => {
-
-    const buscaDoisAux = [...buscaDois];
-    buscaDoisAux[index].selecionado = !buscaDoisAux[index].selecionado;
-    setBuscaDois(buscaDoisAux);
-  }
-
-  const clickTres = (index) => {
-
-    const buscaTresAux = [...buscaTres];
-    buscaTresAux[index].selecionado = !buscaTresAux[index].selecionado;
-    setBuscaTres(buscaTresAux);
-  }
 
   const getWeekDays = (startDate) => {
     const days = [];
@@ -201,6 +181,42 @@ function Inicio() {
     exibirAnimacaoConcluido(id);
   };
 
+  const buscarProfissionais = async () => {
+    try {
+        const queryString = preferenciasSelecionadas.join(','); // Junta as preferências em uma string
+        const response = await fetch(`http://localhost:3000/api/profissionais?preferencias=${encodeURIComponent(queryString)}`);
+        const data = await response.json();
+        console.log(data); // Substitua por lógica de exibição
+    } catch (error) {
+        console.error('Erro ao buscar profissionais:', error.message);
+    }
+};
+
+const [preferenciasSelecionadas, setPreferenciasSelecionadas] = useState([]);
+
+const togglePreferencia = (descricao) => {
+    setPreferenciasSelecionadas((prev) =>
+        prev.includes(descricao)
+            ? prev.filter((item) => item !== descricao) // Remove se já está selecionada
+            : [...prev, descricao] // Adiciona se não está selecionada
+    );
+};
+
+const clickUm = (index) => {
+    buscaUm[index].selecionado = !buscaUm[index].selecionado;
+    togglePreferencia(buscaUm[index].descricao);
+};
+
+const clickDois = (index) => {
+    buscaDois[index].selecionado = !buscaDois[index].selecionado;
+    togglePreferencia(buscaDois[index].descricao);
+};
+
+const clickTres = (index) => {
+    buscaTres[index].selecionado = !buscaTres[index].selecionado;
+    togglePreferencia(buscaTres[index].descricao);
+};
+
   return (
     <div className='inicio-container'>
       <Navbar />            
@@ -252,9 +268,9 @@ function Inicio() {
             </div>
           </div>
           <div className="button-container">
-            <button>
-              Buscar
-            </button>
+          <button onClick={buscarProfissionais}>
+               Buscar
+          </button>
           </div>
         </div>
 
@@ -1494,7 +1510,7 @@ function Inicio() {
       {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
       {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
       {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
-                selectedTime
+               selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
               }</span>}

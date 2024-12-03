@@ -1,98 +1,78 @@
-.body-container{
+/* Código original */
+.body-container {
   height: 100vh;
   width: 100%;
 }
 
-.h1_Profissionais_adm{
-  
+.h1_Profissionais_adm {
   padding-top: 5%;
   padding-left: 2.3%;
   font-size: 3em;
   color: #5A789F;
-
 }
 
-.h1_Paciente_adm{
-
+.h1_Paciente_adm {
   padding-left: 2.3%;
   padding-top: 3%;
   font-size: 3em;
-  color: #5A789F; 
-
+  color: #5A789F;
 }
 
-.container_padrao_adm{
-
+.container_padrao_adm {
   display: flex;
   margin: auto;
   width: 100%;
   height: fit-content;
   padding-top: 3%;
-
 }
 
-.Div_profissionais_adm{
-
+.Div_profissionais_adm {
   display: flex;
-  margin:auto;
+  margin: auto;
   height: 100%;
   font-size: 1em;
   padding: 2%;
   background-color: #5A789F;
   border-radius: 15px;
   color: white;
-  
 }
 
-.Div_profissionais_adm h1{
-
+.Div_profissionais_adm h1 {
   font-size: 2.5em;
-
 }
 
-.div_um_interna_profissional{
-  
+.div_um_interna_profissional {
   display: flex;
   margin: auto;
   padding: 1.7%;
   width: 40%;
   flex-direction: column;
-
 }
 
-.div_um_interna_profissional img{
-
+.div_um_interna_profissional img {
   width: 65%;
   justify-content: center;
   align-items: center;
   text-align: center;
-  
-   
 }
 
-.div_dois_interna_profissional{
-  
+.div_dois_interna_profissional {
   width: 60%;
   height: 100%;
-  
 }
 
-
-.p_padrao{
-
+.p_padrao {
   font-weight: bold;
   font-size: 1.5em;
   width: fit-content;
 }
 
-.arroba_profissionais{
-
+.arroba_profissionais {
   font-size: 22px;
   width: fit-content;
 }
 
-.botoes_adm{
-
+.botoes_adm {
   font-size: 130%;
   width: 150px;
   height: 38px;
@@ -100,95 +80,139 @@
   border-radius: 15px;
   border: 1px solid var(--cor-2);
   color: var(--cor-1);
-  
-  
 }
 
-.botoes_adm:hover{
-
+.botoes_adm:hover {
   transition: 1s;
   transform: scale(1.1);
   background-color: #C1DFF4;
   color: var(--cor-4);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-
 }
 
-.div_botao_um_adm{
-
-width: fit-content;
-
+.div_botao_um_adm {
+  width: fit-content;
 }
 
-.div_botao_dois_adm{
+.div_botao_dois_adm {
   width: fit-content;
   padding-top: 5%;
-
-}
-.div_s{
-
-   
-   padding-bottom: 3%;
-   
 }
 
-.div_s .swiper-button-prev{
+.div_s {
+  padding-bottom: 3%;
+}
 
+.div_s .swiper-button-prev {
   left: var(--swiper-navigation-sides-offset, 50px) !important;
   color: #5A789F !important;
-  
 }
 
-.div_s .swiper-button-next{
-
+.div_s .swiper-button-next {
   right: var(--swiper-navigation-sides-offset, 50px) !important;
   color: #5A789F !important;
-
 }
 
-.informacao_geral{
-
-   font-size: 1.2em;
-   
+.informacao_geral {
+  font-size: 1.2em;
 }
 
-
-.div_descrição{
-
-   background-color: white;
-   color: #5A789F;
-   padding: 5%;
-   flex-wrap: wrap;
-   border-radius: 15px;
-
+.div_descrição {
+  background-color: white;
+  color: #5A789F;
+  padding: 5%;
+  flex-wrap: wrap;
+  border-radius: 15px;
 }
 
-.text_adm{
-
-   resize: none;
-   min-height: 150px;
-   width: 90%;
-   padding: 1.5%;
-   font-size: 1.5em;
-   border: none;
-   background-color: #CAD7EB;
-   border-radius: 10px;
-   opacity: 40%;
-   color: black;
+.text_adm {
+  resize: none;
+  min-height: 150px;
+  width: 90%;
+  padding: 1.5%;
+  font-size: 1.5em;
+  border: none;
+  background-color: #CAD7EB;
+  border-radius: 10px;
+  opacity: 40%;
+  color: black;
 }
 
-.div_arb{
+.div_arb {
   display: flex;
   flex-direction: column;
   margin: 0;
   justify-content: center;
   align-items: center;
   text-align: center;
-  
 }
 
-.divs_informações_pa{
+.divs_informações_pa {
+  padding-top: 5%;
+}
 
- padding-top: 5%;
+/* Regras de Responsividade */
+@media screen and (max-width: 1024px) {
+  .h1_Profissionais_adm,
+  .h1_Paciente_adm {
+    font-size: 2.5em;
+    text-align: center;
+  }
 
+  .container_padrao_adm {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .div_um_interna_profissional {
+    width: 80%;
+  }
+
+  .div_dois_interna_profissional {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Div_profissionais_adm {
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+  }
+
+  .div_um_interna_profissional img {
+    width: 80%;
+  }
+
+  .botoes_adm {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .h1_Profissionais_adm,
+  .h1_Paciente_adm {
+    font-size: 2em;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .Div_profissionais_adm {
+    font-size: 0.9em;
+    padding: 5%;
+  }
+
+  .div_um_interna_profissional img {
+    width: 100%;
+  }
+
+  .botoes_adm {
+    font-size: 1em;
+  }
+
+  .text_adm {
+    font-size: 1em;
+    width: 100%;
+  }
 }
