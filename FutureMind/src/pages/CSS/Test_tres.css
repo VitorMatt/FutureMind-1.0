@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 /* Estilo geral */
 
 =======
@@ -42,15 +44,8 @@ body {
     gap: 1px;
     background: #eaeaea;
   }
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
 
-  .calendar-day{
-    width: 100%;
-    height: 150px;
-    overflow-x: auto; 
-    box-sizing: border-box;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-}
 
 .calendar-day::-webkit-scrollbar-track{
     background: #f1f1f1;
@@ -76,27 +71,65 @@ body {
     display: flex;
     width: 100%;
     height: 30px;
-    background: #5A789F;
-    color: white;
+    background: #5a789f44;
+    color: #014F86;
+    border-top: 1px solid #5A789F;
     margin-top: 0.5rem;
-    border-radius: 5px;
     cursor: pointer;
     justify-content: flex-start;
     align-items: center;
     font-size: 1m;
     transition: transform 0.2s ease;
-  }
-  
-  .event-card:hover {
-    background-color: #C1DFF4;
-    border: none;
-    color: var(--cor-4);
-    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
+    text-transform: capitalize;
   }
 
   .event-card:active{
     transform: translateY(2px); 
   }
+<<<<<<< HEAD
+  
+/* Detalhes do evento */
+.detalhes-agendamento {
+  position: absolute;
+  background: #cad7ebcb;
+  color: #014F86;
+  /* border: 2px solid #014e86ce; */
+  padding: 12px;
+  border-radius: 10px;
+  width: 300px;
+  z-index: 1000;
+  transform: translateY(-45%);
+}
+
+/* Adicionando a seta */
+.detalhes-agendamento::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #cad7ebcd transparent transparent;
+  left: -10px; /* Posiciona a seta na lateral esquerda */
+  top: 50%; /* Centraliza verticalmente */
+  transform: translateY(-50%);
+  z-index: -1; /* Garante que a seta fique atrás do conteúdo principal */
+}
+
+  .detalhes-conteudo{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-transform: capitalize;
+  }
+  
+  .but-det{
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    background-color: #5A789F;
+=======
 
   .event-details {
     position: absolute;
@@ -135,17 +168,73 @@ body {
 =======
   button {
     background: #0078d4;
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
     color: white;
-    padding: 0.5rem 1rem;
     border: none;
-    border-radius: 5px;
+    padding: 3%;
+    font-size: 1em;
+    border-radius: 8px;
     cursor: pointer;
-    margin-top: 1rem;
     transition: background 0.2s ease;
   }
+<<<<<<< HEAD
+
+  .buttons-detalhes-conteudo{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  
+  .but-det:hover {
+    background-color: #C1DFF4;
+    border: none;
+    color: #012A4A;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  }
+
+  .but-det:active{
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .fechar-detalhes{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    background-color: transparent;
+    color: #012A4A;
+    border: none;
+    font-size: 1em;
+    transition: background 0.2s ease;
+  }
+
+  .fechar-detalhes button{
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .fechar-detalhes img{
+    width: 8%;
+  }
+  
+  .detalhes-conteudo h4{
+    height: fit-content;
+    width: fit-content;
+    padding: 0;
+  }
+
+  .agendamento-nome{
+    padding-left: 5%;
+  }
+=======
   
   button:hover {
     background: #005bb5;
   }  */
   
 >>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
