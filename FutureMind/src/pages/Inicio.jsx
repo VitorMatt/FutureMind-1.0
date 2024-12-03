@@ -55,8 +55,23 @@ function Inicio() {
       if (profissional.preferencias.includes('PCDs')) {
         setPcds((prev) => [...prev, profissional]);
       }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> cdcd0206886c09f3da9d719c7cd5ee03f7c8b9ec
+
+  
+      if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
+
+        setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
+=======
       if (profissional.preferencias.includes('Pré-Adolescentes')) {
+<<<<<<< HEAD
         setPre_adolescentes((prev) => [...prev, profissional]);
+=======
+        setPreAdolescentes((prev) => [...prev, profissional]);
+>>>>>>> 88021aabe63e3ad2825255ba02dd79182a669d4e
+>>>>>>> 491928c7902104465c48bc192008dd5ca0ad65bc
       }
       if (profissional.preferencias.includes('Adolescentes')) {
         setAdolescentes((prev) => [...prev, profissional]);

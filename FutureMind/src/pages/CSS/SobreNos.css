@@ -19,8 +19,8 @@
 }
 
 .img{
-    width: 50%;
-    padding-left: 1%;
+    width: 40%;
+    padding-left: 5%;
 }
 
 .conteudoo{
@@ -42,7 +42,7 @@
     color: var(--cor-5);
     text-align: justify;
     width: 36%;
-    font-size: 150%;
+    font-size: 1.5em;
     padding-left: 50%;
     padding-top: 5%;
 }
@@ -52,7 +52,7 @@
 }
 
 .bolinhas{
-    padding-left: 56%;
+    padding-left: 66.5%;
 }
 
 .arvoreSobre{
@@ -62,65 +62,67 @@
 .descricaoFundacao{
     position: absolute;
     color: var(--cor-5);
-    width: 35%;
-    font-size: 150%;
+    width: 36%;
+    font-size: 1.5em;
     padding-left: 15%;
+    padding-top: 3.5%;
+    text-align: justify;
+}
+
+.descricaoFundacao p{
+    padding-top: 5%;
 }
 
 .fotoNossa{
-    background-color: var(--cor-1);
-    width: 30%;
-    height: 50%;
+    width: 25%;
     border-top-right-radius: 100px;
     border-bottom-left-radius: 100px;
     margin: auto;
-    margin-top: 4%;
-    margin-left: 14%;
 }
 
-.divCards{
+.fotoNossa img{
+    width: 100%;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+
+.div-cards{
     display: flex;
-    padding-left: 50%;
-    width: fit-content;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    width: 100%;
 }
 
 .card1{
-    position: absolute;
     background-color: #f2f2f2;
     border: 2px solid var(--cor-1);
     color: var(--cor-1);
     text-align: center;
     width: 10%;
     padding: 1%;
-    left: 40%;
-    top: 150%;
     border-radius: 100px;
 }
 
 .card2{
-    position: absolute;
+
     background-color: #f2f2f2;
     border: 2px solid var(--cor-8);
     color: var(--cor-8);
     text-align: center;
     width: 10%;
     padding: 1.2%;
-    left: 70%;
-    top: 170%;
     border-radius: 100px;
 }
 
 .card3{
-    margin: auto;
+
     background-color: #f2f2f2;
-    border: 2px solid var(--cor-1);
-    color: var(--cor-1);
+    border: 2px solid var(--cor-8);
+    color: var(--cor-8);
     text-align: center;
-    width: 10.2%;
-    padding: 0.9%;
-    height: 20%;
-    left: 45%;
-    top: 190%;
+    width: 12%;
+    padding: 1%;
     border-radius: 100px;
 }
 
