@@ -1,52 +1,4 @@
-/* Estilo geral */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
-  
-  /* Container principal */
-  .agenda-container {
-    position: relative;
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Calendário */
-  .calendar {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  .calendar-header {
-    background: #0078d4;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    font-size: 1.5rem;
-  }
-  
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 1px;
-    background: #eaeaea;
-  }
 
-  .calendar-day{
-    width: 100%;
-    height: 150px;
-    overflow-x: auto; 
-    box-sizing: border-box;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-}
 
 .calendar-day::-webkit-scrollbar-track{
     background: #f1f1f1;
@@ -72,82 +24,120 @@ body {
     display: flex;
     width: 100%;
     height: 30px;
-    background: #5A789F;
-    color: white;
+    background: #5a789f44;
+    color: #014F86;
+    border-top: 1px solid #5A789F;
     margin-top: 0.5rem;
-    border-radius: 5px;
     cursor: pointer;
     justify-content: flex-start;
     align-items: center;
     font-size: 1m;
     transition: transform 0.2s ease;
-  }
-  
-  .event-card:hover {
-    background-color: #C1DFF4;
-    border: none;
-    color: var(--cor-4);
-    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
+    text-transform: capitalize;
   }
 
   .event-card:active{
     transform: translateY(2px); 
   }
   
-  /* Detalhes do evento */
-  .event-details {
-    position: absolute;
-    background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    z-index: 1000;
-    transform: translateY(-50%);
+/* Detalhes do evento */
+.detalhes-agendamento {
+  position: absolute;
+  background: #cad7ebcb;
+  color: #014F86;
+  /* border: 2px solid #014e86ce; */
+  padding: 12px;
+  border-radius: 10px;
+  width: 300px;
+  z-index: 1000;
+  transform: translateY(-45%);
+}
+
+/* Adicionando a seta */
+.detalhes-agendamento::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #cad7ebcd transparent transparent;
+  left: -10px; /* Posiciona a seta na lateral esquerda */
+  top: 50%; /* Centraliza verticalmente */
+  transform: translateY(-50%);
+  z-index: -1; /* Garante que a seta fique atrás do conteúdo principal */
+}
+
+  .detalhes-conteudo{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-transform: capitalize;
   }
   
-  /* Adicionando a seta */
-  .event-details::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent #5A789F transparent transparent;
-    left: -10px; /* Posiciona a seta na lateral esquerda */
-    top: 50%; /* Centraliza verticalmente */
-    transform: translateY(-50%);
-  }
-  
-  .event-details h2 {
-    margin-top: 0;
-    color: #0078d4;
-  }
-  
-  .event-details p {
-    margin: 0.5rem 0;
-  }
-  
-  button {
-    background: #0078d4;
+  .but-det{
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    background-color: #5A789F;
     color: white;
-    padding: 0.5rem 1rem;
     border: none;
-    border-radius: 5px;
+    padding: 3%;
+    font-size: 1em;
+    border-radius: 8px;
     cursor: pointer;
-    margin-top: 1rem;
     transition: background 0.2s ease;
   }
-  
-  button:hover {
-    background: #005bb5;
+
+  .buttons-detalhes-conteudo{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
   }
   
-  h4{
+  .but-det:hover {
+    background-color: #C1DFF4;
+    border: none;
+    color: #012A4A;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  }
 
+  .but-det:active{
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .fechar-detalhes{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    background-color: transparent;
+    color: #012A4A;
+    border: none;
+    font-size: 1em;
+    transition: background 0.2s ease;
+  }
+
+  .fechar-detalhes button{
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .fechar-detalhes img{
+    width: 8%;
+  }
+  
+  .detalhes-conteudo h4{
     height: fit-content;
     width: fit-content;
     padding: 0;
+  }
 
+  .agendamento-nome{
+    padding-left: 5%;
   }

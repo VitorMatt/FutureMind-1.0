@@ -9,6 +9,7 @@ import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
 import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
 import './CSS/Test_dois.css'
+import './CSS/Test_tres.css'
 import { Label } from '@mui/icons-material'
 import { GlobalContext } from '../GlobalContext/GlobalContext'
 import { useNavigate } from 'react-router-dom'
@@ -16,11 +17,7 @@ import { useNavigate } from 'react-router-dom'
 
 function PerfilProfissional() {
 
-<<<<<<< HEAD
 //   const { user, setUser } = useContext(GlobalContext);
-=======
-  // const { user, setUser } = useContext(GlobalContext);
->>>>>>> cdcd0206886c09f3da9d719c7cd5ee03f7c8b9ec
 
 //   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -58,13 +55,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
   const [agendamentos, setAgendamentos] = useState([
   
-    { data: "2024-11-12", paciente: "Thalles Lima", horario: "15:00" },
-    { data: "2024-11-12", paciente: "Luciana Nuss", horario: "17:30" },
-    { data: "2024-11-12", paciente: "aaaaaaaaa", horario: "20:00" },
-    { data: "2024-11-13", paciente: "Julia Silva Dias", horario: "14:30" },
-    { data: "2024-11-14", paciente: "Mateus da Silva", horario: "16:00" },
-    { data: "2024-11-14", paciente: "renatinho", horario: "18:00" },
-    { data: "2024-11-14", paciente: "aaaaaaaaa", horario: "20:00" },
+    { data: "2024-12-02", paciente: "Thalles Lima", horario: "15:00" },
+    { data: "2024-12-02", paciente: "Luciana Nuss", horario: "17:30" },
+    { data: "2024-12-02", paciente: "aaaaaaaaa", horario: "20:00" },
+    { data: "2024-12-03", paciente: "Julia Silva Dias", horario: "14:30" },
+    { data: "2024-12-04", paciente: "Mateus da Silva", horario: "16:00" },
+    { data: "2024-12-04", paciente: "renatinho", horario: "18:00" },
+    { data: "2024-12-05", paciente: "aaaaaaaaa", horario: "20:00" },
     
   ]);
 
@@ -99,88 +96,54 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     });
   };
 
-  const handleTrocarAgendamento = (data, direcao) => {
-    setIndicesAgendamentos((prev) => {
+  // const [temporaryText, setTemporaryText] = useState(""); // Texto enquanto o usuário digita
+  // const [savedText, setSavedText] = useState(""); // Texto salvo
 
-      const indiceAtual = prev[data] || 0;
-      const agendamentosDoDia = agendamentos.filter((ag) => ag.data === data);
+  // const handleTextChange = (event) => {
+  //   setTemporaryText(event.target.value); // Atualiza o texto temporário
+  // };
 
-      let novoIndice = indiceAtual + direcao;
-      if (novoIndice >= agendamentosDoDia.length) novoIndice = 0; // Volta ao primeiro
-      if (novoIndice < 0) novoIndice = agendamentosDoDia.length - 1; // Vai para o último
-   
-      return {
-        ...prev,
-        [data]: novoIndice,
-      };
-    });
-  };
+  // const handleSave = () => {
+  //   setSavedText(temporaryText); // Salva o texto ao clicar no botão
+  // };
 
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [agendamentoParaExcluir, setAgendamentoParaExcluir] = useState(null); // Armazenar o agendamento selecionado para exclusão
+  // const maxLength = 500; // Limite máximo de caracteres
+  // const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
   
-  const handleCancelarAgendamento = (data, horario) => {
-    setAgendamentoParaExcluir({ data, horario });
-    setShowConfirmation(true);  // Exibe a confirmação
+  const handleEventClick = (agendamento, event) => {
+    // Captura a posição do elemento clicado
+    const rect = event.target.getBoundingClientRect();
+    setDivPosition({
+      top: rect.top + window.scrollY,
+      left: rect.left + rect.width + 10, // Posição à direita do elemento
+    });
+    setSelectedAgendamento(agendamento);
   };
 
-  const handleConfirmarExclusao = () => {
-    setAgendamentos(prevAgendamentos => 
-      prevAgendamentos.filter(agendamento => 
-        !(agendamento.data === agendamentoParaExcluir.data && agendamento.horario === agendamentoParaExcluir.horario)
+  const handleCloseDetails = () => {
+    setSelectedAgendamento(null); // Fecha a div de detalhes
+  };
+
+  const handleDeleteAppointment = (agendamentoParaExcluir) => {
+    setAgendamentos((prevAgendamentos) =>
+      prevAgendamentos.filter(
+        (agendamento) =>
+          agendamento.data !== agendamentoParaExcluir.data ||
+          agendamento.horario !== agendamentoParaExcluir.horario ||
+          agendamento.paciente !== agendamentoParaExcluir.paciente
       )
     );
-    setShowConfirmation(false);  // Fecha a confirmação
-    setAgendamentoParaExcluir(null);  // Limpa o agendamento para exclusão
-  };
-  
-  const handleCancelarExclusao = () => {
-
-    setShowConfirmation(false); // Fecha a confirmação sem excluir
-    setAgendamentoParaExcluir(null); // Limpa o agendamento para exclusão
-
-  };
-  
-  const handleExcluirAgendamento = (data, horario) => {
-    setAgendamentos(prev => {
-      // Filtra os agendamentos de maneira imutável
-      return prev.filter(agendamento => !(agendamento.data === data && agendamento.horario === horario));
-    });
+    setSelectedAgendamento(null); // Fecha a div de detalhes
   };
 
-
-
-
-  const [selecionarOpcoesAreas, setSelecionarOpcoesAreas] = useState([]);
-  const opcoesAreas = ["Idosos", "PCDs", "Adultos", "Crianças", "Adolescentes", "Pré-Adolescentes"];
-  const [selecionarOpcoesEspecializacoes, setSelecionarOpcoesEspecializacoes] = useState([]);
-  const opcoesEspecializacoes = ["Adolescência", "Depressão", "Angústia", "Ansiedade", "Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"];
-
-  const [temporaryText, setTemporaryText] = useState(""); // Texto enquanto o usuário digita
-  const [savedText, setSavedText] = useState(""); // Texto salvo
-
-  const handleTextChange = (event) => {
-    setTemporaryText(event.target.value); // Atualiza o texto temporário
-  };
-
-  const handleSave = () => {
-    setSavedText(temporaryText); // Salva o texto ao clicar no botão
-  };
-
-  const handleChange = (event) => {
-    const { value, checked } = event.target;
-
-    if (checked) {
-      setSelecionarOpcoesAreas((prev) => [...prev, value]); // Adiciona a opção selecionada
-    } else {
-      setSelecionarOpcoesAreas((prev) => prev.filter((opcoesAreas) => opcoesAreas !== value)); // Remove a opção desmarcada
-    }
-
-    if (checked) {
-      setSelecionarOpcoesEspecializacoes((prev) => [...prev, value]); // Adiciona a opção selecionada
-    } else {
-      setSelecionarOpcoesEspecializacoes((prev) => prev.filter((opcoesEspecializacoes) => opcoesEspecializacoes !== value)); // Remove a opção desmarcada
-    }
+  const handleConcludeAppointment = (agendamento) => {
+    setAgendamentos((prevAgendamentos) =>
+      prevAgendamentos.filter(
+        (item) =>
+          !(item.data === agendamento.data && item.horario === agendamento.horario)
+      )
+    );
+    handleCloseDetails(); // Fecha a div de detalhes, se estiver aberta
   };
 
   const [abordagem, setAbordagem] = useState(profissional.abordagem);
@@ -199,21 +162,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
       profissional.horarios = horarios;
   }, [horarios]);
 
-  const maxLength = 500; // Limite máximo de caracteres
-  const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
-  
-  const handleEventClick = (agendamento, event) => {
-    // Captura a posição do elemento clicado
-    const rect = event.target.getBoundingClientRect();
-    setDivPosition({
-      top: rect.top + window.scrollY,
-      left: rect.left + rect.width + 10, // Posição à direita do elemento
-    });
-    setSelectedAgendamento(agendamento);
-  };
+  // const [selecionarOpcoesAreas, setSelecionarOpcoesAreas] = useState([]);
+  const opcoesAreas = ["Idosos", "PCDs", "Adultos", "Crianças", "Adolescentes", "Pré-Adolescentes"];
+  // const [selecionarOpcoesEspecializacoes, setSelecionarOpcoesEspecializacoes] = useState([]);
+  const opcoesEspecializacoes = ["Adolescência", "Depressão", "Angústia", "Ansiedade", "Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"];
 
-  const handleCloseDetails = () => {
-    setSelectedAgendamento(null); // Fecha a div de detalhes
+  const handleChange = (event) => {
+    const { value, checked } = event.target;
   };
 
   return (
@@ -234,11 +189,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
                      <div className='nick-usuario'>
-<<<<<<< HEAD
                       {/* <h1>{userData.nome_completo}</h1>
-=======
-                       {/* <h1>{userData.nome_completo}</h1>
->>>>>>> cdcd0206886c09f3da9d719c7cd5ee03f7c8b9ec
                       <p>{userData.email}</p> */}
                     </div>
                  </div> 
@@ -321,29 +272,34 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                 }) 
              }
                    {selectedAgendamento && (
-                    <div
+                     <div
                       className="detalhes-agendamento"
                       style={{
-                        position: "absolute",
                         top: `${divPosition.top}px`,
                         left: `${divPosition.left}px`,
-                        padding: "12px",
-                        borderRadius: "10px",
-                        zIndex: 1000,
                       }}
-                    >
+                     >
                       <div className="detalhes-conteudo">
+                        <div className='fechar-detalhes'>
+                          <button onClick={handleCloseDetails}>
+                            <img src="xizinho.svg" alt="" />
+                          </button>
+                        </div>
                         <h2>Detalhes do Agendamento</h2>
                         <p><strong>Paciente:</strong> {selectedAgendamento.paciente}</p>
                         <p><strong>Data:</strong> {selectedAgendamento.data}</p>
                         <p><strong>Horário:</strong> {selectedAgendamento.horario}</p>
-                        <p><strong>Detalhes:</strong> {selectedAgendamento.detalhes}</p>
-                        <button onClick={handleCloseDetails} className="fechar-detalhes">
-                          Fechar
-                        </button>
+                        <div className='buttons-detalhes-conteudo'>
+                          <button className='but-det' onClick={() => handleDeleteAppointment(selectedAgendamento)}>
+                            Cancelar
+                          </button>
+                          <button className='but-det' onClick={() => handleConcludeAppointment(selectedAgendamento)}>
+                            Concluída
+                          </button>
+                        </div>
                       </div>
                       </div>
-      )}
+                  )}
 
            </div>
            </div>

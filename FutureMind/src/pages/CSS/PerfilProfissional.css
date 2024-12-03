@@ -673,7 +673,6 @@
   }
 
   .div-esp {
-
     max-width: 200px;
     height: 150px;
     overflow-x: auto; 
@@ -683,26 +682,20 @@
 }
 
 .div-esp::-webkit-scrollbar-track{
-
     background: #f1f1f1;
     border-radius: 3px;
 }
 
 .div-esp::-webkit-scrollbar-thumb{
-
-
     background-color: var(--cor-1);
     border-radius: 3px;
 }
 
 .div-esp::-webkit-scrollbar{
-
-
     width: 10px;
 }
 
 .div-desc{
-
     width: 500px;
     height: 150px;
     overflow-x: auto; 
@@ -712,86 +705,17 @@
 }
 
 .div-desc::-webkit-scrollbar-track{
-
     background: #f1f1f1;
     border-radius: 3px;
 }
 
 .div-desc::-webkit-scrollbar-thumb{
-
-
     background-color: var(--cor-1);
     border-radius: 3px;
 }
 
 .div-desc::-webkit-scrollbar{
-
-
     width: 10px;
 }
 
-.perfilPro-container {
-
-<<<<<<< HEAD
 /*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
-=======
-   padding: 20px;
-
-}
-
-.detalhes-conteudo{
-        
-    position: absolute;
-    background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    z-index: 1000;
-    transform: translateY(-50%);
-
-}
-          
-/* Adicionando a seta */
-.detalhes-conteudo::before {
-
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent #5A789F transparent transparent;
-    left: -10px; /* Posiciona a seta na lateral esquerda */
-    top: 50%; /* Centraliza verticalmente */
-    transform: translateY(-50%);
-
-}
-          
-.detalhes-conteudo h2 {
-    margin-top: 0;
-    color: #0078d4;
-}
-          
-.detalhes-conteudo p {
-    margin: 0.5rem 0;
- }
-
-.fechar-detalhes {
-    
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-
-}
-.fechar-detalhes:hover {
-    background-color: darkred;}
-                    
-
-/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
-
->>>>>>> cdcd0206886c09f3da9d719c7cd5ee03f7c8b9ec
