@@ -52,7 +52,7 @@ useEffect(() => {
       <ScrollToTop />
 
       <div className='conteudoo'>
-        <img src="img.png" className='img'/>
+        <img src="Design sem nome (1) 1.svg" className='img'/>
 
         <div className='descricaoMissao'>
           <h1>Missão:</h1>
@@ -71,18 +71,18 @@ useEffect(() => {
       <div className='conteudoo2'>
         <div className='descricaoFundacao'>
           <h1>Fundação:</h1>
-          <p>A FutureMind foi fundada com o propósito de oferecer uma abordagem inovadora e centrada no bem-estar mental. Inspirada pela visão de um futuro onde a saúde emocional é 
-             acessível a todos, a empresa reúne terapeutas qualificados e metodologias modernas para ajudar pessoas a enfrentarem desafios pessoais e emocionais. A FutureMind acredita 
-             que a transformação começa pelo autoconhecimento, promovendo um espaço seguro e acolhedor para o desenvolvimento de cada cliente.
+          <p>A FutureMind é uma empresa inovadora no campo da saúde mental, especializada em oferecer terapia online de alta qualidade. Fundada por um grupo de profissionais experientes da área psicológica e de tecnologia, a missão da FutureMind é tornar o acesso à terapia mais democrático, eficiente e acessível para pessoas de diferentes localidades e realidades. Acreditamos que a saúde mental é fundamental para o bem-estar e a qualidade de vida, e, por isso, criamos uma plataforma intuitiva e segura para proporcionar suporte emocional.
+
+Com um time de terapeutas altamente capacitados e uma abordagem personalizada, buscamos entender as necessidades individuais de cada cliente, oferecendo sessões de terapia adaptadas às suas particularidades. A FutureMind utiliza tecnologias de ponta para garantir a segurança e a privacidade das informações, respeitando os mais rigorosos padrões éticos da profissão.
           </p>
         </div>
         <img src="ArvoreS.svg" className='arvoreSobre'/>
           <div className='fotoNossa'>
-
+            <img src="IMG EQUPIE 1.svg"/>
           </div>
       </div>
 
-     
+      <div className='div-cards'>
         <div className='card1'>
           <img src="Star.svg"/>
           <p><strong>Qualidade</strong></p>
@@ -100,6 +100,7 @@ useEffect(() => {
           <p><strong>Bem-Estar</strong></p>
           <p>Tentaremos sempre manter o maior bem-estar possível, tanto quanto saúde e comunicação.</p>
         </div>
+      </div>
 
         <div className='divSugestões'>
 

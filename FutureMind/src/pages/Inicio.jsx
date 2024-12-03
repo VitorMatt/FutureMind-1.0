@@ -28,35 +28,7 @@ function Inicio() {
   const [pcds, setPcds] = useState([]);
   const [idosos, setIdosos] = useState([]);
   
-  const handleReplace = () => {
-    if (!profissionais || profissionais.length === 0) return;
-
-    const updatedProfissionais = profissionais.map((profissional) => {
-      if (profissional.preferencias && profissional.especializacao) {
-        const preferencias = profissional.preferencias
-          .replace(/{|}/g, '') // Remove as chaves
-          .replace(/"/g, '') // Remove aspas
-          .split(',')
-          .map((item) => item.trim());
-
-        const especializacao = profissional.especializacao
-          .replace(/{|}/g, '')
-          .replace(/"/g, '')
-          .split(',')
-          .map((item) => item.trim());
-
-        return {
-          ...profissional,
-          preferencias,
-          especializacao,
-        };
-      }
-      return profissional;
-    });
-
-    setProfissionais(updatedProfissionais);
-  };
-
+  
   const fetchProfissionais = async () => {
     try {
       const response = await fetch('http://localhost:3000');
@@ -69,7 +41,7 @@ function Inicio() {
 
   const filtraProfissionais = () => {
     if (!profissionais || profissionais.length === 0) return;
-
+    
     profissionais.forEach((profissional) => {
       if (profissional.preferencias.includes('Adultos')) {
         setAdultos((prev) => [...prev, profissional]);
@@ -80,16 +52,47 @@ function Inicio() {
       if (profissional.preferencias.includes('Crianças')) {
         setCriancas((prev) => [...prev, profissional]);
       }
-      if (profissional.preferencias.includes("PCD's")) {
+      if (profissional.preferencias.includes('PCDs')) {
         setPcds((prev) => [...prev, profissional]);
       }
+
+  
+      if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
+
+        setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
+
       if (profissional.preferencias.includes('Pré-Adolescentes')) {
         setPreAdolescentes((prev) => [...prev, profissional]);
+
       }
       if (profissional.preferencias.includes('Adolescentes')) {
         setAdolescentes((prev) => [...prev, profissional]);
       }
-    });
+    }});
+  };
+  const handleReplace = () => {
+    if (!profissionais || profissionais.length === 0) return;
+
+    for (let i=0; i<profissionais.length; i++) {
+
+      profissionais[i].especializacao = profissionais[i].especializacao.replace('{', '');
+      profissionais[i].especializacao = profissionais[i].especializacao.replace('}', '');
+      profissionais[i].preferencias = profissionais[i].preferencias.replace('}', '');
+      profissionais[i].preferencias = profissionais[i].preferencias.replace('{', '');
+     
+     for (let j=0; j<(profissionais[i].especializacao.length * 2); j++) {
+    
+      profissionais[i].especializacao = profissionais[i].especializacao.replace('"', '');
+     }
+    
+     for (let k=0; k<(profissionais[i].preferencias.length * 2); k++) {
+    
+      profissionais[i].preferencias = profissionais[i].preferencias.replace('"', '');
+     }
+    
+     profissionais[i].preferencias = profissionais[i].preferencias.split(',').map(item => item.trim()); 
+     profissionais[i].especializacao = profissionais[i].especializacao.split(',').map(item => item.trim()); 
+    }
   };
 
   useEffect(() => {
@@ -183,10 +186,10 @@ function Inicio() {
 
   const buscarProfissionais = async () => {
     try {
-        const queryString = preferenciasSelecionadas.join(','); // Junta as preferências em uma string
+        const queryString = preferenciasSelecionadas.join(','); 
         const response = await fetch(`http://localhost:3000/api/profissionais?preferencias=${encodeURIComponent(queryString)}`);
         const data = await response.json();
-        console.log(data); // Substitua por lógica de exibição
+        console.log(data); 
     } catch (error) {
         console.error('Erro ao buscar profissionais:', error.message);
     }
@@ -322,14 +325,14 @@ const clickTres = (index) => {
                   </h1>
                   </div>
                 <div className="especialidades">
-                  {/* {
-
-                    item.especializacao.map((especialidade, indice) => (
-                      <div key={indice} className='especialidade-button'>
-                      {especialidade}
-                    </div>
-                  ))
-                } */}
+                  {
+                    Array.isArray(item.especializacao) &&
+                    item.especializacao.map((a, b) => (
+                      <div key={b} className="especialidade-button">
+                        {a}
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
@@ -483,7 +486,7 @@ const clickTres = (index) => {
             >
               {
 
-                profissionais?.map((item, index) => (
+                adultos?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -658,7 +661,7 @@ const clickTres = (index) => {
             >
               {
 
-                profissionais?.map((item, index) => (
+                idosos?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -796,17 +799,17 @@ const clickTres = (index) => {
       <div className="btn-consulta">
         <button
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
         >
           <b>
-            {estadoBotoes[item.id] === "carregando" && (
+            {estadoBotoes[item.id_profissional] === "carregando" && (
               <div id="circle" className="circle"></div>
             )}
-            {estadoBotoes[item.id] === "concluido" && (
+            {estadoBotoes[item.id_profissional] === "concluido" && (
               <img id="icon-concluido" src="check.svg" alt="" />
             )}
-            {estadoBotoes[item.id] === "inicial" && (
+            {estadoBotoes[item.id_profissional] === "inicial" && (
               <span className="btn-text2">
                 {selectedTime
                   ? `Marcar para ${selectedTime}`
@@ -847,7 +850,7 @@ const clickTres = (index) => {
             >
               {
 
-                profissionais?.map((item, index) => (
+                pre_adolescentes?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -977,13 +980,13 @@ const clickTres = (index) => {
 
         <button 
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -1021,7 +1024,7 @@ const clickTres = (index) => {
             >
               {
 
-                profissionais?.map((item, index) => (
+                adolescentes?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -1034,7 +1037,7 @@ const clickTres = (index) => {
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ {item.preco} - {item.tempo}min
+                  R$ {item.preco}
                   </h1>
                   </div>
                 <div className="especialidades">
@@ -1057,7 +1060,7 @@ const clickTres = (index) => {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  {item.nome}
+                  {item.nome_completo}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -1065,7 +1068,7 @@ const clickTres = (index) => {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                  {item.sobre}
+                  {item.descricao}
                 </p>
               </div>
               <div className="abordagem">
@@ -1152,13 +1155,13 @@ const clickTres = (index) => {
 
         <button 
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -1196,7 +1199,7 @@ const clickTres = (index) => {
             >
               {
 
-                profissionais?.map((item, index) => (
+                criancas?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -1209,7 +1212,7 @@ const clickTres = (index) => {
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ {item.preco} - {item.tempo}min
+                  R$ {item.preco}
                   </h1>
                   </div>
                 <div className="especialidades">
@@ -1232,7 +1235,7 @@ const clickTres = (index) => {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  {item.nome}
+                  {item.nome_completo}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -1240,7 +1243,7 @@ const clickTres = (index) => {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                  {item.sobre}
+                  {item.descricao}
                 </p>
               </div>
               <div className="abordagem">
@@ -1327,13 +1330,13 @@ const clickTres = (index) => {
 
         <button 
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
+      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
@@ -1371,7 +1374,7 @@ const clickTres = (index) => {
             >
               {
 
-                profissionais?.map((item, index) => (
+                pcds?.map((item, index) => (
                   
         <SwiperSlide key={index}>
 
@@ -1384,7 +1387,7 @@ const clickTres = (index) => {
               <div className="coluna-informacoes">
                 <div className="valor">
                   <h1 style={{color: 'black'}}>
-                  R$ {item.preco} - {item.tempo}min
+                  R$ {item.preco}
                   </h1>
                   </div>
                 <div className="especialidades">
@@ -1407,7 +1410,7 @@ const clickTres = (index) => {
             <div className="coluna-dois">
               <div className="nome-profissional">
                 <h1 className="nome-text">
-                  {item.nome}
+                  {item.nome_completo}
                 </h1>
               </div>
               <div className="sobre-mim-profissional">
@@ -1415,7 +1418,7 @@ const clickTres = (index) => {
                   Sobre mim:
                 </h1>
                 <p className="sobremim-text">
-                  {item.sobre}
+                  {item.descricao}
                 </p>
               </div>
               <div className="abordagem">
@@ -1503,14 +1506,14 @@ const clickTres = (index) => {
 
         <button 
           id="agendar"
-          onClick={() => handleAgendamento(item.id)}
+          onClick={() => handleAgendamento(item.id_profissional)}
           disabled={!selectedTime}
           >
             <b>
-      {estadoBotoes[item.id] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id] === 'inicial' && <span className="btn-text2"> {
-               selectedTime
+      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
+      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
+      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
+                selectedTime
             ? `Marcar para ${selectedTime}`
             : "Marcar Consulta"
               }</span>}
