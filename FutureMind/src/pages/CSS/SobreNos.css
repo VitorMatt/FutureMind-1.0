@@ -196,4 +196,21 @@
     font-size: 1.5em;
 }
 
+div::-webkit-scrollbar-track{
 
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+div::-webkit-scrollbar-thumb{
+
+
+    background-color: var(--cor-1);
+    border-radius: 3px;
+}
+
+div::-webkit-scrollbar{
+
+
+    width: 12px;
+}
