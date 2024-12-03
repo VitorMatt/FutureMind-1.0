@@ -16,11 +16,7 @@ import { useNavigate } from 'react-router-dom'
 
 function PerfilProfissional() {
 
-<<<<<<< HEAD
 //   const { user, setUser } = useContext(GlobalContext);
-=======
-  // const { user, setUser } = useContext(GlobalContext);
->>>>>>> cdcd0206886c09f3da9d719c7cd5ee03f7c8b9ec
 
 //   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -234,11 +230,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
                      <div className='nick-usuario'>
-<<<<<<< HEAD
-                      {/* <h1>{userData.nome_completo}</h1>
-=======
                        {/* <h1>{userData.nome_completo}</h1>
->>>>>>> cdcd0206886c09f3da9d719c7cd5ee03f7c8b9ec
                       <p>{userData.email}</p> */}
                     </div>
                  </div> 

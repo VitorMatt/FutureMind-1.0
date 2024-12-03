@@ -8,6 +8,7 @@ import TelefoneMaskPaciente from '../components/TelefoneMaskPaciente'
 function CadastroPaciente2() {
 
   const {paciente} = useContext(GlobalContext)
+
   
     return (
       <div className="selecao1">

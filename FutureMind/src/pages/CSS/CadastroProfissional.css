@@ -433,8 +433,21 @@ input[type="checkbox"]:focus {
     padding-left: 0.5%;
 }
 
-
-
+.inputCRP.error {
+    border: 1px solid red;
+  }
+  
+ 
+.error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 500;
+  }
+  
+.flatpickr-input.error {
+    border: 1px solid red; 
+  }
 
 
  
