@@ -13,13 +13,41 @@ import './CSS/Test_tres.css'
 import { Label } from '@mui/icons-material'
 import { GlobalContext } from '../GlobalContext/GlobalContext'
 import { useNavigate } from 'react-router-dom'
+import { Navigation, Pagination, A11y } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 
 function PerfilProfissional() {
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  // const { user, setUser } = useContext(GlobalContext);
+=======
+<<<<<<< HEAD
+  const { user, setUser } = useContext(GlobalContext);
+=======
+<<<<<<< HEAD
+//   const { user, setUser } = useContext(GlobalContext);
+=======
+<<<<<<< HEAD
+>>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
   // const { user, setUser } = useContext(GlobalContext);
   const { user, setUser } = useContext(GlobalContext);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
+>>>>>>> 11cf5d922fcc76f7fea593c5ec65cd1d89c79c72
+>>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
+>>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
 
   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -168,8 +196,23 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     const { value, checked } = event.target;
   };
 
+<<<<<<< HEAD
+  const handleCloseDetails = () => {
+    setSelectedAgendamento(null); // Fecha a div de detalhes
+  };
+  
+  const [nota, setNota] = useState('');
+  const [notas, setNotas] = useState([]);
+=======
   const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+>>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
 
+  const adicionarNota = () => {
+    if (nota.trim() !== '') {
+      setNotas([...notas, nota]); // Adiciona a nova anotação à lista
+      setNota(''); // Limpa o campo de entrada
+    }
+  };
   return (
     <div className='perfilPro-container'>
       
@@ -188,10 +231,29 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
                      <div className='nick-usuario'>
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+                       {/* <h1>{userData.nome_completo}</h1>
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
+=======
+>>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
                       {/* <h1>{userData.nome_completo}</h1>
 
                        {/* <h1>{userData.nome_completo}</h1>
+<<<<<<< HEAD
+=======
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
+>>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
+>>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
                       <p>{userData.email}</p> */}
 
                       <h1>{userData.nome_completo}</h1>
@@ -317,15 +379,45 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
          </div>
          <div className='input-button'>
           <div className='input-anotações'>
-           <textarea id='textA' className='text-anota' placeholder='Digite aqui...' rows="1"/>
+           <textarea 
+           id='textA'
+           value={nota}
+           onChange={(e) => setNota(e.target.value)}
+           className='text-anota' 
+           placeholder='Digite aqui...'
+            rows="1"/>
           </div>
           <div className='button-anotações'>
-           <button>Enviar</button>
+           <button onClick={adicionarNota}>Enviar</button>
           </div>
          </div>
          <div className='div-anotações'>
+         <Swiper 
+
+         modules={[Navigation, Pagination, A11y]}
+         spaceBetween={1}
+         slidesPerView={4}
+         navigation
+         pagination={{ clickable: true }}
+         onSwiper={(swiper) => console.log(swiper)}
+         onSlideChange={() => console.log('slide change')}
+
+        >
+          
+          {notas.map((nota, index) => (
+          <SwiperSlide key={index} className='slide_swiper'>
+            <div className='mini_divs'>
+             <div className="nota-slide">
+              <textarea className='textarea_anotação' cols="30" rows="14" readOnly  >{nota}</textarea>
+             </div>
+            </div>
+          
+         </SwiperSlide>
+          ))}
+          </Swiper>
             
          </div>
+         
         </div>
         <div className='editar-perfil-profissional'>
             <div className='titulo-perfil'>
