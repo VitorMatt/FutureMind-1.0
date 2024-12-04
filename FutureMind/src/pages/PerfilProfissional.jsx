@@ -9,6 +9,7 @@ import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
 import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
 import './CSS/Test_dois.css'
+import './CSS/Test_tres.css'
 import { Label } from '@mui/icons-material'
 import { GlobalContext } from '../GlobalContext/GlobalContext'
 import { useNavigate } from 'react-router-dom'
@@ -24,36 +25,47 @@ import 'swiper/css/scrollbar';
 
 function PerfilProfissional() {
 
+<<<<<<< HEAD
   // const { user, setUser } = useContext(GlobalContext);
+=======
+<<<<<<< HEAD
+  const { user, setUser } = useContext(GlobalContext);
+=======
+<<<<<<< HEAD
+//   const { user, setUser } = useContext(GlobalContext);
+=======
+<<<<<<< HEAD
+  // const { user, setUser } = useContext(GlobalContext);
+=======
+  const { user, setUser } = useContext(GlobalContext);
+>>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
+>>>>>>> 11cf5d922fcc76f7fea593c5ec65cd1d89c79c72
+>>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
 
-//   var userData = JSON.parse(localStorage.getItem('User'));
+  var userData = JSON.parse(localStorage.getItem('User'));
 
-//   userData.especializacao = userData.especializacao.replace('{', '')
-//   userData.especializacao = userData.especializacao.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('{', '')
+  userData.especializacao = userData.especializacao.replace('{', '')
+  userData.especializacao = userData.especializacao.replace('}', '')
+  userData.preferencias = userData.preferencias.replace('}', '')
+  userData.preferencias = userData.preferencias.replace('{', '')
  
-//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
+ for (let i=0; i<(userData.especializacao.length * 2); i++) {
 
-//   userData.especializacao = userData.especializacao.replace('"', '')
-//  }
+  userData.especializacao = userData.especializacao.replace('"', '')
+ }
 
-//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
+ for (let i=0; i<(userData.preferencias.length * 2); i++) {
 
-//   userData.preferencias = userData.preferencias.replace('"', '')
-//  }
+  userData.preferencias = userData.preferencias.replace('"', '')
+ }
 
-//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
-//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+ userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+ userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
 
-//  const navigate = useNavigate();
-//  const sair = () => {
-
-//   setUser({...user, logado: false});
-//   navigate('/');
-//  }
+ const navigate = useNavigate();
  
-const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o João Mjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjiguel e sou um ótimo profissional na minha área.'}
+const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o joão miguel e sou um ótimo profissional na minha área. Vamos consultar nosso próprio espírito que consola por dentro e grita para poder escapar da dor. Sou um ótimo profissional, eu juro!'}
 const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
 
   const [dataAtual, setDataAtual] = useState(new Date());
@@ -62,13 +74,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
   const [agendamentos, setAgendamentos] = useState([
   
-    { data: "2024-11-12", paciente: "Thalles Lima", horario: "15:00" },
-    { data: "2024-11-12", paciente: "Luciana Nuss", horario: "17:30" },
-    { data: "2024-11-12", paciente: "aaaaaaaaa", horario: "20:00" },
-    { data: "2024-11-13", paciente: "Julia Silva Dias", horario: "14:30" },
-    { data: "2024-11-14", paciente: "Mateus da Silva", horario: "16:00" },
-    { data: "2024-11-14", paciente: "renatinho", horario: "18:00" },
-    { data: "2024-11-14", paciente: "aaaaaaaaa", horario: "20:00" },
+    { data: "2024-12-02", paciente: "Thalles Lima", horario: "15:00" },
+    { data: "2024-12-02", paciente: "Luciana Nuss", horario: "17:30" },
+    { data: "2024-12-02", paciente: "aaaaaaaaa", horario: "20:00" },
+    { data: "2024-12-03", paciente: "Julia Silva Dias", horario: "14:30" },
+    { data: "2024-12-04", paciente: "Mateus da Silva", horario: "16:00" },
+    { data: "2024-12-04", paciente: "renatinho", horario: "18:00" },
+    { data: "2024-12-05", paciente: "aaaaaaaaa", horario: "20:00" },
     
   ]);
 
@@ -103,88 +115,54 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     });
   };
 
-  const handleTrocarAgendamento = (data, direcao) => {
-    setIndicesAgendamentos((prev) => {
+  // const [temporaryText, setTemporaryText] = useState(""); // Texto enquanto o usuário digita
+  // const [savedText, setSavedText] = useState(""); // Texto salvo
 
-      const indiceAtual = prev[data] || 0;
-      const agendamentosDoDia = agendamentos.filter((ag) => ag.data === data);
+  // const handleTextChange = (event) => {
+  //   setTemporaryText(event.target.value); // Atualiza o texto temporário
+  // };
 
-      let novoIndice = indiceAtual + direcao;
-      if (novoIndice >= agendamentosDoDia.length) novoIndice = 0; // Volta ao primeiro
-      if (novoIndice < 0) novoIndice = agendamentosDoDia.length - 1; // Vai para o último
-   
-      return {
-        ...prev,
-        [data]: novoIndice,
-      };
-    });
-  };
+  // const handleSave = () => {
+  //   setSavedText(temporaryText); // Salva o texto ao clicar no botão
+  // };
 
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [agendamentoParaExcluir, setAgendamentoParaExcluir] = useState(null); // Armazenar o agendamento selecionado para exclusão
+  // const maxLength = 500; // Limite máximo de caracteres
+  // const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
   
-  const handleCancelarAgendamento = (data, horario) => {
-    setAgendamentoParaExcluir({ data, horario });
-    setShowConfirmation(true);  // Exibe a confirmação
+  const handleEventClick = (agendamento, event) => {
+    // Captura a posição do elemento clicado
+    const rect = event.target.getBoundingClientRect();
+    setDivPosition({
+      top: rect.top + window.scrollY,
+      left: rect.left + rect.width + 10, // Posição à direita do elemento
+    });
+    setSelectedAgendamento(agendamento);
   };
 
-  const handleConfirmarExclusao = () => {
-    setAgendamentos(prevAgendamentos => 
-      prevAgendamentos.filter(agendamento => 
-        !(agendamento.data === agendamentoParaExcluir.data && agendamento.horario === agendamentoParaExcluir.horario)
+  const handleCloseDetails = () => {
+    setSelectedAgendamento(null); // Fecha a div de detalhes
+  };
+
+  const handleDeleteAppointment = (agendamentoParaExcluir) => {
+    setAgendamentos((prevAgendamentos) =>
+      prevAgendamentos.filter(
+        (agendamento) =>
+          agendamento.data !== agendamentoParaExcluir.data ||
+          agendamento.horario !== agendamentoParaExcluir.horario ||
+          agendamento.paciente !== agendamentoParaExcluir.paciente
       )
     );
-    setShowConfirmation(false);  // Fecha a confirmação
-    setAgendamentoParaExcluir(null);  // Limpa o agendamento para exclusão
-  };
-  
-  const handleCancelarExclusao = () => {
-
-    setShowConfirmation(false); // Fecha a confirmação sem excluir
-    setAgendamentoParaExcluir(null); // Limpa o agendamento para exclusão
-
-  };
-  
-  const handleExcluirAgendamento = (data, horario) => {
-    setAgendamentos(prev => {
-      // Filtra os agendamentos de maneira imutável
-      return prev.filter(agendamento => !(agendamento.data === data && agendamento.horario === horario));
-    });
+    setSelectedAgendamento(null); // Fecha a div de detalhes
   };
 
-
-
-
-  const [selecionarOpcoesAreas, setSelecionarOpcoesAreas] = useState([]);
-  const opcoesAreas = ["Idosos", "PCDs", "Adultos", "Crianças", "Adolescentes", "Pré-Adolescentes"];
-  const [selecionarOpcoesEspecializacoes, setSelecionarOpcoesEspecializacoes] = useState([]);
-  const opcoesEspecializacoes = ["Adolescência", "Depressão", "Angústia", "Ansiedade", "Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"];
-
-  const [temporaryText, setTemporaryText] = useState(""); // Texto enquanto o usuário digita
-  const [savedText, setSavedText] = useState(""); // Texto salvo
-
-  const handleTextChange = (event) => {
-    setTemporaryText(event.target.value); // Atualiza o texto temporário
-  };
-
-  const handleSave = () => {
-    setSavedText(temporaryText); // Salva o texto ao clicar no botão
-  };
-
-  const handleChange = (event) => {
-    const { value, checked } = event.target;
-
-    if (checked) {
-      setSelecionarOpcoesAreas((prev) => [...prev, value]); // Adiciona a opção selecionada
-    } else {
-      setSelecionarOpcoesAreas((prev) => prev.filter((opcoesAreas) => opcoesAreas !== value)); // Remove a opção desmarcada
-    }
-
-    if (checked) {
-      setSelecionarOpcoesEspecializacoes((prev) => [...prev, value]); // Adiciona a opção selecionada
-    } else {
-      setSelecionarOpcoesEspecializacoes((prev) => prev.filter((opcoesEspecializacoes) => opcoesEspecializacoes !== value)); // Remove a opção desmarcada
-    }
+  const handleConcludeAppointment = (agendamento) => {
+    setAgendamentos((prevAgendamentos) =>
+      prevAgendamentos.filter(
+        (item) =>
+          !(item.data === agendamento.data && item.horario === agendamento.horario)
+      )
+    );
+    handleCloseDetails(); // Fecha a div de detalhes, se estiver aberta
   };
 
   const [abordagem, setAbordagem] = useState(profissional.abordagem);
@@ -203,25 +181,25 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
       profissional.horarios = horarios;
   }, [horarios]);
 
-  const maxLength = 500; // Limite máximo de caracteres
-  const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
-  
-  const handleEventClick = (agendamento, event) => {
-    // Captura a posição do elemento clicado
-    const rect = event.target.getBoundingClientRect();
-    setDivPosition({
-      top: rect.top + window.scrollY,
-      left: rect.left + rect.width + 10, // Posição à direita do elemento
-    });
-    setSelectedAgendamento(agendamento);
+  // const [selecionarOpcoesAreas, setSelecionarOpcoesAreas] = useState([]);
+  const opcoesAreas = ["Idosos", "PCDs", "Adultos", "Crianças", "Adolescentes", "Pré-Adolescentes"];
+  // const [selecionarOpcoesEspecializacoes, setSelecionarOpcoesEspecializacoes] = useState([]);
+  const opcoesEspecializacoes = ["Adolescência", "Depressão", "Angústia", "Ansiedade", "Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"];
+
+  const handleChange = (event) => {
+    const { value, checked } = event.target;
   };
 
+<<<<<<< HEAD
   const handleCloseDetails = () => {
     setSelectedAgendamento(null); // Fecha a div de detalhes
   };
   
   const [nota, setNota] = useState('');
   const [notas, setNotas] = useState([]);
+=======
+  const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+>>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
 
   const adicionarNota = () => {
     if (nota.trim() !== '') {
@@ -247,8 +225,29 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
                      <div className='nick-usuario'>
+<<<<<<< HEAD
                        {/* <h1>{userData.nome_completo}</h1>
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
+=======
+                      {/* <h1>{userData.nome_completo}</h1>
+=======
+<<<<<<< HEAD
+>>>>>>> c8642607f9df7ac0115af34a0ee219874c224958
+                       {/* <h1>{userData.nome_completo}</h1>
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
+>>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
                       <p>{userData.email}</p> */}
+=======
+>>>>>>> 11cf5d922fcc76f7fea593c5ec65cd1d89c79c72
+                      <h1>{userData.nome_completo}</h1>
+                      <p>{userData.email}</p>
                     </div>
                  </div> 
     
@@ -258,13 +257,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                         <div className="div-esp">
 
-                        {/* {
+                        {
                           userData.preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
                           ))
-                        } */}
+                        }
                         </div>
                     </div>
                     <div className='div-menor-info'>
@@ -272,13 +271,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         
                         <div className="div-esp">
 
-                        {/* {
+                        {
                           userData.especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
                           ))
-                        } */}
+                        }
                         </div>
                     </div>
                     <div className='descricao'>
@@ -330,29 +329,34 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                 }) 
              }
                    {selectedAgendamento && (
-                    <div
+                     <div
                       className="detalhes-agendamento"
                       style={{
-                        position: "absolute",
                         top: `${divPosition.top}px`,
                         left: `${divPosition.left}px`,
-                        padding: "12px",
-                        borderRadius: "10px",
-                        zIndex: 1000,
                       }}
-                    >
+                     >
                       <div className="detalhes-conteudo">
+                        <div className='fechar-detalhes'>
+                          <button onClick={handleCloseDetails}>
+                            <img src="xizinho.svg" alt="" />
+                          </button>
+                        </div>
                         <h2>Detalhes do Agendamento</h2>
                         <p><strong>Paciente:</strong> {selectedAgendamento.paciente}</p>
                         <p><strong>Data:</strong> {selectedAgendamento.data}</p>
                         <p><strong>Horário:</strong> {selectedAgendamento.horario}</p>
-                        <p><strong>Detalhes:</strong> {selectedAgendamento.detalhes}</p>
-                        <button onClick={handleCloseDetails} className="fechar-detalhes">
-                          Fechar
-                        </button>
+                        <div className='buttons-detalhes-conteudo'>
+                          <button className='but-det' onClick={() => handleDeleteAppointment(selectedAgendamento)}>
+                            Cancelar
+                          </button>
+                          <button className='but-det' onClick={() => handleConcludeAppointment(selectedAgendamento)}>
+                            Concluída
+                          </button>
+                        </div>
                       </div>
                       </div>
-      )}
+                  )}
 
            </div>
            </div>
@@ -547,18 +551,6 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                     </div>
                     ))}
                   </div>
-                  {/* <div className="opções-aparecer">
-                    <h3>Opções selecionadas:</h3>
-                    {selecionarOpcoesAreas.length > 0 ? (
-                    <ul>
-                    {selecionarOpcoesAreas.map((opcoesAreas, index) => (
-                    <li key={index}>{opcoesAreas}</li>
-                    ))}
-                    </ul>
-                    ) : (
-                    <p>Nenhuma opção selecionada.</p>
-                    )}
-                  </div> */}
                 </div>
 
                 <div className="container-especi">
@@ -578,18 +570,6 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                     </div>
                     ))}
                   </div>
-                  {/* <div className="opções-aparecer">
-                    <h3>Opções selecionadas:</h3>
-                    {selecionarOpcoesEspecializacoes.length > 0 ? (
-                    <ul>
-                    {selecionarOpcoesEspecializacoes.map((opcoesEspecializacoes, index) => (
-                    <li key={index}>{opcoesEspecializacoes}</li>
-                    ))}
-                    </ul>
-                    ) : (
-                    <p>Nenhuma opção selecionada.</p>
-                    )}
-                  </div> */}
                 </div>
                   
                 </div>
@@ -599,7 +579,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                 <div className='div-buttons-salvar-cancelar'>
                 <button className='a'>Excluir conta</button>
-                  <button className='a'> Sair da Conta</button>
+                  <button className='a' onClick={handleSair}> Sair da Conta</button>
                   {/* onClick={sair} */}
                   <button className='a'>Cancelar edição</button>
                   <button className='salva'>Salvar</button>

@@ -9,7 +9,7 @@ function CadastroPaciente3() {
   const [email, setEmail] = useState(paciente.email);
   const [olhosSenha, setOlhosSenha] = useState(false);
   const [senha, setSenha] = useState(paciente.senha);
-
+  
   useEffect(() => {
     paciente.email = email;
   }, [email]);

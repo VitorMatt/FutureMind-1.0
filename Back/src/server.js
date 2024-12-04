@@ -504,6 +504,62 @@ app.delete('/admin-paciente', async (req, res) => {
     }
 });
 
+app.post('/agendamento', async(req, res) => {
+
+    const { horario, data, profissional, paciente} = req.body;
+
+    try {
+
+        const result = await pool.query('INSERT INTO agendamento (horario, data, fk_id_profissionais, fkpaciente_id_paciente) VALUES ($1, $2, $3, $4) RETURNING *', [
+            horario,
+            data,
+            profissional,
+            paciente
+        ]);
+
+        res.status(200).json(result.rows);
+    } catch (err) {
+
+        console.log('erro')
+    }
+});
+
+app.get('/agendamento', async (req, res) => {
+
+    try {
+
+        const result = await pool.query('SELECT * FROM agendamento');
+
+        res.status(200).json(result.rows);
+    } catch (err) {
+
+        console.log({Erro: err.message});
+    }
+});
+
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');
+});
+
+
+app.get('/api/profissionais', async (req, res) => {
+    const { preferencias } = req.query; // Recebe preferências como um array de strings
+
+    try {
+        if (!preferencias) {
+            const result = await pool.query('SELECT * FROM profissionais');
+            return res.status(200).json(result.rows);
+        }
+
+        // Converte as preferências em condições SQL
+        const preferenciasArray = preferencias.split(','); // Exemplo: "Adultos,Crianças"
+        const placeholders = preferenciasArray.map((_, index) => `$${index + 1}`).join(' OR preferencias LIKE ');
+        const query = `SELECT * FROM profissionais WHERE preferencias LIKE ${placeholders}`;
+
+        const result = await pool.query(query, preferenciasArray.map((pref) => `%${pref}%`));
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ message: 'Erro ao buscar profissionais' });
+    }
 });

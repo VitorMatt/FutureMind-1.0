@@ -57,19 +57,19 @@ function Navbar() {
         <Link className='Link' to='/'>Início</Link>
         <Link className='Link' to='/sobrenos'>Sobre nós</Link>
         <div className='input-container'>
-          <input 
-            type="text" 
-            className='input-nav' 
-            placeholder='Busca de ajuda e apoio...' 
-            value={searchTerm} 
-            onChange={(e) => setSearchTerm(e.target.value)} 
-          />
-          <img 
-            src="lupa.svg" 
-            alt="ícone de busca" 
-            className='img-navBar' 
-            onClick={handleSearch} 
-          />
+      <input 
+      type="text" 
+      className="input-nav" 
+      placeholder="Busca de ajuda e apoio..." 
+      value={searchTerm} 
+      onChange={(e) => setSearchTerm(e.target.value)} 
+     />
+     <img 
+      src="lupa.svg" 
+      alt="ícone de busca" 
+      className="img-navBar" 
+      onClick={handleSearch} 
+     />
         </div>
 
         {
@@ -83,20 +83,22 @@ function Navbar() {
         }
       </div>
 
-      {/* Resultados da busca */}
-      {searchResults.length > 0 && (
-        <div className='search-results'>
-          <ul>
-            {searchResults.map((profissional) => (
-              <li key={profissional.id_profissional}>
-                <Link onClick={() => handleCLick(profissional.id_profissional)} to={`/profissional/${profissional.id_profissional}`}>
-                  {profissional.nome_completo}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+  {searchTerm.trim() !== "" && searchResults.length > 0 && (
+    <div className="search-results">
+      <ul>
+        {searchResults.map((profissional) => (
+          <li 
+            key={profissional.id_profissional}
+            onClick={() => handleCLick(profissional.id_profissional)}
+          >
+            <Link to={`/profissional/${profissional.id_profissional}`}>
+              {profissional.nome_completo}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
     </nav>
   );
 }
