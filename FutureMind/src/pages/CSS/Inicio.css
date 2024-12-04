@@ -392,18 +392,13 @@
     width: 95%;
 }
 
-.btn-text2{
-    width: 90%;
-}
-
-
 .agenda {
     
     display: flex;
     flex-direction: column;
     padding-top: 4%;
-    padding-right: 18%;
-    width: 87%;
+    padding-right: 15%;
+    width: 100%;
     height: fit-content;
   }
   

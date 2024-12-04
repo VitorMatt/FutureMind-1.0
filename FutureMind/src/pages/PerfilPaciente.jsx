@@ -13,20 +13,6 @@ import 'swiper/css/scrollbar';
 
 function PerfilPaciente() {
 
-    const user = JSON.parse(localStorage.getItem('User'));
-
-    useEffect(() => { alert(user.profissional); }, [])
-                {/* <h1>{user.email}</h1> */}
-
-    const { user, setUser } = useContext(GlobalContext);
-
-  const { user, setUser } = useContext(GlobalContext);
-
-  const { user, setUser } = useContext(GlobalContext);
-
-  const { user, setUser } = useContext(GlobalContext);
-  const { user, setUser } = useContext(GlobalContext);
-
 
   var userData = JSON.parse(localStorage.getItem('User'));
 

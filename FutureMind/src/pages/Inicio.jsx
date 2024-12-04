@@ -14,9 +14,9 @@ import Footer from '../components/Footer';
 
 function Inicio() {
 
-  const [buscaUm, setBuscaUm] = useState([{descricao: 'Autoaceitação', selecionado: false}, {descricao: 'Autoestima', selecionado: false}, {descricao: 'Depressão', selecionado: false}]);
-  const [buscaDois, setBuscaDois] = useState([{descricao: 'Angústia', selecionado: false}, {descricao: 'Ansiedade', selecionado: false}, {descricao: 'LGBTQIA+', selecionado: false}]);
-  const [buscaTres, setBuscaTres] = useState([{descricao: "PCD's", selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
+  const buscaUm = [{descricao: 'Autoaceitação', selecionado: false}, {descricao: 'Autoestima', selecionado: false}, {descricao: 'Depressão', selecionado: false}];
+  const buscaDois = [{descricao: 'Angústia', selecionado: false}, {descricao: 'Ansiedade', selecionado: false}, {descricao: 'LGBTQIA+', selecionado: false}];
+  const buscaTres = [{descricao: "PCD's", selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}];
 
   const [click, setClick] = useState(false);
 
@@ -41,34 +41,6 @@ function Inicio() {
   const filtraProfissionais = () => {
     if (!profissionais || profissionais.length === 0) return;
 
-<<<<<<< HEAD
-    
-<<<<<<< HEAD
-  // const filtraProfissionais = () => {
-  //   if (!profissionais || profissionais.length === 0) return;
-    
-
-  //   profissionais.forEach((profissional) => {
-  //     if (profissional.preferencias.includes('Adultos')) {
-  //       setAdultos((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('Idosos')) {
-  //       setIdosos((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('Crianças')) {
-  //       setCriancas((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('PCDs')) {
-  //       setPcds((prev) => [...prev, profissional]);
-  //     }
-
-=======
-
-
-  const filtraProfissionais = () => {
-    if (!profissionais || profissionais.length === 0) return;
-=======
->>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
     profissionais.forEach((profissional) => {
       if (profissional.preferencias.includes('Adultos')) {
         setAdultos((prev) => [...prev, profissional]);
@@ -83,131 +55,17 @@ function Inicio() {
         setPcds((prev) => [...prev, profissional]);
       }
 
-   if (profissional.preferencias.includes('Pré-Adolescentes')) {
+      if (profissional.preferencias.includes('Pré-Adolescentes')) {
 
-    setPre_adolescentes((prev) => [...prev, profissional]);
-<<<<<<< HEAD
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
+        setPre_adolescentes((prev) => [...prev, profissional]);
+      }
 
-
-=======
->>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
-    }
-     if (profissional.preferencias.includes('Adolescentes')) {
-      setAdolescentes((prev) => [...prev, profissional]);
-     }
+      if (profissional.preferencias.includes('Adolescentes')) {
+        setAdolescentes((prev) => [...prev, profissional]);
+      }
      });
    };
-<<<<<<< HEAD
-  
-<<<<<<< HEAD
-  //   //   if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
 
-  //   //     setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-  //   //   if (profissional.preferencias.includes('Pré-Adolescentes')) {
-  //   //     // setPreAdolescentes((prev) => [...prev, profissional]);
-
-  //   //   }
-  //   //   if (profissional.preferencias.includes('Adolescentes')) {
-  //   //     setAdolescentes((prev) => [...prev, profissional]);
-  //   //   }
-  //   // });
-  // };
-
-//   const filtraProfissionais = () => {
-//     if (!profissionais || profissionais.length === 0) return;
-//     profissionais.forEach((profissional) => {
-//       if (profissional.preferencias.includes('Adultos')) {
-//         setAdultos((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Idosos')) {
-//         setIdosos((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Crianças')) {
-//         setCriancas((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('PCDs')) {
-//         setPcds((prev) => [...prev, profissional]);
-//       }
-
-//     profissionais.forEach((profissional) => {
-//       if (profissional.preferencias.includes('Adultos')) {
-//         setAdultos((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Idosos')) {
-//         setIdosos((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Crianças')) {
-//         setCriancas((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('PCDs')) {
-//         setPcds((prev) => [...prev, profissional]);
-//       }
-
-//     if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
-
-//      setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-
-//    if (profissional.preferencias.includes('Pré-Adolescentes')) {
-
-//     setPre_adolescentes((prev) => [...prev, profissional]);
-
-
-//     }
-//      if (profissional.preferencias.includes('Adolescentes')) {
-//       setAdolescentes((prev) => [...prev, profissional]);
-//      }
-//      });
-//    };
-//     if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
-
-
-//          setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-
-//        if (profissional.preferencias.includes('Pré-Adolescentes')) {
-//          setPre_adolescentes((prev) => [...prev, profissional]);
-
-//     setPreAdolescentes((prev) => [...prev, profissional]);
-//    }
-//        if (profissional.preferencias.includes('Adolescentes')) {
-//          setAdolescentes((prev) => [...prev, profissional]);
-//        }
-// //     });
-//   };
-
-//         setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-
-//       if (profissional.preferencias.includes('Pré-Adolescentes')) {
-//         setPreAdolescentes((prev) => [...prev, profissional]);
-
-//       }
-//       if (profissional.preferencias.includes('Adolescentes')) {
-//         setAdolescentes((prev) => [...prev, profissional]);
-//       }
-//     }});
-//       if (profissional.preferencias.includes('Pré-Adolescentes')) {
-//         setPre_adolescentes((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Adolescentes')) {
-//         setAdolescentes((prev) => [...prev, profissional]);
-//       };
-//     });
-
-  //     if (profissional.preferencias.includes('Pré-Adolescentes')) {
-  //       setPre_adolescentes((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('Adolescentes')) {
-  //       setAdolescentes((prev) => [...prev, profissional]);
-  //     };
-  //   });
-  // };
-
-
-=======
-=======
->>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
-
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
 
