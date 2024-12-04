@@ -6,13 +6,7 @@
     margin: auto;
 }
 
-/* .Links .Link:hover,
-.Links .btn2:hover {
 
-  cursor: pointer;
-  transition: 0.5s;
-  transform: scale(1.1);
-} */
 
 
 .Links .Link,
@@ -45,6 +39,8 @@
   .Links .btn2 {
 
     padding-left: 6%;
+    background-color: white ;
+    border: none;
   }
 
   .input-container {
@@ -75,29 +71,37 @@
     color: #5a789f;
   }
 
+
   .search-results {
-    position: absolute;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-top: 10px;
-    width: 100%;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 12%;
+    left: 61%;
+    width: 15.5%; /* Mesma largura do input */
+    overflow-y: auto; /* Adiciona rolagem se necessário */
+    background-color: #fff; /* Fundo branco */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    color: #5a789f;
   }
   
   .search-results ul {
-    list-style: none;
-    padding: 0;
+    
     margin: 0;
+    padding: 0;
   }
   
   .search-results li {
-    padding: 10px;
+    padding: 10px 15px; /* Espaçamento interno */
     cursor: pointer;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd; /* Linha entre os itens */
+  }
+  
+  .search-results li:last-child {
+    border-bottom: none; /* Remove a linha do último item */
   }
   
   .search-results li:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
   }

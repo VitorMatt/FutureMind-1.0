@@ -55,22 +55,6 @@ function Inicio() {
       if (profissional.preferencias.includes('PCDs')) {
         setPcds((prev) => [...prev, profissional]);
       }
-<<<<<<< HEAD
-
-  
-      if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
-
-        setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-
-      if (profissional.preferencias.includes('Pré-Adolescentes')) {
-        setPreAdolescentes((prev) => [...prev, profissional]);
-
-      }
-      if (profissional.preferencias.includes('Adolescentes')) {
-        setAdolescentes((prev) => [...prev, profissional]);
-      }
-    }});
-=======
       if (profissional.preferencias.includes('Pré-Adolescentes')) {
         setPre_adolescentes((prev) => [...prev, profissional]);
       }
@@ -78,7 +62,6 @@ function Inicio() {
         setAdolescentes((prev) => [...prev, profissional]);
       };
     });
->>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
   };
 
   const handleReplace = () => {
@@ -214,11 +197,14 @@ function Inicio() {
     exibirAnimacaoConcluido(id);
   };
 
+  const [result, setResult] = useState('')
+
   const buscarProfissionais = async () => {
     try {
         const queryString = preferenciasSelecionadas.join(','); 
         const response = await fetch(`http://localhost:3000/api/profissionais?preferencias=${encodeURIComponent(queryString)}`);
         const data = await response.json();
+        setResult(data)
         console.log(data); 
     } catch (error) {
         console.error('Erro ao buscar profissionais:', error.message);
