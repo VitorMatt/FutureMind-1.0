@@ -1,6 +1,7 @@
 *{
     font-family: 'Poppins' , sans-serif;
     outline: none;
+    text-decoration: none;
 }
 
 :root{
@@ -433,24 +434,3 @@ input[type="checkbox"]:focus {
     padding-left: 0.5%;
 }
 
-<<<<<<< HEAD
-.inputCRP.error {
-    border: 1px solid red;
-  }
-  
- 
-.error-text {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-    font-weight: 500;
-  }
-  
-.flatpickr-input.error {
-    border: 1px solid red; 
-  }
-
-
- 
-=======
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
