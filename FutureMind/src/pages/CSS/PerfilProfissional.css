@@ -148,23 +148,23 @@
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     width: 70%;
-    height: fit-content;
+    height: 500px;
 }
 
 .input-button{
     display: flex;
     margin: auto;
-    width: 80%;
+    width: 100%;
     height: fit-content;
 }
 
 .input-anotações{
-    width: 70%;
-    padding: 2%;
+    width: 60%;
+    padding: 2%
 }
 
 .input-anotações textarea{
-    width: 90%;
+    width: 80%;
     display: flex;
     padding: 12px;
     color: #5A789F;
@@ -177,7 +177,7 @@
 
 .button-anotações{
     width: 30%;
-    padding: 2%;
+  
 }
 
 .button-anotações button{
@@ -205,13 +205,50 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.div-anotações{
+
+.div-anotações {
     display: flex;
-    margin: auto;
-    background-color: rgba(0, 255, 255, 0.822);
-    width: 80%;
-    height: fit-content;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 15px;
+  }
+  
+  .nota-slide {
+    
+    width: 100%;
+    height: 250px;
+    border-radius: 15px;
+    align-items: start;
+   
+  }
+ 
+.textarea_anotação{
+
+    resize: none;
 }
+
+  
+  /* Estilos para o Swiper */
+  .swiper {
+    width: 100%;
+    height: auto;
+  }
+  
+
+  .slide_swiper{
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3%;
+
+  }
+
+  .mini_divs{
+
+    width: 70%;
+  }
+
 
 .editar-perfil-profissional{
     display: flex;
@@ -732,9 +769,6 @@
 
 .perfilPro-container {
 
-<<<<<<< HEAD
-/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
-=======
    padding: 20px;
 
 }
@@ -789,9 +823,16 @@
 
 }
 .fechar-detalhes:hover {
-    background-color: darkred;}
+
+    background-color: darkred;
+
+}
+
+
+  
+  
+  
                     
 
 /*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
 
->>>>>>> cdcd0206886c09f3da9d719c7cd5ee03f7c8b9ec

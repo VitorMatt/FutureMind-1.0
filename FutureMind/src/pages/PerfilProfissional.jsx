@@ -12,15 +12,19 @@ import './CSS/Test_dois.css'
 import { Label } from '@mui/icons-material'
 import { GlobalContext } from '../GlobalContext/GlobalContext'
 import { useNavigate } from 'react-router-dom'
+import { Navigation, Pagination, A11y } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 
 function PerfilProfissional() {
 
-<<<<<<< HEAD
-//   const { user, setUser } = useContext(GlobalContext);
-=======
   // const { user, setUser } = useContext(GlobalContext);
->>>>>>> cdcd0206886c09f3da9d719c7cd5ee03f7c8b9ec
 
 //   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -215,7 +219,16 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
   const handleCloseDetails = () => {
     setSelectedAgendamento(null); // Fecha a div de detalhes
   };
+  
+  const [nota, setNota] = useState('');
+  const [notas, setNotas] = useState([]);
 
+  const adicionarNota = () => {
+    if (nota.trim() !== '') {
+      setNotas([...notas, nota]); // Adiciona a nova anotação à lista
+      setNota(''); // Limpa o campo de entrada
+    }
+  };
   return (
     <div className='perfilPro-container'>
       
@@ -234,11 +247,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
                      <div className='nick-usuario'>
-<<<<<<< HEAD
-                      {/* <h1>{userData.nome_completo}</h1>
-=======
                        {/* <h1>{userData.nome_completo}</h1>
->>>>>>> cdcd0206886c09f3da9d719c7cd5ee03f7c8b9ec
                       <p>{userData.email}</p> */}
                     </div>
                  </div> 
@@ -356,15 +365,45 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
          </div>
          <div className='input-button'>
           <div className='input-anotações'>
-           <textarea id='textA' className='text-anota' placeholder='Digite aqui...' rows="1"/>
+           <textarea 
+           id='textA'
+           value={nota}
+           onChange={(e) => setNota(e.target.value)}
+           className='text-anota' 
+           placeholder='Digite aqui...'
+            rows="1"/>
           </div>
           <div className='button-anotações'>
-           <button>Enviar</button>
+           <button onClick={adicionarNota}>Enviar</button>
           </div>
          </div>
          <div className='div-anotações'>
+         <Swiper 
+
+         modules={[Navigation, Pagination, A11y]}
+         spaceBetween={1}
+         slidesPerView={4}
+         navigation
+         pagination={{ clickable: true }}
+         onSwiper={(swiper) => console.log(swiper)}
+         onSlideChange={() => console.log('slide change')}
+
+        >
+          
+          {notas.map((nota, index) => (
+          <SwiperSlide key={index} className='slide_swiper'>
+            <div className='mini_divs'>
+             <div className="nota-slide">
+              <textarea className='textarea_anotação' cols="30" rows="14" readOnly  >{nota}</textarea>
+             </div>
+            </div>
+          
+         </SwiperSlide>
+          ))}
+          </Swiper>
             
          </div>
+         
         </div>
         <div className='editar-perfil-profissional'>
             <div className='titulo-perfil'>
