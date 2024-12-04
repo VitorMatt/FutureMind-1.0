@@ -43,17 +43,10 @@ function Inicio() {
   // const filtraProfissionais = () => {
   //   if (!profissionais || profissionais.length === 0) return;
     
-<<<<<<< HEAD
-
-=======
-=======
-<<<<<<< HEAD
   // const filtraProfissionais = () => {
   //   if (!profissionais || profissionais.length === 0) return;
     
-<<<<<<< HEAD
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
+
   //   profissionais.forEach((profissional) => {
   //     if (profissional.preferencias.includes('Adultos')) {
   //       setAdultos((prev) => [...prev, profissional]);
@@ -67,9 +60,7 @@ function Inicio() {
   //     if (profissional.preferencias.includes('PCDs')) {
   //       setPcds((prev) => [...prev, profissional]);
   //     }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
 
 
   
@@ -85,9 +76,7 @@ function Inicio() {
   //   //   }
   //   // });
   // };
-=======
-=======
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
+
 //   const filtraProfissionais = () => {
 //     if (!profissionais || profissionais.length === 0) return;
 //     profissionais.forEach((profissional) => {
@@ -167,30 +156,16 @@ function Inicio() {
 //       };
 //     });
 
-<<<<<<< HEAD
-=======
-      if (profissional.preferencias.includes('Pré-Adolescentes')) {
-        setPreAdolescentes((prev) => [...prev, profissional]);
+  //     if (profissional.preferencias.includes('Pré-Adolescentes')) {
+  //       setPre_adolescentes((prev) => [...prev, profissional]);
+  //     }
+  //     if (profissional.preferencias.includes('Adolescentes')) {
+  //       setAdolescentes((prev) => [...prev, profissional]);
+  //     };
+  //   });
+  // };
 
-      }
-      if (profissional.preferencias.includes('Adolescentes')) {
-        setAdolescentes((prev) => [...prev, profissional]);
-      }
-    }});
-=======
->>>>>>> 11cf5d922fcc76f7fea593c5ec65cd1d89c79c72
-      if (profissional.preferencias.includes('Pré-Adolescentes')) {
-        setPre_adolescentes((prev) => [...prev, profissional]);
-      }
-      if (profissional.preferencias.includes('Adolescentes')) {
-        setAdolescentes((prev) => [...prev, profissional]);
-      };
-    });
-  };
 
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
 
