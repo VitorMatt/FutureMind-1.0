@@ -28,7 +28,6 @@ function Inicio() {
   const [pcds, setPcds] = useState([]);
   const [idosos, setIdosos] = useState([]);
   
-  
   const fetchProfissionais = async () => {
     try {
       const response = await fetch('http://localhost:3000');
@@ -39,12 +38,17 @@ function Inicio() {
     }
   };
 
+  const filtraProfissionais = () => {
+    if (!profissionais || profissionais.length === 0) return;
 
+<<<<<<< HEAD
     
 
 
   const filtraProfissionais = () => {
     if (!profissionais || profissionais.length === 0) return;
+=======
+>>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
     profissionais.forEach((profissional) => {
       if (profissional.preferencias.includes('Adultos')) {
         setAdultos((prev) => [...prev, profissional]);
@@ -62,15 +66,21 @@ function Inicio() {
    if (profissional.preferencias.includes('Pré-Adolescentes')) {
 
     setPre_adolescentes((prev) => [...prev, profissional]);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
     }
      if (profissional.preferencias.includes('Adolescentes')) {
       setAdolescentes((prev) => [...prev, profissional]);
      }
      });
    };
+<<<<<<< HEAD
   
+=======
+>>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
 
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
@@ -1434,6 +1444,7 @@ const clickTres = (index) => {
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
+
                   CRP: {item.crp}
                   </h1>
                   </div>
@@ -1570,4 +1581,4 @@ const clickTres = (index) => {
     
   )}
 
-export default Inicio
+export default Inicio;

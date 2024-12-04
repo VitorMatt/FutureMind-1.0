@@ -46,6 +46,31 @@ useEffect(() => {
 // };
 
 
+  // const [sugestao, setSugestao] = useState('');
+
+  // const handleSugestao = async() => {
+
+  //   try {
+
+  //     const response = await fetch('http://localhost:3000/sugestoes', {
+
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-type': 'application/json'
+  //       },
+  //       body: JSON.stringify(sugestao)
+  //     });
+
+  //     if (response.ok) {
+
+  //       console.log('Post com sucesso')
+  //     }
+  //   } catch (err) {
+
+  //     console.log('Erro', err.message);
+  //   }
+  // }
+
   return (
     <div className='sobreNos-container'>
       <NavBar />
