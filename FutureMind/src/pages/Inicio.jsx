@@ -39,11 +39,11 @@ function Inicio() {
     }
   };
 
-<<<<<<< HEAD
+
   // const filtraProfissionais = () => {
   //   if (!profissionais || profissionais.length === 0) return;
     
-<<<<<<< HEAD
+
   //   profissionais.forEach((profissional) => {
   //     if (profissional.preferencias.includes('Adultos')) {
   //       setAdultos((prev) => [...prev, profissional]);
@@ -57,11 +57,8 @@ function Inicio() {
   //     if (profissional.preferencias.includes('PCDs')) {
   //       setPcds((prev) => [...prev, profissional]);
   //     }
-=======
 //   const filtraProfissionais = () => {
 //     if (!profissionais || profissionais.length === 0) return;
-    
-<<<<<<< HEAD
 //     profissionais.forEach((profissional) => {
 //       if (profissional.preferencias.includes('Adultos')) {
 //         setAdultos((prev) => [...prev, profissional]);
@@ -75,92 +72,70 @@ function Inicio() {
 //       if (profissional.preferencias.includes('PCDs')) {
 //         setPcds((prev) => [...prev, profissional]);
 //       }
-// <<<<<<< HEAD
-// =======
-// <<<<<<< HEAD
-// >>>>>>> cdcd0206886c09f3da9d719c7cd5ee03f7c8b9ec
->>>>>>> c8642607f9df7ac0115af34a0ee219874c224958
-=======
-    profissionais.forEach((profissional) => {
-      if (profissional.preferencias.includes('Adultos')) {
-        setAdultos((prev) => [...prev, profissional]);
-      }
-      if (profissional.preferencias.includes('Idosos')) {
-        setIdosos((prev) => [...prev, profissional]);
-      }
-      if (profissional.preferencias.includes('Crianças')) {
-        setCriancas((prev) => [...prev, profissional]);
-      }
-      if (profissional.preferencias.includes('PCDs')) {
-        setPcds((prev) => [...prev, profissional]);
-      }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
 
-  
-<<<<<<< HEAD
-  //     if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
+//     profissionais.forEach((profissional) => {
+//       if (profissional.preferencias.includes('Adultos')) {
+//         setAdultos((prev) => [...prev, profissional]);
+//       }
+//       if (profissional.preferencias.includes('Idosos')) {
+//         setIdosos((prev) => [...prev, profissional]);
+//       }
+//       if (profissional.preferencias.includes('Crianças')) {
+//         setCriancas((prev) => [...prev, profissional]);
+//       }
+//       if (profissional.preferencias.includes('PCDs')) {
+//         setPcds((prev) => [...prev, profissional]);
+//       }
 
-<<<<<<< HEAD
-  //       setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
+//     if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
 
-  //     if (profissional.preferencias.includes('Pré-Adolescentes')) {
+//      setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
 
-  //       setPre_adolescentes((prev) => [...prev, profissional]);
+//    if (profissional.preferencias.includes('Pré-Adolescentes')) {
 
-  //       setPreAdolescentes((prev) => [...prev, profissional]);
+//     setPre_adolescentes((prev) => [...prev, profissional]);
 
-  //     }
-  //     if (profissional.preferencias.includes('Adolescentes')) {
-  //       setAdolescentes((prev) => [...prev, profissional]);
-  //     }
-  //   });
-  // };
-=======
-//       if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
 
-<<<<<<< HEAD
+//     }
+//      if (profissional.preferencias.includes('Adolescentes')) {
+//       setAdolescentes((prev) => [...prev, profissional]);
+//      }
+//      });
+//    };
+//     if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
+
+
+//          setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
+
+//        if (profissional.preferencias.includes('Pré-Adolescentes')) {
+//          setPre_adolescentes((prev) => [...prev, profissional]);
+
+//     setPreAdolescentes((prev) => [...prev, profissional]);
+//    }
+//        if (profissional.preferencias.includes('Adolescentes')) {
+//          setAdolescentes((prev) => [...prev, profissional]);
+//        }
+// //     });
+//   };
+
 //         setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-// =======
+
 //       if (profissional.preferencias.includes('Pré-Adolescentes')) {
-// <<<<<<< HEAD
-//         setPre_adolescentes((prev) => [...prev, profissional]);
-// =======
 //         setPreAdolescentes((prev) => [...prev, profissional]);
-// >>>>>>> 88021aabe63e3ad2825255ba02dd79182a669d4e
-// >>>>>>> 491928c7902104465c48bc192008dd5ca0ad65bc
+
 //       }
 //       if (profissional.preferencias.includes('Adolescentes')) {
 //         setAdolescentes((prev) => [...prev, profissional]);
 //       }
+//     }});
+//       if (profissional.preferencias.includes('Pré-Adolescentes')) {
+//         setPre_adolescentes((prev) => [...prev, profissional]);
+//       }
+//       if (profissional.preferencias.includes('Adolescentes')) {
+//         setAdolescentes((prev) => [...prev, profissional]);
+//       };
 //     });
-//   };
->>>>>>> c8642607f9df7ac0115af34a0ee219874c224958
-=======
-        setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
 
-      if (profissional.preferencias.includes('Pré-Adolescentes')) {
-        setPreAdolescentes((prev) => [...prev, profissional]);
-
-      }
-      if (profissional.preferencias.includes('Adolescentes')) {
-        setAdolescentes((prev) => [...prev, profissional]);
-      }
-    }});
-=======
->>>>>>> 11cf5d922fcc76f7fea593c5ec65cd1d89c79c72
-      if (profissional.preferencias.includes('Pré-Adolescentes')) {
-        setPre_adolescentes((prev) => [...prev, profissional]);
-      }
-      if (profissional.preferencias.includes('Adolescentes')) {
-        setAdolescentes((prev) => [...prev, profissional]);
-      };
-    });
-  };
-
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
 
