@@ -8,8 +8,6 @@ import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
 import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
 import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
-import './CSS/Test_dois.css'
-import './CSS/Test_tres.css'
 import { Label } from '@mui/icons-material'
 import { GlobalContext } from '../GlobalContext/GlobalContext'
 import { useNavigate } from 'react-router-dom'
@@ -25,29 +23,16 @@ import 'swiper/css/scrollbar';
 
 function PerfilProfissional() {
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-  // const { user, setUser } = useContext(GlobalContext);
-=======
-<<<<<<< HEAD
-  const { user, setUser } = useContext(GlobalContext);
-=======
-<<<<<<< HEAD
-//   const { user, setUser } = useContext(GlobalContext);
-=======
-<<<<<<< HEAD
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
-  // const { user, setUser } = useContext(GlobalContext);
-  const { user, setUser } = useContext(GlobalContext);
-<<<<<<< HEAD
 
-=======
->>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
->>>>>>> 11cf5d922fcc76f7fea593c5ec65cd1d89c79c72
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
+  // const { user, setUser } = useContext(GlobalContext);
+  // const { user, setUser } = useContext(GlobalContext);
+
+//   const { user, setUser } = useContext(GlobalContext);
+
+
+  // const { user, setUser } = useContext(GlobalContext);
+  const { user, setUser } = useContext(GlobalContext);
+
 
   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -145,9 +130,9 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     setSelectedAgendamento(agendamento);
   };
 
-  const handleCloseDetails = () => {
-    setSelectedAgendamento(null); // Fecha a div de detalhes
-  };
+  // const handleCloseDetails = () => {
+  //   setSelectedAgendamento(null); // Fecha a div de detalhes
+  // };
 
   const handleDeleteAppointment = (agendamentoParaExcluir) => {
     setAgendamentos((prevAgendamentos) =>
@@ -196,16 +181,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     const { value, checked } = event.target;
   };
 
-<<<<<<< HEAD
   const handleCloseDetails = () => {
     setSelectedAgendamento(null); // Fecha a div de detalhes
   };
   
   const [nota, setNota] = useState('');
   const [notas, setNotas] = useState([]);
-=======
-  const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
+  // const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
 
   const adicionarNota = () => {
     if (nota.trim() !== '') {
@@ -228,32 +210,16 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                  <div className='div-foto-nome'>
                     <div className='foto-usuario'>
-                        <img src='iconuser.svg' className='a-foto'/>
+                        <img src='iconuser.svg' className='a-foto'/> 
                     </div>
                      <div className='nick-usuario'>
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
                        {/* <h1>{userData.nome_completo}</h1>
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
-=======
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
+
                       {/* <h1>{userData.nome_completo}</h1>
 
                        {/* <h1>{userData.nome_completo}</h1>
-<<<<<<< HEAD
-=======
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
+
                       <p>{userData.email}</p> */}
 
                       <h1>{userData.nome_completo}</h1>
@@ -589,7 +555,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                 <div className='div-buttons-salvar-cancelar'>
                 <button className='a'>Excluir conta</button>
-                  <button className='a' onClick={handleSair}> Sair da Conta</button>
+                  <button className='a' > Sair da Conta</button>
                   {/* onClick={sair} */}
                   <button className='a'>Cancelar edição</button>
                   <button className='salva'>Salvar</button>

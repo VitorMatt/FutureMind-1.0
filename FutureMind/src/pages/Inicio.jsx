@@ -40,157 +40,38 @@ function Inicio() {
   };
 
 
-  // const filtraProfissionais = () => {
-  //   if (!profissionais || profissionais.length === 0) return;
     
-<<<<<<< HEAD
-
-=======
-=======
-<<<<<<< HEAD
-  // const filtraProfissionais = () => {
-  //   if (!profissionais || profissionais.length === 0) return;
-    
-<<<<<<< HEAD
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
-  //   profissionais.forEach((profissional) => {
-  //     if (profissional.preferencias.includes('Adultos')) {
-  //       setAdultos((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('Idosos')) {
-  //       setIdosos((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('Crianças')) {
-  //       setCriancas((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('PCDs')) {
-  //       setPcds((prev) => [...prev, profissional]);
-  //     }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
 
+  const filtraProfissionais = () => {
+    if (!profissionais || profissionais.length === 0) return;
+    profissionais.forEach((profissional) => {
+      if (profissional.preferencias.includes('Adultos')) {
+        setAdultos((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Idosos')) {
+        setIdosos((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Crianças')) {
+        setCriancas((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('PCDs')) {
+        setPcds((prev) => [...prev, profissional]);
+      }
+
+   if (profissional.preferencias.includes('Pré-Adolescentes')) {
+
+    setPre_adolescentes((prev) => [...prev, profissional]);
+
+
+    }
+     if (profissional.preferencias.includes('Adolescentes')) {
+      setAdolescentes((prev) => [...prev, profissional]);
+     }
+     });
+   };
   
-  //   //   if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
 
-  //   //     setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-  //   //   if (profissional.preferencias.includes('Pré-Adolescentes')) {
-  //   //     // setPreAdolescentes((prev) => [...prev, profissional]);
-
-  //   //   }
-  //   //   if (profissional.preferencias.includes('Adolescentes')) {
-  //   //     setAdolescentes((prev) => [...prev, profissional]);
-  //   //   }
-  //   // });
-  // };
-=======
-=======
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
-//   const filtraProfissionais = () => {
-//     if (!profissionais || profissionais.length === 0) return;
-//     profissionais.forEach((profissional) => {
-//       if (profissional.preferencias.includes('Adultos')) {
-//         setAdultos((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Idosos')) {
-//         setIdosos((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Crianças')) {
-//         setCriancas((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('PCDs')) {
-//         setPcds((prev) => [...prev, profissional]);
-//       }
-
-//     profissionais.forEach((profissional) => {
-//       if (profissional.preferencias.includes('Adultos')) {
-//         setAdultos((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Idosos')) {
-//         setIdosos((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Crianças')) {
-//         setCriancas((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('PCDs')) {
-//         setPcds((prev) => [...prev, profissional]);
-//       }
-
-//     if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
-
-//      setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-
-//    if (profissional.preferencias.includes('Pré-Adolescentes')) {
-
-//     setPre_adolescentes((prev) => [...prev, profissional]);
-
-
-//     }
-//      if (profissional.preferencias.includes('Adolescentes')) {
-//       setAdolescentes((prev) => [...prev, profissional]);
-//      }
-//      });
-//    };
-//     if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
-
-
-//          setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-
-//        if (profissional.preferencias.includes('Pré-Adolescentes')) {
-//          setPre_adolescentes((prev) => [...prev, profissional]);
-
-//     setPreAdolescentes((prev) => [...prev, profissional]);
-//    }
-//        if (profissional.preferencias.includes('Adolescentes')) {
-//          setAdolescentes((prev) => [...prev, profissional]);
-//        }
-// //     });
-//   };
-
-//         setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-
-//       if (profissional.preferencias.includes('Pré-Adolescentes')) {
-//         setPreAdolescentes((prev) => [...prev, profissional]);
-
-//       }
-//       if (profissional.preferencias.includes('Adolescentes')) {
-//         setAdolescentes((prev) => [...prev, profissional]);
-//       }
-//     }});
-//       if (profissional.preferencias.includes('Pré-Adolescentes')) {
-//         setPre_adolescentes((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Adolescentes')) {
-//         setAdolescentes((prev) => [...prev, profissional]);
-//       };
-//     });
-
-<<<<<<< HEAD
-=======
-      if (profissional.preferencias.includes('Pré-Adolescentes')) {
-        setPreAdolescentes((prev) => [...prev, profissional]);
-
-      }
-      if (profissional.preferencias.includes('Adolescentes')) {
-        setAdolescentes((prev) => [...prev, profissional]);
-      }
-    }});
-=======
->>>>>>> 11cf5d922fcc76f7fea593c5ec65cd1d89c79c72
-      if (profissional.preferencias.includes('Pré-Adolescentes')) {
-        setPre_adolescentes((prev) => [...prev, profissional]);
-      }
-      if (profissional.preferencias.includes('Adolescentes')) {
-        setAdolescentes((prev) => [...prev, profissional]);
-      };
-    });
-  };
-
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
 
@@ -579,25 +460,33 @@ const clickTres = (index) => {
 
         </div>
         <div className='btn-consulta'>
+            {selectedTime ? (
+              <button
+                id="agendar"
+                onClick={() => handleAgendamento(item.id_profissional)}
+              >
+                <b>
+                  {estadoBotoes[item.id_profissional] === 'carregando' && (
+                    <div id="circle" className="circle"></div>
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'concluido' && (
+                    <img id="icon-concluido" src="check.svg" alt="" />
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'inicial' && (
+                    <span className="btn-text2">
+                      {selectedTime
+                        ? `Marcar para ${selectedTime}`
+                        : "Marcar Consulta"}
+                    </span>
+                  )}
+                </b>
+              </button>
+            ) : (
+              
+              <p className="selecione-horario">Selecione um horário acima para agendar</p>
+            )}
+          </div>
 
-
-        <button
-          id="agendar"
-          onClick={() => handleAgendamento(item.id_profissional)}
-          disabled={!selectedTime}
-          >
-            <b>
-      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
-                selectedTime
-            ? `Marcar para ${selectedTime}`
-            : "Marcar Consulta"
-              }</span>}
-               
-            </b>
-        </button>
-            </div>
             </div>
           </div>
         </div>

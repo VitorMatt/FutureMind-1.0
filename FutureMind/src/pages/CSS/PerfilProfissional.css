@@ -710,12 +710,7 @@
   }
 
   .div-esp {
-<<<<<<< HEAD
-    max-width: 200px;
-=======
-
     max-width: 250px;
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
     height: 150px;
     overflow-x: auto; 
     /* border: 1px solid #ccc;  */
@@ -760,12 +755,7 @@
   }
   
 .div-desc{
-<<<<<<< HEAD
-    width: 500px;
-=======
-
-    width: 420px;
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
+    width: 400px;
     height: 150px;
     overflow-x: 0;
     overflow-y: auto; 
@@ -788,7 +778,7 @@
     width: 10px;
 }
 
-<<<<<<< HEAD
+
 /*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
 =======
 div::-webkit-scrollbar-track{
@@ -811,11 +801,8 @@ div::-webkit-scrollbar{
 }
 
 
-<<<<<<< HEAD
-=======
 
 /*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
    padding: 20px;
 
 }
@@ -870,19 +857,12 @@ div::-webkit-scrollbar{
 
 }
 .fechar-detalhes:hover {
-<<<<<<< HEAD
 
     background-color: darkred;
 
 }
 
 
-  
-  
-  
-=======
-    background-color: darkred
-}
 
 .options-container {
     display: grid;
@@ -913,7 +893,6 @@ div::-webkit-scrollbar{
     font-size: 1.3em;
     cursor: pointer;
   }
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
                     
 @media (max-width: 480px) {
     .options-container {
@@ -921,11 +900,7 @@ div::-webkit-scrollbar{
 }}
 
 
-<<<<<<< HEAD
-=======
 .container-escolhas{
     width: 76%;
     padding-top: 5%;
 }
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
