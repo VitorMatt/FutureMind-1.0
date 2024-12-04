@@ -4,7 +4,7 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 const TelefoneMask = ({ onTelefoneChange }) => {
     const {profissional} = useContext (GlobalContext)
-  const [telefone, setTelefone] = useState(profissional.telefone);
+    const [telefone, setTelefone] = useState(profissional.telefone);
 
   useEffect(() => {
     profissional.telefone = telefone

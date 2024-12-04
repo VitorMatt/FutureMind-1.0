@@ -673,8 +673,12 @@
   }
 
   .div-esp {
+<<<<<<< HEAD
+    max-width: 200px;
+=======
 
     max-width: 250px;
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
     height: 150px;
     overflow-x: auto; 
     /* border: 1px solid #ccc;  */
@@ -683,21 +687,16 @@
 }
 
 .div-esp::-webkit-scrollbar-track{
-
     background: #f1f1f1;
     border-radius: 3px;
 }
 
 .div-esp::-webkit-scrollbar-thumb{
-
-
     background-color: var(--cor-1);
     border-radius: 3px;
 }
 
 .div-esp::-webkit-scrollbar{
-
-
     width: 10px;
 }
 
@@ -724,8 +723,12 @@
   }
   
 .div-desc{
+<<<<<<< HEAD
+    width: 500px;
+=======
 
     width: 420px;
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
     height: 150px;
     overflow-x: 0;
     overflow-y: auto; 
@@ -735,24 +738,22 @@
 }
 
 .div-desc::-webkit-scrollbar-track{
-
     background: #f1f1f1;
     border-radius: 3px;
 }
 
 .div-desc::-webkit-scrollbar-thumb{
-
-
     background-color: var(--cor-1);
     border-radius: 3px;
 }
 
 .div-desc::-webkit-scrollbar{
-
-
     width: 10px;
 }
 
+<<<<<<< HEAD
+/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
+=======
 div::-webkit-scrollbar-track{
 
     background: #f1f1f1;
@@ -872,3 +873,4 @@ div::-webkit-scrollbar{
     width: 76%;
     padding-top: 5%;
 }
+>>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
