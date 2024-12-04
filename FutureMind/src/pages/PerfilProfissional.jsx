@@ -17,15 +17,8 @@ import { useNavigate } from 'react-router-dom'
 
 function PerfilProfissional() {
 
-<<<<<<< HEAD
-//   const { user, setUser } = useContext(GlobalContext);
-=======
-<<<<<<< HEAD
-  // const { user, setUser } = useContext(GlobalContext);
-=======
+
   const { user, setUser } = useContext(GlobalContext);
->>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
 
   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -194,23 +187,8 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
                      <div className='nick-usuario'>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
-=======
-                      {/* <h1>{userData.nome_completo}</h1>
-=======
-<<<<<<< HEAD
->>>>>>> c8642607f9df7ac0115af34a0ee219874c224958
-                       {/* <h1>{userData.nome_completo}</h1>
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
-                      <p>{userData.email}</p> */}
-=======
                       <h1>{userData.nome_completo}</h1>
                       <p>{userData.email}</p>
->>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
                     </div>
                  </div> 
     
