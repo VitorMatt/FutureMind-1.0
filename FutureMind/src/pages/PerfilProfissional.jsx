@@ -22,6 +22,7 @@ import 'swiper/css/scrollbar';
 
 function PerfilProfissional() {
 
+<<<<<<< HEAD
 
   const { user, setUser } = useContext(GlobalContext);
 
@@ -32,6 +33,22 @@ function PerfilProfissional() {
   const { user, setUser } = useContext(GlobalContext);
   const { user, setUser } = useContext(GlobalContext);
 
+=======
+
+<<<<<<< HEAD
+  // const { user, setUser } = useContext(GlobalContext);
+  // const { user, setUser } = useContext(GlobalContext);
+
+//   const { user, setUser } = useContext(GlobalContext);
+
+
+  // const { user, setUser } = useContext(GlobalContext);
+  const { user, setUser } = useContext(GlobalContext);
+
+=======
+  const { user, setUser } = useContext(GlobalContext);
+>>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
+>>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
 
   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -129,9 +146,9 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     setSelectedAgendamento(agendamento);
   };
 
-  const handleCloseDetails = () => {
-    setSelectedAgendamento(null); // Fecha a div de detalhes
-  };
+  // const handleCloseDetails = () => {
+  //   setSelectedAgendamento(null); // Fecha a div de detalhes
+  // };
 
   const handleDeleteAppointment = (agendamentoParaExcluir) => {
     setAgendamentos((prevAgendamentos) =>
@@ -182,8 +199,21 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
   
   const [nota, setNota] = useState('');
   const [notas, setNotas] = useState([]);
+<<<<<<< HEAD
 
   const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+=======
+  // const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+=======
+  // const handleCloseDetails = () => {
+  //   setSelectedAgendamento(null); // Fecha a div de detalhes
+  // };
+  
+  const [nota, setNota] = useState('');
+  const [notas, setNotas] = useState([]);
+  const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+>>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
+>>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
 
   const adicionarNota = () => {
     if (nota.trim() !== '') {
@@ -206,10 +236,11 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                  <div className='div-foto-nome'>
                     <div className='foto-usuario'>
-                        <img src='iconuser.svg' className='a-foto'/>
+                        <img src='iconuser.svg' className='a-foto'/> 
                     </div>
                      <div className='nick-usuario'>
 
+<<<<<<< HEAD
                        <h1>{userData.nome_completo}</h1>
 
                       <h1>{userData.nome_completo}</h1>
@@ -217,6 +248,17 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                        <h1>{userData.nome_completo}</h1>
 
                       <p>{userData.email}</p>
+=======
+                       {/* <h1>{userData.nome_completo}</h1>
+
+                      {/* <h1>{userData.nome_completo}</h1>
+
+                       {/* <h1>{userData.nome_completo}</h1>
+
+                      <p>{userData.email}</p> */}
+=======
+>>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
+>>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
 
                       <h1>{userData.nome_completo}</h1>
                       <p>{userData.email}</p>
@@ -551,7 +593,12 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                 <div className='div-buttons-salvar-cancelar'>
                 <button className='a'>Excluir conta</button>
+<<<<<<< HEAD
                   <button className='a'> Sair da Conta</button>
+=======
+                  <button className='a' > Sair da Conta</button>
+                  {/* onClick={sair} */}
+>>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
                   <button className='a'>Cancelar edição</button>
                   <button className='salva'>Salvar</button>
                 </div>

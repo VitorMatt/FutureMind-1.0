@@ -8,7 +8,8 @@ function CadastroPaciente1({ paciente, setErrors, errors }) {
   
   const [date, setDate] = useState(paciente.data_nascimento);
   const [name, setName] = useState(paciente.nome_completo);
-  const [message, setMessage] = useState('preencha')
+  const [message, setMessage] = useState('preencha');
+  
   useEffect(() => {
     paciente.nome_completo = name;
   }, [name]);
@@ -17,6 +18,21 @@ function CadastroPaciente1({ paciente, setErrors, errors }) {
     paciente.data_nascimento = date;
   }, [date]);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    paciente.data_nascimento = date
+  // }, [date])
+  
+
+=======
+>>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
+  function validar(item) {
+    
+    if (item.length===0) setMessage('preencha'); else setMessage('')
+
+  }
+>>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
   return (
     <div className="selecao1">
       <h3 className="titulo-cadastro2">Seus Dados..</h3>
@@ -31,6 +47,13 @@ function CadastroPaciente1({ paciente, setErrors, errors }) {
             className="inputCRP"
           />
           {errors.nome && <p className="error-text">{errors.nome}</p>}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+          <input type="text" name="nome" value={name} onChange={(e) => {setName(e.target.value),validar(e.target.value)}} className="inputCRP" /> {message}
+=======
+>>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
+>>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
         </div>
         <div className="input-text">
           <label htmlFor="data">Data de Nascimento</label>

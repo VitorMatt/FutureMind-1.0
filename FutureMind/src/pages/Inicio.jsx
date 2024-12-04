@@ -28,7 +28,6 @@ function Inicio() {
   const [pcds, setPcds] = useState([]);
   const [idosos, setIdosos] = useState([]);
   
-  
   const fetchProfissionais = async () => {
     try {
       const response = await fetch('http://localhost:3000');
@@ -39,10 +38,12 @@ function Inicio() {
     }
   };
 
+  const filtraProfissionais = () => {
+    if (!profissionais || profissionais.length === 0) return;
 
-  // const filtraProfissionais = () => {
-  //   if (!profissionais || profissionais.length === 0) return;
+<<<<<<< HEAD
     
+<<<<<<< HEAD
   // const filtraProfissionais = () => {
   //   if (!profissionais || profissionais.length === 0) return;
     
@@ -61,9 +62,45 @@ function Inicio() {
   //       setPcds((prev) => [...prev, profissional]);
   //     }
 
+=======
 
 
+  const filtraProfissionais = () => {
+    if (!profissionais || profissionais.length === 0) return;
+=======
+>>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
+    profissionais.forEach((profissional) => {
+      if (profissional.preferencias.includes('Adultos')) {
+        setAdultos((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Idosos')) {
+        setIdosos((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Crianças')) {
+        setCriancas((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('PCDs')) {
+        setPcds((prev) => [...prev, profissional]);
+      }
+
+   if (profissional.preferencias.includes('Pré-Adolescentes')) {
+
+    setPre_adolescentes((prev) => [...prev, profissional]);
+<<<<<<< HEAD
+>>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
+
+
+=======
+>>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
+    }
+     if (profissional.preferencias.includes('Adolescentes')) {
+      setAdolescentes((prev) => [...prev, profissional]);
+     }
+     });
+   };
+<<<<<<< HEAD
   
+<<<<<<< HEAD
   //   //   if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
 
   //   //     setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
@@ -166,6 +203,11 @@ function Inicio() {
   // };
 
 
+=======
+=======
+>>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
+
+>>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
 
@@ -554,25 +596,33 @@ const clickTres = (index) => {
 
         </div>
         <div className='btn-consulta'>
+            {selectedTime ? (
+              <button
+                id="agendar"
+                onClick={() => handleAgendamento(item.id_profissional)}
+              >
+                <b>
+                  {estadoBotoes[item.id_profissional] === 'carregando' && (
+                    <div id="circle" className="circle"></div>
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'concluido' && (
+                    <img id="icon-concluido" src="check.svg" alt="" />
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'inicial' && (
+                    <span className="btn-text2">
+                      {selectedTime
+                        ? `Marcar para ${selectedTime}`
+                        : "Marcar Consulta"}
+                    </span>
+                  )}
+                </b>
+              </button>
+            ) : (
+              
+              <p className="selecione-horario">Selecione um horário acima para agendar</p>
+            )}
+          </div>
 
-
-        <button
-          id="agendar"
-          onClick={() => handleAgendamento(item.id_profissional)}
-          disabled={!selectedTime}
-          >
-            <b>
-      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
-                selectedTime
-            ? `Marcar para ${selectedTime}`
-            : "Marcar Consulta"
-              }</span>}
-               
-            </b>
-        </button>
-            </div>
             </div>
           </div>
         </div>
@@ -1520,6 +1570,7 @@ const clickTres = (index) => {
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
+
                   CRP: {item.crp}
                   </h1>
                   </div>
@@ -1656,4 +1707,4 @@ const clickTres = (index) => {
     
   )}
 
-export default Inicio
+export default Inicio;
