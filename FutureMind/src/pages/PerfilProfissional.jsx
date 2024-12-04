@@ -25,34 +25,8 @@ import 'swiper/css/scrollbar';
 
 function PerfilProfissional() {
 
-<<<<<<< HEAD
 
   const { user, setUser } = useContext(GlobalContext);
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-  // const { user, setUser } = useContext(GlobalContext);
-=======
-<<<<<<< HEAD
-  const { user, setUser } = useContext(GlobalContext);
-=======
-<<<<<<< HEAD
-//   const { user, setUser } = useContext(GlobalContext);
-=======
-<<<<<<< HEAD
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
-  // const { user, setUser } = useContext(GlobalContext);
-  const { user, setUser } = useContext(GlobalContext);
-<<<<<<< HEAD
-
-=======
->>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
->>>>>>> 11cf5d922fcc76f7fea593c5ec65cd1d89c79c72
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
->>>>>>> 75ff488e09b42910efe489c5200dddbc29ed45cb
 
   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -201,16 +175,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     const { value, checked } = event.target;
   };
 
-<<<<<<< HEAD
-  const handleCloseDetails = () => {
-    setSelectedAgendamento(null); // Fecha a div de detalhes
-  };
+  // const handleCloseDetails = () => {
+  //   setSelectedAgendamento(null); // Fecha a div de detalhes
+  // };
   
   const [nota, setNota] = useState('');
   const [notas, setNotas] = useState([]);
-=======
   const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
 
   const adicionarNota = () => {
     if (nota.trim() !== '') {
@@ -236,34 +207,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
                      <div className='nick-usuario'>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-                       {/* <h1>{userData.nome_completo}</h1>
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
-=======
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
-                      {/* <h1>{userData.nome_completo}</h1>
-
-                       {/* <h1>{userData.nome_completo}</h1>
-<<<<<<< HEAD
-=======
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
->>>>>>> 02479032377cc040eb7469f73eb41bf1afd43459
-                      <p>{userData.email}</p> */}
-
->>>>>>> 75ff488e09b42910efe489c5200dddbc29ed45cb
                       <h1>{userData.nome_completo}</h1>
                       <p>{userData.email}</p>
                     </div>

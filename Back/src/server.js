@@ -8,7 +8,7 @@ const pool = new Pool({
     user: 'postgres', 
     host: 'localhost',
     database: 'FutureMind', 
-    password: '12345',
+    password: 'Vitor281207.',
     port: 5432, 
 });
 
@@ -579,7 +579,7 @@ app.get('/sugestoes', async(req, res) => {
 
 app.post('/sugestoes', async(req, res) => {
 
-    const sugestao = req.body;
+    const { sugestao } = req.body;
 
     try {
 
