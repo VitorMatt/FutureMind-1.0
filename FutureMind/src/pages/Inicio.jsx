@@ -38,7 +38,6 @@ function Inicio() {
     }
   };
 
-<<<<<<< HEAD
   // const filtraProfissionais = () => {
   //   if (!profissionais || profissionais.length === 0) return;
     
@@ -156,35 +155,6 @@ function Inicio() {
   //     };
   //   });
   // };
-=======
-  const filtraProfissionais = () => {
-    if (!profissionais || profissionais.length === 0) return;
-
-    profissionais.forEach((profissional) => {
-      if (profissional.preferencias.includes('Adultos')) {
-        setAdultos((prev) => [...prev, profissional]);
-      }
-      if (profissional.preferencias.includes('Idosos')) {
-        setIdosos((prev) => [...prev, profissional]);
-      }
-      if (profissional.preferencias.includes('Crianças')) {
-        setCriancas((prev) => [...prev, profissional]);
-      }
-      if (profissional.preferencias.includes('PCDs')) {
-        setPcds((prev) => [...prev, profissional]);
-      }
-
-      if (profissional.preferencias.includes('Pré-Adolescentes')) {
-
-        setPre_adolescentes((prev) => [...prev, profissional]);
-      }
-
-      if (profissional.preferencias.includes('Adolescentes')) {
-        setAdolescentes((prev) => [...prev, profissional]);
-      }
-     });
-   };
->>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
 
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;

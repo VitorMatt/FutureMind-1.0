@@ -22,10 +22,6 @@ import PerfilProfissional from '../pages/PerfilProfissional'
 import CadastroProfissional from '../pages/CadastroProfissional'
 import PerfilVisualizar from '../pages/PerfilVisualizar'
 import PerfilPaciente from '../pages/PerfilPaciente'
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
 
 const router = createBrowserRouter([{
 

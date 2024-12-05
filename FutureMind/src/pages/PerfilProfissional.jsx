@@ -22,7 +22,6 @@ import 'swiper/css/scrollbar';
 
 function PerfilProfissional() {
 
-<<<<<<< HEAD
 
   // const { user, setUser } = useContext(GlobalContext);
 
@@ -31,9 +30,6 @@ function PerfilProfissional() {
 //   const { user, setUser } = useContext(GlobalContext);
 
   // const { user, setUser } = useContext(GlobalContext);
-=======
-  const { setUser } = useContext(GlobalContext);
->>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
 
   // const { user, setUser } = useContext(GlobalContext);
 
@@ -184,7 +180,6 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
   const handleChange = (event) => {
     const { value, checked } = event.target;
   };
-<<<<<<< HEAD
 
   
   
@@ -193,13 +188,6 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
   const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
 
-=======
-  
-  const [nota, setNota] = useState('');
-  const [notas, setNotas] = useState([]);
-  
-  const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
->>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
 
   const adicionarNota = () => {
     if (nota.trim() !== '') {
@@ -225,7 +213,6 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/> 
                     </div>
                      <div className='nick-usuario'>
-<<<<<<< HEAD
 
                        {/* <h1>{userData.nome_completo}</h1>
 
@@ -238,10 +225,6 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                       {/* <h1>{userData.nome_completo}</h1>
                       <p>{userData.email}</p> */}
-=======
-                      <h1>{userData.nome_completo}</h1>
-                      <p>{userData.email}</p>
->>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
                     </div>
                  </div> 
     
