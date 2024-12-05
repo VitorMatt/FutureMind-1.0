@@ -172,7 +172,11 @@ input[type="file"] {
     height: 350px;
 }
 
+<<<<<<< HEAD
+.input-text{
+=======
  .input-text{
+>>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
 
     display: flex;
     flex-direction: column;
@@ -434,3 +438,24 @@ input[type="checkbox"]:focus {
     padding-left: 0.5%;
 }
 
+<<<<<<< HEAD
+.inputCRP.error {
+    border: 1px solid red;
+  }
+  
+ 
+.error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 500;
+  }
+  
+.flatpickr-input.error {
+    border: 1px solid red; 
+  }
+
+
+ 
+=======
+>>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19

@@ -46,30 +46,31 @@ useEffect(() => {
 // };
 
 
-  // const [sugestao, setSugestao] = useState('');
+  const [sugestao, setSugestao] = useState('');
 
-  // const handleSugestao = async() => {
+  const handleSugestao = async() => {
 
-  //   try {
+    setSugestao('');
+    try {
 
-  //     const response = await fetch('http://localhost:3000/sugestoes', {
+      const response = await fetch('http://localhost:3000/sugestoes', {
 
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-type': 'application/json'
-  //       },
-  //       body: JSON.stringify(sugestao)
-  //     });
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({sugestao: sugestao})
+      });
 
-  //     if (response.ok) {
+      if (response.ok) {
 
-  //       console.log('Post com sucesso')
-  //     }
-  //   } catch (err) {
+        console.log('Post com sucesso');
+      }
+    } catch (err) {
 
-  //     console.log('Erro', err.message);
-  //   }
-  // }
+      console.log('Erro', err.message);
+    }
+  }
 
   return (
     <div className='sobreNos-container'>
@@ -136,8 +137,8 @@ Com um time de terapeutas altamente capacitados e uma abordagem personalizada, b
           <div className='dadosSugestoes'>
             <h1>Sugestão:</h1>
             <p>Ajude-nos a tornar sua experiência ainda melhor. Deixe sua sugestão!</p>
-            <textarea id="expandingTextarea" placeholder="Digite aqui sua sugestão..."></textarea> 
-            <button className='botaoSugestao'>Enviar</button>
+            <textarea id="expandingTextarea" placeholder="Digite aqui sua sugestão..." value={sugestao} onChange={(e) => { setSugestao(e.target.value) }}></textarea> 
+            <button className='botaoSugestao' onClick={handleSugestao}>Enviar</button>
           </div>
         </div>
 
