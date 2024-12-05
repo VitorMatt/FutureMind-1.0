@@ -25,43 +25,37 @@ import 'swiper/css/scrollbar';
 
 function PerfilProfissional() {
 
-<<<<<<< HEAD
+
   // const { user, setUser } = useContext(GlobalContext);
-=======
-<<<<<<< HEAD
+
   const { user, setUser } = useContext(GlobalContext);
-=======
-<<<<<<< HEAD
+
 //   const { user, setUser } = useContext(GlobalContext);
-=======
-<<<<<<< HEAD
+
   // const { user, setUser } = useContext(GlobalContext);
-=======
-  const { user, setUser } = useContext(GlobalContext);
->>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
->>>>>>> 11cf5d922fcc76f7fea593c5ec65cd1d89c79c72
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
 
-  var userData = JSON.parse(localStorage.getItem('User'));
+  // const { user, setUser } = useContext(GlobalContext);
 
-  userData.especializacao = userData.especializacao.replace('{', '')
-  userData.especializacao = userData.especializacao.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('{', '')
+
+//   var userData = JSON.parse(localStorage.getItem('User'));
+
+//   userData.especializacao = userData.especializacao.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('{', '')
  
- for (let i=0; i<(userData.especializacao.length * 2); i++) {
+//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
 
-  userData.especializacao = userData.especializacao.replace('"', '')
- }
+//   userData.especializacao = userData.especializacao.replace('"', '')
+//  }
 
- for (let i=0; i<(userData.preferencias.length * 2); i++) {
+//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
 
-  userData.preferencias = userData.preferencias.replace('"', '')
- }
+//   userData.preferencias = userData.preferencias.replace('"', '')
+//  }
 
- userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
- userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
 
  const navigate = useNavigate();
  
@@ -190,16 +184,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     const { value, checked } = event.target;
   };
 
-<<<<<<< HEAD
-  const handleCloseDetails = () => {
-    setSelectedAgendamento(null); // Fecha a div de detalhes
-  };
+  
   
   const [nota, setNota] = useState('');
   const [notas, setNotas] = useState([]);
-=======
+
   const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
+
 
   const adicionarNota = () => {
     if (nota.trim() !== '') {
@@ -225,29 +216,18 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/>
                     </div>
                      <div className='nick-usuario'>
-<<<<<<< HEAD
+
                        {/* <h1>{userData.nome_completo}</h1>
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
-=======
+
                       {/* <h1>{userData.nome_completo}</h1>
-=======
-<<<<<<< HEAD
->>>>>>> c8642607f9df7ac0115af34a0ee219874c224958
+
+
                        {/* <h1>{userData.nome_completo}</h1>
->>>>>>> ce7b9f4fd715c6325b88a838023a4e9436068644
->>>>>>> f61a70a1d818d92fcf766349a2eba848a52c3a63
+
                       <p>{userData.email}</p> */}
-=======
->>>>>>> 11cf5d922fcc76f7fea593c5ec65cd1d89c79c72
-                      <h1>{userData.nome_completo}</h1>
-                      <p>{userData.email}</p>
+
+                      {/* <h1>{userData.nome_completo}</h1>
+                      <p>{userData.email}</p> */}
                     </div>
                  </div> 
     
@@ -257,13 +237,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                         <div className="div-esp">
 
-                        {
+                        {/* {
                           userData.preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
                           ))
-                        }
+                        } */}
                         </div>
                     </div>
                     <div className='div-menor-info'>
@@ -271,13 +251,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         
                         <div className="div-esp">
 
-                        {
+                        {/* {
                           userData.especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
                           ))
-                        }
+                        } */}
                         </div>
                     </div>
                     <div className='descricao'>
