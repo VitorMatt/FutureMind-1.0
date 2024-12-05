@@ -34,9 +34,10 @@ function Inicio() {
       const data = await response.json();
       setProfissionais(data);
     } catch (err) {
-      console.error('Erro ao buscar profissionais:', err.message);
+      console.log('Erro ao buscar profissionais:', err.message);
     }
   };
+    
 
   const filtraProfissionais = () => {
     if (!profissionais || profissionais.length === 0) return;
@@ -54,17 +55,17 @@ function Inicio() {
       if (profissional.preferencias.includes('PCDs')) {
         setPcds((prev) => [...prev, profissional]);
       }
-
       if (profissional.preferencias.includes('Pré-Adolescentes')) {
 
         setPre_adolescentes((prev) => [...prev, profissional]);
-      }
 
+      }
       if (profissional.preferencias.includes('Adolescentes')) {
         setAdolescentes((prev) => [...prev, profissional]);
       }
-     });
-   };
+    });
+  };
+  
 
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
@@ -91,6 +92,7 @@ function Inicio() {
     }
   };
 
+  const [estadoBotoes, setEstadoBotoes] = useState([]);
   useEffect(() => {
     fetchProfissionais();
   }, []);
@@ -99,15 +101,16 @@ function Inicio() {
     if (profissionais.length > 0) {
       handleReplace();
       filtraProfissionais();
+
+      setEstadoBotoes(
+        profissionais.reduce((acc, profissional) => {
+          acc[profissional.id_profissional] = 'inicial';
+          return acc;
+        }, {})
+      );
     }
   }, [profissionais]);
-    
-    const [estadoBotoes, setEstadoBotoes] = useState(
-      profissionais.reduce((acc, profissional) => {
-        acc[profissional.id] = 'inicial';
-        return acc;
-      }, {})
-    );
+  
 
 
   const getWeekDays = (startDate) => {
@@ -162,11 +165,23 @@ function Inicio() {
     setCurrentWeekStart(newStartDate);
   };
 
+  // const exibirAnimacaoConcluido = (id) => {
+  //   setEstadoBotoes((prev) => ({ ...prev, [id]: 'carregando' }));
+  //   setTimeout(() => {
+  //     setEstadoBotoes((prev) => ({ ...prev, [id]: 'concluido' }));
+  //   }, 1500);
+  //   setTimeout(() => {
+  //     setEstadoBotoes((prev) => ({ ...prev, [id]: 'inicial' }));
+  //   }, 3500);
+  // };
+
   const exibirAnimacaoConcluido = (id) => {
     setEstadoBotoes((prev) => ({ ...prev, [id]: 'carregando' }));
+    
     setTimeout(() => {
       setEstadoBotoes((prev) => ({ ...prev, [id]: 'concluido' }));
     }, 1500);
+  
     setTimeout(() => {
       setEstadoBotoes((prev) => ({ ...prev, [id]: 'inicial' }));
     }, 3500);
@@ -179,6 +194,7 @@ function Inicio() {
 
     if (selectedDate && selectedTime) {
       console.log(`Agendado para ${selectedDate} às ${selectedTime} com profissional ${id}`);
+      exibirAnimacaoConcluido(id);
     }
 
     setAgendamento({horario: selectedTime, data: selectedDate, profissional: id, paciente: userLog.id_paciente});
@@ -196,7 +212,6 @@ function Inicio() {
 
       console.log('Erro');
     }
-    exibirAnimacaoConcluido(id);
   };
 
   const [result, setResult] = useState('')
@@ -468,9 +483,7 @@ const clickTres = (index) => {
                   )}
                   {estadoBotoes[item.id_profissional] === 'inicial' && (
                     <span className="btn-text2">
-                      {selectedTime
-                        ? `Marcar para ${selectedTime}`
-                        : "Marcar Consulta"}
+                         Marcar para {selectedTime}
                     </span>
                   )}
                 </b>
@@ -643,18 +656,16 @@ const clickTres = (index) => {
         <button 
           id="agendar"
           onClick={() => handleAgendamento(item.id_profissional)}
-          disabled={!selectedTime}
           >
-            <b>
+            
       {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
       {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
       {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
-            ? `Marcar para ${selectedTime}`
-            : "Marcar Consulta"
+             && `Marcar para ${selectedTime}`
               }</span>}
                
-            </b>
+            
         </button>
             </div>
             </div>

@@ -10,10 +10,10 @@
 	position: absolute;
 	box-shadow: 2px 2px 4px black;
 	overflow: hidden;
-	height: 360px;
-	width: 559px;
-	top: 19%;
-	left: 33%;
+	height: 400px;
+	width: 620px;
+	top: 19.4%;
+	left: 33.2%;
 }
 
 .containerA{
@@ -33,9 +33,8 @@
 }
 
 .containerA img {
-
     align-items: center;
 	object-fit: cover;
-	height: 360px;
-	width: 559px;
+	height: 400px;
+	width: 700px;
 }

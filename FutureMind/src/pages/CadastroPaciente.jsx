@@ -1,107 +1,131 @@
 import '../pages/CSS/CadastroProfissional.css';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 import CadastroPaciente1 from '../components/CadastroPaciente1';
 import CadastroPaciente2 from '../components/CadastroPaciente2';
 import CadastroPaciente3 from '../components/CadastroPaciente3';
 import Stepper from '../components/StepperComponent';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 function CadastroPaciente() {
   const navigate = useNavigate();
   const { paciente } = useContext(GlobalContext);
   const [activeStep, setActiveStep] = useState(0);
-  const [errors, setErrors] = useState({});
+  const [termosAceitos, setTermosAceitos] = useState(false);
+  const [erroName,setErroName] = useState('')
+  const [erroEmail, setEmailError] = useState('')
 
-  const validateCadastroPaciente1 = () => {
-    const Novos_erros_um = {};
   
-    // Verificação do nome
-    if (!paciente.nome_completo || paciente.nome_completo.trim() === "") {
-      Novos_erros_um.nome = "Nome completo é obrigatório.";
+
+  
+  const valida_email = () => {
+
+    if (!paciente.nome_completo){
+  
+     setErroName('Você não digitou seu nome completo!')
+     return false
+       
+    }else{
+        
+     setEmailError('');
+  
+     return true
+
     }
-  
-    // Cria as consts para guardar informação do paciente e a data atual
+  } 
 
-    const selectedDate = new Date(paciente.data_nascimento);
-    const currentDate = new Date();
-    
-    // Calcula a idade em anos
+  const valida_Nome = () => {
 
-    let age = currentDate.getFullYear() - selectedDate.getFullYear(); // getFullYer pega so o ano da data para fazer os calculos
-    const month = currentDate.getMonth() - selectedDate.getMonth(); // getMonth retorna o numero de 1 a 12 do mes 
-    const day = currentDate.getDate() - selectedDate.getDate(); // retorna o dia de 1 a 31 
-    
-    // Se o mês atual for antes do mês de nascimento ou o mês for igual, mas o dia de nascimento ainda não ocorreu
+    if(!paciente.data_nascimento){
+      
+      setErroData('Você Não Digitou Sua Data De Nascimento')
+      
+      return false
 
-    if (month < 0 || (month === 0 && day < 0)) {
-      age--; // Se não completou o aniversário ainda no ano atual
+    }else{
+        
+      setErroData('')
+
+      return true
     }
-  
-    // Verificação de idade: precisa ter 18 anos ou mais
-    if (!paciente.data_nascimento) {
+  }
 
-      Novos_erros_um.data_nascimento = "Data de nascimento é obrigatória.";
-
-    } else if (age < 18) {
-      Novos_erros_um.data_nascimento = "Você precisa ter 18 anos ou mais.";
-    }
-  
-    // Atualiza o estado de erros
-    setErrors(Novos_erros_um);
-  
-    // Retorna true se não houver erros
-    return Object.keys(Novos_erros_um).length === 0;
-  };
-
+  // Função de navegação para o próximo passo
   const handleNext = () => {
-    if (validateCadastroPaciente1()) {
-      if (activeStep < 2) {
+    if (activeStep === 0) {
+      if (valida_email() && valida_Nome()) {
+        
         setActiveStep((prevStep) => prevStep + 1);
       }
-    } 
+    }
+
+    if (activeStep === 2) {
+      if (!valida_email()) {
+        // Caso haja erro de validação, não avançar
+        return;
+      }
+    }
+
+    if (activeStep < 2) {
+      setActiveStep((prevStep) => prevStep + 1);
+    }
   };
 
+  // Função para voltar para a etapa anterior
   const handleBack = () => {
     if (activeStep > 0) {
       setActiveStep((prevStep) => prevStep - 1);
     }
   };
 
+  // Função para finalizar o cadastro e enviar os dados
   const handleFinish = async () => {
-    paciente.id_paciente = paciente.id_paciente + 1;
+    if (!valida_email()) {
+      return; // Não envia os dados caso haja erro de validação
+    }
 
-    const response = await fetch('http://localhost:3000/cadastro-paciente', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(paciente),
-    });
+    // Aqui, atualizamos o paciente com os dados de email e senha, que vêm de CadastroPaciente3
+    const updatedPaciente = { ...paciente, id_paciente: paciente.id_paciente + 1 };
 
-    if (response.ok) {
-      // Limpa os dados do paciente após o envio bem-sucedido
-      paciente.nome_completo = '';
-      paciente.cpf = '';
-      paciente.telefone = '';
-      paciente.data_nascimento = '';
-      paciente.senha = '';
-      paciente.foto = '';
-      paciente.email = '';
-      navigate('/login'); 
+    try {
+      const response = await fetch('http://localhost:3000/cadastro-paciente', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedPaciente),
+      });
+
+      if (response.ok) {
+        // Após cadastro bem-sucedido, resetar dados e navegar para o login
+        
+          paciente.nome_completo = '',
+          paciente.cpf = '',
+          paciente.telefone = '',
+          paciente.data_nascimento = '',
+          paciente.senha = '',
+          paciente.foto = '',
+          paciente.email = ''
+        
+        navigate('/login');
+      } else {
+        const data = await response.json();
+        console.log('Erro ao cadastrar paciente:', data);
+      }
+    } catch (error) {
+      console.log('Erro na requisição:', error);
     }
   };
 
   return (
+    
     <div className='escolhaCadastro-container'>
       <div className='lado-esquerdo'>
         <Stepper activeStep={activeStep} />
         {activeStep === 0 ? (
-          <CadastroPaciente1 
-            paciente={paciente} 
-            setErrors={setErrors} 
-            errors={errors} 
-          />
+          <CadastroPaciente1 />
         ) : activeStep === 1 ? (
           <CadastroPaciente2 />
         ) : activeStep === 2 ? (
@@ -124,7 +148,7 @@ function CadastroPaciente() {
               className='proximo-estilizado'
               onClick={activeStep === 2 ? handleFinish : handleNext}
             >
-              {activeStep === 2 ? <div>Concluir</div> : <div>Próximo</div>}
+              {activeStep === 2 ? <div><Link to="/login">Concluir</Link></div> : <div>Próximo</div>}
             </button>
           </div>
         </div>
@@ -140,3 +164,4 @@ function CadastroPaciente() {
 }
 
 export default CadastroPaciente;
+

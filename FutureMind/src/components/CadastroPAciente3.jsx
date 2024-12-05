@@ -1,30 +1,30 @@
 import './CSS/Profissionais3.css';
 import { Link } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function CadastroPaciente3() {
-
-  const { paciente } = useContext(GlobalContext);
+  const { paciente} = useContext(GlobalContext);
   const [email, setEmail] = useState(paciente.email);
   const [olhosSenha, setOlhosSenha] = useState(false);
   const [senha, setSenha] = useState(paciente.senha);
   
-  useEffect(() => {
-    paciente.email = email;
-  }, [email]);
+  
+ useEffect(() => {
 
-  useEffect(() => {
-    paciente.senha = senha;
-  }, [senha]);
+  paciente.email = email;
+ }, [email]);
 
+ useEffect(() => {
 
+  paciente.senha = senha;
+ }, [senha]);
 
-    return (
-<div className="selecao1">
+  return (
+    <div className="selecao1">
       <h3 className="titulo-cadastro2">Seus Dados..</h3>
+
       <div className="checkboxs2">
-        {/* Input de E-mail */}
         <div className="input-text">
           <label htmlFor="email">E-mail</label>
           <input
@@ -32,8 +32,9 @@ function CadastroPaciente3() {
             name="email"
             className="inputCRP"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)} // Altera somente o estado local
           />
+         
         </div>
 
         <div className="input-text">
@@ -41,7 +42,7 @@ function CadastroPaciente3() {
           <div className="olho-div">
             <input
               value={senha}
-              onChange={(e) => setSenha(e.target.value)}
+              onChange={(e) => setSenha(e.target.value)} // Altera somente o estado local
               type={olhosSenha ? 'text' : 'password'}
               className="inputCRP"
             />
@@ -57,9 +58,8 @@ function CadastroPaciente3() {
               )}
             </button>
           </div>
+         
         </div>
-
-
       </div>
       <div className="caminho-login">
         <input type="checkbox" id="aceitar-termos" />
@@ -71,7 +71,7 @@ function CadastroPaciente3() {
         </Link>
       </div>
     </div>
-    );
+  );
 }
 
 export default CadastroPaciente3;

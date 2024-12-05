@@ -765,7 +765,11 @@ input[type="file"] {
   }
 
   .div-esp {
+<<<<<<< HEAD
     max-width: 200px;
+=======
+    max-width: 250px;
+>>>>>>> b1026d58826a6c27b9ecd61fdb9ba04f6d962763
     height: 150px;
     overflow-x: auto; 
     padding: 10px;
@@ -829,6 +833,13 @@ input[type="file"] {
   .event-card:active{
     transform: translateY(2px); 
   }
+<<<<<<< HEAD
+=======
+
+/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
+=======
+div::-webkit-scrollbar-track{
+>>>>>>> b1026d58826a6c27b9ecd61fdb9ba04f6d962763
 
   
 /* Detalhes do evento */
@@ -867,7 +878,22 @@ input[type="file"] {
     text-transform: capitalize;
   }
 
+<<<<<<< HEAD
   .event-details {
+=======
+
+
+
+
+
+/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
+   padding: 20px;
+
+}
+
+.detalhes-conteudo{
+        
+>>>>>>> b1026d58826a6c27b9ecd61fdb9ba04f6d962763
     position: absolute;
     background: white;
     padding: 1.5rem;
@@ -887,9 +913,7 @@ input[type="file"] {
     border-width: 10px 10px 10px 0;
     border-color: transparent #5A789F transparent transparent;
     left: -10px; /* Posiciona a seta na lateral esquerda */
-    top: 50%; /* Centraliza verticalmente */
-    transform: translateY(-50%);
-  }
+
 
   
 
@@ -910,6 +934,29 @@ input[type="file"] {
     border: none;
     padding: 2%;
     border-radius: 5px;
+<<<<<<< HEAD
+=======
+    cursor: pointer;
+
+}
+.fechar-detalhes:hover {
+
+    background-color: darkred;
+
+}
+
+
+
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Configura duas colunas */
+    gap: 10px; /* Espaçamento entre itens */
+  }
+
+  
+.container-areas, .container-especi h2 {
+    color: var(--cor-1);
+>>>>>>> b1026d58826a6c27b9ecd61fdb9ba04f6d962763
   }
   
   .but-det:hover {
@@ -958,3 +1005,17 @@ input[type="file"] {
   }
 
 
+<<<<<<< HEAD
+=======
+                    
+@media (max-width: 480px) {
+    .options-container {
+    grid-template-columns: 1fr; /* Ajusta para uma coluna em telas menores */
+}}
+
+
+.container-escolhas{
+    width: 76%;
+    padding-top: 5%;
+}
+>>>>>>> b1026d58826a6c27b9ecd61fdb9ba04f6d962763

@@ -22,7 +22,14 @@ import 'swiper/css/scrollbar';
 
 function PerfilProfissional() {
 
-  const { setUser } = useContext(GlobalContext);
+
+  var userData = JSON.parse(localStorage.getItem('User'));
+
+  // const { user, setUser } = useContext(GlobalContext);
+
+  const { user, setUser } = useContext(GlobalContext);
+
+
 
 //   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -96,19 +103,19 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     });
   };
 
-  // const [temporaryText, setTemporaryText] = useState(""); // Texto enquanto o usuário digita
-  // const [savedText, setSavedText] = useState(""); // Texto salvo
+  const [temporaryText, setTemporaryText] = useState(""); // Texto enquanto o usuário digita
+  const [savedText, setSavedText] = useState(""); // Texto salvo
 
-  // const handleTextChange = (event) => {
-  //   setTemporaryText(event.target.value); // Atualiza o texto temporário
-  // };
+  const handleTextChange = (event) => {
+    setTemporaryText(event.target.value); // Atualiza o texto temporário
+  };
 
-  // const handleSave = () => {
-  //   setSavedText(temporaryText); // Salva o texto ao clicar no botão
-  // };
+  const handleSave = () => {
+    setSavedText(temporaryText); // Salva o texto ao clicar no botão
+  };
 
-  // const maxLength = 500; // Limite máximo de caracteres
-  // const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
+  const maxLength = 500; // Limite máximo de caracteres
+  const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
   
   const handleEventClick = (agendamento, event) => {
     // Captura a posição do elemento clicado
@@ -170,11 +177,30 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
   const handleChange = (event) => {
     const { value, checked } = event.target;
   };
+
+  const handleCloseDetails = () => {
+    setSelectedAgendamento(null); // Fecha a div de detalhes
+  };
+  
+  // const [nota, setNota] = useState('');
+  // const [notas, setNotas] = useState([]);
+  // const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+  // const handleCloseDetails = () => {
+  //   setSelectedAgendamento(null); // Fecha a div de detalhes
+  // };
+
+
+
+
   
   const [nota, setNota] = useState('');
   const [notas, setNotas] = useState([]);
   
   // const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+<<<<<<< HEAD
+=======
+
+>>>>>>> b1026d58826a6c27b9ecd61fdb9ba04f6d962763
 
   const adicionarNota = () => {
     if (nota.trim() !== '') {
@@ -203,8 +229,17 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         </div>
                         </div>
                      <div className='nick-usuario'>
+<<<<<<< HEAD
                       {/* <h1>{userData.nome_completo}</h1> */}
                       {/* <p>{userData.email}</p> */}
+=======
+
+
+                      <h1>{userData.nome_completo}</h1>
+                      <p>{userData.email}</p>
+
+
+>>>>>>> b1026d58826a6c27b9ecd61fdb9ba04f6d962763
                     </div>
                  </div> 
     
@@ -536,7 +571,10 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                 <div className='div-buttons-salvar-cancelar'>
                 <button className='a'>Excluir conta</button>
                   <button className='a'> Sair da Conta</button>
+<<<<<<< HEAD
                   {/* onClick={handleSair}  */}
+=======
+>>>>>>> b1026d58826a6c27b9ecd61fdb9ba04f6d962763
                   <button className='a'>Cancelar edição</button>
                   <button className='salva'>Salvar</button>
                 </div>
