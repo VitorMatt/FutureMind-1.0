@@ -172,7 +172,11 @@ input[type="file"] {
     height: 350px;
 }
 
+<<<<<<< HEAD
  .input-text{
+=======
+.input-text{
+>>>>>>> 1792e2105f8a08f36cc8857a90a2866f5752ba5b
 
     display: flex;
     flex-direction: column;
