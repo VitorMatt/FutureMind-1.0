@@ -34,21 +34,16 @@ function Inicio() {
       const data = await response.json();
       setProfissionais(data);
     } catch (err) {
-      console.error('Erro ao buscar profissionais:', err.message);
+      console.log('Erro ao buscar profissionais:', err.message);
     }
   };
 
-  const filtraProfissionais = () => {
-    if (!profissionais || profissionais.length === 0) return;
 
-<<<<<<< HEAD
     
 
 
   const filtraProfissionais = () => {
     if (!profissionais || profissionais.length === 0) return;
-=======
->>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
     profissionais.forEach((profissional) => {
       if (profissional.preferencias.includes('Adultos')) {
         setAdultos((prev) => [...prev, profissional]);
@@ -66,21 +61,15 @@ function Inicio() {
    if (profissional.preferencias.includes('Pré-Adolescentes')) {
 
     setPre_adolescentes((prev) => [...prev, profissional]);
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
     }
      if (profissional.preferencias.includes('Adolescentes')) {
       setAdolescentes((prev) => [...prev, profissional]);
      }
      });
    };
-<<<<<<< HEAD
   
-=======
->>>>>>> 3098b47c41a5c1f007851a2e261a16827cdde6d1
 
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
