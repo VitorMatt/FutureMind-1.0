@@ -21,22 +21,12 @@ function CadastroPaciente1() {
     paciente.data_nascimento = date;
   }, [date]);
 
-<<<<<<< HEAD
-=======
-    paciente.data_nascimento = date
-  // }, [date])
-  
   
   function validar(item) {
     
     if (item.length===0) setMessage('preencha'); else setMessage('')
 
   }
-<<<<<<< HEAD
-=======
->>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
->>>>>>> e2df26f99cde5156aa9f6aa6d033d08217a9c90a
->>>>>>> 1792e2105f8a08f36cc8857a90a2866f5752ba5b
   return (
     <div className="selecao1">
       <h3 className="titulo-cadastro2">Seus Dados..</h3>

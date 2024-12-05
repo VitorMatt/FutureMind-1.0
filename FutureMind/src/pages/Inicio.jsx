@@ -37,140 +37,11 @@ function Inicio() {
       console.log('Erro ao buscar profissionais:', err.message);
     }
   };
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
->>>>>>> e2df26f99cde5156aa9f6aa6d033d08217a9c90a
-  // const filtraProfissionais = () => {
-  //   if (!profissionais || profissionais.length === 0) return;
->>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
     
 
-  // const filtraProfissionais = () => {
-  //   if (!profissionais || profissionais.length === 0) return;
-
-  //   profissionais.forEach((profissional) => {
-  //     if (profissional.preferencias.includes('Adultos')) {
-  //       setAdultos((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('Idosos')) {
-  //       setIdosos((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('Crianças')) {
-  //       setCriancas((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('PCDs')) {
-  //       setPcds((prev) => [...prev, profissional]);
-  //     }
-
-
-  
-  //   //   if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
-
-  //   //     setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-  //   //   if (profissional.preferencias.includes('Pré-Adolescentes')) {
-  //   //     // setPreAdolescentes((prev) => [...prev, profissional]);
-
-  //   //   }
-  //   //   if (profissional.preferencias.includes('Adolescentes')) {
-  //   //     setAdolescentes((prev) => [...prev, profissional]);
-  //   //   }
-  //   // });
-  // };
-//   const filtraProfissionais = () => {
-//     if (!profissionais || profissionais.length === 0) return;
-    
-//     profissionais.forEach((profissional) => {
-//       if (profissional.preferencias.includes('Adultos')) {
-//         setAdultos((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Idosos')) {
-//         setIdosos((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Crianças')) {
-//         setCriancas((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('PCDs')) {
-//         setPcds((prev) => [...prev, profissional]);
-//       }
-
-    // profissionais.forEach((profissional) => {
-    //   if (profissional.preferencias.includes('Adultos')) {
-    //     setAdultos((prev) => [...prev, profissional]);
-    //   }
-    //   if (profissional.preferencias.includes('Idosos')) {
-    //     setIdosos((prev) => [...prev, profissional]);
-    //   }
-    //   if (profissional.preferencias.includes('Crianças')) {
-    //     setCriancas((prev) => [...prev, profissional]);
-    //   }
-    //   if (profissional.preferencias.includes('PCDs')) {
-    //     setPcds((prev) => [...prev, profissional]);
-    //   }
-
-  //     if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
-
-  //       setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-
-  //     if (profissional.preferencias.includes('Pré-Adolescentes')) {
-
-  //       setPre_adolescentes((prev) => [...prev, profissional]);
-
-  //       setPreAdolescentes((prev) => [...prev, profissional]);
-
-  //     }
-  //     if (profissional.preferencias.includes('Adolescentes')) {
-  //       setAdolescentes((prev) => [...prev, profissional]);
-  //     }
-  //   });
-  // };
-//       if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
-
-//         setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-// =======
-//       if (profissional.preferencias.includes('Pré-Adolescentes')) {
-// <<<<<<< HEAD
-//         setPre_adolescentes((prev) => [...prev, profissional]);
-// =======
-//         setPreAdolescentes((prev) => [...prev, profissional]);
-// >>>>>>> 88021aabe63e3ad2825255ba02dd79182a669d4e
-// >>>>>>> 491928c7902104465c48bc192008dd5ca0ad65bc
-//       }
-//       if (profissional.preferencias.includes('Adolescentes')) {
-//         setAdolescentes((prev) => [...prev, profissional]);
-//       }
-//     });
-//   };
-  //       setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-
-  //     if (profissional.preferencias.includes('Pré-Adolescentes')) {
-  //       setPreAdolescentes((prev) => [...prev, profissional]);
-
-  //     }
-  //     if (profissional.preferencias.includes('Adolescentes')) {
-  //       setAdolescentes((prev) => [...prev, profissional]);
-  //     }
-  //   }});
-  //     if (profissional.preferencias.includes('Pré-Adolescentes')) {
-  //       setPre_adolescentes((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('Adolescentes')) {
-  //       setAdolescentes((prev) => [...prev, profissional]);
-  //     };
-  //   });
-  // };
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 1792e2105f8a08f36cc8857a90a2866f5752ba5b
   const filtraProfissionais = () => {
     if (!profissionais || profissionais.length === 0) return;
+
     profissionais.forEach((profissional) => {
       if (profissional.preferencias.includes('Adultos')) {
         setAdultos((prev) => [...prev, profissional]);
@@ -184,34 +55,17 @@ function Inicio() {
       if (profissional.preferencias.includes('PCDs')) {
         setPcds((prev) => [...prev, profissional]);
       }
-
       if (profissional.preferencias.includes('Pré-Adolescentes')) {
 
-    setPre_adolescentes((prev) => [...prev, profissional]);
-
-
-    }
-     if (profissional.preferencias.includes('Adolescentes')) {
-      setAdolescentes((prev) => [...prev, profissional]);
-     }
-     });
-   };
-  
-<<<<<<< HEAD
-=======
-=======
         setPre_adolescentes((prev) => [...prev, profissional]);
-      }
 
+      }
       if (profissional.preferencias.includes('Adolescentes')) {
         setAdolescentes((prev) => [...prev, profissional]);
       }
-     });
-   };
->>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
->>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
->>>>>>> e2df26f99cde5156aa9f6aa6d033d08217a9c90a
->>>>>>> 1792e2105f8a08f36cc8857a90a2866f5752ba5b
+    });
+  };
+  
 
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
