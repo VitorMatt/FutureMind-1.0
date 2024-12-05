@@ -8,7 +8,7 @@ const pool = new Pool({
     user: 'postgres', 
     host: 'localhost',
     database: 'FutureMind', 
-    password: 'Vitor281207.',
+    password: '12345',
     port: 5432, 
 });
 
@@ -55,7 +55,6 @@ app.get('/cadastro-profissional', async (req, res) => {
 app.post('/cadastro-profissional', async (req, res) => {
 
     const { 
-        id_profissional,
         nome_completo,
         cpf,
         telefone,
@@ -73,9 +72,8 @@ app.post('/cadastro-profissional', async (req, res) => {
     try {
         
         const result = await pool.query(
-            'INSERT INTO profissionais (id_profissional, nome_completo, cpf, telefone, preferencias, email, crp, data_nascimento, especializacao, preco, foto, senha, abordagem) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *',
+            'INSERT INTO profissionais (nome_completo, cpf, telefone, preferencias, email, crp, data_nascimento, especializacao, preco, foto, senha, abordagem) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *',
             [
-                id_profissional,
                 nome_completo,
                 cpf,
                 telefone,
@@ -113,7 +111,6 @@ app.get('/cadastro-paciente' , async (req, res) => {
 app.post('/cadastro-paciente', async (req,res) =>{
 
     const { 
-        id_paciente,
         nome_completo,
         cpf,
         data_nascimento,
@@ -126,9 +123,8 @@ app.post('/cadastro-paciente', async (req,res) =>{
     try {
         
         const result = await pool.query(
-            'INSERT INTO pacientes (id_paciente, nome_completo, cpf, data_nascimento, email, telefone, senha, foto) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+            'INSERT INTO pacientes (nome_completo, cpf, data_nascimento, email, telefone, senha, foto) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
             [
-                id_paciente,
                 nome_completo,
                 cpf,
                 data_nascimento,

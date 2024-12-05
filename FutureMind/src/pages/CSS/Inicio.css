@@ -397,8 +397,8 @@
     display: flex;
     flex-direction: column;
     padding-top: 4%;
-    padding-right: 15%;
-    width: 100%;
+    padding-right: 19%;
+    width: 87%;
     height: fit-content;
   }
   
@@ -484,11 +484,10 @@
     cursor: pointer;
     margin-top: 5px;
     display: flex;
-    gap: 5px;
     justify-content: center;
     height: 43px;
     align-items: center;
-    margin-bottom: 5%;
+    margin-left: 7%;
   }
 /*
 {

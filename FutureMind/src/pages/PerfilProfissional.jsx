@@ -22,48 +22,34 @@ import 'swiper/css/scrollbar';
 
 function PerfilProfissional() {
 
-<<<<<<< HEAD
-
-  const { user, setUser } = useContext(GlobalContext);
 
   var userData = JSON.parse(localStorage.getItem('User'));
-=======
-<<<<<<< HEAD
 
   // const { user, setUser } = useContext(GlobalContext);
 
   const { user, setUser } = useContext(GlobalContext);
 
-//   const { user, setUser } = useContext(GlobalContext);
-
-  // const { user, setUser } = useContext(GlobalContext);
-=======
-  const { setUser } = useContext(GlobalContext);
->>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
-
-  // const { user, setUser } = useContext(GlobalContext);
 
 
-//   var userData = JSON.parse(localStorage.getItem('User'));
->>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
+  var userData = JSON.parse(localStorage.getItem('User'));
 
-//   userData.especializacao = userData.especializacao.replace('{', '')
-//   userData.especializacao = userData.especializacao.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('{', '')
+  userData.especializacao = userData.especializacao.replace('{', '')
+  userData.especializacao = userData.especializacao.replace('}', '')
+  userData.preferencias = userData.preferencias.replace('}', '')
+  userData.preferencias = userData.preferencias.replace('{', '')
  
-//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
+ for (let i=0; i<(userData.especializacao.length * 2); i++) {
 
-//   userData.especializacao = userData.especializacao.replace('"', '')
-//  }
+  userData.especializacao = userData.especializacao.replace('"', '')
+ }
 
-//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
+ for (let i=0; i<(userData.preferencias.length * 2); i++) {
 
-//   userData.preferencias = userData.preferencias.replace('"', '')
-//  }
+  userData.preferencias = userData.preferencias.replace('"', '')
+ }
 
-//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
-//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+ userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+ userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
 
  const navigate = useNavigate();
  
@@ -117,19 +103,19 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     });
   };
 
-  // const [temporaryText, setTemporaryText] = useState(""); // Texto enquanto o usuário digita
-  // const [savedText, setSavedText] = useState(""); // Texto salvo
+  const [temporaryText, setTemporaryText] = useState(""); // Texto enquanto o usuário digita
+  const [savedText, setSavedText] = useState(""); // Texto salvo
 
-  // const handleTextChange = (event) => {
-  //   setTemporaryText(event.target.value); // Atualiza o texto temporário
-  // };
+  const handleTextChange = (event) => {
+    setTemporaryText(event.target.value); // Atualiza o texto temporário
+  };
 
-  // const handleSave = () => {
-  //   setSavedText(temporaryText); // Salva o texto ao clicar no botão
-  // };
+  const handleSave = () => {
+    setSavedText(temporaryText); // Salva o texto ao clicar no botão
+  };
 
-  // const maxLength = 500; // Limite máximo de caracteres
-  // const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
+  const maxLength = 500; // Limite máximo de caracteres
+  const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
   
   const handleEventClick = (agendamento, event) => {
     // Captura a posição do elemento clicado
@@ -191,7 +177,6 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
   const handleChange = (event) => {
     const { value, checked } = event.target;
   };
-<<<<<<< HEAD
 
   const handleCloseDetails = () => {
     setSelectedAgendamento(null); // Fecha a div de detalhes
@@ -203,27 +188,15 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
   // const handleCloseDetails = () => {
   //   setSelectedAgendamento(null); // Fecha a div de detalhes
   // };
-=======
-<<<<<<< HEAD
 
-  
->>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
-  
-  const [nota, setNota] = useState('');
-  const [notas, setNotas] = useState([]);
 
-  const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
-<<<<<<< HEAD
-=======
 
-=======
+
   
   const [nota, setNota] = useState('');
   const [notas, setNotas] = useState([]);
   
-  const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
->>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
->>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
+  // const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
 
   const adicionarNota = () => {
     if (nota.trim() !== '') {
@@ -249,26 +222,10 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/> 
                     </div>
                      <div className='nick-usuario'>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-                       {/* <h1>{userData.nome_completo}</h1>
-
-                      {/* <h1>{userData.nome_completo}</h1>
 
 
-                       {/* <h1>{userData.nome_completo}</h1>
-
-                      <p>{userData.email}</p> */}
->>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
-
-                      {/* <h1>{userData.nome_completo}</h1>
-                      <p>{userData.email}</p> */}
-=======
                       <h1>{userData.nome_completo}</h1>
                       <p>{userData.email}</p>
->>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
                     </div>
                  </div> 
     
@@ -278,13 +235,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                         <div className="div-esp">
 
-                        {/* {
+                        {
                           userData.preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
                           ))
-                        } */}
+                        }
                         </div>
                     </div>
                     <div className='div-menor-info'>
@@ -292,13 +249,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         
                         <div className="div-esp">
 
-                        {/* {
+                        {
                           userData.especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
                           ))
-                        } */}
+                        }
                         </div>
                     </div>
                     <div className='descricao'>
@@ -600,7 +557,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                 <div className='div-buttons-salvar-cancelar'>
                 <button className='a'>Excluir conta</button>
-                  <button className='a' onClick={handleSair} > Sair da Conta</button>
+                  <button className='a'> Sair da Conta</button>
                   <button className='a'>Cancelar edição</button>
                   <button className='salva'>Salvar</button>
                 </div>

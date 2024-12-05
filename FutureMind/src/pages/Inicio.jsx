@@ -38,135 +38,8 @@ function Inicio() {
     }
   };
 
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-  // const filtraProfissionais = () => {
-  //   if (!profissionais || profissionais.length === 0) return;
->>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
-    
-
-  // const filtraProfissionais = () => {
-  //   if (!profissionais || profissionais.length === 0) return;
-
-  //   profissionais.forEach((profissional) => {
-  //     if (profissional.preferencias.includes('Adultos')) {
-  //       setAdultos((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('Idosos')) {
-  //       setIdosos((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('Crianças')) {
-  //       setCriancas((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('PCDs')) {
-  //       setPcds((prev) => [...prev, profissional]);
-  //     }
-
-
-  
-  //   //   if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
-
-  //   //     setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-  //   //   if (profissional.preferencias.includes('Pré-Adolescentes')) {
-  //   //     // setPreAdolescentes((prev) => [...prev, profissional]);
-
-  //   //   }
-  //   //   if (profissional.preferencias.includes('Adolescentes')) {
-  //   //     setAdolescentes((prev) => [...prev, profissional]);
-  //   //   }
-  //   // });
-  // };
-//   const filtraProfissionais = () => {
-//     if (!profissionais || profissionais.length === 0) return;
-    
-//     profissionais.forEach((profissional) => {
-//       if (profissional.preferencias.includes('Adultos')) {
-//         setAdultos((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Idosos')) {
-//         setIdosos((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('Crianças')) {
-//         setCriancas((prev) => [...prev, profissional]);
-//       }
-//       if (profissional.preferencias.includes('PCDs')) {
-//         setPcds((prev) => [...prev, profissional]);
-//       }
-
-    // profissionais.forEach((profissional) => {
-    //   if (profissional.preferencias.includes('Adultos')) {
-    //     setAdultos((prev) => [...prev, profissional]);
-    //   }
-    //   if (profissional.preferencias.includes('Idosos')) {
-    //     setIdosos((prev) => [...prev, profissional]);
-    //   }
-    //   if (profissional.preferencias.includes('Crianças')) {
-    //     setCriancas((prev) => [...prev, profissional]);
-    //   }
-    //   if (profissional.preferencias.includes('PCDs')) {
-    //     setPcds((prev) => [...prev, profissional]);
-    //   }
-
-  //     if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
-
-  //       setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-
-  //     if (profissional.preferencias.includes('Pré-Adolescentes')) {
-
-  //       setPre_adolescentes((prev) => [...prev, profissional]);
-
-  //       setPreAdolescentes((prev) => [...prev, profissional]);
-
-  //     }
-  //     if (profissional.preferencias.includes('Adolescentes')) {
-  //       setAdolescentes((prev) => [...prev, profissional]);
-  //     }
-  //   });
-  // };
-//       if (profissionais[i].preferencias.includes('Pré-Adolescentes')) {
-
-//         setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-// =======
-//       if (profissional.preferencias.includes('Pré-Adolescentes')) {
-// <<<<<<< HEAD
-//         setPre_adolescentes((prev) => [...prev, profissional]);
-// =======
-//         setPreAdolescentes((prev) => [...prev, profissional]);
-// >>>>>>> 88021aabe63e3ad2825255ba02dd79182a669d4e
-// >>>>>>> 491928c7902104465c48bc192008dd5ca0ad65bc
-//       }
-//       if (profissional.preferencias.includes('Adolescentes')) {
-//         setAdolescentes((prev) => [...prev, profissional]);
-//       }
-//     });
-//   };
-  //       setPre_adolescentes([...pre_adolescentes, profissionais[i]]);
-
-  //     if (profissional.preferencias.includes('Pré-Adolescentes')) {
-  //       setPreAdolescentes((prev) => [...prev, profissional]);
-
-  //     }
-  //     if (profissional.preferencias.includes('Adolescentes')) {
-  //       setAdolescentes((prev) => [...prev, profissional]);
-  //     }
-  //   }});
-  //     if (profissional.preferencias.includes('Pré-Adolescentes')) {
-  //       setPre_adolescentes((prev) => [...prev, profissional]);
-  //     }
-  //     if (profissional.preferencias.includes('Adolescentes')) {
-  //       setAdolescentes((prev) => [...prev, profissional]);
-  //     };
-  //   });
-  // };
-=======
   const filtraProfissionais = () => {
     if (!profissionais || profissionais.length === 0) return;
-<<<<<<< HEAD
-=======
-
->>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
     profissionais.forEach((profissional) => {
       if (profissional.preferencias.includes('Adultos')) {
         setAdultos((prev) => [...prev, profissional]);
@@ -183,7 +56,6 @@ function Inicio() {
 
       if (profissional.preferencias.includes('Pré-Adolescentes')) {
 
-<<<<<<< HEAD
     setPre_adolescentes((prev) => [...prev, profissional]);
 
 
@@ -194,17 +66,6 @@ function Inicio() {
      });
    };
   
-=======
-        setPre_adolescentes((prev) => [...prev, profissional]);
-      }
-
-      if (profissional.preferencias.includes('Adolescentes')) {
-        setAdolescentes((prev) => [...prev, profissional]);
-      }
-     });
-   };
->>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
->>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
 
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
@@ -231,6 +92,7 @@ function Inicio() {
     }
   };
 
+  const [estadoBotoes, setEstadoBotoes] = useState([]);
   useEffect(() => {
     fetchProfissionais();
   }, []);
@@ -239,15 +101,16 @@ function Inicio() {
     if (profissionais.length > 0) {
       handleReplace();
       filtraProfissionais();
+
+      setEstadoBotoes(
+        profissionais.reduce((acc, profissional) => {
+          acc[profissional.id_profissional] = 'inicial';
+          return acc;
+        }, {})
+      );
     }
   }, [profissionais]);
-    
-    const [estadoBotoes, setEstadoBotoes] = useState(
-      profissionais.reduce((acc, profissional) => {
-        acc[profissional.id] = 'inicial';
-        return acc;
-      }, {})
-    );
+  
 
 
   const getWeekDays = (startDate) => {
@@ -302,11 +165,23 @@ function Inicio() {
     setCurrentWeekStart(newStartDate);
   };
 
+  // const exibirAnimacaoConcluido = (id) => {
+  //   setEstadoBotoes((prev) => ({ ...prev, [id]: 'carregando' }));
+  //   setTimeout(() => {
+  //     setEstadoBotoes((prev) => ({ ...prev, [id]: 'concluido' }));
+  //   }, 1500);
+  //   setTimeout(() => {
+  //     setEstadoBotoes((prev) => ({ ...prev, [id]: 'inicial' }));
+  //   }, 3500);
+  // };
+
   const exibirAnimacaoConcluido = (id) => {
     setEstadoBotoes((prev) => ({ ...prev, [id]: 'carregando' }));
+    
     setTimeout(() => {
       setEstadoBotoes((prev) => ({ ...prev, [id]: 'concluido' }));
     }, 1500);
+  
     setTimeout(() => {
       setEstadoBotoes((prev) => ({ ...prev, [id]: 'inicial' }));
     }, 3500);
@@ -319,6 +194,7 @@ function Inicio() {
 
     if (selectedDate && selectedTime) {
       console.log(`Agendado para ${selectedDate} às ${selectedTime} com profissional ${id}`);
+      exibirAnimacaoConcluido(id);
     }
 
     setAgendamento({horario: selectedTime, data: selectedDate, profissional: id, paciente: userLog.id_paciente});
@@ -336,7 +212,6 @@ function Inicio() {
 
       console.log('Erro');
     }
-    exibirAnimacaoConcluido(id);
   };
 
   const [result, setResult] = useState('')
@@ -608,9 +483,7 @@ const clickTres = (index) => {
                   )}
                   {estadoBotoes[item.id_profissional] === 'inicial' && (
                     <span className="btn-text2">
-                      {selectedTime
-                        ? `Marcar para ${selectedTime}`
-                        : "Marcar Consulta"}
+                         Marcar para {selectedTime}
                     </span>
                   )}
                 </b>
@@ -783,18 +656,16 @@ const clickTres = (index) => {
         <button 
           id="agendar"
           onClick={() => handleAgendamento(item.id_profissional)}
-          disabled={!selectedTime}
           >
-            <b>
+            
       {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
       {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
       {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
                 selectedTime
-            ? `Marcar para ${selectedTime}`
-            : "Marcar Consulta"
+             && `Marcar para ${selectedTime}`
               }</span>}
                
-            </b>
+            
         </button>
             </div>
             </div>

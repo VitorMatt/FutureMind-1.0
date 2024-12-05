@@ -710,11 +710,7 @@
   }
 
   .div-esp {
-<<<<<<< HEAD
-    max-width: 200px;
-=======
     max-width: 250px;
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
     height: 150px;
     overflow-x: auto; 
     padding: 10px;
@@ -758,11 +754,7 @@
   }
   
 .div-desc{
-<<<<<<< HEAD
     width: 500px;
-=======
-    width: 400px;
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
     height: 150px;
     overflow-x: 0;
     overflow-y: auto; 
@@ -807,16 +799,13 @@
     text-transform: capitalize;
   }
 
-<<<<<<< HEAD
   .event-card:active{
     transform: translateY(2px); 
   }
-=======
 
 /*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
 =======
 div::-webkit-scrollbar-track{
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
 
   
 /* Detalhes do evento */
@@ -855,12 +844,8 @@ div::-webkit-scrollbar-track{
     text-transform: capitalize;
   }
 
-<<<<<<< HEAD
-  .event-details {
-=======
 
-    width: 12px;
-}
+
 
 
 
@@ -871,7 +856,6 @@ div::-webkit-scrollbar-track{
 
 .detalhes-conteudo{
         
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
     position: absolute;
     background: white;
     padding: 1.5rem;
@@ -891,9 +875,7 @@ div::-webkit-scrollbar-track{
     border-width: 10px 10px 10px 0;
     border-color: transparent #5A789F transparent transparent;
     left: -10px; /* Posiciona a seta na lateral esquerda */
-    top: 50%; /* Centraliza verticalmente */
-    transform: translateY(-50%);
-  }
+
 
   
 
@@ -914,8 +896,6 @@ div::-webkit-scrollbar-track{
     border: none;
     padding: 2%;
     border-radius: 5px;
-<<<<<<< HEAD
-=======
     cursor: pointer;
 
 }
@@ -936,7 +916,6 @@ div::-webkit-scrollbar-track{
   
 .container-areas, .container-especi h2 {
     color: var(--cor-1);
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
   }
   
   .but-det:hover {
@@ -973,7 +952,6 @@ div::-webkit-scrollbar-track{
   .fechar-detalhes img{
     width: 8%;
   }
-<<<<<<< HEAD
   
   .detalhes-conteudo h4{
     height: fit-content;
@@ -988,7 +966,6 @@ div::-webkit-scrollbar-track{
  
 
 
-=======
                     
 @media (max-width: 480px) {
     .options-container {
@@ -1000,4 +977,3 @@ div::-webkit-scrollbar-track{
     width: 76%;
     padding-top: 5%;
 }
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
