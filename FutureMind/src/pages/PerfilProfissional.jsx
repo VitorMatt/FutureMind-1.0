@@ -23,6 +23,12 @@ import 'swiper/css/scrollbar';
 function PerfilProfissional() {
 
 
+  const { user, setUser } = useContext(GlobalContext);
+
+  var userData = JSON.parse(localStorage.getItem('User'));
+=======
+<<<<<<< HEAD
+
   // const { user, setUser } = useContext(GlobalContext);
 
   const { user, setUser } = useContext(GlobalContext);
@@ -35,6 +41,7 @@ function PerfilProfissional() {
 
 
 //   var userData = JSON.parse(localStorage.getItem('User'));
+>>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
 
 //   userData.especializacao = userData.especializacao.replace('{', '')
 //   userData.especializacao = userData.especializacao.replace('}', '')
@@ -181,13 +188,40 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     const { value, checked } = event.target;
   };
 
+  const handleCloseDetails = () => {
+    setSelectedAgendamento(null); // Fecha a div de detalhes
+  };
   
+  // const [nota, setNota] = useState('');
+  // const [notas, setNotas] = useState([]);
+  // const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+  // const handleCloseDetails = () => {
+  //   setSelectedAgendamento(null); // Fecha a div de detalhes
+  // };
+=======
+<<<<<<< HEAD
+
+  
+>>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
   
   const [nota, setNota] = useState('');
   const [notas, setNotas] = useState([]);
 
   const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+<<<<<<< HEAD
+=======
 
+<<<<<<< HEAD
+=======
+=======
+  
+  const [nota, setNota] = useState('');
+  const [notas, setNotas] = useState([]);
+  
+  const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+>>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
+>>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
+>>>>>>> e2df26f99cde5156aa9f6aa6d033d08217a9c90a
 
   const adicionarNota = () => {
     if (nota.trim() !== '') {
@@ -213,6 +247,12 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         <img src='iconuser.svg' className='a-foto'/> 
                     </div>
                      <div className='nick-usuario'>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e2df26f99cde5156aa9f6aa6d033d08217a9c90a
 
                        {/* <h1>{userData.nome_completo}</h1>
 
@@ -222,6 +262,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                        {/* <h1>{userData.nome_completo}</h1>
 
                       <p>{userData.email}</p> */}
+>>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
 
                       {/* <h1>{userData.nome_completo}</h1>
                       <p>{userData.email}</p> */}

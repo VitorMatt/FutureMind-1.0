@@ -34,12 +34,20 @@ function Inicio() {
       const data = await response.json();
       setProfissionais(data);
     } catch (err) {
-      console.error('Erro ao buscar profissionais:', err.message);
+      console.log('Erro ao buscar profissionais:', err.message);
     }
   };
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
+>>>>>>> e2df26f99cde5156aa9f6aa6d033d08217a9c90a
   // const filtraProfissionais = () => {
   //   if (!profissionais || profissionais.length === 0) return;
+>>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
     
 
   // const filtraProfissionais = () => {
@@ -155,6 +163,54 @@ function Inicio() {
   //     };
   //   });
   // };
+<<<<<<< HEAD
+=======
+=======
+  const filtraProfissionais = () => {
+    if (!profissionais || profissionais.length === 0) return;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
+    profissionais.forEach((profissional) => {
+      if (profissional.preferencias.includes('Adultos')) {
+        setAdultos((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Idosos')) {
+        setIdosos((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Crianças')) {
+        setCriancas((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('PCDs')) {
+        setPcds((prev) => [...prev, profissional]);
+      }
+
+      if (profissional.preferencias.includes('Pré-Adolescentes')) {
+
+<<<<<<< HEAD
+    setPre_adolescentes((prev) => [...prev, profissional]);
+
+
+    }
+     if (profissional.preferencias.includes('Adolescentes')) {
+      setAdolescentes((prev) => [...prev, profissional]);
+     }
+     });
+   };
+  
+=======
+        setPre_adolescentes((prev) => [...prev, profissional]);
+      }
+
+      if (profissional.preferencias.includes('Adolescentes')) {
+        setAdolescentes((prev) => [...prev, profissional]);
+      }
+     });
+   };
+>>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
+>>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
+>>>>>>> e2df26f99cde5156aa9f6aa6d033d08217a9c90a
 
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
