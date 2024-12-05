@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from 'react'
-import Footer from '../components/Footer'
 import CpfInput from '../components/CpfInput'
 import CrpMask from '../components/CrpMask'
 import PrecoMask from '../components/PrecoMask'
@@ -8,8 +7,6 @@ import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
 import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
 import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
-import './CSS/Test_dois.css'
-import './CSS/Test_tres.css'
 import { Label } from '@mui/icons-material'
 import { GlobalContext } from '../GlobalContext/GlobalContext'
 import { useNavigate } from 'react-router-dom'
@@ -25,6 +22,7 @@ import 'swiper/css/scrollbar';
 
 function PerfilProfissional() {
 
+<<<<<<< HEAD
 
   // const { user, setUser } = useContext(GlobalContext);
 
@@ -33,6 +31,9 @@ function PerfilProfissional() {
 //   const { user, setUser } = useContext(GlobalContext);
 
   // const { user, setUser } = useContext(GlobalContext);
+=======
+  const { setUser } = useContext(GlobalContext);
+>>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
 
   // const { user, setUser } = useContext(GlobalContext);
 
@@ -133,9 +134,9 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     setSelectedAgendamento(agendamento);
   };
 
-  const handleCloseDetails = () => {
-    setSelectedAgendamento(null); // Fecha a div de detalhes
-  };
+  // const handleCloseDetails = () => {
+  //   setSelectedAgendamento(null); // Fecha a div de detalhes
+  // };
 
   const handleDeleteAppointment = (agendamentoParaExcluir) => {
     setAgendamentos((prevAgendamentos) =>
@@ -183,6 +184,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
   const handleChange = (event) => {
     const { value, checked } = event.target;
   };
+<<<<<<< HEAD
 
   
   
@@ -191,6 +193,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
   const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
 
+=======
+  
+  const [nota, setNota] = useState('');
+  const [notas, setNotas] = useState([]);
+  
+  const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+>>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
 
   const adicionarNota = () => {
     if (nota.trim() !== '') {
@@ -213,9 +222,10 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                  <div className='div-foto-nome'>
                     <div className='foto-usuario'>
-                        <img src='iconuser.svg' className='a-foto'/>
+                        <img src='iconuser.svg' className='a-foto'/> 
                     </div>
                      <div className='nick-usuario'>
+<<<<<<< HEAD
 
                        {/* <h1>{userData.nome_completo}</h1>
 
@@ -228,6 +238,10 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                       {/* <h1>{userData.nome_completo}</h1>
                       <p>{userData.email}</p> */}
+=======
+                      <h1>{userData.nome_completo}</h1>
+                      <p>{userData.email}</p>
+>>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
                     </div>
                  </div> 
     
@@ -559,8 +573,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                 <div className='div-buttons-salvar-cancelar'>
                 <button className='a'>Excluir conta</button>
-                  <button className='a' onClick={handleSair}> Sair da Conta</button>
-                  {/* onClick={sair} */}
+                  <button className='a' onClick={handleSair} > Sair da Conta</button>
                   <button className='a'>Cancelar edição</button>
                   <button className='salva'>Salvar</button>
                 </div>
@@ -568,8 +581,6 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
         </div>
 
       </div>
-      
-      <Footer />
     </div>
   )
 }

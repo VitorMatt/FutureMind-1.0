@@ -8,7 +8,7 @@ const pool = new Pool({
     user: 'postgres', 
     host: 'localhost',
     database: 'FutureMind', 
-    password: '12345',
+    password: 'Vitor281207.',
     port: 5432, 
 });
 
@@ -537,9 +537,6 @@ app.get('/agendamento', async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log('Servidor rodando na porta 3000');
-});
 
 
 app.get('/api/profissionais', async (req, res) => {
@@ -562,4 +559,37 @@ app.get('/api/profissionais', async (req, res) => {
         console.error(error.message);
         res.status(500).json({ message: 'Erro ao buscar profissionais' });
     }
+});
+
+app.get('/sugestoes', async(req, res) => {
+
+    try {
+
+        const result = await pool.query('SELECT * FROM sugestoes');
+
+        if (result.rows) {
+
+            res.status(200).json(result.rows);
+        }
+    } catch (err) {
+
+        console.log('Erro', err.message);
+    }
+});
+
+app.post('/sugestoes', async(req, res) => {
+
+    const { sugestao } = req.body;
+
+    try {
+
+        const result = await pool.query('INSERT INTO sugestoes (descricao) VALUES ($1) RETURNING *', [sugestao]);
+    } catch (err) {
+
+        console.log('Erro', err.message);
+    }
+})
+
+app.listen(3000, () => {
+    console.log('Servidor rodando na porta 3000');
 });

@@ -14,9 +14,9 @@ import Footer from '../components/Footer';
 
 function Inicio() {
 
-  const [buscaUm, setBuscaUm] = useState([{descricao: 'Autoaceitação', selecionado: false}, {descricao: 'Autoestima', selecionado: false}, {descricao: 'Depressão', selecionado: false}]);
-  const [buscaDois, setBuscaDois] = useState([{descricao: 'Angústia', selecionado: false}, {descricao: 'Ansiedade', selecionado: false}, {descricao: 'LGBTQIA+', selecionado: false}]);
-  const [buscaTres, setBuscaTres] = useState([{descricao: "PCD's", selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
+  const buscaUm = [{descricao: 'Autoaceitação', selecionado: false}, {descricao: 'Autoestima', selecionado: false}, {descricao: 'Depressão', selecionado: false}];
+  const buscaDois = [{descricao: 'Angústia', selecionado: false}, {descricao: 'Ansiedade', selecionado: false}, {descricao: 'LGBTQIA+', selecionado: false}];
+  const buscaTres = [{descricao: "PCD's", selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}];
 
   const [click, setClick] = useState(false);
 
@@ -28,7 +28,6 @@ function Inicio() {
   const [pcds, setPcds] = useState([]);
   const [idosos, setIdosos] = useState([]);
   
-  
   const fetchProfissionais = async () => {
     try {
       const response = await fetch('http://localhost:3000');
@@ -39,6 +38,7 @@ function Inicio() {
     }
   };
 
+<<<<<<< HEAD
   // const filtraProfissionais = () => {
   //   if (!profissionais || profissionais.length === 0) return;
     
@@ -156,6 +156,35 @@ function Inicio() {
   //     };
   //   });
   // };
+=======
+  const filtraProfissionais = () => {
+    if (!profissionais || profissionais.length === 0) return;
+
+    profissionais.forEach((profissional) => {
+      if (profissional.preferencias.includes('Adultos')) {
+        setAdultos((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Idosos')) {
+        setIdosos((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('Crianças')) {
+        setCriancas((prev) => [...prev, profissional]);
+      }
+      if (profissional.preferencias.includes('PCDs')) {
+        setPcds((prev) => [...prev, profissional]);
+      }
+
+      if (profissional.preferencias.includes('Pré-Adolescentes')) {
+
+        setPre_adolescentes((prev) => [...prev, profissional]);
+      }
+
+      if (profissional.preferencias.includes('Adolescentes')) {
+        setAdolescentes((prev) => [...prev, profissional]);
+      }
+     });
+   };
+>>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
 
   const handleReplace = () => {
     if (!profissionais || profissionais.length === 0) return;
@@ -545,25 +574,33 @@ const clickTres = (index) => {
 
         </div>
         <div className='btn-consulta'>
+            {selectedTime ? (
+              <button
+                id="agendar"
+                onClick={() => handleAgendamento(item.id_profissional)}
+              >
+                <b>
+                  {estadoBotoes[item.id_profissional] === 'carregando' && (
+                    <div id="circle" className="circle"></div>
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'concluido' && (
+                    <img id="icon-concluido" src="check.svg" alt="" />
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'inicial' && (
+                    <span className="btn-text2">
+                      {selectedTime
+                        ? `Marcar para ${selectedTime}`
+                        : "Marcar Consulta"}
+                    </span>
+                  )}
+                </b>
+              </button>
+            ) : (
+              
+              <p className="selecione-horario">Selecione um horário acima para agendar</p>
+            )}
+          </div>
 
-
-        <button
-          id="agendar"
-          onClick={() => handleAgendamento(item.id_profissional)}
-          disabled={!selectedTime}
-          >
-            <b>
-      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
-                selectedTime
-            ? `Marcar para ${selectedTime}`
-            : "Marcar Consulta"
-              }</span>}
-               
-            </b>
-        </button>
-            </div>
             </div>
           </div>
         </div>
@@ -1511,6 +1548,7 @@ const clickTres = (index) => {
                 </div>
                 <div className="crp-div">
                   <h1 style={{color: 'black'}}>
+
                   CRP: {item.crp}
                   </h1>
                   </div>
@@ -1647,4 +1685,4 @@ const clickTres = (index) => {
     
   )}
 
-export default Inicio
+export default Inicio;

@@ -89,48 +89,6 @@ function PerfilVisualizar() {
                 </div>
             
             </div>
-            {/* <div className='anotações-profissional'>
-              <div className='titulo-perfil'>
-               <h1>Anotações</h1>
-              </div>
-              <div className='input-button'>
-                <div className='input-anotações'>
-                 <textarea className='text-anota' placeholder='Digite aqui...'/>
-                </div>
-                <div className='button-anotações'>
-                 <button>Enviar</button>
-                </div>
-              </div>
-              <div className='div-anotações'>
-
-             </div>
-            </div> */}
-           
-       <div className='editar-perfil-profissional'>
-        <div className='titulo-perfil'>
-         <h1>Editar Perfil</h1>
-        </div>
-        <div className='container-inputs-editar'>
-         <div className='div1-editar'>
-          <p>Nome Completo</p>
-          <input type="text" placeholder='Digite seu nome completo...'/>
-
-          <p>Data de Nascimento</p>
-          <input type="date" />
-
-          <p>CPF</p>
-          <input type="text" />
-         </div>
-         <div className='div2-editar'>
-           <p>Telefone</p>
-           <input type="text" />
-           <p>E-mail</p>
-           <input type="email" />
-           <p>Senha</p>
-           <input type="text" />
-         </div>
-        </div>
-        </div>
 
         {/* <Footer /> */}
     </div>
