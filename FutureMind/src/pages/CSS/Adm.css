@@ -11,31 +11,7 @@
   color: #5A789F;
 }
 
-<<<<<<< HEAD
 .h1_Paciente_adm {
-=======
-div::-webkit-scrollbar-track{
-
-  background: #f1f1f1;
-  border-radius: 3px;
-}
-
-div::-webkit-scrollbar-thumb{
-
-
-  background-color: var(--cor-1);
-  border-radius: 3px;
-}
-
-div::-webkit-scrollbar{
-
-
-  width: 12px;
-}
-
-.h1_Paciente_adm{
-
->>>>>>> 84132ac88ca857aaab5789d9be0e5e95a5f41089
   padding-left: 2.3%;
   padding-top: 3%;
   font-size: 3em;

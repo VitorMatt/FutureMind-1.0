@@ -53,20 +53,53 @@
 .foto-usuario{
     display: flex;
     justify-content: flex-start;
-    width: fit-content;
+    flex-direction: column;
+    width: 20%;
     padding: 1%;
-    padding-left: 2%;
+    
 }
 
-.a-foto{
+.a1-foto{
     height: 200px;
     border-radius: 100px;
+    padding-left: 1.5%;
+    position: relative;
+}
+
+
+
+input[type="file"] {
+    display: none;
+}
+.label-file {
+    padding: 0.2em ;
+    width: 200px;
+    background-color: var(--cor-1);
+    color: #FFF;
+    border: 0.2em solid #89c2d9;
+    border-radius: 13px;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+}
+
+.input-file {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o botão e o nome do arquivo */
+  }
+  
+.file-name {
+    font-size: 0.6em; /* Diminui a fonte */
+    color: #fff;
+
 }
 
 .nick-usuario{
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 80%;
     padding: 1%;
     font-size: 1.5em;
     line-height: 1px;
@@ -164,7 +197,7 @@
 }
 
 .input-anotações textarea{
-    width: 80%;
+    width: 90%;
     display: flex;
     padding: 12px;
     color: #5A789F;
@@ -176,13 +209,16 @@
 }
 
 .button-anotações{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 30%;
   
 }
 
 .button-anotações button{
-    width: 90%;
     display: flex;
+    width: 90%;
     justify-content: center;
     background-color: #5A789F;
     color: white;
@@ -214,34 +250,53 @@
   }
   
   .nota-slide {
-    
+    border: none;
     width: 100%;
-    height: 250px;
-    border-radius: 15px;
-    align-items: start;
-   
+    height: 253px;
   }
  
 .textarea_anotação{
-
+    width: 100%;
     resize: none;
+    background: #cad7ebcb;
+    color: #014F86;
+    border: none;
+    border-radius: 15px;
+    text-align: justify;
+    padding: 5%;
 }
 
   
   /* Estilos para o Swiper */
-  .swiper {
+  .swiper-anotacoes {
+    display: flex;
     width: 100%;
     height: auto;
+    padding-right: 2%;
+  }
+
+  .swiper-anotacoes .swiper-button-prev{
+    left: var(--swiper-navigation-sides-offset, 10px) !important;    
+    color: #5A789F !important;
+  }
+
+  .swiper-anotacoes .swiper-button-next{
+    right: var(--swiper-navigation-sides-offset, 10px) !important;
+    color: #5A789F !important;
+  }
+
+  .swiper-anotacoes .swiper-pagination-bullet-active{
+    background-color: #014F86;
+  }
+
+  .swiper-anotacoes .swiper-pagination-bullet{
+    background-color: #014F86;
   }
   
-
   .slide_swiper{
-   
     display: flex;
     justify-content: center;
-    align-items: center;
     padding-top: 3%;
-
   }
 
   .mini_divs{
@@ -710,29 +765,11 @@
   }
 
   .div-esp {
-<<<<<<< HEAD
     max-width: 200px;
-=======
-    max-width: 250px;
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
     height: 150px;
     overflow-x: auto; 
     padding: 10px;
     box-sizing: border-box;
-}
-
-.div-esp::-webkit-scrollbar-track{
-    background: #f1f1f1;
-    border-radius: 3px;
-}
-
-.div-esp::-webkit-scrollbar-thumb{
-    background-color: var(--cor-1);
-    border-radius: 3px;
-}
-
-.div-esp::-webkit-scrollbar{
-    width: 10px;
 }
 
 .container-areas{
@@ -758,31 +795,13 @@
   }
   
 .div-desc{
-<<<<<<< HEAD
     width: 500px;
-=======
-    width: 400px;
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
     height: 150px;
     overflow-x: 0;
     overflow-y: auto; 
     border: 1px solid #ccc; 
     padding: 10px;
     box-sizing: border-box;
-}
-
-.calendar-day::-webkit-scrollbar-track{
-    background: #f1f1f1;
-    border-radius: 3px;
-}
-
-.calendar-day::-webkit-scrollbar-thumb{
-    background-color: var(--cor-1);
-    border-radius: 3px;
-}
-
-.calendar-day::-webkit-scrollbar{
-    width: 10px;
 }
   
   .day-number {
@@ -807,16 +826,9 @@
     text-transform: capitalize;
   }
 
-<<<<<<< HEAD
   .event-card:active{
     transform: translateY(2px); 
   }
-=======
-
-/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
-=======
-div::-webkit-scrollbar-track{
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
 
   
 /* Detalhes do evento */
@@ -855,23 +867,7 @@ div::-webkit-scrollbar-track{
     text-transform: capitalize;
   }
 
-<<<<<<< HEAD
   .event-details {
-=======
-
-    width: 12px;
-}
-
-
-
-/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
-   padding: 20px;
-
-}
-
-.detalhes-conteudo{
-        
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
     position: absolute;
     background: white;
     padding: 1.5rem;
@@ -914,29 +910,6 @@ div::-webkit-scrollbar-track{
     border: none;
     padding: 2%;
     border-radius: 5px;
-<<<<<<< HEAD
-=======
-    cursor: pointer;
-
-}
-.fechar-detalhes:hover {
-
-    background-color: darkred;
-
-}
-
-
-
-.options-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Configura duas colunas */
-    gap: 10px; /* Espaçamento entre itens */
-  }
-
-  
-.container-areas, .container-especi h2 {
-    color: var(--cor-1);
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee
   }
   
   .but-det:hover {
@@ -973,7 +946,6 @@ div::-webkit-scrollbar-track{
   .fechar-detalhes img{
     width: 8%;
   }
-<<<<<<< HEAD
   
   .detalhes-conteudo h4{
     height: fit-content;
@@ -984,20 +956,5 @@ div::-webkit-scrollbar-track{
   .agendamento-nome{
     padding-left: 5%;
   }
-  
- 
 
 
-=======
-                    
-@media (max-width: 480px) {
-    .options-container {
-    grid-template-columns: 1fr; /* Ajusta para uma coluna em telas menores */
-}}
-
-
-.container-escolhas{
-    width: 76%;
-    padding-top: 5%;
-}
->>>>>>> 2942314e02a2b52bf819c524b7ba30d17bf86cee

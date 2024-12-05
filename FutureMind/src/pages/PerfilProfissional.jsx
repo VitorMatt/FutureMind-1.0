@@ -24,25 +24,25 @@ function PerfilProfissional() {
 
   const { setUser } = useContext(GlobalContext);
 
-  var userData = JSON.parse(localStorage.getItem('User'));
+//   var userData = JSON.parse(localStorage.getItem('User'));
 
-  userData.especializacao = userData.especializacao.replace('{', '')
-  userData.especializacao = userData.especializacao.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('{', '')
  
- for (let i=0; i<(userData.especializacao.length * 2); i++) {
+//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
 
-  userData.especializacao = userData.especializacao.replace('"', '')
- }
+//   userData.especializacao = userData.especializacao.replace('"', '')
+//  }
 
- for (let i=0; i<(userData.preferencias.length * 2); i++) {
+//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
 
-  userData.preferencias = userData.preferencias.replace('"', '')
- }
+//   userData.preferencias = userData.preferencias.replace('"', '')
+//  }
 
- userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
- userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
 
  const navigate = useNavigate();
  
@@ -120,9 +120,9 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     setSelectedAgendamento(agendamento);
   };
 
-  // const handleCloseDetails = () => {
-  //   setSelectedAgendamento(null); // Fecha a div de detalhes
-  // };
+  const handleCloseDetails = () => {
+    setSelectedAgendamento(null); // Fecha a div de detalhes
+  };
 
   const handleDeleteAppointment = (agendamentoParaExcluir) => {
     setAgendamentos((prevAgendamentos) =>
@@ -174,7 +174,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
   const [nota, setNota] = useState('');
   const [notas, setNotas] = useState([]);
   
-  const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+  // const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
 
   const adicionarNota = () => {
     if (nota.trim() !== '') {
@@ -193,15 +193,18 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                 <h1>Perfil Profissional</h1>
             </div>
 
-                <div>
-
                  <div className='div-foto-nome'>
+                        
                     <div className='foto-usuario'>
-                        <img src='iconuser.svg' className='a-foto'/> 
-                    </div>
+                        <img src='iconuser.svg' className='a1-foto'/> 
+                      <div className='input-editar-foto'>
+                      <input type="file" id="file" name="file" />
+                       <label htmlFor="file" className="label-file"> Editar Foto</label>
+                        </div>
+                        </div>
                      <div className='nick-usuario'>
-                      <h1>{userData.nome_completo}</h1>
-                      <p>{userData.email}</p>
+                      {/* <h1>{userData.nome_completo}</h1> */}
+                      {/* <p>{userData.email}</p> */}
                     </div>
                  </div> 
     
@@ -211,13 +214,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                         <div className="div-esp">
 
-                        {
+                        {/* {
                           userData.preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
                           ))
-                        }
+                        } */}
                         </div>
                     </div>
                     <div className='div-menor-info'>
@@ -225,13 +228,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         
                         <div className="div-esp">
 
-                        {
+                        {/* {
                           userData.especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
                           ))
-                        }
+                        } */}
                         </div>
                     </div>
                     <div className='descricao'>
@@ -243,7 +246,6 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                  <div className='titulo-agenda'>
                     <h1>Agenda</h1>
                  </div>
-                </div>
             
           <div className='container-agendamento'>
               <button onClick={() => handleTrocarSemana(false)} className="button_voltar"><img src="angle-left-solid.svg" alt="" /></button> 
@@ -345,7 +347,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
          pagination={{ clickable: true }}
          onSwiper={(swiper) => console.log(swiper)}
          onSlideChange={() => console.log('slide change')}
-
+         className='swiper-anotacoes'
         >
           
           {notas.map((nota, index) => (
@@ -533,7 +535,8 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                 <div className='div-buttons-salvar-cancelar'>
                 <button className='a'>Excluir conta</button>
-                  <button className='a' onClick={handleSair} > Sair da Conta</button>
+                  <button className='a'> Sair da Conta</button>
+                  {/* onClick={handleSair}  */}
                   <button className='a'>Cancelar edição</button>
                   <button className='salva'>Salvar</button>
                 </div>
