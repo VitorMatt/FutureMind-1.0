@@ -9,40 +9,42 @@ import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
 import { Label } from '@mui/icons-material'
 import { GlobalContext } from '../GlobalContext/GlobalContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useRouteLoaderData } from 'react-router-dom'
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { color } from 'framer-motion';
 
 
 function PerfilProfissional() {
 
   const { user, setUser } = useContext(GlobalContext);
 
-  var userData = JSON.parse(localStorage.getItem('User'));
+//   var userData = JSON.parse(localStorage.getItem('User'));
 
-  userData.especializacao = userData.especializacao.replace('{', '')
-  userData.especializacao = userData.especializacao.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('{', '')
  
- for (let i=0; i<(userData.especializacao.length * 2); i++) {
+//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
 
-  userData.especializacao = userData.especializacao.replace('"', '')
- }
+//   userData.especializacao = userData.especializacao.replace('"', '')
+//  }
 
- for (let i=0; i<(userData.preferencias.length * 2); i++) {
+//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
 
-  userData.preferencias = userData.preferencias.replace('"', '')
- }
+//   userData.preferencias = userData.preferencias.replace('"', '')
+//  }
 
- userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
- userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
 
 //  const navigate = useNavigate();
  
@@ -170,18 +172,6 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
   const handleChange = (event) => {
     const { value, checked } = event.target;
   };
-
-  
-  // const [nota, setNota] = useState('');
-  // const [notas, setNotas] = useState([]);
-  // const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
-  // const handleCloseDetails = () => {
-  //   setSelectedAgendamento(null); // Fecha a div de detalhes
-  // };
-
-
-
-
   
   const [nota, setNota] = useState('');
   const [notas, setNotas] = useState([]);
@@ -194,6 +184,27 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
       setNota(''); // Limpa o campo de entrada
     }
   };
+
+  const [isEditing, setIsEditing] = useState(false);
+const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
+
+  const handleEditClick = () => {
+    setIsEditing(true); // Ativa o modo de edição
+  };
+  
+  const handleSaveClick = () => {
+    // Aqui você pode adicionar a lógica para salvar as alterações, como uma chamada à API
+    setIsEditing(false); // Desativa o modo de edição
+
+    // userData.descricao = descricao;
+    
+  };
+  
+  const handleCancelClick = () => {
+    setDescricao(null); // Reverte para o valor original
+    setIsEditing(false); // Cancela o modo de edição
+  };
+
   return (
     <div className='perfilPro-container'>
       
@@ -216,10 +227,14 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         </div>
                      <div className='nick-usuario'>
 
+                      <div className='meet'>
+                        <Link to="https://workspace.google.com/products/meet/"><img src="video-solid.svg"/></Link>
+                      </div>
 
-                      <h1>{userData.nome_completo}</h1>
-                      <p>{userData.email}</p>
-
+                      <div>
+                        {/* <h1>{userData.nome_completo}</h1> */}
+                        {/* <p>{userData.email}</p> */}
+                      </div>
 
                     </div>
                  </div> 
@@ -230,13 +245,13 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
 
                         <div className="div-esp">
 
-                        {
+                        {/* {
                           userData.preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
                           ))
-                        }
+                        } */}
                         </div>
                     </div>
                     <div className='div-menor-info'>
@@ -244,18 +259,46 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
                         
                         <div className="div-esp">
 
-                         {
+                         {/* {
                           userData.especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
                           ))
-                        } 
+                        }  */}
                         </div>
                     </div>
                     <div className='descricao'>
+                        <div  className='Minha_desc'>
                         <p>Descrição:</p>
-                        <div className='div-desc' maxLength="500">{profissional.descricao}</div>
+                        {!isEditing ? (
+                        <button className="But_desc" onClick={handleEditClick}>
+                          Editar
+                        </button>
+                        ) : (
+                        <>
+                        <button className="But_desc" onClick={handleSaveClick}>
+                          Salvar
+                        </button>
+                        <button className="But_desc" onClick={handleCancelClick}>
+                          Cancelar
+                        </button>
+                        </>
+                        )}
+                        </div>
+                        
+                        <div className="div-desc">
+                        {!isEditing ? (
+                        descricao
+                        ) : (
+                        <textarea
+                         maxLength="500"
+                         value={descricao}
+                         onChange={(e) => setDescricao(e.target.value)}
+                         style={{ width: "95%", height: "100px", resize: "none", background: "#cad7ebcb", border: "none", color: "#014F86", borderRadius: "13px", padding: "1.5%"}}
+                        />
+                        )}
+                        </div>
                     </div>
                  </div>
     
