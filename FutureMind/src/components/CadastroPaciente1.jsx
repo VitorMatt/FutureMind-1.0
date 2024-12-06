@@ -3,15 +3,21 @@ import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
 import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
 import { GlobalContext } from "../GlobalContext/GlobalContext";
+import '../pages/CSS/CadastroProfissional.css';
+
 
 function CadastroPaciente1() {
 
   const { paciente } = useContext(GlobalContext)
-  
+
   const [date, setDate] = useState(paciente.data_nascimento);
   const [name, setName] = useState(paciente.nome_completo);
-  const [message, setMessage] = useState('preencha');
+  const {usernameValid, setUsernameValid} = useContext(GlobalContext)
+  const {usernameHover, setUsernameHover} = useContext(GlobalContext)
   
+
+setUsernameValid(name.length > 3) 
+
 
   useEffect(() => {
     paciente.nome_completo = name;
@@ -21,13 +27,13 @@ function CadastroPaciente1() {
     paciente.data_nascimento = date;
   }, [date]);
 
-  
-  function validar(item) {
-    
-    if (item.length===0) setMessage('preencha'); else setMessage('')
 
-  }
+    paciente.data_nascimento = date
+  // }, [date])
+  
+
   return (
+
     <div className="selecao1">
       <h3 className="titulo-cadastro2">Seus Dados..</h3>
       <div className="checkboxs2">
@@ -38,23 +44,23 @@ function CadastroPaciente1() {
             name="nome"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="inputCRP"
+            className={usernameValid ? "valid" : name ? "invalid" : "neutro"}
           />
-<<<<<<< HEAD
-          
-=======
-          {errors.nome && <p className="error-text">{errors.nome}</p>}
-          <input type="text" name="nome" value={name} onChange={(e) => {setName(e.target.value),validar(e.target.value)}} className="inputCRP" /> {message}
-<<<<<<< HEAD
-=======
-=======
-<<<<<<< HEAD
-=======
-          <input type="text" name="nome" value={name} onChange={(e) => {setName(e.target.value),validar(e.target.value)}} className="inputCRP" /> {message}
->>>>>>> 4b17c148d44c71192ddcc833b899d13206405f19
->>>>>>> 18453e0f23890041cd3755a8e625b414f0d84d2a
->>>>>>> e2df26f99cde5156aa9f6aa6d033d08217a9c90a
->>>>>>> 1792e2105f8a08f36cc8857a90a2866f5752ba5b
+         <span
+          className={`status-indicador ${
+          usernameValid ? "valid" : name ? "invalid" : ""
+         }`}
+         onMouseEnter={() => setUsernameHover(true)}
+         onMouseLeave={() => setUsernameHover(false)}
+         ></span>
+         {usernameHover && (
+
+          <div className="tooltip">
+            {usernameValid
+              ? "nome ok"
+              : "nome precisa ter mais de 3 caracter"}
+          </div>
+         )}
         </div>
         <div className="input-text">
           <label htmlFor="data">Data de Nascimento</label>
@@ -64,13 +70,13 @@ function CadastroPaciente1() {
               dateFormat: "d/m/Y",
               defaultDate: "today",
             }}
-            
+
             value={date}
             onChange={(selectedDates) => setDate(selectedDates[0])}
             className="inputCRP"
-            
+          
           />
-        
+          
         </div>
       </div>
     </div>

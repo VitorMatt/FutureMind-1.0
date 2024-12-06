@@ -1,7 +1,7 @@
 import '../pages/CSS/CadastroProfissional.css';
 import { useState, useContext, useEffect } from 'react';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
-// import CadastroPaciente1 from '../components/CadastroPaciente1';
+import CadastroPaciente1 from '../components/CadastroPaciente1';
 import CadastroPaciente2 from '../components/CadastroPaciente2';
 import CadastroPaciente3 from '../components/CadastroPaciente3';
 import Stepper from '../components/StepperComponent';
@@ -13,39 +13,31 @@ function CadastroPaciente() {
   const navigate = useNavigate();
   const { paciente } = useContext(GlobalContext);
   const [activeStep, setActiveStep] = useState(0);
-  const [termosAceitos, setTermosAceitos] = useState(false);
-  const [erroName,setErroName] = useState('')
-  const [erroEmail, setEmailError] = useState('')
-
+  const {usernameValid} = useContext(GlobalContext)
+  const {usernameHover, setUsernameHover}= useContext(GlobalContext)
   
 
-  
-  const valida_email = () => {
 
-    if (!paciente.nome_completo){
-  
-     setErroName('Você não digitou seu nome completo!')
-     return false
-       
-    }else{
-        
-     setEmailError('');
-  
-     return true
+  const valida_data = () => {
+    
+    const data_atual = new Date()
+    const idade = data_atual.getFullYear() - paciente.dataNascimento.getFullYear();
+    const mes_atual = data_atual.getMonth() - paciente.dataNascimento.getMonth()
 
-    }
-  } 
 
-  const valida_Nome = () => {
-
-    if(!paciente.data_nascimento){
+    if(paciente.data_nascimento == null || paciente.dataNascimento == ''){
       
       setErroData('Você Não Digitou Sua Data De Nascimento')
       
       return false
 
-    }else{
+    }else if(idade < 18 || mes_atual < 0){
         
+      setErroData('Você Não tem 18 anos')
+
+      return false
+
+    }else{
       setErroData('')
 
       return true
@@ -55,9 +47,9 @@ function CadastroPaciente() {
   // Função de navegação para o próximo passo
   const handleNext = () => {
     if (activeStep === 0) {
-      if (valida_email() && valida_Nome()) {
-        
-        setActiveStep((prevStep) => prevStep + 1);
+      if (usernameValid == true) {
+      
+        return
       }
     }
 
@@ -87,7 +79,7 @@ function CadastroPaciente() {
     }
 
     // Aqui, atualizamos o paciente com os dados de email e senha, que vêm de CadastroPaciente3
-    const updatedPaciente = { ...paciente};
+    const updatedPaciente = { ...paciente, id_paciente: paciente.id_paciente + 1 };
 
     try {
       const response = await fetch('http://localhost:3000/cadastro-paciente', {
@@ -125,7 +117,7 @@ function CadastroPaciente() {
       <div className='lado-esquerdo'>
         <Stepper activeStep={activeStep} />
         {activeStep === 0 ? (
-          <CadastroPaciente2 />
+          <CadastroPaciente1 />
         ) : activeStep === 1 ? (
           <CadastroPaciente2 />
         ) : activeStep === 2 ? (
@@ -164,4 +156,6 @@ function CadastroPaciente() {
 }
 
 export default CadastroPaciente;
+
+
 

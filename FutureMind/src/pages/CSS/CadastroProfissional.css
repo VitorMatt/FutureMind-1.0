@@ -434,21 +434,68 @@ input[type="checkbox"]:focus {
     padding-left: 0.5%;
 }
 
-.inputCRP.error {
-    border: 1px solid red;
-  }
-  
- 
-.error-text {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-    font-weight: 500;
-  }
-  
-.flatpickr-input.error {
-    border: 1px solid red; 
-  }
 
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    }
+    
+    .input-wrapper {
+    position: relative;
+    }
+    
+   
+    input.valid {
+    border-color: #ff0000;
+    width: 45%;
+    padding: 1.6%;
+    border-radius: 10px;
+    border: none;
+    background-color: #cad7eb;
+    color: var(--cor-4);
+    font-size: medium;
 
- 
+    }
+    
+    input.invalid {
+    border-color: #00ff6e;
+    width: 45%;
+    padding: 1.6%;
+    border-radius: 10px;
+    background-color: #cad7eb;
+    color: var(--cor-4);
+    font-size: medium;
+
+    }
+
+/* Estilo para a bolinha de status de validação */
+.status-indicador {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 10px;
+  border-radius: 50%;
+  background-color: #ccc; /* Cor padrão (neutra) */
+  transition: background-color 0.3s;
+}
+
+.status-indicador.valid {
+  background-color: #28a745; /* Cor verde para válido */
+}
+
+.status-indicador.invalid {
+  background-color: #dc3545; /* Cor vermelha para inválido */
+}
+
+/* Estilo do tooltip */
+.tooltip {
+  position: absolute;
+  background-color: #5c0acf;
+  color: #721c24;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  top: 30px; /* Ajuste conforme necessário */
+}
+

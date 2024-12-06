@@ -98,9 +98,12 @@ const paciente = {
       localStorage.removeItem('id');
     }
     }, [id]);
+    
+    const [usernameValid, setUsernameValid] = useState(false)
+    const [usernameHover, setUsernameHover] = useState(false)
 
     return(
-        <GlobalContext.Provider value={{profissionais, profissional, paciente, user, setUser, id, setId}}>
+        <GlobalContext.Provider value={{profissionais, profissional, paciente, user, setUser, id, setId, usernameValid, setUsernameValid, usernameHover, setUsernameHover  }}>
             {children}
         </GlobalContext.Provider>
     );
