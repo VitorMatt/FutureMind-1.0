@@ -5,21 +5,16 @@
     --cor-4: #012A4A;
     --cor-5: #014F86;
 }
-
-
 .perfilPro-container{
     background-color: #DBEEF4;
     display: flex;
     flex-direction: column;
 }
-
 .todas-divs{
     display: flex;
     flex-direction: column;
     gap: 80px;
 }
-
-
 .perfil-profissional{
     display: block;
     margin: auto;
@@ -28,7 +23,6 @@
     width: 70%;
     height: fit-content;
 }
-
 .titulo-perfil{
     display: flex;
     background-color: #5a789f;
@@ -37,11 +31,9 @@
     width: 100%;
     height: fit-content;
 }
-
 .titulo-perfil h1{
     padding-left: 5%;
 }
-
 .div-foto-nome{
     display: flex;
     margin: auto;
@@ -49,25 +41,20 @@
     height: fit-content;
     border-bottom: 3px solid #5a789f;
 }
-
 .foto-usuario{
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     width: 20%;
     padding: 1%;
-    
+   
 }
-
 .a1-foto{
     height: 200px;
     border-radius: 100px;
     padding-left: 1.5%;
     position: relative;
 }
-
-
-
 input[type="file"] {
     display: none;
 }
@@ -82,19 +69,19 @@ input[type="file"] {
     display: block;
     cursor: pointer;
 }
-
+.labelespeci{
+    padding-left: 15%;
+}
 .input-file {
     display: flex;
     align-items: center;
     gap: 10px; /* Espaço entre o botão e o nome do arquivo */
   }
-  
+ 
 .file-name {
     font-size: 0.6em; /* Diminui a fonte */
     color: #fff;
-
 }
-
 .nick-usuario{
     display: flex;
     justify-content: center;
@@ -104,11 +91,9 @@ input[type="file"] {
     font-size: 1.5em;
     line-height: 1px;
 }
-
 .nick-usuario p{
     opacity: 50%;
 }
-
 .div-info{
     display: flex;
     margin: auto;
@@ -119,7 +104,6 @@ input[type="file"] {
     color: #5a789f;
     font-weight: bold;
 }
-
 .div-menor-info{
     display: block;
     font-size: 1.5em;
@@ -127,11 +111,9 @@ input[type="file"] {
     height: 216px;
     padding: 1%;
 }
-
 .div-menor-info h1{
     font-size: 1.5em;
 }
-
 .descricao{
     display: block;
     font-size: 1.5em;
@@ -139,7 +121,6 @@ input[type="file"] {
     height: 216px;
     padding: 1.5%;
 }
-
 .descricao textarea{
     width: 100%;
     border: none;
@@ -150,7 +131,6 @@ input[type="file"] {
     font-weight: bold;
     overflow: hidden;
 }
-
 .titulo-agenda{
     display: flex;
     margin: auto;
@@ -159,7 +139,6 @@ input[type="file"] {
     height: fit-content;
     color: #5A789F;
 }
-
 .div-agenda{
     display: flex;
     margin: auto;
@@ -167,14 +146,12 @@ input[type="file"] {
     border-radius: 15px;
     width: 80%;
     height: fit-content;
-    
+   
 }
-
 .agendinha{
     width: 100%;
     padding-bottom: 5%;
 }
-
 .anotações-profissional{
     display: block;
     margin: auto;
@@ -183,19 +160,16 @@ input[type="file"] {
     width: 70%;
     height: 500px;
 }
-
 .input-button{
     display: flex;
     margin: auto;
     width: 100%;
     height: fit-content;
 }
-
 .input-anotações{
     width: 60%;
     padding: 2%
 }
-
 .input-anotações textarea{
     width: 90%;
     display: flex;
@@ -207,15 +181,13 @@ input[type="file"] {
     resize: none;
     cursor: pointer;
 }
-
 .button-anotações{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 30%;
-  
+ 
 }
-
 .button-anotações button{
     display: flex;
     width: 90%;
@@ -228,27 +200,23 @@ input[type="file"] {
     border-radius: 15px;
     cursor: pointer;
 }
-
 .button-anotações button:hover{
     background-color: #C1DFF4;
     border: none;
     color: var(--cor-4);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
-
 .button-anotações button:active{
-    transform: translateY(2px); 
+    transform: translateY(2px);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
-
-
 .div-anotações {
     display: flex;
     width: 100%;
     background-color: #ffffff;
     border-radius: 15px;
   }
-  
+ 
   .nota-slide {
     border: none;
     width: 100%;
@@ -265,8 +233,7 @@ input[type="file"] {
     text-align: justify;
     padding: 5%;
 }
-
-  
+ 
   /* Estilos para o Swiper */
   .swiper-anotacoes {
     display: flex;
@@ -274,37 +241,29 @@ input[type="file"] {
     height: auto;
     padding-right: 2%;
   }
-
   .swiper-anotacoes .swiper-button-prev{
     left: var(--swiper-navigation-sides-offset, 10px) !important;    
     color: #5A789F !important;
   }
-
   .swiper-anotacoes .swiper-button-next{
     right: var(--swiper-navigation-sides-offset, 10px) !important;
     color: #5A789F !important;
   }
-
   .swiper-anotacoes .swiper-pagination-bullet-active{
     background-color: #014F86;
   }
-
   .swiper-anotacoes .swiper-pagination-bullet{
     background-color: #014F86;
   }
-  
+ 
   .slide_swiper{
     display: flex;
     justify-content: center;
     padding-top: 3%;
   }
-
   .mini_divs{
-
     width: 70%;
   }
-
-
 .editar-perfil-profissional{
     display: flex;
     margin: auto;
@@ -316,7 +275,6 @@ input[type="file"] {
     width: 70%;
     height: fit-content;
 }
-
 .container-inputs-editar{
     display: flex;
     width: 76%;
@@ -324,11 +282,9 @@ input[type="file"] {
     justify-content: center;
     align-items: center;
 }
-
 .container-inputs-editar p{
-    width: fit-content;   
+    width: fit-content;  
 }
-
 .div1-editar{
     display: flex;
     margin: auto;
@@ -339,7 +295,6 @@ input[type="file"] {
     width: 50%;
     padding-right: 5%;
 }
-
 .div1-editar input{
     background-color: #CAD7EB;
     color: var(--cor-4);
@@ -349,28 +304,22 @@ input[type="file"] {
     border-radius: 13px;
     cursor: pointer;
 }
-
 .div1-editar input::placeholder{
     color: var(--cor-4);
     font-size: medium;
 }
-
 .div_container_pinput{
    
     display: flex;
     margin: auto;
     justify-content: center;
     width: 100%;
-
 }
-
 .div_pinput{
     width: 54%;
     text-align: start;
 }
-
 .div2-editar{
-
     display: flex;
     margin: auto;
     flex-direction: column;
@@ -381,9 +330,8 @@ input[type="file"] {
     text-align: center;
     padding-right: 5%;
 }
-
 .div2-editar input{
-    
+   
     background-color: #CAD7EB;
     color: var(--cor-4);
     border: none;
@@ -392,12 +340,10 @@ input[type="file"] {
     border-radius: 13px;
     cursor: pointer;
 }
-
 .div2-editar input::placeholder{
     color: var(--cor-4);
     font-size: medium;
 }
-
 .divs-editar{
     display: flex;
     width: 100%;
@@ -406,7 +352,6 @@ input[type="file"] {
     border-bottom: solid #5A789F;
     border-top: solid #5A789F;
 }
-
 .input-abordagem-perfil{
     display: flex;
     flex-direction: column;
@@ -419,16 +364,17 @@ input[type="file"] {
     padding-top: 2%;
 }
 
+.labelareas{
+    padding-left: 15%;
+}
 .input-abordagem-perfil select{
     width: 100%;
     cursor: pointer;
 }
-
 .input-abordagem-perfil p{
     color: #000;
     font-size: 1.5em;
 }
-
 .input-horario-perfil{
     display: flex;
     flex-direction: column;
@@ -439,17 +385,14 @@ input[type="file"] {
     font-size: medium;
     padding-right: 2%;
 }
-
 .input-horario-perfil select{
     width: 100%;
     cursor: pointer;
 }
-
 .input-horario-perfil p{
     color: #000;
     font-size: 1.5em;
 }
-
 .div-buttons-salvar-cancelar{
     display: flex;
     justify-content: flex-end;
@@ -460,7 +403,6 @@ input[type="file"] {
     width: 97%;
     gap: 3%;
 }
-
 .div-buttons-salvar-cancelar button{
     display: flex;
     justify-content: center;
@@ -469,7 +411,6 @@ input[type="file"] {
     border-radius: 15px;
     cursor: pointer;
 }
-
 .salva{
     width: 25%;
     padding: 1%;
@@ -480,7 +421,6 @@ input[type="file"] {
     color: white;
     border: none;
 }
-
 .a{
     width: 15%;
     padding: 1%;
@@ -491,30 +431,24 @@ input[type="file"] {
     color: #5A789F;
     border: 2px solid #5A789F;
 }
-
 .div-buttons-salvar-cancelar button:hover{
     background-color: #C1DFF4;
     border: none;
     color: var(--cor-4);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
-
 .div-buttons-salvar-cancelar button:active{
-    transform: translateY(2px); 
+    transform: translateY(2px);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
-
 .contador{
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     width: 73%;
     /* background-color: #000; */
-
 }
-
 .container-agendamento{
-
     display: flex;
     background-color: rgb(255, 255, 255);
     justify-content: center;
@@ -522,11 +456,9 @@ input[type="file"] {
     align-items: center;
     padding-bottom: 5%;
     border-radius: 10px;
-    
+   
 }
-
 .container-menor-ag{
-
     background-color: #5A789F;
     width: 80%;
     border-radius: 10px;
@@ -535,46 +467,38 @@ input[type="file"] {
     justify-content: center;
     text-align: center;
 }
-
 .button_passar{
     background-color: white;
     width: 8%;
     border: none;
     font-size: 4em;
-    color: #5A789F; 
+    color: #5A789F;
     padding-left: 40px;
     cursor: pointer;
 }
-
 .button_voltar{
-
     background-color: white;
     width: 8%;
     border: none;
     font-size: 4em;
-    color: #5A789F; 
+    color: #5A789F;
     padding-right: 40px;
     cursor: pointer;
 }
-
-
 .semana{
-
     background-color: #5A789F;
     justify-content: space-around;
     width: 100%;
 }
 .div_informações_ag{
-    
+   
     width: 28%;
     background-color: #ffffff;
     font-weight: 500;
     border-radius: 10px;
     height: 335px;
 }
-
 .dias_semana{
-
     padding-top: 5%;
     padding-left: 4%;
     display: flex;
@@ -588,9 +512,7 @@ input[type="file"] {
     color: #000000;
     border-radius: 10px;
 }
-
 .cabeçalho{
-
     display: flex;
     color: white;
     font-size: 1.2em;
@@ -604,19 +526,16 @@ input[type="file"] {
     border-top-right-radius: 10px ;
     border-top-left-radius: 10px;
 }
-
 .Nome_dia_da_semana{
     text-transform: capitalize;
-  
+ 
 }
-
 .mes-ano{
     color: white;
     font-size: 2em;
     text-transform: capitalize;
-  
+ 
 }
-
 .mensagem_s{
     display: flex;
     justify-content: center;
@@ -624,7 +543,6 @@ input[type="file"] {
     text-transform: capitalize;
     font-size: 1.2em;
 }
-
 .itens_ag{
     display: flex;
     margin: auto;
@@ -632,8 +550,6 @@ input[type="file"] {
     justify-content: center;
     text-align: start;
 }
-
-
 .os-itens{
     display: flex;
     flex-direction: column;
@@ -645,41 +561,28 @@ input[type="file"] {
     width: 100%;
     height: 308px;
     font-size: 1.2em;
-    
+   
 }
-
 .div_para_itens{
-
     width: 60%;
     justify-content: start;
 }
-
 .div_para_itens p{
-
     width: fit-content;
 }
-
-
 .div_buttons_trocar_agendamentos{
-
     display: flex;
     width: 100%;
-
     align-items: center;
     text-align: center;
     justify-content: center;
 }
-
 .buttons_trocar_agendamento{
-
     width: 12%;
     background-color: white;
     border: none;
     cursor: pointer;
 }
-
-
-
 .buttons-itens{
     display: flex;
     width: 100%;
@@ -690,7 +593,6 @@ input[type="file"] {
     gap: 5%;
     /* background-color: #5A789F; */
 }
-
 .cancelar{
     width: 50%;
     height: 40px;
@@ -700,19 +602,16 @@ input[type="file"] {
     border-radius: 100px;
     cursor: pointer;
 }
-
 .cancelar:hover{
     background-color: #C1DFF4;
     border: none;
     color: var(--cor-4);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
-
 .cancelar:active{
-    transform: translateY(2px); 
+    transform: translateY(2px);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
-
 .check{
     width: 20%;
     background-color: #5a789f00;
@@ -720,18 +619,15 @@ input[type="file"] {
     border-radius: 100px;
     cursor: pointer;
 }
-
 .check img:hover{
     border: none;
     color: var(--cor-4);
     /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
 }
-
 .check img:active{
-    transform: translateY(2px); 
+    transform: translateY(2px);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
-
 .confirmacao-exclusao {
     position: fixed;
     top: 0;
@@ -744,7 +640,7 @@ input[type="file"] {
     align-items: center;
     z-index: 1000;
   }
-  
+
   .confirmacao-exclusao p {
     background-color: white;
     padding: 20px;
@@ -752,26 +648,24 @@ input[type="file"] {
     margin-bottom: 20px;
     text-align: center;
   }
-  
+ 
   .confirmacao-exclusao button {
     margin: 5px;
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
   }
-  
+ 
   .confirmacao-exclusao button:hover {
     background-color: #f0f0f0;
   }
-
   .div-esp {
     max-width: 200px;
     height: 150px;
-    overflow-x: hidden; 
+    overflow-x: auto;
     padding: 10px;
     box-sizing: border-box;
 }
-
 .container-areas{
     display: flex;
     flex-direction: column;
@@ -783,7 +677,7 @@ input[type="file"] {
     padding-left: 5%;
     color: #5A789F;
   }
-  
+ 
   .container-especi{
     display: flex;
     flex-direction: column;
@@ -793,23 +687,23 @@ input[type="file"] {
     border-radius: 13px;
     color: #5A789F;
   }
-  
+ 
 .div-desc{
     width: 500px;
     height: 150px;
     overflow-x: 0;
-    overflow-y: auto; 
-    border: 1px solid #ccc; 
+    overflow-y: auto;
+    border: 1px solid #ccc;
     padding: 10px;
     box-sizing: border-box;
 }
-  
+ 
   .day-number {
     font-weight: bold;
     margin-bottom: 0.5rem;
     display: block;
   }
-  
+ 
   .event-card {
     display: flex;
     width: 100%;
@@ -825,13 +719,13 @@ input[type="file"] {
     transition: transform 0.2s ease;
     text-transform: capitalize;
   }
-
   .event-card:active{
-    transform: translateY(2px); 
+    transform: translateY(2px);
   }
-
-
-  
+/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
+=======
+div::-webkit-scrollbar-track{
+ 
 /* Detalhes do evento */
 .detalhes-agendamento {
   position: absolute;
@@ -844,7 +738,6 @@ input[type="file"] {
   z-index: 1000;
   transform: translateY(-45%);
 }
-
 /* Adicionando a seta */
 .detalhes-agendamento::before {
   content: "";
@@ -859,7 +752,6 @@ input[type="file"] {
   transform: translateY(-50%);
   z-index: -1; /* Garante que a seta fique atrás do conteúdo principal */
 }
-
   .detalhes-conteudo{
     display: flex;
     flex-direction: column;
@@ -867,19 +759,7 @@ input[type="file"] {
     align-items: flex-start;
     text-transform: capitalize;
   }
-
-.detalhes-conteudo{
-        
-    position: absolute;
-    background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    z-index: 1000;
-    transform: translateY(-50%);
-  }
-  
+ 
   .event-details::before {
     content: "";
     position: absolute;
@@ -889,18 +769,13 @@ input[type="file"] {
     border-width: 10px 10px 10px 0;
     border-color: transparent #5A789F transparent transparent;
     left: -10px; /* Posiciona a seta na lateral esquerda */
-
   }
-  
-
-
   .buttons-detalhes-conteudo{
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-evenly;
   }
-
   .but-det{
     display: flex;
     justify-content: center;
@@ -911,39 +786,30 @@ input[type="file"] {
     padding: 2%;
     border-radius: 5px;
     cursor: pointer;
-
 }
 .fechar-detalhes:hover {
-
     background-color: darkred;
-
 }
-
-
-
 .options-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Configura duas colunas */
     gap: 10px; /* Espaçamento entre itens */
   }
-
-  
+ 
 .container-areas, .container-especi h2 {
     color: var(--cor-1);
   }
-  
+ 
   .but-det:hover {
     background-color: #C1DFF4;
     border: none;
     color: #012A4A;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   }
-
   .but-det:active{
-    transform: translateY(2px); 
+    transform: translateY(2px);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   }
-
   .fechar-detalhes{
     display: flex;
     justify-content: flex-end;
@@ -954,7 +820,6 @@ input[type="file"] {
     font-size: 1em;
     transition: background 0.2s ease;
   }
-
   .fechar-detalhes button{
     display: flex;
     justify-content: flex-end;
@@ -962,30 +827,56 @@ input[type="file"] {
     border: none;
     cursor: pointer;
   }
-
   .fechar-detalhes img{
     width: 8%;
   }
-  
+ 
   .detalhes-conteudo h4{
     height: fit-content;
     width: fit-content;
     padding: 0;
   }
-
   .agendamento-nome{
     padding-left: 5%;
   }
-
-
-                    
+                   
 @media (max-width: 480px) {
     .options-container {
     grid-template-columns: 1fr; /* Ajusta para uma coluna em telas menores */
 }}
-
-
 .container-escolhas{
     width: 76%;
     padding-top: 5%;
+}
+input[type="checkbox"] {
+    appearance: none;
+    position:absolute;
+    width: 1.400rem;
+    height: 1.400rem;
+    background-color: #fff;
+    border: 0.125rem solid #ccc;
+    border-radius: 0.25rem;
+  }
+input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: center;
+    transition: 0.125s transform ease-in-out;
+    box-shadow: inset 1rem 1rem #fff;
+}
+  input[type="checkbox"]:checked {
+    background-color: #89c2d9;
+    border-color: #89c2d9;
+}
+input[type="checkbox"]:checked::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+input[type="checkbox"]:focus {
+    border-color: #89c2d9;
 }
