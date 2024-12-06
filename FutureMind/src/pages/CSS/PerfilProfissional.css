@@ -18,7 +18,7 @@
 .perfil-profissional{
     display: block;
     margin: auto;
-    background-color: white;
+    background-color: #f2f7fc;
     border-radius: 10px;
     width: 70%;
     height: fit-content;
@@ -70,6 +70,7 @@ input[type="file"] {
     cursor: pointer;
 }
 .labelespeci{
+    line-height: 30px;
     padding-left: 15%;
 }
 .input-file {
@@ -91,9 +92,21 @@ input[type="file"] {
     font-size: 1.5em;
     line-height: 1px;
 }
+
 .nick-usuario p{
     opacity: 50%;
 }
+
+.meet{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.meet img{
+    width: 10%;
+}
+
 .div-info{
     display: flex;
     margin: auto;
@@ -121,16 +134,38 @@ input[type="file"] {
     height: 216px;
     padding: 1.5%;
 }
-.descricao textarea{
-    width: 100%;
+
+.Minha_desc{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.But_desc{
+    width: 30%;
+    height: fit-content;
+    background-color: #5A789F;
+    color: white;
     border: none;
     font-size: 1em;
-    resize: none;
-    min-height: 120px;
-    color: #5A789F;
-    font-weight: bold;
-    overflow: hidden;
+    padding: 1%;
+    border-radius: 15px;
+    cursor: pointer;
 }
+
+.But_desc:hover{
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.But_desc:active{
+    transform: translateY(2px);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 .titulo-agenda{
     display: flex;
     margin: auto;
@@ -155,15 +190,17 @@ input[type="file"] {
 .anotações-profissional{
     display: block;
     margin: auto;
-    background-color: rgb(255, 255, 255);
+    background-color: #f2f7fc;
     border-radius: 10px;
     width: 70%;
     height: 500px;
 }
 .input-button{
     display: flex;
+    justify-content: center;
+    /* align-items: center; */
     margin: auto;
-    width: 100%;
+    width: 90%;
     height: fit-content;
 }
 .input-anotações{
@@ -180,13 +217,13 @@ input[type="file"] {
     border-radius: 15px;
     resize: none;
     cursor: pointer;
+    background-color: #f2f7fc;
 }
 .button-anotações{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 30%;
- 
 }
 .button-anotações button{
     display: flex;
@@ -195,7 +232,7 @@ input[type="file"] {
     background-color: #5A789F;
     color: white;
     border: none;
-    padding: 4.9%;
+    padding: 4%;
     font-size: 1.2em;
     border-radius: 15px;
     cursor: pointer;
@@ -213,7 +250,7 @@ input[type="file"] {
 .div-anotações {
     display: flex;
     width: 100%;
-    background-color: #ffffff;
+    background-color: #f2f7fc;
     border-radius: 15px;
   }
  
@@ -250,10 +287,10 @@ input[type="file"] {
     color: #5A789F !important;
   }
   .swiper-anotacoes .swiper-pagination-bullet-active{
-    background-color: #014F86;
+    background-color: #014F86 !important;
   }
   .swiper-anotacoes .swiper-pagination-bullet{
-    background-color: #014F86;
+    background-color: #014F86 !important;
   }
  
   .slide_swiper{
@@ -270,7 +307,7 @@ input[type="file"] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:rgb(255, 255, 255);
+    background-color: #f2f7fc;
     border-radius: 10px;
     width: 70%;
     height: fit-content;
@@ -365,6 +402,7 @@ input[type="file"] {
 }
 
 .labelareas{
+    line-height: 30px;
     padding-left: 15%;
 }
 .input-abordagem-perfil select{
@@ -427,7 +465,7 @@ input[type="file"] {
     font-size: 1.2em;
     border-radius: 15px;
     cursor: pointer;
-    background-color: white;
+    background-color: #f2f7fc;
     color: #5A789F;
     border: 2px solid #5A789F;
 }
@@ -450,7 +488,7 @@ input[type="file"] {
 }
 .container-agendamento{
     display: flex;
-    background-color: rgb(255, 255, 255);
+    background-color: #f2f7fc;
     justify-content: center;
     text-align: center;
     align-items: center;
@@ -468,7 +506,7 @@ input[type="file"] {
     text-align: center;
 }
 .button_passar{
-    background-color: white;
+    background-color: transparent;
     width: 8%;
     border: none;
     font-size: 4em;
@@ -477,7 +515,7 @@ input[type="file"] {
     cursor: pointer;
 }
 .button_voltar{
-    background-color: white;
+    background-color: transparent;
     width: 8%;
     border: none;
     font-size: 4em;
@@ -493,7 +531,7 @@ input[type="file"] {
 .div_informações_ag{
    
     width: 28%;
-    background-color: #ffffff;
+    background-color: #f2f7fc;
     font-weight: 500;
     border-radius: 10px;
     height: 335px;
@@ -693,8 +731,8 @@ input[type="file"] {
     height: 150px;
     overflow-x: 0;
     overflow-y: auto;
-    border: 1px solid #ccc;
-    padding: 10px;
+    border: none;
+    padding: 15px;
     box-sizing: border-box;
 }
  
@@ -787,9 +825,7 @@ div::-webkit-scrollbar-track{
     border-radius: 5px;
     cursor: pointer;
 }
-.fechar-detalhes:hover {
-    background-color: darkred;
-}
+
 .options-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Configura duas colunas */
