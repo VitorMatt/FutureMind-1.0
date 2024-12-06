@@ -765,13 +765,9 @@ input[type="file"] {
   }
 
   .div-esp {
-<<<<<<< HEAD
     max-width: 200px;
-=======
-    max-width: 250px;
->>>>>>> b1026d58826a6c27b9ecd61fdb9ba04f6d962763
     height: 150px;
-    overflow-x: auto; 
+    overflow-x: hidden; 
     padding: 10px;
     box-sizing: border-box;
 }
@@ -833,13 +829,7 @@ input[type="file"] {
   .event-card:active{
     transform: translateY(2px); 
   }
-<<<<<<< HEAD
-=======
 
-/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
-=======
-div::-webkit-scrollbar-track{
->>>>>>> b1026d58826a6c27b9ecd61fdb9ba04f6d962763
 
   
 /* Detalhes do evento */
@@ -878,22 +868,8 @@ div::-webkit-scrollbar-track{
     text-transform: capitalize;
   }
 
-<<<<<<< HEAD
-  .event-details {
-=======
-
-
-
-
-
-/*::-webkit-scrollbar,::-webkit-scrollbar-thumb, e `:::-webkit-scrollbar-track. Esse
-   padding: 20px;
-
-}
-
 .detalhes-conteudo{
         
->>>>>>> b1026d58826a6c27b9ecd61fdb9ba04f6d962763
     position: absolute;
     background: white;
     padding: 1.5rem;
@@ -914,7 +890,7 @@ div::-webkit-scrollbar-track{
     border-color: transparent #5A789F transparent transparent;
     left: -10px; /* Posiciona a seta na lateral esquerda */
 
-
+  }
   
 
 
@@ -934,8 +910,6 @@ div::-webkit-scrollbar-track{
     border: none;
     padding: 2%;
     border-radius: 5px;
-<<<<<<< HEAD
-=======
     cursor: pointer;
 
 }
@@ -956,7 +930,6 @@ div::-webkit-scrollbar-track{
   
 .container-areas, .container-especi h2 {
     color: var(--cor-1);
->>>>>>> b1026d58826a6c27b9ecd61fdb9ba04f6d962763
   }
   
   .but-det:hover {
@@ -1005,8 +978,6 @@ div::-webkit-scrollbar-track{
   }
 
 
-<<<<<<< HEAD
-=======
                     
 @media (max-width: 480px) {
     .options-container {
@@ -1018,4 +989,3 @@ div::-webkit-scrollbar-track{
     width: 76%;
     padding-top: 5%;
 }
->>>>>>> b1026d58826a6c27b9ecd61fdb9ba04f6d962763

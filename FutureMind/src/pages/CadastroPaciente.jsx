@@ -1,7 +1,7 @@
 import '../pages/CSS/CadastroProfissional.css';
 import { useState, useContext, useEffect } from 'react';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
-import CadastroPaciente1 from '../components/CadastroPaciente1';
+// import CadastroPaciente1 from '../components/CadastroPaciente1';
 import CadastroPaciente2 from '../components/CadastroPaciente2';
 import CadastroPaciente3 from '../components/CadastroPaciente3';
 import Stepper from '../components/StepperComponent';
@@ -87,7 +87,7 @@ function CadastroPaciente() {
     }
 
     // Aqui, atualizamos o paciente com os dados de email e senha, que vêm de CadastroPaciente3
-    const updatedPaciente = { ...paciente, id_paciente: paciente.id_paciente + 1 };
+    const updatedPaciente = { ...paciente};
 
     try {
       const response = await fetch('http://localhost:3000/cadastro-paciente', {
@@ -125,7 +125,7 @@ function CadastroPaciente() {
       <div className='lado-esquerdo'>
         <Stepper activeStep={activeStep} />
         {activeStep === 0 ? (
-          <CadastroPaciente1 />
+          <CadastroPaciente2 />
         ) : activeStep === 1 ? (
           <CadastroPaciente2 />
         ) : activeStep === 2 ? (

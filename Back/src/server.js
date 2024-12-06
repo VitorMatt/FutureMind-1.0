@@ -8,7 +8,7 @@ const pool = new Pool({
     user: 'postgres', 
     host: 'localhost',
     database: 'FutureMind', 
-    password: '12345',
+    password: 'Vitor281207.',
     port: 5432, 
 });
 
@@ -535,8 +535,9 @@ app.get('/agendamento', async (req, res) => {
 
 
 
-app.get('/api/profissionais', async (req, res) => {
-    const { preferencias } = req.query; // Recebe preferências como um array de strings
+app.get('/api/profissionais/result', async (req, res) => {
+    const { preferencias } = req.query;
+    console.log('Preferências recebidas:', preferencias); // Adicione este log
 
     try {
         if (!preferencias) {
@@ -544,18 +545,21 @@ app.get('/api/profissionais', async (req, res) => {
             return res.status(200).json(result.rows);
         }
 
-        // Converte as preferências em condições SQL
-        const preferenciasArray = preferencias.split(','); // Exemplo: "Adultos,Crianças"
-        const placeholders = preferenciasArray.map((_, index) => `$${index + 1}`).join(' OR preferencias LIKE ');
-        const query = `SELECT * FROM profissionais WHERE preferencias LIKE ${placeholders}`;
-
+        const preferenciasArray = preferencias.split(',');
+        console.log('Array de preferências:', preferenciasArray); // Verifique se está correto
+        const placeholders = preferenciasArray.map((_, index) => `especializacao LIKE $${index + 1}`).join(' OR ');
+        const query = `SELECT * FROM profissionais WHERE ${placeholders}`;
+        console.log(query)
         const result = await pool.query(query, preferenciasArray.map((pref) => `%${pref}%`));
+        console.log(result.rows);
         res.status(200).json(result.rows);
     } catch (error) {
-        console.error(error.message);
+        console.log(error.message);
         res.status(500).json({ message: 'Erro ao buscar profissionais' });
     }
 });
+
+
 
 app.get('/sugestoes', async(req, res) => {
 
