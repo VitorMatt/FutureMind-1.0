@@ -1,9 +1,15 @@
 import { useState, useEffect, useContext } from 'react'
-import './CSS/PerfilProfissional.css'
+import './CSS/PerfilPaciente.css'
 import { GlobalContext } from '../GlobalContext/GlobalContext'
 import { useNavigate } from 'react-router-dom'
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Flatpickr from "react-flatpickr";
+import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
+import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
+import CpfInput from '../components/CpfInput'
+import TelefoneMask from '../components/TelefoneMask'
+
 
 // Import Swiper styles
 import 'swiper/css';
@@ -14,25 +20,25 @@ import 'swiper/css/scrollbar';
 function PerfilPaciente() {
 
 
-  var userData = JSON.parse(localStorage.getItem('User'));
+//   var userData = JSON.parse(localStorage.getItem('User'));
 
-  userData.especializacao = userData.especializacao.replace('{', '')
-  userData.especializacao = userData.especializacao.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('}', '')
-  userData.preferencias = userData.preferencias.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('{', '')
  
- for (let i=0; i<(userData.especializacao.length * 2); i++) {
+//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
 
-  userData.especializacao = userData.especializacao.replace('"', '')
- }
+//   userData.especializacao = userData.especializacao.replace('"', '')
+//  }
 
- for (let i=0; i<(userData.preferencias.length * 2); i++) {
+//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
 
-  userData.preferencias = userData.preferencias.replace('"', '')
- }
+//   userData.preferencias = userData.preferencias.replace('"', '')
+//  }
 
- userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
- userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
 
  const navigate = useNavigate();
  
@@ -140,29 +146,29 @@ function PerfilPaciente() {
      const { value, checked } = event.target;
    };
  
-   const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
+  //  const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
  
 
     return (
-        <div className='perfilPro-container'>
+        <div className='perfilPa-container'>
       
-      <div className='todas-divs'>
+      <div className='todas-divs-p'>
 
-        <div className='perfil-profissional'>
+        <div className='perfil-paciente'>
 
             <div className='titulo-perfil'>
-                <h1>Perfil Profissional</h1>
+                <h1>Perfil Paciente</h1>
             </div>
 
                 <div>
 
-                 <div className='div-foto-nome'>
-                    <div className='foto-usuario'>
-                        <img src='iconuser.svg' className='a-foto'/>
+                 <div className='div-foto-nome-p'>
+                    <div className='foto-usuario-p'>
+                        <img src='iconuser.svg' className='a-foto-p'/>
                     </div>
-                     <div className='nick-usuario'>
+                     <div className='nick-usuario-p'>
 
-                        <h1>{userData.nome_completo}</h1>
+                        {/* <h1>{userData.nome_completo}</h1>
 
                       <h1>{userData.nome_completo}</h1>
 
@@ -171,42 +177,7 @@ function PerfilPaciente() {
                       <p>{userData.email}</p>
 
                       <h1>{userData.nome_completo}</h1>
-                      <p>{userData.email}</p>
-                    </div>
-                 </div> 
-    
-                 <div className='div-info'>
-                    <div className='div-menor-info'>
-                        <p>Eu atendo...</p>
-
-                        <div className="div-esp">
-
-                        {
-                          userData.preferencias.map((item, index) => (
-                            <div key={index}>
-                              <p>{item}</p>
-                            </div>
-                          ))
-                        }
-                        </div>
-                    </div>
-                    <div className='div-menor-info'>
-                        <p>Especialidade(s):</p>
-                        
-                        <div className="div-esp">
-
-                        {
-                          userData.especializacao.map((item, index) => (
-                            <div key={index}>
-                            <p>{item}</p>
-                            </div>
-                          ))
-                        }
-                        </div>
-                    </div>
-                    <div className='descricao'>
-                        <p>Descrição:</p>
-                        <div className='div-desc' maxLength="500">{profissional.descricao}</div>
+                      <p>{userData.email}</p> */}
                     </div>
                  </div>
     
@@ -287,11 +258,88 @@ function PerfilPaciente() {
            <button onClick={() => handleTrocarSemana(true)}  className="button_passar"><img src="angle-right-solid.svg" alt=""/></button>
           </div>
         </div>
+
+        <div className='editar-perfil-paciente'>
+            <div className='titulo-perfil'>
+                <h1>Editar Perfil</h1>
+            </div>
+            <div className='container-inputs-editar'>
+              <div className='div1-editar'>
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>Nome Completo</p>
+                  <input type="text" placeholder='Digite seu nome completo...'/>
+                 </div>
+                </div>
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                 <p>Data de Nascimento</p>
+                 <Flatpickr
+                   options={{
+                   locale: Portuguese, // Configuração para Português
+                   dateFormat: "d/m/Y", // Formato da data
+                   defaultDate: "today", // Data padrão
+                   }}
+                   value={date} // Data atual no estado
+                   onChange={(selectedDates) => setDate(selectedDates[0])} // Atualiza a data selecionada
+                 />
+                 </div>
+                </div>
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>CPF</p>
+                  <CpfInput />
+                 </div>
+                </div>
+              </div>
+
+              <div className='div2-editar'>
+
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>Telefone</p>
+                  <TelefoneMask />
+                 </div>
+                </div>
+
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>E-mail</p>
+                  <input type="email" />
+                 </div>
+                </div>
+
+                <div className='div_container_pinput'>
+                 <div className='div_pinput'>
+                  <p>Senha</p>
+                  <input type="text" />
+                 </div>
+                </div>
+
+              </div>
+
+            </div>
+
+             
+
+
+                <div className='div-buttons-salvar-cancelar'>
+                <button className='a'>Excluir conta</button>
+                  <button className='a'> Sair da Conta</button>
+                  <button className='a'>Cancelar edição</button>
+                  <button className='salva'>Salvar</button>
+                </div>
+
+        </div>
         
 
         </div>
 
       </div>
+
+
+
+
     );
 };
 

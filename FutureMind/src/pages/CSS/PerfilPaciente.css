@@ -1,0 +1,85 @@
+
+.perfilPa-container{
+    background-color: #DBEEF4;
+    display: flex;
+    flex-direction: column;
+}
+
+.todas-divs-p{
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.perfil-paciente{
+    display: block;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    width: 70%;
+    height: fit-content;
+}
+
+.titulo-perfil-p{
+    display: flex;
+    background-color: #5a789f;
+    color: white;
+    border-radius: 10px;
+    width: 100%;
+    height: fit-content;
+}
+
+.foto-usuario-p{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 20%;
+    padding: 1%;
+   
+}
+
+.div-foto-nome-p{
+    display: flex;
+    margin: auto;
+    width: 80%;
+    height: fit-content;
+    border-bottom: 3px solid #5a789f;
+}
+
+.nick-usuario-p{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    padding: 1%;
+    font-size: 1.5em;
+    line-height: 1px;
+}
+
+.a1-foto-p{
+    height: 200px;
+    border-radius: 100px;
+    padding-left: 1.5%;
+    position: relative;}
+
+
+
+
+
+
+
+
+
+
+
+.editar-perfil-paciente{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(255, 255, 255);
+    border-radius: 10px;
+    width: 70%;
+    height: fit-content;
+}

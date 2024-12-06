@@ -1,5 +1,5 @@
 .sobreNos-container{
-    background-color: white;
+    background-color: #f5f7fc;
     display: flex;
     flex-direction: column;
     height: fit-content;
@@ -21,6 +21,7 @@
 .img{
     width: 40%;
     padding-left: 5%;
+    
 }
 
 .conteudoo{

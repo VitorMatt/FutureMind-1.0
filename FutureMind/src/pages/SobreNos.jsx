@@ -18,7 +18,7 @@ function SobreNos() {
 const [profissionais, setProfissionais] = useState([]);
 
 const fetchProfissionais = async () => {
-  const response = await fetch('http://localhost:3000/cadastro');
+  const response = await fetch('http://localhost:3000/cadastro');    
   const data = await response.json();
   setProfissionais(data);
 };
@@ -78,7 +78,7 @@ useEffect(() => {
       <ScrollToTop />
 
       <div className='conteudoo'>
-        <img src="Design sem nome (1) 1.svg" className='img'/>
+        <img src= "Terapiaaa.svg" className='img'/>
 
         <div className='descricaoMissao'>
           <h1>Missão:</h1>
@@ -102,7 +102,7 @@ useEffect(() => {
 Com um time de terapeutas altamente capacitados e uma abordagem personalizada, buscamos entender as necessidades individuais de cada cliente, oferecendo sessões de terapia adaptadas às suas particularidades. A FutureMind utiliza tecnologias de ponta para garantir a segurança e a privacidade das informações, respeitando os mais rigorosos padrões éticos da profissão.
           </p>
         </div>
-        <img src="ArvoreS.svg" className='arvoreSobre'/>
+        <img src="Arvorees.svg" className='arvoreSobre'/>
           <div className='fotoNossa'>
             <img src="IMG EQUPIE 1.svg"/>
           </div>
