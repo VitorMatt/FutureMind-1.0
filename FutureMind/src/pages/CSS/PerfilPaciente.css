@@ -3,7 +3,7 @@
     background-color: #DBEEF4;
     display: flex;
     flex-direction: column;
-}
+} 
 
 .todas-divs-p{
     display: flex;
@@ -62,15 +62,170 @@
     padding-left: 1.5%;
     position: relative;}
 
+.titulo-agenda-p{
+    display: flex;
+    margin: auto;
+    background-color: none;
+    width: 80%;
+    height: fit-content;
+    color: #5A789F;
+}
+
+.container-agendamento-p{
+    display: flex;
+    background-color: #f2f7fc;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 5%;
+    border-radius: 10px;  
+}
+
+.container-menor-ag-p{
+    background-color: #5A789F;
+    width: 80%;
+    border-radius: 10px;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+}
+
+.mes-ano-p{
+    color: white;
+    font-size: 2em;
+    text-transform: capitalize; 
+}
+
+.dias_semana-p{
+    padding-top: 5%;
+    padding-left: 4%;
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    margin: 0;
+    width: 98%;
+    height: 900px;
+    flex-wrap: wrap;
+    gap: 5%;
+    color: #000000;
+    border-radius: 10px; 
+}
+
+.div_informações_ag-p{
+    width: 28%;
+    background-color: #f2f7fc;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 335px; 
+}
+
+.semana-p{
+    background-color: #5A789F;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.cabeçalho-p{
+    display: flex;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: rgb(164, 190, 212);
+    height: 45px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-top-right-radius: 10px ;
+    border-top-left-radius: 10px;
+}
+
+.Nome_dia_da_semana-p{
+    text-transform: capitalize;
+}
+
+.event-card-p{
+    display: flex;
+    width: 100%;
+    height: 30px;
+    background: #5a789f44;
+    color: #014F86;
+    border-top: 1px solid #5A789F;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1m;
+    transition: transform 0.2s ease;
+    text-transform: capitalize;
+}
+
+.agendamento-nome-p{
+    padding-left: 5%;
+}
+
+.detalhes-agendamento-p{
+    position: absolute;
+    background: #cad7ebcb;
+    color: #014F86;
+    /* border: 2px solid #014e86ce; */
+    padding: 12px;
+    border-radius: 10px;
+    width: 300px;
+    z-index: 1000;
+    transform: translateY(-45%); 
+}
+
+.detalhes-conteudo-p{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-transform: capitalize; 
+}
 
 
+.fechar-detalhes-p{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    background-color: transparent;
+    color: #012A4A;
+    border: none;
+    font-size: 1em;
+    transition: background 0.2s ease;
+}
+
+.buttons-detalhes-conteudo-p{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.but-det-p{
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    background-color: #5A789F;
+    color: white;
+    border: none;
+    padding: 2%;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 
-
-
-
-
-
+.button_passar-p{
+    background-color: transparent;
+    width: 8%;
+    border: none;
+    font-size: 4em;
+    color: #5A789F;
+    padding-left: 40px;
+    cursor: pointer;
+}
 
 .editar-perfil-paciente{
     display: flex;
@@ -83,3 +238,79 @@
     width: 70%;
     height: fit-content;
 }
+
+.container-inputs-editar-p{
+    display: flex;
+    width: 76%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.div1-editar-p{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.5em;
+    width: 50%;
+    padding-right: 5%;
+}
+
+.div_container_pinput-p{
+   
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    width: 100%;
+}
+
+.div_pinput-p{
+    width: 54%;
+    text-align: start;
+}
+
+.div_container_pinput-p{
+   
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    width: 100%;
+}
+
+.div2-editar-p{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    width: 50%;
+    text-align: center;
+    padding-right: 5%;
+}
+
+.div-buttons-salvar-cancelar-p{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-top: 5%;
+    padding-right: 20%;
+    padding-bottom: 3%;
+    width: 97%;
+    gap: 3%;
+}
+
+.a-p{
+    width: 15%;
+    padding: 1%;
+    font-size: 1.2em;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #f2f7fc;
+    color: #5A789F;
+    border: 2px solid #5A789F;
+}
+
+

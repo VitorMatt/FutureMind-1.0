@@ -54,7 +54,7 @@ function PerfilPaciente() {
      { data: "2024-12-02", paciente: "Thalles Lima", horario: "15:00" },
      { data: "2024-12-02", paciente: "Luciana Nuss", horario: "17:30" },
      { data: "2024-12-02", paciente: "aaaaaaaaa", horario: "20:00" },
-     { data: "2024-12-03", paciente: "Julia Silva Dias", horario: "14:30" },
+     { data: "2024-12-03", paciente: "Julia Silva Dias", horario: "14:30" }, 
      { data: "2024-12-04", paciente: "Mateus da Silva", horario: "16:00" },
      { data: "2024-12-04", paciente: "renatinho", horario: "18:00" },
      { data: "2024-12-05", paciente: "aaaaaaaaa", horario: "20:00" },
@@ -156,7 +156,7 @@ function PerfilPaciente() {
 
         <div className='perfil-paciente'>
 
-            <div className='titulo-perfil'>
+            <div className='titulo-perfil-p'>
                 <h1>Perfil Paciente</h1>
             </div>
 
@@ -181,16 +181,16 @@ function PerfilPaciente() {
                     </div>
                  </div>
     
-                 <div className='titulo-agenda'>
+                 <div className='titulo-agenda-p'>
                     <h1>Agenda</h1>
                  </div>
                 </div>
             
-          <div className='container-agendamento'>
+          <div className='container-agendamento-p'>
               <button onClick={() => handleTrocarSemana(false)} className="button_voltar"><img src="angle-left-solid.svg" alt="" /></button> 
-           <div className='container-menor-ag'>
-            <span className='mes-ano'>{dataAtual.toLocaleDateString ("pt-BR", {month: "long", year: "numeric"})}</span>
-           <div className='dias_semana'>
+           <div className='container-menor-ag-p'>
+            <span className='mes-ano-p'>{dataAtual.toLocaleDateString ("pt-BR", {month: "long", year: "numeric"})}</span>
+           <div className='dias_semana-p'>
              {
                 diasUteis.map((dia,index) => {
 
@@ -200,20 +200,20 @@ function PerfilPaciente() {
 
                   return (
 
-                    <div key={index} className="div_informações_ag">
+                    <div key={index} className="div_informações_ag-p">
 
-                     <div className='semana'>
-                      <div className='cabeçalho'>
-                       <div className='Nome_dia_da_semana'>  {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {dia.getDate()}</div>
+                     <div className='semana-p'>
+                      <div className='cabeçalho-p'>
+                       <div className='Nome_dia_da_semana-p'>  {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {dia.getDate()}</div>
                       </div>
                      </div>
                      {agendamentosDoDia.map((event) => (
                     <div
                     key={`${diaString}-${event.horario}`}
-                    className="event-card"
+                    className="event-card-p"
                     onClick={(e) => handleEventClick(event, e)}
                    >
-                    <p onClick={() => handleEventClick(agendamentosDoDia)} className="agendamento-nome">
+                    <p onClick={() => handleEventClick(agendamentosDoDia)} className="agendamento-nome-p">
                      {event.paciente}
                     </p>
                     
@@ -225,14 +225,14 @@ function PerfilPaciente() {
              }
                    {selectedAgendamento && (
                      <div
-                      className="detalhes-agendamento"
+                      className="detalhes-agendamento-p"
                       style={{
                         top: `${divPosition.top}px`,
                         left: `${divPosition.left}px`,
                       }}
                      >
-                      <div className="detalhes-conteudo">
-                        <div className='fechar-detalhes'>
+                      <div className="detalhes-conteudo-p">
+                        <div className='fechar-detalhes-p'>
                           <button onClick={handleCloseDetails}>
                             <img src="xizinho.svg" alt="" />
                           </button>
@@ -241,11 +241,11 @@ function PerfilPaciente() {
                         <p><strong>Paciente:</strong> {selectedAgendamento.paciente}</p>
                         <p><strong>Data:</strong> {selectedAgendamento.data}</p>
                         <p><strong>Horário:</strong> {selectedAgendamento.horario}</p>
-                        <div className='buttons-detalhes-conteudo'>
-                          <button className='but-det' onClick={() => handleDeleteAppointment(selectedAgendamento)}>
+                        <div className='buttons-detalhes-conteudo-p'>
+                          <button className='but-det-p' onClick={() => handleDeleteAppointment(selectedAgendamento)}>
                             Cancelar
                           </button>
-                          <button className='but-det' onClick={() => handleConcludeAppointment(selectedAgendamento)}>
+                          <button className='but-det-p' onClick={() => handleConcludeAppointment(selectedAgendamento)}>
                             Concluída
                           </button>
                         </div>
@@ -253,26 +253,26 @@ function PerfilPaciente() {
                       </div>
                   )}
 
+           </div>     
            </div>
-           </div>
-           <button onClick={() => handleTrocarSemana(true)}  className="button_passar"><img src="angle-right-solid.svg" alt=""/></button>
+           <button onClick={() => handleTrocarSemana(true)}  className="button_passar-p"><img src="angle-right-solid.svg" alt=""/></button>
           </div>
         </div>
 
         <div className='editar-perfil-paciente'>
-            <div className='titulo-perfil'>
+            <div className='titulo-perfil-p'>
                 <h1>Editar Perfil</h1>
             </div>
-            <div className='container-inputs-editar'>
-              <div className='div1-editar'>
-                <div className='div_container_pinput'>
-                 <div className='div_pinput'>
+            <div className='container-inputs-editar-p'>
+              <div className='div1-editar-p'>
+                <div className='div_container_pinput-p'>
+                 <div className='div_pinput-p'>
                   <p>Nome Completo</p>
                   <input type="text" placeholder='Digite seu nome completo...'/>
                  </div>
                 </div>
-                <div className='div_container_pinput'>
-                 <div className='div_pinput'>
+                <div className='div_container_pinput-p'>
+                 <div className='div_pinput-p'>
                  <p>Data de Nascimento</p>
                  <Flatpickr
                    options={{
@@ -285,32 +285,32 @@ function PerfilPaciente() {
                  />
                  </div>
                 </div>
-                <div className='div_container_pinput'>
-                 <div className='div_pinput'>
+                <div className='div_container_pinput-p'>
+                 <div className='div_pinput-p'>
                   <p>CPF</p>
                   <CpfInput />
                  </div>
                 </div>
               </div>
 
-              <div className='div2-editar'>
+              <div className='div2-editar-p'>
 
-                <div className='div_container_pinput'>
-                 <div className='div_pinput'>
+                <div className='div_container_pinput-p'>
+                 <div className='div_pinput-p'>
                   <p>Telefone</p>
                   <TelefoneMask />
                  </div>
                 </div>
 
-                <div className='div_container_pinput'>
-                 <div className='div_pinput'>
+                <div className='div_container_pinput-p'>
+                 <div className='div_pinput-p'>
                   <p>E-mail</p>
                   <input type="email" />
                  </div>
                 </div>
 
-                <div className='div_container_pinput'>
-                 <div className='div_pinput'>
+                <div className='div_container_pinput-p'>
+                 <div className='div_pinput-p'>
                   <p>Senha</p>
                   <input type="text" />
                  </div>
@@ -323,10 +323,10 @@ function PerfilPaciente() {
              
 
 
-                <div className='div-buttons-salvar-cancelar'>
-                <button className='a'>Excluir conta</button>
-                  <button className='a'> Sair da Conta</button>
-                  <button className='a'>Cancelar edição</button>
+                <div className='div-buttons-salvar-cancelar-p'>
+                <button className='a-p'>Excluir conta</button>
+                  <button className='a-p'> Sair da Conta</button>
+                  <button className='a-p'>Cancelar edição</button>
                   <button className='salva'>Salvar</button>
                 </div>
 
