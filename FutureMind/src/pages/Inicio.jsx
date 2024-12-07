@@ -217,17 +217,23 @@ function Inicio() {
   const [preferenciasSelecionadas, setPreferenciasSelecionadas] = useState([]);
   const [result, setResult] = useState([]);
 
-  const buscarProfissionais = async () => {
-    try {
-        const queryString = preferenciasSelecionadas.join(','); 
-        console.log(queryString);
-        const response = await fetch(`http://localhost:3000/api/profissionais/result?preferencias=${encodeURIComponent(queryString)}`);
-        const data = await response.json();
-        setResult(data)
-        console.log(data); 
-    } catch (error) {
-        console.log('Erro ao buscar profissionais:', error.message);
-    }
+  const buscarProfissionais = () => {
+
+    const resultAux = [];
+    
+    for (let h=0; h<profissionais.length; h++) {
+
+      for (let i=0; i<preferenciasSelecionadas.length; i++) {
+        
+        if (profissionais[h].especializacao.includes(preferenciasSelecionadas[i])) {
+          
+          resultAux.push(profissionais[h]);
+          break;
+        }
+      }
+    }  
+
+    setResult(resultAux);
 };
 
 const togglePreferencia = (descricao) => {
@@ -340,7 +346,7 @@ const clickTres = (index) => {
 
   
   {
-    result.length!==0 
+    result.length!==0 && preferenciasSelecionadas!==0
     ?
     (
 <div className='profissionais'>
