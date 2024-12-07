@@ -151,7 +151,7 @@ body {
 
 .olhos-login {
     position: absolute;
-    right: 1em;
+    right: 3em;
     background: none;
     border: none;
     cursor: pointer;
@@ -160,7 +160,7 @@ body {
 }
 
 .olhos-login img {
-    width: 2.3em;
+    width: 2.6em;
     height: auto;
     padding-bottom: 1.2em;
 }
@@ -214,3 +214,44 @@ body {
         font-size: 1.2em;
     }
 }
+.input-wrapper {
+    display: flex;
+    align-items: center; 
+    position: relative; 
+  }
+  
+  
+  .validation-dot {
+    width: 14px; 
+    height: 14px;
+    border-radius: 10px;
+    margin-left: 14px; 
+    cursor: pointer;
+    margin-bottom: 3%;
+  }
+  
+  .validation-dot.valid {
+    background-color: #00ff008e; 
+  }
+  
+  .validation-dot.invalid {
+    background-color: #ff000084; 
+  }
+  
+  .validation-dot[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: -10px;
+    left: 100%;
+    transform: translateX(-50%);
+    background-color: var(--cor-5);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  
