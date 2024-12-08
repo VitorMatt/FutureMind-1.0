@@ -12,19 +12,20 @@ import './CSS/PerfilProfissional.css'
 // import { useNavigate, useRouteLoaderData } from 'react-router-dom'
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 // import { color } from 'framer-motion';
 
 
 function PerfilProfissional() {
 
-  // const { user, setUser } = useContext(GlobalContext);
+  const { setUser, profissional } = useContext(GlobalContext);
 
   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -42,9 +43,9 @@ function PerfilProfissional() {
       .map(item => item.trim()); // Remove espaços desnecessários
   }
 
-//  const navigate = useNavigate();
+ const navigate = useNavigate();
  
-const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o joão miguel e sou um ótimo profissional na minha área. Vamos consultar nosso próprio espírito que consola por dentro e grita para poder escapar da dor. Sou um ótimo profissional, eu juro!'}
+// const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o joão miguel e sou um ótimo profissional na minha área. Vamos consultar nosso próprio espírito que consola por dentro e grita para poder escapar da dor. Sou um ótimo profissional, eu juro!'}
 const [date, setDate] = useState(userData.data_nascimento); // Estado para armazenar a data selecionada
 
   const [dataAtual, setDataAtual] = useState(new Date());
@@ -224,25 +225,22 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
   const [crp, setCrp] = useState(userData.crp);
   const [telefone, setTelefone] = useState(userData.telefone);
 
-  const [image, setImage] = useState(null);
-
   const [profissionalAtualizado, setProfissionalAtualizado] = useState({});
 
   const handleEditarPerfil = async() => {
 
     setProfissionalAtualizado({
-      foto: image,
       email: email,
       senha: senha,
       preferencias: preferencias,
       especializacao: especializacao,
       data_nascimento: date,
-      preco: preco,
+      preco: profissional.preco,
       nome_completo: nome,
-      cpf: cpf,
-      crp: crp,
+      cpf: profissional.cpf,
+      crp: profissional.crp,
       abordagem: abordagem,
-      telefone: telefone,
+      telefone: profissional.telefone,
       descricao: descricao,
       id_profissional: userData.id_profissional
     });
@@ -267,11 +265,68 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
     }
   }
 
-  const onImageChange = (event) => {
+  const onImageChange = async (event) => {
     if (event.target.files && event.target.files[0]) {
-      setImage(URL.createObjectURL(event.target.files[0]));
+      const file = event.target.files[0];
+      console.log('Arquivo selecionado:', file);
+  
+      const formData = new FormData(); // Corrigir a criação do FormData
+      formData.append('foto', file); // Adicionar o arquivo selecionado
+      formData.append('id_profissional', userData.id_profissional);
+  
+      try {
+        const response = await fetch('http://localhost:3000/perfil-profissional/foto-perfil', {
+          method: 'POST',
+          body: formData,
+        });
+  
+        if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem('User', JSON.stringify({...userData, foto: data.foto}));
+          console.log('Resposta do servidor:', data);
+          alert('Foto enviada com sucesso!');
+        } else {
+          console.error('Erro no envio da foto:', response.status);
+          alert('Erro ao enviar a foto.');
+        }
+      } catch (err) {
+        console.error('Erro:', err.message);
+      }
     }
-   }
+  };
+  
+  const sair = () => {
+
+    setUser({logado: false, profissional: false});
+    navigate('/');
+  };
+
+  const deletaUsuario = async() => {
+
+    const res = prompt('Deseja mesmo deletar sua conta?');
+
+    if (!res=='sim') return;
+
+    const id_profissional = userData.id_profissional;
+
+    try {
+
+      const response = await fetch(`http://localhost:3000/perfil-profissional/${id_profissional}`, {
+
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+
+        console.log('User deletado com sucesso!');
+        setUser({logado: false, profissional: false});
+        navigate('/');
+      }
+    } catch(err) {
+
+      console.log(err.message);
+    }
+  }
 
   return (
     <div className='perfilPro-container'>
@@ -287,7 +342,7 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                  <div className='div-foto-nome'>
                         
                     <div className='foto-usuario'>
-                        <img src={image} className='a1-foto'/> 
+                        <img src={`http://localhost:3000${userData.foto}`} className='a1-foto'/> 
                       <div className='input-editar-foto'>
                       <input type="file" id="file" onChange={onImageChange} name="file" />
                        <label htmlFor="file" className="label-file"> Editar Foto</label>
@@ -521,13 +576,13 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>CPF</p>
-                  <CpfInput value={cpf} onChange={(e) => { setCpf(e.target.value) }} />
+                  <CpfInput />
                  </div>
                 </div>
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>CRP</p>
-                  <CrpMask value={crp} onChange={(e) => { setCrp(e.target.value) }} />
+                  <CrpMask />
                  </div>
                 </div>
               </div>
@@ -537,7 +592,7 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>Telefone</p>
-                  <TelefoneMask value={telefone} onChange={(e) => { setTelefone(e.target.value) }} />
+                  <TelefoneMask />
                  </div>
                 </div>
 
@@ -558,7 +613,7 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>Preço</p>
-                  <PrecoMask value={preco} onChange={(e) => { setPreco(e.target.value) }} />
+                  <PrecoMask />
                  </div>
                 </div>
 
@@ -663,8 +718,8 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
 
 
                 <div className='div-buttons-salvar-cancelar'>
-                <button className='a'>Excluir conta</button>
-                  <button className='a'> Sair da Conta</button>
+                <button className='a' onClick={deletaUsuario}>Excluir conta</button>
+                  <button className='a' onClick={sair}> Sair da Conta</button>
                   <button className='a'>Cancelar edição</button>
                   <button className='salva' onClick={handleEditarPerfil}>Salvar</button>
                 </div>

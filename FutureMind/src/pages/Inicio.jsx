@@ -379,7 +379,7 @@ const clickTres = (index) => {
           <div className="lado-esquerdo">
             <div className="coluna-um">
               <div className="foto-perfil">
-                <img src={item.foto} className="foto-perfil-img" />
+                <img src={item.foto ? `http://localhost:3000${item.foto}` : 'iconuser.svg'} className="foto-perfil-img" />
               </div>
               <div className="coluna-informacoes">
                 <div className="valor">
@@ -567,7 +567,7 @@ const clickTres = (index) => {
           <div className="lado-esquerdo">
             <div className="coluna-um">
               <div className="foto-perfil">
-                <img src={item.foto ? item.foto : 'iconuser.svg'} className="foto-perfil-img" />
+                <img src={item.foto ? `http://localhost:3000${item.foto}` : 'iconuser.svg'} className="foto-perfil-img" />
               </div>
               <div className="coluna-informacoes">
                 <div className="valor">
@@ -751,7 +751,7 @@ const clickTres = (index) => {
           <div className="lado-esquerdo">
             <div className="coluna-um">
               <div className="foto-perfil">
-                <img src={item.foto} className="foto-perfil-img" />
+                <img src={item.foto ? `http://localhost:3000${item.foto}` : 'iconuser.svg'} className="foto-perfil-img" />
               </div>
               <div className="coluna-informacoes">
                 <div className="valor">
@@ -924,7 +924,7 @@ const clickTres = (index) => {
           <div className="lado-esquerdo">
             <div className="coluna-um">
               <div className="foto-perfil">
-                <img src={item.foto} className="foto-perfil-img" />
+                <img src={item.foto ? `http://localhost:3000${item.foto}` : 'iconuser.svg'} className="foto-perfil-img" />
               </div>
               <div className="coluna-informacoes">
                 <div className="valor">
@@ -1113,7 +1113,7 @@ const clickTres = (index) => {
           <div className="lado-esquerdo">
             <div className="coluna-um">
               <div className="foto-perfil">
-                <img src={item.foto} className="foto-perfil-img" />
+                <img src={item.foto ? `http://localhost:3000${item.foto}` : 'iconuser.svg'} className="foto-perfil-img" />
               </div>
               <div className="coluna-informacoes">
                 <div className="valor">
@@ -1287,7 +1287,7 @@ const clickTres = (index) => {
           <div className="lado-esquerdo">
             <div className="coluna-um">
               <div className="foto-perfil">
-                <img src={item.foto} className="foto-perfil-img" />
+                <img src={item.foto ? `http://localhost:3000${item.foto}` : 'iconuser.svg'} className="foto-perfil-img" />
               </div>
               <div className="coluna-informacoes">
                 <div className="valor">
@@ -1462,7 +1462,7 @@ const clickTres = (index) => {
           <div className="lado-esquerdo">
             <div className="coluna-um">
               <div className="foto-perfil">
-                <img src={item.foto} className="foto-perfil-img" />
+                <img src={item.foto ? `http://localhost:3000${item.foto}` : 'iconuser.svg'} className="foto-perfil-img" />
               </div>
               <div className="coluna-informacoes">
                 <div className="valor">
@@ -1637,7 +1637,7 @@ const clickTres = (index) => {
           <div className="lado-esquerdo">
             <div className="coluna-um">
               <div className="foto-perfil">
-                <img src={item.foto} className="foto-perfil-img" />
+                <img src={item.foto ? `http://localhost:3000${item.foto}` : 'iconuser.svg'} className="foto-perfil-img" />
               </div>
               <div className="coluna-informacoes">
                 <div className="valor">
