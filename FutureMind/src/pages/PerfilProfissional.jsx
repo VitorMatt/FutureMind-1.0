@@ -25,11 +25,7 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function PerfilProfissional() {
 
-<<<<<<< HEAD
-  const { user, setUser } = useContext(GlobalContext);
-=======
   const { setUser, profissional } = useContext(GlobalContext);
->>>>>>> 8faf3b8ed934a08f13c9b0824b09601c3dac8295
 
 //   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -53,13 +49,8 @@ function PerfilProfissional() {
 
  const navigate = useNavigate();
  
-<<<<<<< HEAD
-const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o joão miguel e sou um ótimo profissional na minha área. Vamos consultar nosso próprio espírito que consola por dentro e grita para poder escapar da dor. Sou um ótimo profissional, eu juro!'}
-const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
-=======
 // const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o joão miguel e sou um ótimo profissional na minha área. Vamos consultar nosso próprio espírito que consola por dentro e grita para poder escapar da dor. Sou um ótimo profissional, eu juro!'}
 const [date, setDate] = useState(userData.data_nascimento); // Estado para armazenar a data selecionada
->>>>>>> 8faf3b8ed934a08f13c9b0824b09601c3dac8295
 
   const [dataAtual, setDataAtual] = useState(new Date());
   const [selectedAgendamento, setSelectedAgendamento] = useState(null);
@@ -215,8 +206,6 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
     setIsEditing(false); // Cancela o modo de edição
   };
 
-<<<<<<< HEAD
-=======
   const [email, setEmail] = useState(userData.email);
   const [senha, setSenha] = useState(userData.senha);
   const [preco, setPreco] = useState(userData.preco);
@@ -328,7 +317,6 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
     }
   }
 
->>>>>>> 8faf3b8ed934a08f13c9b0824b09601c3dac8295
   return (
     <div className='perfilPro-container'>
       
@@ -343,11 +331,7 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                  <div className='div-foto-nome'>
                         
                     <div className='foto-usuario'>
-<<<<<<< HEAD
-                        <img src='iconuser.svg' className='a1-foto'/> 
-=======
                         <img src={`http://localhost:3000${userData.foto}`} className='a1-foto'/> 
->>>>>>> 8faf3b8ed934a08f13c9b0824b09601c3dac8295
                       <div className='input-editar-foto'>
                       <input type="file" id="file" name="file" />
                        <label htmlFor="file" className="label-file"> Editar Foto</label>
