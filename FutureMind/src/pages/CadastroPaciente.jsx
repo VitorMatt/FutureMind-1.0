@@ -3,65 +3,38 @@ import { useState, useContext, useEffect } from 'react';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 import CadastroPaciente1 from '../components/CadastroPaciente1';
 import CadastroPaciente2 from '../components/CadastroPaciente2';
-import CadastroPaciente3 from '../components/CadastroPaciente3';
+import CadastroPaciente3 from '../components/CadastroPAciente3';
 import Stepper from '../components/StepperComponent';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 
 function CadastroPaciente() {
-  const navigate = useNavigate();
+  
   const { paciente } = useContext(GlobalContext);
   const [activeStep, setActiveStep] = useState(0);
   const {usernameValid} = useContext(GlobalContext)
-  const {usernameHover, setUsernameHover}= useContext(GlobalContext)
-  
-
-
-  const valida_data = () => {
-    
-    const data_atual = new Date()
-    const idade = data_atual.getFullYear() - paciente.dataNascimento.getFullYear();
-    const mes_atual = data_atual.getMonth() - paciente.dataNascimento.getMonth()
-
-
-    if(paciente.data_nascimento == null || paciente.dataNascimento == ''){
-      
-      setErroData('Você Não Digitou Sua Data De Nascimento')
-      
-      return false
-
-    }else if(idade < 18 || mes_atual < 0){
-        
-      setErroData('Você Não tem 18 anos')
-
-      return false
-
-    }else{
-      setErroData('')
-
-      return true
-    }
-  }
+  const {data_nascimentoValid} = useContext(GlobalContext)
+  const {cpfValid} = useContext(GlobalContext)
+  const {telefoneValid} = useContext(GlobalContext)
 
   // Função de navegação para o próximo passo
   const handleNext = () => {
     if (activeStep === 0) {
-      if (usernameValid == true) {
-      
-        return
+      if (!usernameValid || !data_nascimentoValid) {
+        return; // Não avança se o username ou data de nascimento forem inválidos
       }
     }
-
+  
     if (activeStep === 2) {
-      if (!valida_email()) {
-        // Caso haja erro de validação, não avançar
-        return;
+      // Certifique-se de que o CPF e o telefone sejam válidos antes de avançar
+      if (!cpfValid || !telefoneValid) {
+        return; // Impede de avançar se CPF ou telefone forem inválidos
       }
     }
-
+  
     if (activeStep < 2) {
-      setActiveStep((prevStep) => prevStep + 1);
+      setActiveStep((prevStep) => prevStep + 1); // Avança para o próximo passo
     }
   };
 

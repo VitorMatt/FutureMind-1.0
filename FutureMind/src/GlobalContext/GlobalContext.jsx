@@ -101,9 +101,19 @@ const paciente = {
     
     const [usernameValid, setUsernameValid] = useState(false)
     const [usernameHover, setUsernameHover] = useState(false)
+    const [data_nascimentoValid, setData_nascimentoValid] = useState(false)
+    const [data_nascimentoHover, setData_nascimentoHover] = useState(false)
+    const [cpfValid, setCpfValid] = useState(false)
+    const [cpfHover, setCpfHover] = useState(false)
+    const [telefoneValid, setTelefoneValid] = useState(false)
+    const [telefoneHover, setTelefoneHover] = useState(false)
+    const [emailValid, setEmailValid] = useState(false)
+    const [emailHover, setEmailHover]= useState(false)
+    const [senhaValid, setSenhaValid] = useState(false)
+    const [senhaHover, setSenhaHover]= useState(false)
 
     return(
-        <GlobalContext.Provider value={{profissionais, profissional, paciente, user, setUser, id, setId, usernameValid, setUsernameValid, usernameHover, setUsernameHover  }}>
+        <GlobalContext.Provider value={{profissionais, profissional, paciente, user, setUser, id, setId, usernameValid, setUsernameValid, usernameHover, setUsernameHover, data_nascimentoValid, setData_nascimentoValid, data_nascimentoHover, setData_nascimentoHover, cpfValid, setCpfValid, cpfHover, setCpfHover, telefoneValid, setTelefoneValid, telefoneHover, setTelefoneHover, emailValid, setEmailValid, emailHover, setEmailHover , senhaValid, setSenhaValid, senhaHover, setSenhaHover}}>
             {children}
         </GlobalContext.Provider>
     );

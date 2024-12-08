@@ -396,7 +396,7 @@ input[type="checkbox"]::before {
     box-shadow: inset 1rem 1rem #fff;
 }
 
-  input[type="checkbox"]:checked {
+input[type="checkbox"]:checked {
     background-color: #89c2d9;
     border-color: #89c2d9;
 }
@@ -407,95 +407,132 @@ input[type="checkbox"]:checked::before {
 
 
 input[type="checkbox"]:focus {
+
     border-color: #89c2d9;
+
 }
 
 
 
 .label-cadastro{
+
     font-size: 130%;
     padding-left: 4%;
 }
 
 .caminho-login{
+
     padding-left: 5%;
     width: 100%;
     display: flex;
     margin: auto;
     align-items: center;
     margin-top: 1%;
+
 }
 
 
 .link-para-termos{
+
     color:#89c2d9 ;
     font-size: 130%;
     text-decoration: none;
     padding-left: 0.5%;
+
 }
 
 
 label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-    }
     
-    .input-wrapper {
+ font-weight: bold;
+ display: block;
+ margin-bottom: 5px;
+ 
+}
+    
+.input-wrapper {
+
     position: relative;
-    }
+
+}
     
    
-    input.valid {
-    border-color: #ff0000;
-    width: 45%;
-    padding: 1.6%;
-    border-radius: 10px;
-    border: none;
-    background-color: #cad7eb;
-    color: var(--cor-4);
-    font-size: medium;
+input.neutro{
 
-    }
     
-    input.invalid {
-    border-color: #00ff6e;
     width: 45%;
     padding: 1.6%;
     border-radius: 10px;
     background-color: #cad7eb;
     color: var(--cor-4);
+    border: none;
     font-size: medium;
 
-    }
+}
+input.valid {
+
+  border-color: #33ff00;
+  width: 45%;
+  padding: 1.6%;
+  border-radius: 10px;
+  background-color: #cad7eb;
+  color: var(--cor-4);
+  font-size: medium;
+
+}
+    
+input.invalid {
+
+  border-color: #ff0000;
+  width: 45%;
+  padding: 1.6%;
+  border-radius: 10px;
+  background-color: #cad7eb;
+  color: var(--cor-4);
+  font-size: medium;
+
+}
 
 /* Estilo para a bolinha de status de validação */
+
 .status-indicador {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin-left: 10px;
-  border-radius: 50%;
-  background-color: #ccc; /* Cor padrão (neutra) */
-  transition: background-color 0.3s;
+
+   display: inline-block;
+   width: 10px;
+   height: 10px;
+   margin-left: 10px;
+   border-radius: 50%;
+   background-color: #cad7eb;/* Cor padrão (neutra) */
+   transition: background-color 0.3s;
+   position: absolute;
+
 }
 
 .status-indicador.valid {
+
   background-color: #28a745; /* Cor verde para válido */
+  position: absolute;
+
 }
 
 .status-indicador.invalid {
+
   background-color: #dc3545; /* Cor vermelha para inválido */
+  position: absolute;
+
 }
 
 /* Estilo do tooltip */
-.tooltip {
+.tooltip{
+
   position: absolute;
-  background-color: #5c0acf;
-  color: #721c24;
+  background-color: #000000;
+  color: #ffffff;
   padding: 5px;
   border-radius: 5px;
   font-size: 12px;
   top: 30px; /* Ajuste conforme necessário */
+
 }
+
 
