@@ -7,9 +7,9 @@ import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
 import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
 import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
-// import { Label } from '@mui/icons-material'
-// import { GlobalContext } from '../GlobalContext/GlobalContext'
-// import { useNavigate, useRouteLoaderData } from 'react-router-dom'
+import { Label } from '@mui/icons-material'
+import { GlobalContext } from '../GlobalContext/GlobalContext'
+import { useNavigate, useRouteLoaderData } from 'react-router-dom'
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
@@ -24,28 +24,32 @@ import 'swiper/css/scrollbar';
 
 function PerfilProfissional() {
 
-  // const { user, setUser } = useContext(GlobalContext);
+  const { user, setUser } = useContext(GlobalContext);
 
-  var userData = JSON.parse(localStorage.getItem('User'));
+//   var userData = JSON.parse(localStorage.getItem('User'));
 
-  if (!Array.isArray(userData.especializacao)) {
-    userData.especializacao = userData.especializacao
-      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
-      .split(',')            // Divide por vírgula
-      .map(item => item.trim()); // Remove espaços desnecessários
-  }
-  
-  if (!Array.isArray(userData.preferencias)) {
-    userData.preferencias = userData.preferencias
-      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
-      .split(',')            // Divide por vírgula
-      .map(item => item.trim()); // Remove espaços desnecessários
-  }
+//   userData.especializacao = userData.especializacao.replace('{', '')
+//   userData.especializacao = userData.especializacao.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('}', '')
+//   userData.preferencias = userData.preferencias.replace('{', '')
+ 
+//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
+
+//   userData.especializacao = userData.especializacao.replace('"', '')
+//  }
+
+//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
+
+//   userData.preferencias = userData.preferencias.replace('"', '')
+//  }
+
+//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
+//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
 
 //  const navigate = useNavigate();
  
 const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o joão miguel e sou um ótimo profissional na minha área. Vamos consultar nosso próprio espírito que consola por dentro e grita para poder escapar da dor. Sou um ótimo profissional, eu juro!'}
-const [date, setDate] = useState(userData.data_nascimento); // Estado para armazenar a data selecionada
+const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
 
   const [dataAtual, setDataAtual] = useState(new Date());
   const [selectedAgendamento, setSelectedAgendamento] = useState(null);
@@ -144,7 +148,7 @@ const [date, setDate] = useState(userData.data_nascimento); // Estado para armaz
     handleCloseDetails(); // Fecha a div de detalhes, se estiver aberta
   };
 
-  const [abordagem, setAbordagem] = useState(userData.abordagem);
+  const [abordagem, setAbordagem] = useState(profissional.abordagem);
 
 
     useEffect(() => {
@@ -165,23 +169,8 @@ const [date, setDate] = useState(userData.data_nascimento); // Estado para armaz
   // const [selecionarOpcoesEspecializacoes, setSelecionarOpcoesEspecializacoes] = useState([]);
   const opcoesEspecializacoes = ["Adolescência", "Depressão", "Angústia", "Ansiedade", "Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"];
 
-  const [preferencias, setPreferencias] = useState(userData.preferencias);
-  const [especializacao, setEspecializacao] = useState(userData.especializacao);
-
-  const handleChangePreferencias = (event) => {
-
-    if (event.target.checked) {
-
-      setPreferencias(event.target.value);
-    }
-  };
-
-  const handleChangeEspecializacao = (event) => {
-
-    if (event.target.checked) {
-
-      setEspecializacao(event.target.value);
-    }
+  const handleChange = (event) => {
+    const { value, checked } = event.target;
   };
   
   const [nota, setNota] = useState('');
@@ -216,63 +205,6 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
     setIsEditing(false); // Cancela o modo de edição
   };
 
-  const [email, setEmail] = useState(userData.email);
-  const [senha, setSenha] = useState(userData.senha);
-  const [preco, setPreco] = useState(userData.preco);
-  const [nome, setNome] = useState(userData.nome_completo);
-  const [cpf, setCpf] = useState(userData.cpf);
-  const [crp, setCrp] = useState(userData.crp);
-  const [telefone, setTelefone] = useState(userData.telefone);
-
-  const [image, setImage] = useState(null);
-
-  const [profissionalAtualizado, setProfissionalAtualizado] = useState({});
-
-  const handleEditarPerfil = async() => {
-
-    setProfissionalAtualizado({
-      foto: image,
-      email: email,
-      senha: senha,
-      preferencias: preferencias,
-      especializacao: especializacao,
-      data_nascimento: date,
-      preco: preco,
-      nome_completo: nome,
-      cpf: cpf,
-      crp: crp,
-      abordagem: abordagem,
-      telefone: telefone,
-      descricao: descricao,
-      id_profissional: userData.id_profissional
-    });
-
-    try {
-
-      const response = await fetch(`http://localhost:3000/perfil-profissional`, {
-        method: 'PUT',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify(profissionalAtualizado)
-      });
-
-      if (response.ok) {
-
-        localStorage.setItem('User', JSON.stringify(profissionalAtualizado));
-      }
-    } catch (err) {
-
-      console.log(err.message);
-    }
-  }
-
-  const onImageChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      setImage(URL.createObjectURL(event.target.files[0]));
-    }
-   }
-
   return (
     <div className='perfilPro-container'>
       
@@ -287,9 +219,9 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                  <div className='div-foto-nome'>
                         
                     <div className='foto-usuario'>
-                        <img src={image} className='a1-foto'/> 
+                        <img src='iconuser.svg' className='a1-foto'/> 
                       <div className='input-editar-foto'>
-                      <input type="file" id="file" onChange={onImageChange} name="file" />
+                      <input type="file" id="file" name="file" />
                        <label htmlFor="file" className="label-file"> Editar Foto</label>
                         </div>
                         </div>
@@ -300,8 +232,8 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                       </div>
 
                       <div>
-                        <h1>{userData.nome_completo}</h1>
-                        <p>{userData.email}</p>
+                        {/* <h1>{userData.nome_completo}</h1> */}
+                        {/* <p>{userData.email}</p> */}
                       </div>
 
                     </div>
@@ -313,13 +245,13 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
 
                         <div className="div-esp">
 
-                        {
+                        {/* {
                           userData.preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
                           ))
-                        }
+                        } */}
                         </div>
                     </div>
                     <div className='div-menor-info'>
@@ -327,13 +259,13 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                         
                         <div className="div-esp">
 
-                        {
+                         {/* {
                           userData.especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
                           ))
-                        }
+                        }  */}
                         </div>
                     </div>
                     <div className='descricao'>
@@ -501,7 +433,7 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>Nome Completo</p>
-                  <input value={nome} onChange={(e) => { setNome(e.target.value) }} type="text" placeholder='Digite seu nome completo...'/>
+                  <input type="text" placeholder='Digite seu nome completo...'/>
                  </div>
                 </div>
                 <div className='div_container_pinput'>
@@ -521,13 +453,13 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>CPF</p>
-                  <CpfInput value={cpf} onChange={(e) => { setCpf(e.target.value) }} />
+                  <CpfInput />
                  </div>
                 </div>
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>CRP</p>
-                  <CrpMask value={crp} onChange={(e) => { setCrp(e.target.value) }} />
+                  <CrpMask />
                  </div>
                 </div>
               </div>
@@ -537,28 +469,28 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>Telefone</p>
-                  <TelefoneMask value={telefone} onChange={(e) => { setTelefone(e.target.value) }} />
+                  <TelefoneMask />
                  </div>
                 </div>
 
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>E-mail</p>
-                  <input type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                  <input type="email" />
                  </div>
                 </div>
 
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>Senha</p>
-                  <input type="text" value={senha} onChange={(e) => { setSenha(e.target.value) }} />
+                  <input type="text" />
                  </div>
                 </div>
 
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>Preço</p>
-                  <PrecoMask value={preco} onChange={(e) => { setPreco(e.target.value) }} />
+                  <PrecoMask />
                  </div>
                 </div>
 
@@ -624,10 +556,9 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                     <div key={index}>
                     <input
                     type="checkbox"
-                    checked={userData.preferencias.includes(opcoesAreas) ? true : false}
                     id={`opcoesAreas-${index}`}
                     value={opcoesAreas}
-                    onChange={handleChangePreferencias}
+                    onChange={handleChange}
                     />
                     <label htmlFor={`opcoesAreas-${index}`} className="labelareas">
                       {opcoesAreas}
@@ -644,10 +575,9 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                     <div key={index}>
                     <input
                     type="checkbox"
-                    checked={userData.especializacao.includes(opcoesEspecializacoes) ? true : false}
                     id={`opcoesEspecializacoes-${index}`}
                     value={opcoesEspecializacoes}
-                    onChange={handleChangeEspecializacao}
+                    onChange={handleChange}
                     />
                     <label htmlFor={`opcoesEspecializacoes-${index}`} className="labelespeci">
                       {opcoesEspecializacoes}
@@ -666,7 +596,7 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                 <button className='a'>Excluir conta</button>
                   <button className='a'> Sair da Conta</button>
                   <button className='a'>Cancelar edição</button>
-                  <button className='salva' onClick={handleEditarPerfil}>Salvar</button>
+                  <button className='salva'>Salvar</button>
                 </div>
 
         </div>
