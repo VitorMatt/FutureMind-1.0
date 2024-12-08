@@ -12,19 +12,24 @@ import { GlobalContext } from '../GlobalContext/GlobalContext'
 import { useNavigate, useRouteLoaderData } from 'react-router-dom'
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 // import { color } from 'framer-motion';
 
 
 function PerfilProfissional() {
 
+<<<<<<< HEAD
   const { user, setUser } = useContext(GlobalContext);
+=======
+  const { setUser, profissional } = useContext(GlobalContext);
+>>>>>>> 8faf3b8ed934a08f13c9b0824b09601c3dac8295
 
 //   var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -46,10 +51,15 @@ function PerfilProfissional() {
 //  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
 //  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
 
-//  const navigate = useNavigate();
+ const navigate = useNavigate();
  
+<<<<<<< HEAD
 const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o joão miguel e sou um ótimo profissional na minha área. Vamos consultar nosso próprio espírito que consola por dentro e grita para poder escapar da dor. Sou um ótimo profissional, eu juro!'}
 const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
+=======
+// const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o joão miguel e sou um ótimo profissional na minha área. Vamos consultar nosso próprio espírito que consola por dentro e grita para poder escapar da dor. Sou um ótimo profissional, eu juro!'}
+const [date, setDate] = useState(userData.data_nascimento); // Estado para armazenar a data selecionada
+>>>>>>> 8faf3b8ed934a08f13c9b0824b09601c3dac8295
 
   const [dataAtual, setDataAtual] = useState(new Date());
   const [selectedAgendamento, setSelectedAgendamento] = useState(null);
@@ -205,6 +215,120 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
     setIsEditing(false); // Cancela o modo de edição
   };
 
+<<<<<<< HEAD
+=======
+  const [email, setEmail] = useState(userData.email);
+  const [senha, setSenha] = useState(userData.senha);
+  const [preco, setPreco] = useState(userData.preco);
+  const [nome, setNome] = useState(userData.nome_completo);
+  const [cpf, setCpf] = useState(userData.cpf);
+  const [crp, setCrp] = useState(userData.crp);
+  const [telefone, setTelefone] = useState(userData.telefone);
+
+  const [profissionalAtualizado, setProfissionalAtualizado] = useState({});
+
+  const handleEditarPerfil = async() => {
+
+    setProfissionalAtualizado({
+      email: email,
+      senha: senha,
+      preferencias: preferencias,
+      especializacao: especializacao,
+      data_nascimento: date,
+      preco: profissional.preco,
+      nome_completo: nome,
+      cpf: profissional.cpf,
+      crp: profissional.crp,
+      abordagem: abordagem,
+      telefone: profissional.telefone,
+      descricao: descricao,
+      id_profissional: userData.id_profissional
+    });
+
+    try {
+
+      const response = await fetch(`http://localhost:3000/perfil-profissional`, {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(profissionalAtualizado)
+      });
+
+      if (response.ok) {
+
+        localStorage.setItem('User', JSON.stringify(profissionalAtualizado));
+      }
+    } catch (err) {
+
+      console.log(err.message);
+    }
+  }
+
+  const onImageChange = async (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      console.log('Arquivo selecionado:', file);
+  
+      const formData = new FormData(); // Corrigir a criação do FormData
+      formData.append('foto', file); // Adicionar o arquivo selecionado
+      formData.append('id_profissional', userData.id_profissional);
+  
+      try {
+        const response = await fetch('http://localhost:3000/perfil-profissional/foto-perfil', {
+          method: 'POST',
+          body: formData,
+        });
+  
+        if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem('User', JSON.stringify({...userData, foto: data.foto}));
+          console.log('Resposta do servidor:', data);
+          alert('Foto enviada com sucesso!');
+        } else {
+          console.error('Erro no envio da foto:', response.status);
+          alert('Erro ao enviar a foto.');
+        }
+      } catch (err) {
+        console.error('Erro:', err.message);
+      }
+    }
+  };
+  
+  const sair = () => {
+
+    setUser({logado: false, profissional: false});
+    navigate('/');
+  };
+
+  const deletaUsuario = async() => {
+
+    const res = prompt('Deseja mesmo deletar sua conta?');
+
+    if (!res=='sim') return;
+
+    const id_profissional = userData.id_profissional;
+
+    try {
+
+      const response = await fetch(`http://localhost:3000/perfil-profissional/${id_profissional}`, {
+
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+
+        console.log('User deletado com sucesso!');
+        setUser({logado: false, profissional: false});
+        navigate('/');
+      }
+    } catch(err) {
+
+      console.log(err.message);
+    }
+  }
+
+>>>>>>> 8faf3b8ed934a08f13c9b0824b09601c3dac8295
   return (
     <div className='perfilPro-container'>
       
@@ -219,7 +343,11 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                  <div className='div-foto-nome'>
                         
                     <div className='foto-usuario'>
+<<<<<<< HEAD
                         <img src='iconuser.svg' className='a1-foto'/> 
+=======
+                        <img src={`http://localhost:3000${userData.foto}`} className='a1-foto'/> 
+>>>>>>> 8faf3b8ed934a08f13c9b0824b09601c3dac8295
                       <div className='input-editar-foto'>
                       <input type="file" id="file" name="file" />
                        <label htmlFor="file" className="label-file"> Editar Foto</label>
@@ -593,8 +721,8 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
 
 
                 <div className='div-buttons-salvar-cancelar'>
-                <button className='a'>Excluir conta</button>
-                  <button className='a'> Sair da Conta</button>
+                <button className='a' onClick={deletaUsuario}>Excluir conta</button>
+                  <button className='a' onClick={sair}> Sair da Conta</button>
                   <button className='a'>Cancelar edição</button>
                   <button className='salva'>Salvar</button>
                 </div>

@@ -8,7 +8,7 @@ const pool = new Pool({
     user: 'postgres', 
     host: 'localhost',
     database: 'FutureMind', 
-    password: '12345',
+    password: 'Vitor281207.',
     port: 5432, 
 });
 
@@ -153,7 +153,6 @@ app.put('/perfil-profissional', async(req, res) => {
         data_nascimento,
         especializacao,
         preco,
-        foto,
         senha,
         abordagem,
         descricao,
@@ -162,7 +161,7 @@ app.put('/perfil-profissional', async(req, res) => {
 
     try {
 
-        const result = await pool.query('UPDATE profissionais SET nome_completo = $1, cpf = $2, telefone = $3, preferencias = $4, email = $5, crp = $6, data_nascimento = $7, especializacao = $8, preco = $9, foto = $10, senha = $11, abordagem = $12, descricao = $13 WHERE id_profissional = $14 RETURNING *', [
+        const result = await pool.query('UPDATE profissionais SET nome_completo = $1, cpf = $2, telefone = $3, preferencias = $4, email = $5, crp = $6, data_nascimento = $7, especializacao = $8, preco = $9, senha = $10, abordagem = $11, descricao = $12 WHERE id_profissional = $13 RETURNING *', [
             nome_completo,
             cpf,
             telefone,
@@ -172,7 +171,6 @@ app.put('/perfil-profissional', async(req, res) => {
             data_nascimento,
             especializacao,
             preco,
-            foto,
             senha,
             abordagem,
             descricao,
@@ -193,20 +191,66 @@ app.put('/perfil-profissional', async(req, res) => {
     }
 });
 
-app.delete('/perfil-profissional', async (req, res) => {
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
+// Caminho absoluto da pasta uploads
+const uploadDirectory = path.join(__dirname, 'uploads');
+
+// Criação da pasta caso ela não exista
+if (!fs.existsSync(uploadDirectory)) {
+  fs.mkdirSync(uploadDirectory, { recursive: true });
+}
+
+// Configuração do multer para salvar imagens no diretório correto
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, uploadDirectory); // Caminho absoluto para a pasta uploads
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`); // Gera um nome único para o arquivo
+  },
+});
+
+const upload = multer({ storage });
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Rota para atualizar a foto do profissional
+app.post('/perfil-profissional/foto-perfil', upload.single('foto'), async (req, res) => {
+  const { id_profissional } = req.body;
+  const fotoPath = req.file ? `/uploads/${req.file.filename}` : null;
+
+  if (!id_profissional || !fotoPath) {
+    return res.status(400).json({ Erro: 'ID do profissional ou foto ausente.' });
+  }
+
+  try {
+    const result = await pool.query(
+      'UPDATE profissionais SET foto = $1 WHERE id_profissional = $2 RETURNING *',
+      [fotoPath, id_profissional]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ Erro: 'Profissional não encontrado.' });
+    }
+
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).json({ Erro: 'Erro ao atualizar profissional.' });
+  }
+});
+
+app.delete('/perfil-profissional/:id_profissional', async (req, res) => {
 
     const { id_profissional } = req.params;
 
     try {
 
-        const result = await pool.query('DELETE FROM profissionais WHERE id_profissional = $1 RETURNING *', [
+        const result = await pool.query('DELETE FROM profissionais WHERE id_profissional = $1', [
             id_profissional
         ]);
-
-        if (result.rows.length === 0) {
-
-            res.status(404).json({ Erro: 'Profissional não encontrado' })
-        }
 
         res.json(result.rows[0]);
     } catch (err) {

@@ -14,10 +14,28 @@ function CadastroPaciente1() {
   const [name, setName] = useState(paciente.nome_completo);
   const {usernameValid, setUsernameValid} = useContext(GlobalContext)
   const {usernameHover, setUsernameHover} = useContext(GlobalContext)
+  const {data_nascimentoValid, setData_nascimentoValid} = useContext(GlobalContext)
+  const {data_nascimentoHover, setData_nascimentoHover} = useContext(GlobalContext)
   
+ setUsernameValid(name.length > 3) 
+ if(date > 1){
 
-setUsernameValid(name.length > 3) 
+  const hoje = new Date();
+  const idade = hoje.getFullYear() - date.getFullYear();
+  const mesAtual = hoje.getMonth();
+  const mesNascimento = date.getMonth();
+  const diaAtual = hoje.getDate();
+  const diaNascimento = date.getDate();
 
+  // Verificação de se o usuário tem menos de 18 anos
+  const temMenosDe18Anos =
+    idade < 18 ||
+    (idade === 18 && mesAtual < mesNascimento) ||
+    (idade === 18 && mesAtual === mesNascimento && diaAtual < diaNascimento);
+    setData_nascimentoValid(!temMenosDe18Anos)
+    
+ }
+ 
 
   useEffect(() => {
     paciente.nome_completo = name;
@@ -46,9 +64,10 @@ setUsernameValid(name.length > 3)
             onChange={(e) => setName(e.target.value)}
             className={usernameValid ? "valid" : name ? "invalid" : "neutro"}
           />
+          
          <span
           className={`status-indicador ${
-          usernameValid ? "valid" : name ? "invalid" : ""
+          usernameValid ? "valid" :  name ? "invalid" : "neutro"
          }`}
          onMouseEnter={() => setUsernameHover(true)}
          onMouseLeave={() => setUsernameHover(false)}
@@ -57,8 +76,11 @@ setUsernameValid(name.length > 3)
 
           <div className="tooltip">
             {usernameValid
-              ? "nome ok"
-              : "nome precisa ter mais de 3 caracter"}
+
+              ? "Nome ok"
+              : "Nome Precisa Ter Mais De 3 Caracter e ter um valor "
+          
+              }
           </div>
          )}
         </div>
@@ -73,9 +95,26 @@ setUsernameValid(name.length > 3)
 
             value={date}
             onChange={(selectedDates) => setDate(selectedDates[0])}
-            className="inputCRP"
-          
+            className={data_nascimentoValid ? "valid" : date ? "invalid" : "neutro"}
           />
+            <span
+          className={`status-indicador ${
+          data_nascimentoValid ? "valid" :  date ? "invalid" : "neutro"
+         }`}
+         onMouseEnter={() => setData_nascimentoHover(true)}
+         onMouseLeave={() => setData_nascimentoHover(false)}
+         ></span>
+         {data_nascimentoHover && (
+
+         <div className="tooltip">
+         {data_nascimentoValid
+
+         ? "data ok"
+         : "Você precisa ter mais de 18 anos "
+
+         }
+         </div>
+         )}
           
         </div>
       </div>

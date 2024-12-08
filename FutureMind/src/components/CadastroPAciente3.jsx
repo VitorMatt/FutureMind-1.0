@@ -8,17 +8,21 @@ function CadastroPaciente3() {
   const [email, setEmail] = useState(paciente.email);
   const [olhosSenha, setOlhosSenha] = useState(false);
   const [senha, setSenha] = useState(paciente.senha);
+  const {emailValid, setEmailValid} = useContext(GlobalContext)
+  const {emailHover, setEmailHover} = useContext(GlobalContext)
+  const {senhaValid, setSenhaValid} = useContext(GlobalContext)
+
+  setEmailValid(email.includes("@") )
   
-  
- useEffect(() => {
+  useEffect(() => { 
 
   paciente.email = email;
- }, [email]);
+  }, [email]);
 
- useEffect(() => {
+  useEffect(() => {
 
   paciente.senha = senha;
- }, [senha]);
+  }, [senha]);
 
   return (
     <div className="selecao1">
@@ -30,11 +34,28 @@ function CadastroPaciente3() {
           <input
             type="email"
             name="email"
-            className="inputCRP"
+            className={emailValid ? "valid" : email ? "invalid" : "neutro"}
             value={email}
             onChange={(e) => setEmail(e.target.value)} // Altera somente o estado local
           />
-         
+         <span
+          className={`status-indicador ${
+          emailValid ? "valid" :  email ? "invalid" : "neutro"
+         }`}
+         onMouseEnter={() => setEmailHover(true)}
+         onMouseLeave={() => setEmailHover(false)}
+         ></span>
+         { emailHover && (
+
+          <div className="tooltip">
+            {emailValid
+
+              ? "Email ok"
+              : "Email precisa ter um @ "
+          
+              }
+          </div>
+         )}
         </div>
 
         <div className="input-text">
