@@ -30,8 +30,8 @@ function CadastroPaciente2() {
   };
 
   useEffect(() => {
-    setCpfValid(cpf.length === 14);  // Verificação de validade para CPF
-    setTelefoneValid(telefone.length === 15);  // Verificação de validade para telefone (incluindo o traço)
+    setCpfValid(cpf.length === 14); // Verificação de validade para CPF
+    setTelefoneValid(telefone.length === 15); // Verificação de validade para telefone (com máscara)
   }, [cpf, telefone]);
 
   // Função de mudança do CPF com máscara

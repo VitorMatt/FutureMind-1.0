@@ -11,9 +11,11 @@ function CadastroPaciente3() {
   const {emailValid, setEmailValid} = useContext(GlobalContext)
   const {emailHover, setEmailHover} = useContext(GlobalContext)
   const {senhaValid, setSenhaValid} = useContext(GlobalContext)
+  const {senhaHover, setSenhaHover} = useContext(GlobalContext)
 
   setEmailValid(email.includes("@") )
-  
+  setSenhaValid(senha.length >= 8)
+
   useEffect(() => { 
 
   paciente.email = email;
@@ -65,8 +67,28 @@ function CadastroPaciente3() {
               value={senha}
               onChange={(e) => setSenha(e.target.value)} // Altera somente o estado local
               type={olhosSenha ? 'text' : 'password'}
-              className="inputCRP"
+              maxLength="10"
+              className={senhaValid ? "valid" : senha ? "invalid" : "neutro"}
             />
+             <span
+              className={`status-indicador ${
+              senhaValid ? "valid" :  senha ? "invalid" : "neutro"
+              }`}
+              onMouseEnter={() => setSenhaHover(true)}
+               onMouseLeave={() => setSenhaHover(false)}
+               ></span>
+              { senhaHover && (
+
+              <div className="tooltip">
+               {senhaValid
+
+                ? "senha ok"
+                : "senha precisa ter no minimo 8 caracteris e no maximo 10 "
+          
+                }
+              </div>
+              )}
+            
             <button
               onClick={() => setOlhosSenha(!olhosSenha)}
               className="olho"

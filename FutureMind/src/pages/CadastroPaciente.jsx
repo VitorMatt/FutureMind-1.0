@@ -17,6 +17,7 @@ function CadastroPaciente() {
   const {data_nascimentoValid} = useContext(GlobalContext)
   const {cpfValid} = useContext(GlobalContext)
   const {telefoneValid} = useContext(GlobalContext)
+ 
 
   // Função de navegação para o próximo passo
   const handleNext = () => {
@@ -26,18 +27,17 @@ function CadastroPaciente() {
       }
     }
   
-    if (activeStep === 2) {
+    if (activeStep === 2 ) {
       // Certifique-se de que o CPF e o telefone sejam válidos antes de avançar
-      if (!cpfValid || !telefoneValid) {
-        return; // Impede de avançar se CPF ou telefone forem inválidos
+      if (!cpfValid || !telefoneValid ) {
+        return // Impede de avançar se CPF ou telefone forem inválidos
       }
     }
   
-    if (activeStep < 2) {
+    if (activeStep < 2 ) {
       setActiveStep((prevStep) => prevStep + 1); // Avança para o próximo passo
     }
   };
-
   // Função para voltar para a etapa anterior
   const handleBack = () => {
     if (activeStep > 0) {
