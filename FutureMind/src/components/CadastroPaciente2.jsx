@@ -11,7 +11,7 @@ function CadastroPaciente2() {
   const { cpfHover, setCpfHover } = useContext(GlobalContext)
   const { telefoneValid, setTelefoneValid } = useContext(GlobalContext)
   const { telefoneHover, setTelefoneHover } = useContext(GlobalContext)
-
+   
   // Função para aplicar a máscara de CPF
   const maskCPF = (value) => {
     value = value.replace(/\D/g, ''); // Remove tudo o que não for número

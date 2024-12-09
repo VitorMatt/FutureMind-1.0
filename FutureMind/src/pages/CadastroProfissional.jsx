@@ -16,11 +16,67 @@ function CadastroProfissional() {
   const navigate = useNavigate();
 
   const { profissional } = useContext(GlobalContext);
-
+  const {crpValid} = useContext(GlobalContext)
+  const {atendeValid, setAtendeValid} = useContext(GlobalContext);
+  const {especializacaoValid} = useContext(GlobalContext)
+  const {valorValid} = useContext(GlobalContext)
   const [activeStep, setActiveStep] = useState(0);
   
     const handleNext = () => {
-        if (activeStep < 6) {
+
+       if(activeStep == 0){
+
+        if(!crpValid){
+
+           return
+
+        }else{
+
+          setActiveStep((prevStep) => prevStep + 1);
+        }
+       }
+
+       if(activeStep == 1){
+
+        if(atendeValid){
+         
+          return
+
+        }else{
+
+          setActiveStep((prevStep) => prevStep + 1);
+          
+        }
+       }
+
+       if(activeStep == 2){
+
+         if(especializacaoValid){
+
+           return
+
+         }else{
+
+          setActiveStep((prevStep) => prevStep + 1);
+
+         }
+       }
+
+       if(activeStep == 3){
+
+        if(valorValid)
+         
+          return
+
+        }else{
+
+          setActiveStep((prevStep) => prevStep + 1);
+
+        }
+
+
+        if (activeStep == 5) {
+          
             setActiveStep((prevStep) => prevStep + 1);
         }
     };

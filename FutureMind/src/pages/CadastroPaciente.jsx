@@ -17,9 +17,11 @@ function CadastroPaciente() {
   const {data_nascimentoValid} = useContext(GlobalContext)
   const {cpfValid} = useContext(GlobalContext)
   const {telefoneValid} = useContext(GlobalContext)
- 
-
+  const {emailValid} = useContext(GlobalContext)
+  const {senhaValid} = useContext(GlobalContext)
+  
   // Função de navegação para o próximo passo
+
   const handleNext = () => {
     if (activeStep === 0) {
       if (!usernameValid || !data_nascimentoValid) {
@@ -38,6 +40,7 @@ function CadastroPaciente() {
       setActiveStep((prevStep) => prevStep + 1); // Avança para o próximo passo
     }
   };
+  
   // Função para voltar para a etapa anterior
   const handleBack = () => {
     if (activeStep > 0) {
@@ -47,7 +50,7 @@ function CadastroPaciente() {
 
   // Função para finalizar o cadastro e enviar os dados
   const handleFinish = async () => {
-    if (!valida_email()) {
+    if (!emailValid || !senhaValid) {
       return; // Não envia os dados caso haja erro de validação
     }
 
@@ -113,7 +116,7 @@ function CadastroPaciente() {
               className='proximo-estilizado'
               onClick={activeStep === 2 ? handleFinish : handleNext}
             >
-              {activeStep === 2 ? <div><Link to="/login">Concluir</Link></div> : <div>Próximo</div>}
+              {activeStep === 2 ? <div>Concluir</div> : <div>Próximo</div>}
             </button>
           </div>
         </div>

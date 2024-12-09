@@ -8,7 +8,14 @@ function CadastroProfissionais8() {
     const { profissional } = useContext(GlobalContext);
 
     const [abordagem, setAbordagem] = useState(profissional.abordagem);
+    const {valorValid, setValorValid} = useContext(GlobalContext)
+    let valor 
 
+    useEffect(() => {
+
+      setValorValid(valor >= 10.00 && valor <= 50.00)
+
+    })
 
     useEffect(() => {
 
@@ -38,7 +45,10 @@ function CadastroProfissionais8() {
     </div>
     <div className="input-text">
       <label htmlFor="">Preço</label>
-      <PrecoMask />
+      <PrecoMask
+      
+      onChange={(e) => valor(e.target.value)}
+      />
     </div>
       </div>
     </div>

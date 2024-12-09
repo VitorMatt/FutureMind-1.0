@@ -7,6 +7,12 @@ function CadastroProfissionais3() {
   const atender = ["Adolescência", "Depressão","Angústia","Ansiedade" ]
   const atender2 =["Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"]
   const [atenderSelecionado, setAtenderSelecionado] = useState(profissional.especializacao);
+  const {especializacaoValid, setEspecializaçãoValid} = useContext(GlobalContext)
+
+
+  useEffect(() => {
+    setEspecializaçãoValid(atenderSelecionado.length === 0); 
+  }, [atenderSelecionado, especializacaoValid]);
 
 
   useEffect(() => {
@@ -52,6 +58,11 @@ function CadastroProfissionais3() {
       ))}
       </div>
       </div>
+      {especializacaoValid && (
+          <div className="error-message-especializacao">
+            Selecione no minimo 1 area de Especialização
+          </div>
+        )}
   </div>
   );
 }
