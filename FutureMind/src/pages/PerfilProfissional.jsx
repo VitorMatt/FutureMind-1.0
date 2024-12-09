@@ -216,8 +216,6 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
     setIsEditing(false); // Cancela o modo de edição
   };
 
-<<<<<<< HEAD
-=======
   const [email, setEmail] = useState(userData.email);
   const [senha, setSenha] = useState(userData.senha);
   const [preco, setPreco] = useState(userData.preco);
@@ -329,7 +327,6 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
     }
   }
 
->>>>>>> fb9615cb47a55d309b8e433788867a02ab291a46
   return (
     <div className='perfilPro-container'>
       

@@ -9,8 +9,8 @@ function Login() {
   const { setUser } = useContext(GlobalContext);
   const [form, setForm] = useState({ email: '', senha: '' });
   const [validations, setValidations] = useState({
-    email: { valid: false, message: 'Email deve conter um "@gmail.com"' },
-    senha: { valid: false, message: 'Senha deve ter no mínimo 8 caracteres' },
+    email: { valid: true },
+    senha: { valid: true },
   });
 
   const validateField = (field, value) => {
@@ -20,15 +20,15 @@ function Login() {
           ...prev,
           email: { valid: false, message: 'Por favor, preencha o campo de email.' },
         }));
-      } else if (!value.includes('@gmail.com')) {
+      } else if (!value.includes('@gmail.com' || '@yahoo.com')) {
         setValidations((prev) => ({
           ...prev,
-          email: { valid: false, message: 'Email deve conter "@gmail.com"' },
+          email: { valid: false, message: 'Email inválido' },
         }));
       } else {
         setValidations((prev) => ({
           ...prev,
-          email: { valid: true, message: 'Email ok!' },
+          email: { valid: true },
         }));
       }
     } else if (field === 'senha') {
@@ -40,12 +40,12 @@ function Login() {
       } else if (value.length < 8) {
         setValidations((prev) => ({
           ...prev,
-          senha: { valid: false, message: 'Senha deve ter no mínimo 8 caracteres' },
+          senha: { valid: false, message: 'Senha inválida' },
         }));
       } else {
         setValidations((prev) => ({
           ...prev,
-          senha: { valid: true, message: 'Senha ok!' },
+          senha: { valid: true },
         }));
       }
     }
@@ -55,7 +55,7 @@ function Login() {
     e.preventDefault();
 
     if (!validations.email.valid || !validations.senha.valid) {
-      return; // Impede o envio caso a validação esteja falha
+      return; // Impede o envio caso a validação esteja errada
     }
 
     try {
