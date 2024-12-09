@@ -220,7 +220,7 @@ function PerfilProfissional() {
   const [nome, setNome] = useState(userData.nome_completo);
 
   const handleEditarPerfil = async () => {
-    const novoProfissional = {
+    let novoProfissional = {
       email: email,
       senha: senha,
       preferencias: preferencias,
@@ -246,6 +246,8 @@ function PerfilProfissional() {
         });
 
         if (response.ok) {
+
+          novoProfissional = {...novoProfissional, foto: userData.foto};
             localStorage.setItem('User', JSON.stringify(novoProfissional));
         } else {
             console.error('Erro ao atualizar os dados:', await response.json());
@@ -316,6 +318,22 @@ function PerfilProfissional() {
     } catch(err) {
 
       console.log(err.message);
+    }
+  }
+
+  const handleChangeEspecializacoes = (e) => {
+
+    if (e.target.checked) {
+
+      setEspecializacao([...especializacao, e.target.value]);
+    }
+  }
+
+  const handleChangePreferencias = (e) => {
+
+    if (e.target.checked) {
+
+      setPreferencias([...preferencias, e.target.value]);
     }
   }
   
@@ -548,7 +566,7 @@ function PerfilProfissional() {
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>Nome Completo</p>
-                  <input type="text" placeholder='Digite seu nome completo...'/>
+                  <input type="text" value={nome} onChange={(e) => { setNome(e.target.value)}} placeholder='Digite seu nome completo...'/>
                  </div>
                 </div>
                 <div className='div_container_pinput'>
@@ -591,14 +609,14 @@ function PerfilProfissional() {
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>E-mail</p>
-                  <input type="email" />
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                  </div>
                 </div>
 
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>Senha</p>
-                  <input type="text" />
+                  <input type="text" value={senha} onChange={(e) => setSenha(e.target.value)} />
                  </div>
                 </div>
 
@@ -673,7 +691,7 @@ function PerfilProfissional() {
                     type="checkbox"
                     id={`opcoesAreas-${index}`}
                     value={opcoesAreas}
-                  
+                  onChange={(e) => handleChangePreferencias(e)}
                     />
                     <label htmlFor={`opcoesAreas-${index}`} className="labelareas">
                       {opcoesAreas}
@@ -692,7 +710,7 @@ function PerfilProfissional() {
                     type="checkbox"
                     id={`opcoesEspecializacoes-${index}`}
                     value={opcoesEspecializacoes}
-  
+                    onChange={(e) => handleChangeEspecializacoes(e)}
                     />
                     <label htmlFor={`opcoesEspecializacoes-${index}`} className="labelespeci">
                       {opcoesEspecializacoes}
