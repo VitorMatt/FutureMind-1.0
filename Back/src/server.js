@@ -275,7 +275,7 @@ app.put('/perfil-paciente', async(req, res) => {
 
     try {
 
-        const result = await pool.query('UPDATE profissionais SET nome_completo = $1, cpf = $2, telefone = $3, email = $4, data_nascimento = $5, foto = $6, senha = $7 WHERE id_paciente = $8 RETURNING *', [
+        const result = await pool.query('UPDATE pacientes SET nome_completo = $1, cpf = $2, telefone = $3, email = $4, data_nascimento = $5, foto = $6, senha = $7 WHERE id_paciente = $8 RETURNING *', [
             nome_completo,
             cpf,
             telefone,
@@ -328,28 +328,42 @@ var user;
 
 app.post('/login', async (req, res) => {
     const { email, senha } = req.body;
-    console.log('Recebendo dados de login:', req.body); // Log dos dados recebidos
 
+    try {
+        // Verifica se o email existe no banco de dados
+        const profissional = await pool.query('SELECT * FROM profissionais WHERE email = $1', [email]);
+        const paciente = await pool.query('SELECT * FROM pacientes WHERE email = $1', [email]);
 
-    var profissionais = await pool.query('SELECT * FROM profissionais WHERE email = $1 AND senha = $2', [email, senha]);
-    var pacientes = await pool.query('SELECT * FROM pacientes WHERE email = $1 AND senha = $2', [email, senha]);
-    
-    if (profissionais.rows.length > 0) {
-        
-        user = profissionais.rows[0];
-        console.log('Login bem-sucedido:', profissionais.rows[0]);
-        return res.status(200).json(profissionais.rows[0]);
-    } 
-    
-    if (pacientes.rows.length > 0) {
-        
-        user = pacientes.rows[0];
-        console.log('Login bem-sucedido:', user);
-        return res.status(200).json(pacientes.rows[0]);
+        // Verifica se o e-mail pertence a um profissional
+        if (profissional.rows.length > 0) {
+            const user = profissional.rows[0];
+            
+            // Valida a senha
+            if (user.senha === senha) {
+                return res.status(200).json(user);
+            } else {
+                return res.status(401).json({ message: 'Senha incorreta' });
+            }
+        }
+
+        // Verifica se o e-mail pertence a um paciente
+        if (paciente.rows.length > 0) {
+            const user = paciente.rows[0];
+
+            // Valida a senha
+            if (user.senha === senha) {
+                return res.status(200).json(user);
+            } else {
+                return res.status(401).json({ message: 'Senha incorreta' });
+            }
+        }
+
+        // Caso nenhum usuário com o e-mail seja encontrado
+        return res.status(404).json({ message: 'Email não cadastrado' });
+    } catch (err) {
+        console.error(err.message);
+        return res.status(500).json({ error: 'Erro no servidor' });
     }
-    
-    console.log('Credenciais inválidas');
-    return res.status(401).json({ message: 'Credenciais inválidas' });
 });
 
 app.get('/login', async (req, res) => {
