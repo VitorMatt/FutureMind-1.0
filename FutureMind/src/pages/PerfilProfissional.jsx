@@ -219,13 +219,8 @@ function PerfilProfissional() {
   const [senha, setSenha] = useState(userData.senha);
   const [nome, setNome] = useState(userData.nome_completo);
 
-  const [profissionalAtualizado, setProfissionalAtualizado] = useState({});
-
-  const handleEditarPerfil = async() => {
-
-    console.log(profissional.preco, profissional.cpf, profissional.crp)
-
-    setProfissionalAtualizado({
+  const handleEditarPerfil = async () => {
+    const novoProfissional = {
       email: email,
       senha: senha,
       preferencias: preferencias,
@@ -238,28 +233,28 @@ function PerfilProfissional() {
       abordagem: abordagem,
       telefone: profissional.telefone,
       descricao: descricao,
-      id_profissional: userData.id_profissional
-    });
+      id_profissional: userData.id_profissional,
+    };
 
     try {
+        const response = await fetch('http://localhost:3000/perfil-profissional', {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(novoProfissional),
+        });
 
-      const response = await fetch('http://localhost:3000/perfil-profissional', {
-        method: 'PUT',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify(profissionalAtualizado)
-      });
-
-      if (response.ok) {
-
-        localStorage.setItem('User', JSON.stringify(profissionalAtualizado));
-      }
+        if (response.ok) {
+            localStorage.setItem('User', JSON.stringify(novoProfissional));
+        } else {
+            console.error('Erro ao atualizar os dados:', await response.json());
+        }
     } catch (err) {
-
-      console.log(err.message);
+        console.error('Erro:', err.message);
     }
-  }
+};
+
 
   const onImageChange = async (event) => {
     if (event.target.files && event.target.files[0]) {
