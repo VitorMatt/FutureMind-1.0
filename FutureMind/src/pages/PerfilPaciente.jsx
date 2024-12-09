@@ -9,6 +9,7 @@ import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
 import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
 import CpfInput from '../components/CpfInput'
 import TelefoneMask from '../components/TelefoneMask'
+import { Link } from '@mui/icons-material';
 
 
 // Import Swiper styles
@@ -166,7 +167,15 @@ function PerfilPaciente() {
                     <div className='foto-usuario-p'>
                         <img src='iconuser.svg' className='a-foto-p'/>
                     </div>
+                    <div className='input-editar-foto-p'>
+                      <input type="file" id="file" name="file" />
+                       <label htmlFor="file" className="label-file-p"> Editar Foto</label>
+                        </div>
                      <div className='nick-usuario-p'>
+
+                     {/* <div className='meet-p'>
+                      <Link to= "https://workspace.google.com/products/meet/"><img src="" alt="" /></Link>
+                      </div> */}
 
                         {/* <h1>{userData.nome_completo}</h1>
 
@@ -234,7 +243,7 @@ function PerfilPaciente() {
                       <div className="detalhes-conteudo-p">
                         <div className='fechar-detalhes-p'>
                           <button onClick={handleCloseDetails}>
-                            <img src="xizinho.svg" alt="" />
+                            <img src="xizinho.svg"/>
                           </button>
                         </div>
                         <h2>Detalhes do Agendamento</h2>
@@ -268,14 +277,13 @@ function PerfilPaciente() {
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
                   <p>Nome Completo</p>
-                  <input type="text" className='inputCRP' placeholder='Digite seu nome completo...'/>
+                  <input type="text" placeholder='Digite seu nome completo...'/>
                  </div>
                 </div>
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
                  <p>Data de Nascimento</p>
                  <Flatpickr
-                 className='inputCRP'
                    options={{
                    locale: Portuguese, // Configuração para Português
                    dateFormat: "d/m/Y", // Formato da data
@@ -306,14 +314,14 @@ function PerfilPaciente() {
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
                   <p>E-mail</p>
-                  <input type="email" className='inputCRP' />
+                  <input type="email" />
                  </div>
                 </div>
 
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
                   <p>Senha</p>
-                  <input type="text" className='inputCRP' />
+                  <input type="text" />
                  </div>
                 </div>
 

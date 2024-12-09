@@ -15,6 +15,61 @@
     
 }
 
+.perfil-profissional-v{
+    display: block;
+    margin: auto;
+    background-color: #f2f7fc;
+    border-radius: 10px;
+    width: 70%;
+    height: fit-content;
+    margin-top: 2%;
+}
+
+
+.titulo-perfil-v{
+    display: flex;
+    background-color: #5a789f;
+    color: white;
+    border-radius: 10px;
+    width: 100%;
+    height: fit-content;
+}
+.titulo-perfil-v h1{
+    padding-left: 5%;
+}
+
+.div-but-v{
+    margin: auto;
+    width: 70%;
+    margin-top: 4%;
+    
+}
+
+.voltar-v{
+    display: flex;
+    width: 8%;
+    justify-content: center;
+    background-color: #5A789F;
+    color: white;
+    border: none;
+    padding: 1%;
+    font-size: 1.2em;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.voltar-v:hover{
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.voltar-v:active{
+    transform: translateY(2px);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 div::-webkit-scrollbar-track{
 
     background: #f1f1f1;
@@ -44,6 +99,350 @@ div::-webkit-scrollbar{
     margin-top: 6%;
 }
 
-.a-foto{
-   padding-top: 20%; 
+.div-foto-nome-v{
+    display: flex;
+    margin: auto;
+    width: 80%;
+    height: fit-content;
+    border-bottom: 3px solid #5a789f;
 }
+
+.a1-foto-v{
+    height: 200px;
+    border-radius: 100px;
+    padding-left: 1.5%;
+    position: relative;
+}
+
+.foto-usuario-v{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 20%;
+    padding: 1%;
+}
+
+.nick-usuario-v{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    padding: 1%;
+    font-size: 1.5em;
+    line-height: 1px;
+}
+
+.nick-usuario-v p{
+    opacity: 50%;
+}
+
+.meet-v{
+    display: flex;
+    justify-content: flex-end; /* Move o conteúdo para o lado direito */
+    align-items: center; /* Centraliza verticalmente */
+    width: 100%; /* Garante que a div ocupe toda a largura */
+    position: relative; /* Necessário para posicionamento */
+}
+
+.meet-v img{
+    width: 40px; /* Ajuste o tamanho da imagem */
+    height: auto; /* Mantém a proporção */
+    margin-right: 10px; /* Espaço entre a imagem e a borda */
+}
+
+.titulo-agenda-v{
+    display: flex;
+    margin: auto;
+    background-color: none;
+    width: 80%;
+    height: fit-content;
+    color: #5A789F;
+}
+
+
+
+.container-agendamento-v{
+    display: flex;
+    background-color: #f2f7fc;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 5%;
+    border-radius: 10px;
+   
+}
+
+
+.button_voltar-v{
+    background-color: transparent;
+    width: 8%;
+    border: none;
+    font-size: 4em;
+    color: #5A789F;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+
+.container-menor-ag-v{
+    background-color: #5A789F;
+    width: 80%;
+    border-radius: 10px;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.mes-ano-v{
+    color: white;
+    font-size: 2em;
+    text-transform: capitalize;
+ 
+}
+
+.dias_semana-v{
+    padding-top: 5%;
+    padding-left: 4%;
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    margin: 0;
+    width: 98%;
+    height: 900px;
+    flex-wrap: wrap;
+    gap: 5%;
+    color: #000000;
+    border-radius: 10px;
+}
+
+.div_informações_ag-v{
+   
+    width: 28%;
+    background-color: #f2f7fc;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 335px;
+}
+
+.semana-v{
+    background-color: #5A789F;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.cabeçalho-v{
+    display: flex;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: rgb(164, 190, 212);
+    height: 45px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-top-right-radius: 10px ;
+    border-top-left-radius: 10px;
+}
+
+.Nome_dia_da_semana-v{
+    text-transform: capitalize;
+ 
+}
+
+.Nome_dia_da_semana-v{
+    text-transform: capitalize;
+ 
+}
+
+.agendamento-nome-v{
+    padding-left: 5%;
+  }
+
+  /* Detalhes do evento */
+.detalhes-agendamento-v {
+    position: absolute;
+    background: #cad7ebcb;
+    color: #014F86;
+    /* border: 2px solid #014e86ce; */
+    padding: 12px;
+    border-radius: 10px;
+    width: 300px;
+    z-index: 1000;
+    transform: translateY(-45%);
+  }
+  /* Adicionando a seta */
+  .detalhes-agendamento-v::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #cad7ebcd transparent transparent;
+    left: -10px; /* Posiciona a seta na lateral esquerda */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%);
+    z-index: -1; /* Garante que a seta fique atrás do conteúdo principal */
+  }
+
+
+  .detalhes-conteudo-v{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-transform: capitalize;
+  }
+ 
+  .event-details-v::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #5A789F transparent transparent;
+    left: -10px; /* Posiciona a seta na lateral esquerda */
+  }
+
+  .fechar-detalhes-v{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    background-color: transparent;
+    color: #012A4A;
+    border: none;
+    font-size: 1em;
+    transition: background 0.2s ease;
+  }
+  .fechar-detalhes-v button{
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .fechar-detalhes-v img{
+    width: 8%;
+  }
+
+  .button_passar-v{
+    background-color: transparent;
+    width: 8%;
+    border: none;
+    font-size: 4em;
+    color: #5A789F;
+    padding-left: 40px;
+    cursor: pointer;
+}
+
+
+.event-card-v {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    background: #5a789f44;
+    color: #014F86;
+    border-top: 1px solid #5A789F;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1m;
+    transition: transform 0.2s ease;
+    text-transform: capitalize;
+  }
+  .event-card-v:active{
+    transform: translateY(2px);
+  }
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
