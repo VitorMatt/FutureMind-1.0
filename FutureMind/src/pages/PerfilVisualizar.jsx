@@ -4,12 +4,20 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
 import { useState, useEffect, useContext } from 'react'
 import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
 import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
-import './CSS/PerfilProfissional.css'
+import './CSS/PerfilProfissional.css';
 
 import { Link } from 'react-router-dom';
 
 
 function PerfilVisualizar() {
+  
+  // const profissional = 
+  
+  // [
+  
+  //   { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.',}
+  
+  // ]
 
   const [dataAtual, setDataAtual] = useState(new Date());
   const [selectedAgendamento, setSelectedAgendamento] = useState(null);
@@ -17,7 +25,7 @@ function PerfilVisualizar() {
 
   const [agendamentos, setAgendamentos] = useState([
   
-    { data: "2024-12-02", paciente: "Thalles Lima", horario: "15:00" },
+    { data: "2024-12-02", paciente: "Thalles Lima", horario: "15:00" }, 
     { data: "2024-12-02", paciente: "Luciana Nuss", horario: "17:30" },
     { data: "2024-12-02", paciente: "aaaaaaaaa", horario: "20:00" },
     { data: "2024-12-03", paciente: "Julia Silva Dias", horario: "14:30" },
@@ -77,21 +85,21 @@ function PerfilVisualizar() {
     }
   }, []); // O useEffect será disparado sempre que `id` mudar.
   
-  var userData = JSON.parse(localStorage.getItem('User'));
+  // var userData = JSON.parse(localStorage.getItem('User'));
 
-  if (!Array.isArray(userData.especializacao)) {
-    userData.especializacao = userData.especializacao
-      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
-      .split(',')            // Divide por vírgula
-      .map(item => item.trim()); // Remove espaços desnecessários
-  }
+  // if (!Array.isArray(userData.especializacao)) {
+  //   userData.especializacao = userData.especializacao
+  //     .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
+  //     .split(',')            // Divide por vírgula
+  //     .map(item => item.trim()); // Remove espaços desnecessários
+  // }
   
-  if (!Array.isArray(userData.preferencias)) {
-    userData.preferencias = userData.preferencias
-      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
-      .split(',')            // Divide por vírgula
-      .map(item => item.trim()); // Remove espaços desnecessários
-  }
+  // if (!Array.isArray(userData.preferencias)) {
+  //   userData.preferencias = userData.preferencias
+  //     .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
+  //     .split(',')            // Divide por vírgula
+  //     .map(item => item.trim()); // Remove espaços desnecessários
+  // }
 
   const [isEditing, setIsEditing] = useState(false);
   const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
@@ -142,39 +150,47 @@ function PerfilVisualizar() {
         alert('p')
       }
     }
-    // const profissional = 
-   
-  //  [
-// 
-  //     { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descrição: 'Oie,eu sou o João Miguel e sou um ótimo profissional na minha área.',}
 
-  //  ]
+    const handleEventClick = (agendamento, event) => {
+      // Captura a posição do elemento clicado
+      const rect = event.target.getBoundingClientRect();
+      setDivPosition({
+        top: rect.top + window.scrollY,
+        left: rect.left + rect.width + 10, // Posição à direita do elemento
+      });
+      setSelectedAgendamento(agendamento);
+    };
+  
+    const handleCloseDetails = () => {
+      setSelectedAgendamento(null); // Fecha a div de detalhes
+    };
 
   return (
     <div className='perfilVisu-container'>
-           <div className='perfil-profissional'>
-           <div className='titulo-perfil'>
+
+      <div className='div-but-v'>
+        <Link to="/" className='voltar-v'>Voltar</Link>
+      </div>
+
+           <div className='perfil-profissional-v'>
+           <div className='titulo-perfil-v'>
                 <h1>Perfil Profissional</h1>
             </div>
 
-                 <div className='div-foto-nome'>
+                 <div className='div-foto-nome-v'>
                         
-                    <div className='foto-usuario'>
-                        <img src='iconuser.svg' className='a1-foto'/> 
-                      <div className='input-editar-foto'>
-                      <input type="file" id="file" name="file" />
-                       <label htmlFor="file" className="label-file"> Editar Foto</label>
+                    <div className='foto-usuario-v'>
+                        <img src='/iconuser.svg' className='a1-foto-v'/> 
                         </div>
-                        </div>
-                     <div className='nick-usuario'>
+                     <div className='nick-usuario-v'>
 
-                      <div className='meet'>
-                        <Link to="https://workspace.google.com/products/meet/"><img src="video-solid.svg"/></Link>
+                      <div className='meet-v'>
+                        <Link to="https://workspace.google.com/products/meet/"><img src="/video-solid.svg"/></Link>
                       </div>
 
                       <div>
-                        <h1>{userData.nome_completo}</h1>
-                        <p>{userData.email}</p>
+                        {/* <h1>{userData.nome_completo}</h1>
+                        <p>{userData.email}</p> */}
                       </div>
 
                     </div>
@@ -186,13 +202,13 @@ function PerfilVisualizar() {
 
                         <div className="div-esp">
 
-                        {
+                        {/* {
                           userData.preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
                           ))
-                        }
+                        } */}
                         </div>
                     </div>
                     <div className='div-menor-info'>
@@ -200,78 +216,105 @@ function PerfilVisualizar() {
                         
                         <div className="div-esp">
 
-                         {
+                         {/* {
                           userData.especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
                           ))
-                        } 
+                        }  */}
                         </div>
                     </div>
                     <div className='descricao'>
                         <div  className='Minha_desc'>
                         <p>Descrição:</p>
-                        {!isEditing ? (
-                        <button className="But_desc" onClick={handleEditClick}>
-                          Editar
-                        </button>
-                        ) : (
-                        <>
-                        <button className="But_desc" onClick={handleSaveClick}>
-                          Salvar
-                        </button>
-                        <button className="But_desc" onClick={handleCancelClick}>
-                          Cancelar
-                        </button>
-                        </>
-                        )}
+                        
                         </div>
                         
                         <div className="div-desc">
-                        {!isEditing ? (
-                        descricao
-                        ) : (
+                       
                         <textarea
                          maxLength="500"
                          value={descricao}
                          onChange={(e) => setDescricao(e.target.value)}
-                         style={{ width: "95%", height: "100px", resize: "none", background: "#cad7ebcb", border: "none", color: "#014F86", borderRadius: "13px", padding: "1.5%"}}
+                         readOnly
+                         style={{ width: "95%", height: "100px", resize: "none", background: "transparent", border: "none", color: "#014F86", borderRadius: "13px", padding: "1.5%"}}
                         />
-                        )}
+                        
                         </div>
                     </div>
                  </div>
-                </div>
-                {selectedAgendamento && (
+                
+                 <div className='titulo-agenda-v'>
+                    <h1>Agenda</h1>
+                 </div>
+            
+          <div className='container-agendamento-v'>
+              <button onClick={() => handleTrocarSemana(false)} className="button_voltar-v"><img src="/angle-left-solid.svg" alt="" /></button> 
+           <div className='container-menor-ag-v'>
+            <span className='mes-ano-v'>{dataAtual.toLocaleDateString ("pt-BR", {month: "long", year: "numeric"})}</span>
+           <div className='dias_semana-v'>
+             {
+                diasUteis.map((dia,index) => {
+
+                  const diaString = dia.toISOString().split("T")[0];
+                  const agendamentosDoDia = agendamentos.filter((ag) => ag.data === diaString);
+                  const indiceAtual = indicesAgendamentos[diaString] || 0;
+
+                  return (
+
+                    <div key={index} className="div_informações_ag-v">
+
+                     <div className='semana-v'>
+                      <div className='cabeçalho-v'>
+                       <div className='Nome_dia_da_semana-v'>  {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {dia.getDate()}</div>
+                      </div>
+                     </div>
+                     {agendamentosDoDia.map((event) => (
+                    <div
+                    key={`${diaString}-${event.horario}`}
+                    className="event-card-v"
+                    onClick={(e) => handleEventClick(event, e)}
+                   >
+                    <p onClick={() => handleEventClick(agendamentosDoDia)} className="agendamento-nome-v">
+                     {event.paciente}
+                    </p>
+                    
+                  </div>
+                ))}
+                    </div>
+                  )
+                }) 
+             }
+                   {selectedAgendamento && (
                      <div
-                      className="detalhes-agendamento"
+                      className="detalhes-agendamento-v"
                       style={{
                         top: `${divPosition.top}px`,
                         left: `${divPosition.left}px`,
                       }}
                      >
-                      <div className="detalhes-conteudo">
-                        <div className='fechar-detalhes'>
+                      <div className="detalhes-conteudo-v">
+                        <div className='fechar-detalhes-v'>
                           <button onClick={handleCloseDetails}>
-                            <img src="xizinho.svg" alt="" />
+                            <img src="/xizinho.svg" alt="" />
                           </button>
                         </div>
                         <h2>Detalhes do Agendamento</h2>
                         <p><strong>Paciente:</strong> {selectedAgendamento.paciente}</p>
                         <p><strong>Data:</strong> {selectedAgendamento.data}</p>
                         <p><strong>Horário:</strong> {selectedAgendamento.horario}</p>
-                        <div className='buttons-detalhes-conteudo'>
-                          <button className='but-det' onClick={() => handleDeleteAppointment(selectedAgendamento)}>
-                            Cancelar
-                          </button>
-                          <button className='but-det' onClick={() => handleConcludeAppointment(selectedAgendamento)}>
-                            Concluída
-                          </button>
-                        </div>
                       </div>
                       </div>
                   )}
+
+           </div>
+           </div>
+           <button onClick={() => handleTrocarSemana(true)}  className="button_passar-v"><img src="/angle-right-solid.svg" alt=""/></button>
+          </div>
+                
+                
+                </div>
             </div>
   )
 }

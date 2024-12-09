@@ -9,6 +9,8 @@
     display: flex;
     flex-direction: column;
     gap: 80px;
+    padding-top: 7%;
+    padding-bottom: 7%;
 }
 
 .perfil-paciente{
@@ -29,6 +31,10 @@
     height: fit-content;
 }
 
+.titulo-perfil-p h1{
+    padding-left: 5%;
+}
+
 .foto-usuario-p{
     display: flex;
     justify-content: flex-start;
@@ -40,10 +46,43 @@
 
 .div-foto-nome-p{
     display: flex;
+    flex-direction: column;
     margin: auto;
     width: 80%;
     height: fit-content;
     border-bottom: 3px solid #5a789f;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+.input-file-p {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o botão e o nome do arquivo */
+  }
+
+  .input-editar-foto-p{
+    width: 22%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .label-file-p {
+    padding: 0.2em ;
+    width: 200px;
+    background-color: var(--cor-1);
+    color: #FFF;
+    border: 0.2em solid #89c2d9;
+    border-radius: 13px;
+    text-align: center;
+    display: block;
+    cursor: pointer;
 }
 
 .nick-usuario-p{
@@ -55,6 +94,20 @@
     font-size: 1.5em;
     line-height: 1px;
 }
+
+.nick-usuario-p p{
+    opacity: 50%;
+}
+
+/* .meet-p{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.meet-p img{
+    width: 10%;
+} */
 
 .a1-foto-p{
     height: 200px;
@@ -69,6 +122,7 @@
     width: 80%;
     height: fit-content;
     color: #5A789F;
+    padding-top: 2%;
 }
 
 .container-agendamento-p{
@@ -177,6 +231,20 @@
     transform: translateY(-45%); 
 }
 
+.detalhes-agendamento-p::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #cad7ebcd transparent transparent;
+    left: -10px; /* Posiciona a seta na lateral esquerda */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%);
+    z-index: -1; /* Garante que a seta fique atrás do conteúdo principal */
+  }
+
 .detalhes-conteudo-p{
     display: flex;
     flex-direction: column;
@@ -196,6 +264,16 @@
     font-size: 1em;
     transition: background 0.2s ease;
 }
+  .fechar-detalhes-p button{
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .fechar-detalhes-p img{
+    width: 8%;
+  }
 
 .buttons-detalhes-conteudo-p{
     display: flex;
@@ -215,6 +293,17 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.but-det-p:hover {
+    background-color: #C1DFF4;
+    border: none;
+    color: #012A4A;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  }
+  .but-det-p:active{
+    transform: translateY(2px);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
 
 
 .button_passar-p{
@@ -258,12 +347,14 @@
     padding-right: 5%;
 }
 
-.div_container_pinput-p{
-   
-    display: flex;
-    margin: auto;
-    justify-content: center;
+.div1-editar-p input{
+    background-color: #CAD7EB;
+    color: var(--cor-4);
+    border: none;
     width: 100%;
+    padding: 5%;
+    border-radius: 13px;
+    cursor: pointer;
 }
 
 .div_pinput-p{
@@ -291,6 +382,17 @@
     padding-right: 5%;
 }
 
+.div2-editar-p input{
+   
+    background-color: #CAD7EB;
+    color: var(--cor-4);
+    border: none;
+    width: 100%;
+    padding: 5%;
+    border-radius: 13px;
+    cursor: pointer;
+}
+
 .div-buttons-salvar-cancelar-p{
     display: flex;
     justify-content: flex-end;
@@ -300,6 +402,17 @@
     padding-bottom: 3%;
     width: 97%;
     gap: 3%;
+}
+
+.div-buttons-salvar-cancelar-p button:hover{
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.div-buttons-salvar-cancelar-p button:active{
+    transform: translateY(2px);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .a-p{
