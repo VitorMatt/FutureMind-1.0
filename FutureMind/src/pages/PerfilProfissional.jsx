@@ -323,18 +323,18 @@ function PerfilProfissional() {
 
   const handleChangeEspecializacoes = (e) => {
 
-    if (e.target.checked) {
-
-      setEspecializacao([...especializacao, e.target.value]);
-    }
+    const { value, checked } = e.target;
+    setPreferencias((prev) =>
+        checked ? [...prev, value] : prev.filter((item) => item !== value)
+    );
   }
 
   const handleChangePreferencias = (e) => {
 
-    if (e.target.checked) {
-
-      setPreferencias([...preferencias, e.target.value]);
-    }
+    const { value, checked } = e.target;
+    setEspecializacao((prev) =>
+        checked ? [...prev, value] : prev.filter((item) => item !== value)
+    );
   }
   
 
@@ -379,7 +379,7 @@ function PerfilProfissional() {
                         <div className="div-esp">
 
                         {
-                          userData.preferencias.map((item, index) => (
+                          preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
@@ -393,7 +393,7 @@ function PerfilProfissional() {
                         <div className="div-esp">
 
                          {
-                          userData.especializacao.map((item, index) => (
+                          especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
