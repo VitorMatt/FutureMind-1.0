@@ -323,19 +323,25 @@ function PerfilProfissional() {
 
   const handleChangeEspecializacoes = (e) => {
 
-    const { value, checked } = e.target;
-    setPreferencias((prev) =>
-        checked ? [...prev, value] : prev.filter((item) => item !== value)
+      const value = e.target.value;
+    setEspecializacao((prevEspecializacao) =>
+        e.target.checked
+            ? [...prevEspecializacao, value]
+            : prevEspecializacao.filter((item) => item !== value)
     );
   }
 
   const handleChangePreferencias = (e) => {
 
-    const { value, checked } = e.target;
-    setEspecializacao((prev) =>
-        checked ? [...prev, value] : prev.filter((item) => item !== value)
+    const value = e.target.value;
+    setPreferencias((prevPreferencias) =>
+        e.target.checked
+            ? [...prevPreferencias, value]
+            : prevPreferencias.filter((item) => item !== value)
     );
   }
+
+
   
 
   return (
@@ -688,10 +694,11 @@ function PerfilProfissional() {
                     {opcoesAreas.map((opcoesAreas, index) => (
                     <div key={index}>
                     <input
-                    type="checkbox"
-                    id={`opcoesAreas-${index}`}
-                    value={opcoesAreas}
-                  onChange={(e) => handleChangePreferencias(e)}
+                        type="checkbox"
+                        id={`opcoesEspecializacoes-${index}`}
+                        value={opcoesEspecializacoes}
+                        checked={especializacao.includes(opcoesEspecializacoes)}
+                        onChange={handleChangeEspecializacoes}
                     />
                     <label htmlFor={`opcoesAreas-${index}`} className="labelareas">
                       {opcoesAreas}
@@ -707,10 +714,11 @@ function PerfilProfissional() {
                     {opcoesEspecializacoes.map((opcoesEspecializacoes, index) => (
                     <div key={index}>
                     <input
-                    type="checkbox"
-                    id={`opcoesEspecializacoes-${index}`}
-                    value={opcoesEspecializacoes}
-                    onChange={(e) => handleChangeEspecializacoes(e)}
+                        type="checkbox"
+                        id={`opcoesAreas-${index}`}
+                        value={opcoesAreas}
+                        checked={preferencias.includes(opcoesAreas)}
+                        onChange={handleChangePreferencias}
                     />
                     <label htmlFor={`opcoesEspecializacoes-${index}`} className="labelespeci">
                       {opcoesEspecializacoes}
