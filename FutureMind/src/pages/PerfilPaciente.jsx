@@ -268,13 +268,14 @@ function PerfilPaciente() {
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
                   <p>Nome Completo</p>
-                  <input type="text" placeholder='Digite seu nome completo...'/>
+                  <input type="text" className='inputCRP' placeholder='Digite seu nome completo...'/>
                  </div>
                 </div>
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
                  <p>Data de Nascimento</p>
                  <Flatpickr
+                 className='inputCRP'
                    options={{
                    locale: Portuguese, // Configuração para Português
                    dateFormat: "d/m/Y", // Formato da data
@@ -305,14 +306,14 @@ function PerfilPaciente() {
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
                   <p>E-mail</p>
-                  <input type="email" />
+                  <input type="email" className='inputCRP' />
                  </div>
                 </div>
 
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
                   <p>Senha</p>
-                  <input type="text" />
+                  <input type="text" className='inputCRP' />
                  </div>
                 </div>
 

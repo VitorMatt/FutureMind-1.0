@@ -7,9 +7,9 @@ import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
 import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
 import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
-import { Label } from '@mui/icons-material'
-import { GlobalContext } from '../GlobalContext/GlobalContext'
-import { useNavigate, useRouteLoaderData } from 'react-router-dom'
+// import { Label } from '@mui/icons-material'
+// import { GlobalContext } from '../GlobalContext/GlobalContext'
+// import { useNavigate, useRouteLoaderData } from 'react-router-dom'
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
@@ -26,25 +26,21 @@ function PerfilProfissional() {
 
   const { user, setUser } = useContext(GlobalContext);
 
-//   var userData = JSON.parse(localStorage.getItem('User'));
+  var userData = JSON.parse(localStorage.getItem('User'));
 
-//   userData.especializacao = userData.especializacao.replace('{', '')
-//   userData.especializacao = userData.especializacao.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('{', '')
- 
-//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
-
-//   userData.especializacao = userData.especializacao.replace('"', '')
-//  }
-
-//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
-
-//   userData.preferencias = userData.preferencias.replace('"', '')
-//  }
-
-//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
-//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+  if (!Array.isArray(userData.especializacao)) {
+    userData.especializacao = userData.especializacao
+      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
+      .split(',')            // Divide por vírgula
+      .map(item => item.trim()); // Remove espaços desnecessários
+  }
+  
+  if (!Array.isArray(userData.preferencias)) {
+    userData.preferencias = userData.preferencias
+      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
+      .split(',')            // Divide por vírgula
+      .map(item => item.trim()); // Remove espaços desnecessários
+  }
 
 //  const navigate = useNavigate();
  
@@ -148,7 +144,7 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     handleCloseDetails(); // Fecha a div de detalhes, se estiver aberta
   };
 
-  const [abordagem, setAbordagem] = useState(profissional.abordagem);
+  const [abordagem, setAbordagem] = useState(userData.abordagem);
 
 
     useEffect(() => {
@@ -169,8 +165,23 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
   // const [selecionarOpcoesEspecializacoes, setSelecionarOpcoesEspecializacoes] = useState([]);
   const opcoesEspecializacoes = ["Adolescência", "Depressão", "Angústia", "Ansiedade", "Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"];
 
-  const handleChange = (event) => {
-    const { value, checked } = event.target;
+  const [preferencias, setPreferencias] = useState(userData.preferencias);
+  const [especializacao, setEspecializacao] = useState(userData.especializacao);
+
+  const handleChangePreferencias = (event) => {
+
+    if (event.target.checked) {
+
+      setPreferencias(event.target.value);
+    }
+  };
+
+  const handleChangeEspecializacao = (event) => {
+
+    if (event.target.checked) {
+
+      setEspecializacao(event.target.value);
+    }
   };
   
   const [nota, setNota] = useState('');
@@ -205,6 +216,120 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
     setIsEditing(false); // Cancela o modo de edição
   };
 
+<<<<<<< HEAD
+=======
+  const [email, setEmail] = useState(userData.email);
+  const [senha, setSenha] = useState(userData.senha);
+  const [preco, setPreco] = useState(userData.preco);
+  const [nome, setNome] = useState(userData.nome_completo);
+  const [cpf, setCpf] = useState(userData.cpf);
+  const [crp, setCrp] = useState(userData.crp);
+  const [telefone, setTelefone] = useState(userData.telefone);
+
+  const [profissionalAtualizado, setProfissionalAtualizado] = useState({});
+
+  const handleEditarPerfil = async() => {
+
+    setProfissionalAtualizado({
+      email: email,
+      senha: senha,
+      preferencias: preferencias,
+      especializacao: especializacao,
+      data_nascimento: date,
+      preco: profissional.preco,
+      nome_completo: nome,
+      cpf: profissional.cpf,
+      crp: profissional.crp,
+      abordagem: abordagem,
+      telefone: profissional.telefone,
+      descricao: descricao,
+      id_profissional: userData.id_profissional
+    });
+
+    try {
+
+      const response = await fetch('http://localhost:3000/perfil-profissional', {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(profissionalAtualizado)
+      });
+
+      if (response.ok) {
+
+        localStorage.setItem('User', JSON.stringify(profissionalAtualizado));
+      }
+    } catch (err) {
+
+      console.log(err.message);
+    }
+  }
+
+  const onImageChange = async (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      console.log('Arquivo selecionado:', file);
+  
+      const formData = new FormData(); // Corrigir a criação do FormData
+      formData.append('foto', file); // Adicionar o arquivo selecionado
+      formData.append('id_profissional', userData.id_profissional);
+  
+      try {
+        const response = await fetch('http://localhost:3000/perfil-profissional/foto-perfil', {
+          method: 'POST',
+          body: formData,
+        });
+  
+        if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem('User', JSON.stringify({...userData, foto: data.foto}));
+          console.log('Resposta do servidor:', data);
+          alert('Foto enviada com sucesso!');
+        } else {
+          console.error('Erro no envio da foto:', response.status);
+          alert('Erro ao enviar a foto.');
+        }
+      } catch (err) {
+        console.error('Erro:', err.message);
+      }
+    }
+  };
+  
+  const sair = () => {
+
+    setUser({logado: false, profissional: false});
+    navigate('/');
+  };
+
+  const deletaUsuario = async() => {
+
+    const res = prompt('Deseja mesmo deletar sua conta?');
+
+    if (!res=='sim') return;
+
+    const id_profissional = userData.id_profissional;
+
+    try {
+
+      const response = await fetch(`http://localhost:3000/perfil-profissional/${id_profissional}`, {
+
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+
+        console.log('User deletado com sucesso!');
+        setUser({logado: false, profissional: false});
+        navigate('/');
+      }
+    } catch(err) {
+
+      console.log(err.message);
+    }
+  }
+
+>>>>>>> fb9615cb47a55d309b8e433788867a02ab291a46
   return (
     <div className='perfilPro-container'>
       
@@ -232,8 +357,8 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                       </div>
 
                       <div>
-                        {/* <h1>{userData.nome_completo}</h1> */}
-                        {/* <p>{userData.email}</p> */}
+                        <h1>{userData.nome_completo}</h1>
+                        <p>{userData.email}</p>
                       </div>
 
                     </div>
@@ -245,13 +370,13 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
 
                         <div className="div-esp">
 
-                        {/* {
+                        {
                           userData.preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
                           ))
-                        } */}
+                        }
                         </div>
                     </div>
                     <div className='div-menor-info'>
@@ -259,13 +384,13 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                         
                         <div className="div-esp">
 
-                         {/* {
+                         {
                           userData.especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
                           ))
-                        }  */}
+                        } 
                         </div>
                     </div>
                     <div className='descricao'>
@@ -558,7 +683,7 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                     type="checkbox"
                     id={`opcoesAreas-${index}`}
                     value={opcoesAreas}
-                    onChange={handleChange}
+                  
                     />
                     <label htmlFor={`opcoesAreas-${index}`} className="labelareas">
                       {opcoesAreas}
@@ -577,7 +702,7 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                     type="checkbox"
                     id={`opcoesEspecializacoes-${index}`}
                     value={opcoesEspecializacoes}
-                    onChange={handleChange}
+  
                     />
                     <label htmlFor={`opcoesEspecializacoes-${index}`} className="labelespeci">
                       {opcoesEspecializacoes}
