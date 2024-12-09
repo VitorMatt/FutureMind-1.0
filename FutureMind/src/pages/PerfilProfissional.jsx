@@ -7,9 +7,9 @@ import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
 import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
 import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
-import { Label } from '@mui/icons-material'
-import { GlobalContext } from '../GlobalContext/GlobalContext'
-import { useNavigate, useRouteLoaderData } from 'react-router-dom'
+// import { Label } from '@mui/icons-material'
+// import { GlobalContext } from '../GlobalContext/GlobalContext'
+// import { useNavigate, useRouteLoaderData } from 'react-router-dom'
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -27,25 +27,21 @@ function PerfilProfissional() {
 
   const { setUser, profissional } = useContext(GlobalContext);
 
-//   var userData = JSON.parse(localStorage.getItem('User'));
+  var userData = JSON.parse(localStorage.getItem('User'));
 
-//   userData.especializacao = userData.especializacao.replace('{', '')
-//   userData.especializacao = userData.especializacao.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('{', '')
- 
-//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
-
-//   userData.especializacao = userData.especializacao.replace('"', '')
-//  }
-
-//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
-
-//   userData.preferencias = userData.preferencias.replace('"', '')
-//  }
-
-//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
-//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
+  if (!Array.isArray(userData.especializacao)) {
+    userData.especializacao = userData.especializacao
+      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
+      .split(',')            // Divide por vírgula
+      .map(item => item.trim()); // Remove espaços desnecessários
+  }
+  
+  if (!Array.isArray(userData.preferencias)) {
+    userData.preferencias = userData.preferencias
+      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
+      .split(',')            // Divide por vírgula
+      .map(item => item.trim()); // Remove espaços desnecessários
+  }
 
  const navigate = useNavigate();
  
@@ -149,7 +145,7 @@ const [date, setDate] = useState(userData.data_nascimento); // Estado para armaz
     handleCloseDetails(); // Fecha a div de detalhes, se estiver aberta
   };
 
-  const [abordagem, setAbordagem] = useState(profissional.abordagem);
+  const [abordagem, setAbordagem] = useState(userData.abordagem);
 
 
     useEffect(() => {
@@ -170,8 +166,23 @@ const [date, setDate] = useState(userData.data_nascimento); // Estado para armaz
   // const [selecionarOpcoesEspecializacoes, setSelecionarOpcoesEspecializacoes] = useState([]);
   const opcoesEspecializacoes = ["Adolescência", "Depressão", "Angústia", "Ansiedade", "Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"];
 
-  const handleChange = (event) => {
-    const { value, checked } = event.target;
+  const [preferencias, setPreferencias] = useState(userData.preferencias);
+  const [especializacao, setEspecializacao] = useState(userData.especializacao);
+
+  const handleChangePreferencias = (event) => {
+
+    if (event.target.checked) {
+
+      setPreferencias(event.target.value);
+    }
+  };
+
+  const handleChangeEspecializacao = (event) => {
+
+    if (event.target.checked) {
+
+      setEspecializacao(event.target.value);
+    }
   };
   
   const [nota, setNota] = useState('');
@@ -236,7 +247,7 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
 
     try {
 
-      const response = await fetch(`http://localhost:3000/perfil-profissional`, {
+      const response = await fetch('http://localhost:3000/perfil-profissional', {
         method: 'PUT',
         headers: {
           'Content-type': 'application/json'
@@ -344,8 +355,8 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                       </div>
 
                       <div>
-                        {/* <h1>{userData.nome_completo}</h1> */}
-                        {/* <p>{userData.email}</p> */}
+                        <h1>{userData.nome_completo}</h1>
+                        <p>{userData.email}</p>
                       </div>
 
                     </div>
@@ -357,13 +368,13 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
 
                         <div className="div-esp">
 
-                        {/* {
+                        {
                           userData.preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
                           ))
-                        } */}
+                        }
                         </div>
                     </div>
                     <div className='div-menor-info'>
@@ -371,13 +382,13 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                         
                         <div className="div-esp">
 
-                         {/* {
+                         {
                           userData.especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
                           ))
-                        }  */}
+                        } 
                         </div>
                     </div>
                     <div className='descricao'>
@@ -670,7 +681,7 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                     type="checkbox"
                     id={`opcoesAreas-${index}`}
                     value={opcoesAreas}
-                    onChange={handleChange}
+                  
                     />
                     <label htmlFor={`opcoesAreas-${index}`} className="labelareas">
                       {opcoesAreas}
@@ -689,7 +700,7 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                     type="checkbox"
                     id={`opcoesEspecializacoes-${index}`}
                     value={opcoesEspecializacoes}
-                    onChange={handleChange}
+  
                     />
                     <label htmlFor={`opcoesEspecializacoes-${index}`} className="labelespeci">
                       {opcoesEspecializacoes}
