@@ -168,8 +168,8 @@ function PerfilProfissional() {
   // const [selecionarOpcoesEspecializacoes, setSelecionarOpcoesEspecializacoes] = useState([]);
   const opcoesEspecializacoes = ["Adolescência", "Depressão", "Angústia", "Ansiedade", "Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"];
 
-  const [preferencias, setPreferencias] = useState(userData.preferencias);
-  const [especializacao, setEspecializacao] = useState(userData.especializacao);
+  const [preferencias, setPreferencias] = useState([]);
+  const [especializacao, setEspecializacao] = useState([]);
 
   // const handleChangePreferencias = (event) => {
 
@@ -323,7 +323,7 @@ function PerfilProfissional() {
 
   const handleChangeEspecializacoes = (e) => {
 
-      const value = e.target.value;
+    const value = e.target.value;
     setEspecializacao((prevEspecializacao) =>
         e.target.checked
             ? [...prevEspecializacao, value]
@@ -340,9 +340,6 @@ function PerfilProfissional() {
             : prevPreferencias.filter((item) => item !== value)
     );
   }
-
-
-  
 
   return (
     <div className='perfilPro-container'>
@@ -385,7 +382,7 @@ function PerfilProfissional() {
                         <div className="div-esp">
 
                         {
-                          preferencias.map((item, index) => (
+                          userData.preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
@@ -399,7 +396,7 @@ function PerfilProfissional() {
                         <div className="div-esp">
 
                          {
-                          especializacao.map((item, index) => (
+                          userData.especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
@@ -697,7 +694,7 @@ function PerfilProfissional() {
                         type="checkbox"
                         id={`opcoesEspecializacoes-${index}`}
                         value={opcoesEspecializacoes}
-                        checked={especializacao.includes(opcoesEspecializacoes)}
+                        
                         onChange={handleChangeEspecializacoes}
                     />
                     <label htmlFor={`opcoesAreas-${index}`} className="labelareas">
@@ -717,7 +714,7 @@ function PerfilProfissional() {
                         type="checkbox"
                         id={`opcoesAreas-${index}`}
                         value={opcoesAreas}
-                        checked={preferencias.includes(opcoesAreas)}
+                        
                         onChange={handleChangePreferencias}
                     />
                     <label htmlFor={`opcoesEspecializacoes-${index}`} className="labelespeci">

@@ -477,6 +477,26 @@ app.post('/sugestoes', async(req, res) => {
     }
 })
 
+app.post('/perfil-profissional/agenda', async(req, res) => {
+
+    const { id_profissional } = req.params;
+
+    try {
+
+        const result = await pool.query('SELECT * FROM agendamento WHERE fk_id_profissional = $1', [id_profissional]);
+
+        if (result.rows > 0) {
+
+            return res.status(200).json(result.rows);
+        }
+
+        return res.status(404).json("Não encontrado");
+    } catch (err) {
+
+        console.log(err.message);
+    }
+})
+
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');
 });
