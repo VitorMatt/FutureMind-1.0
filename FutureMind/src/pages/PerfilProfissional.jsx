@@ -1,58 +1,37 @@
+import { GlobalContext } from '../GlobalContext/GlobalContext';
+import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { useState, useEffect, useContext } from 'react'
 import CpfInput from '../components/CpfInput'
 import CrpMask from '../components/CrpMask'
 import PrecoMask from '../components/PrecoMask'
 import Flatpickr from "react-flatpickr";
-import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
-import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
+import "flatpickr/dist/flatpickr.min.css"; 
+import { Portuguese } from "flatpickr/dist/l10n/pt"; 
 import TelefoneMask from '../components/TelefoneMask'
 import './CSS/PerfilProfissional.css'
-// import { Label } from '@mui/icons-material'
-// import { GlobalContext } from '../GlobalContext/GlobalContext'
-// import { useNavigate, useRouteLoaderData } from 'react-router-dom'
-import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link } from 'react-router-dom';
-
-// Import Swiper styles
+import { Link, useNavigate } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+// import { Label } from '@mui/icons-material'
+// import { useNavigate, useRouteLoaderData } from 'react-router-dom'
 // import { color } from 'framer-motion';
 
 
 function PerfilProfissional() {
 
-  const { user, setUser } = useContext(GlobalContext);
-
-  var userData = JSON.parse(localStorage.getItem('User'));
-
-  if (!Array.isArray(userData.especializacao)) {
-    userData.especializacao = userData.especializacao
-      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
-      .split(',')            // Divide por vírgula
-      .map(item => item.trim()); // Remove espaços desnecessários
-  }
-  
-  if (!Array.isArray(userData.preferencias)) {
-    userData.preferencias = userData.preferencias
-      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
-      .split(',')            // Divide por vírgula
-      .map(item => item.trim()); // Remove espaços desnecessários
-  }
-
-//  const navigate = useNavigate();
- 
-const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o joão miguel e sou um ótimo profissional na minha área. Vamos consultar nosso próprio espírito que consola por dentro e grita para poder escapar da dor. Sou um ótimo profissional, eu juro!'}
-const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
+  const { user, setUser, profissional } = useContext(GlobalContext);
+  const navigate = useNavigate();
+  const [date, setDate] = useState(profissional.data_nascimento);
 
   const [dataAtual, setDataAtual] = useState(new Date());
   const [selectedAgendamento, setSelectedAgendamento] = useState(null);
   const [divPosition, setDivPosition] = useState({ top: 0, left: 0}); // Posição da div de detalhes
-
-  const [agendamentos, setAgendamentos] = useState([
   
+  const [agendamentos, setAgendamentos] = useState([
+    
     { data: "2024-12-02", paciente: "Thalles Lima", horario: "15:00" },
     { data: "2024-12-02", paciente: "Luciana Nuss", horario: "17:30" },
     { data: "2024-12-02", paciente: "aaaaaaaaa", horario: "20:00" },
@@ -62,26 +41,53 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     { data: "2024-12-05", paciente: "aaaaaaaaa", horario: "20:00" },
     
   ]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
 
-  const [indicesAgendamentos, setIndicesAgendamentos] = useState({}); // Rastrear índice atual de cada dia
-
+  const [temporaryText, setTemporaryText] = useState("");
+  const [savedText, setSavedText] = useState(""); 
+  
+  const [indicesAgendamentos, setIndicesAgendamentos] = useState({}); 
+  
+  const [nota, setNota] = useState('');
+  const [notas, setNotas] = useState([]);
+  
+  
+  var userData = JSON.parse(localStorage.getItem('User'));
+  
+  
+  if (!Array.isArray(userData.especializacao)) {
+    userData.especializacao = userData.especializacao
+    .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
+    .split(',')            // Divide por vírgula
+    .map(item => item.trim()); // Remove espaços desnecessários
+  }
+  
+  if (!Array.isArray(userData.preferencias)) {
+    userData.preferencias = userData.preferencias
+    .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
+    .split(',')            // Divide por vírgula
+    .map(item => item.trim()); // Remove espaços desnecessários
+  }
+  
+  
   const obterDiasUteis = (dataInicio) => {
     const dias = [];
     const atual = new Date(dataInicio);
-
+    
     const diaDaSemana = atual.getDay();
     const deslocamento = diaDaSemana === 0 ? -6 : 1 - diaDaSemana;
-
+    
     atual.setDate(atual.getDate() + deslocamento);
-
+    
     for (let i = 0; i < 5; i++) {
       dias.push(new Date(atual));
       atual.setDate(atual.getDate() + 1);
     }
-
+    
     return dias;
   };
-
+  
   const diasUteis = obterDiasUteis(dataAtual);
 
   const handleTrocarSemana = (proximo) => {
@@ -94,19 +100,16 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     });
   };
 
-  const [temporaryText, setTemporaryText] = useState(""); // Texto enquanto o usuário digita
-  const [savedText, setSavedText] = useState(""); // Texto salvo
 
-  const handleTextChange = (event) => {
-    setTemporaryText(event.target.value); // Atualiza o texto temporário
-  };
+  // const handleTextChange = (event) => {
+  //   setTemporaryText(event.target.value); 
 
-  const handleSave = () => {
-    setSavedText(temporaryText); // Salva o texto ao clicar no botão
-  };
+  // const handleSave = () => {
+  //   setSavedText(temporaryText); 
+  // };
 
-  const maxLength = 500; // Limite máximo de caracteres
-  const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
+  // const maxLength = 500; // Limite máximo de caracteres
+  // const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
   
   const handleEventClick = (agendamento, event) => {
     // Captura a posição do elemento clicado
@@ -168,24 +171,22 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
   const [preferencias, setPreferencias] = useState(userData.preferencias);
   const [especializacao, setEspecializacao] = useState(userData.especializacao);
 
-  const handleChangePreferencias = (event) => {
+  // const handleChangePreferencias = (event) => {
 
-    if (event.target.checked) {
+  //   if (event.target.checked) {
 
-      setPreferencias(event.target.value);
-    }
-  };
+  //     setPreferencias(event.target.value);
+  //   }
+  // };
 
-  const handleChangeEspecializacao = (event) => {
+  // const handleChangeEspecializacao = (event) => {
 
-    if (event.target.checked) {
+  //   if (event.target.checked) {
 
-      setEspecializacao(event.target.value);
-    }
-  };
+  //     setEspecializacao(event.target.value);
+  //   }
+  // };
   
-  const [nota, setNota] = useState('');
-  const [notas, setNotas] = useState([]);
   
   // const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
 
@@ -196,8 +197,6 @@ const [date, setDate] = useState(profissional.data_nascimento); // Estado para a
     }
   };
 
-  const [isEditing, setIsEditing] = useState(false);
-const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
 
   const handleEditClick = () => {
     setIsEditing(true); // Ativa o modo de edição
@@ -218,15 +217,13 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
 
   const [email, setEmail] = useState(userData.email);
   const [senha, setSenha] = useState(userData.senha);
-  const [preco, setPreco] = useState(userData.preco);
   const [nome, setNome] = useState(userData.nome_completo);
-  const [cpf, setCpf] = useState(userData.cpf);
-  const [crp, setCrp] = useState(userData.crp);
-  const [telefone, setTelefone] = useState(userData.telefone);
 
   const [profissionalAtualizado, setProfissionalAtualizado] = useState({});
 
   const handleEditarPerfil = async() => {
+
+    console.log(profissional.preco, profissional.cpf, profissional.crp)
 
     setProfissionalAtualizado({
       email: email,
@@ -285,7 +282,7 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
           console.log('Resposta do servidor:', data);
           alert('Foto enviada com sucesso!');
         } else {
-          console.error('Erro no envio da foto:', response.status);
+          console.log('Erro no envio da foto:', response.status);
           alert('Erro ao enviar a foto.');
         }
       } catch (err) {
@@ -326,6 +323,7 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
       console.log(err.message);
     }
   }
+  
 
   return (
     <div className='perfilPro-container'>
@@ -341,9 +339,9 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
                  <div className='div-foto-nome'>
                         
                     <div className='foto-usuario'>
-                        <img src='iconuser.svg' className='a1-foto'/> 
+                        <img src={`http://localhost:3000${userData.foto}`} className='a1-foto'/> 
                       <div className='input-editar-foto'>
-                      <input type="file" id="file" name="file" />
+                      <input type="file" id="file" onChange={onImageChange} name="file" />
                        <label htmlFor="file" className="label-file"> Editar Foto</label>
                         </div>
                         </div>
@@ -715,10 +713,10 @@ const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
 
 
                 <div className='div-buttons-salvar-cancelar'>
-                <button className='a'>Excluir conta</button>
-                  <button className='a'> Sair da Conta</button>
+                <button className='a' onClick={deletaUsuario}>Excluir conta</button>
+                  <button className='a' onClick={sair}> Sair da Conta</button>
                   <button className='a'>Cancelar edição</button>
-                  <button className='salva'>Salvar</button>
+                  <button className='salva' onClick={handleEditarPerfil}>Salvar</button>
                 </div>
 
         </div>
