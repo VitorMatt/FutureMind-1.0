@@ -94,6 +94,13 @@ function CadastroProfissional() {
   };
 
   const handleFinish = async () => {
+    if(!emailProfissionalValid || !senhaProfissionalValid){
+
+      return
+    }else{
+
+      navigate('/login')
+    }
     try {
       profissional.id_profissional = profissional.id_profissional + 1;
 
@@ -153,9 +160,16 @@ function CadastroProfissional() {
             </button>
           </div>
           <div className="botao2">
-            <button className="proximo-estilizado" onClick={handleClick}>
+          <button
+              className="proximo-estilizado"
+              onClick={activeStep === 6 ? handleFinish : handleNext}
+            >
               {activeStep === 6 ? (
-                <div onClick={handleFinish}>Concluir</div>
+                emailProfissionalValid && senhaProfissionalValid ? (
+                  <div>Concluir</div>
+                ) : (
+                  <div>Concluir</div>
+                )
               ) : (
                 <div>Próximo</div>
               )}
