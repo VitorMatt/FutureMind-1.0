@@ -141,56 +141,55 @@ app.post('/cadastro-paciente', async (req,res) =>{
     }
 });
 
-app.put('/perfil-profissional', async(req, res) => {
-
+app.put('/perfil-profissional', async (req, res) => {
     const {
-        nome_completo,
-        cpf,
-        telefone,
-        preferencias,
-        email, 
-        crp,
-        data_nascimento,
-        especializacao,
-        preco,
-        senha,
-        abordagem,
-        descricao,
-        id_profissional
+      nome_completo,
+      cpf,
+      telefone,
+      preferencias,
+      email,
+      crp,
+      data_nascimento,
+      especializacao,
+      preco,
+      senha,
+      abordagem,
+      descricao,
+      id_profissional,
     } = req.body;
-
+  
     try {
-
-        const result = await pool.query('UPDATE profissionais SET nome_completo = $1, cpf = $2, telefone = $3, preferencias = $4, email = $5, crp = $6, data_nascimento = $7, especializacao = $8, preco = $9, senha = $10, abordagem = $11, descricao = $12 WHERE id_profissional = $13 RETURNING *', [
-            nome_completo,
-            cpf,
-            telefone,
-            preferencias,
-            email, 
-            crp,
-            data_nascimento,
-            especializacao,
-            preco,
-            senha,
-            abordagem,
-            descricao,
-            id_profissional
-        ]);
-
-        if (result.rows.length === 0) {
-
-            return res.status(404).json({ Erro: 'Profissional não encontrado' });
-        }
-
-        res.json(result.rows[0]);
-
+      const result = await pool.query(
+        'UPDATE profissionais SET nome_completo = $1, cpf = $2, telefone = $3, preferencias = $4, email = $5, crp = $6, data_nascimento = $7, especializacao = $8, preco = $9, senha = $10, abordagem = $11, descricao = $12 WHERE id_profissional = $13 RETURNING *',
+        [
+          nome_completo,
+          cpf,
+          telefone,
+          preferencias,
+          email,
+          crp,
+          data_nascimento,
+          especializacao,
+          preco,
+          senha,
+          abordagem,
+          descricao,
+          id_profissional,
+        ]
+      );
+  
+      if (result.rows.length === 0) {
+        console.error('Profissional não encontrado:', id_profissional);
+        return res.status(404).json({ Erro: 'Profissional não encontrado' });
+      }
+  
+      res.json(result.rows[0]); // Retorna o profissional atualizado
     } catch (err) {
-
-        console.error(err.message);
-        return res.status(500).json({ Erro: 'Erro ao atualizar profissional' });
+      console.error('Erro ao atualizar profissional:', err.message);
+      res.status(500).json({ Erro: 'Erro ao atualizar profissional' });
     }
-});
-
+  });
+  
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');

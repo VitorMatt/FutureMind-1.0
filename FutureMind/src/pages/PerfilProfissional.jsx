@@ -48,9 +48,7 @@ function PerfilProfissional() {
   const [savedText, setSavedText] = useState(""); 
   
   const [indicesAgendamentos, setIndicesAgendamentos] = useState({}); 
-  
-  const [nota, setNota] = useState('');
-  const [notas, setNotas] = useState([]);
+
   
   
   var userData = JSON.parse(localStorage.getItem('User'));
@@ -190,25 +188,44 @@ function PerfilProfissional() {
   
   // const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
 
-  const adicionarNota = () => {
-    if (nota.trim() !== '') {
-      setNotas([...notas, nota]); // Adiciona a nova anotação à lista
-      setNota(''); // Limpa o campo de entrada
-    }
-  };
-
 
   const handleEditClick = () => {
     setIsEditing(true); // Ativa o modo de edição
   };
   
-  const handleSaveClick = () => {
-    // Aqui você pode adicionar a lógica para salvar as alterações, como uma chamada à API
-    setIsEditing(false); // Desativa o modo de edição
-
-    // userData.descricao = descricao;
-    
+  const handleSaveClick = async () => {
+    try {
+      const novoProfissional = {
+        ...userData,
+        descricao, // Inclui a descrição atualizada
+      };
+  
+      const response = await fetch('http://localhost:3000/perfil-profissional', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(novoProfissional),
+      });
+  
+      if (response.ok) {
+        const updatedUser = await response.json();
+        localStorage.setItem('User', JSON.stringify(updatedUser));
+        setUser(updatedUser); // Atualiza o contexto do usuário
+        console.log('Descrição salva com sucesso!');
+      } else {
+        const error = await response.json();
+        console.error('Erro ao atualizar a descrição:', error);
+        console.log('Erro ao salvar a descrição.');
+      }
+    } catch (err) {
+      console.error('Erro na requisição:', err.message);
+      console.log('Erro ao salvar a descrição.');
+    }
+  
+    setIsEditing(false); // Sai do modo de edição
   };
+  
   
   const handleCancelClick = () => {
     setDescricao(null); // Reverte para o valor original
@@ -277,7 +294,7 @@ function PerfilProfissional() {
   
         if (response.ok) {
           const data = await response.json();
-          localStorage.setItem('User', JSON.stringify({...userData, foto: data.foto}));
+          localStorage.setItem('User', JSON.stringify({...userData, foto: data.foto, descricao}));
           console.log('Resposta do servidor:', data);
           alert('Foto enviada com sucesso!');
         } else {
@@ -343,6 +360,48 @@ function PerfilProfissional() {
     );
   }
 
+  useEffect(() => {
+    const userDataFromStorage = JSON.parse(localStorage.getItem('User'));
+    if (userDataFromStorage) {
+      setDescricao(userDataFromStorage.descricao || ''); // Recupera a descrição salva ou usa uma string vazia
+    }
+  }, []);
+
+ //
+  const salvarAnotacoesNoLocalStorage = (idProfissional, anotacoes) => {
+    const dadosProfissional = JSON.parse(localStorage.getItem('User'));
+    
+    if (dadosProfissional && dadosProfissional.id_profissional === idProfissional) {
+      localStorage.setItem(`anotacoes_${idProfissional}`, JSON.stringify(anotacoes));
+    }
+  };
+  
+  
+  const obterAnotacoesDoLocalStorage = (idProfissional) => {
+    const anotacoesSalvas = localStorage.getItem(`anotacoes_${idProfissional}`);
+    return anotacoesSalvas ? JSON.parse(anotacoesSalvas) : [];
+  };
+  
+    const [nota, setNota] = useState("");
+    const [notas, setNotas] = useState([]);
+    
+    const idProfissional = userData.id_profissional;
+  
+    useEffect(() => {
+      const anotacoesExistentes = obterAnotacoesDoLocalStorage(idProfissional);
+      setNotas(anotacoesExistentes);
+    }, [idProfissional]);
+  
+    const adicionarNota = () => {
+      if (nota.trim() !== "") {
+        const novasNotas = [...notas, nota]; 
+        setNotas(novasNotas); 
+        setNota(""); 
+  
+        
+        salvarAnotacoesNoLocalStorage(idProfissional, novasNotas);
+      }
+    };
   
 
   return (
