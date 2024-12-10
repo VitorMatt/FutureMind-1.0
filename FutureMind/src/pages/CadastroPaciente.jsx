@@ -5,7 +5,7 @@ import CadastroPaciente1 from '../components/CadastroPaciente1';
 import CadastroPaciente2 from '../components/CadastroPaciente2';
 import CadastroPaciente3 from '../components/CadastroPAciente3';
 import Stepper from '../components/StepperComponent';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 
@@ -19,6 +19,8 @@ function CadastroPaciente() {
   const {telefoneValid} = useContext(GlobalContext)
   const {emailValid} = useContext(GlobalContext)
   const {senhaValid} = useContext(GlobalContext)
+  
+  const navigate = useNavigate('');
   
   // Função de navegação para o próximo passo
 
@@ -56,55 +58,50 @@ function CadastroPaciente() {
     }
   };
 
-  // Função para finalizar o cadastro e enviar os dados
   const handleFinish = async () => {
     if (!emailValid || !senhaValid) {
-
-        navigate('/login');
-    
-    }else{
-
       
       return;
+
+    }else{
+
+      navigate('/login')
     }
 
-    // Aqui, atualizamos o paciente com os dados de email e senha, que vêm de CadastroPaciente3
     const updatedPaciente = { ...paciente, id_paciente: paciente.id_paciente + 1 };
 
-    try {
-      const response = await fetch('http://localhost:3000/cadastro-paciente', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedPaciente),
-      });
+  try {
+    const response = await fetch('http://localhost:3000/cadastro-paciente', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedPaciente),
+    });
 
-      if (response.ok) {
-        // Após cadastro bem-sucedido, resetar dados e navegar para o login
-        
-          paciente.nome_completo = '',
-          paciente.cpf = '',
-          paciente.telefone = '',
-          paciente.data_nascimento = '',
-          paciente.senha = '',
-          paciente.foto = '',
-          paciente.email = ''
-        
-        
-      } else {
-        const data = await response.json();
-        console.log('Erro ao cadastrar paciente:', data);
-      }
-    } catch (error) {
-      console.log('Erro na requisição:', error);
+    if (response.ok) {
+      paciente.nome_completo = '';
+      paciente.cpf = '';
+      paciente.telefone = '';
+      paciente.data_nascimento = '';
+      paciente.senha = '';
+      paciente.foto = '';
+      paciente.email = '';
+
+      navigate('/login'); 
+      
+    } else {
+      const data = await response.json();
+      console.log('Erro ao cadastrar paciente:', data);
     }
+  } catch (error) {
+    console.log('Erro na requisição:', error);
+  }
   };
 
   return (
-    
-    <div className='escolhaCadastro-container'>
-      <div className='lado-esquerdo'>
+    <div className="escolhaCadastro-container">
+      <div className="lado-esquerdo">
         <Stepper activeStep={activeStep} />
         {activeStep === 0 ? (
           <CadastroPaciente1 />
@@ -115,30 +112,39 @@ function CadastroPaciente() {
         ) : (
           <div></div>
         )}
-        <div className='Proximo'>
-          <div className='botao1'>
+
+        <div className="Proximo">
+          <div className="botao1">
             <button
-              className='proximo-estilizado'
+              className="proximo-estilizado"
               onClick={handleBack}
               disabled={activeStep === 0}
             >
               Voltar
             </button>
           </div>
-          <div className='botao2'>
+          <div className="botao2">
             <button
-              className='proximo-estilizado'
+              className="proximo-estilizado"
               onClick={activeStep === 2 ? handleFinish : handleNext}
             >
-              {activeStep === 2 ? <div>Concluir</div> : <div>Próximo</div>}
+              {activeStep === 2 ? (
+                emailValid && senhaValid ? (
+                  <div>Concluir</div>
+                ) : (
+                  <div>Concluir</div>
+                )
+              ) : (
+                <div>Próximo</div>
+              )}
             </button>
           </div>
         </div>
       </div>
 
-      <div className='lado-direito'>
-        <div className='arvore'>
-          <img src='logoLogin.png' alt="" className='arvore-estilizada'/>
+      <div className="lado-direito">
+        <div className="arvore">
+          <img src="logoLogin.png" alt="" className="arvore-estilizada" />
         </div>
       </div>
     </div>
@@ -146,6 +152,3 @@ function CadastroPaciente() {
 }
 
 export default CadastroPaciente;
-
-
-
