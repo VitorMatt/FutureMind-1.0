@@ -99,15 +99,6 @@ function PerfilProfissional() {
   };
 
 
-  // const handleTextChange = (event) => {
-  //   setTemporaryText(event.target.value); 
-
-  // const handleSave = () => {
-  //   setSavedText(temporaryText); 
-  // };
-
-  // const maxLength = 500; // Limite máximo de caracteres
-  // const progressPercentage = (temporaryText.length / maxLength) * 100; // Porcentagem da barra de progresso
   
   const handleEventClick = (agendamento, event) => {
     // Captura a posição do elemento clicado
@@ -161,43 +152,23 @@ function PerfilProfissional() {
       profissional.horarios = horarios;
   }, [horarios]);
 
-  // const [selecionarOpcoesAreas, setSelecionarOpcoesAreas] = useState([]);
   const opcoesAreas = ["Idosos", "PCDs", "Adultos", "Crianças", "Adolescentes", "Pré-Adolescentes"];
-  // const [selecionarOpcoesEspecializacoes, setSelecionarOpcoesEspecializacoes] = useState([]);
   const opcoesEspecializacoes = ["Adolescência", "Depressão", "Angústia", "Ansiedade", "Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"];
 
   const [preferencias, setPreferencias] = useState([]);
   const [especializacao, setEspecializacao] = useState([]);
 
-  // const handleChangePreferencias = (event) => {
-
-  //   if (event.target.checked) {
-
-  //     setPreferencias(event.target.value);
-  //   }
-  // };
-
-  // const handleChangeEspecializacao = (event) => {
-
-  //   if (event.target.checked) {
-
-  //     setEspecializacao(event.target.value);
-  //   }
-  // };
-  
-  
-  // const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
 
 
   const handleEditClick = () => {
-    setIsEditing(true); // Ativa o modo de edição
+    setIsEditing(true); 
   };
   
   const handleSaveClick = async () => {
     try {
       const novoProfissional = {
         ...userData,
-        descricao, // Inclui a descrição atualizada
+        descricao, 
       };
   
       const response = await fetch('http://localhost:3000/perfil-profissional', {
@@ -237,44 +208,43 @@ function PerfilProfissional() {
   const [nome, setNome] = useState(userData.nome_completo);
 
   
-
   const handleEditarPerfil = async () => {
-    let novoProfissional = {
-      email: email,
-      senha: senha,
-      preferencias: preferencias,
-      especializacao: especializacao,
+    const novoProfissional = {
+      ...userData,
+      email,
+      senha,
+      preferencias, // Envia apenas os itens selecionados
+      especializacao, // Envia apenas os itens selecionados
       data_nascimento: date,
       preco: profissional.preco,
       nome_completo: nome,
       cpf: profissional.cpf,
       crp: profissional.crp,
-      abordagem: abordagem,
+      abordagem,
       telefone: profissional.telefone,
-      descricao: descricao,
+      descricao,
       id_profissional: userData.id_profissional,
     };
-
+  
     try {
-        const response = await fetch('http://localhost:3000/perfil-profissional', {
-            method: 'PUT',
-            headers: {
-                'Content-type': 'application/json',
-            },
-            body: JSON.stringify(novoProfissional),
-        });
-
-        if (response.ok) {
-
-          novoProfissional = {...novoProfissional, foto: userData.foto};
-            localStorage.setItem('User', JSON.stringify(novoProfissional));
-        } else {
-            console.error('Erro ao atualizar os dados:', await response.json());
-        }
+      const response = await fetch('http://localhost:3000/perfil-profissional', {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(novoProfissional),
+      });
+  
+      if (response.ok) {
+        localStorage.setItem('User', JSON.stringify(novoProfissional));
+        console.log('Perfil atualizado com sucesso!');
+      } else {
+        console.error('Erro ao atualizar o perfil:', await response.json());
+      }
     } catch (err) {
-        console.error('Erro:', err.message);
+      console.error('Erro na requisição:', err.message);
     }
-};
+  };
 
 
   const onImageChange = async (event) => {
@@ -341,24 +311,18 @@ function PerfilProfissional() {
   }
 
   const handleChangeEspecializacoes = (e) => {
-
     const value = e.target.value;
-    setEspecializacao((prevEspecializacao) =>
-        e.target.checked
-            ? [...prevEspecializacao, value]
-            : prevEspecializacao.filter((item) => item !== value)
+    setEspecializacao((prev) =>
+      e.target.checked ? [...prev, value] : prev.filter((item) => item !== value)
     );
-  }
-
+  };
+  
   const handleChangePreferencias = (e) => {
-
     const value = e.target.value;
-    setPreferencias((prevPreferencias) =>
-        e.target.checked
-            ? [...prevPreferencias, value]
-            : prevPreferencias.filter((item) => item !== value)
+    setPreferencias((prev) =>
+      e.target.checked ? [...prev, value] : prev.filter((item) => item !== value)
     );
-  }
+  };
 
   useEffect(() => {
     const userDataFromStorage = JSON.parse(localStorage.getItem('User'));
@@ -724,44 +688,44 @@ function PerfilProfissional() {
                 <div className='divs-editar'>
 
                 <div className="container-areas">
-                  <h2>Selecione suas áreas:</h2>
-                  <div className="options-container">
-                    {opcoesAreas.map((opcoesAreas, index) => (
+                <h2>Selecione suas áreas:</h2>
+                <div className="options-container">
+                  {opcoesAreas.map((opcao, index) => (
                     <div key={index}>
-                    <input
+                      <input
                         type="checkbox"
-                        id={`opcoesEspecializacoes-${index}`}
-                        value={opcoesEspecializacoes}
-                        
-                        onChange={handleChangeEspecializacoes}
-                    />
-                    <label htmlFor={`opcoesAreas-${index}`} className="labelareas">
-                      {opcoesAreas}
-                    </label>
+                        id={`opcoesAreas-${index}`}
+                        value={opcao}
+                        checked={preferencias.includes(opcao)} // Mantém o estado visual dos checkboxes
+                        onChange={handleChangePreferencias}
+                      />
+                      <label htmlFor={`opcoesAreas-${index}`} className="labelareas">
+                        {opcao}
+                      </label>
                     </div>
-                    ))}
-                  </div>
+                  ))}
+                </div>
                 </div>
 
                 <div className="container-especi">
-                  <h2>Selecione suas especializações:</h2>
-                  <div className="options-container">
-                    {opcoesEspecializacoes.map((opcoesEspecializacoes, index) => (
+                <h2>Selecione suas especializações:</h2>
+                <div className="options-container">
+                  {opcoesEspecializacoes.map((opcao, index) => (
                     <div key={index}>
-                    <input
+                      <input
                         type="checkbox"
-                        id={`opcoesAreas-${index}`}
-                        value={opcoesAreas}
-                        
-                        onChange={handleChangePreferencias}
-                    />
-                    <label htmlFor={`opcoesEspecializacoes-${index}`} className="labelespeci">
-                      {opcoesEspecializacoes}
-                    </label>
+                        id={`opcoesEspecializacoes-${index}`}
+                        value={opcao}
+                        checked={especializacao.includes(opcao)} // Mantém o estado visual dos checkboxes
+                        onChange={handleChangeEspecializacoes}
+                      />
+                      <label htmlFor={`opcoesEspecializacoes-${index}`} className="labelespeci">
+                        {opcao}
+                      </label>
                     </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
+              </div>
                   
                 </div>
                 
