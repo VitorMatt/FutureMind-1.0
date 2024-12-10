@@ -59,11 +59,11 @@ function Termos() {
           <img src="bolona2.png"/>
         </div>
 
-        <div>
+        <div className='bolaEsquerda'>
           <img src="bolona.png" className='bolinha2'/>
         </div>
 
-        <div>
+        <div className='bolaEsquerda'>
           <img src="bolonaEsquerda.png" className='bolonaes'/>
         </div>
 
@@ -145,7 +145,7 @@ function Termos() {
         </Accordion>
       </div>
 
-      <div className='accordion-container'>
+      <div className='accordion-container-final'>
         <Accordion className='container_ac'>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}

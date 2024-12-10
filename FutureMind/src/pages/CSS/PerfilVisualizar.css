@@ -70,26 +70,6 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-div::-webkit-scrollbar-track{
-
-    background: #f1f1f1;
-    border-radius: 3px;
-}
-
-div::-webkit-scrollbar-thumb{
-
-
-    background-color: var(--cor-1);
-    border-radius: 3px;
-}
-
-div::-webkit-scrollbar{
-
-
-    width: 12px;
-}
-
-
 .editar-perfil-profissional{
     margin-top: 6%;
     
@@ -265,7 +245,6 @@ div::-webkit-scrollbar{
     position: absolute;
     background: #cad7ebcb;
     color: #014F86;
-    /* border: 2px solid #014e86ce; */
     padding: 12px;
     border-radius: 10px;
     width: 300px;
@@ -294,17 +273,6 @@ div::-webkit-scrollbar{
     justify-content: flex-start;
     align-items: flex-start;
     text-transform: capitalize;
-  }
- 
-  .event-details-v::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent #5A789F transparent transparent;
-    left: -10px; /* Posiciona a seta na lateral esquerda */
   }
 
   .fechar-detalhes-v{

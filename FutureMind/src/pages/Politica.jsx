@@ -60,13 +60,14 @@ function politica() {
        <img src="bolona2.png"/>
       </div>
 
-      <div>
+      <div className='bolaEsquerda'>
         <img src="bolona.png" className='bolinha2'/>
       </div>
 
-      <div>
+      <div className='bolaEsquerda'>
         <img src="bolonaEsquerda.png" className='bolonaes'/>
       </div>
+
       <div className='accordion-container'>
         <Accordion className='container_ac'>
           <AccordionSummary
@@ -149,7 +150,9 @@ function politica() {
         </Accordion>
       </div>
 
-      <h1 className='H1_recursos' >Quais Recursos Protegem seus Dados ?</h1>
+      <div className='div-h1'>
+        <h1 className='H1_recursos' >Quais Recursos Protegem seus Dados ?</h1>
+      </div>
 
       <div className='Container-recursos'>
         

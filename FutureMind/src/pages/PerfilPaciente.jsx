@@ -164,30 +164,28 @@ function PerfilPaciente() {
                 <div>
 
                  <div className='div-foto-nome-p'>
+
+                  <div className='div-foto-editar'>
                     <div className='foto-usuario-p'>
                         <img src='iconuser.svg' className='a-foto-p'/>
                     </div>
+
                     <div className='input-editar-foto-p'>
                       <input type="file" id="file" name="file" />
                        <label htmlFor="file" className="label-file-p"> Editar Foto</label>
-                        </div>
-                     <div className='nick-usuario-p'>
+                    </div>
+                  </div>
 
-                     {/* <div className='meet-p'>
-                      <Link to= "https://workspace.google.com/products/meet/"><img src="" alt="" /></Link>
-                      </div> */}
+                    <div className='nick-usuario-p'>
 
-                        {/* <h1>{userData.nome_completo}</h1>
+                      <div className='meet-p'>
+                        <Link to= "https://workspace.google.com/products/meet/"><img src="/video-solid.svg"/></Link>
+                      </div>
 
-                      <h1>{userData.nome_completo}</h1>
-
-                       <h1>{userData.nome_completo}</h1>
-
-                      <p>{userData.email}</p>
-
-                      <h1>{userData.nome_completo}</h1>
+                      {/* <h1>{userData.nome_completo}</h1>
                       <p>{userData.email}</p> */}
                     </div>
+
                  </div>
     
                  <div className='titulo-agenda-p'>
