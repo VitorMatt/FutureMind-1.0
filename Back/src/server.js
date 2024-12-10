@@ -476,25 +476,40 @@ app.post('/sugestoes', async(req, res) => {
     }
 })
 
-app.post('/perfil-profissional/agenda', async(req, res) => {
-
+app.post('/perfil-profissional/agenda/:id_profissional', async (req, res) => {
     const { id_profissional } = req.params;
-
+  
     try {
-
-        const result = await pool.query('SELECT * FROM agendamento WHERE fk_id_profissional = $1', [id_profissional]);
-
-        if (result.rows > 0) {
-
-            return res.status(200).json(result.rows);
-        }
-
-        return res.status(404).json("Não encontrado");
+      const result = await pool.query('SELECT * FROM agendamento WHERE fk_id_profissional = $1', [id_profissional]);
+  
+      if (result.rows.length > 0) {
+        return res.status(200).json(result.rows); // Corrigido o uso de `rows.length`
+      }
+  
+      return res.status(404).json("Nenhum agendamento encontrado");
     } catch (err) {
-
-        console.log(err.message);
+      console.error(err.message);
+      return res.status(500).json("Erro no servidor");
     }
-})
+  });
+  
+  app.get('/perfil-profissional/agenda/paciente/:id', async (req, res) => {
+    const { id } = req.params;
+  
+    try {
+      const result = await pool.query('SELECT nome_completo FROM pacientes WHERE id_paciente = $1', [id]);
+  
+      if (result.rows.length > 0) {
+        return res.status(200).json(result.rows[0]); // Retornar apenas o primeiro paciente
+      }
+  
+      return res.status(404).json('Paciente não encontrado');
+    } catch (err) {
+      console.error(err.message);
+      return res.status(500).json("Erro no servidor");
+    }
+  });
+  
 
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');

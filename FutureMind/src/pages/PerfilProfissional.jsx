@@ -30,17 +30,7 @@ function PerfilProfissional() {
   const [selectedAgendamento, setSelectedAgendamento] = useState(null);
   const [divPosition, setDivPosition] = useState({ top: 0, left: 0}); // Posição da div de detalhes
   
-  const [agendamentos, setAgendamentos] = useState([
-    
-    { data: "2024-12-02", paciente: "Thalles Lima", horario: "15:00" },
-    { data: "2024-12-02", paciente: "Luciana Nuss", horario: "17:30" },
-    { data: "2024-12-02", paciente: "aaaaaaaaa", horario: "20:00" },
-    { data: "2024-12-03", paciente: "Julia Silva Dias", horario: "14:30" },
-    { data: "2024-12-04", paciente: "Mateus da Silva", horario: "16:00" },
-    { data: "2024-12-04", paciente: "renatinho", horario: "18:00" },
-    { data: "2024-12-05", paciente: "aaaaaaaaa", horario: "20:00" },
-    
-  ]);
+  const [agendamentos, setAgendamentos] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
 
@@ -366,7 +356,46 @@ function PerfilProfissional() {
         salvarAnotacoesNoLocalStorage(idProfissional, novasNotas);
       }
     };
-  
+    
+    const [pacientes, setPacientes] = useState([]);
+    useEffect(() => {
+      getAgenda();
+    }, []);
+    
+    const getAgenda = async () => {
+      const id_profissional = userData.id_profissional;
+    
+      try {
+        const response = await fetch(`http://localhost:3000/perfil-profissional/agenda/${id_profissional}`);
+    
+        if (response.ok) {
+          const data = await response.json(); // Corrigido para response.json()
+          setAgendamentos(data);
+    
+          // Buscar os pacientes relacionados
+          data.forEach((agendamento) => {
+            getPaciente(agendamento.fkpaciente_id_paciente);
+          });
+        }
+      } catch (err) {
+        console.error("Erro ao buscar agenda:", err.message);
+      }
+    };
+    
+    const getPaciente = async (id) => {
+      try {
+        const response = await fetch(`http://localhost:3000/perfil-profissional/agenda/paciente/${id}`);
+    
+        if (response.ok) {
+          const data = await response.json();
+          setPacientes((prevPacientes) => [...prevPacientes, data]); // Adicionar paciente acumulativamente
+        }
+      } catch (err) {
+        console.error("Erro ao buscar paciente:", err.message);
+      }
+    };
+    
+
 
   return (
     <div className='perfilPro-container'>
@@ -465,81 +494,56 @@ function PerfilProfissional() {
                     </div>
                  </div>
     
-                 <div className='titulo-agenda'>
-                    <h1>Agenda</h1>
-                 </div>
-            
-          <div className='container-agendamento'>
-              <button onClick={() => handleTrocarSemana(false)} className="button_voltar"><img src="angle-left-solid.svg" alt="" /></button> 
-           <div className='container-menor-ag'>
-            <span className='mes-ano'>{dataAtual.toLocaleDateString ("pt-BR", {month: "long", year: "numeric"})}</span>
-           <div className='dias_semana'>
-             {
-                diasUteis.map((dia,index) => {
+            <div className='titulo-agenda'>
+              <h1>Agenda</h1>
+            </div>
 
-                  const diaString = dia.toISOString().split("T")[0];
-                  const agendamentosDoDia = agendamentos.filter((ag) => ag.data === diaString);
-                  const indiceAtual = indicesAgendamentos[diaString] || 0;
+            <div className='container-agendamento'>
+              <button onClick={() => handleTrocarSemana(false)} className="button_voltar">
+                <img src="angle-left-solid.svg" alt="Semana Anterior" />
+              </button>
+              
+              <div className='container-menor-ag'>
+                <span className='mes-ano'>{dataAtual.toLocaleDateString("pt-BR", { month: "long", year: "numeric" })}</span>
+                
+                <div className='dias_semana'>
+                  {diasUteis.map((dia, index) => {
+                    const diaString = dia.toISOString().split("T")[0];
+                    const agendamentosDoDia = agendamentos.filter((ag) => ag.data === diaString);
 
-                  return (
-
-                    <div key={index} className="div_informações_ag">
-
-                     <div className='semana'>
-                      <div className='cabeçalho'>
-                       <div className='Nome_dia_da_semana'>  {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {dia.getDate()}</div>
-                      </div>
-                     </div>
-                     {agendamentosDoDia.map((event) => (
-                    <div
-                    key={`${diaString}-${event.horario}`}
-                    className="event-card"
-                    onClick={(e) => handleEventClick(event, e)}
-                   >
-                    <p onClick={() => handleEventClick(agendamentosDoDia)} className="agendamento-nome">
-                     {event.paciente}
-                    </p>
-                    
-                  </div>
-                ))}
-                    </div>
-                  )
-                }) 
-             }
-                   {selectedAgendamento && (
-                     <div
-                      className="detalhes-agendamento"
-                      style={{
-                        top: `${divPosition.top}px`,
-                        left: `${divPosition.left}px`,
-                      }}
-                     >
-                      <div className="detalhes-conteudo">
-                        <div className='fechar-detalhes'>
-                          <button onClick={handleCloseDetails}>
-                            <img src="xizinho.svg" alt="" />
-                          </button>
+                    return (
+                      <div key={index} className="div_informações_ag">
+                        <div className='semana'>
+                          <div className='cabeçalho'>
+                            <div className='Nome_dia_da_semana'>
+                              {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {dia.getDate()}
+                            </div>
+                          </div>
                         </div>
-                        <h2>Detalhes do Agendamento</h2>
-                        <p><strong>Paciente:</strong> {selectedAgendamento.paciente}</p>
-                        <p><strong>Data:</strong> {selectedAgendamento.data}</p>
-                        <p><strong>Horário:</strong> {selectedAgendamento.horario}</p>
-                        <div className='buttons-detalhes-conteudo'>
-                          <button className='but-det' onClick={() => handleDeleteAppointment(selectedAgendamento)}>
-                            Cancelar
-                          </button>
-                          <button className='but-det' onClick={() => handleConcludeAppointment(selectedAgendamento)}>
-                            Concluída
-                          </button>
-                        </div>
-                      </div>
-                      </div>
-                  )}
+                        
+                        {agendamentosDoDia.map((event) => {
+                          const paciente = pacientes.find((p) => p.id_paciente === event.fkpaciente_id_paciente);
 
-           </div>
-           </div>
-           <button onClick={() => handleTrocarSemana(true)}  className="button_passar"><img src="angle-right-solid.svg" alt=""/></button>
-          </div>
+                          return (
+                            <div
+                              key={`${diaString}-${event.horario}`}
+                              className="event-card"
+                              onClick={(e) => handleEventClick(event, e)}
+                            >
+                              <p>{paciente ? paciente.nome_completo : 'Paciente não encontrado'}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              
+              <button onClick={() => handleTrocarSemana(true)} className="button_passar">
+                <img src="angle-right-solid.svg" alt="Próxima Semana" />
+              </button>
+            </div>
         </div>
         <div className='anotações-profissional'>
          <div className='titulo-perfil'>
