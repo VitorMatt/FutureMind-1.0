@@ -916,3 +916,48 @@ input[type="checkbox"]:checked::before {
 input[type="checkbox"]:focus {
     border-color: #89c2d9;
 }
+
+
+.olhos-input {
+    position: absolute;
+    padding-left: 12%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.olhos-input img {
+    width: 2em;
+    height: auto;
+    padding-bottom: 3em;
+    position: absolute;
+
+}
+.olho-div-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 10%;
+}
+
+.validation-dot {
+    color: red;
+    font-size: 24px;
+    margin-left: 8px;
+    cursor: help;
+  }
+  
+  .validation-dot:hover::after {
+    content: attr(title);
+    position: absolute;
+    background: #f2f2f2;
+    color: #333;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    white-space: nowrap;
+    transform: translateX(-50%);
+  }
+  

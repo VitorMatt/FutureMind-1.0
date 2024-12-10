@@ -219,6 +219,8 @@ function PerfilProfissional() {
   const [senha, setSenha] = useState(userData.senha);
   const [nome, setNome] = useState(userData.nome_completo);
 
+  
+
   const handleEditarPerfil = async () => {
     let novoProfissional = {
       email: email,
@@ -340,6 +342,8 @@ function PerfilProfissional() {
             : prevPreferencias.filter((item) => item !== value)
     );
   }
+
+  
 
   return (
     <div className='perfilPro-container'>
@@ -657,31 +661,6 @@ function PerfilProfissional() {
                 </div>
 
               <div className='container-escolhas'>
-
-                {/* <div className="descricao-editar">
-                  <h2>Digite uma breve descrição sobre você:</h2>
-                  <textarea
-                  className="o-text"
-                  value={temporaryText}
-                  onChange={handleTextChange}
-                  rows="5"
-                  maxLength={maxLength}
-                  />
-                  <div className='contador'>
-                    <span>
-                      {temporaryText.length} / {maxLength}
-                    </span>
-                  </div>
-                  <div className="div-mensagemsalva">
-                    <div className="a-mensagem">
-                      <strong>Texto salvo:</strong>
-                      <p>{savedText || "Nenhum texto salvo ainda."}</p>
-                    </div>
-                    <div className="div-botão-salvar">
-                      <button onClick={handleSave} className="salvar">Salvar</button>
-                    </div>
-                  </div>
-                </div> */}
 
                 <div className='divs-editar'>
 
