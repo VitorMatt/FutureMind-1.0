@@ -36,7 +36,7 @@ function CadastroPaciente3() {
           <input
             type="email"
             name="email"
-            className={emailValid ? "valid" : email ? "invalid" : "neutro"}
+            className="inputCRP"
             value={email}
             onChange={(e) => setEmail(e.target.value)} // Altera somente o estado local
           />
@@ -68,7 +68,7 @@ function CadastroPaciente3() {
               onChange={(e) => setSenha(e.target.value)} // Altera somente o estado local
               type={olhosSenha ? 'text' : 'password'}
               maxLength="10"
-              className={senhaValid ? "valid" : senha ? "invalid" : "neutro"}
+              className="inputCRP"
             />
              <span
               className={`status-indicador ${

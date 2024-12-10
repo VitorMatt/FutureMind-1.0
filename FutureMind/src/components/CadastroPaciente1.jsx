@@ -62,7 +62,7 @@ function CadastroPaciente1() {
             name="nome"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className={usernameValid ? "valid" : name ? "invalid" : "neutro"}
+            className="inputCRP"
           />
           
          <span
@@ -95,7 +95,7 @@ function CadastroPaciente1() {
 
             value={date}
             onChange={(selectedDates) => setDate(selectedDates[0])}
-            className={data_nascimentoValid ? "valid" : date ? "invalid" : "neutro"}
+            className="inputCRP"
           />
             <span
           className={`status-indicador ${

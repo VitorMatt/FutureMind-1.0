@@ -60,7 +60,7 @@ function CadastroPaciente2() {
             maxLength="14"
             value={cpf}
             onChange={handleCpfChange} // Atualiza o estado com a máscara
-            className={cpfValid ? "valid" : cpf ? "invalid" : "neutro"}
+            className="inputCRP"
           />
           <span
             className={`status-indicador ${cpfValid ? "valid" : cpf ? "invalid" : "neutro"}`}
@@ -84,7 +84,7 @@ function CadastroPaciente2() {
             maxLength="15"  // Limita o comprimento ao tamanho máximo de telefone com a máscara
             value={telefone}
             onChange={handleTelefoneChange} // Atualiza o estado com a máscara de telefone
-            className={telefoneValid ? "valid" : telefone ? "invalid" : "neutro"}
+            className="inputCRP"
           />
           <span
             className={`status-indicador ${telefoneValid ? "valid" : telefone ? "invalid" : "neutro"}`}

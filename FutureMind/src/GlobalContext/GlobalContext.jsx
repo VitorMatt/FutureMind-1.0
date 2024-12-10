@@ -116,6 +116,20 @@ const paciente = {
     const [atendeValid, setAtendeValid] = useState(false)
     const [especializacaoValid, setEspecializaçãoValid] = useState(false)
     const [valorValid, setValorValid] = useState(false)
+    const [valorHover, setValorHover] = useState(false)
+    const [data_nascimentoProfissionalValid, setData_nascimentoProfissionalValid] = useState(false)
+    const [data_nascimentoProfissionalValidHover, setData_nascimentoProfissionalHover] = useState(false)
+    const [nome_profissinalValid, setNomeProfissionalValid] = useState(false)
+    const [nome_profissinalHover, setNomeProfissionalHover] = useState(false)
+    const [ cpfProfissionalValid, setCpfProfissionalValid ] = useState(false)
+    const [ cpfProfissionalHover, setCpfProfissionalHover ] = useState(false)
+    const [ telefoneProfissionalValid, setTelefoneProfissionalValid ] = useState(false)
+    const [ telefoneProfissinalHover, setTelefoneProfissionalHover ] = useState(false)
+    const [emailProfissionalValid, setEmailProfissionalValid] = useState(false)
+    const [emailProfissionalHover, setEmailProfissonalHover] = useState(false)
+    const [senhaProfissionalValid, setSenhaProfissionalValid] = useState(false)
+    const [senhaProfissionalHover, setSenhaProfissionalHover] = useState(false)
+
 
     return(
         <GlobalContext.Provider value={{
@@ -132,8 +146,14 @@ const paciente = {
         crpValid, setCrpValid, crpHouver, setCrpHover,
         atendeValid, setAtendeValid,
         especializacaoValid, setEspecializaçãoValid,
-        valorValid, setValorValid
-        
+        valorValid, setValorValid, valorHover, setValorHover,
+        data_nascimentoProfissionalValid, setData_nascimentoProfissionalValid,data_nascimentoProfissionalValidHover, setData_nascimentoProfissionalHover,
+        nome_profissinalValid, setNomeProfissionalValid, nome_profissinalHover, setNomeProfissionalHover,
+        cpfProfissionalValid, setCpfProfissionalValid,cpfProfissionalHover, setCpfProfissionalHover,
+        telefoneProfissionalValid, setTelefoneProfissionalValid, telefoneProfissinalHover, setTelefoneProfissionalHover,
+        emailProfissionalValid, setEmailProfissionalValid, emailProfissionalHover, setEmailProfissonalHover,
+        senhaProfissionalValid, setSenhaProfissionalValid, senhaProfissionalHover, setSenhaProfissionalHover
+
         }}>
             {children}
         </GlobalContext.Provider>

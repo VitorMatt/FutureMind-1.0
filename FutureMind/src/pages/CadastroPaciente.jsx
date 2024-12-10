@@ -25,20 +25,28 @@ function CadastroPaciente() {
   const handleNext = () => {
     if (activeStep === 0) {
       if (!usernameValid || !data_nascimentoValid) {
+        
         return; // Não avança se o username ou data de nascimento forem inválidos
+      }else{
+
+        setActiveStep((prevStep) => prevStep + 1);
       }
     }
   
-    if (activeStep === 2 ) {
+    if (activeStep === 1 ) {
       // Certifique-se de que o CPF e o telefone sejam válidos antes de avançar
       if (!cpfValid || !telefoneValid ) {
+
         return // Impede de avançar se CPF ou telefone forem inválidos
+
+      }else{
+
+        setActiveStep((prevStep) => prevStep + 1);
+
       }
     }
   
-    if (activeStep < 2 ) {
-      setActiveStep((prevStep) => prevStep + 1); // Avança para o próximo passo
-    }
+  
   };
   
   // Função para voltar para a etapa anterior
@@ -51,7 +59,13 @@ function CadastroPaciente() {
   // Função para finalizar o cadastro e enviar os dados
   const handleFinish = async () => {
     if (!emailValid || !senhaValid) {
-      return; // Não envia os dados caso haja erro de validação
+
+        navigate('/login');
+    
+    }else{
+
+      
+      return;
     }
 
     // Aqui, atualizamos o paciente com os dados de email e senha, que vêm de CadastroPaciente3
@@ -77,7 +91,7 @@ function CadastroPaciente() {
           paciente.foto = '',
           paciente.email = ''
         
-        navigate('/login');
+        
       } else {
         const data = await response.json();
         console.log('Erro ao cadastrar paciente:', data);

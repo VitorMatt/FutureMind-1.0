@@ -1,26 +1,115 @@
 import './CSS/Profissionais3.css'
-import CpfInput from './CpfInput';
-import TelefoneMask from './TelefoneMask';
+import React, { useContext, useState, useEffect } from "react"
+import { GlobalContext } from '../GlobalContext/GlobalContext'
 
 function CadastroProfissionais6() {
+  const { profissional } = useContext(GlobalContext)
 
-    return (
-      <div className="selecao1">
-      
+  const [cpf, setCpf] = useState(profissional.cpf);  // Gerenciamento do CPF
+  const [telefone, setTelefone] = useState(profissional.telefone);  // Gerenciamento do telefone
+  const { cpfProfissionalValid, setCpfProfissionalValid } = useContext(GlobalContext)
+  const { cpfProfissionalHover, setCpfProfissionalHover } = useContext(GlobalContext)
+  const { telefoneProfissionalValid, setTelefoneProfissionalValid } = useContext(GlobalContext)
+  const { telefoneProfissinalHover, setTelefoneProfissionalHover } = useContext(GlobalContext)
+   
+  // Função para aplicar a máscara de CPF
+  const maskCPF = (value) => {
+    value = value.replace(/\D/g, ''); // Remove tudo o que não for número
+    value = value.replace(/^(\d{3})(\d)/, '$1.$2'); // Adiciona ponto após 3 primeiros dígitos
+    value = value.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3'); // Adiciona ponto após 6 primeiros dígitos
+    value = value.replace(/\.(\d{3})(\d)/, '.$1-$2'); // Adiciona traço antes dos 2 últimos dígitos
+    return value;
+  };
+ 
+
+  // Função para aplicar a máscara de telefone
+  const maskTelefone = (value) => {
+    value = value.replace(/\D/g, ''); // Remove tudo o que não for número
+    value = value.replace(/^(\d{2})(\d)/, '($1) $2'); // Adiciona parênteses e espaço após o DDD
+    value = value.replace(/^(\(\d{2}\) \d{5})(\d)/, '$1-$2'); // Adiciona o traço após os 5 primeiros números
+    return value;
+  };
+
+  useEffect(() => {
+    setCpfProfissionalValid(cpf.length === 14); // Verificação de validade para CPF
+    setTelefoneProfissionalValid(telefone.length === 15); // Verificação de validade para telefone (com máscara)
+  }, [cpf, telefone]);
+
+  // Função de mudança do CPF com máscara
+  const handleCpfChange = (e) => {
+    const maskedCpf = maskCPF(e.target.value);
+    setCpf(maskedCpf); // Atualiza o estado com o CPF formatado
+  };
+
+  // Função de mudança do telefone com máscara
+  const handleTelefoneChange = (e) => {
+    const maskedTelefone = maskTelefone(e.target.value);
+    setTelefone(maskedTelefone); // Atualiza o estado com o telefone formatado
+  };
+
+  useEffect(() => {
+    profissional.cpf = cpf;
+  }, [cpf]);
+
+  useEffect(() => {
+    profissional.telefone = telefone;
+  }, [telefone]);
+
+
+  return (
+    <div className="selecao1">
       <h3 className='titulo-cadastro2'>Seus Dados..</h3>
       <div className="checkboxs2">
+        <div className="input-text">
+          <label htmlFor="cpf">CPF</label>
+          <input
+            type="text"
+            id="cpf"
+            name="cpf"
+            placeholder="XXX.XXX.XXX-XX"
+            maxLength="14"
+            value={cpf}
+            onChange={handleCpfChange} // Atualiza o estado com a máscara
+            className="inputCRP"
+          />
+          <span
+            className={`status-indicador ${cpfProfissionalValid ? "valid" : cpf ? "invalid" : "neutro"}`}
+            onMouseEnter={() => setCpfProfissionalHover(true)}
+            onMouseLeave={() => setCpfProfissionalHover(false)}
+          ></span>
+          {cpfProfissionalHover && (
+            <div className="tooltip">
+              {cpfProfissionalValid ? "cpf ok" : "cpf errado"}
+            </div>
+          )}
+        </div>
 
-    <div className="input-text">
-      <label htmlFor="">CPF</label><CpfInput />
-    </div>
-    <div className="input-text">
-      <label htmlFor="">Telefone</label><TelefoneMask />
-    </div>
+        <div className="input-text">
+          <label htmlFor="telefone">Telefone</label>
+          <input
+            type="text"
+            id="telefone"
+            name="telefone"
+            placeholder="(XX) XXXXX-XXXX"
+            maxLength="15"  // Limita o comprimento ao tamanho máximo de telefone com a máscara
+            value={telefone}
+            onChange={handleTelefoneChange} // Atualiza o estado com a máscara de telefone
+            className="inputCRP"
+          />
+          <span
+            className={`status-indicador ${telefoneProfissionalValid ? "valid" : telefone ? "invalid" : "neutro"}`}
+            onMouseEnter={() => setTelefoneProfissionalHover(true)}
+            onMouseLeave={() => setTelefoneProfissionalHover(false)}
+          ></span>
+          {telefoneProfissinalHover && (
+            <div className="tooltip">
+              {telefoneProfissionalValid ? "telefone ok" : "telefone errado"}
+            </div>
+          )}
+        </div>
       </div>
     </div>
-    )
-  }
-  
-  
-  
-  export default CadastroProfissionais6
+  );
+}
+
+export default CadastroProfissionais6
