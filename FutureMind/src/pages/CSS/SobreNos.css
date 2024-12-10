@@ -1,8 +1,6 @@
 .sobreNos-container{
     background-color: #f0f1f5;
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
+    height: 100vh;
     width: 100%;
     margin: 0;
 }
@@ -31,6 +29,7 @@
 .conteudoo2{
     display: flex;
     padding-top: 5%;
+    background-color: #f0f1f5;
 }
 
 .conteudoo h1, .conteudoo2 h1{
@@ -93,6 +92,9 @@
     justify-content: space-evenly;
     align-items: flex-end;
     width: 100%;
+    height: 30%;
+    background-color: #f0f1f5;
+    padding-bottom: 10%;
 }
 
 .card1{
@@ -134,6 +136,7 @@
     border-radius: 20px;
     width: 80%;
     margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 .imgDivSugestao{
@@ -195,4 +198,11 @@
     resize: none;       /* Desativa o redimensionamento manual */
     padding: 1.5%;
     font-size: 1.5em;
+}
+
+.container-sugestoes{
+    width: 100%;
+    height: 70%;
+    background-color: #f0f1f5;
+    margin-top: -10%;
 }

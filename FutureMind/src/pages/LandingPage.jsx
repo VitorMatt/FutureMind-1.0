@@ -19,7 +19,7 @@ function LandingPage() {
             <p>Moldamos nosso próprio futuro, quando transformamos nossa mente.</p>
             <p>Vamos cultivar esse futuro promissor juntos?</p>
           </div>
-          <Link to="/">
+          <Link to="/cadastro">
             <button className="btn">Comece Já</button>
           </Link>
         </div>
@@ -60,7 +60,7 @@ function LandingPage() {
           </div>
 
           <div className="conhecer-gente">
-            <button className="conhecer-button">Conhecer a gente</button>
+            <Link to= "/sobrenos"><button className="conhecer-button">Conhecer a gente</button></Link>
           </div>
         </div>
       </div>
@@ -87,6 +87,7 @@ function LandingPage() {
       </div>
 
       {/* Final Message Section */}
+      <div className='container-total'>
       <div className="div-total">
         <div className="btn-text">
           <div className="textFinal">
@@ -97,7 +98,7 @@ function LandingPage() {
           </div>
 
           <div className="ultimobtn">
-            <button>Colabore com a gente</button>
+            <Link to= "/sobrenos"><button>Colabore com a gente</button></Link>
           </div>
         </div>
 
@@ -179,6 +180,7 @@ function LandingPage() {
             </div>
           </div>
         </div>
+      </div>
       </div>
 
       {/* Footer Section */}

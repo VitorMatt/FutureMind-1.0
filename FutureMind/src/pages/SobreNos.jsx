@@ -128,6 +128,7 @@ Com um time de terapeutas altamente capacitados e uma abordagem personalizada, b
         </div>
       </div>
 
+      <div className='container-sugestoes'>
         <div className='divSugestões'>
 
           <div className='imgDivSugestao'>
@@ -141,6 +142,7 @@ Com um time de terapeutas altamente capacitados e uma abordagem personalizada, b
             <button className='botaoSugestao' onClick={handleSugestao}>Enviar</button>
           </div>
         </div>
+      </div>
 
         <Footer />
 

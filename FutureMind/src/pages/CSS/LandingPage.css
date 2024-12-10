@@ -45,7 +45,6 @@
     flex-wrap: wrap;
     width: 90%;
     font-size: 50px;
-    margin-left: 10%;
 }
 
 .subtitulo {
@@ -81,14 +80,20 @@
     width: 140%;
     font-family: "Poppins", sans-serif;
     font-size: 28px;
-    margin-left: -120%;
+    margin-left: -140%;
+    cursor: pointer;
 }
 
 .btn:hover {
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
 
-    background-color: #4e6583;
-    transition: 0.5s;
-    cursor: pointer;
+.btn:active {
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
 .img2 {
@@ -236,7 +241,19 @@ div::-webkit-scrollbar{
     font-size: 25px;
     width: 45%;
     margin-top: -30%;
+    cursor: pointer;
+}
 
+.conhecer-button:hover {
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.conhecer-button:active {
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
 .conteudo {
@@ -379,8 +396,14 @@ div::-webkit-scrollbar{
     
 }
 
-.div-total {
+.container-total{
     width: 100%;
+    background-color: #f0f1f5;
+    padding-bottom: 10%;
+}
+
+.div-total {
+    width: 90%;
     height: 100vh;
     display: flex;   
     margin: 0 0 100px 150px;
@@ -412,6 +435,19 @@ div::-webkit-scrollbar{
     font-family: "Poppins", sans-serif;
     font-size: 22px;
     margin-top: -13%;
+    cursor: pointer;
+}
+
+.ultimobtn button:hover {
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.ultimobt button:active {
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
 .ultimobtn {
