@@ -6,7 +6,7 @@
 }
 
 .landingPage-container{
-    background-color:#ffffff;
+    background-color:#f0f1f5;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -28,6 +28,7 @@
 
 .container-maior {
 
+    background-color: #f0f1f5;
     display: flex;
     margin: auto;
     width: 100%;
@@ -327,6 +328,7 @@ div::-webkit-scrollbar{
     top: 350%;
     left: 10%;
     padding-top: 7%;
+
 }
 
 
@@ -384,6 +386,7 @@ div::-webkit-scrollbar{
     margin: 0 0 100px 150px;
     margin-top: 10%;
     flex-wrap: wrap;
+    background-color: #f0f1f5;
 }
 
 .btn-text {
