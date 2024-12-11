@@ -87,12 +87,17 @@
     border-bottom: 3px solid #5a789f;
 }
 
+
 .a1-foto-v{
-    height: 200px;
-    border-radius: 100px;
-    padding-left: 1.5%;
-    position: relative;
+    width: 150px; /* Define largura fixa */
+    height: 150px; /* Define altura fixa para formar o círculo */
+    border-radius: 50%; /* Cria o formato circular */
+    object-fit: cover; /* Ajusta a imagem para cobrir o círculo corretamente */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
+    margin-bottom: 2%;
+    margin-left: 9%;
 }
+
 
 .foto-usuario-v{
     display: flex;

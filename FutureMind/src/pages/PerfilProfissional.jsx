@@ -324,13 +324,13 @@ function PerfilProfissional() {
       profissional.abordagem = abordagem;
   }, [abordagem]);
 
-  const [horarios, setHorarios] = useState(profissional.horarios);
+  // const [horarios, setHorarios] = useState(profissional.horarios);
 
 
-    useEffect(() => {
+  //   useEffect(() => {
 
-      profissional.horarios = horarios;
-  }, [horarios]);
+  //     profissional.horarios = horarios;
+  // }, [horarios]);
 
   const opcoesAreas = ["Idosos", "PCDs", "Adultos", "Crianças", "Adolescentes", "Pré-Adolescentes"];
   const opcoesEspecializacoes = ["Adolescência", "Depressão", "Angústia", "Ansiedade", "Bullying", "LGBTQIA+", "Relacionamentos", "Autoaceitação"];

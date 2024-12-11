@@ -23,17 +23,7 @@ function PerfilVisualizar() {
   const [selectedAgendamento, setSelectedAgendamento] = useState(null);
   const [divPosition, setDivPosition] = useState({ top: 0, left: 0}); // Posição da div de detalhes
 
-  const [agendamentos, setAgendamentos] = useState([
-  
-    { data: "2024-12-02", paciente: "Thalles Lima", horario: "15:00" }, 
-    { data: "2024-12-02", paciente: "Luciana Nuss", horario: "17:30" },
-    { data: "2024-12-02", paciente: "aaaaaaaaa", horario: "20:00" },
-    { data: "2024-12-03", paciente: "Julia Silva Dias", horario: "14:30" },
-    { data: "2024-12-04", paciente: "Mateus da Silva", horario: "16:00" },
-    { data: "2024-12-04", paciente: "renatinho", horario: "18:00" },
-    { data: "2024-12-05", paciente: "aaaaaaaaa", horario: "20:00" },
-    
-  ]);
+  const [agendamentos, setAgendamentos] = useState([]);
 
   const [indicesAgendamentos, setIndicesAgendamentos] = useState({}); // Rastrear índice atual de cada dia
 
@@ -87,19 +77,19 @@ function PerfilVisualizar() {
   
   // var userData = JSON.parse(localStorage.getItem('User'));
 
-  // if (!Array.isArray(userData.especializacao)) {
-  //   userData.especializacao = userData.especializacao
-  //     .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
-  //     .split(',')            // Divide por vírgula
-  //     .map(item => item.trim()); // Remove espaços desnecessários
-  // }
+  if (!Array.isArray(profissional.especializacao)) {
+    profissional.especializacao = profissional.especializacao
+      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
+      .split(',')            // Divide por vírgula
+      .map(item => item.trim()); // Remove espaços desnecessários
+  }
   
-  // if (!Array.isArray(userData.preferencias)) {
-  //   userData.preferencias = userData.preferencias
-  //     .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
-  //     .split(',')            // Divide por vírgula
-  //     .map(item => item.trim()); // Remove espaços desnecessários
-  // }
+  if (!Array.isArray(profissional.preferencias)) {
+    profissional.preferencias = profissional.preferencias
+      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
+      .split(',')            // Divide por vírgula
+      .map(item => item.trim()); // Remove espaços desnecessários
+  }
 
   const [isEditing, setIsEditing] = useState(false);
   const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
@@ -165,6 +155,59 @@ function PerfilVisualizar() {
       setSelectedAgendamento(null); // Fecha a div de detalhes
     };
 
+
+    useEffect(() => {
+      getAgenda();
+    }, []);
+    
+    const getAgenda = async () => {
+      const id_profissional = profissional.id_profissional;
+    
+      try {
+        const response = await fetch(`http://localhost:3000/perfil-profissional/agenda/${id_profissional}`);
+    
+        if (response.ok) {
+          const data = await response.json();
+    
+          // Formatar datas antes de salvar no estado
+          const agendamentosFormatados = data.map((agendamento) => ({
+            ...agendamento,
+            data: agendamento.data.split("T")[0], // Garantir formato 'YYYY-MM-DD'
+          }));
+    
+          setAgendamentos(agendamentosFormatados);
+        } else {
+          console.log("Erro ao buscar agenda:", response.statusText);
+        }
+      } catch (err) {
+        console.log("Erro ao buscar agenda:", err.message);
+      }
+    };
+
+    const handleConcludeAppointment = async (agendamento) => {
+
+      try {
+  
+        const response = await fetch(`http://localhost:3000/perfil-profissional/agenda/${agendamento}`, {
+          method: 'DELETE'
+        });
+  
+        if (response.ok) {
+  
+          setAgendamentos((prevAgendamentos) =>
+            prevAgendamentos.filter(
+              (item) =>
+                !(item.data === agendamento.data && item.horario === agendamento.horario)
+            )
+          );
+          handleCloseDetails(); // Fecha a div de detalhes, se estiver aberta
+        }
+      } catch (err) {
+  
+        console.log(err.message);
+      }
+    };
+
   return (
     <div className='perfilVisu-container'>
 
@@ -180,7 +223,7 @@ function PerfilVisualizar() {
                  <div className='div-foto-nome-v'>
                         
                     <div className='foto-usuario-v'>
-                        <img src='/iconuser.svg' className='a1-foto-v'/> 
+                        <img src={`http://localhost:3000${profissional.foto}`} className='a1-foto-v'/> 
                         </div>
                      <div className='nick-usuario-v'>
 
@@ -189,8 +232,8 @@ function PerfilVisualizar() {
                       </div>
 
                       <div>
-                        {/* <h1>{userData.nome_completo}</h1>
-                        <p>{userData.email}</p> */}
+                        <h1>{profissional.nome_completo}</h1>
+                        <p>{profissional.email}</p>
                       </div>
 
                     </div>
@@ -202,13 +245,15 @@ function PerfilVisualizar() {
 
                         <div className="div-esp">
 
-                        {/* {
-                          userData.preferencias.map((item, index) => (
+                        {
+                          Array.isArray(profissional.preferencias)
+                          &&
+                          profissional.preferencias.map((item, index) => (
                             <div key={index}>
                               <p>{item}</p>
                             </div>
                           ))
-                        } */}
+                        }
                         </div>
                     </div>
                     <div className='div-menor-info'>
@@ -216,13 +261,16 @@ function PerfilVisualizar() {
                         
                         <div className="div-esp">
 
-                         {/* {
-                          userData.especializacao.map((item, index) => (
+                         {
+
+                          Array.isArray(profissional.especializacao)
+                          &&
+                          profissional.especializacao.map((item, index) => (
                             <div key={index}>
                             <p>{item}</p>
                             </div>
                           ))
-                        }  */}
+                        } 
                         </div>
                     </div>
                     <div className='descricao'>
@@ -233,13 +281,7 @@ function PerfilVisualizar() {
                         
                         <div className="div-desc">
                        
-                        <textarea
-                         maxLength="500"
-                         value={descricao}
-                         onChange={(e) => setDescricao(e.target.value)}
-                         readOnly
-                         style={{ width: "95%", height: "100px", resize: "none", background: "transparent", border: "none", color: "#014F86", borderRadius: "13px", padding: "1.5%"}}
-                        />
+                        <p>{profissional.descricao}</p>
                         
                         </div>
                     </div>
@@ -277,7 +319,7 @@ function PerfilVisualizar() {
                     onClick={(e) => handleEventClick(event, e)}
                    >
                     <p onClick={() => handleEventClick(agendamentosDoDia)} className="agendamento-nome-v">
-                     {event.paciente}
+                     {event.paciente_nome}
                     </p>
                     
                   </div>
@@ -301,7 +343,7 @@ function PerfilVisualizar() {
                           </button>
                         </div>
                         <h2>Detalhes do Agendamento</h2>
-                        <p><strong>Paciente:</strong> {selectedAgendamento.paciente}</p>
+                        <p><strong>Paciente:</strong> {selectedAgendamento.paciente_nome}</p>
                         <p><strong>Data:</strong> {selectedAgendamento.data}</p>
                         <p><strong>Horário:</strong> {selectedAgendamento.horario}</p>
                       </div>
@@ -312,9 +354,9 @@ function PerfilVisualizar() {
            </div>
            <button onClick={() => handleTrocarSemana(true)}  className="button_passar-v"><img src="/angle-right-solid.svg" alt=""/></button>
           </div>
-                
-                
                 </div>
+                
+                
             </div>
   )
 }
