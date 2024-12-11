@@ -6,7 +6,7 @@ import { GlobalContext } from "../GlobalContext/GlobalContext";
 
 function CadastroProfissionais5() {
 
-  const { profissional } = useContext(GlobalContext);
+  const { profissional, setProfissional } = useContext(GlobalContext);
   const [name, setName] = useState(profissional.nome_completo);
   const [date, setDate] = useState(profissional.data_nascimento); 
   const {nome_profissinalValid, setNomeProfissionalValid} = useContext(GlobalContext)
@@ -35,14 +35,20 @@ function CadastroProfissionais5() {
    }
    
   useEffect(() => {
-
-    profissional.data_nascimento = date;
-  }, [date]);
+    // Atualiza o contexto global sempre que o CRP muda
+    setProfissional((prevProfissional) => ({
+      ...prevProfissional,
+      data_nascimento: date, // Atualiza apenas o campo date
+    }));
+  }, [date, setProfissional]);
 
   useEffect(() => {
-
-    profissional.nome_completo = name;
-  }, [name]);
+    // Atualiza o contexto global sempre que o CRP muda
+    setProfissional((prevProfissional) => ({
+      ...prevProfissional,
+      nome_completo: name, // Atualiza apenas o campo name
+    }));
+  }, [name, setProfissional]);
 
     return (
       <div className="selecao1">
@@ -84,7 +90,7 @@ function CadastroProfissionais5() {
       <Flatpickr
             options={{
               locale: Portuguese, // Configuração para Português
-              dateFormat: "d/m/Y", // Formato da data
+              dateFormat: "y/m/d", // Formato da data
               defaultDate: "today", // Data padrão
             }}
             value={date} // Data atual no estado

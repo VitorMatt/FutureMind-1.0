@@ -4,7 +4,7 @@ import { useContext, useState, useEffect } from 'react';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function CadastroPaciente3() {
-  const { paciente} = useContext(GlobalContext);
+  const { paciente, setPaciente } = useContext(GlobalContext);
   const [email, setEmail] = useState(paciente.email);
   const [olhosSenha, setOlhosSenha] = useState(false);
   const [senha, setSenha] = useState(paciente.senha);
@@ -16,15 +16,21 @@ function CadastroPaciente3() {
   setEmailValid(email.includes("@") )
   setSenhaValid(senha.length >= 8)
 
-  useEffect(() => { 
-
-  paciente.email = email;
-  }, [email]);
+  useEffect(() => {
+    // Atualiza o contexto global sempre que o CRP muda
+    setPaciente((prevPaciente) => ({
+      ...prevPaciente,
+      email: email, // Atualiza apenas o campo email
+    }));
+  }, [email, setPaciente]);
 
   useEffect(() => {
-
-  paciente.senha = senha;
-  }, [senha]);
+    // Atualiza o contexto global sempre que o CRP muda
+    setPaciente((prevPaciente) => ({
+      ...prevPaciente,
+      senha: senha, // Atualiza apenas o campo senha
+    }));
+  }, [senha, setPaciente]);
 
   return (
     <div className="selecao1">

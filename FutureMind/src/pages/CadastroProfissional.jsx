@@ -29,7 +29,7 @@ function CadastroProfissional() {
     switch (activeStep) {
       case 0:
         if (!crpValid) {
-         
+          
           return;
         }
         break;
@@ -97,13 +97,11 @@ function CadastroProfissional() {
     if(!emailProfissionalValid || !senhaProfissionalValid){
 
       return
-    }else{
-
-      navigate('/login')
     }
-    try {
-      profissional.id_profissional = profissional.id_profissional + 1;
 
+    
+    try {
+      
       const response = await fetch('http://localhost:3000/cadastro-profissional', {
         method: 'POST',
         headers: {
@@ -111,23 +109,27 @@ function CadastroProfissional() {
         },
         body: JSON.stringify(profissional),
       });
-
+      
       if (response.ok) {
         alert('Cadastro concluído com sucesso!');
-        // Resetando dados após envio
-        profissional.nome_completo = '';
-        profissional.cpf = '';
-        profissional.telefone = '';
-        profissional.data_nascimento = '';
-        profissional.senha = '';
-        profissional.foto = '';
-        profissional.email = '';
-        profissional.crp = '';
-        profissional.abordagem = '';
-        profissional.preferencias = '';
-        profissional.especializacao = '';
-        profissional.preco = 0.0;
+        
+        setPaciente({
 
+          nome_completo: '',
+          cpf: '',
+          telefone: '',
+          data_nascimento: '',
+          senha: '',
+          foto: '',
+          email: '',
+          crp: '',
+          abordagem: '',
+          preferencias: [],
+          especializacao: [],
+          preco: 0.0
+        });
+        
+        // navigate('/login')
         navigate('/login');
       } else {
         alert('Erro ao enviar dados!');

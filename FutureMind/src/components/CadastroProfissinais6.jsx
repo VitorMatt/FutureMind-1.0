@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from "react"
 import { GlobalContext } from '../GlobalContext/GlobalContext'
 
 function CadastroProfissionais6() {
-  const { profissional } = useContext(GlobalContext)
+  const { profissional, setProfissional } = useContext(GlobalContext)
 
   const [cpf, setCpf] = useState(profissional.cpf);  // Gerenciamento do CPF
   const [telefone, setTelefone] = useState(profissional.telefone);  // Gerenciamento do telefone
@@ -48,12 +48,20 @@ function CadastroProfissionais6() {
   };
 
   useEffect(() => {
-    profissional.cpf = cpf;
-  }, [cpf]);
+    // Atualiza o contexto global sempre que o CRP muda
+    setProfissional((prevProfissional) => ({
+      ...prevProfissional,
+      cpf: cpf, // Atualiza apenas o campo CRP
+    }));
+  }, [cpf, setProfissional]);
 
   useEffect(() => {
-    profissional.telefone = telefone;
-  }, [telefone]);
+    // Atualiza o contexto global sempre que o CRP muda
+    setProfissional((prevProfissional) => ({
+      ...prevProfissional,
+      telefone: telefone, // Atualiza apenas o campo telefone
+    }));
+  }, [telefone, setProfissional]);
 
 
   return (

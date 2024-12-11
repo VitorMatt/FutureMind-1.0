@@ -609,7 +609,7 @@ function PerfilProfissional() {
                  <Flatpickr
                    options={{
                    locale: Portuguese, // Configuração para Português
-                   dateFormat: "d/m/Y", // Formato da data
+                   dateFormat: "y/m/d", // Formato da data
                    defaultDate: "today", // Data padrão
                    }}
                    value={date} // Data atual no estado

@@ -3,7 +3,7 @@ import InputMask from 'react-input-mask';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 const CrpMask = ({ onCrpChange }) => {
-  const { profissional } = useContext(GlobalContext);
+  const { profissional, setProfissional } = useContext(GlobalContext);
   const [crp, setCrp] = useState(profissional.crp || ''); // Inicializa com o valor ou vazio
   const { crpValid, setCrpValid } = useContext(GlobalContext);
   const { crpHover, setCrpHover } = useContext(GlobalContext);
@@ -12,15 +12,17 @@ const CrpMask = ({ onCrpChange }) => {
   const [hasStartedTyping, setHasStartedTyping] = useState(false);
 
   useEffect(() => {
-    // Verifica se o CRP é válido (9 caracteres e no formato correto)
     const regex = /^\d{2}\/\d{6}$/;
-    setCrpValid(regex.test(crp)); // Atualiza crpValid com base na validação
-  }, [crp, setCrpValid]);
+    setCrpValid(regex.test(profissional.crp));
+  }, [profissional.crp]);
 
   useEffect(() => {
-    // Atualiza o CRP no objeto profissional
-    profissional.crp = crp;
-  }, [crp, profissional]);
+    // Atualiza o contexto global sempre que o CRP muda
+    setProfissional((prevProfissional) => ({
+      ...prevProfissional,
+      crp: crp, // Atualiza apenas o campo CRP
+    }));
+  }, [crp, setProfissional]);
 
   const handleChange = (e) => {
     const maskedValue = e.target.value;

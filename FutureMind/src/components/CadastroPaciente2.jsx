@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from "react"
 import { GlobalContext } from '../GlobalContext/GlobalContext'
 
 function CadastroPaciente2() {
-  const { paciente } = useContext(GlobalContext)
+  const { paciente, setPaciente } = useContext(GlobalContext)
 
   const [cpf, setCpf] = useState(paciente.cpf);  // Gerenciamento do CPF
   const [telefone, setTelefone] = useState(paciente.telefone);  // Gerenciamento do telefone
@@ -45,6 +45,22 @@ function CadastroPaciente2() {
     const maskedTelefone = maskTelefone(e.target.value);
     setTelefone(maskedTelefone); // Atualiza o estado com o telefone formatado
   };
+
+  useEffect(() => {
+    // Atualiza o contexto global sempre que o CRP muda
+    setPaciente((prevPaciente) => ({
+      ...prevPaciente,
+      telefone: telefone, // Atualiza apenas o campo telefone
+    }));
+  }, [telefone, setPaciente]);
+
+  useEffect(() => {
+    // Atualiza o contexto global sempre que o CRP muda
+    setPaciente((prevPaciente) => ({
+      ...prevPaciente,
+      cpf: cpf, // Atualiza apenas o campo cpf
+    }));
+  }, [cpf, setPaciente]);
 
   return (
     <div className="selecao1">

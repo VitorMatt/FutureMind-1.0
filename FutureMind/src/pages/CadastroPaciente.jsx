@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 function CadastroPaciente() {
   
-  const { paciente } = useContext(GlobalContext);
+  const { paciente, setPaciente } = useContext(GlobalContext);
   const [activeStep, setActiveStep] = useState(0);
   const {usernameValid} = useContext(GlobalContext)
   const {data_nascimentoValid} = useContext(GlobalContext)
@@ -68,7 +68,7 @@ function CadastroPaciente() {
       navigate('/login')
     }
 
-    const updatedPaciente = { ...paciente, id_paciente: paciente.id_paciente + 1 };
+    const updatedPaciente = { ...paciente };
 
   try {
     const response = await fetch('http://localhost:3000/cadastro-paciente', {
@@ -80,13 +80,16 @@ function CadastroPaciente() {
     });
 
     if (response.ok) {
-      paciente.nome_completo = '';
-      paciente.cpf = '';
-      paciente.telefone = '';
-      paciente.data_nascimento = '';
-      paciente.senha = '';
-      paciente.foto = '';
-      paciente.email = '';
+      
+      setPaciente({
+        nome_completo: '',
+        cpf: '',
+        telefone: '',
+        data_nascimento: '',
+        senha: '',
+        foto: '',
+        email: ''
+      })
 
       navigate('/login'); 
       

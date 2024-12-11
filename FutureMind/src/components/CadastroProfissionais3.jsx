@@ -3,16 +3,21 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function CadastroProfissionais3() {
 
-  const { profissional } = useContext(GlobalContext);
+  const { profissional, setProfissional } = useContext(GlobalContext);
+  
   const atender = ["Idosos", "PCDs", "Adultos"];
   const atender2 = ["Crianças", "Adolescentes", "Pré-Adolescentes"];
-  const [atenderSelecionado, setAtenderSelecionado] = useState(profissional.preferencias || []); // Definindo o estado com o valor inicial
+  const [atenderSelecionado, setAtenderSelecionado] = useState(profissional.preferencias); // Definindo o estado com o valor inicial
   const { atendeValid, setAtendeValid } = useContext(GlobalContext);
 
   
   useEffect(() => {
-    profissional.preferencias = atenderSelecionado;
-  }, [atenderSelecionado]);
+    // Atualiza o contexto global sempre que o CRP muda
+    setProfissional((prevProfissional) => ({
+      ...prevProfissional,
+      preferencias: atenderSelecionado, // Atualiza apenas o campo atenderSelecionado
+    }));
+  }, [atenderSelecionado, setProfissional]);
 
   
   useEffect(() => {

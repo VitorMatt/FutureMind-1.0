@@ -8,7 +8,7 @@ import '../pages/CSS/CadastroProfissional.css';
 
 function CadastroPaciente1() {
 
-  const { paciente } = useContext(GlobalContext)
+  const { paciente, setPaciente } = useContext(GlobalContext)
 
   const [date, setDate] = useState(paciente.data_nascimento);
   const [name, setName] = useState(paciente.nome_completo);
@@ -37,18 +37,23 @@ function CadastroPaciente1() {
  }
  
 
-  useEffect(() => {
-    paciente.nome_completo = name;
-  }, [name]);
+ useEffect(() => {
+  // Atualiza o contexto global sempre que o CRP muda
+  setPaciente((prevPaciente) => ({
+    ...prevPaciente,
+    nome_completo: name, // Atualiza apenas o campo name
+  }));
+}, [name, setPaciente]);
 
-  useEffect(() => {
-    paciente.data_nascimento = date;
-  }, [date]);
+useEffect(() => {
+  // Atualiza o contexto global sempre que o CRP muda
+  setPaciente((prevPaciente) => ({
+    ...prevPaciente,
+   data_nascimento: date, // Atualiza apenas o campo name
+  }));
+}, [date, setPaciente]);
 
 
-    paciente.data_nascimento = date
-  // }, [date])
-  
 
   return (
 
@@ -89,7 +94,7 @@ function CadastroPaciente1() {
           <Flatpickr
             options={{
               locale: Portuguese,
-              dateFormat: "d/m/Y",
+              dateFormat: "y/m/d",
               defaultDate: "today",
             }}
 

@@ -40,9 +40,8 @@ const profissionais = [
 }
 ]
 
-const profissional = {
+const [profissional, setProfissional] =  useState({
 
-    id_profissional: 1,
     nome_completo: '',
     cpf:'',
     telefone:'',
@@ -55,11 +54,10 @@ const profissional = {
     email: '',
     crp:'',
     preco: 0.00
-}
+});
 
-const paciente = {
+const [paciente, setPaciente] = useState({
 
-    id_paciente: 1,
     nome_completo: '',
     cpf:'',
     telefone:'',
@@ -67,7 +65,7 @@ const paciente = {
     senha: '',
     foto: '',
     email: ''
-}
+});
 
     const [user, setUser] = useState(() => {
     
@@ -134,7 +132,7 @@ const paciente = {
     return(
         <GlobalContext.Provider value={{
         
-        profissionais, profissional,paciente, 
+        profissionais, profissional, setProfissional, paciente, setPaciente, 
         user, setUser, 
         id, setId, 
         usernameValid, setUsernameValid, usernameHover, setUsernameHover,

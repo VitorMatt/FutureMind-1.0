@@ -3,12 +3,12 @@ import { useState, useContext } from 'react';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function CadastroProfissionais8() {
-  const { profissional } = useContext(GlobalContext);
+  const { profissional, setProfissional } = useContext(GlobalContext);
   const { valorValid, setValorValid } = useContext(GlobalContext);
   const {valorHover, setValorHover} = useContext(GlobalContext)
 
   const [abordagem, setAbordagem] = useState(profissional.abordagem);
-  const [valor, setValor] = useState('');
+  const [valor, setValor] = useState(profissional.preco);
 
   // Função para aplicar a máscara no preço no formato R$ XX,XX e limitar a 4 caracteres
   const handlePriceMask = (e) => {
@@ -23,22 +23,33 @@ function CadastroProfissionais8() {
     }
 
     // Formata como moeda brasileiro
-    value = (parseFloat(value) / 100).toFixed(2).replace('.', ',');
+    value = (parseFloat(value) / 100).toFixed(2)
 
     setValor(value);
   };
 
   // Validação do preço entre 10.00 e 50.00
   useEffect(() => {
-    const numericValue = parseFloat(valor.replace(',', '.'));
+    const numericValue = valor && parseFloat(valor.replace(',', '.'));
     setValorValid(numericValue >= 10.0 && numericValue <= 50.0 && !isNaN(numericValue));
   }, [valor]);
 
   // Atualiza a abordagem no contexto
   useEffect(() => {
-    profissional.abordagem = abordagem;
-  }, [abordagem]);
+    // Atualiza o contexto global sempre que o CRP muda
+    setProfissional((prevProfissional) => ({
+      ...prevProfissional,
+      abordagem: abordagem, // Atualiza apenas o campo abordagem
+    }));
+  }, [abordagem, setProfissional]);
 
+  useEffect(() => {
+    // Atualiza o contexto global sempre que o CRP muda
+    setProfissional((prevProfissional) => ({
+      ...prevProfissional,
+      preco: valor, // Atualiza apenas o campo valor
+    }));
+  }, [valor, setProfissional]);
   return (
     <div className="selecao1">
       <h3 className='titulo-cadastro2'>Seus Dados..</h3>
