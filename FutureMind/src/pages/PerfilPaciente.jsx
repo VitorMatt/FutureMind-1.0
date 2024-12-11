@@ -9,7 +9,7 @@ import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
 import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
 import CpfInput from '../components/CpfInput'
 import TelefoneMask from '../components/TelefoneMask'
-import { Link } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 
 // Import Swiper styles
@@ -156,6 +156,10 @@ function PerfilPaciente() {
 
     return (
         <div className='perfilPa-container'>
+
+        <div className='div-but-p'>
+          <Link to= "/" className='voltar-p'>Voltar</Link>
+        </div>
       
       <div className='todas-divs-p'>
 
@@ -181,10 +185,6 @@ function PerfilPaciente() {
                   </div>
 
                     <div className='nick-usuario-p'>
-
-                      <div className='meet-p'>
-                        <Link to= "https://workspace.google.com/products/meet/"><img src="/video-solid.svg"/></Link>
-                      </div>
 
                       {/* <h1>{userData.nome_completo}</h1>
                       <p>{userData.email}</p> */}
