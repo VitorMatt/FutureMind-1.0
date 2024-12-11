@@ -54,7 +54,7 @@
     padding-right: 2em; /* Espaço suficiente para o ícone no canto */
     width: 90%;
     border: 2px solid #5a789f;
-    background-color: #f5f7fc;
+    background-color: #f0f1f5;
   }
   .input-nav::placeholder {
     color: #5a789f; 

@@ -48,8 +48,8 @@ function LandingPage() {
               escolher profissionais e acessar recursos de bem-estar com apenas alguns toques. Sua interface intuitiva 
               torna o uso fácil e acessível para todas as idades.
             </p>
-            <img src="circuloimg.png" className="circuloimg" alt="circle" />
           </div>
+            <img src="BolinhaLade.svg" className="circuloimg" alt="circle" />
 
           <div className="texto-dois">
             <p>
@@ -85,37 +85,6 @@ function LandingPage() {
           <img className="imagemterapia" src="imagemterapia.png" alt="therapy" />
         </div>
       </div>
-
-
-
-
-
-      <div className="grande-2">
-        <div className="esquerdo-2">
-          <div className="beneficios-2">
-            <p>Como funciona a terapia online</p>
-          </div>
-
-          <div className="text-flex-2">
-            <p>
-              A terapia online é uma forma prática de cuidar da sua saúde mental. Você conhece os profissionais na 
-              plataforma, agenda sua consulta no melhor horário e realiza sessões por videochamada com segurança e 
-              conforto, sem precisar sair de casa. Uma solução acessível para o seu bem-estar!
-            </p>
-          </div>
-        </div>
-
-        <div className="bene.svg">
-          <img className="bene.svg" src="bene.svg" alt="therapy" />
-        </div>
-      </div>
-
-
-
-
-
-
-
 
 
       {/* Final Message Section */}
