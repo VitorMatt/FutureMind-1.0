@@ -15,6 +15,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import InputMask from 'react-input-mask';
 // import { Label } from '@mui/icons-material'
 // import { useNavigate, useRouteLoaderData } from 'react-router-dom'
 // import { color } from 'framer-motion';
@@ -22,10 +23,12 @@ import 'swiper/css/scrollbar';
 
 function PerfilProfissional() {
 
+
+  
   const { user, setUser, profissional } = useContext(GlobalContext);
   const navigate = useNavigate();
   const [date, setDate] = useState(profissional.data_nascimento);
-
+  
   const [dataAtual, setDataAtual] = useState(new Date());
   const [selectedAgendamento, setSelectedAgendamento] = useState(null);
   const [divPosition, setDivPosition] = useState({ top: 0, left: 0}); // Posição da div de detalhes
@@ -33,15 +36,16 @@ function PerfilProfissional() {
   const [agendamentos, setAgendamentos] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
-
+  
   const [temporaryText, setTemporaryText] = useState("");
   const [savedText, setSavedText] = useState(""); 
   
   const [indicesAgendamentos, setIndicesAgendamentos] = useState({}); 
-
+  
   
   
   var userData = JSON.parse(localStorage.getItem('User'));
+  
   
   
   if (!Array.isArray(userData.especializacao)) {
@@ -58,6 +62,178 @@ function PerfilProfissional() {
     .map(item => item.trim()); // Remove espaços desnecessários
   }
   
+  const [email, setEmail] = useState(userData.email);
+  const [senha, setSenha] = useState(userData.senha);
+  const [nome, setNome] = useState(userData.nome_completo);
+  const [data, setData] = useState(userData.data_nascimento)
+  const [telefone, setTelefone] = useState(userData.telefone);
+  const [crp, setCrp] = useState(userData.crp)
+  const [preco, setPreco] = useState(userData.preco);
+  const [cpf, setCpf] = useState(userData.cpf);
+  
+  
+  const [errors, setErrors] = useState({
+    nome: '',
+    email: '',
+    data: '',
+    senha: '',
+    cpf:'',
+    preco:'',
+    crp:'',
+    telefone:'',
+    especializacao: '',
+    preferencias: '',
+  });
+  
+  const handleEditarPerfil = async () => {
+    let formIsValid = true;
+    let newErrors = {
+      nome: false,
+      email: false,
+      data: false,
+      senha: false,
+      cpf:false,
+      preco:false,
+      crp:false,
+      telefone:false,
+      especializacao: false,
+      preferencias: false,
+    };
+
+    if (especializacao.length === 0) {
+      newErrors.especializacao = 'Selecione pelo menos uma especialização.';
+      formIsValid = false;
+    }
+    
+    // Validação para preferências (caso necessário)
+    if (preferencias.length === 0) {
+      newErrors.preferencias = true;
+      formIsValid = false;
+    }
+    
+    if (!preco || preco.trim() === '') {
+      newErrors.preco = true;
+      formIsValid = false;
+    }
+    if (!telefone || telefone.trim().length < 10) {
+      newErrors.telefone = true;
+      formIsValid = false;
+    }
+    // Validação do CPF
+      if (!cpf || cpf.trim().length !== 14) {
+        newErrors.cpf = true;
+        formIsValid = false;
+      }
+      
+      // Validação do CRP
+      if (!crp || crp.trim().length < 8) {
+        newErrors.crp = true;
+        formIsValid = false;
+      }
+      
+      if (!nome || nome.trim() === "") {
+        newErrors.nome = true;
+      formIsValid = false;
+    }
+    
+    // Validação do email
+    if (!email || email.trim() === "") {
+      newErrors.email = true;
+      formIsValid = false;
+    } else if (!email.includes("@gmail.com")) {
+      newErrors.email = true;
+      formIsValid = false;
+    }
+    
+    if (date) {
+      const today = new Date();
+      const birthDate = new Date(date);
+      const age = today.getFullYear() - birthDate.getFullYear();
+      const month = today.getMonth() - birthDate.getMonth();
+      
+      if (age < 18 || (age === 18 && month < 0)) {
+        newErrors.data = "Você precisa ter mais de 18 anos para se cadastrar.";
+        formIsValid = false;
+      }
+    } else {
+      newErrors.data = "A data de nascimento não pode ser vazia.";
+      formIsValid = false;
+    }
+    
+    if (!senha || senha.trim() === "") {
+      newErrors.senha = true;
+      formIsValid = false;
+    }
+    
+    if (!telefone || telefone.trim().length < 10) {
+      newErrors.telefone = true;
+      formIsValid = false;
+    }
+  
+    // Atualiza os erros no estado
+    setErrors(newErrors);
+    
+    // Se a validação falhou, não envia o formulário
+    if (!formIsValid) return;
+    
+    
+    const novoProfissional = {
+      ...userData,
+      email,
+      senha,
+      preferencias, // Envia apenas os itens selecionados
+      especializacao, // Envia apenas os itens selecionados
+      data_nascimento: date,
+      preco,
+      nome_completo: nome,
+      cpf,
+      crp,
+      abordagem,
+      telefone,
+      descricao,
+      id_profissional: userData.id_profissional,
+    };
+    
+    try {
+      const response = await fetch('http://localhost:3000/perfil-profissional', {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(novoProfissional),
+      });
+      
+      if (response.ok) {
+        localStorage.setItem('User', JSON.stringify(novoProfissional));
+        console.log('Perfil atualizado com sucesso!');
+      } else {
+        console.error('Erro ao atualizar o perfil:', await response.json());
+      }
+    } catch (err) {
+      console.error('Erro na requisição:', err.message);
+    }
+  };
+  
+  const handleChange = (e) => {
+    const maskedValue = e.target.value;
+    setTelefone(maskedValue);
+    
+  };
+
+  const maskCrp = (e) =>{
+    const maskedValue = e.target.value;
+    setCrp(maskedValue);
+  }
+
+  const maskCpf = (e) =>{
+    const maskedValue = e.target.value;
+    setCpf(maskedValue);
+  }
+
+  const maskPreco = (e) =>{
+    const maskedValue = e.target.value;
+    setPreco(maskedValue);
+  }
   
   const obterDiasUteis = (dataInicio) => {
     const dias = [];
@@ -118,10 +294,9 @@ function PerfilProfissional() {
 
   const handleConcludeAppointment = async (agendamento) => {
 
-    const id_agendamento = agendamento.id_agendamento
     try {
 
-      const response = await fetch(`http://localhost:3000/perfil-profissional/agenda/${id_agendamento}`, {
+      const response = await fetch(`http://localhost:3000/perfil-profissional/agenda/${agendamento}`, {
         method: 'DELETE'
       });
 
@@ -207,51 +382,6 @@ function PerfilProfissional() {
     setDescricao(null); // Reverte para o valor original
     setIsEditing(false); // Cancela o modo de edição
   };
-
-  const [email, setEmail] = useState(userData.email);
-  const [senha, setSenha] = useState(userData.senha);
-  const [nome, setNome] = useState(userData.nome_completo);
-
-  
-  const handleEditarPerfil = async () => {
-    const novoProfissional = {
-      ...userData,
-      email,
-      senha,
-      preferencias, // Envia apenas os itens selecionados
-      especializacao, // Envia apenas os itens selecionados
-      data_nascimento: date,
-      preco: profissional.preco,
-      nome_completo: nome,
-      cpf: profissional.cpf,
-      crp: profissional.crp,
-      abordagem,
-      telefone: profissional.telefone,
-      descricao,
-      id_profissional: userData.id_profissional,
-    };
-  
-    try {
-      const response = await fetch('http://localhost:3000/perfil-profissional', {
-        method: 'PUT',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(novoProfissional),
-      });
-  
-      if (response.ok) {
-        localStorage.setItem('User', JSON.stringify(novoProfissional));
-        userData = JSON.parse(localStorage.getItem('User'));
-        console.log('Perfil atualizado com sucesso!');
-      } else {
-        console.error('Erro ao atualizar o perfil:', await response.json());
-      }
-    } catch (err) {
-      console.error('Erro na requisição:', err.message);
-    }
-  };
-
 
   const onImageChange = async (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -396,10 +526,10 @@ function PerfilProfissional() {
     
           setAgendamentos(agendamentosFormatados);
         } else {
-          console.error("Erro ao buscar agenda:", response.statusText);
+          console.log("Erro ao buscar agenda:", response.statusText);
         }
       } catch (err) {
-        console.error("Erro ao buscar agenda:", err.message);
+        console.log("Erro ao buscar agenda:", err.message);
       }
     };
     
@@ -564,7 +694,7 @@ function PerfilProfissional() {
                           <button className='but-det' onClick={() => handleDeleteAppointment(selectedAgendamento)}>
                             Cancelar
                           </button>
-                          <button className='but-det' onClick={() => handleConcludeAppointment(selectedAgendamento)}>
+                          <button className='but-det' onClick={() => handleConcludeAppointment(selectedAgendamento.id_agendamento)}>
                             Concluída
                           </button>
                         </div>
@@ -635,34 +765,90 @@ function PerfilProfissional() {
               <div className='div1-editar'>
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
-                  <p>Nome Completo</p>
-                  <input type="text" value={nome} onChange={(e) => { setNome(e.target.value)}} placeholder='Digite seu nome completo...'/>
+                 <p>Nome Completo</p>
+                  <input
+                    type="text"
+                    value={nome}
+                    onChange={(e) => { setNome(e.target.value) }}
+                    placeholder='Digite seu nome completo...'
+                    style={{ borderColor: errors.nome ? 'red' : '' }}
+                  />
+                  {errors.nome && (
+                    <>
+                      <span className="error-circle"></span>
+                      <div className="error-message">
+                        O nome é obrigatório e deve ter no mínimo 3 caracteres.
+                      </div>
+                    </>
+                  )}
                  </div>
                 </div>
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                  <p>Data de Nascimento</p>
                  <Flatpickr
-                   options={{
-                   locale: Portuguese, // Configuração para Português
-                   dateFormat: "y/m/d", // Formato da data
-                   defaultDate: "today", // Data padrão
-                   }}
-                   value={date} // Data atual no estado
-                   onChange={(selectedDates) => setDate(selectedDates[0])} // Atualiza a data selecionada
-                 />
+                    options={{
+                      locale: Portuguese,
+                      dateFormat: "y/m/d",
+                      defaultDate: "today",
+                    }}
+                    value={data}
+                    onChange={(selectedDates) => setDate(selectedDates[0])}
+                    style={{ borderColor: errors.data ? 'red' : '' }}
+                  />
+                  {errors.data && (
+                    <>
+                      <span className="error-circle"></span>
+                      <div className="error-message">{errors.data}</div>
+                    </>
+                  )}
                  </div>
                 </div>
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>CPF</p>
-                  <CpfInput />
+                  <InputMask
+                    mask="999.999.999-99"
+                    value={cpf}
+                    onChange={maskCpf}
+                    placeholder="000.000.000-00"
+                    id="cpf"
+                    className="inputCRP"
+                  >
+                    {(inputProps) => <input {...inputProps} />}
+                  </InputMask>
+                  {errors.cpf && (
+                            <>
+                      <span className="error-circle"></span>
+                      <div className="error-message">
+                       CPF inválido
+                      </div>
+                    </>
+                  )}
                  </div>
                 </div>
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>CRP</p>
-                  <CrpMask />
+                  <InputMask
+            mask="99/99999"
+            value={crp}
+            onChange={maskCrp}
+            placeholder="00/000000"
+            id="crp"
+            className="inputCRP"
+          >
+            {(inputProps) => <input {...inputProps} />}
+          </InputMask>
+          {errors.crp && (
+                    <>
+                      <span className="error-circle"></span>
+                      <div className="error-message">
+                       CRP inválido.
+                      </div>
+                    </>
+                  )}
+
                  </div>
                 </div>
               </div>
@@ -672,28 +858,91 @@ function PerfilProfissional() {
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>Telefone</p>
-                  <TelefoneMask />
+                 
+                  <div>
+                  <InputMask
+                    mask="(99) 99999-9999"
+                    value={telefone}
+                    onChange={handleChange}
+                    placeholder="(00) 00000-0000"
+                    id="telefone"
+                    className='inputCRP'
+                  >
+                    {(inputProps) => <input {...inputProps} />}
+                  </InputMask>
+                  {errors.telefone && (
+                    <>
+                      <span className="error-circle"></span>
+                      <div className="error-message">
+                        Número Inválido.
+                      </div>
+                    </>
+                  )}
+                </div>
                  </div>
                 </div>
 
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
-                  <p>E-mail</p>
-                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                 <p>E-mail</p>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    style={{ borderColor: errors.email ? 'red' : '' }}
+                  />
+                  {errors.email && (
+                    <>
+                      <span className="error-circle"></span>
+                      <div className="error-message">
+                        O e-mail é inválido. Verifique se está correto.
+                      </div>
+                    </>
+                  )}
                  </div>
                 </div>
 
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
-                  <p>Senha</p>
-                  <input type="text" value={senha} onChange={(e) => setSenha(e.target.value)} />
+                 <p>Senha</p>
+                  <input
+                    type="password"
+                    value={senha}
+                    onChange={(e) => setSenha(e.target.value)}
+                    style={{ borderColor: errors.senha ? 'red' : '' }}
+                  />
+                  {errors.senha && (
+                    <>
+                      <span className="error-circle"></span>
+                      <div className="error-message">
+                        A senha deve ter no mínimo 6 caracteres e incluir números e letras.
+                      </div>
+                    </>
+                  )}
                  </div>
                 </div>
 
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
                   <p>Preço</p>
-                  <PrecoMask />
+                  <InputMask
+                  id="price"
+                  mask="99.99"
+                  placeholder="R$ 0,00"
+                  maskChar=""
+                  onChange={maskPreco}
+                  value={preco}
+                >
+                  {(inputProps) => <input {...inputProps} type="text" />}
+                </InputMask>
+                {errors.preco && (
+                    <>
+                      <span className="error-circle"></span>
+                      <div className="error-message">
+                       Valor menor que R$50,00.
+                      </div>
+                    </>
+                  )}
                  </div>
                 </div>
 
@@ -713,15 +962,6 @@ function PerfilProfissional() {
                 <option name="file" value="Cognitivo-Comportamental">Cognitivo-Comportamental</option>
               </select>
             </div>
-
-                <div className='input-horario-perfil'>
-                  <p>Horário de Agendamento</p>
-                  <select value={horarios} onChange={(e) => { setAbordagem(e.target.value)}} name="file" id="" className="inputAbordagem">
-                    <option name="file" value="Matutino">Matutino (07:00hs até 12:00hs)</option>
-                    <option name="file" value="Vespertino">Vespertino (13:00hs até 18:00hs)</option>
-                    <option name="file" value="Noturno">Noturno (18:30hs até 23:30hs)</option>
-                  </select>
-                </div>
 
               <div className='container-escolhas'>
 
@@ -745,6 +985,7 @@ function PerfilProfissional() {
                     </div>
                   ))}
                 </div>
+                  {errors.preferencias && <span className='areas'>Selecione pelo menos uma preferência</span>}
                 </div>
 
                 <div className="container-especi">
@@ -757,15 +998,16 @@ function PerfilProfissional() {
                         id={`opcoesEspecializacoes-${index}`}
                         value={opcao}
                         checked={especializacao.includes(opcao)} // Mantém o estado visual dos checkboxes
-                        onChange={handleChangeEspecializacoes}
+                        onChange={handleChangeEspecializacoes} // Função de alteração do estado
                       />
                       <label htmlFor={`opcoesEspecializacoes-${index}`} className="labelespeci">
                         {opcao}
                       </label>
                     </div>
                   ))}
+                 </div>
+                  {errors.especializacao && <span className='areas'>Selecione pelo menos uma preferência</span>}
                 </div>
-              </div>
                   
                 </div>
                 
@@ -777,10 +1019,10 @@ function PerfilProfissional() {
                   <button className='a' onClick={sair}> Sair da Conta</button>
                   <button className='a'>Cancelar edição</button>
                   <button className='salva' onClick={handleEditarPerfil}>Salvar</button>
+                  
                 </div>
 
         </div>
-
       </div>
     </div>
   )

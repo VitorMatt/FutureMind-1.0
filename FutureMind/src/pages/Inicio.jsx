@@ -16,7 +16,7 @@ function Inicio() {
 
   const [buscaUm, setBuscaUm] = useState([{descricao: 'Autoaceitação', selecionado: false}, {descricao: 'Autoestima', selecionado: false}, {descricao: 'Depressão', selecionado: false}]);
   const [buscaDois, setBuscaDois] = useState([{descricao: 'Angústia', selecionado: false}, {descricao: 'Ansiedade', selecionado: false}, {descricao: 'LGBTQIA+', selecionado: false}]);
-  const [buscaTres, setBuscaTres] = useState([{descricao: "PCD's", selecionado: false}, {descricao: 'Relacionamento', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
+  const [buscaTres, setBuscaTres] = useState([{descricao: 'Bullying', selecionado: false}, {descricao: 'Relacionamentos', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
 
   const [click, setClick] = useState(false);
 
@@ -871,20 +871,29 @@ const clickTres = (index) => {
         <div className='btn-consulta'>
 
 
-        <button 
-          id="agendar"
-          onClick={() => handleAgendamento(item.id_profissional)}
-          >
-            
-      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
-                selectedTime
-             && `Marcar para ${selectedTime}`
-              }</span>}
-               
-            
-        </button>
+        {selectedTime ? (
+              <button
+                id="agendar"
+                onClick={() => handleAgendamento(item.id_profissional)}
+              >
+                <b>
+                  {estadoBotoes[item.id_profissional] === 'carregando' && (
+                    <div id="circle" className="circle"></div>
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'concluido' && (
+                    <img id="icon-concluido" src="check.svg" alt="" />
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'inicial' && (
+                    <span className="btn-text2">
+                         Marcar para {selectedTime}
+                    </span>
+                  )}
+                </b>
+              </button>
+            ) : (
+              
+              <p className="selecione-horario">Selecione um horário acima para agendar</p>
+            )}
             </div>
             </div>
           </div>
@@ -1052,27 +1061,29 @@ const clickTres = (index) => {
       </table>
 
       <div className="btn-consulta">
-        <button
-          id="agendar"
-          onClick={() => handleAgendamento(item.id_profissional)}
-          disabled={!selectedTime}
-        >
-          <b>
-            {estadoBotoes[item.id_profissional] === "carregando" && (
-              <div id="circle" className="circle"></div>
+      {selectedTime ? (
+              <button
+                id="agendar"
+                onClick={() => handleAgendamento(item.id_profissional)}
+              >
+                <b>
+                  {estadoBotoes[item.id_profissional] === 'carregando' && (
+                    <div id="circle" className="circle"></div>
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'concluido' && (
+                    <img id="icon-concluido" src="check.svg" alt="" />
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'inicial' && (
+                    <span className="btn-text2">
+                         Marcar para {selectedTime}
+                    </span>
+                  )}
+                </b>
+              </button>
+            ) : (
+              
+              <p className="selecione-horario">Selecione um horário acima para agendar</p>
             )}
-            {estadoBotoes[item.id_profissional] === "concluido" && (
-              <img id="icon-concluido" src="check.svg" alt="" />
-            )}
-            {estadoBotoes[item.id_profissional] === "inicial" && (
-              <span className="btn-text2">
-                {selectedTime
-                  ? `Marcar para ${selectedTime}`
-                  : "Marcar Consulta"}
-              </span>
-            )}
-          </b>
-        </button>
       </div>
     </div>
     </div>
@@ -1233,22 +1244,29 @@ const clickTres = (index) => {
         <div className='btn-consulta'>
 
 
-        <button 
-          id="agendar"
-          onClick={() => handleAgendamento(item.id_profissional)}
-          disabled={!selectedTime}
-          >
-            <b>
-      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
-                selectedTime
-            ? `Marcar para ${selectedTime}`
-            : "Marcar Consulta"
-              }</span>}
-               
-            </b>
-        </button>
+        {selectedTime ? (
+              <button
+                id="agendar"
+                onClick={() => handleAgendamento(item.id_profissional)}
+              >
+                <b>
+                  {estadoBotoes[item.id_profissional] === 'carregando' && (
+                    <div id="circle" className="circle"></div>
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'concluido' && (
+                    <img id="icon-concluido" src="check.svg" alt="" />
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'inicial' && (
+                    <span className="btn-text2">
+                         Marcar para {selectedTime}
+                    </span>
+                  )}
+                </b>
+              </button>
+            ) : (
+              
+              <p className="selecione-horario">Selecione um horário acima para agendar</p>
+            )}
             </div>
             </div>
           </div>
@@ -1408,22 +1426,29 @@ const clickTres = (index) => {
         <div className='btn-consulta'>
 
 
-        <button 
-          id="agendar"
-          onClick={() => handleAgendamento(item.id_profissional)}
-          disabled={!selectedTime}
-          >
-            <b>
-      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
-                selectedTime
-            ? `Marcar para ${selectedTime}`
-            : "Marcar Consulta"
-              }</span>}
-               
-            </b>
-        </button>
+        {selectedTime ? (
+              <button
+                id="agendar"
+                onClick={() => handleAgendamento(item.id_profissional)}
+              >
+                <b>
+                  {estadoBotoes[item.id_profissional] === 'carregando' && (
+                    <div id="circle" className="circle"></div>
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'concluido' && (
+                    <img id="icon-concluido" src="check.svg" alt="" />
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'inicial' && (
+                    <span className="btn-text2">
+                         Marcar para {selectedTime}
+                    </span>
+                  )}
+                </b>
+              </button>
+            ) : (
+              
+              <p className="selecione-horario">Selecione um horário acima para agendar</p>
+            )}
             </div>
             </div>
           </div>
@@ -1583,22 +1608,29 @@ const clickTres = (index) => {
         <div className='btn-consulta'>
 
 
-        <button 
-          id="agendar"
-          onClick={() => handleAgendamento(item.id_profissional)}
-          disabled={!selectedTime}
-          >
-            <b>
-      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
-                selectedTime
-            ? `Marcar para ${selectedTime}`
-            : "Marcar Consulta"
-              }</span>}
-               
-            </b>
-        </button>
+        {selectedTime ? (
+              <button
+                id="agendar"
+                onClick={() => handleAgendamento(item.id_profissional)}
+              >
+                <b>
+                  {estadoBotoes[item.id_profissional] === 'carregando' && (
+                    <div id="circle" className="circle"></div>
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'concluido' && (
+                    <img id="icon-concluido" src="check.svg" alt="" />
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'inicial' && (
+                    <span className="btn-text2">
+                         Marcar para {selectedTime}
+                    </span>
+                  )}
+                </b>
+              </button>
+            ) : (
+              
+              <p className="selecione-horario">Selecione um horário acima para agendar</p>
+            )}
             </div>
             </div>
           </div>
@@ -1760,22 +1792,29 @@ const clickTres = (index) => {
         <div className='btn-consulta'>
 
 
-        <button 
-          id="agendar"
-          onClick={() => handleAgendamento(item.id_profissional)}
-          disabled={!selectedTime}
-          >
-            <b>
-      {estadoBotoes[item.id_profissional] === 'carregando' && <div id="circle" className="circle"></div>}
-      {estadoBotoes[item.id_profissional] === 'concluido' && <img id="icon-concluido" src="check.svg" alt="" />}
-      {estadoBotoes[item.id_profissional] === 'inicial' && <span className="btn-text2"> {
-                selectedTime
-            ? `Marcar para ${selectedTime}`
-            : "Marcar Consulta"
-              }</span>}
-               
-            </b>
-        </button>
+        {selectedTime ? (
+              <button
+                id="agendar"
+                onClick={() => handleAgendamento(item.id_profissional)}
+              >
+                <b>
+                  {estadoBotoes[item.id_profissional] === 'carregando' && (
+                    <div id="circle" className="circle"></div>
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'concluido' && (
+                    <img id="icon-concluido" src="check.svg" alt="" />
+                  )}
+                  {estadoBotoes[item.id_profissional] === 'inicial' && (
+                    <span className="btn-text2">
+                         Marcar para {selectedTime}
+                    </span>
+                  )}
+                </b>
+              </button>
+            ) : (
+              
+              <p className="selecione-horario">Selecione um horário acima para agendar</p>
+            )}
             </div>
             </div>
           </div>

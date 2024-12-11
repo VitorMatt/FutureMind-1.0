@@ -14,7 +14,7 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
 function CadastroProfissional() {
   const navigate = useNavigate();
 
-  const { profissional } = useContext(GlobalContext);
+  const { profissional, setProfissional } = useContext(GlobalContext);
   const { crpValid } = useContext(GlobalContext);
   const { atendeValid, setAtendeValid } = useContext(GlobalContext);
   const { especializacaoValid } = useContext(GlobalContext);
@@ -113,7 +113,7 @@ function CadastroProfissional() {
       if (response.ok) {
         alert('Cadastro concluído com sucesso!');
         
-        setPaciente({
+        setProfissional({
 
           nome_completo: '',
           cpf: '',

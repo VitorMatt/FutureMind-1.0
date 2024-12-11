@@ -50,10 +50,18 @@
    
 }
 .a1-foto{
-    height: 200px;
-    border-radius: 100px;
-    padding-left: 1.5%;
-    position: relative;
+    width: 150px; /* Define largura fixa */
+    height: 150px; /* Define altura fixa para formar o círculo */
+    border-radius: 50%; /* Cria o formato circular */
+    object-fit: cover; /* Ajusta a imagem para cobrir o círculo corretamente */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
+    margin-bottom: 2%;
+    margin-left: 9%;
+}
+
+.nome_email{
+    color: #012A4A;
+    margin-left: 20%;
 }
 input[type="file"] {
     display: none;
@@ -346,7 +354,7 @@ input[type="file"] {
     font-size: medium;
 }
 .div_container_pinput{
-   
+   position: relative;
     display: flex;
     margin: auto;
     justify-content: center;
@@ -942,22 +950,69 @@ input[type="checkbox"]:focus {
     width: 10%;
 }
 
-.validation-dot {
-    color: red;
-    font-size: 24px;
-    margin-left: 8px;
-    cursor: help;
-  }
-  
-  .validation-dot:hover::after {
-    content: attr(title);
+
+.error-circle {
     position: absolute;
-    background: #f2f2f2;
-    color: #333;
+    width: 13px;
+    height: 13px;
+    background-color: brown;
+    border-radius: 50%;
+    top: 84%;
+    right: 45px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  .error-message {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: -10px;
+    right: 0;
+    background-color: var(--cor-1);
+    color: white;
     padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
+    font-size: 17px;
     white-space: nowrap;
-    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
   }
   
+  .error-circle:hover + .error-message {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .error-circle:hover {
+    /* Quando o mouse passar sobre a bolinha, mostramos a mensagem */
+    opacity: 0.8;
+  }
+  
+  .error-circle[title] {
+    position: relative;
+    
+  }
+  
+  .error-circle + .error-message {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-top: 15%;
+  }
+  
+  .error-circle:hover + .error-message {
+    visibility: visible;
+    opacity: 1;
+    position: absolute;
+    top: -25px;
+    right: 0;
+    background-color: var(--cor-1);
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+ .areas{
+    margin-top: 5%;
+    color: brown;
+ }

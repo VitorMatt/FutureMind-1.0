@@ -8,7 +8,7 @@ const pool = new Pool({
     user: 'postgres', 
     host: 'localhost',
     database: 'FutureMind', 
-    password: 'Vitor281207.',
+    password: '12345',
     port: 5432, 
 });
 
@@ -420,7 +420,7 @@ app.post('/agendamento', async(req, res) => {
 
     try {
 
-        const result = await pool.query('INSERT INTO agendamento (horario, data, fk_id_profissional, fkpaciente_id_paciente) VALUES ($1, $2, $3, $4) RETURNING *', [
+        const result = await pool.query('INSERT INTO agendamento (horario, data, fk_id_profissionais, fkpaciente_id_paciente) VALUES ($1, $2, $3, $4) RETURNING *', [
             horario,
             data,
             profissional,
@@ -459,7 +459,7 @@ app.get('/perfil-profissional/agenda/:id_profissional', async (req, res) => {
                 pacientes.nome_completo AS paciente_nome 
              FROM agendamento
              LEFT JOIN pacientes ON agendamento.fkpaciente_id_paciente = pacientes.id_paciente
-             WHERE fk_id_profissional = $1`, 
+             WHERE fk_id_profissionais = $1`, 
             [id_profissional]
         );
 
@@ -469,7 +469,7 @@ app.get('/perfil-profissional/agenda/:id_profissional', async (req, res) => {
 
         return res.status(404).json("Nenhum agendamento encontrado");
     } catch (err) {
-        console.error(err.message);
+        console.log(err.message);
         return res.status(500).json("Erro no servidor");
     }
 });
@@ -496,7 +496,7 @@ app.get('/perfil-profissional/agenda/:id_profissional', async (req, res) => {
     const { id_agendamento } = req.params;
     try {
 
-        const result = await pool.query('DELETE FROM agendamento WHERE id_agendamento = $1', [id_agendamento]);
+        const result = await pool.query('DELETE FROM agendamento WHERE id_agendamento = $1 RETURNING *', [id_agendamento]);
 
         if (result.rows.length > 0) {
 
