@@ -4,15 +4,25 @@ import { useContext, useState } from 'react';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
 function Login() {
+  // Gerencia a navegação entre páginas
   const navigate = useNavigate();
+
+  // Gerencia a visibilidade da senha
   const [olhosSenha, setOlhosSenha] = useState(false);
+
+  // Função para definir o estado do usuário globalmente
   const { setUser } = useContext(GlobalContext);
+
+  // Estado para armazenar os valores do formulário
   const [form, setForm] = useState({ email: '', senha: '' });
+
+  // Validações dos campos de entrada
   const [validations, setValidations] = useState({
     email: { valid: true },
     senha: { valid: true },
   });
 
+  // Função para validar os campos do formulário
   const validateField = (field, value) => {
     if (field === 'email') {
       if (!value) {
@@ -51,14 +61,17 @@ function Login() {
     }
   };
 
+  // Função para gerenciar o envio do formulário
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Verifica se há erros de validação antes de enviar
     if (!validations.email.valid || !validations.senha.valid) {
       return; // Impede o envio caso a validação esteja errada
     }
 
     try {
+      // Envia os dados do formulário para o backend
       const response = await fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
@@ -68,16 +81,19 @@ function Login() {
       });
 
       if (response.ok) {
+        // Login bem-sucedido, armazena dados do usuário
         const data = await response.json();
         localStorage.setItem('User', JSON.stringify(data));
         setForm({ email: '', senha: '' });
 
+        // Define se o usuário é um profissional
         const isProfissional = data.id_profissional ? true : false;
-
         setUser({ logado: true, profissional: isProfissional });
 
+        // Redireciona para a página inicial
         navigate('/');
       } else {
+        // Exibe mensagens de erro caso o login falhe
         const errorData = await response.json();
         setValidations((prev) => ({
           ...prev,
@@ -97,12 +113,14 @@ function Login() {
 
   return (
     <div className="login-container">
+      {/* Lado esquerdo da página, contém o formulário de login */}
       <div className="Lado-esquerdo">
         <h3 className="titulo-login">Bem-vindo ao seu espaço</h3>
         <div className="input_principais">
           <div className="inputsLogin">
             <label>Email</label>
             <div className="input-wrapper">
+              {/* Campo de entrada para email */}
               <input
                 type="text"
                 value={form.email}
@@ -121,6 +139,7 @@ function Login() {
           <div className="inputsLogin">
             <label>Senha</label>
             <div className="input-wrapper">
+              {/* Campo de entrada para senha */}
               <input
                 type={olhosSenha ? 'text' : 'password'}
                 value={form.senha}
@@ -137,6 +156,7 @@ function Login() {
                 onClick={() => setOlhosSenha(!olhosSenha)}
                 className="olhos-login"
               >
+                {/* Alterna entre mostrar/esconder senha */}
                 {form.senha.length > 0 && (
                   <img
                     src={olhosSenha ? 'olhoAberto.svg' : 'olhoFechado.svg'}
@@ -149,6 +169,7 @@ function Login() {
 
           <div className="caminho-cadastro">
             <label className="label-login">Não Possui Cadastro?</label>
+            {/* Link para a página de cadastro */}
             <Link to="/cadastro" className="link-para-cadastro">
               Aperte aqui
             </Link>
@@ -160,6 +181,8 @@ function Login() {
           </div>
         </div>
       </div>
+
+      {/* Lado direito da página, contém a logo */}
       <div className="lado-Direito">
         <div className="arvore2">
           <img src="logoLogin.png" alt="" className="arvore-estilizada" />
