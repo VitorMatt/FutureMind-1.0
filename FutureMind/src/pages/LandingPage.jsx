@@ -86,6 +86,38 @@ function LandingPage() {
         </div>
       </div>
 
+
+
+
+
+      <div className="grande-2">
+        <div className="esquerdo-2">
+          <div className="beneficios-2">
+            <p>Como funciona a terapia online</p>
+          </div>
+
+          <div className="text-flex-2">
+            <p>
+              A terapia online é uma forma prática de cuidar da sua saúde mental. Você conhece os profissionais na 
+              plataforma, agenda sua consulta no melhor horário e realiza sessões por videochamada com segurança e 
+              conforto, sem precisar sair de casa. Uma solução acessível para o seu bem-estar!
+            </p>
+          </div>
+        </div>
+
+        <div className="bene.svg">
+          <img className="bene.svg" src="bene.svg" alt="therapy" />
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
       {/* Final Message Section */}
       <div className='container-total'>
       <div className="div-total">
@@ -103,7 +135,7 @@ function LandingPage() {
         </div>
 
         <div className="arvoreLanding">
-          <img src="ArvoreLanding.png" alt="tree" />
+          <img src="ArvoreRelato.svg" alt="tree" />
         </div>
 
         {/* Testimonials Section */}
