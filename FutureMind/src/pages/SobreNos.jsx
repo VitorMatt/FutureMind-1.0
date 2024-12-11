@@ -82,9 +82,8 @@ useEffect(() => {
 
         <div className='descricaoMissao'>
           <h1>Missão:</h1>
-          <p>A FutureMind é uma plataforma que oferece acesso acessível e de qualidade a sessões de psicanálise. Ela conecta indivíduos que buscam apoio psicológico a recém-formados 
-             em psicologia, permitindo que esses profissionais em início de carreira ganham experiência prática enquanto cumprem os requisitos de estágio, sob supervisão de psicólogos
-             experientes.
+          <p>
+A FutureMind é uma plataforma inovadora que oferece acesso acessível e de qualidade a sessões de psicanálise. Seu objetivo é conectar indivíduos que buscam apoio psicológico a recém-formados em psicologia, proporcionando uma experiência enriquecedora para ambos os lados. Dessa forma, os profissionais em início de carreira têm a oportunidade de ganhar experiência prática, enquanto os clientes se beneficiam de um serviço acessível e humanizado, contribuindo para o bem-estar emocional e a construção de uma sociedade mais saudável.
           </p>
         </div>
 
@@ -135,7 +134,7 @@ Com um time de terapeutas altamente capacitados e uma abordagem personalizada, b
             <img src="logo.png"/>
           </div>
 
-          <div className='dadosSugestoes'>
+          <div className='dadosSugestoes'> 
             <h1>Sugestão:</h1>
             <p>Ajude-nos a tornar sua experiência ainda melhor. Deixe sua sugestão!</p>
             <textarea id="expandingTextarea" placeholder="Digite aqui sua sugestão..." value={sugestao} onChange={(e) => { setSugestao(e.target.value) }}></textarea> 
