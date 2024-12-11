@@ -160,7 +160,10 @@ div::-webkit-scrollbar{
     line-height: 150%;
     font-weight: 600;
     width: 60%;
+}
 
+.css-1i4ywhz-MuiCollapse-wrapperInner{
+    background-color: #f0f1f5;
 }
 
 .titulo_ac_um{
