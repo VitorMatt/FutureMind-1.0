@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     gap: 80px;
-    padding-top: 7%;
+    margin-top: 2%;
     padding-bottom: 7%;
 }
 
@@ -33,6 +33,38 @@
 
 .titulo-perfil-p h1{
     padding-left: 5%;
+}
+
+.div-but-p{
+    margin: auto;
+    width: 70%;
+    margin-top: 4%;
+    
+}
+
+.voltar-p{
+    display: flex;
+    width: 8%;
+    justify-content: center;
+    background-color: #5A789F;
+    color: white;
+    border: none;
+    padding: 1%;
+    font-size: 1.2em;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.voltar-p:hover{
+    background-color: #C1DFF4;
+    border: none;
+    color: var(--cor-4);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.voltar-p:active{
+    transform: translateY(2px);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .foto-usuario-p{
@@ -98,26 +130,10 @@ input[type="file"] {
     padding: 1%;
     font-size: 1.5em;
     line-height: 1px;
-    background-color: #000000;
 }
 
 .nick-usuario-p p{
     opacity: 50%;
-}
-
-.meet-p{
-    display: flex;
-    justify-content: flex-end; /* Move o conteúdo para o lado direito */
-    align-items: center; /* Centraliza verticalmente */
-    width: 100%; /* Garante que a div ocupe toda a largura */
-    position: relative; /* Necessário para posicionamento */
-    background-color: #012A4A;
-}
-
-.meet-p img{
-    width: 40px; /* Ajuste o tamanho da imagem */
-    height: auto; /* Mantém a proporção */
-    margin-right: 10px; /* Espaço entre a imagem e a borda */
 }
 
 .a1-foto-p{

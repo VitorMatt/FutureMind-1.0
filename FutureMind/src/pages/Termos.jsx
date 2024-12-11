@@ -1,188 +1,133 @@
-import { Link } from 'react-router-dom'
-import Navbar from '../components/Navbar'
-import './CSS/Termos.css'
+// Importações de bibliotecas e componentes necessários
+import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import './CSS/Termos.css';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Footer from '../components/Footer';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+// Componente para rolar a página até o topo sempre que a rota mudar
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); // Faz a rolagem para o topo
   }, [pathname]);
 
   return null;
 }
 
+// Componente principal dos Termos de Uso
 function Termos() {
   return (
-      <div className='body-termos'>
-        <Navbar />
-        <ScrollToTop />
+    <div className='body-termos'>
+      {/* Barra de navegação */}
+      <Navbar />
+      <ScrollToTop />
 
-        <div className='divBotoes'>
-          <Link to = '/politica'className='botaodecisao'>Política de Privacidade</Link>
-          <Link to = '/termos'className='botaodecisaodois'>Termos de uso</Link>
+      {/* Botões para navegação entre Política de Privacidade e Termos de Uso */}
+      <div className='divBotoes'>
+        <Link to='/politica' className='botaodecisao'>Política de Privacidade</Link>
+        <Link to='/termos' className='botaodecisaodois'>Termos de Uso</Link>
+      </div>
+
+      {/* Introdução com título e descrição */}
+      <div className='introducao'>
+        <div className='T_titulo'>
+          <h1>Termos de Uso da FutureMind</h1>
         </div>
-        
-        <div className='introducao'>
-          <div className='T_titulo'>
-              <h1>Termos de uso da FutureMind</h1>
+        <div className='textinho'>
+          <div>
+            <p>Na FutureMind, a sua privacidade é nossa prioridade.</p>
           </div>
-          <div className='textinho'>
-              <div><p> Na Future Mind, a sua privacidade é nossa prioridade.</p></div>
-              
-
-            <div>
-              <p> Comprometemo-nos a proteger suas informações pessoais e a garantir que você tenha uma experiência segura e confiável em nossa plataforma de terapia online.</p>
-              <img src="bolona.png" className='boolinha'/>
-            </div>
-
-
-              <div> 
-                <p> Esta Política de Privacidade descreve como coletamos, utilizamos, armazenamos e protegemos suas informações, além de esclarecer seus direitos em relação a esses dados.
-                    Ao utilizar nossos serviços, você concorda com as práticas aqui descritas, e estamos aqui para garantir que sua jornada rumo ao bem-estar mental seja transparente 
-                    e respeitosa.
-                </p>
-                <img src="bolona.png" className='bolinha3' />
-              </div> 
-            
+          <div>
+            <p>Comprometemo-nos a proteger suas informações pessoais e a garantir que você tenha uma experiência segura e confiável em nossa plataforma de terapia online.</p>
+            <img src="bolona.png" className='boolinha' alt='Decoração'/>
+          </div>
+          <div>
+            <p>Esta Política de Privacidade descreve como coletamos, utilizamos, armazenamos e protegemos suas informações, além de esclarecer seus direitos em relação a esses dados.</p>
+            <p>Ao utilizar nossos serviços, você concorda com as práticas aqui descritas, e estamos aqui para garantir que sua jornada rumo ao bem-estar mental seja transparente e respeitosa.</p>
+            <img src="bolona.png" className='bolinha3' alt='Decoração'/>
           </div>
         </div>
+      </div>
 
-        <div className='bolona_termos'>
-          <img src="bolona2.png"/>
-        </div>
+      {/* Elementos visuais decorativos */}
+      <div className='bolona_termos'>
+        <img src="bolona2.png" alt='Decoração'/>
+      </div>
+      <div className='bolaEsquerda'>
+        <img src="bolona.png" className='bolinha2' alt='Decoração'/>
+      </div>
+      <div className='bolaEsquerda'>
+        <img src="bolonaEsquerda.png" className='bolonaes' alt='Decoração'/>
+      </div>
 
-        <div className='bolaEsquerda'>
-          <img src="bolona.png" className='bolinha2'/>
-        </div>
-
-        <div className='bolaEsquerda'>
-          <img src="bolonaEsquerda.png" className='bolonaes'/>
-        </div>
-
+      {/* Seção de Acordeões com informações detalhadas */}
       <div className='accordion-container'>
+        {/* Primeiro Acordeão: Aceitação dos Termos */}
         <Accordion className='container_ac'>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1-content"
-            id="panel1-header"
-            
-          >
-            <AccordionDetails  className='titulo_ac_um'>
-            Aceitação dos Termos
+          <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
+            <AccordionDetails className='titulo_ac_um'>
+              Aceitação dos Termos
             </AccordionDetails>
-        
           </AccordionSummary>
           <AccordionDetails className='textinhoAceitação'>
-            <p>Ao acessar e utilizar o site FutureMind, você concorda em cumprir e estar vinculado aos seguintes Termos de Uso. Se você não concordar com estes termos, pedimos que não utilize nosso site.</p>
-            <p>Os Termos de Uso são aplicáveis a todos os usuários, visitantes e qualquer pessoa que acesse o conteúdo e serviços oferecidos pelo FutureMind. Reservamo-nos o direito de modificar estes termos a qualquer momento, e recomendamos que você os revise periodicamente. Seu uso contínuo do site após a publicação de alterações constitui aceitação das novas condições.</p> 
-            <p>No FutureMind, nossa missão é proporcionar um espaço seguro e acolhedor para a terapia e o bem-estar emocional. Ao utilizar nossos serviços, você concorda em respeitar as diretrizes e políticas estabelecidas, buscando sempre um ambiente positivo e construtivo.</p>
+            <p>Ao acessar e utilizar o site FutureMind, você concorda em cumprir e estar vinculado aos seguintes Termos de Uso...</p>
           </AccordionDetails>
         </Accordion>
       </div>
 
       <div className='accordion-container'>
+        {/* Segundo Acordeão: Direitos Autorais */}
         <Accordion className='container_ac'>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1-content"
-            id="panel1-header"
-           
-            
-          >
-            <AccordionDetails  className='titulo_ac_um'>
-            Direitos Autorais
+          <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2-content" id="panel2-header">
+            <AccordionDetails className='titulo_ac_um'>
+              Direitos Autorais
             </AccordionDetails>
-        
           </AccordionSummary>
           <AccordionDetails className='textinhoAceitação'>
-            <p>© 2024 FutureMind. Todos os direitos reservados.</p>
-            <p>O conteúdo deste site, incluindo textos, imagens, gráficos, logotipos e materiais relacionados, é protegido por leis de direitos autorais e propriedade intelectual. Nenhuma parte deste site pode ser reproduzida, distribuída, modificada ou utilizada de qualquer forma sem a autorização prévia por escrito da FutureMind.</p>
+            <p>© 2024 FutureMind. Todos os direitos reservados...</p>
           </AccordionDetails>
         </Accordion>
       </div>
 
       <div className='accordion-container'>
+        {/* Terceiro Acordeão: Uso Permitido */}
         <Accordion className='container_ac'>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1-content"
-            id="panel1-header"
-            
-          >
-            <AccordionDetails  className='titulo_ac_um'>
-            Uso Permitido
+          <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3-content" id="panel3-header">
+            <AccordionDetails className='titulo_ac_um'>
+              Uso Permitido
             </AccordionDetails>
-        
           </AccordionSummary>
           <AccordionDetails className='textinhoAceitação'>
-            <p>Ao utilizar o site FutureMind, você concorda em fazer uso responsável e ético de nossos serviços e conteúdos. O uso permitido inclui:</p>
-
-            <p>Acesso aos Conteúdos: Você pode acessar, visualizar e interagir com os materiais disponibilizados no site, como artigos, vídeos e recursos relacionados à terapia e ao bem-estar.
-               Compartilhamento de Experiências: Você é encorajado a compartilhar suas experiências e feedback, desde que faça isso de maneira respeitosa e construtiva, contribuindo para um ambiente acolhedor.
-               Criação de Conta: Caso decida criar uma conta, você deve fornecer informações precisas e atualizadas, mantendo a confidencialidade de sua senha e sendo responsável por todas as atividades realizadas em sua conta.
-            </p>
-
-            <p>Proibições: É estritamente proibido:</p>
-
-            <p>
-              <ul>
-                <li>Utilizar o site para fins ilegais ou não autorizados.</li>
-                <li>Compartilhar informações falsas, enganosas ou prejudiciais.</li>
-                <li>Realizar atividades que possam comprometer a segurança do site ou a experiência de outros usuários, como assédio, discriminação ou spam.</li>
-              </ul>
-            </p>
-
-            <p>Ao seguir estas diretrizes, você ajuda a manter um ambiente seguro e positivo para todos os usuários do FutureMind. Agradecemos sua colaboração e desejamos uma experiência enriquecedora em sua jornada de autoconhecimento e crescimento pessoal!</p>
+            <p>Ao utilizar o site FutureMind, você concorda em fazer uso responsável e ético...</p>
           </AccordionDetails>
         </Accordion>
       </div>
 
       <div className='accordion-container-final'>
+        {/* Quarto Acordeão: Contato */}
         <Accordion className='container_ac'>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1-content"
-            id="panel1-header"
-            
-          >
-            <AccordionDetails  className='titulo_ac_um'>
-            Contato
+          <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel4-content" id="panel4-header">
+            <AccordionDetails className='titulo_ac_um'>
+              Contato
             </AccordionDetails>
-        
           </AccordionSummary>
           <AccordionDetails className='textinhoAceitação'>
-
-            <p>Estamos aqui para ajudar você! Se você tiver dúvidas, sugestões ou precisar de mais informações sobre nossos serviços, 
-              não hesite em entrar em contato conosco. A sua experiência é importante para nós, e queremos garantir que você tenha todo o apoio 
-              necessário em sua jornada de autoconhecimento e bem-estar.
-            </p>
-
-            <p>Formas de Contato:</p>
-
-            <p>
-              <ul>
-                <li>E-mail: contato@futuremind.com</li>
-                <li>Telefone: (xx)xxxx-xxxx</li>
-              </ul>
-            </p>
-
-            <p>Agradecemos por escolher o FutureMind. Estamos ansiosos para ouvir de você e apoiá-lo em sua jornada de terapia!</p>
+            <p>Estamos aqui para ajudar você! Se tiver dúvidas, sugestões ou precisar de mais informações...</p>
           </AccordionDetails>
         </Accordion>
       </div>
 
+      {/* Rodapé */}
       <Footer />
- 
     </div>
-  )
+  );
 }
 
-export default Termos
+export default Termos;

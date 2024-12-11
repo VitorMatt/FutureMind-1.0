@@ -1,5 +1,5 @@
-import Navbar from '../components/Navbar'
-import { Link } from 'react-router-dom'
+import Navbar from '../components/Navbar';
+import { Link } from 'react-router-dom';
 import './CSS/Politica.css';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -9,92 +9,85 @@ import Footer from '../components/Footer';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+// Função para rolar para o topo ao mudar de rota
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); // Garante que a página começa no topo
   }, [pathname]);
 
   return null;
 }
 
-function politica() {
+// Componente principal para a página de Política de Privacidade
+function Politica() {
   return (
     <div className='body-politica'>
-    <Navbar />
-    <ScrollToTop />
-    
-    <div className='divBotoes'>
+      {/* Navbar fixa no topo da página */}
+      <Navbar />
+      <ScrollToTop />
 
-        <Link to = '/politica' className ='botaodecisaoo'>Política de Privacidade</Link>
-        <Link to = '/termos' className ='botaodecisaodoiss'>Termos de uso</Link>
-        
+      {/* Botões para navegação entre Política de Privacidade e Termos de Uso */}
+      <div className='divBotoes'>
+        <Link to='/politica' className='botaodecisaoo'>Política de Privacidade</Link>
+        <Link to='/termos' className='botaodecisaodoiss'>Termos de uso</Link>
       </div>
-      
+
+      {/* Introdução da Política de Privacidade */}
       <div className='introducao'>
         <div className='T_titulo'>
-            <h1>Politica de Privacidade da FutureMind</h1>
+          <h1>Política de Privacidade da FutureMind</h1>
         </div>
         <div className='textinho'>
-            <div><p> Na Future Mind, a sua privacidade é nossa prioridade.</p></div>
-            
+          <div>
+            <p>Na FutureMind, a sua privacidade é nossa prioridade.</p>
+          </div>
 
-           <div><p> Comprometemo-nos a proteger suas informações pessoais e a garantir que você tenha uma experiência segura e confiável em nossa plataforma de terapia online.</p>
-           
-           <img src="bolona.png" className='boolinha'/>
-           </div>
+          <div>
+            <p>Comprometemo-nos a proteger suas informações pessoais e a garantir que você tenha uma experiência segura e confiável em nossa plataforma de terapia online.</p>
+            <img src="bolona.png" className='boolinha' />
+          </div>
 
-            <div> 
-              <p> Esta Política de Privacidade descreve como coletamos, utilizamos, armazenamos e protegemos suas informações, além de esclarecer seus direitos em relação a esses dados.
-                  Ao utilizar nossos serviços, você concorda com as práticas aqui descritas, e estamos aqui para garantir que sua jornada rumo ao bem-estar mental seja transparente 
-                  e respeitosa.
-              </p>
-              <img src="bolona.png" className='bolinha3' />
-            </div> 
-           
+          <div>
+            <p>Esta Política de Privacidade descreve como coletamos, utilizamos, armazenamos e protegemos suas informações, além de esclarecer seus direitos em relação a esses dados. Ao utilizar nossos serviços, você concorda com as práticas aqui descritas, e estamos aqui para garantir que sua jornada rumo ao bem-estar mental seja transparente e respeitosa.</p>
+            <img src="bolona.png" className='bolinha3' />
+          </div>
         </div>
       </div>
 
+      {/* Elementos visuais decorativos */}
       <div className='bolona_termos'>
-       <img src="bolona2.png"/>
+        <img src="bolona2.png" />
       </div>
 
       <div className='bolaEsquerda'>
-        <img src="bolona.png" className='bolinha2'/>
+        <img src="bolona.png" className='bolinha2' />
       </div>
 
       <div className='bolaEsquerda'>
-        <img src="bolonaEsquerda.png" className='bolonaes'/>
+        <img src="bolonaEsquerda.png" className='bolonaes' />
       </div>
 
+      {/* Seções expansíveis (Accordion) */}
       <div className='accordion-container'>
         <Accordion className='container_ac'>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
             id="panel1-header"
-            
           >
-            <AccordionDetails  className='titulo_ac_um'>
-            Direitos de Privacidade
+            <AccordionDetails className='titulo_ac_um'>
+              Direitos de Privacidade
             </AccordionDetails>
-        
           </AccordionSummary>
           <AccordionDetails className='textinhoAceitação'>
-
-            <p>Você tem o direito de acessar, corrigir ou solicitar a exclusão de seus dados pessoais a qualquer momento.
-               Se desejar exercer esses direitos, entre em contato conosco.</p>
-
+            <p>Você tem o direito de acessar, corrigir ou solicitar a exclusão de seus dados pessoais a qualquer momento. Se desejar exercer esses direitos, entre em contato conosco.</p>
             <p>Formas de Contato:</p>
-
-            <p>
-              <ul>
-                <li>E-mail: contato@futuremind.com</li>
-                <li>Telefone: (xx)xxxx-xxxx</li>
-              </ul>
-            </p>
-
+            <ul>
+              <li>E-mail: contato@futuremind.com</li>
+              <li>Telefone: (xx)xxxx-xxxx</li>
+            </ul>
           </AccordionDetails>
         </Accordion>
       </div>
@@ -105,24 +98,19 @@ function politica() {
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
             id="panel1-header"
-            
           >
-            <AccordionDetails  className='titulo_ac_um'>
-            Dados Coletados Pela FutureMind
+            <AccordionDetails className='titulo_ac_um'>
+              Dados Coletados Pela FutureMind
             </AccordionDetails>
-        
           </AccordionSummary>
           <AccordionDetails className='textinhoAceitação'>
-
-            <p>Os dados pessoais que coletamos são utilizados para:
-
-                Fornecer e gerenciar nossos serviços de terapia.
-                Personalizar sua experiência e enviar informações relevantes.
-                Entrar em contato com você para agendamentos, confirmações e follow-ups.
-
-                Melhorar nossos serviços e conteúdo.
-            </p>
-
+            <p>Os dados pessoais que coletamos são utilizados para:</p>
+            <ul>
+              <li>Fornecer e gerenciar nossos serviços de terapia.</li>
+              <li>Personalizar sua experiência e enviar informações relevantes.</li>
+              <li>Entrar em contato com você para agendamentos, confirmações e follow-ups.</li>
+              <li>Melhorar nossos serviços e conteúdo.</li>
+            </ul>
           </AccordionDetails>
         </Accordion>
       </div>
@@ -133,69 +121,48 @@ function politica() {
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
             id="panel1-header"
-            
           >
-            <AccordionDetails  className='titulo_ac_um'>
-            Proteção dos Dados Pessoais
+            <AccordionDetails className='titulo_ac_um'>
+              Proteção dos Dados Pessoais
             </AccordionDetails>
-        
           </AccordionSummary>
           <AccordionDetails className='textinhoAceitação'>
-
-            <p>implementamos medidas de segurança para proteger suas informações pessoais contra acesso não autorizado, alteração ou divulgação.
-               Somente pessoas autorizadas têm acesso a esses dados, e utilizamos tecnologia de criptografia para garantir sua segurança.
-            </p>
-
+            <p>Implementamos medidas de segurança para proteger suas informações pessoais contra acesso não autorizado, alteração ou divulgação. Somente pessoas autorizadas têm acesso a esses dados, e utilizamos tecnologia de criptografia para garantir sua segurança.</p>
           </AccordionDetails>
         </Accordion>
       </div>
 
+      {/* Recursos que protegem os dados */}
       <div className='div-h1'>
-        <h1 className='H1_recursos' >Quais Recursos Protegem seus Dados ?</h1>
+        <h1 className='H1_recursos'>Quais Recursos Protegem seus Dados?</h1>
       </div>
 
       <div className='Container-recursos'>
-        
         <div className='div_um_recursos'>
-
-            <img src="identificacao.svg" />
-          
-
-          <h2>Identifição <br /> de Usuario</h2>
+          <img src="identificacao.svg" />
+          <h2>Identificação <br /> de Usuário</h2>
         </div>
 
         <div className='div_dois_recursos'>
-
-         <div>
-           <img src="seguranca.svg"  />
-         </div>
-
-         <h2>Segurança <br /> de dados</h2>
+          <img src="seguranca.svg" />
+          <h2>Segurança <br /> de dados</h2>
         </div>
 
         <div className='div_tres_recursos'>
-          <div>
-            <img src="icone_banco.svg" />
-          </div>
-
+          <img src="icone_banco.svg" />
           <h2>Banco <br /> de dados</h2>
         </div>
 
         <div className='div_quatro_recursos'>
-          <div>
-            <img src="icone_chaves.svg" />
-          </div>
-
+          <img src="icone_chaves.svg" />
           <h2>Chaves/ <br /> Senhas</h2>
         </div>
-        
-      
       </div>
 
+      {/* Rodapé */}
       <Footer />
-
     </div>
-  )
+  );
 }
 
-export default politica
+export default Politica;
