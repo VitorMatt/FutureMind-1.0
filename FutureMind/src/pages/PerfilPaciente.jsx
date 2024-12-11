@@ -17,52 +17,200 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import InputMask from 'react-input-mask';
 
 function PerfilPaciente() {
 
+  var userData = JSON.parse(localStorage.getItem('User'));
+  
+  const [email, setEmail] = useState(userData.email);
+  const [senha, setSenha] = useState(userData.senha);
+  const [nome, setNome] = useState(userData.nome_completo);
+  const [data, setData] = useState(userData.data_nascimento)
+  const [telefone, setTelefone] = useState(userData.telefone);
+  const [crp, setCrp] = useState(userData.crp)
+  const [preco, setPreco] = useState(userData.preco);
+  const [cpf, setCpf] = useState(userData.cpf);
+  
+  
+  const [errors, setErrors] = useState({
+    nome: '',
+    email: '',
+    data: '',
+    senha: '',
+    cpf:'',
+    preco:'',
+    crp:'',
+    telefone:'',
+    especializacao: '',
+    preferencias: '',
+  });
+  
+  const handleEditarPerfil = async () => {
+    let formIsValid = true;
+    let newErrors = {
+      nome: false,
+      email: false,
+      data: false,
+      senha: false,
+      cpf:false,
+      preco:false,
+      crp:false,
+      telefone:false,
+      especializacao: false,
+      preferencias: false,
+    };
 
-//   var userData = JSON.parse(localStorage.getItem('User'));
+    if (especializacao.length === 0) {
+      newErrors.especializacao = 'Selecione pelo menos uma especialização.';
+      formIsValid = false;
+    }
+    
+    // Validação para preferências (caso necessário)
+    if (preferencias.length === 0) {
+      newErrors.preferencias = true;
+      formIsValid = false;
+    }
+    
+    if (!preco || preco.trim() === '') {
+      newErrors.preco = true;
+      formIsValid = false;
+    }
+    if (!telefone || telefone.trim().length < 10) {
+      newErrors.telefone = true;
+      formIsValid = false;
+    }
+    // Validação do CPF
+      if (!cpf || cpf.trim().length !== 14) {
+        newErrors.cpf = true;
+        formIsValid = false;
+      }
+      
+      // Validação do CRP
+      if (!crp || crp.trim().length < 8) {
+        newErrors.crp = true;
+        formIsValid = false;
+      }
+      
+      if (!nome || nome.trim() === "") {
+        newErrors.nome = true;
+      formIsValid = false;
+    }
+    
+    // Validação do email
+    if (!email || email.trim() === "") {
+      newErrors.email = true;
+      formIsValid = false;
+    } else if (!email.includes("@gmail.com")) {
+      newErrors.email = true;
+      formIsValid = false;
+    }
+    
+    if (date) {
+      const today = new Date();
+      const birthDate = new Date(date);
+      const age = today.getFullYear() - birthDate.getFullYear();
+      const month = today.getMonth() - birthDate.getMonth();
+      
+      if (age < 18 || (age === 18 && month < 0)) {
+        newErrors.data = "Você precisa ter mais de 18 anos para se cadastrar.";
+        formIsValid = false;
+      }
+    } else {
+      newErrors.data = "A data de nascimento não pode ser vazia.";
+      formIsValid = false;
+    }
+    
+    if (!senha || senha.trim() === "") {
+      newErrors.senha = true;
+      formIsValid = false;
+    }
+    
+    if (!telefone || telefone.trim().length < 10) {
+      newErrors.telefone = true;
+      formIsValid = false;
+    }
+  
+    // Atualiza os erros no estado
+    setErrors(newErrors);
+    
+    // Se a validação falhou, não envia o formulário
+    if (!formIsValid) return;
+    
+    
+    const novoProfissional = {
+      ...userData,
+      email,
+      senha,
+      preferencias, // Envia apenas os itens selecionados
+      especializacao, // Envia apenas os itens selecionados
+      data_nascimento: date,
+      preco,
+      nome_completo: nome,
+      cpf,
+      crp,
+      abordagem,
+      telefone,
+      descricao,
+      id_profissional: userData.id_profissional,
+    };
+    
+    try {
+      const response = await fetch('http://localhost:3000/perfil-profissional', {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(novoProfissional),
+      });
+      
+      if (response.ok) {
+        localStorage.setItem('User', JSON.stringify(novoProfissional));
+        console.log('Perfil atualizado com sucesso!');
+      } else {
+        console.error('Erro ao atualizar o perfil:', await response.json());
+      }
+    } catch (err) {
+      console.error('Erro na requisição:', err.message);
+    }
+  };
+  
+  const handleChanges = (e) => {
+    const maskedValue = e.target.value;
+    setTelefone(maskedValue);
+    
+  };
 
-//   userData.especializacao = userData.especializacao.replace('{', '')
-//   userData.especializacao = userData.especializacao.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('}', '')
-//   userData.preferencias = userData.preferencias.replace('{', '')
- 
-//  for (let i=0; i<(userData.especializacao.length * 2); i++) {
+  const maskCrp = (e) =>{
+    const maskedValue = e.target.value;
+    setCrp(maskedValue);
+  }
 
-//   userData.especializacao = userData.especializacao.replace('"', '')
-//  }
+  const maskCpf = (e) =>{
+    const maskedValue = e.target.value;
+    setCpf(maskedValue);
+  }
 
-//  for (let i=0; i<(userData.preferencias.length * 2); i++) {
+  const maskPreco = (e) =>{
+    const maskedValue = e.target.value;
+    setPreco(maskedValue);
+  }
 
-//   userData.preferencias = userData.preferencias.replace('"', '')
-//  }
 
-//  userData.preferencias = userData.preferencias.split(',').map(item => item.trim()); 
-//  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
 
  const navigate = useNavigate();
 
  const { setUser } = useContext(GlobalContext);
  
  const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o joão miguel e sou um ótimo profissional na minha área. Vamos consultar nosso próprio espírito que consola por dentro e grita para poder escapar da dor. Sou um ótimo profissional, eu juro!'}
- const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
+ const [date, setDate] = useState(userData.data_nascimento); // Estado para armazenar a data selecionada
  
    const [dataAtual, setDataAtual] = useState(new Date());
    const [selectedAgendamento, setSelectedAgendamento] = useState(null);
    const [divPosition, setDivPosition] = useState({ top: 0, left: 0}); // Posição da div de detalhes
+   const [descricao, setDescricao] = useState(null);
  
-   const [agendamentos, setAgendamentos] = useState([
-   
-     { data: "2024-12-02", paciente: "Thalles Lima", horario: "15:00" },
-     { data: "2024-12-02", paciente: "Luciana Nuss", horario: "17:30" },
-     { data: "2024-12-02", paciente: "aaaaaaaaa", horario: "20:00" },
-     { data: "2024-12-03", paciente: "Julia Silva Dias", horario: "14:30" }, 
-     { data: "2024-12-04", paciente: "Mateus da Silva", horario: "16:00" },
-     { data: "2024-12-04", paciente: "renatinho", horario: "18:00" },
-     { data: "2024-12-05", paciente: "aaaaaaaaa", horario: "20:00" },
-     
-   ]);
+   const [agendamentos, setAgendamentos] = useState([]);
  
    const [indicesAgendamentos, setIndicesAgendamentos] = useState({}); // Rastrear índice atual de cada dia
  
@@ -121,16 +269,6 @@ function PerfilPaciente() {
      setSelectedAgendamento(null); // Fecha a div de detalhes
    };
  
-   const handleConcludeAppointment = (agendamento) => {
-     setAgendamentos((prevAgendamentos) =>
-       prevAgendamentos.filter(
-         (item) =>
-           !(item.data === agendamento.data && item.horario === agendamento.horario)
-       )
-     );
-     handleCloseDetails(); // Fecha a div de detalhes, se estiver aberta
-   }; 
- 
  
    const [horarios, setHorarios] = useState(profissional.horarios);
  
@@ -154,6 +292,148 @@ function PerfilPaciente() {
     navigate('/');
    }
 
+   const handleConcludeAppointment = async (agendamento) => {
+
+    try {
+
+      const response = await fetch(`http://localhost:3000/perfil-profissional/agenda/${agendamento}`, {
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+
+        setAgendamentos((prevAgendamentos) =>
+          prevAgendamentos.filter(
+            (item) =>
+              !(item.data === agendamento.data && item.horario === agendamento.horario)
+          )
+        );
+        handleCloseDetails(); // Fecha a div de detalhes, se estiver aberta
+      }
+    } catch (err) {
+
+      console.log(err.message);
+    }
+  };
+
+  const onImageChange = async (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      console.log('Arquivo selecionado:', file);
+  
+      const formData = new FormData(); // Corrigir a criação do FormData
+      formData.append('foto', file); // Adicionar o arquivo selecionado
+      formData.append('id_paciente', userData.id_paciente);
+  
+      try {
+        const response = await fetch('http://localhost:3000/perfil-paciente/foto-perfil', {
+          method: 'POST',
+          body: formData,
+        });
+  
+        if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem('User', JSON.stringify({...userData, foto: data.foto, descricao}));
+          userData = JSON.parse(localStorage.getItem('User'));
+          console.log('Resposta do servidor:', data);
+          alert('Foto enviada com sucesso!');
+        } else {
+          console.log('Erro no envio da foto:', response.status);
+          alert('Erro ao enviar a foto.');
+        }
+      } catch (err) {
+        console.log('Erro:', err.message);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getAgenda();
+  }, []);
+  
+  const getAgenda = async () => {
+    const id_paciente = userData.id_paciente;
+  
+    try {
+      const response = await fetch(`http://localhost:3000/perfil-paciente/agenda/${id_paciente}`);
+  
+      if (response.ok) {
+        const data = await response.json();
+  
+        // Formatar datas antes de salvar no estado
+        const agendamentosFormatados = data.map((agendamento) => ({
+          ...agendamento,
+          data: agendamento.data.split("T")[0], // Garantir formato 'YYYY-MM-DD'
+        }));
+  
+        setAgendamentos(agendamentosFormatados);
+      } else {
+        console.log("Erro ao buscar agenda:", response.statusText);
+      }
+    } catch (err) {
+      console.log("Erro ao buscar agenda:", err.message);
+    }
+  };
+
+  const deletaUsuario = async() => {
+
+    const res = prompt('Deseja mesmo deletar sua conta?');
+
+    if (!res=='sim') return;
+
+    const id_profissional = userData.id_profissional;
+
+    try {
+
+      const response = await fetch(`http://localhost:3000/perfil-profissional/${id_profissional}`, {
+
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+
+        console.log('User deletado com sucesso!');
+        setUser({logado: false, profissional: false});
+        navigate('/');
+      }
+    } catch(err) {
+
+      console.log(err.message);
+    }
+  }
+
+  const handleSaveClick = async () => {
+    try {
+      const novoPaciente = {
+        ...userData
+      };
+  
+      const response = await fetch('http://localhost:3000/perfil-paciente', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(novoPaciente),
+      });
+  
+      if (response.ok) {
+        const updatedUser = await response.json();
+        localStorage.setItem('User', JSON.stringify(updatedUser));
+        setUser(updatedUser); // Atualiza o contexto do usuário
+        console.log('Descrição salva com sucesso!');
+      } else {
+        const error = await response.json();
+        console.error('Erro ao atualizar a descrição:', error);
+        console.log('Erro ao salvar a descrição.');
+      }
+    } catch (err) {
+      console.error('Erro na requisição:', err.message);
+      console.log('Erro ao salvar a descrição.');
+    }
+  
+    setIsEditing(false); // Sai do modo de edição
+  };
+
     return (
         <div className='perfilPa-container'>
 
@@ -175,19 +455,19 @@ function PerfilPaciente() {
 
                   <div className='div-foto-editar'>
                     <div className='foto-usuario-p'>
-                        <img src='iconuser.svg' className='a-foto-p'/>
+                        <img src={`http://localhost:3000${userData.foto}`} className='a-foto-p'/>
                     </div>
 
                     <div className='input-editar-foto-p'>
-                      <input type="file" id="file" name="file" />
+                      <input type="file" id="file" name="file" onChange={onImageChange}/>
                        <label htmlFor="file" className="label-file-p"> Editar Foto</label>
                     </div>
                   </div>
 
                     <div className='nick-usuario-p'>
 
-                      {/* <h1>{userData.nome_completo}</h1>
-                      <p>{userData.email}</p> */}
+                      <h1>{userData.nome_completo}</h1>
+                      <p>{userData.email}</p>
                     </div>
 
                  </div>
@@ -225,7 +505,7 @@ function PerfilPaciente() {
                     onClick={(e) => handleEventClick(event, e)}
                    >
                     <p onClick={() => handleEventClick(agendamentosDoDia)} className="agendamento-nome-p">
-                     {event.paciente}
+                     {event.profissional_nome}
                     </p>
                     
                   </div>
@@ -249,7 +529,7 @@ function PerfilPaciente() {
                           </button>
                         </div>
                         <h2>Detalhes do Agendamento</h2>
-                        <p><strong>Paciente:</strong> {selectedAgendamento.paciente}</p>
+                        <p><strong>Profissional:</strong> {selectedAgendamento.profissional_nome}</p>
                         <p><strong>Data:</strong> {selectedAgendamento.data}</p>
                         <p><strong>Horário:</strong> {selectedAgendamento.horario}</p>
                         <div className='buttons-detalhes-conteudo-p'>
@@ -278,28 +558,66 @@ function PerfilPaciente() {
               <div className='div1-editar-p'>
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
-                  <p>Nome Completo</p>
-                  <input type="text" placeholder='Digite seu nome completo...'/>
+                 <p>Nome Completo</p>
+                  <input
+                    type="text"
+                    value={nome}
+                    onChange={(e) => { setNome(e.target.value) }}
+                    placeholder='Digite seu nome completo...'
+                    style={{ borderColor: errors.nome ? 'red' : '' }}
+                  />
+                  {errors.nome && (
+                    <>
+                      <span className="error-circle"></span>
+                      <div className="error-message">
+                        O nome é obrigatório e deve ter no mínimo 3 caracteres.
+                      </div>
+                    </>
+                  )}
                  </div>
                 </div>
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
                  <p>Data de Nascimento</p>
                  <Flatpickr
-                   options={{
-                   locale: Portuguese, // Configuração para Português
-                   dateFormat: "d/m/Y", // Formato da data
-                   defaultDate: "today", // Data padrão
-                   }}
-                   value={date} // Data atual no estado
-                   onChange={(selectedDates) => setDate(selectedDates[0])} // Atualiza a data selecionada
-                 />
+                  options={{
+                    locale: Portuguese,
+                    dateFormat: "y/m/d",
+                    defaultDate: "today",
+                  }}
+                  value={data}
+                  onChange={(selectedDates) => setDate(selectedDates[0])}
+                  style={{ borderColor: errors.data ? 'red' : '' }}
+                />
+                {errors.data && (
+                  <>
+                    <span className="error-circle"></span>
+                    <div className="error-message">{errors.data}</div>
+                  </>
+                )}
                  </div>
                 </div>
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
                   <p>CPF</p>
-                  <CpfInput />
+                  <InputMask
+                    mask="999.999.999-99"
+                    value={cpf}
+                    onChange={maskCpf}
+                    placeholder="000.000.000-00"
+                    id="cpf"
+                    className="inputCRP"
+                  >
+                    {(inputProps) => <input {...inputProps} />}
+                  </InputMask>
+                  {errors.cpf && (
+                            <>
+                      <span className="error-circle"></span>
+                      <div className="error-message">
+                      CPF inválido
+                      </div>
+                    </>
+                  )}
                  </div>
                 </div>
               </div>
@@ -309,21 +627,64 @@ function PerfilPaciente() {
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
                   <p>Telefone</p>
-                  <TelefoneMask />
+                  <InputMask
+                    mask="(99) 99999-9999"
+                    value={telefone}
+                    onChange={handleChanges}
+                    placeholder="(00) 00000-0000"
+                    id="telefone"
+                    className='inputCRP'
+                  >
+                    {(inputProps) => <input {...inputProps} />}
+                  </InputMask>
+                  {errors.telefone && (
+                    <>
+                      <span className="error-circle"></span>
+                      <div className="error-message">
+                        Número Inválido.
+                      </div>
+                    </>
+                  )}
                  </div>
                 </div>
 
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
-                  <p>E-mail</p>
-                  <input type="email" />
+                 <p>E-mail</p>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    style={{ borderColor: errors.email ? 'red' : '' }}
+                  />
+                  {errors.email && (
+                    <>
+                      <span className="error-circle"></span>
+                      <div className="error-message">
+                        O e-mail é inválido. Verifique se está correto.
+                      </div>
+                    </>
+                  )}
                  </div>
                 </div>
 
                 <div className='div_container_pinput-p'>
                  <div className='div_pinput-p'>
-                  <p>Senha</p>
-                  <input type="text" />
+                 <p>Senha</p>
+                  <input
+                    type="password"
+                    value={senha}
+                    onChange={(e) => setSenha(e.target.value)}
+                    style={{ borderColor: errors.senha ? 'red' : '' }}
+                  />
+                  {errors.senha && (
+                    <>
+                      <span className="error-circle"></span>
+                      <div className="error-message">
+                        A senha deve ter no mínimo 6 caracteres e incluir números e letras.
+                      </div>
+                    </>
+                  )}
                  </div>
                 </div>
 
@@ -335,10 +696,10 @@ function PerfilPaciente() {
 
 
                 <div className='div-buttons-salvar-cancelar-p'>
-                <button className='a-p'>Excluir conta</button>
+                <button className='a-p' onClick={deletaUsuario}>Excluir conta</button>
                   <button className='a-p' onClick={handleSair} >Sair da Conta</button>
                   <button className='a-p'>Cancelar edição</button>
-                  <button className='salva'>Salvar</button>
+                  <button className='salva' onClick={handleEditarPerfil}>Salvar</button>
                 </div>
 
         </div>

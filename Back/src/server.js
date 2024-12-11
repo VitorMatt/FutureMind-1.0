@@ -261,8 +261,8 @@ app.delete('/perfil-profissional/:id_profissional', async (req, res) => {
 
 app.put('/perfil-paciente', async(req, res) => {
 
-    const { id_paciente } = req.params;
     const {
+        id_paciente,
         nome_completo,
         cpf,
         telefone,
@@ -539,7 +539,57 @@ app.post('/sugestoes', async(req, res) => {
     }
 })
 
+app.post('/perfil-paciente/foto-perfil', upload.single('foto'), async (req, res) => {
+    const { id_paciente } = req.body;
+    const fotoPath = req.file ? `/uploads/${req.file.filename}` : null;
   
+    if (!id_paciente || !fotoPath) {
+      return res.status(400).json({ Erro: 'ID do profissional ou foto ausente.' });
+    }
+  
+    try {
+      const result = await pool.query(
+        'UPDATE pacientes SET foto = $1 WHERE id_paciente = $2 RETURNING *',
+        [fotoPath, id_paciente]
+      );
+  
+      if (result.rows.length === 0) {
+        return res.status(404).json({ Erro: 'Profissional não encontrado.' });
+      }
+  
+      res.json(result.rows[0]);
+    } catch (err) {
+      console.error(err.message);
+      return res.status(500).json({ Erro: 'Erro ao atualizar profissional.' });
+    }
+  });
+
+  app.get('/perfil-paciente/agenda/:id_paciente', async (req, res) => {
+    const { id_paciente } = req.params;
+
+    try {
+        const result = await pool.query(
+            `SELECT 
+                agendamento.data, 
+                agendamento.horario, 
+                agendamento.id_agendamento,
+                profissionais.nome_completo AS profissional_nome 
+             FROM agendamento
+             LEFT JOIN profissionais ON agendamento.fk_id_profissionais = profissionais.id_profissional
+             WHERE fkpaciente_id_paciente = $1`, 
+            [id_paciente]
+        );
+
+        if (result.rows.length > 0) {
+            return res.status(200).json(result.rows);
+        }
+
+        return res.status(404).json("Nenhum agendamento encontrado");
+    } catch (err) {
+        console.log(err.message);
+        return res.status(500).json("Erro no servidor");
+    }
+});
 
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');

@@ -319,10 +319,10 @@ function PerfilProfissional() {
   const [abordagem, setAbordagem] = useState(userData.abordagem);
 
 
-    useEffect(() => {
+  //   useEffect(() => {
 
-      profissional.abordagem = abordagem;
-  }, [abordagem]);
+  //     profissional.abordagem = abordagem;
+  // }, [abordagem]);
 
   // const [horarios, setHorarios] = useState(profissional.horarios);
 
