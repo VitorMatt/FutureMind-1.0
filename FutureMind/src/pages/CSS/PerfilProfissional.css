@@ -18,7 +18,7 @@
 .perfil-profissional{
     display: block;
     margin: auto;
-    background-color: #f2f7fc;
+    background-color: #f0f1f5;
     border-radius: 10px;
     width: 70%;
     height: fit-content;
@@ -198,7 +198,7 @@ input[type="file"] {
 .anotações-profissional{
     display: block;
     margin: auto;
-    background-color: #f2f7fc;
+    background-color: #f0f1f5;
     border-radius: 10px;
     width: 70%;
     height: 500px;
@@ -206,7 +206,6 @@ input[type="file"] {
 .input-button{
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     margin: auto;
     width: 90%;
     height: fit-content;
@@ -225,7 +224,7 @@ input[type="file"] {
     border-radius: 15px;
     resize: none;
     cursor: pointer;
-    background-color: #f2f7fc;
+    background-color: #f0f1f5;
 }
 .button-anotações{
     display: flex;
@@ -258,7 +257,7 @@ input[type="file"] {
 .div-anotações {
     display: flex;
     width: 100%;
-    background-color: #f2f7fc;
+    background-color: #f0f1f5;
     border-radius: 15px;
   }
  
@@ -315,7 +314,7 @@ input[type="file"] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f2f7fc;
+    background-color: #f0f1f5;
     border-radius: 10px;
     width: 70%;
     height: fit-content;
@@ -473,7 +472,7 @@ input[type="file"] {
     font-size: 1.2em;
     border-radius: 15px;
     cursor: pointer;
-    background-color: #f2f7fc;
+    background-color: #f0f1f5;
     color: #5A789F;
     border: 2px solid #5A789F;
 }
@@ -496,7 +495,7 @@ input[type="file"] {
 }
 .container-agendamento{
     display: flex;
-    background-color: #f2f7fc;
+    background-color: #f0f1f5;
     justify-content: center;
     text-align: center;
     align-items: center;
@@ -539,7 +538,7 @@ input[type="file"] {
 .div_informações_ag{
    
     width: 28%;
-    background-color: #f2f7fc;
+    background-color: #f0f1f5;
     font-weight: 500;
     border-radius: 10px;
     height: 335px;
@@ -616,19 +615,7 @@ input[type="file"] {
 .div_para_itens p{
     width: fit-content;
 }
-.div_buttons_trocar_agendamentos{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-}
-.buttons_trocar_agendamento{
-    width: 12%;
-    background-color: white;
-    border: none;
-    cursor: pointer;
-}
+
 .buttons-itens{
     display: flex;
     width: 100%;
@@ -686,25 +673,7 @@ input[type="file"] {
     align-items: center;
     z-index: 1000;
   }
-
-  .confirmacao-exclusao p {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
- 
-  .confirmacao-exclusao button {
-    margin: 5px;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-  }
- 
-  .confirmacao-exclusao button:hover {
-    background-color: #f0f0f0;
-  }
+  
   .div-esp {
     max-width: 300px;
     height: 150px;
