@@ -116,14 +116,29 @@ function PerfilProfissional() {
     setSelectedAgendamento(null); // Fecha a div de detalhes
   };
 
-  const handleConcludeAppointment = (agendamento) => {
-    setAgendamentos((prevAgendamentos) =>
-      prevAgendamentos.filter(
-        (item) =>
-          !(item.data === agendamento.data && item.horario === agendamento.horario)
-      )
-    );
-    handleCloseDetails(); // Fecha a div de detalhes, se estiver aberta
+  const handleConcludeAppointment = async (agendamento) => {
+
+    const id_agendamento = agendamento.id_agendamento
+    try {
+
+      const response = await fetch(`http://localhost:3000/perfil-profissional/agenda/${id_agendamento}`, {
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+
+        setAgendamentos((prevAgendamentos) =>
+          prevAgendamentos.filter(
+            (item) =>
+              !(item.data === agendamento.data && item.horario === agendamento.horario)
+          )
+        );
+        handleCloseDetails(); // Fecha a div de detalhes, se estiver aberta
+      }
+    } catch (err) {
+
+      console.log(err.message);
+    }
   };
 
   const [abordagem, setAbordagem] = useState(userData.abordagem);
@@ -227,6 +242,7 @@ function PerfilProfissional() {
   
       if (response.ok) {
         localStorage.setItem('User', JSON.stringify(novoProfissional));
+        userData = JSON.parse(localStorage.getItem('User'));
         console.log('Perfil atualizado com sucesso!');
       } else {
         console.error('Erro ao atualizar o perfil:', await response.json());
@@ -255,6 +271,7 @@ function PerfilProfissional() {
         if (response.ok) {
           const data = await response.json();
           localStorage.setItem('User', JSON.stringify({...userData, foto: data.foto, descricao}));
+          userData = JSON.parse(localStorage.getItem('User'));
           console.log('Resposta do servidor:', data);
           alert('Foto enviada com sucesso!');
         } else {
@@ -369,33 +386,28 @@ function PerfilProfissional() {
         const response = await fetch(`http://localhost:3000/perfil-profissional/agenda/${id_profissional}`);
     
         if (response.ok) {
-          const data = await response.json(); // Corrigido para response.json()
-          setAgendamentos(data);
+          const data = await response.json();
     
-          // Buscar os pacientes relacionados
-          data.forEach((agendamento) => {
-            getPaciente(agendamento.fkpaciente_id_paciente);
-          });
+          // Formatar datas antes de salvar no estado
+          const agendamentosFormatados = data.map((agendamento) => ({
+            ...agendamento,
+            data: agendamento.data.split("T")[0], // Garantir formato 'YYYY-MM-DD'
+          }));
+    
+          setAgendamentos(agendamentosFormatados);
+        } else {
+          console.error("Erro ao buscar agenda:", response.statusText);
         }
       } catch (err) {
         console.error("Erro ao buscar agenda:", err.message);
       }
     };
     
-    const getPaciente = async (id) => {
-      try {
-        const response = await fetch(`http://localhost:3000/perfil-profissional/agenda/paciente/${id}`);
-    
-        if (response.ok) {
-          const data = await response.json();
-          setPacientes((prevPacientes) => [...prevPacientes, data]); // Adicionar paciente acumulativamente
-        }
-      } catch (err) {
-        console.error("Erro ao buscar paciente:", err.message);
-      }
+    const formatarData = (data) => {
+      const [year, month, day] = data.split('-');
+      return `${day}/${month}/${year}`;
     };
     
-
 
   return (
     <div className='perfilPro-container'>
@@ -506,38 +518,62 @@ function PerfilProfissional() {
               <div className='container-menor-ag'>
                 <span className='mes-ano'>{dataAtual.toLocaleDateString("pt-BR", { month: "long", year: "numeric" })}</span>
                 
-                <div className='dias_semana'>
-                  {diasUteis.map((dia, index) => {
-                    const diaString = dia.toISOString().split("T")[0];
-                    const agendamentosDoDia = agendamentos.filter((ag) => ag.data === diaString);
+                <div className="dias_semana">
+  {diasUteis.map((dia, index) => {
+    const diaString = dia.toISOString().split("T")[0];
+    const agendamentosDoDia = agendamentos.filter((ag) => ag.data === diaString);
 
-                    return (
-                      <div key={index} className="div_informações_ag">
-                        <div className='semana'>
-                          <div className='cabeçalho'>
-                            <div className='Nome_dia_da_semana'>
-                              {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {dia.getDate()}
-                            </div>
-                          </div>
+    return (
+      <div key={index} className="div_informações_ag">
+        <div className="semana">
+          <div className="cabeçalho">
+            <div className="Nome_dia_da_semana">
+              {dia.toLocaleDateString("pt-BR", { weekday: "long" })} - {dia.getDate()}
+            </div>
+          </div>
+        </div>
+
+        {agendamentosDoDia.map((event, idx) => (
+          <div key={`${diaString}-${idx}`} className="event-card" onClick={(e) => handleEventClick(event, e)}>
+            <p onClick={() => handleEventClick(agendamentosDoDia)}>{event.paciente_nome || "Não informado"} - {event.data}</p>
+          </div>
+        ))}
+      </div>
+    );
+  })}
+
+   {selectedAgendamento && (
+                     <div
+                      className="detalhes-agendamento"
+                      style={{
+                        top: `${divPosition.top}px`,
+                        left: `${divPosition.left}px`,
+                      }}
+                     >
+                      <div className="detalhes-conteudo">
+                        <div className='fechar-detalhes'>
+                          <button onClick={handleCloseDetails}>
+                            <img src="xizinho.svg" alt="" />
+                          </button>
                         </div>
-                        
-                        {agendamentosDoDia.map((event) => {
-                          const paciente = pacientes.find((p) => p.id_paciente === event.fkpaciente_id_paciente);
-
-                          return (
-                            <div
-                              key={`${diaString}-${event.horario}`}
-                              className="event-card"
-                              onClick={(e) => handleEventClick(event, e)}
-                            >
-                              <p>{paciente ? paciente.nome_completo : 'Paciente não encontrado'}</p>
-                            </div>
-                          );
-                        })}
+                        <h2>Detalhes do Agendamento</h2>
+                        <p><strong>Paciente:</strong> {selectedAgendamento.paciente_nome}</p>
+                        <p><strong>Data:</strong> {selectedAgendamento.data}</p>
+                        <p><strong>Horário:</strong> {selectedAgendamento.horario}</p>
+                        <div className='buttons-detalhes-conteudo'>
+                          <button className='but-det' onClick={() => handleDeleteAppointment(selectedAgendamento)}>
+                            Cancelar
+                          </button>
+                          <button className='but-det' onClick={() => handleConcludeAppointment(selectedAgendamento)}>
+                            Concluída
+                          </button>
+                        </div>
                       </div>
-                    );
-                  })}
-                </div>
+                      </div>
+                  )}
+
+</div>
+
               </div>
               
               <button onClick={() => handleTrocarSemana(true)} className="button_passar">

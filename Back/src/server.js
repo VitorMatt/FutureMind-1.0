@@ -8,7 +8,7 @@ const pool = new Pool({
     user: 'postgres', 
     host: 'localhost',
     database: 'FutureMind', 
-    password: '12345',
+    password: 'Vitor281207.',
     port: 5432, 
 });
 
@@ -420,7 +420,7 @@ app.post('/agendamento', async(req, res) => {
 
     try {
 
-        const result = await pool.query('INSERT INTO agendamento (horario, data, fk_id_profissionais, fkpaciente_id_paciente) VALUES ($1, $2, $3, $4) RETURNING *', [
+        const result = await pool.query('INSERT INTO agendamento (horario, data, fk_id_profissional, fkpaciente_id_paciente) VALUES ($1, $2, $3, $4) RETURNING *', [
             horario,
             data,
             profissional,
@@ -430,7 +430,7 @@ app.post('/agendamento', async(req, res) => {
         res.status(200).json(result.rows);
     } catch (err) {
 
-        console.log('erro')
+        console.log(err.message)
     }
 });
 
@@ -446,6 +446,69 @@ app.get('/agendamento', async (req, res) => {
         console.log({Erro: err.message});
     }
 });
+
+app.get('/perfil-profissional/agenda/:id_profissional', async (req, res) => {
+    const { id_profissional } = req.params;
+
+    try {
+        const result = await pool.query(
+            `SELECT 
+                agendamento.data, 
+                agendamento.horario, 
+                agendamento.id_agendamento,
+                pacientes.nome_completo AS paciente_nome 
+             FROM agendamento
+             LEFT JOIN pacientes ON agendamento.fkpaciente_id_paciente = pacientes.id_paciente
+             WHERE fk_id_profissional = $1`, 
+            [id_profissional]
+        );
+
+        if (result.rows.length > 0) {
+            return res.status(200).json(result.rows);
+        }
+
+        return res.status(404).json("Nenhum agendamento encontrado");
+    } catch (err) {
+        console.error(err.message);
+        return res.status(500).json("Erro no servidor");
+    }
+});
+
+  app.get('/perfil-profissional/agenda/paciente/:id', async (req, res) => {
+    const { id } = req.params;
+  
+    try {
+      const result = await pool.query('SELECT nome_completo FROM pacientes WHERE id_paciente = $1', [id]);
+  
+      if (result.rows.length > 0) {
+        return res.status(200).json(result.rows[0]); // Retornar apenas o primeiro paciente
+      }
+  
+      return res.status(404).json('Paciente não encontrado');
+    } catch (err) {
+      console.error(err.message);
+      return res.status(500).json("Erro no servidor");
+    }
+  });
+
+  app.delete('/perfil-profissional/agenda/:id_agendamento', async(req, res) => {
+
+    const { id_agendamento } = req.params;
+    try {
+
+        const result = await pool.query('DELETE FROM agendamento WHERE id_agendamento = $1', [id_agendamento]);
+
+        if (result.rows.length > 0) {
+
+            return res.status(200).json(result.rows);
+        }
+        
+        return res.status(404).json('agenda não encontrada');
+    } catch (err) {
+
+        console.log(err.message);
+    }
+  });
 
 app.get('/sugestoes', async(req, res) => {
 
@@ -476,39 +539,6 @@ app.post('/sugestoes', async(req, res) => {
     }
 })
 
-app.post('/perfil-profissional/agenda/:id_profissional', async (req, res) => {
-    const { id_profissional } = req.params;
-  
-    try {
-      const result = await pool.query('SELECT * FROM agendamento WHERE fk_id_profissional = $1', [id_profissional]);
-  
-      if (result.rows.length > 0) {
-        return res.status(200).json(result.rows); // Corrigido o uso de `rows.length`
-      }
-  
-      return res.status(404).json("Nenhum agendamento encontrado");
-    } catch (err) {
-      console.error(err.message);
-      return res.status(500).json("Erro no servidor");
-    }
-  });
-  
-  app.get('/perfil-profissional/agenda/paciente/:id', async (req, res) => {
-    const { id } = req.params;
-  
-    try {
-      const result = await pool.query('SELECT nome_completo FROM pacientes WHERE id_paciente = $1', [id]);
-  
-      if (result.rows.length > 0) {
-        return res.status(200).json(result.rows[0]); // Retornar apenas o primeiro paciente
-      }
-  
-      return res.status(404).json('Paciente não encontrado');
-    } catch (err) {
-      console.error(err.message);
-      return res.status(500).json("Erro no servidor");
-    }
-  });
   
 
 app.listen(3000, () => {

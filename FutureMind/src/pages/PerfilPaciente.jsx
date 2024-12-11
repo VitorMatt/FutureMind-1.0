@@ -42,6 +42,8 @@ function PerfilPaciente() {
 //  userData.especializacao = userData.especializacao.split(',').map(item => item.trim()); 
 
  const navigate = useNavigate();
+
+ const { setUser } = useContext(GlobalContext);
  
  const profissional =  { img: 'renato.png' , nome: 'Joao Miguel', email: 'joaoMiguel@gmail.com', Atendo_um: 'Jovens', Atendo_dois: 'Adultos ', Atendo_tres: 'Casais ', Especializacao_um:'Bullying', Especializacao_dois: 'Autoaceitação', descricao: 'Oie,eu sou o joão miguel e sou um ótimo profissional na minha área. Vamos consultar nosso próprio espírito que consola por dentro e grita para poder escapar da dor. Sou um ótimo profissional, eu juro!'}
  const [date, setDate] = useState(profissional.data_nascimento); // Estado para armazenar a data selecionada
@@ -147,8 +149,10 @@ function PerfilPaciente() {
      const { value, checked } = event.target;
    };
  
-  //  const handleSair = () => setUser({logado: false, profissional: false}); navigate('/');
- 
+   const handleSair = () => {
+    setUser({logado: false, profissional: false}); 
+    navigate('/');
+   }
 
     return (
         <div className='perfilPa-container'>
@@ -332,7 +336,7 @@ function PerfilPaciente() {
 
                 <div className='div-buttons-salvar-cancelar-p'>
                 <button className='a-p'>Excluir conta</button>
-                  <button className='a-p'> Sair da Conta</button>
+                  <button className='a-p' onClick={handleSair} >Sair da Conta</button>
                   <button className='a-p'>Cancelar edição</button>
                   <button className='salva'>Salvar</button>
                 </div>
