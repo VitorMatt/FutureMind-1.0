@@ -45,6 +45,7 @@
     flex-wrap: wrap;
     width: 90%;
     font-size: 50px;
+    padding-top: 6%;
 }
 
 .subtitulo {
@@ -269,9 +270,16 @@ div::-webkit-scrollbar{
     margin: auto;
 }
 
-.grande {
+.grande{
 
     background-color: #C1DFF4;
+    display: flex;
+    width: 100vw;
+}
+
+.grande-2{
+
+    background-color: #fafafa;
     display: flex;
     width: 100vw;
 }
@@ -288,12 +296,24 @@ div::-webkit-scrollbar{
 }
 
 
+.esquerdo-2 {
+
+    width: 50%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    background-color: #8ea9cb;
+    margin: 25px 0 0 35px;
+    align-items: center;
+}
+
 .como-funciona {
 
     width: 70%;
     height: 100%;
     background-color: #C1DFF4;
     font-size: 38px;
+    
    
    
     margin: 0 0 0 60px;
@@ -306,6 +326,12 @@ div::-webkit-scrollbar{
     
 
 }
+
+
+
+
+
+
 
 .esquerdo .text-flex {
 
@@ -329,6 +355,7 @@ div::-webkit-scrollbar{
     align-items: right;  
 }
 
+
 .imagemterapia{
     width: 90%;
     
@@ -337,6 +364,15 @@ div::-webkit-scrollbar{
     
 }
 
+.grande-2 {
+
+    background-color: #71b7e9;
+    display: flex;
+    width: 100vw;
+}
+
+
+
 .relatostotal{
     width: 80%;
     display: flex;   
@@ -344,7 +380,7 @@ div::-webkit-scrollbar{
     position: absolute;
     top: 350%;
     left: 10%;
-    padding-top: 7%;
+    padding-top: 40%;
 
 }
 
