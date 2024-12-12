@@ -77,45 +77,45 @@ function PerfilVisualizar() {
 
   if (!Array.isArray(profissional.especializacao)) {
     profissional.especializacao = profissional.especializacao
-      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
-      .split(',')            // Divide por vírgula
-      .map(item => item.trim()); // Remove espaços desnecessários
+    .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
+    .split(',')            // Divide por vírgula
+    .map(item => item.trim()); // Remove espaços desnecessários
   }
   
   if (!Array.isArray(profissional.preferencias)) {
     profissional.preferencias = profissional.preferencias
-      .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
-      .split(',')            // Divide por vírgula
-      .map(item => item.trim()); // Remove espaços desnecessários
+    .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
+    .split(',')            // Divide por vírgula
+    .map(item => item.trim()); // Remove espaços desnecessários
   }
-
+  
   const [isEditing, setIsEditing] = useState(false);
   const [descricao, setDescricao] = useState(''); // Armazena a descrição atual
   
-    const handleEditClick = () => {
-      setIsEditing(true); // Ativa o modo de edição
-    };
-    
-    const handleSaveClick = () => {
-      // Aqui você pode adicionar a lógica para salvar as alterações, como uma chamada à API
-      setIsEditing(false); // Desativa o modo de edição
+  const handleEditClick = () => {
+    setIsEditing(true); // Ativa o modo de edição
+  };
   
-      // userData.descricao = descricao;
+  const handleSaveClick = () => {
+    // Aqui você pode adicionar a lógica para salvar as alterações, como uma chamada à API
+    setIsEditing(false); // Desativa o modo de edição
+    
+    // userData.descricao = descricao;
       
-    };
+  };
     
     const handleCancelClick = () => {
       setDescricao(null); // Reverte para o valor original
       setIsEditing(false); // Cancela o modo de edição
     };
   
-
-  // const handleReplace = () => {
-
-  //   for (var i)
- 
-  //     profissional.especializacao = profissional.especializacao.replace('{', '');
+    
+    // const handleReplace = () => {
       
+  //   for (var i)
+  
+  //     profissional.especializacao = profissional.especializacao.replace('{', '');
+  
   //     .split(',').map(item => item.trim());
   
   //   if (profissional.preferencias) {
@@ -123,20 +123,20 @@ function PerfilVisualizar() {
   //   }
   // }
 
-
-    const handleGet = async() => {
-
-      const response = await fetch(`http://localhost:3000/profissional/${id}`);
-
-      if (response.ok) {
-
-        const data = await response.json();
-        setProfissional(data);
-      }
+  
+  const handleGet = async() => {
+    
+    const response = await fetch(`http://localhost:3000/profissional/${id}`);
+    
+    if (response.ok) {
+      
+      const data = await response.json();
+      setProfissional(data);
     }
-
-    const handleEventClick = (agendamento, event) => {
-      // Captura a posição do elemento clicado
+  }
+  
+  const handleEventClick = (agendamento, event) => {
+    // Captura a posição do elemento clicado
       const rect = event.target.getBoundingClientRect();
       setDivPosition({
         top: rect.top + window.scrollY,
@@ -144,29 +144,24 @@ function PerfilVisualizar() {
       });
       setSelectedAgendamento(agendamento);
     };
-  
+    
     const handleCloseDetails = () => {
       setSelectedAgendamento(null); // Fecha a div de detalhes
     };
-
-
-    useEffect(() => {
-      getAgenda();
-    }, []);
     
     const getAgenda = async () => {
+      
+      var id_profissional
 
       if (profissional) {
-
-        var id_profissional = profissional.id_profissional;
-      } else {
-
-        return;
+        
+        id_profissional = id;
       }
-    
+      
+      
       try {
         const response = await fetch(`http://localhost:3000/perfil-profissional/agenda/${id_profissional}`);
-    
+        
         if (response.ok) {
           const data = await response.json();
     
@@ -184,6 +179,10 @@ function PerfilVisualizar() {
         console.log("Erro ao buscar agenda:", err.message);
       }
     };
+    useEffect(() => {
+  
+      getAgenda();
+    }, []);
 
     const handleConcludeAppointment = async (agendamento) => {
 
