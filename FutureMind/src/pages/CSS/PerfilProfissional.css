@@ -985,3 +985,8 @@ input[type="checkbox"]:focus {
     margin-top: 5%;
     color: brown;
  }
+
+ .div-exluir{
+    position: absolute;
+    
+ }

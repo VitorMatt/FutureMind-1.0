@@ -417,7 +417,23 @@ function PerfilProfissional() {
 
   const deletaUsuario = async() => {
 
-    const res = prompt('Deseja mesmo deletar sua conta?');
+    // const res = prompt('Deseja mesmo deletar sua conta?');
+
+    const res = () => {
+      <div className='div-exluir'>
+      <p>Deseja Exluir sua conta Permantemente?</p>
+      <div>
+        <div>
+       <button>Sim</button>
+        </div>
+
+        <div>
+       <button>Sim</button>
+        </div>
+
+      </div>
+    </div>
+    }
 
     if (!res=='sim') return;
 
