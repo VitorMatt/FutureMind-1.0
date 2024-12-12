@@ -138,34 +138,28 @@ function PerfilPaciente() {
     if (!formIsValid) return;
     
     
-    const novoProfissional = {
+    const novoPaciente = {
       ...userData,
       email,
       senha,
-      preferencias, // Envia apenas os itens selecionados
-      especializacao, // Envia apenas os itens selecionados
-      data_nascimento: date,
-      preco,
+      data_nascimento: data,
       nome_completo: nome,
       cpf,
-      crp,
-      abordagem,
       telefone,
-      descricao,
-      id_profissional: userData.id_profissional,
+      id_paciente: userData.id_paciente,
     };
     
     try {
-      const response = await fetch('http://localhost:3000/perfil-profissional', {
+      const response = await fetch('http://localhost:3000/perfil-paciente', {
         method: 'PUT',
         headers: {
           'Content-type': 'application/json',
         },
-        body: JSON.stringify(novoProfissional),
+        body: JSON.stringify(novoPaciente)
       });
       
       if (response.ok) {
-        localStorage.setItem('User', JSON.stringify(novoProfissional));
+        localStorage.setItem('User', JSON.stringify(novoPaciente));
         console.log('Perfil atualizado com sucesso!');
       } else {
         console.error('Erro ao atualizar o perfil:', await response.json());
@@ -294,22 +288,22 @@ function PerfilPaciente() {
 
    const handleConcludeAppointment = async (agendamento) => {
 
+     setAgendamentos((prevAgendamentos) =>
+       prevAgendamentos.filter(
+         (item) =>
+           !(item.data === agendamento.data && item.horario === agendamento.horario)
+       )
+     );
+     handleCloseDetails(); // Fecha a div de detalhes, se estiver aberta
     try {
 
       const response = await fetch(`http://localhost:3000/perfil-profissional/agenda/${agendamento}`, {
         method: 'DELETE'
       });
 
-      if (response.ok) {
+      
 
-        setAgendamentos((prevAgendamentos) =>
-          prevAgendamentos.filter(
-            (item) =>
-              !(item.data === agendamento.data && item.horario === agendamento.horario)
-          )
-        );
-        handleCloseDetails(); // Fecha a div de detalhes, se estiver aberta
-      }
+      
     } catch (err) {
 
       console.log(err.message);
@@ -466,7 +460,7 @@ function PerfilPaciente() {
 
                     <div className='nick-usuario-p'>
 
-                      <h1>{userData.nome_completo}</h1>
+                      <h1 style={{color: '#5a7ca0'}}>{userData.nome_completo}</h1>
                       <p>{userData.email}</p>
                     </div>
 
@@ -536,7 +530,7 @@ function PerfilPaciente() {
                           <button className='but-det-p' onClick={() => handleDeleteAppointment(selectedAgendamento)}>
                             Cancelar
                           </button>
-                          <button className='but-det-p' onClick={() => handleConcludeAppointment(selectedAgendamento)}>
+                          <button className='but-det-p' onClick={() => handleConcludeAppointment(selectedAgendamento.id_agendamento)}>
                             Concluída
                           </button>
                         </div>
@@ -586,7 +580,7 @@ function PerfilPaciente() {
                     defaultDate: "today",
                   }}
                   value={data}
-                  onChange={(selectedDates) => setDate(selectedDates[0])}
+                  onChange={(selectedDates) => setData(selectedDates[0])}
                   style={{ borderColor: errors.data ? 'red' : '' }}
                 />
                 {errors.data && (

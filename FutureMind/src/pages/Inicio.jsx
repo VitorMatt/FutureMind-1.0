@@ -13,13 +13,12 @@ import 'swiper/css/scrollbar';
 import Footer from '../components/Footer';
 
 function Inicio() {
-
+  
   const [buscaUm, setBuscaUm] = useState([{descricao: 'Autoaceitação', selecionado: false}, {descricao: 'Autoestima', selecionado: false}, {descricao: 'Depressão', selecionado: false}]);
   const [buscaDois, setBuscaDois] = useState([{descricao: 'Angústia', selecionado: false}, {descricao: 'Ansiedade', selecionado: false}, {descricao: 'LGBTQIA+', selecionado: false}]);
   const [buscaTres, setBuscaTres] = useState([{descricao: 'Bullying', selecionado: false}, {descricao: 'Relacionamentos', selecionado: false}, {descricao: 'Adolescência', selecionado: false}]);
-
-  const [click, setClick] = useState(false);
-
+  const [estadoBotoes, setEstadoBotoes] = useState([]);
+  
   const [profissionais, setProfissionais] = useState([]);
   const [adultos, setAdultos] = useState([]);
   const [adolescentes, setAdolescentes] = useState([]);
@@ -27,6 +26,24 @@ function Inicio() {
   const [pre_adolescentes, setPre_adolescentes] = useState([]);
   const [pcds, setPcds] = useState([]);
   const [idosos, setIdosos] = useState([]);
+  
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
+  const [currentWeekStart, setCurrentWeekStart] = useState(new Date()); 
+  
+  const [agendamento, setAgendamento] = useState({});
+  const userLog = JSON.parse(localStorage.getItem('User'));
+  
+  const horariosDisponiveis = {
+    "07:00": true,
+    "07:30": true,
+    "08:00": true,
+    "08:30": true,
+    "09:00": true,
+  };
+
+  const [preferenciasSelecionadas, setPreferenciasSelecionadas] = useState([]);
+  const [result, setResult] = useState([]);
   
   const fetchProfissionais = async () => {
     try {
@@ -92,7 +109,6 @@ function Inicio() {
     }
   };
 
-  const [estadoBotoes, setEstadoBotoes] = useState([]);
   useEffect(() => {
     fetchProfissionais();
   }, []);
@@ -131,17 +147,7 @@ function Inicio() {
     return days;
   };
   
-  const horariosDisponiveis = {
-    "07:00": true,
-    "07:30": true,
-    "08:00": true,
-    "08:30": true,
-    "09:00": true,
-  };
   
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
-  const [currentWeekStart, setCurrentWeekStart] = useState(new Date()); // Inicializa com a semana atual
 
   // Função para formatar data
   const formatDate = (date) => {
@@ -165,16 +171,6 @@ function Inicio() {
     setCurrentWeekStart(newStartDate);
   };
 
-  // const exibirAnimacaoConcluido = (id) => {
-  //   setEstadoBotoes((prev) => ({ ...prev, [id]: 'carregando' }));
-  //   setTimeout(() => {
-  //     setEstadoBotoes((prev) => ({ ...prev, [id]: 'concluido' }));
-  //   }, 1500);
-  //   setTimeout(() => {
-  //     setEstadoBotoes((prev) => ({ ...prev, [id]: 'inicial' }));
-  //   }, 3500);
-  // };
-
   const exibirAnimacaoConcluido = (id) => {
     setEstadoBotoes((prev) => ({ ...prev, [id]: 'carregando' }));
     
@@ -187,8 +183,6 @@ function Inicio() {
     }, 3500);
   };
 
-  const [agendamento, setAgendamento] = useState({});
-  const userLog = JSON.parse(localStorage.getItem('User'));
 
   const handleAgendamento = async(id) => {
 
@@ -214,8 +208,6 @@ function Inicio() {
     }
   };
 
-  const [preferenciasSelecionadas, setPreferenciasSelecionadas] = useState([]);
-  const [result, setResult] = useState([]);
 
   const buscarProfissionais = () => {
 
@@ -480,8 +472,7 @@ const clickTres = (index) => {
                         }
                         onClick={() => {
                           setSelectedDate(formatDate(dia));
-                          setSelectedTime(hora);
-                          setClick(false);
+                          setSelectedTime(hora)
                         }}
                         >
                           {hora}
@@ -669,7 +660,6 @@ const clickTres = (index) => {
                         onClick={() => {
                           setSelectedDate(formatDate(dia));
                           setSelectedTime(hora);
-                          setClick(false);
                         }}
                         >
                           {hora}
@@ -851,7 +841,6 @@ const clickTres = (index) => {
                         onClick={() => {
                           setSelectedDate(formatDate(dia));
                           setSelectedTime(hora);
-                          setClick(false);
                         }}
                         >
                           {hora}
@@ -1224,7 +1213,6 @@ const clickTres = (index) => {
                         onClick={() => {
                           setSelectedDate(formatDate(dia));
                           setSelectedTime(hora);
-                          setClick(false);
                         }}
                         >
                           {hora}
@@ -1406,7 +1394,6 @@ const clickTres = (index) => {
                         onClick={() => {
                           setSelectedDate(formatDate(dia));
                           setSelectedTime(hora);
-                          setClick(false);
                         }}
                         >
                           {hora}
@@ -1588,7 +1575,6 @@ const clickTres = (index) => {
                         onClick={() => {
                           setSelectedDate(formatDate(dia));
                           setSelectedTime(hora);
-                          setClick(false);
                         }}
                         >
                           {hora}
@@ -1772,7 +1758,6 @@ const clickTres = (index) => {
                         onClick={() => {
                           setSelectedDate(formatDate(dia));
                           setSelectedTime(hora);
-                          setClick(false);
                         }}
                         >
                           {hora}

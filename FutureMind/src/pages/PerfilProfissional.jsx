@@ -577,7 +577,7 @@ function PerfilProfissional() {
                       </div>
 
                       <div>
-                        <h1>{userData.nome_completo}</h1>
+                        <h1 style={{color: '#5a7ca0'}}>{userData.nome_completo}</h1>
                         <p>{userData.email}</p>
                       </div>
 
