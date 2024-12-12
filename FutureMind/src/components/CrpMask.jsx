@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import InputMask from 'react-input-mask';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
-const CrpMask = ({ onCrpChange }) => {
+const CrpMask = ({ showError }) => {
   const { profissional, setProfissional } = useContext(GlobalContext);
   const [crp, setCrp] = useState(profissional.crp || ''); // Inicializa com o valor ou vazio
   const { crpValid, setCrpValid } = useContext(GlobalContext);
@@ -36,6 +36,7 @@ const CrpMask = ({ onCrpChange }) => {
 
   return (
     <div>
+      <div className='indicador-geral-div'>
       <InputMask
         mask="99/999999"
         value={crp}
@@ -48,20 +49,27 @@ const CrpMask = ({ onCrpChange }) => {
       </InputMask>
 
       {/* A bolinha vermelha ou verde só aparece se o usuário começou a digitar */}
-      {hasStartedTyping && (
+      <div className='span-geral'>
+     
         <span
-          className={`status-indicador ${crpValid ? 'valid' : 'invalid'}`} // Define a classe conforme crpValid
+          className={`status-indicador ${showError ||  !crpValid ? 'invalid' : ''}`} // Define a classe conforme crpValid
           onMouseEnter={() => setCrpHover(true)}
           onMouseLeave={() => setCrpHover(false)}
         ></span>
-      )}
-
-      {/* Tooltip só aparece quando o CRP é inválido */}
-      {crpHover && !crpValid && crp !== '' && (
-        <div className="tooltip">
-          "CRP inválido"
-        </div>
-      )}
+      
+      </div>
+      <div className="div_mensagem">
+      {showError || !crpValid && (
+          <div
+          className="tooltip"
+          onMouseEnter={() => setCrpHover(true)}
+          onMouseLeave={() => setCrpHover(false)}
+          >
+          {crpHover && "CRP invalida!"}
+         </div>
+         )}
+      </div>
+      </div>
     </div>
   );
 };

@@ -23,6 +23,7 @@ function CadastroProfissional() {
   const { cpfProfissionalValid, telefoneProfissionalValid } = useContext(GlobalContext)
   const {emailProfissionalValid, senhaProfissionalValid} = useContext(GlobalContext)
   const [activeStep, setActiveStep] = useState(0);
+  const { setErros_passar } = useContext(GlobalContext);
 
   // Função para avançar etapas com validação correta
   
@@ -58,6 +59,7 @@ function CadastroProfissional() {
       
       case 4:
         if(!nome_profissinalValid || !data_nascimentoProfissionalValid){
+          setErros_passar('1')
           return;
         }
         break
@@ -73,6 +75,13 @@ function CadastroProfissional() {
          
            return
         }
+      
+        case 7:
+          if(!valorValid){
+
+            setErros_passar("1")
+            return
+          }
       default:
         break;
     }

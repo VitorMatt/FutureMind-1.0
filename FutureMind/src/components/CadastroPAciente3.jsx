@@ -14,7 +14,7 @@ function CadastroPaciente3({showError}) {
   const {senhaValid, setSenhaValid} = useContext(GlobalContext)
   const {senhaHover, setSenhaHover} = useContext(GlobalContext)
   const {checkbox_cheked, setcheckbox_cheked} = useState(GlobalContext)
-
+  
   setEmailValid(email.includes("@gmail") )
   setSenhaValid(senha.length >= 8)
 
@@ -63,7 +63,7 @@ function CadastroPaciente3({showError}) {
          ></span>
          </div>
          <div className="div_mensagem">
-          {showError && !emailValid && (
+          {showError || !emailValid && (
           <div
           className="tooltip"
           onMouseEnter={() => setEmailHover(true)}
@@ -88,11 +88,11 @@ function CadastroPaciente3({showError}) {
             />
             <div className='conatiner_bolinha'>
             <div className='div_mensagem'>
-            {senha && !senhaValid && (
+            {showError || !senhaValid && (
             <div
               className="tooltip"
               onMouseEnter={() => setSenhaHover(true)}
-             onMouseLeave={() => setSenhaHover(false)}
+              onMouseLeave={() => setSenhaHover(false)}
              >
              {senhaHover && "Senha precisa ter entre 8 e 10 caracteres"}
             </div>
@@ -128,7 +128,7 @@ function CadastroPaciente3({showError}) {
         <input  
         type="checkbox" 
         id="aceitar-termos" 
-        
+        className={pegar_valor == true ? 'invalid' : "valid"}
         onChange={pegar_valor}/>
         <label htmlFor="aceitar-termos" className="label-cadastro">
           Aceitar
