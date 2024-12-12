@@ -23,8 +23,6 @@ import InputMask from 'react-input-mask';
 
 function PerfilProfissional() {
 
-
-  
   const { user, setUser, profissional } = useContext(GlobalContext);
   const navigate = useNavigate();
   const [date, setDate] = useState(profissional.data_nascimento);
@@ -155,9 +153,6 @@ function PerfilProfissional() {
         newErrors.data = "Você precisa ter mais de 18 anos para se cadastrar.";
         formIsValid = false;
       }
-    } else {
-      newErrors.data = "A data de nascimento não pode ser vazia.";
-      formIsValid = false;
     }
     
     if (!senha || senha.trim() === "") {
