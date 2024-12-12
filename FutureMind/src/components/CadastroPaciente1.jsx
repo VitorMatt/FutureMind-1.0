@@ -70,14 +70,14 @@ function CadastroPaciente1({ showError }) { // showError controlado pelo botão 
               {/* Bolinha vermelha lógica para o nome */}
               <span
                 className={`status-indicador ${
-                  (name.length <= 3 && name.length > 0) || (showError && !usernameValid) ? "invalid" : ""
+                  (name.length <= 3 ) || (showError && !usernameValid) ? "invalid" : ""
                 }`}
                 onMouseEnter={() => setUsernameHover(true)}
                 onMouseLeave={() => setUsernameHover(false)}
               ></span>
             </div>
             <div className="div_mensagem">
-              { !usernameValid  && (
+              { showError || !usernameValid  && (
                 <div
                   className="tooltip"
                   onMouseEnter={() => setUsernameHover(true)}
@@ -108,7 +108,7 @@ function CadastroPaciente1({ showError }) { // showError controlado pelo botão 
               {/* Bolinha vermelha lógica para a data de nascimento */}
               <span
                 className={`status-indicador ${
-                  showError && (!data_nascimentoValid ) ? "invalid" : ""
+                  !data_nascimentoValid || ( showError && !data_nascimentoValid ) ? "invalid" : ""
                 }`}
                 onMouseEnter={() => setData_nascimentoHover(true)}
                 onMouseLeave={() => setData_nascimentoHover(false)}
@@ -116,7 +116,7 @@ function CadastroPaciente1({ showError }) { // showError controlado pelo botão 
               </span>
             </div>
             <div className="div_mensagem">
-              {!data_nascimentoValid && (
+              { showError || !data_nascimentoValid && (
                 <div
                   className="tooltip"
                   onMouseEnter={() => setData_nascimentoHover(true)}

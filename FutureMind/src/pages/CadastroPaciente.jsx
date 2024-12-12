@@ -16,7 +16,7 @@ function CadastroPaciente() {
   const { telefoneValid } = useContext(GlobalContext);
   const { setErros_passar } = useContext(GlobalContext);
   const [isNextClicked, setIsNextClicked] = useState(false);
-  const {checkbox_cheked, setcheckbox_cheked} = useState(GlobalContext)
+
 
   const navigate = useNavigate('');
 
@@ -70,12 +70,16 @@ function CadastroPaciente() {
   const handleBack = () => {
     if (activeStep > 0) {
       setActiveStep((prevStep) => prevStep - 1);
+
     }
   };
 
   const handleFinish = async () => {
-    const { emailValid, senhaValid } = useContext(GlobalContext);
-    if (!emailValid || !senhaValid || checkbox_cheked == false) {
+    const { emailValid, senhaValid  } = useContext(GlobalContext);
+    if (!emailValid || !senhaValid ) {
+
+        setErros_passar('7');
+     
       return;
     }
 

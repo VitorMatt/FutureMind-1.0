@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
-function CadastroProfissionais7() {
+function CadastroProfissionais7({showError}) {
 
   const { profissional} = useContext(GlobalContext);
   const [email, setEmail] = useState(profissional.email);
@@ -14,7 +14,7 @@ function CadastroProfissionais7() {
   const {senhaProfissionalValid, setSenhaProfissionalValid} = useContext(GlobalContext)
   const {senhaProfissionalHover, setSenhaProfissionalHover} = useContext(GlobalContext)
 
-  setEmailProfissionalValid(email.includes("@") )
+  setEmailProfissionalValid(email.includes("@gmail") )
   setSenhaProfissionalValid(senha.length >= 8)
 
   useEffect(() => { 
@@ -34,6 +34,7 @@ function CadastroProfissionais7() {
       <div className="checkboxs2">
         <div className="input-text">
           <label htmlFor="email">E-mail</label>
+          <div className='indicador-geral-div'>
           <input
             type="email"
             name="email"
@@ -41,29 +42,33 @@ function CadastroProfissionais7() {
             value={email}
             onChange={(e) => setEmail(e.target.value)} // Altera somente o estado local
           />
+          <div className='span-geral'>
          <span
           className={`status-indicador ${
-          emailProfissionalValid ? "valid" :  email ? "invalid" : "neutro"
+          !emailProfissionalValid ? "invalid" : ""
          }`}
          onMouseEnter={() => setEmailProfissonalHover(true)}
          onMouseLeave={() => setEmailProfissonalHover(false)}
          ></span>
-         { emailProfissionalHover && (
-
-          <div className="tooltip">
-            {emailProfissionalValid
-
-              ? "Email ok"
-              : "Email precisa ter um @ "
-          
-              }
-          </div>
+         </div>
+         <div className='div_mensagem'>
+         {showError || !emailProfissionalValid && (
+          <div
+          className="tooltip"
+          onMouseEnter={() => setEmailProfissonalHover(true)}
+          onMouseLeave={() => setEmailProfissonalHover(false)}
+          >
+          {emailProfissionalHover && "O email precisa conter um @gmail"}
+         </div>
          )}
+         </div>
+         </div>
         </div>
 
         <div className="input-text">
           <label htmlFor="senha">Crie sua Senha</label>
           <div className="olho-div">
+      
             <input
               value={senha}
               onChange={(e) => setSenha(e.target.value)} // Altera somente o estado local
@@ -71,24 +76,27 @@ function CadastroProfissionais7() {
               maxLength="10"
               className="inputCRP"
             />
+            <div className='span-geral'>
              <span
               className={`status-indicador ${
-              senhaProfissionalValid ? "valid" :  senha ? "invalid" : "neutro"
+              !senhaProfissionalValid ? "invalid" : ""
               }`}
               onMouseEnter={() => setSenhaProfissionalHover(true)}
                onMouseLeave={() => setSenhaProfissionalHover(false)}
                ></span>
-              { senhaProfissionalHover && (
-
-              <div className="tooltip">
-               {senhaProfissionalValid
-
-                ? "senha ok"
-                : "senha precisa ter no minimo 8 caracteris e no maximo 10 "
-          
-                }
+               </div>
+               <div className='div_mensagem'>
+               {showError || !senhaProfissionalValid && (
+               <div
+                className="tooltip"
+                onMouseEnter={() => setSenhaProfissionalHover(true)}
+               onMouseLeave={() => setSenhaProfissionalHover(false)}
+                >
+               {setSenhaProfissionalHover && "Senha precisa ter entre 8 e 10 caracteres"}
+               </div>
+               )}
               </div>
-              )}
+            
             
             <button
               onClick={() => setOlhosSenha(!olhosSenha)}

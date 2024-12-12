@@ -61,8 +61,8 @@ function CadastroProfissionais3() {
           ))}
         </div> 
       </div>
-      {atendeValid && (
-          <div className="error-message">
+      { atendeValid && (
+          <div className="mensagem_auxilio">
             Selecione no minimo 1 area de atendimento
           </div>
         )}

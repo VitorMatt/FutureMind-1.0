@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useState, useContext } from 'react';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
-function CadastroProfissionais8() {
+function CadastroProfissionais8({showError}) {
   const { profissional, setProfissional } = useContext(GlobalContext);
   const { valorValid, setValorValid } = useContext(GlobalContext);
   const {valorHover, setValorHover} = useContext(GlobalContext)
@@ -30,8 +30,8 @@ function CadastroProfissionais8() {
 
   // Validação do preço entre 10.00 e 50.00
   useEffect(() => {
-    const numericValue = valor && parseFloat(valor.replace(',', '.'));
-    setValorValid(numericValue >= 10.0 && numericValue <= 50.0 && !isNaN(numericValue));
+    const numericValue = valor;
+    setValorValid(numericValue >= 10.0 && numericValue <= 50.0);
   }, [valor]);
 
   // Atualiza a abordagem no contexto
@@ -77,6 +77,7 @@ function CadastroProfissionais8() {
         {/* Campo de Preço com máscara e limitação */}
         <div className="input-text">
           <label htmlFor="">Preço</label>
+          <div className='indicador-geral-div'>
           <input
             type="text"
             value={valor}
@@ -84,24 +85,27 @@ function CadastroProfissionais8() {
             onChange={handlePriceMask}
             className="inputCRP"
           />
+          <div className='span-geral'>
           <span
           className={`status-indicador ${
-          valorValid ? "valid" :  valor ? "invalid" : "neutro"
+          !valorValid  ? "invalid" : ""
          }`}
          onMouseEnter={() => setValorHover(true)}
          onMouseLeave={() => setValorHover(false)}
          ></span>
-         {valorHover && (
-
-          <div className="tooltip">
-            {valorValid
-
-              ? "Valor valido"
-              : "Valor precisa estar entre 10 e 50 "
-          
-              }
-          </div>
+         </div>
+         <div className='div_mensagem'>
+           { showError || !valorValid && (
+           <div
+           className="tooltip"
+           onMouseEnter={() => setValorHover(true)}
+           onMouseLeave={() => setValorHover(false)}
+           >
+          {valorHover && "Valor precisa ser entre 10 e 50!"}
+         </div>
          )}
+         </div>
+         </div>
         </div>
       </div>
     </div>

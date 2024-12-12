@@ -2,7 +2,7 @@ import './CSS/Profissionais3.css'
 import React, { useContext, useState, useEffect } from "react"
 import { GlobalContext } from '../GlobalContext/GlobalContext'
 
-function CadastroProfissionais6() {
+function CadastroProfissionais6({showError}) {
   const { profissional, setProfissional } = useContext(GlobalContext)
 
   const [cpf, setCpf] = useState(profissional.cpf);  // Gerenciamento do CPF
@@ -70,6 +70,7 @@ function CadastroProfissionais6() {
       <div className="checkboxs2">
         <div className="input-text">
           <label htmlFor="cpf">CPF</label>
+          <div className='indicador-geral-div'>
           <input
             type="text"
             id="cpf"
@@ -80,20 +81,30 @@ function CadastroProfissionais6() {
             onChange={handleCpfChange} // Atualiza o estado com a máscara
             className="inputCRP"
           />
+          <div className='span-geral'>
           <span
-            className={`status-indicador ${cpfProfissionalValid ? "valid" : cpf ? "invalid" : "neutro"}`}
+            className={`status-indicador ${!cpfProfissionalValid ? "invalid" : "" }`}
             onMouseEnter={() => setCpfProfissionalHover(true)}
             onMouseLeave={() => setCpfProfissionalHover(false)}
           ></span>
-          {cpfProfissionalHover && (
-            <div className="tooltip">
-              {cpfProfissionalValid ? "cpf ok" : "cpf errado"}
-            </div>
-          )}
+          </div>
+          <div className='div_mensagem'>
+          { !cpfProfissionalValid && (
+                <div
+                  className="tooltip"
+                  onMouseEnter={() => setCpfProfissionalHover(true)}
+                  onMouseLeave={() => setCpfProfissionalHover(false)}
+                >
+                  {cpfProfissionalHover && "CPF inválido ou vazio"}
+                </div>
+              )}
+          </div>
+          </div>
         </div>
 
         <div className="input-text">
           <label htmlFor="telefone">Telefone</label>
+          <div className='indicador-geral-div'>
           <input
             type="text"
             id="telefone"
@@ -104,16 +115,25 @@ function CadastroProfissionais6() {
             onChange={handleTelefoneChange} // Atualiza o estado com a máscara de telefone
             className="inputCRP"
           />
+          <div className='span-geral'>
           <span
-            className={`status-indicador ${telefoneProfissionalValid ? "valid" : telefone ? "invalid" : "neutro"}`}
+            className={`status-indicador ${!telefoneProfissionalValid ? "invalid" : ""}`}
             onMouseEnter={() => setTelefoneProfissionalHover(true)}
             onMouseLeave={() => setTelefoneProfissionalHover(false)}
           ></span>
-          {telefoneProfissinalHover && (
-            <div className="tooltip">
-              {telefoneProfissionalValid ? "telefone ok" : "telefone errado"}
+          </div>
+          <div className="div_mensagem">
+              {showError && !telefoneProfissionalValid&& (
+                <div
+                  className="tooltip"
+                  onMouseEnter={() => setTelefoneProfissionalHover(true)}
+                  onMouseLeave={() => setTelefoneProfissionalHover(false)}
+                >
+                  {telefoneProfissinalHover && "Telefone inválido ou vazio"}
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </div>
