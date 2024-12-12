@@ -200,6 +200,7 @@ function PerfilProfissional() {
       
       if (response.ok) {
         localStorage.setItem('User', JSON.stringify(novoProfissional));
+        exibirAnimacaoConcluido();
         console.log('Perfil atualizado com sucesso!');
       } else {
         console.error('Erro ao atualizar o perfil:', await response.json());
@@ -357,7 +358,6 @@ function PerfilProfissional() {
       if (response.ok) {
         const updatedUser = await response.json();
         localStorage.setItem('User', JSON.stringify(updatedUser));
-        setUser(updatedUser); // Atualiza o contexto do usuário
         console.log('Descrição salva com sucesso!');
       } else {
         const error = await response.json();
@@ -398,10 +398,8 @@ function PerfilProfissional() {
           localStorage.setItem('User', JSON.stringify({...userData, foto: data.foto, descricao}));
           userData = JSON.parse(localStorage.getItem('User'));
           console.log('Resposta do servidor:', data);
-          alert('Foto enviada com sucesso!');
         } else {
           console.log('Erro no envio da foto:', response.status);
-          alert('Erro ao enviar a foto.');
         }
       } catch (err) {
         console.error('Erro:', err.message);
@@ -415,47 +413,26 @@ function PerfilProfissional() {
     navigate('/');
   };
 
-  const deletaUsuario = async() => {
+  const [showModal, setShowModal] = useState(false);
 
-    // const res = prompt('Deseja mesmo deletar sua conta?');
 
-    const res = () => {
-      <div className='div-exluir'>
-      <p>Deseja Exluir sua conta Permantemente?</p>
-      <div>
-        <div>
-       <button>Sim</button>
-        </div>
-
-        <div>
-       <button>Sim</button>
-        </div>
-
-      </div>
-    </div>
-    }
-
-    if (!res=='sim') return;
-
-    const id_profissional = userData.id_profissional;
-
-    try {
-
-      const response = await fetch(`http://localhost:3000/perfil-profissional/${id_profissional}`, {
-
-        method: 'DELETE'
-      });
-
-      if (response.ok) {
-
-        console.log('User deletado com sucesso!');
-        setUser({logado: false, profissional: false});
-        navigate('/');
+  
+    const handleDelete = async () => {
+      const id_profissional = userData.id_profissional;
+  
+      try {
+        const response = await fetch(`http://localhost:3000/perfil-profissional/${id_profissional}`, {
+          method: 'DELETE',
+        });
+  
+        if (response.ok) {
+          console.log('Usuário deletado com sucesso!');
+          setUser({ logado: false, profissional: false });
+          navigate('/');
+        }
+      } catch (err) {
+        console.log(err.message);
       }
-    } catch(err) {
-
-      console.log(err.message);
-    }
   }
 
   const handleChangeEspecializacoes = (e) => {
@@ -548,10 +525,29 @@ function PerfilProfissional() {
       const [year, month, day] = data.split('-');
       return `${day}/${month}/${year}`;
     };
+
+    const [concluido, setConcluido] = useState('inicial');
+
+    const exibirAnimacaoConcluido = () => {
+      setConcluido('carregando'); // Define o estado como "carregando"
+      
+      setTimeout(() => {
+        setConcluido('concluido'); // Atualiza para "concluido" após 1.5 segundos
+      }, 1500);
+      
+      setTimeout(() => {
+        setConcluido('inicial'); // Volta para "inicial" após 3.5 segundos
+      }, 3500);
+      
+    };
+  
     
 
   return (
     <div className='perfilPro-container'>
+            <div className='div-but-v'>
+        <Link to="/" className='voltar-v'>Voltar</Link>
+      </div>
       
       <div className='todas-divs'>
 
@@ -577,7 +573,7 @@ function PerfilProfissional() {
                       </div>
 
                       <div>
-                        <h1 style={{color: '#5a7ca0'}}>{userData.nome_completo}</h1>
+                        <h1>{userData.nome_completo}</h1>
                         <p>{userData.email}</p>
                       </div>
 
@@ -1026,7 +1022,23 @@ function PerfilProfissional() {
 
 
                 <div className='div-buttons-salvar-cancelar'>
-                <button className='a' onClick={deletaUsuario}>Excluir conta</button>
+                <button className='a'onClick={() => setShowModal(true)}>Excluir conta</button>
+                {showModal && (
+                    <div className="modal-overlay">
+                      <div className="modal-content">
+                        <p className='aaaa'>Deseja mesmo deletar sua conta?</p>
+                        <div>
+                          <button className='errado' onClick={handleDelete}>Deletar conta</button>
+                          <button className='certo' onClick={() => setShowModal(false)}>Cancelar</button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {
+                    concluido === 'concluido' &&
+                    <p className='edicao-p'>Edição salva com sucesso.</p>
+                  }
                   <button className='a' onClick={sair}> Sair da Conta</button>
                   <button className='a'>Cancelar edição</button>
                   <button className='salva' onClick={handleEditarPerfil}>Salvar</button>

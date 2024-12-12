@@ -115,7 +115,7 @@ function LandingPage() {
             </div>
             <div className="text-perfil">
               <div className="nome-idade-perfil">
-                <h1>Clarice, 54 anos:</h1>
+                <h1>Clarice, 54 anos</h1>
               </div>
               <div className="relato">
                 <p>
@@ -133,13 +133,13 @@ function LandingPage() {
             </div>
             <div className="text-perfil">
               <div className="nome-idade-perfil">
-                <h1>Carlos, 28 anos:</h1>
+                <h1>Carlos, 28 anos</h1>
               </div>
               <div className="relato">
                 <p>
-                  No início, tinha dúvidas sobre a eficácia da terapia online, mas minha experiência foi surpreendente. 
+                  No início, tinha dúvidas sobre a eficácia da terapia online, mas minha experiência foi incrível. 
                   Meu terapeuta criou um ambiente seguro e acolhedor, onde pude falar abertamente sobre minhas ansiedades. 
-                  Hoje, me sinto mais confiante e seguro.
+                  Hoje, me sinto mais confiante e seguro para ser eu mesmo.
                 </p>
               </div>
             </div>
@@ -151,7 +151,7 @@ function LandingPage() {
             </div>
             <div className="text-perfil">
               <div className="nome-idade-perfil">
-                <h1>Ana, 45 anos:</h1>
+                <h1>Ana, 45 anos</h1>
               </div>
               <div className="relato">
                 <p>
@@ -169,7 +169,7 @@ function LandingPage() {
             </div>
             <div className="text-perfil">
               <div className="nome-idade-perfil">
-                <h1>Fernando, 37 anos:</h1>
+                <h1>Fernando, 37 anos</h1>
               </div>
               <div className="relato">
                 <p>

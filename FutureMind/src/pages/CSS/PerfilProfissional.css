@@ -986,7 +986,64 @@ input[type="checkbox"]:focus {
     color: brown;
  }
 
- .div-exluir{
-    position: absolute;
-    
- }
+ .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 26px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1em;
+    color: #012A4A;
+  }
+  
+  .modal-content button {
+    margin: 10px;
+    width: 60%;
+    border: none;
+    padding: 3%;
+  }
+
+  .aaaa{
+    font-size: 1.7em;
+
+  }
+
+  .errado{
+    background-color: brown;
+    border: 1px solid brown !important;
+    color: white;
+  }
+
+  .errado:hover{
+    background-color: white !important;
+    color: brown !important;
+    border: 1px solid brown !important;
+  }
+
+  .certo{
+    background-color: #5a789f;
+    color: white;
+  }
+
+  .edicao-p {
+
+    color: var(--cor-4);
+    position: fixed;
+    top: 95%;
+    left: 62%;
+    font-size: 1.2em;
+
+  }

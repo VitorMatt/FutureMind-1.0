@@ -150,9 +150,10 @@ function Inicio() {
   
 
   // Função para formatar data
-  const formatDate = (date) => {
-    return date.toISOString().split("T")[0];
-  };
+ const formatDate = (date) => {
+  return date.toISOString().split("T")[0]; // Formato padrão YYYY-MM-DD
+};
+
 
   // Dias da semana com base na data de início da semana
   const diasSemana = getWeekDays(currentWeekStart);
@@ -191,7 +192,9 @@ function Inicio() {
       exibirAnimacaoConcluido(id);
     }
 
-    setAgendamento({horario: selectedTime, data: selectedDate, profissional: id, paciente: userLog.id_paciente});
+    const agendamentoAux = {horario: selectedTime, data: selectedDate, profissional: id, paciente: userLog.id_paciente}
+
+    setAgendamento(agendamentoAux);
     try {
 
       const response = await fetch('http://localhost:3000/agendamento', {
@@ -200,7 +203,7 @@ function Inicio() {
         headers: {
           'Content-type': 'application/json'
         },
-        body: JSON.stringify(agendamento)
+        body: JSON.stringify(agendamentoAux)
       });
     } catch (err) {
 

@@ -121,7 +121,6 @@ function CadastroProfissional() {
       });
       
       if (response.ok) {
-        alert('Cadastro concluído com sucesso!');
         
         setProfissional({
 
@@ -141,12 +140,9 @@ function CadastroProfissional() {
         
         // navigate('/login')
         navigate('/login');
-      } else {
-        alert('Erro ao enviar dados!');
-      }
+      } 
     } catch (error) {
       console.error('Erro ao enviar dados:', error);
-      alert('Erro de rede!');
     }
   };
 

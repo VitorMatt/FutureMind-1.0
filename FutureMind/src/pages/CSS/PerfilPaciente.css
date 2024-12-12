@@ -75,6 +75,16 @@
     padding: 1%;
    
 }
+.a-foto-p{
+    width: 150px; /* Define largura fixa */
+    height: 150px; /* Define altura fixa para formar o círculo */
+    border-radius: 50%; /* Cria o formato circular */
+    object-fit: cover; /* Ajusta a imagem para cobrir o círculo corretamente */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
+    margin-bottom: 2%;
+    margin-left: 9%;
+
+}
 
 .div-foto-nome-p{
     display: flex;
@@ -452,3 +462,121 @@ input[type="file"] {
 }
 
 
+.error-circle {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    background-color: brown;
+    border-radius: 50%;
+    top: 84%;
+    right: 45px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  .error-message {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: -10px;
+    right: 0;
+    background-color: var(--cor-1);
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 17px;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+  }
+  
+  .error-circle:hover + .error-message {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .error-circle:hover {
+    /* Quando o mouse passar sobre a bolinha, mostramos a mensagem */
+    opacity: 0.8;
+  }
+  
+  .error-circle[title] {
+    position: relative;
+    
+  }
+  
+  .error-circle + .error-message {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-top: 15%;
+  }
+  
+  .error-circle:hover + .error-message {
+    visibility: visible;
+    opacity: 1;
+    position: absolute;
+    top: -25px;
+    right: 0;
+    background-color: var(--cor-1);
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+ .areas{
+    margin-top: 5%;
+    color: brown;
+ }
+
+ .modal-overlays {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-contents {
+    background: white;
+    padding: 26px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1em;
+    color: #012A4A;
+  }
+  
+  .modal-contents button {
+    margin: 10px;
+    width: 60%;
+    border: none;
+    padding: 3%;
+    border-radius: 10px;
+  }
+
+  .aaaaa{
+    font-size: 1.7em;
+
+  }
+
+  .errados{
+    background-color: brown;
+    border: 1px solid brown !important;
+    color: white;
+  }
+
+  .errados:hover{
+    background-color: white !important;
+    color: brown !important;
+    border: 1px solid brown !important;
+  }
+
+  .certos{
+    background-color: #5a789f;
+    color: white;
+  }

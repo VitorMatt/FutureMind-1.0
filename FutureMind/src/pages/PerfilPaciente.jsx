@@ -28,90 +28,50 @@ function PerfilPaciente() {
   const [nome, setNome] = useState(userData.nome_completo);
   const [data, setData] = useState(userData.data_nascimento)
   const [telefone, setTelefone] = useState(userData.telefone);
-  const [crp, setCrp] = useState(userData.crp)
-  const [preco, setPreco] = useState(userData.preco);
   const [cpf, setCpf] = useState(userData.cpf);
   
   
-  const [errors, setErrors] = useState({
-    nome: '',
-    email: '',
-    data: '',
-    senha: '',
-    cpf:'',
-    preco:'',
-    crp:'',
-    telefone:'',
-    especializacao: '',
-    preferencias: '',
-  });
+const [errors, setErrors] = useState({
+  nome: '',
+  email: '',
+  data: '',
+  senha: '',
+  cpf: '',
+  telefone: '',
+});
   
   const handleEditarPerfil = async () => {
     let formIsValid = true;
-    let newErrors = {
-      nome: false,
-      email: false,
-      data: false,
-      senha: false,
-      cpf:false,
-      preco:false,
-      crp:false,
-      telefone:false,
-      especializacao: false,
-      preferencias: false,
-    };
-
-    if (especializacao.length === 0) {
-      newErrors.especializacao = 'Selecione pelo menos uma especialização.';
+    const newErrors = {};
+  
+    // Validação do Nome
+    if (!nome || nome.trim().length < 3) {
+      newErrors.nome = "O nome é obrigatório e deve ter no mínimo 3 caracteres.";
       formIsValid = false;
     }
-    
-    // Validação para preferências (caso necessário)
-    if (preferencias.length === 0) {
-      newErrors.preferencias = true;
-      formIsValid = false;
-    }
-    
-    if (!preco || preco.trim() === '') {
-      newErrors.preco = true;
-      formIsValid = false;
-    }
-    if (!telefone || telefone.trim().length < 10) {
-      newErrors.telefone = true;
-      formIsValid = false;
-    }
-    // Validação do CPF
-      if (!cpf || cpf.trim().length !== 14) {
-        newErrors.cpf = true;
-        formIsValid = false;
-      }
-      
-      // Validação do CRP
-      if (!crp || crp.trim().length < 8) {
-        newErrors.crp = true;
-        formIsValid = false;
-      }
-      
-      if (!nome || nome.trim() === "") {
-        newErrors.nome = true;
-      formIsValid = false;
-    }
-    
-    // Validação do email
+  
+    // Validação do Email
     if (!email || email.trim() === "") {
-      newErrors.email = true;
+      newErrors.email = "O e-mail é obrigatório.";
       formIsValid = false;
-    } else if (!email.includes("@gmail.com")) {
-      newErrors.email = true;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "O e-mail é inválido. Verifique se está correto.";
       formIsValid = false;
     }
-    
-    if (date) {
+  
+    // Validação do CPF
+    if (!cpf || cpf.trim().length !== 14) {
+      newErrors.cpf = "CPF inválido. Verifique se está completo.";
+      formIsValid = false;
+    }
+  
+    // Validação da Data de Nascimento
+    if (data) {
       const today = new Date();
-      const birthDate = new Date(date);
+      const birthDate = new Date(data);
       const age = today.getFullYear() - birthDate.getFullYear();
       const month = today.getMonth() - birthDate.getMonth();
-      
+  
       if (age < 18 || (age === 18 && month < 0)) {
         newErrors.data = "Você precisa ter mais de 18 anos para se cadastrar.";
         formIsValid = false;
@@ -120,24 +80,26 @@ function PerfilPaciente() {
       newErrors.data = "A data de nascimento não pode ser vazia.";
       formIsValid = false;
     }
-    
-    if (!senha || senha.trim() === "") {
-      newErrors.senha = true;
+  
+    // Validação da Senha
+    if (!senha || senha.trim().length < 6) {
+      newErrors.senha = "A senha deve ter no mínimo 6 caracteres.";
       formIsValid = false;
     }
-    
-    if (!telefone || telefone.trim().length < 10) {
-      newErrors.telefone = true;
+  
+    // Validação do Telefone
+    if (!telefone || telefone.trim().length < 14) {
+      newErrors.telefone = "O telefone é inválido. Verifique se está no formato correto.";
       formIsValid = false;
     }
   
     // Atualiza os erros no estado
     setErrors(newErrors);
-    
+  
     // Se a validação falhou, não envia o formulário
     if (!formIsValid) return;
-    
-    
+  
+    // Monta os dados do paciente
     const novoPaciente = {
       ...userData,
       email,
@@ -148,16 +110,17 @@ function PerfilPaciente() {
       telefone,
       id_paciente: userData.id_paciente,
     };
-    
+  
+    // Atualiza os dados no backend
     try {
       const response = await fetch('http://localhost:3000/perfil-paciente', {
         method: 'PUT',
         headers: {
           'Content-type': 'application/json',
         },
-        body: JSON.stringify(novoPaciente)
+        body: JSON.stringify(novoPaciente),
       });
-      
+  
       if (response.ok) {
         localStorage.setItem('User', JSON.stringify(novoPaciente));
         console.log('Perfil atualizado com sucesso!');
@@ -175,20 +138,14 @@ function PerfilPaciente() {
     
   };
 
-  const maskCrp = (e) =>{
-    const maskedValue = e.target.value;
-    setCrp(maskedValue);
-  }
+
 
   const maskCpf = (e) =>{
     const maskedValue = e.target.value;
     setCpf(maskedValue);
   }
 
-  const maskPreco = (e) =>{
-    const maskedValue = e.target.value;
-    setPreco(maskedValue);
-  }
+
 
 
 
@@ -329,11 +286,9 @@ function PerfilPaciente() {
           const data = await response.json();
           localStorage.setItem('User', JSON.stringify({...userData, foto: data.foto, descricao}));
           userData = JSON.parse(localStorage.getItem('User'));
-          console.log('Resposta do servidor:', data);
-          alert('Foto enviada com sucesso!');
+          console.log('Resposta do servidor:', data); 
         } else {
           console.log('Erro no envio da foto:', response.status);
-          alert('Erro ao enviar a foto.');
         }
       } catch (err) {
         console.log('Erro:', err.message);
@@ -369,32 +324,27 @@ function PerfilPaciente() {
     }
   };
 
-  const deletaUsuario = async() => {
+  const [showModal, setShowModal] = useState(false);
 
-    const res = prompt('Deseja mesmo deletar sua conta?');
 
-    if (!res=='sim') return;
-
+  
+  const handleDelete = async () => {
     const id_profissional = userData.id_profissional;
 
     try {
-
       const response = await fetch(`http://localhost:3000/perfil-profissional/${id_profissional}`, {
-
-        method: 'DELETE'
+        method: 'DELETE',
       });
 
       if (response.ok) {
-
-        console.log('User deletado com sucesso!');
-        setUser({logado: false, profissional: false});
+        console.log('Usuário deletado com sucesso!');
+        setUser({ logado: false, profissional: false });
         navigate('/');
       }
-    } catch(err) {
-
+    } catch (err) {
       console.log(err.message);
     }
-  }
+}
 
   const handleSaveClick = async () => {
     try {
@@ -560,14 +510,12 @@ function PerfilPaciente() {
                     placeholder='Digite seu nome completo...'
                     style={{ borderColor: errors.nome ? 'red' : '' }}
                   />
-                  {errors.nome && (
-                    <>
-                      <span className="error-circle"></span>
-                      <div className="error-message">
-                        O nome é obrigatório e deve ter no mínimo 3 caracteres.
-                      </div>
-                    </>
-                  )}
+                 {errors.nome && (
+                  <>
+                    <span className="error-circle"></span>
+                    <div className="error-message">{errors.nome}</div>
+                  </>
+                )}
                  </div>
                 </div>
                 <div className='div_container_pinput-p'>
@@ -624,7 +572,7 @@ function PerfilPaciente() {
                   <InputMask
                     mask="(99) 99999-9999"
                     value={telefone}
-                    onChange={handleChanges}
+                    onChange={handleChange}
                     placeholder="(00) 00000-0000"
                     id="telefone"
                     className='inputCRP'
@@ -690,7 +638,18 @@ function PerfilPaciente() {
 
 
                 <div className='div-buttons-salvar-cancelar-p'>
-                <button className='a-p' onClick={deletaUsuario}>Excluir conta</button>
+                <button className='a'onClick={() => setShowModal(true)}>Excluir conta</button>
+                {showModal && (
+                    <div className="modal-overlays">
+                      <div className="modal-contents">
+                        <p className='aaaaa'>Deseja mesmo deletar sua conta?</p>
+                        <div>
+                          <button className='errados' onClick={handleDelete}>Deletar conta</button>
+                          <button className='certos' onClick={() => setShowModal(false)}>Cancelar</button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                   <button className='a-p' onClick={handleSair} >Sair da Conta</button>
                   <button className='a-p'>Cancelar edição</button>
                   <button className='salva' onClick={handleEditarPerfil}>Salvar</button>

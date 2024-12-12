@@ -8,7 +8,7 @@ const pool = new Pool({
     user: 'postgres', 
     host: 'localhost',
     database: 'FutureMind', 
-    password: 'Vitor281207.',
+    password: '12345',
     port: 5432, 
 });
 
@@ -459,7 +459,7 @@ app.get('/perfil-profissional/agenda/:id_profissional', async (req, res) => {
                 pacientes.nome_completo AS paciente_nome 
              FROM agendamento
              LEFT JOIN pacientes ON agendamento.fkpaciente_id_paciente = pacientes.id_paciente
-             WHERE fk_id_profissional = $1`, 
+             WHERE fk_id_profissionais = $1`, 
             [id_profissional]
         );
 
@@ -575,7 +575,7 @@ app.post('/perfil-paciente/foto-perfil', upload.single('foto'), async (req, res)
                 agendamento.id_agendamento,
                 profissionais.nome_completo AS profissional_nome 
              FROM agendamento
-             LEFT JOIN profissionais ON agendamento.fk_id_profissional = profissionais.id_profissional
+             LEFT JOIN profissionais ON agendamento.fk_id_profissionais = profissionais.id_profissional
              WHERE fkpaciente_id_paciente = $1`, 
             [id_paciente]
         );
