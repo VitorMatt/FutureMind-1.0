@@ -15,7 +15,7 @@ export function MyCarousel() {
 
   useEffect(() => {
     if (imgsRef.current) {
-      imgsRef.current.style.transform = `translateX(${-contador * 620}px)`;
+      imgsRef.current.style.transform = `translateX(${-contador * 696}px)`;
     }
   }, [contador]);
 

@@ -70,9 +70,7 @@ function PerfilVisualizar() {
   useEffect(() => {
     if (id != null) {
       handleGet();
-    } else {
-      alert('Erro: ID não está definido.');
-    }
+    } 
   }, []); // O useEffect será disparado sempre que `id` mudar.
   
   // var userData = JSON.parse(localStorage.getItem('User'));
@@ -134,10 +132,6 @@ function PerfilVisualizar() {
 
         const data = await response.json();
         setProfissional(data);
-        alert(data)
-      } else {
-
-        alert('p')
       }
     }
 
@@ -161,7 +155,14 @@ function PerfilVisualizar() {
     }, []);
     
     const getAgenda = async () => {
-      const id_profissional = profissional.id_profissional;
+
+      if (profissional) {
+
+        var id_profissional = profissional.id_profissional;
+      } else {
+
+        return;
+      }
     
       try {
         const response = await fetch(`http://localhost:3000/perfil-profissional/agenda/${id_profissional}`);
@@ -232,7 +233,7 @@ function PerfilVisualizar() {
                       </div>
 
                       <div>
-                        <h1>{profissional.nome_completo}</h1>
+                        <h1 style={{color: '#5a7ca0'}}>{profissional.nome_completo}</h1>
                         <p>{profissional.email}</p>
                       </div>
 

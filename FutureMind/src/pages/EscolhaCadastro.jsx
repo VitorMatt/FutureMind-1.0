@@ -15,9 +15,7 @@ function EscolhaCadastro() {
   };
 
   function direcionaCadastro() {
-    if (!escolhaCadastro) {
-      alert('Nenhum conteúdo selecionado');
-    } else if (escolhaCadastro === 'Sou Profissional') {
+    if (escolhaCadastro === 'Sou Profissional') {
       navigate('/cadastro-profissional');
     } else if (escolhaCadastro === 'Sou Paciente') {
       navigate('/cadastro-paciente');

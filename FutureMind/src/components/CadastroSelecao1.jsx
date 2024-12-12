@@ -18,10 +18,7 @@ import { GlobalContext } from '../GlobalContext/GlobalContext';
       if (atenderSelecionado.length==0 && selected==false) {
 
         i.push(atender);
-      } else {
-
-        alert('selecione somente uma opção');
-      }
+      } 
 
       setSelected(!selected)
       setAtenderSelecionado(i)
