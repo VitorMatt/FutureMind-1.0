@@ -1,117 +1,137 @@
-import './CSS/Profissionais3.css'
-import React, { useContext, useState, useEffect } from "react"
-import { GlobalContext } from '../GlobalContext/GlobalContext'
+import './CSS/Profissionais3.css';
+import React, { useContext, useState, useEffect } from "react";
+import { GlobalContext } from '../GlobalContext/GlobalContext';
 
-function CadastroPaciente2() {
-  const { paciente, setPaciente } = useContext(GlobalContext)
+function CadastroPaciente2({ showError }) {
+  const { paciente, setPaciente } = useContext(GlobalContext);
 
-  const [cpf, setCpf] = useState(paciente.cpf);  // Gerenciamento do CPF
-  const [telefone, setTelefone] = useState(paciente.telefone);  // Gerenciamento do telefone
-  const { cpfValid, setCpfValid } = useContext(GlobalContext)
-  const { cpfHover, setCpfHover } = useContext(GlobalContext)
-  const { telefoneValid, setTelefoneValid } = useContext(GlobalContext)
-  const { telefoneHover, setTelefoneHover } = useContext(GlobalContext)
-   
-  // Função para aplicar a máscara de CPF
+  const [cpf, setCpf] = useState(paciente.cpf);
+  const [telefone, setTelefone] = useState(paciente.telefone);
+
+  const { cpfValid, setCpfValid } = useContext(GlobalContext);
+  const { cpfHover, setCpfHover } = useContext(GlobalContext);
+  const { telefoneValid, setTelefoneValid } = useContext(GlobalContext);
+  const { telefoneHover, setTelefoneHover } = useContext(GlobalContext);
+
+  // Função máscara para CPF
   const maskCPF = (value) => {
-    value = value.replace(/\D/g, ''); // Remove tudo o que não for número
-    value = value.replace(/^(\d{3})(\d)/, '$1.$2'); // Adiciona ponto após 3 primeiros dígitos
-    value = value.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3'); // Adiciona ponto após 6 primeiros dígitos
-    value = value.replace(/\.(\d{3})(\d)/, '.$1-$2'); // Adiciona traço antes dos 2 últimos dígitos
+    value = value.replace(/\D/g, '');
+    value = value.replace(/^(\d{3})(\d)/, '$1.$2');
+    value = value.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+    value = value.replace(/\.(\d{3})(\d)/, '.$1-$2');
     return value;
   };
 
-  // Função para aplicar a máscara de telefone
+  // Função máscara para telefone
   const maskTelefone = (value) => {
-    value = value.replace(/\D/g, ''); // Remove tudo o que não for número
-    value = value.replace(/^(\d{2})(\d)/, '($1) $2'); // Adiciona parênteses e espaço após o DDD
-    value = value.replace(/^(\(\d{2}\) \d{5})(\d)/, '$1-$2'); // Adiciona o traço após os 5 primeiros números
+    value = value.replace(/\D/g, '');
+    value = value.replace(/^(\d{2})(\d)/, '($1) $2');
+    value = value.replace(/^(\(\d{2}\) \d{5})(\d)/, '$1-$2');
     return value;
   };
 
-  useEffect(() => {
-    setCpfValid(cpf.length === 14); // Verificação de validade para CPF
-    setTelefoneValid(telefone.length === 15); // Verificação de validade para telefone (com máscara)
-  }, [cpf, telefone]);
-
-  // Função de mudança do CPF com máscara
+  // Gerenciamento do CPF
   const handleCpfChange = (e) => {
     const maskedCpf = maskCPF(e.target.value);
-    setCpf(maskedCpf); // Atualiza o estado com o CPF formatado
+    setCpf(maskedCpf);
+    setCpfValid(maskedCpf.length == 14); // CPF válido se tiver 14 caracteres
   };
 
-  // Função de mudança do telefone com máscara
+  // Gerenciamento do Telefone
   const handleTelefoneChange = (e) => {
     const maskedTelefone = maskTelefone(e.target.value);
-    setTelefone(maskedTelefone); // Atualiza o estado com o telefone formatado
+    setTelefone(maskedTelefone);
+    setTelefoneValid(maskedTelefone.length == 15 ); // Telefone válido se tiver 15 caracteres
   };
 
   useEffect(() => {
-    // Atualiza o contexto global sempre que o CRP muda
     setPaciente((prevPaciente) => ({
       ...prevPaciente,
-      telefone: telefone, // Atualiza apenas o campo telefone
-    }));
-  }, [telefone, setPaciente]);
-
-  useEffect(() => {
-    // Atualiza o contexto global sempre que o CRP muda
-    setPaciente((prevPaciente) => ({
-      ...prevPaciente,
-      cpf: cpf, // Atualiza apenas o campo cpf
+      cpf: cpf,
     }));
   }, [cpf, setPaciente]);
+
+  useEffect(() => {
+    setPaciente((prevPaciente) => ({
+      ...prevPaciente,
+      telefone: telefone,
+    }));
+  }, [telefone, setPaciente]);
 
   return (
     <div className="selecao1">
       <h3 className='titulo-cadastro2'>Seus Dados..</h3>
       <div className="checkboxs2">
+        {/* Campo CPF */}
         <div className="input-text">
           <label htmlFor="cpf">CPF</label>
-          <input
-            type="text"
-            id="cpf"
-            name="cpf"
-            placeholder="XXX.XXX.XXX-XX"
-            maxLength="14"
-            value={cpf}
-            onChange={handleCpfChange} // Atualiza o estado com a máscara
-            className="inputCRP"
-          />
-          <span
-            className={`status-indicador ${cpfValid ? "valid" : cpf ? "invalid" : "neutro"}`}
-            onMouseEnter={() => setCpfHover(true)}
-            onMouseLeave={() => setCpfHover(false)}
-          ></span>
-          {cpfHover && (
-            <div className="tooltip">
-              {cpfValid ? "cpf ok" : "cpf errado"}
+          <div className="indicador-geral-div">
+            <input
+              type="text"
+              id="cpf"
+              name="cpf"
+              placeholder="XXX.XXX.XXX-XX"
+              maxLength="14"
+              value={cpf}
+              onChange={handleCpfChange}
+              className="inputCRP"
+            />
+            <div className="span-geral">
+              {/* Bolinha vermelha */}
+              <span
+                className={`status-indicador ${  !cpfValid ? "invalid" :""}`}
+                onMouseEnter={() => setCpfHover(true)}
+                onMouseLeave={() => setCpfHover(false)}
+              />
             </div>
-          )}
+            <div className="div_mensagem">
+              { !cpfValid && (
+                <div
+                  className="tooltip"
+                  onMouseEnter={() => setCpfHover(true)}
+                  onMouseLeave={() => setCpfHover(false)}
+                >
+                  {cpfHover && "CPF inválido ou vazio"}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
+        {/* Campo Telefone */}
         <div className="input-text">
           <label htmlFor="telefone">Telefone</label>
-          <input
-            type="text"
-            id="telefone"
-            name="telefone"
-            placeholder="(XX) XXXXX-XXXX"
-            maxLength="15"  // Limita o comprimento ao tamanho máximo de telefone com a máscara
-            value={telefone}
-            onChange={handleTelefoneChange} // Atualiza o estado com a máscara de telefone
-            className="inputCRP"
-          />
-          <span
-            className={`status-indicador ${telefoneValid ? "valid" : telefone ? "invalid" : "neutro"}`}
-            onMouseEnter={() => setTelefoneHover(true)}
-            onMouseLeave={() => setTelefoneHover(false)}
-          ></span>
-          {telefoneHover && (
-            <div className="tooltip">
-              {telefoneValid ? "telefone ok" : "telefone errado"}
+          <div className="indicador-geral-div">
+            <input
+              type="text"
+              id="telefone"
+              name="telefone"
+              placeholder="(XX) XXXXX-XXXX"
+              maxLength="15"
+              value={telefone}
+              onChange={handleTelefoneChange}
+              className="inputAlternativo"
+            />
+            <div className="span-geral">
+              {/* Bolinha vermelha */}
+              <span
+                className={`status-indicador ${showError && !telefoneValid ? "invalid" : ""}`}
+                onMouseEnter={() => setTelefoneHover(true)}
+                onMouseLeave={() => setTelefoneHover(false)}
+              />
             </div>
-          )}
+            <div className="div_mensagem">
+              {showError && !telefoneValid && (
+                <div
+                  className="tooltip"
+                  onMouseEnter={() => setTelefoneHover(true)}
+                  onMouseLeave={() => setTelefoneHover(false)}
+                >
+                  {telefoneHover && "Telefone inválido ou vazio"}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

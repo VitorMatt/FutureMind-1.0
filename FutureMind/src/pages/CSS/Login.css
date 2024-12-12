@@ -236,7 +236,7 @@ body {
   }
   
   .validation-dot.invalid {
-    background-color: #ff000084; 
+    background-color: brown; 
   }
   
   .validation-dot[title]:hover::after {

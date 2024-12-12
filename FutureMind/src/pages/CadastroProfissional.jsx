@@ -25,6 +25,7 @@ function CadastroProfissional() {
   const [activeStep, setActiveStep] = useState(0);
 
   // Função para avançar etapas com validação correta
+  
   const handleNext = () => {
     switch (activeStep) {
       case 0:

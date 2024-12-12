@@ -213,6 +213,18 @@ input[type="file"] {
 
 }
 
+.inputAlternativo{
+ 
+    width: 45.2%;
+    padding: 1.6%;
+    border-radius: 10px;
+    border: none;
+    background-color: #cad7eb;
+    color: var(--cor-4);
+    font-size: medium;
+
+}
+
 .inputAbordagem{
     width: 48.2%;
     padding: 1.6%;
@@ -350,8 +362,8 @@ input[type="file"] {
     border: none;
     background: none;
     position: absolute;
-    right: 513px; 
-    width: 4.5%;
+    right: 400px; 
+    width: 5.3%;
     height: 4%;
     display: flex;
     align-items: center;
@@ -427,7 +439,8 @@ input[type="checkbox"]:focus {
     display: flex;
     margin: auto;
     align-items: center;
-    margin-top: 1%;
+    
+    
 
 }
 
@@ -456,42 +469,6 @@ label {
 
 }
     
-   
-input.neutro{
-
-    
-    width: 45%;
-    padding: 1.6%;
-    border-radius: 10px;
-    background-color: #cad7eb;
-    color: var(--cor-4);
-    border: none;
-    font-size: medium;
-
-}
-input.valid {
-
-  border-color: #33ff00;
-  width: 45%;
-  padding: 1.6%;
-  border-radius: 10px;
-  background-color: #cad7eb;
-  color: var(--cor-4);
-  font-size: medium;
-
-}
-    
-input.invalid {
-
-  border-color: #ff0000;
-  width: 45%;
-  padding: 1.6%;
-  border-radius: 10px;
-  background-color: #cad7eb;
-  color: var(--cor-4);
-  font-size: medium;
-
-}
 
 /* Estilo para a bolinha de status de validação */
 
@@ -502,38 +479,27 @@ input.invalid {
    height: 10px;
    margin-left: 10px;
    border-radius: 50%;
-   background-color: #cad7eb;/* Cor padrão (neutra) */
    transition: background-color 0.3s;
-   position: absolute;
+  
 
 }
 
 .status-indicador.valid {
 
   background-color: #28a745; /* Cor verde para válido */
-  position: absolute;
+  
 
 }
 
 .status-indicador.invalid {
 
-  background-color: #dc3545; /* Cor vermelha para inválido */
-  position: absolute;
+    background-color: brown; 
+  
 
 }
 
 /* Estilo do tooltip */
-.tooltip{
 
-  position: absolute;
-  background-color: #000000;
-  color: #ffffff;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 12px;
-  top: 30px; /* Ajuste conforme necessário */
-
-}
 
 .error-message {
     color: rgb(255, 255, 255);
@@ -551,4 +517,39 @@ input.invalid {
 
 }
 
+.indicador-geral-div {
 
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+ }
+  
+
+.span-geral{
+  
+ width: fit-content;
+
+}
+
+.span-geral .status-indicador{
+
+    padding: 3px;
+
+}
+
+.tooltip{
+
+    color: #ffffff;
+    position: fixed;
+    width: fit-content;
+    font-size: 15px;
+    border: none;
+    transform: (-50%, -50%);
+    transition: all 0.5 ease;
+    
+  }
+
+.conatiner_bolinha{
+
+   display: block;
+
+}

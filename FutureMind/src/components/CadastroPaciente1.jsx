@@ -1,126 +1,132 @@
 import React, { useContext, useEffect, useState } from "react";
 import Flatpickr from "react-flatpickr";
-import "flatpickr/dist/flatpickr.min.css"; // Estilo padrão do Flatpickr
-import { Portuguese } from "flatpickr/dist/l10n/pt"; // Tradução para PT-BR
+import "flatpickr/dist/flatpickr.min.css";
+import { Portuguese } from "flatpickr/dist/l10n/pt";
 import { GlobalContext } from "../GlobalContext/GlobalContext";
 import '../pages/CSS/CadastroProfissional.css';
 
-
-function CadastroPaciente1() {
-
-  const { paciente, setPaciente } = useContext(GlobalContext)
+function CadastroPaciente1({ showError }) { // showError controlado pelo botão "Próximo"
+  const { paciente, setPaciente } = useContext(GlobalContext);
 
   const [date, setDate] = useState(paciente.data_nascimento);
   const [name, setName] = useState(paciente.nome_completo);
-  const {usernameValid, setUsernameValid} = useContext(GlobalContext)
-  const {usernameHover, setUsernameHover} = useContext(GlobalContext)
-  const {data_nascimentoValid, setData_nascimentoValid} = useContext(GlobalContext)
-  const {data_nascimentoHover, setData_nascimentoHover} = useContext(GlobalContext)
-  
- setUsernameValid(name.length > 3) 
- if(date > 1){
+  const { usernameValid, setUsernameValid } = useContext(GlobalContext);
+  const { usernameHover, setUsernameHover } = useContext(GlobalContext);
+  const { data_nascimentoValid, setData_nascimentoValid } = useContext(GlobalContext);
+  const { data_nascimentoHover, setData_nascimentoHover } = useContext(GlobalContext);
 
-  const hoje = new Date();
-  const idade = hoje.getFullYear() - date.getFullYear();
-  const mesAtual = hoje.getMonth();
-  const mesNascimento = date.getMonth();
-  const diaAtual = hoje.getDate();
-  const diaNascimento = date.getDate();
+  useEffect(() => {
+    setUsernameValid(name.length > 3);
+  }, [name, setUsernameValid]);
 
-  // Verificação de se o usuário tem menos de 18 anos
-  const temMenosDe18Anos =
-    idade < 18 ||
-    (idade === 18 && mesAtual < mesNascimento) ||
-    (idade === 18 && mesAtual === mesNascimento && diaAtual < diaNascimento);
-    setData_nascimentoValid(!temMenosDe18Anos)
-    
- }
- 
+  useEffect(() => {
+    if (date) {
+      const hoje = new Date();
+      const idade = hoje.getFullYear() - date.getFullYear();
+      const mesAtual = hoje.getMonth();
+      const mesNascimento = date.getMonth();
+      const diaAtual = hoje.getDate();
+      const diaNascimento = date.getDate();
 
- useEffect(() => {
-  // Atualiza o contexto global sempre que o CRP muda
-  setPaciente((prevPaciente) => ({
-    ...prevPaciente,
-    nome_completo: name, // Atualiza apenas o campo name
-  }));
-}, [name, setPaciente]);
+      const temMenosDe18Anos =
+        idade < 18 ||
+        (idade === 18 && mesAtual < mesNascimento) ||
+        (idade === 18 && mesAtual === mesNascimento && diaAtual < diaNascimento);
 
-useEffect(() => {
-  // Atualiza o contexto global sempre que o CRP muda
-  setPaciente((prevPaciente) => ({
-    ...prevPaciente,
-   data_nascimento: date, // Atualiza apenas o campo name
-  }));
-}, [date, setPaciente]);
+      setData_nascimentoValid(!temMenosDe18Anos);
+    }
+  }, [date, setData_nascimentoValid]);
 
+  useEffect(() => {
+    setPaciente((prevPaciente) => ({
+      ...prevPaciente,
+      nome_completo: name,
+    }));
+  }, [name, setPaciente]);
 
+  useEffect(() => {
+    setPaciente((prevPaciente) => ({
+      ...prevPaciente,
+      data_nascimento: date,
+    }));
+  }, [date, setPaciente]);
 
   return (
-
     <div className="selecao1">
       <h3 className="titulo-cadastro2">Seus Dados..</h3>
       <div className="checkboxs2">
+        {/* Campo Nome */}
         <div className="input-text">
           <label htmlFor="nome">Nome Completo</label>
-          <input
-            type="text"
-            name="nome"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="inputCRP"
-          />
-          
-         <span
-          className={`status-indicador ${
-          usernameValid ? "valid" :  name ? "invalid" : "neutro"
-         }`}
-         onMouseEnter={() => setUsernameHover(true)}
-         onMouseLeave={() => setUsernameHover(false)}
-         ></span>
-         {usernameHover && (
-
-          <div className="tooltip">
-            {usernameValid
-
-              ? "Nome ok"
-              : "Nome Precisa Ter Mais De 3 Caracter e ter um valor "
-          
-              }
+          <div className="indicador-geral-div">
+            <input
+              type="text"
+              name="nome"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="inputCRP"
+            />
+            <div className="span-geral">
+              {/* Bolinha vermelha lógica para o nome */}
+              <span
+                className={`status-indicador ${
+                  (name.length <= 3 && name.length > 0) || (showError && !usernameValid) ? "invalid" : ""
+                }`}
+                onMouseEnter={() => setUsernameHover(true)}
+                onMouseLeave={() => setUsernameHover(false)}
+              ></span>
+            </div>
+            <div className="div_mensagem">
+              { !usernameValid  && (
+                <div
+                  className="tooltip"
+                  onMouseEnter={() => setUsernameHover(true)}
+                  onMouseLeave={() => setUsernameHover(false)}
+                >
+                  { usernameHover && "Nome precisa ter mais de 3 caracteres"}
+                </div>
+              )}
+            </div>
           </div>
-         )}
         </div>
+
+        {/* Campo Data de Nascimento */}
         <div className="input-text">
           <label htmlFor="data">Data de Nascimento</label>
-          <Flatpickr
-            options={{
-              locale: Portuguese,
-              dateFormat: "y/m/d",
-              defaultDate: "today",
-            }}
-
-            value={date}
-            onChange={(selectedDates) => setDate(selectedDates[0])}
-            className="inputCRP"
-          />
-            <span
-          className={`status-indicador ${
-          data_nascimentoValid ? "valid" :  date ? "invalid" : "neutro"
-         }`}
-         onMouseEnter={() => setData_nascimentoHover(true)}
-         onMouseLeave={() => setData_nascimentoHover(false)}
-         ></span>
-         {data_nascimentoHover && (
-
-         <div className="tooltip">
-         {data_nascimentoValid
-
-         ? "data ok"
-         : "Você precisa ter mais de 18 anos "
-
-         }
-         </div>
-         )}
-          
+          <div className="indicador-geral-div">
+            <Flatpickr
+              options={{
+                locale: Portuguese,
+                dateFormat: "y/m/d",
+                defaultDate: "today",
+              }}
+              value={date}
+              onChange={(selectedDates) => setDate(selectedDates[0])}
+              className="inputAlternativo"
+            />
+            <div className="span-geral">
+              {/* Bolinha vermelha lógica para a data de nascimento */}
+              <span
+                className={`status-indicador ${
+                  showError && (!data_nascimentoValid ) ? "invalid" : ""
+                }`}
+                onMouseEnter={() => setData_nascimentoHover(true)}
+                onMouseLeave={() => setData_nascimentoHover(false)}
+              >
+              </span>
+            </div>
+            <div className="div_mensagem">
+              {!data_nascimentoValid && (
+                <div
+                  className="tooltip"
+                  onMouseEnter={() => setData_nascimentoHover(true)}
+                  onMouseLeave={() => setData_nascimentoHover(false)}
+                >
+                  {data_nascimentoHover && "Você precisa ter mais de 18 anos"}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

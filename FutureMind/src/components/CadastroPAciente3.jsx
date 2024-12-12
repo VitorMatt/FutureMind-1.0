@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import { GlobalContext } from '../GlobalContext/GlobalContext';
 
-function CadastroPaciente3() {
+function CadastroPaciente3({showError}) {
+
   const { paciente, setPaciente } = useContext(GlobalContext);
   const [email, setEmail] = useState(paciente.email);
   const [olhosSenha, setOlhosSenha] = useState(false);
@@ -12,8 +13,9 @@ function CadastroPaciente3() {
   const {emailHover, setEmailHover} = useContext(GlobalContext)
   const {senhaValid, setSenhaValid} = useContext(GlobalContext)
   const {senhaHover, setSenhaHover} = useContext(GlobalContext)
+  const {checkbox_cheked, setcheckbox_cheked} = useState(GlobalContext)
 
-  setEmailValid(email.includes("@") )
+  setEmailValid(email.includes("@gmail") )
   setSenhaValid(senha.length >= 8)
 
   useEffect(() => {
@@ -31,6 +33,11 @@ function CadastroPaciente3() {
       senha: senha, // Atualiza apenas o campo senha
     }));
   }, [senha, setPaciente]);
+  
+  const pegar_valor =(event) => {
+
+    setcheckbox_cheked(event.target.checked)
+  }
 
   return (
     <div className="selecao1">
@@ -39,6 +46,7 @@ function CadastroPaciente3() {
       <div className="checkboxs2">
         <div className="input-text">
           <label htmlFor="email">E-mail</label>
+          <div className='indicador-geral-div'>
           <input
             type="email"
             name="email"
@@ -46,24 +54,26 @@ function CadastroPaciente3() {
             value={email}
             onChange={(e) => setEmail(e.target.value)} // Altera somente o estado local
           />
+          <div className='span-geral'>
          <span
-          className={`status-indicador ${
-          emailValid ? "valid" :  email ? "invalid" : "neutro"
+          className={`status-indicador ${ showError  ||  !emailValid ? "invalid" : ""
          }`}
          onMouseEnter={() => setEmailHover(true)}
          onMouseLeave={() => setEmailHover(false)}
          ></span>
-         { emailHover && (
-
-          <div className="tooltip">
-            {emailValid
-
-              ? "Email ok"
-              : "Email precisa ter um @ "
-          
-              }
-          </div>
+         </div>
+         <div className="div_mensagem">
+          {showError && !emailValid && (
+          <div
+          className="tooltip"
+          onMouseEnter={() => setEmailHover(true)}
+          onMouseLeave={() => setEmailHover(false)}
+          >
+          {emailHover && "O email precisa conter um @"}
+         </div>
          )}
+        </div>
+        </div>
         </div>
 
         <div className="input-text">
@@ -74,27 +84,31 @@ function CadastroPaciente3() {
               onChange={(e) => setSenha(e.target.value)} // Altera somente o estado local
               type={olhosSenha ? 'text' : 'password'}
               maxLength="10"
-              className="inputCRP"
+              className="inputAlternativo"
             />
-             <span
-              className={`status-indicador ${
-              senhaValid ? "valid" :  senha ? "invalid" : "neutro"
-              }`}
+            <div className='conatiner_bolinha'>
+            <div className='div_mensagem'>
+            {senha && !senhaValid && (
+            <div
+              className="tooltip"
               onMouseEnter={() => setSenhaHover(true)}
+             onMouseLeave={() => setSenhaHover(false)}
+             >
+             {senhaHover && "Senha precisa ter entre 8 e 10 caracteres"}
+            </div>
+          
+          )}
+          </div>
+            <div className='span-geral'>
+             <span
+               className={`status-indicador ${ showError || !senhaValid ? "invalid" : ""
+               }`}
+               onMouseEnter={() => setSenhaHover(true)}
                onMouseLeave={() => setSenhaHover(false)}
                ></span>
-              { senhaHover && (
-
-              <div className="tooltip">
-               {senhaValid
-
-                ? "senha ok"
-                : "senha precisa ter no minimo 8 caracteris e no maximo 10 "
-          
-                }
-              </div>
-              )}
-            
+             </div>
+           
+          </div>
             <button
               onClick={() => setOlhosSenha(!olhosSenha)}
               className="olho"
@@ -111,7 +125,11 @@ function CadastroPaciente3() {
         </div>
       </div>
       <div className="caminho-login">
-        <input type="checkbox" id="aceitar-termos" />
+        <input  
+        type="checkbox" 
+        id="aceitar-termos" 
+        
+        onChange={pegar_valor}/>
         <label htmlFor="aceitar-termos" className="label-cadastro">
           Aceitar
         </label>

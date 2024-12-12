@@ -127,7 +127,8 @@ const [paciente, setPaciente] = useState({
     const [emailProfissionalHover, setEmailProfissonalHover] = useState(false)
     const [senhaProfissionalValid, setSenhaProfissionalValid] = useState(false)
     const [senhaProfissionalHover, setSenhaProfissionalHover] = useState(false)
-
+    const [erros_passar, setErros_passar] = useState("")
+    const [checkbox_cheked, setcheckbox_cheked] = useState(false)
 
     return(
         <GlobalContext.Provider value={{
@@ -150,7 +151,8 @@ const [paciente, setPaciente] = useState({
         cpfProfissionalValid, setCpfProfissionalValid,cpfProfissionalHover, setCpfProfissionalHover,
         telefoneProfissionalValid, setTelefoneProfissionalValid, telefoneProfissinalHover, setTelefoneProfissionalHover,
         emailProfissionalValid, setEmailProfissionalValid, emailProfissionalHover, setEmailProfissonalHover,
-        senhaProfissionalValid, setSenhaProfissionalValid, senhaProfissionalHover, setSenhaProfissionalHover
+        senhaProfissionalValid, setSenhaProfissionalValid, senhaProfissionalHover, setSenhaProfissionalHover,
+        erros_passar, setErros_passar, checkbox_cheked, setcheckbox_cheked
 
         }}>
             {children}
