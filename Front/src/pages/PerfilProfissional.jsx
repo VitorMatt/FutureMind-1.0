@@ -45,7 +45,6 @@ function PerfilProfissional() {
   var userData = JSON.parse(localStorage.getItem('User'));
   
   
-  
   if (!Array.isArray(userData.especializacao)) {
     userData.especializacao = userData.especializacao
     .replace(/[{}"]/g, '') // Remove '{', '}', e aspas
@@ -259,8 +258,6 @@ function PerfilProfissional() {
 
     });
   };
-
-
   
   const handleEventClick = (agendamento, event) => {
     // Captura a posição do elemento clicado
@@ -304,7 +301,8 @@ function PerfilProfissional() {
               !(item.data === agendamento.data && item.horario === agendamento.horario)
           )
         );
-        handleCloseDetails(); // Fecha a div de detalhes, se estiver aberta
+        handleCloseDetails();
+        window.location.reload();
       }
     } catch (err) {
 
@@ -359,6 +357,7 @@ function PerfilProfissional() {
         const updatedUser = await response.json();
         localStorage.setItem('User', JSON.stringify(updatedUser));
         console.log('Descrição salva com sucesso!');
+        window.location.reload();
       } else {
         const error = await response.json();
         console.error('Erro ao atualizar a descrição:', error);
@@ -398,6 +397,7 @@ function PerfilProfissional() {
           localStorage.setItem('User', JSON.stringify({...userData, foto: data.foto, descricao}));
           userData = JSON.parse(localStorage.getItem('User'));
           console.log('Resposta do servidor:', data);
+          window.location.reload();
         } else {
           console.log('Erro no envio da foto:', response.status);
         }
@@ -492,7 +492,6 @@ function PerfilProfissional() {
       }
     };
     
-    const [pacientes, setPacientes] = useState([]);
     useEffect(() => {
       getAgenda();
     }, []);
@@ -540,8 +539,6 @@ function PerfilProfissional() {
       }, 3500);
       
     };
-  
-    
 
   return (
     <div className='perfilPro-container'>
@@ -560,7 +557,7 @@ function PerfilProfissional() {
                  <div className='div-foto-nome'>
                         
                     <div className='foto-usuario'>
-                        <img src={`http://localhost:3000${userData.foto}`} className='a1-foto'/> 
+                        <img src={userData.foto==='iconuser.svg' ? userData.foto : `http://localhost:3000${userData.foto}`} className='a1-foto'/> 
                       <div className='input-editar-foto'>
                       <input type="file" id="file" onChange={onImageChange} name="file" />
                        <label htmlFor="file" className="label-file"> Editar Foto</label>

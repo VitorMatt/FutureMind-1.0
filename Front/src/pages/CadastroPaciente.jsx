@@ -18,7 +18,7 @@ function CadastroPaciente() {
   const [isNextClicked, setIsNextClicked] = useState(false);
 
 
-  const navigate = useNavigate('');
+  const navigate = useNavigate();
 
   const handleNext = () => {
     if (activeStep === 0) {
@@ -74,8 +74,8 @@ function CadastroPaciente() {
     }
   };
 
+  const { emailValid, senhaValid  } = useContext(GlobalContext);
   const handleFinish = async () => {
-    const { emailValid, senhaValid  } = useContext(GlobalContext);
     if (!emailValid || !senhaValid ) {
 
         setErros_passar('7');
@@ -83,7 +83,7 @@ function CadastroPaciente() {
       return;
     }
 
-    const updatedPaciente = { ...paciente };
+    const updatedPaciente = { ...paciente, foto: 'iconuser.svg' };
 
     try {
       const response = await fetch('http://localhost:3000/cadastro-paciente', {
@@ -101,7 +101,7 @@ function CadastroPaciente() {
           telefone: '',
           data_nascimento: '',
           senha: '',
-          foto: '',
+          foto: 'iconuser.svg',
           email: '',
         });
 
