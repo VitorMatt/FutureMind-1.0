@@ -48,8 +48,15 @@ function Inicio() {
   const fetchProfissionais = async () => {
     try {
       const response = await fetch('http://localhost:3000');
-      const data = await response.json();
-      setProfissionais(data);
+
+      if (response.ok) {
+
+        const data = await response.json();
+        setProfissionais(data);
+      } else {
+
+        console.log('Erro', response.status);
+      }
     } catch (err) {
       console.log('Erro ao buscar profissionais:', err.message);
     }

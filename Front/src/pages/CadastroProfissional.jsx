@@ -129,7 +129,7 @@ function CadastroProfissional() {
           telefone: '',
           data_nascimento: '',
           senha: '',
-          foto: '',
+          foto: 'iconuser.svg',
           email: '',
           crp: '',
           abordagem: '',

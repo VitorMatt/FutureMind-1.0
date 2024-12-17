@@ -124,6 +124,7 @@ const [errors, setErrors] = useState({
       if (response.ok) {
         localStorage.setItem('User', JSON.stringify(novoPaciente));
         console.log('Perfil atualizado com sucesso!');
+        window.location.reload();
       } else {
         console.error('Erro ao atualizar o perfil:', await response.json());
       }
@@ -131,23 +132,11 @@ const [errors, setErrors] = useState({
       console.error('Erro na requisição:', err.message);
     }
   };
-  
-  const handleChanges = (e) => {
-    const maskedValue = e.target.value;
-    setTelefone(maskedValue);
-    
-  };
-
-
 
   const maskCpf = (e) =>{
     const maskedValue = e.target.value;
     setCpf(maskedValue);
   }
-
-
-
-
 
  const navigate = useNavigate();
 
@@ -220,15 +209,6 @@ const [errors, setErrors] = useState({
      setSelectedAgendamento(null); // Fecha a div de detalhes
    };
  
- 
-   const [horarios, setHorarios] = useState(profissional.horarios);
- 
- 
-     useEffect(() => {
- 
-       profissional.horarios = horarios;
-   }, [horarios]);
- 
    // const [selecionarOpcoesAreas, setSelecionarOpcoesAreas] = useState([]);
    const opcoesAreas = ["Idosos", "PCDs", "Adultos", "Crianças", "Adolescentes", "Pré-Adolescentes"];
    // const [selecionarOpcoesEspecializacoes, setSelecionarOpcoesEspecializacoes] = useState([]);
@@ -258,9 +238,9 @@ const [errors, setErrors] = useState({
         method: 'DELETE'
       });
 
-      
-
-      
+      if (response.ok) {
+        window.location.reload();
+      }
     } catch (err) {
 
       console.log(err.message);
@@ -287,6 +267,7 @@ const [errors, setErrors] = useState({
           localStorage.setItem('User', JSON.stringify({...userData, foto: data.foto, descricao}));
           userData = JSON.parse(localStorage.getItem('User'));
           console.log('Resposta do servidor:', data); 
+          window.location.reload();
         } else {
           console.log('Erro no envio da foto:', response.status);
         }
@@ -346,38 +327,6 @@ const [errors, setErrors] = useState({
     }
 }
 
-  const handleSaveClick = async () => {
-    try {
-      const novoPaciente = {
-        ...userData
-      };
-  
-      const response = await fetch('http://localhost:3000/perfil-paciente', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(novoPaciente),
-      });
-  
-      if (response.ok) {
-        const updatedUser = await response.json();
-        localStorage.setItem('User', JSON.stringify(updatedUser));
-        setUser(updatedUser); // Atualiza o contexto do usuário
-        console.log('Descrição salva com sucesso!');
-      } else {
-        const error = await response.json();
-        console.error('Erro ao atualizar a descrição:', error);
-        console.log('Erro ao salvar a descrição.');
-      }
-    } catch (err) {
-      console.error('Erro na requisição:', err.message);
-      console.log('Erro ao salvar a descrição.');
-    }
-  
-    setIsEditing(false); // Sai do modo de edição
-  };
-
     return (
         <div className='perfilPa-container'>
 
@@ -399,7 +348,7 @@ const [errors, setErrors] = useState({
 
                   <div className='div-foto-editar'>
                     <div className='foto-usuario-p'>
-                        <img src={`http://localhost:3000${userData.foto}`} className='a-foto-p'/>
+                        <img src={userData.foto === 'iconuser.svg' ? userData.foto : `http://localhost:3000${userData.foto}`} className='a-foto-p'/>
                     </div>
 
                     <div className='input-editar-foto-p'>

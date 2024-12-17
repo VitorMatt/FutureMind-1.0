@@ -8,7 +8,7 @@ const pool = new Pool({
     user: 'postgres', 
     host: 'localhost',
     database: 'FutureMind', 
-    password: '12345',
+    password: 'Vitor281207.',
     port: 5432, 
 });
 
@@ -420,7 +420,7 @@ app.post('/agendamento', async(req, res) => {
 
     try {
 
-        const result = await pool.query('INSERT INTO agendamento (horario, data, fk_id_profissionais, fkpaciente_id_paciente) VALUES ($1, $2, $3, $4) RETURNING *', [
+        const result = await pool.query('INSERT INTO agendamento (horario, data, id_profissional, id_paciente) VALUES ($1, $2, $3, $4) RETURNING *', [
             horario,
             data,
             profissional,
@@ -458,8 +458,8 @@ app.get('/perfil-profissional/agenda/:id_profissional', async (req, res) => {
                 agendamento.id_agendamento,
                 pacientes.nome_completo AS paciente_nome 
              FROM agendamento
-             LEFT JOIN pacientes ON agendamento.fkpaciente_id_paciente = pacientes.id_paciente
-             WHERE fk_id_profissionais = $1`, 
+             LEFT JOIN pacientes ON agendamento.id_paciente = pacientes.id_paciente
+             WHERE id_profissional = $1`, 
             [id_profissional]
         );
 
@@ -575,8 +575,8 @@ app.post('/perfil-paciente/foto-perfil', upload.single('foto'), async (req, res)
                 agendamento.id_agendamento,
                 profissionais.nome_completo AS profissional_nome 
              FROM agendamento
-             LEFT JOIN profissionais ON agendamento.fk_id_profissionais = profissionais.id_profissional
-             WHERE fkpaciente_id_paciente = $1`, 
+             LEFT JOIN profissionais ON agendamento.id_profissional = profissionais.id_profissional
+             WHERE id_paciente = $1`, 
             [id_paciente]
         );
 

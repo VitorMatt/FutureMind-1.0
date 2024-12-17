@@ -74,9 +74,19 @@ function CadastroPaciente() {
     }
   };
 
+  const { emailValid, senhaValid  } = useContext(GlobalContext);
   const handleFinish = async () => {
+<<<<<<< HEAD:FutureMind/src/pages/CadastroPaciente.jsx
+=======
+    if (!emailValid || !senhaValid ) {
 
-    const updatedPaciente = { ...paciente };
+        setErros_passar('7');
+     
+      return;
+    }
+>>>>>>> 8f9e3809ec0122396f92838d7ba3182f435363cb:Front/src/pages/CadastroPaciente.jsx
+
+    const updatedPaciente = { ...paciente, foto: 'iconuser.svg' };
 
     try {
       const response = await fetch('http://localhost:3000/cadastro-paciente', {
@@ -94,7 +104,7 @@ function CadastroPaciente() {
           telefone: '',
           data_nascimento: '',
           senha: '',
-          foto: '',
+          foto: 'iconuser.svg',
           email: '',
         });
 
