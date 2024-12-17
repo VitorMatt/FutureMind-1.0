@@ -39,7 +39,7 @@
   .Links .btn2 {
 
     padding-left: 6%;
-    background-color: ##f5f7fc;
+    background-color:#f0f1f5 ;
     border: none;
   }
 
@@ -104,4 +104,15 @@
   
   .search-results li:hover {
     background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
+  }
+
+  .user{
+
+    width: 60px; /* Define largura fixa */
+    height: 60px; /* Define altura fixa para formar o círculo */
+    border-radius: 50%; /* Cria o formato circular */
+    object-fit: cover; /* Ajusta a imagem para cobrir o círculo corretamente */
+   
+    margin-bottom: 2%;
+    margin-left: 9%;
   }

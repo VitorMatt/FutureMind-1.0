@@ -18,7 +18,7 @@ function CadastroPaciente() {
   const [isNextClicked, setIsNextClicked] = useState(false);
 
 
-  const navigate = useNavigate('');
+  const navigate = useNavigate();
 
   const handleNext = () => {
     if (activeStep === 0) {
@@ -75,13 +75,6 @@ function CadastroPaciente() {
   };
 
   const handleFinish = async () => {
-    const { emailValid, senhaValid  } = useContext(GlobalContext);
-    if (!emailValid || !senhaValid ) {
-
-        setErros_passar('7');
-     
-      return;
-    }
 
     const updatedPaciente = { ...paciente };
 

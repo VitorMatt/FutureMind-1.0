@@ -931,7 +931,7 @@ function PerfilProfissional() {
 
                 <div className='div_container_pinput'>
                  <div className='div_pinput'>
-                  <p>Preço</p>
+                  <p>Valor da Consulta</p>
                   <InputMask
                   id="price"
                   mask="99.99"

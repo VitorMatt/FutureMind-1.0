@@ -9,6 +9,8 @@ function Navbar() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
+  const userLog = JSON.parse(localStorage.getItem('User'));
+
   const handleUserClick = () => {
     try {
       if (user.logado) {
@@ -77,7 +79,7 @@ function Navbar() {
             <Link to='/login' className='btn2'>Entrar</Link>
           ) : (
             <button onClick={handleUserClick} className='btn2'>
-              <img src="iconuser.svg" alt="" className="user" />
+              <img src={userLog.foto==='' ? 'iconuser.svg' : `http://localhost:3000${userLog.foto}`} alt="" className="user" />
             </button>
           )
         }

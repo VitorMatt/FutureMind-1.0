@@ -176,7 +176,7 @@ input[type="file"] {
 
     display: flex;
     flex-direction: column;
-    padding-bottom: 5%;
+    padding-bottom: 3%;
 } 
 .checkboxs2{
     width: 100%;
@@ -437,7 +437,7 @@ input[type="checkbox"]:focus {
     padding-left: 5%;
     width: 100%;
     display: flex;
-    margin: auto;
+    margin-bottom: 30px;
     align-items: center;
     
     

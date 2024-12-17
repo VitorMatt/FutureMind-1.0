@@ -92,7 +92,7 @@ function CadastroProfissionais7({showError}) {
                 onMouseEnter={() => setSenhaProfissionalHover(true)}
                onMouseLeave={() => setSenhaProfissionalHover(false)}
                 >
-               {setSenhaProfissionalHover && "Senha precisa ter entre 8 e 10 caracteres"}
+               {!setSenhaProfissionalHover && "Senha precisa ter entre 8 e 10 caracteres"}
                </div>
                )}
               </div>
