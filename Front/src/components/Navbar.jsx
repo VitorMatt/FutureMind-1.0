@@ -79,11 +79,7 @@ function Navbar() {
             <Link to='/login' className='btn2'>Entrar</Link>
           ) : (
             <button onClick={handleUserClick} className='btn2'>
-<<<<<<< HEAD:FutureMind/src/components/Navbar.jsx
-              <img src={userLog.foto==='' ? 'iconuser.svg' : `http://localhost:3000${userLog.foto}`} alt="" className="user" />
-=======
               <img src={userLog.foto === 'iconuser.svg' ? userLog.foto : `http://localhost:3000${userLog.foto}`} alt="" className="user" />
->>>>>>> 8f9e3809ec0122396f92838d7ba3182f435363cb:Front/src/components/Navbar.jsx
             </button>
           )
         }
