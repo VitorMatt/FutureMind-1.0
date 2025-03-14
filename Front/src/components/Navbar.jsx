@@ -54,7 +54,9 @@ function Navbar() {
 
   return (
     <nav className='navbar'>
+      <Link to='/landingpage'>
       <img src='logo (2).png' className='logo-nav'/>
+      </Link>
       <div className='Links'>
         <Link className='Link' to='/'>Início</Link>
         <Link className='Link' to='/sobrenos'>Sobre nós</Link>
